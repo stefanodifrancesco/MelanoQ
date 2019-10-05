@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+.card {
+    margin: auto;
+    width: 20rem;
+    background-color: cornflowerblue !important;
+}
+
+.social_icon span {
+    font-size: 60px;
+    margin-left: 10px;
+    color: #FFC312;
+}
+
+.social_icon span:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.card-header {
+    color: white;
+}
+
+.social_icon {
+    position: absolute;
+    right: 20px;
+    top: -45px;
+}
+
+.input-group-prepend {
+    width: 14%;
+}
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: lightgray;
+    color: black;
+    border: 0 !important;
+}

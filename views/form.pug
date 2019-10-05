@@ -1,0 +1,1167 @@
+extends layout
+
+block content
+    form(action="/form" method="POST" class="form-registration" autocomplete="off")
+
+      // Field type: "dropdown" id: "1237444630"
+      fieldset#fieldsetSectionA.form-fieldset
+        legend Section A
+        fieldset.form-fieldset
+          legend(for='1237444630') Subject
+          .form-group
+            select#1237444630.form-control(name='subject')
+              option(value='No Choosed' selected='') Select Subject ...
+              option(value='Case') Case
+              option(value='Control') Control
+              
+
+        // Field type: "short" id: "593911901"
+        fieldset#fieldsetCodeNumber.form-fieldset
+          legend(for='593911901') Database Code Number
+          .form-group
+            input#299016579.form-control(type='text' name='codeNumber' required='')
+
+
+        // Field type: "date" id: "1763927487"
+        fieldset#fieldsetAdmin.form-fieldset
+          legend(for='1763927487') Date of questionnaire administration and phenotyping
+          .form-group.md-form
+            input#1763927487.datepicker.form-control(type='text' placeholder='Select date' required='' name='surveyDate')
+
+
+        // Field type: "date" id: "9069469"
+        fieldset#fieldsetPhenotyping.form-fieldset
+          legend(for='9069469') Dates of updated questionnaire and/or phenotyping
+          .form-group
+            input#1969236884_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='updatedInDate')
+        
+
+        fieldset#fieldsetTypeOfMelanoma.form-fieldset
+          legend(for='type_of_melanoma') Type of melanoma
+          .form-group
+            select#Melanoma.form-control(name='melanoma_type')
+              option(value='No Choosed' selected='') Select Type ...
+              option(value='Sporadic') Sporadic
+              option(value='Familial') Familial
+              option(value="Don't know") Don&apos;t know
+              option(value='Other') Other (complex family history), specify:
+          input#Other_Melanoma.hidden-control.inputMelanoma(type='text' name="other_melanoma_type")
+
+
+        // Field type: "section" id: "1133627517"
+        fieldset#fieldsetDemographic.form-fieldset
+          legend(for='1133627517') Demographic
+          .form-group
+            p.help-block completed by case/control
+
+
+        // Field type: "dropdown" id: "1350866299"
+        fieldset#fieldsetGender.form-fieldset
+          legend(for='1350866299') Sex
+          .form-group
+            select#1350866299.form-control(name='gender')
+              option(value='No Choosed' selected='') Select Gender...
+              option(value='Female') Female
+              option(value='Male') Male
+
+
+        // Field type: "date" id: "80728029"
+        fieldset#fieldsetDateOfBirth.form-fieldset
+          legend(for='80728029') Date and place of birth
+          .form-group
+            input#2126036184_date.form-control.datepicker(type='text' name="birthdate")
+
+
+        // Field type: "short" id: "248537302"
+        fieldset#fieldsetWeightHeight.form-fieldset
+          legend(for='248537302') Weight(Kg)
+          .form-group
+            input#weight.form-control(type='number' name='weight')
+          legend(for='248537302') Height(Cm)
+          .form-group
+            input#height.form-control(type='number' name='height')
+
+
+        // Field type: "dropdown" id: "1761024152"
+        fieldset#fieldsetEthnicity.form-fieldset
+          legend(for='1761024152') Ethnicity
+          .form-group
+            select#Ethnicity.form-control(name='ethnicity')
+              option(value='No Choosed' selected='') Select Ethnicity ...
+              option(value='White/Europe') White/Europe
+              option(value='White/NorthAfrica') White/NorthAfrica
+              option(value='White/MiddleEast') White/MiddleEast
+              option(value='White/Jewish') White/Jewish
+              option(value='Black or African American') Black or African American
+              option(value='Asian') Asian
+              option(value='Hispanic or Latino (i.e. from South or Central America)')
+                | Hispanic or Latino (i.e.
+                | from
+                | South or Central America)
+              option(value='Other') Other (Specify)
+          input#OtherEthnicity.hidden-control.inputEthnicity(type='text' name="other_ethnicity")
+
+
+        // Field type: "paragraph" id: "674142058"
+        fieldset#fieldResidency.form-fieldset
+          legend
+            | Residency
+          #myForm
+            .form-group
+              input#residency.form-control(type='text' data-geocomplete='street address' name='residency')
+            .residency_date_class
+          //
+            TEST
+            <div class='residency_datepicker form-group'>
+            <label>From:</label>
+            <input class='new_datepicker form-control start_date' type='text' required>
+            </div>
+            <div class='residency_datepicker form-group'>
+            <label>To:</label>
+            <input class='new_datepicker form-control end_date' type='text' required>
+            </div>
+          #myMap
+          #myJsonTab
+          .table
+
+
+        // Field type: "dropdown" id: "261025725"
+        fieldset#fieldsetEducation.form-fieldset
+          legend(for='261025725') Education
+          .form-group
+            select#261025725.form-control(name='education')
+              option(value='No Choosed' selected='') Select Range...
+              option(value='Up to junior high school (up to 14-16 yrs)')
+                | Up to junior high school (up to 14-16
+                | yrs)
+              option(value='High school (up to 18-19 yrs)') High school (up to 18-19 yrs)
+              option(value='University') University
+
+
+        // Field type: "dropdown" id: "2111843347"
+        fieldset#fieldsetOccupational.form-fieldset
+          legend(for='2111843347') Current occupational status
+          .form-group
+            select#2111843347.form-control(name='occupational_status')
+              option(value='No Choosed' selected='') Select Status...
+              option(value='Employed') Employed
+              option(value='Working at home') Working at home
+              option(value='Unemployed') Unemployed
+              option(value='Student') Student
+              option(value='Retired') Retired
+
+
+        // Field type: "paragraph" id: "1456128924"
+        fieldset#fieldHistory.form-fieldset
+          legend(for='History' style='font-size: 12px;')
+            | History of occupation(optional History of occupation
+            | (starting from most recent and
+            | going backwards in time record duration from YYYY to YYYY)
+          .form-group
+            select#History.form-control(name='occupational_history')
+          .form-group.dynamic_ddl
+          .form-group.div_date
+          .table
+
+
+
+      // Field type: "section" id: "581845255"
+      fieldset#fieldsetSectionB.form-fieldset
+        legend(for='581845255') Section B
+        .form-group
+          p.help-block PHENOTYPE (completed by case/control)
+        // Field type: "dropdown" id: "1548717344"
+        fieldset#fieldsetSkinResponse.form-fieldset
+          legend(for='1548717344')
+            | Which of the following sentences does better describe your skin response to sun
+            | exposure at noon for 30 minutes in the first days of the summer without sunscreen/clothing protection?
+          .form-group
+            select#1548717344.form-control(name='skin_response')
+              option(value='NoChoosed') Select Skin Response ...
+              option(value='Not burn') Not burn
+              option(value='Burns lightly') Burns lightly
+              option(value='Burns moderately') Burns moderately
+              option(value='Burns severely') Burns severely
+
+
+        // Field type: "dropdown" id: "2143095268"
+        fieldset#fieldSkin_tan.form-fieldset
+          legend(for='2143095268')
+            | 2. Does your skin tan after a prolonged and repeated sun exposure (e.g. after
+            | several
+            | days as at the end of the summer) without protecting it with sunscreen or clothing?
+          .form-group
+            select#skin-tan.form-control.skin-tan(name='skin_tan')
+              option(value='NoChoosed') Select Tan...
+              option(value='No tan') No tan
+              option(value='Tans lightly') Tans lightly
+              option(value='Tans moderately') Tans moderately
+              option(value='Tans deeply') Tans deeply
+          .form-group.hidden-control
+            img#skin-tan-img(src='' alt='' height='auto' width='auto')
+
+
+        // Field type: "dropdown" id: "1304821978"
+        fieldset#fieldsetEye.form-fieldset
+          legend(for='1304821978') Eye Color
+          .form-group
+            select#id_eyes_color.form-control(name='eye_color')
+              option(value='') Select eye color...
+              option(value='Light') Light (green, blue, gray)
+              option(value='Medium') Medium (light brown, hazel)
+              option(value='Dark') Dark (dark brown, black)
+          .form-group.hidden-control
+            img#eye-img(src='' alt='' height='auto' width='auto')
+
+
+        // Field type: "dropdown" id: "1275694163"
+        fieldset#fieldsetHair.form-fieldset
+          legend(for='1275694163') Hair color (at age of 18 yrs)
+          .form-group
+            select#id_hair_color.form-control(name='hair_color')
+              option(value='') Select hair color ...
+              option(value='Red') Red
+              option(value='Blonde') Blonde
+              option(value='Light brown') Light brown
+              option(value='Dark brown') Dark brown
+              option(value='Black') Black
+          .form-group.hidden-control
+            img#hair-img(src='' alt='' height='auto' width='auto')
+
+
+        // Field type: "dropdown" id: "627155725"
+        fieldset#fieldsetFreckles.form-fieldset
+          legend(for='id_freckles')
+            | FrecklesDefinition: Light brown small macules since childhood, on the face, during
+            | summer time (disappear in winter)
+          .form-group
+            select#id_freckles.form-control(name='freckles')
+              option(value='NoChoosed') Select freckles frequency ...
+              option(value='None') None
+              option(value='Few') Few
+              option(value='Some') Some
+              option(value='Many') Many
+          .form-group.hidden-control
+            img#freckles-img(src='' alt='' height='auto' width='auto')
+
+
+        // Field type: "choices" id: "274284065"
+        fieldset#fieldsetNevi.form-fieldset
+          legend(for='id_Nevi') Nevi frequency
+          .form-group
+            select#id_Nevi.form-control(name='nevi')
+              option(value='NoChoosed') Select Nevi frequency ...
+              option(value='None') None
+              option(value='Few') Few
+              option(value='Some') Some
+              option(value='Many') Many
+          .form-group.hidden-control
+            img#Nevi-img(src='' alt='' height='auto' width='auto')
+
+        // Field type: "section" id: "858926295"
+        fieldset#HistoryOfUltraVioletExposure.form-fieldset
+          legend(for='858926295') HISTORY OF ULTRAVIOLET EXPOSURE
+          .form-group
+            p.help-block (completed by case/control)
+
+        // Field type: "grid" id: "771490717"
+        fieldset#fieldsetUltravioletExposure.form-fieldset
+          legend(for='771490717')
+            | Occupational sun exposure(i.e. outdoor occupation with at least 4 hours/day spent
+            | outdoor in the sun)
+          .form-group
+            select#id_UltravioletExposure.form-control(name='occupational_sun_exposure')
+              option(value='No') No
+              option(value='Yes') Yes
+          .form-group.hidden-control(style='margin-top:20px;')
+            .group
+              input#UltravioletExposure_Yes(type='text' name='sun_exposure_occupation')
+              span.highlight
+              span.bar
+              label Specify the occupation:
+            .group
+              input#UltravioletExposure_hours_for_day(type='text' name='sun_hour_day')
+              span.highlight
+              span.bar
+              label How many hours/day?:
+            .group
+              input#UltravioletExposure_hours_for_month(type='text' name='sun_hour_month')
+              span.highlight
+              span.bar
+              label How many hours/month?:
+            .group
+              input#UltravioletExposure_hours_for_year(type='text' name='sun_hour_year')
+              span.highlight
+              span.bar
+              label How many hours/year?:
+            .group
+              input#UltravioletExposure_many_years(type='text' name='sun_num_years')
+              span.highlight
+              span.bar
+              label How many years ?:
+
+
+        // Field type: "grid" id: "488897"
+        fieldset#fieldsetRecreationalExposure.form-fieldset
+          legend(for='488897')
+            | Recreational sun exposure (i.e. outdoor hobbies or physical activities&ndash;other than
+            | sunbathing&ndash;with at least 4 hours/day spent outdoor in the sun)
+          .form-group
+            select#id_RecreationalExposure.form-control(name='recreational_exposure')
+              option(value='No') No
+              option(value='Yes') Yes
+          .form-group.hidden-control(style='margin-top:20px;')
+            .group
+              input#RecreationalExposure_Yes(type='text' name='recreational_exposure_occupation')
+              span.highlight
+              span.bar
+              label Specify the occupation:
+            .group
+              input#Recreational_hours_for_day(type='text' name='recreational_exposure_hour_day')
+              span.highlight
+              span.bar
+              label How many hours/day?:
+            .group
+              input#Recreational_hours_for_month(type='text' name='recreational_exposure_hour_month')
+              span.highlight
+              span.bar
+              label How many hours/month?:
+            .group
+              input#Recreational_hours_for_year(type='text' name='recreational_exposure_hour_year')
+              span.highlight
+              span.bar
+              label How many hours/year?:
+            .group
+              input#Recreational_many_years(type='text' name='recreational_exposure_num_years')
+              span.highlight
+              span.bar
+              label How many years ?:
+
+
+        // Field type: "paragraph" id: "665091332"
+        fieldset#fieldsetIntermittent.form-fieldset
+          legend
+            | Intermittent sun exposure (i.e. sun exposure in spring and summer time, including
+            | vacation, during peak hours&ndash;11AM-4PM)
+          .form-group
+            .divTable
+              .divTableBody
+                .divTableRow
+                  .divTableCell Age Period
+                  .divTableCell Exposure Period
+                  .divTableCell Exposure Time
+                .divTableRow
+                  .divTableCell
+                  .divTableCell Weeks of vacation
+                  .divTableCell Hours spent between 11AM and 4PM
+                .divTableRow
+                  .divTableCell Childhood (up to age 10 yrs)
+                  .divTableCell
+                    input#Childhood_Period(type='text' name='exposure_childhood_period')
+                    span.highlight
+                    span.bar(style='')
+                  .divTableCell
+                    input#Childhood_Time(type='text' name='exposure_childhood_time')
+                    span.highlight
+                    span.bar(style='')
+                .divTableRow
+                  .divTableCell Adolescence (11-18 yrs)
+                  .divTableCell
+                    input#Adolescence_Weeks(type='text' name='exposure_adolescence_period')
+                    span.highlight
+                    span.bar(style='')
+                  .divTableCell
+                    input#Adolescence_Time(type='text' name='exposure_adolescence_time')
+                    span.highlight
+                    span.bar(style='')
+                .divTableRow
+                  .divTableCell Adulthood (&ge;18 yrs)
+                  .divTableCell
+                    input#Adulthood_Weeks(type='text' name='exposure_adulthood_period')
+                    span.highlight
+                    span.bar(style='')
+                  .divTableCell
+                    input#Adulthood_Time(type='text' name='exposure_adulthood_time')
+                    span.highlight
+                    span.bar(style='')
+                .divTableRow
+                  .divTableCell(style='font-size:10px;')
+                    | 10 years before melanoma diagnosis (for
+                    | cases) or last 10 years
+                    | (for controls)
+                  .divTableCell
+                    input#10_years_before_period(type='text' name='exposure_10_years_before_period')
+                    span.highlight
+                    span.bar(style='')
+                  .divTableCell
+                    input#10_years_before_time(type='text' name='exposure_10_years_before_time')
+                    span.highlight
+                    span.bar(style='')
+
+
+        // Field type: "paragraph" id: "1411983333"
+        fieldset#fieldsetMostRecent.form-fieldset
+          legend(for='') Most recent intense intermittent sun exposure
+          p(style='font-size:10px;')
+            | Provide date or month of last time of intense intermittent sun exposure before
+            | the diagnosis of melanoma (for cases) or before this interview (for controls)
+          .form-group
+            input#most_recent_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='most_recent_sunburn')
+
+
+        // Field type: "paragraph" id: "42940743"
+        fieldset#fieldsetSevereSunburns(style='margin-top: 20px;').form-fieldset
+          legend(for='42940743')
+            | Severe sunburns (Grade 2), lifetime before diagnosis.
+          p(style='font-size:10px')
+            | Definition: suburns with erythema and pain for more than 2 days or with blisters
+            | (no matter for how long)
+          .form-group
+            .divTable(style='width: 100%;')
+              .divTableBody
+                .divTableRow
+                  .divTableCell.NoDivTableBorder(style='width:34%;')
+                    span At age &lt; 18 yrs ?
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    select#id_Sunburns_less18.form-control(name='sunburn_before_18')
+                      option(value='No') No
+                      option(value='Yes') Yes
+                      option(value='NotKnow') Not know
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    .hidden-control
+                      .group(style='margin-bottom:-4%;')
+                        input#Sunburns_Yes_less18.special_on_div_table(type='number' name='number_sunburns_before_18')
+                        span.highlight.special_on_div_table
+                        span.bar.special_on_div_table
+                        label Number:
+          .form-group
+            .divTable(style='width: 100%;')
+              .divTableBody
+                .divTableRow
+                  .divTableCell.NoDivTableBorder(style='width:34%;')
+                    span At age &gt;= 18 yrs ?
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    select#id_Sunburns_Yes_greater18.form-control(name='sunburn_after_18')
+                      option(value='No') No
+                      option(value='Yes') Yes
+                      option(value='NotKnow') Not know
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    .hidden-control
+                      .group(style='margin-bottom:-4%;')
+                        input#Sunburns_Yes_greater18.special_on_div_table(type='number' name='number_sunburns_after_18')
+                        span.highlight.special_on_div_table
+                        span.bar.special_on_div_table
+                        label Number:
+          .form-group
+            .divTable(style='width: 100%;')
+              .divTableBody
+                .divTableRow
+                  .divTableCell.NoDivTableBorder(style='width:34%;')
+                    span At site of melanoma ?
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    select#id_Site_melanoma.form-control(name='sunburn_melanoma_site')
+                      option(value='No') No
+                      option(value='Yes') Yes
+                      option(value='NotKnow') Not know
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+          .form-group
+            .divTable(style='width: 100%;')
+              .divTableBody
+                .divTableRow
+                  .divTableCell.NoDivTableBorder(style='width:34%;')
+                    span In the last 5 years ?
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    select#id_Sunburns_last5.form-control(name='sunburn_last5')
+                      option(value='No') No
+                      option(value='Yes') Yes
+                      option(value='NotKnow') Not know
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    .group.hidden-control(style='margin-bottom:-4%;')
+                      input#Sunburns_last5.special_on_div_table(type='number' name='number_sunburns_last5')
+                      span.highlight
+                      span.bar
+                      label Number:
+
+
+        // Field type: "paragraph" id: "162128682"
+        fieldset.form-fieldset
+          legend(for='162128682') Sunscreen use (summer time)
+          .form-group
+            .divTable
+              .divTableBody
+                .divTableRow
+                  .divTableCell Age Period
+                  .divTableCell Summer Sunscreen
+                  .divTableCell Summer Sunscreen
+                .divTableRow
+                  .divTableCell
+                  .divTableCell Did you use sunscreen during summertime?
+                  .divTableCell Type of sunscreen used
+                .divTableRow
+                  .divTableCell Childhood (up to age 10 yrs)
+                  .divTableCell
+                    select#id_SunExposure_childhood.form-control(name='childhood_sunscreen_frequency')
+                      option(value='NoChoosed') Select sun exposure...
+                      option(value='Never') Never
+                      option(value='less50') time exposure &lt; 50%
+                      option(value='greater50') time exposure &gt; 50%
+                      option(value='always') always
+                      option(value='notKnown') not known
+                  .divTableCell
+                    select#id_Sunscreen_childhood.form-control(name='childhood_sunscreen_type')
+                      option(value='NoChoosed') Select sunscreen protection...
+                      option(value='less20') SPF &lt; or = 20
+                      option(value='greater20') SPF &gt; 20
+                      option(value='notKnown') not known
+                .divTableRow
+                  .divTableCell Adolescence (11-18 yrs)
+                  .divTableCell
+                    select#id_SunExposure_adolescence.form-control(name='adolescence_sunscreen_frequency')
+                      option(value='NoChoosed') Select sun exposure...
+                      option(value='Never') Never
+                      option(value='less50') time exposure &lt; 50%
+                      option(value='greater50') time exposure &gt; 50%
+                      option(value='always') always
+                      option(value='notKnown') not known
+                  .divTableCell
+                    select#id_Sunscreen_adolescence.form-control(name='adolescence_sunscreen_type')
+                      option(value='NoChoosed') Select sunscreen protection...
+                      option(value='less20') SPF &lt; or = 20
+                      option(value='greater20') SPF &gt; 20
+                      option(value='notKnown') not known
+                .divTableRow
+                  .divTableCell Adulthood (&ge;18 yrs)
+                  .divTableCell
+                    select#id_SunExposure_adulthood.form-control(name='adulthood_sunscreen_frequency')
+                      option(value='NoChoosed') Select sun exposure...
+                      option(value='Never') Never
+                      option(value='less50') time exposure &lt; 50%
+                      option(value='greater50') time exposure &gt; 50%
+                      option(value='always') always
+                      option(value='notKnown') not known
+                  .divTableCell
+                    select#id_Sunscreen_adulthood.form-control(name='adulthood_sunscreen_type')
+                      option(value='NoChoosed') Select sunscreen protection...
+                      option(value='less20') SPF &lt; or = 20
+                      option(value='greater20') SPF &gt; 20
+                      option(value='notKnown') not known
+                .divTableRow
+                  .divTableCell(style='font-size:10px;')
+                    | 10 years before melanoma diagnosis (for
+                    | cases) or last 10 years
+                    | (for controls)
+                  .divTableCell
+                    select#id_SunExposure_10years_before.form-control(name='last10_sunscreen_frequency')
+                      option(value='NoChoosed') Select sun exposure...
+                      option(value='Never') Never
+                      option(value='less50') time exposure &lt; 50%
+                      option(value='greater50') time exposure &gt; 50%
+                      option(value='always') always
+                      option(value='notKnown') not known
+                  .divTableCell
+                    select#id_Sunscreen_10years_before.form-control(name='last10_sunscreen_type')
+                      option(value='NoChoosed') Select sunscreen protection...
+                      option(value='less20') SPF &lt; or = 20
+                      option(value='greater20') SPF &gt; 20
+                      option(value='notKnown') not known
+
+
+
+
+        fieldset#fieldsetHat.form-fieldset
+          legend(for='id_Hat')
+            | Sun protection other than sunscreen use (summertime over the last 10 yrs)
+            | (Optional)
+
+
+
+          .form-group
+            span Did you use a hat ?
+            select#id_Hat.form-control(name='hat_frequency')
+              option(value='NoChoosed') Select sun time exposure ...
+              option(value='Never') Never
+              option(value='less50') time exposure &lt; 50%
+              option(value='greater50') time exposure &gt; 50%
+              option(value='Always') Always
+              option(value='Notknown') Not known
+
+
+
+          .form-group
+            span Did you use protective clothing ?
+            select#id_Clothing.form-control(name='clothing_frequency')
+              option(value='NoChoosed') Select sun time exposure ...
+              option(value='Never') Never
+              option(value='less50') time exposure &lt; 50%
+              option(value='greater50') time exposure &gt; 50%
+              option(value='Always') Always
+              option(value='Notknown') Not known
+
+
+
+          .form-group
+            span Did you seek the shade or stay indoors during peak UVR hours?
+            select#id_UVR.form-control(name='UVR_frequency')
+              option(value='NoChoosed') Select sun time exposure ...
+              option(value='Rarely') Rarely
+              option(value='Sometimes') Sometimes
+              option(value='Always') Always
+              option(value='Notknown') Not known
+
+
+
+        fieldset#fieldsetSunlamps(style='margin-top: 20px;').form-fieldset
+          legend(for='42940743') Sunlamps/sunbeds
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder(style='width:34%;')
+                  span Did you use sunlamps or sunbeads?
+                .divTableCell.NoDivTableBorder(style='width:32%;')
+                  select#id_Sunlamp.form-control(name='sunlamp')
+                    option(value='NoChoosed') Select ...
+                    option(value='No') No
+                    option(value='Yes') Yes
+            .group.hidden-control(style='margin-top:20px;')
+              input#Sunlamp_sessions.special_on_div_table(type='number', name='number_sunlamp')
+              span.highlight
+              span.bar
+              label Lifetime number of sessions:
+            .group.hidden-control
+              input#Sunlamp_first_age.special_on_div_table(type='number', name='first_sunlamp')
+              span.highlight
+              span.bar
+              label Age at first exposure:
+            .group.hidden-control
+              input#Sunlamp_last_age.special_on_div_table(type='number', name='last_sunlamp')
+              span.highlight
+              span.bar
+              label Age at last exposure:
+
+
+
+        fieldset#fieldsetPhototherapy(style='margin-top: 20px;').form-fieldset
+          legend(for='42940743')
+            | Phototherapy(UVB-PUVA) (Optional)
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder(style='width:34%;')
+                  span Did you have phototherapy?
+                .divTableCell.NoDivTableBorder(style='width:32%;')
+                  select#id_Phototherapy.form-control(name='phototherapy')
+                    option(value='NoChoosed') Select ...
+                    option(value='Ever') Ever
+                    option(value='Never') Never
+
+
+
+        fieldset#fieldsetSmoking(style='margin-top: 20px;').form-fieldset
+          legend(for='42940743') Smoking
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder(style='width:34%;')
+                  span Did you smoke?
+                .divTableCell.NoDivTableBorder(style='width:32%;')
+                  select#id_Smoking.form-control(name='smoking')
+                    option(value='NoChoosed') Select ...
+                    option(value='Never') Never
+                    option(value='Former')
+                      | Former smoker (quit one year before diagnosis or earlier)
+                    option(value='Current') Current smoker
+            .group.hidden-control(style='margin-top:20px;')
+              input#Smoking_age.special_on_div_table(type='first_smoking', name="first_smoking")
+              label.hidden-label Age when you started:
+            .group.hidden-control
+              input#Smoking_years.special_on_div_table(type='smoking_period', name="smoking_period")
+              label.hidden-label How long have you been smoking ?(years):
+            .group.hidden-control
+              .divTable
+                .divTableRow
+                  .divTableCell.NoDivTableBorder(style='width: 50%;')
+                    span How much did/do you typically smoke:
+                  .divTableCell.NoDivTableBorder(style='width: 50%;')
+                    select#id_Smoke_quantity.form-control(name='smoke_frequency')
+                      option(value='NoChoosed') Select quantity...
+                      option(value='One_or_more') One pack day or more
+                      option(value='Half') Up to half pack a day
+                      option(value='Occasionally') Occasionally
+
+
+
+        fieldset#fieldsetVitamin(style='margin-top: 20px;').form-fieldset
+          legend(for='42940743')
+            | Have you received vitamin pills during the last year?
+          p(style='color:red;') (Optional)
+          .form-group
+            select#id_Vitamin.form-control(name='vitamin_last_year')
+              option(value='NoChoosed') Select ...
+              option(value='No') No
+              option(value='Yes')
+                | Yes
+          .group.hidden-control
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder(style='width: 50%;')
+                  span How much:
+                .divTableCell.NoDivTableBorder(style='width: 50%;')
+                  select#id_Vitamin_quantity.form-control(name='vitamin_quantity_last_year')
+                    option(value='NoChoosed') Select quantity...
+                    option(value='Never') Never
+                    option(value='13Month') 1-3 days/month
+                    option(value='13Week') 1-3 days/week
+                    option(value='46Week') 4-6 days/week
+                    option(value='Everyday') Everyday
+
+
+
+        fieldset#fieldsetVitaminType(style='margin-top: 20px;').form-fieldset
+          legend(for='42940743')
+            | What type of vitamins did you receive and how often?
+          p(style='color:red;') (Optional)
+          .group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder(style='width:16%;') &beta;-carotene
+                .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin A
+                .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin C
+                .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin D
+                .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin E
+                .divTableCell.NoDivTableBorder(style='width:16%;') Multivitamins
+              .divTableRow
+                .divTableCell(style='width:16%;')
+                  select#id_BetaCarotene_quantity.form-control(name='betacarotene_frequency')
+                    option(value='NoChoosed') Select quantity...
+                    option(value='Never') Never
+                    option(value='13Month') 1-3 days/month
+                    option(value='13Week') 1-3 days/week
+                    option(value='46Week') 4-6 days/week
+                    option(value='Everyday') Everyday
+                .divTableCell(style='width:16%;')
+                  select#id_VitaminB_quantity.form-control(name='vitamin_A_frequency')
+                    option(value='NoChoosed') Select quantity...
+                    option(value='Never') Never
+                    option(value='13Month') 1-3 days/month
+                    option(value='13Week') 1-3 days/week
+                    option(value='46Week') 4-6 days/week
+                    option(value='Everyday') Everyday
+                .divTableCell(style='width:16%;')
+                  select#id_VitaminC_quantity.form-control(name='vitamin_C_frequency')
+                    option(value='NoChoosed') Select quantity...
+                    option(value='Never') Never
+                    option(value='13Month') 1-3 days/month
+                    option(value='13Week') 1-3 days/week
+                    option(value='46Week') 4-6 days/week
+                    option(value='Everyday') Everyday
+                .divTableCell(style='width:16%;')
+                  select#id_VitaminD_quantity.form-control(name='vitamin_D_frequency')
+                    option(value='NoChoosed') Select quantity...
+                    option(value='Never') Never
+                    option(value='13Month') 1-3 days/month
+                    option(value='13Week') 1-3 days/week
+                    option(value='46Week') 4-6 days/week
+                    option(value='Everyday') Everyday
+                .divTableCell(style='width:16%;')
+                  select#id_VitaminE_quantity.form-control(name='vitamin_E_frequency')
+                    option(value='NoChoosed') Select quantity...
+                    option(value='Never') Never
+                    option(value='13Month') 1-3 days/month
+                    option(value='13Week') 1-3 days/week
+                    option(value='46Week') 4-6 days/week
+                    option(value='Everyday') Everyday
+                .divTableCell(style='width:16%;')
+                  select#id_MultiVitamin_quantity.form-control(name='multivitamins_frequency')
+                    option(value='NoChoosed') Select quantity...
+                    option(value='Never') Never
+                    option(value='13Month') 1-3 days/month
+                    option(value='13Week') 1-3 days/week
+                    option(value='46Week') 4-6 days/week
+                    option(value='Everyday') Everyday
+
+
+                    
+        fieldset#fieldsetVitaminTime(style='margin-top: 20px;').form-fieldset
+          legend(for='42940743')
+            | For how long did you receive vitamins?
+          p(style='color:red;') (Optional)
+          .group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder(style='width:16%;') &beta;-carotene
+                .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin A
+                .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin C
+                .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin D
+                .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin E
+                .divTableCell.NoDivTableBorder(style='width:16%;') Multivitamins
+              .divTableRow
+                .divTableCell(style='width:16%;')
+                  select#id_BetaCarotene_Time.form-control(name='betacarotene_period')
+                    option(value='NoChoosed') Select quantity...
+                    option(value='Never') &lt; year
+                    option(value='13Month') 1-4 years
+                    option(value='13Week') 5-9 years
+                    option(value='46Week') &gt; 10 years
+                .divTableCell(style='width:16%;')
+                  select#id_VitaminB_Time.form-control(name='vitamin_A_period')
+                    option(value='NoChoosed') Select Time...
+                    option(value='Never') &lt; year
+                    option(value='13Month') 1-4 years
+                    option(value='13Week') 5-9 years
+                    option(value='46Week') &gt; 10 years
+                .divTableCell(style='width:16%;')
+                  select#id_VitaminC_Time.form-control(name='vitamin_C_period')
+                    option(value='NoChoosed') Select Time...
+                    option(value='Never') &lt; year
+                    option(value='13Month') 1-4 years
+                    option(value='13Week') 5-9 years
+                    option(value='46Week') &gt; 10 years
+                .divTableCell(style='width:16%;')
+                  select#id_VitaminD_Time.form-control(name='vitamin_D_period')
+                    option(value='NoChoosed') Select Time...
+                    option(value='Never') &lt; year
+                    option(value='13Month') 1-4 years
+                    option(value='13Week') 5-9 years
+                    option(value='46Week') &gt; 10 years
+                .divTableCell(style='width:16%;')
+                  select#id_VitaminE_Time.form-control(name='vitamin_E_period')
+                    option(value='NoChoosed') Select Time...
+                    option(value='Never') &lt; year
+                    option(value='13Month') 1-4 years
+                    option(value='13Week') 5-9 years
+                    option(value='46Week') &gt; 10 years
+                .divTableCell(style='width:16%;')
+                  select#id_MultiVitamin_Time.form-control(name='multivitamins_period')
+                    option(value='NoChoosed') Select Time...
+                    option(value='Never') &lt; year
+                    option(value='13Month') 1-4 years
+                    option(value='13Week') 5-9 years
+                    option(value='46Week') &gt; 10 years
+        fieldset#fieldsetSectionBEval.form-fieldset
+          legend Section B Completion Evaluation Questions
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span Were you able to respond to the questions of this Section ?
+                .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                  select#selectEval.form-control
+                    option(value='NoChoosed') Select...
+                    option(value='All') All questions
+                    option(value='Most') Most questions
+                    option(value='Half') Nearly half of the questions
+                    option(value='Few') Very few questions
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span Which questions of this Section did you consider difficult to fill in?
+                .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                  select#selectQuestions.form-control
+                    option(value='NoChoosed') Select...
+                    option(value='No') No
+                    option(value='Yes') Yes
+            .group.hidden-control(style='margin-top:20px;')
+              input#QuestionHidden(type='number')
+              span.highlight
+              span.bar
+              label Number:
+      fieldset#fieldsetSectionC.form-fieldset
+        legend Section C
+        .form-group
+          p.help-block I. CLINICAL EXAMINATION (completed by physician/study nurse)
+        fieldset#fieldsetLentigines.form-fieldset
+          legend Solar Lentigines
+          p
+            | Definition: permanent multiple macular pigmented lesions, aggregated, in areas of chronic sun exposure,
+            | do not disappear in winter
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span Record according to severity:
+                .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                  select#selectRecord.form-control(name='solar_lentigines_frequency')
+                    option(value='NoChoosed') Select...
+                    option(value='None') None
+                    option(value='Few') Few
+                    option(value='Many') Many
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span At site of melanoma (i.e. area around the site w/ a 20 cm radius)?
+                .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                  select#selectLentiginesSite.form-control(name='solar_lentigines_at_melanoma')
+                    option(value='NoChoosed') Select...
+                    option(value='No') No
+                    option(value='Yes') Yes
+        fieldset#fieldsetNeviCount.form-fieldset
+          legend Nevi count
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell(style='width:40%;') Site
+                .divTableCell(style='width:30%;') Number(left)
+                .divTableCell(style='width:30%;') Number(right)
+              .divTableRow
+                .divTableCell(style='width:40%;') Scalp
+                .divTableCell(style='width:30%;')
+                  input#inputScalpLeft(type='text', name='nevi_count_left_scalp')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputScalpRight(type='text', name='nevi_count_right_scalp')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Face(including ears)
+                .divTableCell(style='width:30%;')
+                  input#inputFaceLeft(type='text', name='nevi_count_left_face')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputFaceRight(type='text', name='nevi_count_right_face')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Neck
+                .divTableCell(style='width:30%;')
+                  input#inputNeckLeft(type='text', name='nevi_count_left_neck')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputNeckRight(type='text', name='nevi_count_right_neck')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Anterior thorax + abdomen
+                .divTableCell(style='width:30%;')
+                  input#inputThoraxAbdomenLeft(type='text', name='nevi_count_left_thorax_abdomen')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputThoraxAbdomenRight(type='text', name='nevi_count_right_thorax_abdomen')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Back
+                .divTableCell(style='width:30%;')
+                  input#inputBackLeft(type='text', name='nevi_count_left_back')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputBackRight(type='text', name='nevi_count_right_back')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Upper extremities including deltoid
+                .divTableCell(style='width:30%;')
+                  input#inputDeltoidLeft(type='text', name='nevi_count_left_deltoid')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputDeltoidRight(type='text', name='nevi_count_right_deltoid')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Lower extremities including gluteus
+                .divTableCell(style='width:30%;')
+                  input#inputGluteusLeft(type='text', name='nevi_count_left_gluteus')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputGluteusRight(type='text', name='nevi_count_right_gluteus')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Palms
+                .divTableCell(style='width:30%;')
+                  input#inputPalmsLeft(type='text', name='nevi_count_left_palms')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputPalmsRight(type='text', name='nevi_count_right_palms')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Soles
+                .divTableCell(style='width:30%;')
+                  input#inputSolesLeft(type='text', name='nevi_count_left_soles')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputSolesRight(type='text', name='nevi_count_right_soles')
+                  span.highlight
+                  span.bar(style='')
+        fieldset#fieldsetNevi2mmCount.form-fieldset
+          legend Nevi 2mm count
+          p(style='color:red;') (Optional)
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span Consider nevi 
+                .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                  select#select2mmNevi.form-control(name='nevi_2mm_count')
+                    option(value='NoChoosed') Select...
+                    option(value='0') 0
+                    option(value='1-50') 1-50
+                    option(value='51-100') 51-100
+                    option(value='101-200') 101-200
+                    option(value='greater200') &gt; 200
+        fieldset#fieldsetAtypicalNevi.form-fieldset
+          legend Clinically atypical nevi
+          p
+            | Clinical definition: macular (i.e. flat) component in at least part of the lesion (mandatory) and at
+            | least 3 of the following criteria:
+            ul
+              li
+                | &gt;5mm/li&gt;
+              li multiple colors
+              li hazy borders
+              li erythema
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span Record number of clinically atypical nevi as a continuous variable:
+                .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                  .form-group
+                    input#inputNumberAtypicalNevi(type='number' placeholder='Number:' required='' style='width:50%;text-align:center;' name='atypical_nevi_number')
+                    span.highlight(style='width:50%;text-align:center;')
+                    span.bar(style='width:50%;text-align:center;')
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span At site of melanoma (i.e. area around the site with a 20 cm radius)? 
+                .divTableCell.NoDivTableBorder(style='padding:10px !important;' name='atypical_nevi_at_melanoma')
+                  .form-group
+                    select#selectClinicalAtypicalNevi.form-control
+                      option(value='NoChoosed') Select...
+                      option(value='No') No
+                      option(value='Yes') Yes
+        fieldset#fieldsetCongenitalNevi(style='margin-top: 20px;').form-fieldset
+          legend(for='42940743')
+            | Congenital nevi, CN
+          p(style='font-size:10px;') (only medium, large, or giant)
+          p(style='font-size:10px;') Size at phenotyping for:
+          ul(style='font-size:10px;')
+            li medium CN &gt;1.5&ndash;19.9 cm
+            li large CN &ge;20 cm
+            li giant CN &ge;40 cm
+          p(style='font-size:10px;') Exclude small (i.e. &le;1.5 cm CN)
+          .form-group(style='margin-top: 20px;')
+            .divTable(style='width: 100%;')
+              .divTableBody
+                .divTableRow
+                  .divTableCell.NoDivTableBorder(style='width:34%;')
+                    span Medium sized CN
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    select#selectMediumSizedCN.form-control
+                      option(value='NoChoosed') Select...
+                      option(value='No') No
+                      option(value='Yes') Yes
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    .hidden-control
+                      .group.google_special_label(style='margin-bottom:0%;vertical-align: bottom;')
+                        input#inputMediumSizedCN(type='text' placeholder='Right Arm,Left Feet' style='width:80%;margin-left:35%;')
+                        span.highlight(style='width:80%;margin-left:35%;')
+                        span.bar(style='width:80%;margin-left:35%;')
+                        label(style='font-size: 12px;') Site(s):
+          .form-group(style='margin-top: 20px;')
+            .divTable(style='width: 100%;')
+              .divTableBody
+                .divTableRow
+                  .divTableCell.NoDivTableBorder(style='width:34%;')
+                    span Large sized CN
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    select#selectLargeSizedCN.form-control
+                      option(value='NoChoosed') Select...
+                      option(value='No') No
+                      option(value='Yes') Yes
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    .hidden-control
+                      .group.google_special_label(style='margin-bottom:0%;vertical-align: bottom;')
+                        input#inputLargeSizedCN(type='text' placeholder='Right Arm,Left Feet' style='width:80%;margin-left:35%;')
+                        span.highlight(style='width:80%;margin-left:35%;')
+                        span.bar(style='width:80%;margin-left:35%;')
+                        label(style='font-size: 12px;') Site(s):
+          .form-group(style='margin-top: 20px;')
+            .divTable(style='width: 100%;')
+              .divTableBody
+                .divTableRow
+                  .divTableCell.NoDivTableBorder(style='width:34%;')
+                    span Giant sized CN
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    select#selectGiantSizedCN.form-control
+                      option(value='NoChoosed') Select...
+                      option(value='No') No
+                      option(value='Yes') Yes
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    .hidden-control
+                      .group.google_special_label(style='margin-bottom:0%;vertical-align: bottom;')
+                        input#inputGiantSizedCN(type='text' placeholder='Right Arm,Left Feet' style='width:80%;margin-left:35%;')
+                        span.highlight(style='width:80%;margin-left:35%;')
+                        span.bar(style='width:80%;margin-left:35%;')
+                        label(style='font-size: 12px;') Site(s):
+        fieldset#fieldsetBlueNevi(style='margin-top: 20px;').form-fieldset
+          legend(for='42940743')
+            | Blue nevi
+          p(style='color:red;') (Optional)
+          .form-group(style='margin-top: 20px;')
+            .divTable(style='width: 100%;')
+              .divTableBody
+                .divTableRow
+                  .divTableCell.NoDivTableBorder(style='width:34%;')
+                    span Medium sized CN
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    select#selectBlueNevi.form-control
+                      option(value='NoChoosed') Select...
+                      option(value='No') No
+                      option(value='Yes') Yes
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    .hidden-control
+                      .group.google_special_label(style='margin-bottom:0%;vertical-align: bottom;')
+                        input#inputBlueNevi(type='number' style='width:80%;margin-left:35%;')
+                        span.highlight(style='width:80%;margin-left:35%;')
+                        span.bar(style='width:80%;margin-left:35%;')
+                        label(style='font-size: 12px;') Number:
+        fieldset#fieldsetActinicKeratoses(style='margin-top: 20px;').form-fieldset
+          legend(for='42940743') Actinic keratoses
+          .form-group(style='margin-top: 20px;')
+            .divTable(style='width: 100%;')
+              .divTableBody
+                .divTableRow
+                  .divTableCell.NoDivTableBorder(style='width:34%;')
+                    span Actinic keratoses
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    select#selectActinicKeratoses.form-control
+                      option(value='NoChoosed') Select...
+                      option(value='No') No
+                      option(value='Yes') Yes
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                .divTableCell.NoDivTableBorder(style='width:32%;')
+                  .hidden-control
+                    .group(style='margin-bottom:0%;vertical-align: bottom;')
+                      select#selectActinicKeratosesSite.form-control
+                        option(value='NoChoosed') Select Site...
+                        option(value='Scalp') Scalp
+                        option(value='Face') Face
+                        option(value='Other')
+                          | Other exposed areas (hands, arms, trunk, legs)
+          .form-group(style='margin-top: 20px;')
+            .divTable(style='width: 100%;')
+              .divTableBody
+                .divTableRow
+                  .divTableCell.NoDivTableBorder &nbsp;
+                  .divTableCell.NoDivTableBorder(style='width:32%;')
+                    .hidden-control
+                      .group(style='margin-bottom:0%;vertical-align: bottom;')
+                        select#selectActinicKeratosesDistribution.form-control
+                          option(value='NoChoosed') Select Distribution...
+                          option(value='Isolated') Isolated/Scattered
+                          option(value='Clustered') Clustered
+                          option(value='Confluent') Confluent
+        
+
+          .form-group
+            input.form-control.btn.btn-primary(type='submit', value='Submit')

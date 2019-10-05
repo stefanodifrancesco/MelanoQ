@@ -1,0 +1,200 @@
+extends layout
+
+block content
+  div.progressline
+    // progressbar
+    ul#progressbar
+        li.active Demographic
+        li Phenotype
+        li Personal Details
+        li Personal Details
+  div.form
+    // multistep form
+    form#msform
+        // fieldsets
+        fieldset
+          div.scrollingdiv(id='scrollerdiv')
+            h2.fs-title Demographic
+            h3.fs-subtitle This is step 1
+
+            label(for='1350866299') Sex
+            select#1350866299.form-control(name='gender' required='required' data-rule-required='true' data-msg-required='Please select your gender')
+                option(value='' selected='') Select Gender...
+                option(value='Female') Female
+                option(value='Male') Male
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+
+            label(for='2126036184_date') Date and place of birth
+            input#2126036184_date.form-control.datepicker(type='text' name="birthdate"  required='required' data-rule-required='true' data-msg-required='Please include your birthday')
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+
+            label(for='weight_input') Weight(Kg)
+            input#weight_input.form-control(type='number' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+
+            label(for='height_input') Height(Cm)
+            input#height_input.form-control(type='number' name='height' required='required' data-rule-required='true' data-msg-required='Please include your height')
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+
+            label(for='ethnicity_input') Ethnicity
+            select#ethnicity_input.form-control(name='ethnicity' required='required' data-rule-required='true' data-msg-required='Please include your ethnicity')
+                option(value='' selected='') Select Ethnicity ...
+                option(value='White/Europe') White/Europe
+                option(value='White/NorthAfrica') White/NorthAfrica
+                option(value='White/MiddleEast') White/MiddleEast
+                option(value='White/Jewish') White/Jewish
+                option(value='Black or African American') Black or African American
+                option(value='Asian') Asian
+                option(value='Hispanic or Latino (i.e. from South or Central America)')
+                    | Hispanic or Latino (i.e.
+                    | from
+                    | South or Central America)
+                option(value='Other') Other (Specify)
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+            input#OtherEthnicity.hidden-control.inputEthnicity(type='text' name="other_ethnicity")
+            
+
+            label Residency
+            #myForm
+                input#residency.form-control(type='text' data-geocomplete='street address' name='residency'  required='required' data-rule-required='true' data-msg-required='Please include your residency')
+                span.error1(style='display: none;')
+                    i.error-log.fa.fa-exclamation-triangle
+                .residency_date_class
+            #myMap
+            #myJsonTab
+            .table            
+
+            label(for='education_input') Education
+            select#education_input.form-control(name='education' required='required' data-rule-required='true' data-msg-required='Please include your education')
+                option(value='' selected='') Select category...
+                option(value='Up to junior high school (up to 14-16 yrs)')
+                    | Up to junior high school (up to 14-16
+                    | yrs)
+                option(value='High school (up to 18-19 yrs)') High school (up to 18-19 yrs)
+                option(value='University') University
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+
+            label(for='current_occupational_status') Current occupational status
+            select#current_occupational_status.form-control(name='occupational_status' required='required' data-rule-required='true' data-msg-required='Please include your status')
+                option(value='' selected='') Select Status...
+                option(value='Employed') Employed
+                option(value='Working at home') Working at home
+                option(value='Unemployed') Unemployed
+                option(value='Student') Student
+                option(value='Retired') Retired
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+
+          div.alphaformfooter
+          div.formfooter
+          input.scroll-button-bottom(type='button')
+          input.next.action-button(type='button', name='next', value='Next')
+
+
+        fieldset
+          div.scrollingdiv
+            h2.fs-title Phenotype
+            h3.fs-subtitle Your presence on the social network
+
+            label(for='skin-response') Which of the following sentences does better describe your skin response to sun exposure at noon for 30 minutes in the first days of the summer without sunscreen/clothing protection?
+            select#skin-response.form-control(name='skin_response' required='required' data-rule-required='true' data-msg-required='Required field')
+              option(value='') Select Skin Response ...
+              option(value='Not burn') Not burn
+              option(value='Burns lightly') Burns lightly
+              option(value='Burns moderately') Burns moderately
+              option(value='Burns severely') Burns severely
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+
+            label(for='skin-tan') Does your skin tan after a prolonged and repeated sun exposure (e.g. after several days as at the end of the summer) without protecting it with sunscreen or clothing?
+            select#skin-tan.form-control.skin-tan(name='skin_tan' required='required' data-rule-required='true' data-msg-required='Required field')
+              option(value='') Select Tan...
+              option(value='No tan') No tan
+              option(value='Tans lightly') Tans lightly
+              option(value='Tans moderately') Tans moderately
+              option(value='Tans deeply') Tans deeply
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+
+            label(for='1304821978') Eye Color
+            select#id_eyes_color.form-control(name='eye_color' required='required' data-rule-required='true' data-msg-required='Required field')
+              option(value='') Select eye color...
+              option(value='Light') Light (green, blue, gray)
+              option(value='Medium') Medium (light brown, hazel)
+              option(value='Dark') Dark (dark brown, black)
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+
+            label(for='id_hair_color') Hair color (at age of 18 yrs)
+            select#id_hair_color.form-control(name='hair_color')
+              option(value='') Select hair color ...
+              option(value='Red') Red
+              option(value='Blonde') Blonde
+              option(value='Light brown') Light brown
+              option(value='Dark brown') Dark brown
+              option(value='Black') Black
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+
+            label(for='id_freckles') FrecklesDefinition: Light brown small macules since childhood, on the face, during summer time (disappear in winter)
+            select#id_freckles.form-control(name='freckles' required='required' data-rule-required='true' data-msg-required='Required field')
+              option(value='') Select freckles frequency ...
+              option(value='None') None
+              option(value='Few') Few
+              option(value='Some') Some
+              option(value='Many') Many
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+
+            label(for='id_Nevi') Nevi frequency
+            select#id_Nevi.form-control(name='nevi' required='required' data-rule-required='true' data-msg-required='Required field')
+              option(value='') Select Nevi frequency ...
+              option(value='None') None
+              option(value='Few') Few
+              option(value='Some') Some
+              option(value='Many') Many
+            span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+
+          div.alphaformfooter
+          div.formfooter
+          input.scroll-button-bottom(type='button')
+          input.previous.action-button(type='button', name='previous', value='Previous')
+          input.next.action-button(type='button', name='next', value='Next')
+
+
+        fieldset
+          div.scrollingdiv
+            h2.fs-title Social Profiles
+            h3.fs-subtitle Your presence on the social network
+            input(type='text', name='twitter', placeholder='Twitter')
+            input(type='text', name='facebook', placeholder='Facebook')
+            input(type='text', name='gplus', placeholder='Google Plus')
+
+          div.alphaformfooter
+          div.formfooter
+          input.scroll-button-bottom(type='button')
+          input.previous.action-button(type='button', name='previous', value='Previous')
+          input.next.action-button(type='button', name='next', value='Next')
+
+
+        fieldset
+          div.scrollingdiv
+            h2.fs-title Personal Details
+            h3.fs-subtitle We will never sell it
+            input(type='text', name='fname', placeholder='First Name')
+            input(type='text', name='lname', placeholder='Last Name')
+            input(type='text', name='phone', placeholder='Phone')
+            textarea(name='address', placeholder='Address')
+
+          div.alphaformfooter
+          div.formfooter
+          input.scroll-button-bottom(type='button')
+          input.previous.action-button(type='button', name='previous', value='Previous')
+          input.submit.action-button(type='submit', name='submit', value='Submit')

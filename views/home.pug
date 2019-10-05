@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    .container
+      .nurse-profile-menu
+          h1
+            | #{profileData.username} - Nurse
+          a(href='/logout') Logout
+      .row(style="margin-top: 20px;")
+          .col-sm-9
+                
+              ul.nav.nav-tabs(role='tablist')
+                li.nav-item
+                  a.nav-link.active(data-toggle='tab', role='tab', aria-controls='home', aria-selected='true') History of questionnaires
+          
+          .col-sm-3
+            a.btn.btn-success(href='/stepform' style="position: absolute; bottom: 0;") New questionnaire
+
+      if profileData.questionnaires
+        .row(style="margin-top: 20px;")
+            .col-md-12
+              .row
+                .col-md-6
+                  h3 Database code number
+                .col-md-6
+                  h3 Date of insert
+              each quest in profileData.questionnaires
+                .row
+                  .col-md-6
+                    <form action="/find" method="post">
+                      <button type="submit" name="codeNumber" value=#{quest.code_number} class="btn-link questionnaire-link">#{quest.code_number}</button>
+                    </form>
+                  .col-md-6
+                    p #{quest.insert_date}
+      else 
+        .row(style="margin-top: 20px;")
+            .col-md-12
+              .row
+                .col-md-6
+                  h3 No questionnaire filled

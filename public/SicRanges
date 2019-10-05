@@ -1,0 +1,57 @@
+[
+{
+"SIC_Range_Start" : 100,
+"SIC_Range_End" : 999,
+"Group_Title" : "Agriculture, Forestry and Fishing"
+        },
+        {
+"SIC_Range_Start" : 1000,
+"SIC_Range_End" : 1499,
+"Group_Title" : "Mining"
+        },
+        {
+"SIC_Range_Start" : 1500,
+"SIC_Range_End" : 1799,
+"Group_Title" : "Construction"
+        },
+        {
+"SIC_Range_Start" : 2000,
+"SIC_Range_End" : 3999,
+"Group_Title" : "Manufacturing"
+        },
+        {
+"SIC_Range_Start" : 4000,
+"SIC_Range_End" : 4999,
+"Group_Title" : "Transportation, Communications, Electric, Gas and Sanitary service"
+        },
+        {
+"SIC_Range_Start" : 5000,
+"SIC_Range_End" : 5199,
+"Group_Title" : "Wholesale Trade"
+        },
+                {
+"SIC_Range_Start" : 5200,
+"SIC_Range_End" : 5999,
+"Group_Title" : "Retail Trade"
+        },
+                {
+"SIC_Range_Start" : 6000,
+"SIC_Range_End" : 6799,
+"Group_Title" : "Finance, Insurance and Real Estate"
+        },
+        {
+"SIC_Range_Start" : 7000,
+"SIC_Range_End" : 8999,
+"Group_Title" : "Services"
+        },
+        {
+"SIC_Range_Start" : 9100,
+"SIC_Range_End" : 9729,
+"Group_Title" : "Public Administration"
+        },
+        {
+"SIC_Range_Start" : 9900,
+"SIC_Range_End" : 9999,
+"Group_Title" : "Non Classifiable"
+        },
+]
