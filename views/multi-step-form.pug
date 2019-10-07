@@ -14,7 +14,7 @@ block content
         // fieldsets
         fieldset
           div.scrollingdiv(id='scrollerdiv')
-            h2.fs-title Demographic
+            h2.fs-title DEMOGRAPHIC
             h3.fs-subtitle This is step 1
 
             label(for='1350866299') Sex
@@ -99,7 +99,7 @@ block content
 
         fieldset
           div.scrollingdiv
-            h2.fs-title Phenotype
+            h2.fs-title PHENOTYPE
             h3.fs-subtitle Your presence on the social network
 
             label(for='skin-response') Which of the following sentences does better describe your skin response to sun exposure at noon for 30 minutes in the first days of the summer without sunscreen/clothing protection?
@@ -162,6 +162,32 @@ block content
             span.error1(style='display: none;')
                 i.error-log.fa.fa-exclamation-triangle
 
+            label(for='771490717') Occupational sun exposure(i.e. outdoor occupation with at least 4 hours/day spent outdoor in the sun)
+            select#id_UltravioletExposure.form-control(name='occupational_sun_exposure' required='required' data-rule-required='true' data-msg-required='Required field')
+              option(value='No') No
+              option(value='Yes') Yes
+            .hidden-control(style='margin-top:20px;')
+                label Specify the occupation:
+                input#UltravioletExposure_Yes.form-control(type='text' name='sun_exposure_occupation')
+                span.error1(style='display: none;')
+                  i.error-log.fa.fa-exclamation-triangle
+                label How many hours/day?:
+                input#UltravioletExposure_hours_for_day.form-control(type='text' name='sun_hour_day')
+                span.error1(style='display: none;')
+                  i.error-log.fa.fa-exclamation-triangle
+                label How many hours/month?:
+                input#UltravioletExposure_hours_for_month.form-control(type='text' name='sun_hour_month')
+                span.error1(style='display: none;')
+                  i.error-log.fa.fa-exclamation-triangle
+                label How many hours/year?:
+                input#UltravioletExposure_hours_for_year.form-control(type='text' name='sun_hour_year')
+                span.error1(style='display: none;')
+                  i.error-log.fa.fa-exclamation-triangle
+                label How many years ?:
+                input#UltravioletExposure_many_years.form-control(type='text' name='sun_num_years')
+                span.error1(style='display: none;')
+                  i.error-log.fa.fa-exclamation-triangle
+
           div.alphaformfooter
           div.formfooter
           input.scroll-button-bottom(type='button')
@@ -171,24 +197,141 @@ block content
 
         fieldset
           div.scrollingdiv
-            h2.fs-title Social Profiles
-            h3.fs-subtitle Your presence on the social network
-            input(type='text', name='twitter', placeholder='Twitter')
-            input(type='text', name='facebook', placeholder='Facebook')
-            input(type='text', name='gplus', placeholder='Google Plus')
-
-          div.alphaformfooter
-          div.formfooter
-          input.scroll-button-bottom(type='button')
-          input.previous.action-button(type='button', name='previous', value='Previous')
-          input.next.action-button(type='button', name='next', value='Next')
-
-
-        fieldset
-          div.scrollingdiv
-            h2.fs-title Personal Details
+            h2.fs-title CLINICAL EXAMINATION
             h3.fs-subtitle We will never sell it
-            input(type='text', name='fname', placeholder='First Name')
+
+            legend Solar Lentigines
+            p
+              | Definition: permanent multiple macular pigmented lesions, aggregated, in areas of chronic sun exposure,
+              | do not disappear in winter
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span Record according to severity:
+                .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                  select#selectRecord.form-control(name='solar_lentigines_frequency')
+                    option(value='') Select...
+                    option(value='None') None
+                    option(value='Few') Few
+                    option(value='Many') Many
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span At site of melanoma (i.e. area around the site w/ a 20 cm radius)?
+                .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                  select#selectLentiginesSite.form-control(name='solar_lentigines_at_melanoma')
+                    option(value='') Select...
+                    option(value='No') No
+                    option(value='Yes') Yes
+
+            legend Nevi count
+            .divTable
+              .divTableRow
+                .divTableCell(style='width:40%;') Site
+                .divTableCell(style='width:30%;') Number(left)
+                .divTableCell(style='width:30%;') Number(right)
+              .divTableRow
+                .divTableCell(style='width:40%;') Scalp
+                .divTableCell(style='width:30%;')
+                  input#inputScalpLeft.form-control(type='text', name='nevi_count_left_scalp')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputScalpRight.form-control(type='text', name='nevi_count_right_scalp')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Face(including ears)
+                .divTableCell(style='width:30%;')
+                  input#inputFaceLeft.form-control(type='text', name='nevi_count_left_face')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputFaceRight.form-control(type='text', name='nevi_count_right_face')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Neck
+                .divTableCell(style='width:30%;')
+                  input#inputNeckLeft.form-control(type='text', name='nevi_count_left_neck')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputNeckRight.form-control(type='text', name='nevi_count_right_neck')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Anterior thorax + abdomen
+                .divTableCell(style='width:30%;')
+                  input#inputThoraxAbdomenLeft.form-control(type='text', name='nevi_count_left_thorax_abdomen')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputThoraxAbdomenRight.form-control(type='text', name='nevi_count_right_thorax_abdomen')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Back
+                .divTableCell(style='width:30%;')
+                  input#inputBackLeft.form-control(type='text', name='nevi_count_left_back')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputBackRight.form-control(type='text', name='nevi_count_right_back')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Upper extremities including deltoid
+                .divTableCell(style='width:30%;')
+                  input#inputDeltoidLeft.form-control(type='text', name='nevi_count_left_deltoid')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputDeltoidRight.form-control(type='text', name='nevi_count_right_deltoid')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Lower extremities including gluteus
+                .divTableCell(style='width:30%;')
+                  input#inputGluteusLeft.form-control(type='text', name='nevi_count_left_gluteus')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputGluteusRight.form-control(type='text', name='nevi_count_right_gluteus')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Palms
+                .divTableCell(style='width:30%;')
+                  input#inputPalmsLeft.form-control(type='text', name='nevi_count_left_palms')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputPalmsRight.form-control(type='text', name='nevi_count_right_palms')
+                  span.highlight
+                  span.bar(style='')
+              .divTableRow
+                .divTableCell(style='width:40%;') Soles
+                .divTableCell(style='width:30%;')
+                  input#inputSolesLeft.form-control(type='text', name='nevi_count_left_soles')
+                  span.highlight
+                  span.bar(style='')
+                .divTableCell(style='width:30%;')
+                  input#inputSolesRight.form-control(type='text', name='nevi_count_right_soles')
+                  span.highlight
+                  span.bar(style='')
+
+          div.alphaformfooter
+          div.formfooter
+          input.scroll-button-bottom(type='button')
+          input.previous.action-button(type='button', name='previous', value='Previous')
+          input.next.action-button(type='button', name='next', value='Next')
+
+
+        fieldset
+          div.scrollingdiv
+            h2.fs-title CLINICAL EXAMINATION
+            h3.fs-subtitle We will never sell it
+            
             input(type='text', name='lname', placeholder='Last Name')
             input(type='text', name='phone', placeholder='Phone')
             textarea(name='address', placeholder='Address')

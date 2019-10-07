@@ -47,6 +47,10 @@
     padding: 20px 30px 30px 30px;
 }
 
+.scrollingdiv label {
+    margin-top: 1rem;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -91,15 +95,10 @@
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    margin-bottom: 10px;
     width: 100%;
     box-sizing: border-box;
     color: #2C3E50;
     font-size: 13px;
-}
-
-#msform select {
-    margin-bottom: 10px;
 }
 
 #msform .scroll-button-bottom {
@@ -174,6 +173,7 @@
     border-radius: 1px;
     cursor: pointer;
     padding: 10px 5px;
+    margin-bottom: 10px;
 }
 
 .previous {

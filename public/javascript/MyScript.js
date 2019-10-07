@@ -1,5 +1,6 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
+    console.log("hi");
     Initialize();
 
     $('.datepicker').datepicker({
@@ -30,7 +31,7 @@ $(document).ready(function () {
         });
     */
     var myMap = new google.maps.Map(document.getElementById("myMap"), {
-        center: {lat: 37.5, lng: -120},
+        center: { lat: 37.5, lng: -120 },
         zoom: 6
     });
 
@@ -51,7 +52,7 @@ $(document).ready(function () {
         // the google map you would like to center based upon the selected location
         map: myMap,
 
-        onChange: function () {
+        onChange: function() {
             $(".residency_date_class").append("<span>Test</span>");
             $(".residency_date_class").html(
                 "<div class='residency_datepicker form-group'>" +
@@ -65,7 +66,7 @@ $(document).ready(function () {
             $(".new_datepicker").datepicker({
                 format: 'dd-MM-yyyy',
                 autoclose: true,
-                onChange: function () {
+                onChange: function() {
                     alert("Change");
                     start_date = $(".start_date").val();
                     end_date = $(".end_date").val();
@@ -93,7 +94,7 @@ $(document).ready(function () {
     });
     */
 
-    $("#skin-tan").on("change", function (evt) {
+    $("#skin-tan").on("change", function(evt) {
         var img = $(this).parents("#fieldSkin_tan").find("#skin-tan-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -116,7 +117,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_eyes_color").on("change", function (evt) {
+    $("#id_eyes_color").on("change", function(evt) {
         var img = $(this).parents("#fieldsetEye").find("#eye-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -135,7 +136,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_hair_color").on("change", function (evt) {
+    $("#id_hair_color").on("change", function(evt) {
         var img = $(this).parents("#fieldsetHair").find("#hair-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -162,7 +163,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Nevi").on("change", function (evt) {
+    $("#id_Nevi").on("change", function(evt) {
         var img = $(this).parents("#fieldsetNevi").find("#Nevi-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -185,7 +186,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Nevi").on("change", function (evt) {
+    $("#id_Nevi").on("change", function(evt) {
         var img = $(this).parents("#fieldsetNevi").find("#Nevi-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -208,18 +209,19 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_UltravioletExposure").on("change", function (evt) {
+    $("#id_UltravioletExposure").on("change", function(evt) {
+        console.log("hihi");
         if ($(this).val() == "Yes") {
-            $(this).parents("#fieldsetUltravioletExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
-            $(this).parents("#fieldsetUltravioletExposure").find("input[type=text]").prop("required", true);
+            $(this).next().removeClass("hidden-control").addClass("show-control");
+            $(this).next().find("input[type=text]").prop("required", true);
         }
         if ($(this).val() == "No") {
-            $(this).parents("#fieldsetUltravioletExposure").find(".show-control").addClass("hidden-control").removeClass("show-control");
-            $(this).parents("#fieldsetUltravioletExposure").find("input:text").prop("required", false);
+            $(this).next().addClass("hidden-control").removeClass("show-control");
+            $(this).next().find("input:text").prop("required", false);
         }
     });
 
-    $("#id_RecreationalExposure").on("change", function (evt) {
+    $("#id_RecreationalExposure").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetRecreationalExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
             $(this).parents("#fieldsetRecreationalExposure").find("input[type=text]").prop("required", true);
@@ -229,42 +231,42 @@ $(document).ready(function () {
             $(this).parents("#fieldsetRecreationalExposure").find("input:text").prop("required", false);
         }
     });
-    $("#id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function (evt) {
+    $("#id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function(evt) {
         if ($(this).val() == "Yes") {
-            $(this).parents(".divTableRow").find(".hidden-control .special_on_div_table").prop("required",true);
+            $(this).parents(".divTableRow").find(".hidden-control .special_on_div_table").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control .special_on_div_table").prop("required",false);
+            $(this).parents(".divTableRow").find(".show-control .special_on_div_table").prop("required", false);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#id_Sunlamp").on("change",function(evt){
-        if($(this).val() == "Yes") {
-            $(this).parents("#fieldsetSunlamps").find(".hidden-control input[type=number]").prop("required",true);
+    $("#id_Sunlamp").on("change", function(evt) {
+        if ($(this).val() == "Yes") {
+            $(this).parents("#fieldsetSunlamps").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSunlamps").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if($(this).val() != "Yes") {
-            $(this).parents("#fieldsetSunlamps").find(".show-control input[type=number]").prop("required",false);
+        if ($(this).val() != "Yes") {
+            $(this).parents("#fieldsetSunlamps").find(".show-control input[type=number]").prop("required", false);
             $(this).parents("#fieldsetSunlamps").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#id_Smoking").on("change",function(evt){
-        if($(this).val() == "Former" || $(this).val() == "Current") {
-            $(this).parents("#fieldsetSmoking").find(".hidden-control input[type=number]").prop("required",true);
-            $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required",true);
+    $("#id_Smoking").on("change", function(evt) {
+        if ($(this).val() == "Former" || $(this).val() == "Current") {
+            $(this).parents("#fieldsetSmoking").find(".hidden-control input[type=number]").prop("required", true);
+            $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", true);
             $(this).parents("#fieldsetSmoking").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if($(this).val() == "Never") {
-            $(this).parents("#fieldsetSmoking").find(".show-control input[type=number]").prop("required",false);
-            $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required",false);
+        if ($(this).val() == "Never") {
+            $(this).parents("#fieldsetSmoking").find(".show-control input[type=number]").prop("required", false);
+            $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", false);
             $(this).parents("#fieldsetSmoking").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#id_Vitamin").on("change",function(evt){
+    $("#id_Vitamin").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetVitamin").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
         }
@@ -273,48 +275,48 @@ $(document).ready(function () {
         }
     });
 
-    $("#selectQuestions").on("change",function(evt){
-        if($(this).val() == "Yes") {
-            $(this).parents("#fieldsetSectionBEval").find(".hidden-control input[type=number]").prop("required",true);
+    $("#selectQuestions").on("change", function(evt) {
+        if ($(this).val() == "Yes") {
+            $(this).parents("#fieldsetSectionBEval").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if($(this).val() == "No") {
-            $(this).parents("#fieldsetSectionBEval").find(".show-control input[type=number]").prop("required",false);
+        if ($(this).val() == "No") {
+            $(this).parents("#fieldsetSectionBEval").find(".show-control input[type=number]").prop("required", false);
             $(this).parents("#fieldsetSectionBEval").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#selectMediumSizedCN,#selectLargeSizedCN,#selectGiantSizedCN").on("change",function(evt){
+    $("#selectMediumSizedCN,#selectLargeSizedCN,#selectGiantSizedCN").on("change", function(evt) {
         if ($(this).val() == "Yes") {
-            $(this).parents(".divTableRow").find(".hidden-control input[type=text]").prop("required",true);
+            $(this).parents(".divTableRow").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control input[type=text]").prop("required",false);
+            $(this).parents(".divTableRow").find(".show-control input[type=text]").prop("required", false);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#selectBlueNevi").on("change",function(evt){
+    $("#selectBlueNevi").on("change", function(evt) {
         if ($(this).val() == "Yes") {
-            $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required",true);
+            $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required",false);
+            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#selectActinicKeratoses").on("change",function(evt){
+    $("#selectActinicKeratoses").on("change", function(evt) {
         if ($(this).val() == "Yes") {
-            $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesSite").prop("required",true);
-            $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesDistribution").prop("required",true);
+            $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesSite").prop("required", true);
+            $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesDistribution").prop("required", true);
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents("#fieldsetActinicKeratoses").find(".show-control #selectActinicKeratosesSite").prop("required",false).val("NoChoosed");
-            $(this).parents("#fieldsetActinicKeratoses").find(".show-control #selectActinicKeratosesDistribution").prop("required",false).val("NoChoosed");
+            $(this).parents("#fieldsetActinicKeratoses").find(".show-control #selectActinicKeratosesSite").prop("required", false).val("NoChoosed");
+            $(this).parents("#fieldsetActinicKeratoses").find(".show-control #selectActinicKeratosesDistribution").prop("required", false).val("NoChoosed");
             $(this).parents("#fieldsetActinicKeratoses").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -371,12 +373,12 @@ $(document).ready(function () {
                 $("#fieldHistory").find(".div_date").append($("<div class='form-group'>").append(date_input_start));
             }
         });*/
-        $.getJSON('SicRanges.json', function (data) {
-            $.each(data, function (key, entry) {
+        $.getJSON('SicRanges.json', function(data) {
+            $.each(data, function(key, entry) {
                 dropdown.append($('<option></option>').attr('value', entry.SIC_Range_Start + '*' + entry.SIC_Range_End).text(entry.Group_Title));
             });
         });
-        $("#" + tag_ID_DDL).on("change", function (data) {
+        $("#" + tag_ID_DDL).on("change", function(data) {
             $("#dropSIC").empty();
             var valore = $("#" + tag_ID_DDL).val();
             if (valore == "NoChoosed") {
@@ -385,26 +387,26 @@ $(document).ready(function () {
             }
             if (valore != "NoChoosed") {
                 var dropdown2 = $("<select id='dropSIC' class='form-control'>").html("<option value='NoChoosed'>Select Sic Code ...</option>");
-                dropdown2.on("change", function () {
+                dropdown2.on("change", function() {
                     $(this).parents("fieldset").find(".div_date").empty();
                     if ($(dropdown2).val() != "NoChoosed") {
                         var date_input_start = $("<input type=text id='history_date_start' class='form-control datepicker auto-width'>");
                         $(date_input_start).datepicker({
                             format: 'dd-MM-yyyy',
                             autoclose: true
-                        }).on("changeDate", function (evt) {
+                        }).on("changeDate", function(evt) {
                             var date_input_end = $("<input type=text id='history_date_end' class='form-control datepicker auto-width'>");
                             $(date_input_end).datepicker({
                                 format: 'dd-MM-yyyy',
                                 autoclose: true
-                            }).on("changeDate", function (evt) {
+                            }).on("changeDate", function(evt) {
                                 var history_row = {};
                                 history_row.SIC_Group = $("#fieldHistory").find("#History option:selected").text();
                                 history_row.SIC_Code = $("#fieldHistory").find("#dropSIC option:selected").text();
                                 history_row.Start_Date = $("#fieldHistory").find("#history_date_start").val();
                                 history_row.End_Date = $(this).val();
                                 var delete_btn = $("<input class=\"btn btn-primary\" type=\"button\" value=\"Delete\">");
-                                $(delete_btn).on("click", function (evt) {
+                                $(delete_btn).on("click", function(evt) {
                                     $(this).parents(".table").remove();
                                     $("#History").val("NoChoosed").trigger("change");
                                 });
@@ -423,8 +425,8 @@ $(document).ready(function () {
                 var end = parseInt(valore.split('*')[1]);
                 console.log(start);
                 console.log(end);
-                $.getJSON(url, function (data) {
-                    $.each(data, function (key, entry) {
+                $.getJSON(url, function(data) {
+                    $.each(data, function(key, entry) {
                         var Sic_Code = parseInt(entry.SIC_Code);
                         if (Sic_Code < end && Sic_Code > start) {
                             dropdown2.append($('<option></option>').attr('value', entry.SIC_Code).text(entry.Industry_Title));
@@ -435,8 +437,8 @@ $(document).ready(function () {
         });
     };
 
-    function DDL_Other(tag_ID, tag_Class,) {
-        $("#" + tag_ID).on("change", function () {
+    function DDL_Other(tag_ID, tag_Class, ) {
+        $("#" + tag_ID).on("change", function() {
             if ($(this).val() == "Other") {
                 $("." + tag_Class).removeClass("hidden-control").addClass("form-control");
             } else {
@@ -454,16 +456,16 @@ $(document).ready(function () {
         //const url = 'https://api.myjson.com/bins/7xq2x';
         my_url = Json_Url;
         // Populate dropdown with list of provinces
-        $.getJSON(my_url, function (data) {
-            $.each(data, function (key, entry) {
+        $.getJSON(my_url, function(data) {
+            $.each(data, function(key, entry) {
                 dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
             })
         });
     }
 
-    $('input.mutually_check').click(function () {
+    $('input.mutually_check').click(function() {
         checkedState = $(this).prop('checked');
-        $(this).parents('.form-group').find(".mutually_check:checked").each(function () {
+        $(this).parents('.form-group').find(".mutually_check:checked").each(function() {
             $(this).prop('checked', false);
         });
         $(this).prop('checked', checkedState);
@@ -541,5 +543,4 @@ $(document).ready(function () {
             }
         });
     });*/
-})
-;
+});
