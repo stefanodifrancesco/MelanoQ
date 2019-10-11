@@ -15,3 +15,55 @@
     font-size: 15px;
     color: #ffffff;
 }
+
+.navbar {
+    position: fixed;
+    background-color: cornflowerblue;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 70px;
+    padding: .5rem 1.5rem;
+}
+
+.navbar-brand {
+    margin-right: 0rem;
+    font-size: 1.8rem;
+}
+
+.questionnaires-tab {
+    margin-top: 20px;
+    border-bottom: 2px solid #ffffff;
+    width: 90%;
+    padding-left: 0px;
+    padding-right: 0px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.questionnaires-list {
+    margin-top: 20px;
+    width: 90%;
+    padding-left: 0px;
+    padding-right: 0px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.add-questionnaire-btn {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 2px;
+    font-size: 0.8rem;
+    margin-left: 10px;
+    background: green;
+    color: white;
+    right: 0;
+}
+
+.questionnaire-link {
+    background: transparent;
+    border: 0px;
+}

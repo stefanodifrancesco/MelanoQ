@@ -15,21 +15,6 @@ body {
     padding-top: 90px;
 }
 
-.navbar {
-    position: fixed;
-    background-color: cornflowerblue;
-    top: 0;
-    width: 100%;
-    overflow: hidden;
-    height: 70px;
-    padding: .5rem 1.5rem;
-}
-
-.navbar-brand {
-    margin-right: 0rem;
-    font-size: 1.8rem;
-}
-
 .login-title {
     margin-bottom: 1rem;
     text-align: center;
