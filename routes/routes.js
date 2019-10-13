@@ -107,7 +107,7 @@ router.post("/stepform", (req, res) => {
             if (err) throw err;
             var dbo = db.db("MelanoQ");
             var myobj = req.body;
-            dbo.collection("users").insertOne(myobj, function(err, records) {
+            dbo.collection("questionnaires").insertOne(myobj, function(err, records) {
                 if (err) throw err;
 
             });
@@ -123,6 +123,15 @@ router.post("/stepform", (req, res) => {
                 { $push: { "questionnaires": { "code_number": myobj.codeNumber, "insert_date": date } } } //single object will be pushed to attachemnts
             );
 
+            var query = { codeNumber: myobj.codeNumber };
+
+            dbo.collection("questionnaires").find(query).toArray(function(err, result) {
+                if (err) throw err;
+
+                db.close();
+                res.render('summary', { result: result[0] });
+            });
+
             db.close();
         });
 });
@@ -134,9 +143,10 @@ router.post('/find', (req, res) => {
     MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
         if (err) throw err;
         var dbo = db.db("MelanoQ");
+        console.log(req.body.codeNumber);
         var query = { codeNumber: req.body.codeNumber };
 
-        dbo.collection("users").find(query).toArray(function(err, result) {
+        dbo.collection("questionnaires").find(query).toArray(function(err, result) {
             if (err) throw err;
 
             console.log(result);
