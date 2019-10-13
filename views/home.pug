@@ -1,12 +1,13 @@
 extends layout
 
 block content
-    .container
-      .row.nurse-profile-menu
-        col-sm-9
-            h1
-              | #{profileData.username} - Nurse
-            a(href='/logout') Logout
+    div.profile-header
+      button(href='/logout')
+        i.fas.fa-sign-out-alt
+          |  Logout
+      h1 #{profileData.username} - Nurse
+      
+    .container            
       .row
           .col-sm-9.questionnaires-tab
                 
@@ -18,20 +19,35 @@ block content
 
       if profileData.questionnaires
         .row
-            .col-sm-9.questionnaires-list
-              .row
-                .col-md-6
-                  h3 Database code number
-                .col-md-6
-                  h3 Date of insert
-              each quest in profileData.questionnaires
-                .row
-                  .col-md-6
-                    <form action="/find" method="post">
-                      <button type="submit" name="codeNumber" value=#{quest.code_number} class="btn-link questionnaire-link">#{quest.code_number}</button>
-                    </form>
-                  .col-md-6
-                    p #{quest.insert_date}
+          .col-sm-9.questionnaires-table
+            table.questionnaires-list
+              tbody
+                tr
+                  th Database code number
+                  th Date of insert
+                each quest in profileData.questionnaires
+                  tr
+                    td 
+                      <form action="/find" method="post">
+                        <button type="submit" name="codeNumber" value=#{quest.code_number} class="btn-link questionnaire-link">#{quest.code_number}</button>
+                      </form>
+                    td #{quest.insert_date}
+
+        //- .row
+        //-     .col-sm-9.questionnaires-list
+        //-       .row
+        //-         .col-md-6
+        //-           h3 Database code number
+        //-         .col-md-6
+        //-           h3 Date of insert
+        //-       each quest in profileData.questionnaires
+        //-         .row
+        //-           .col-md-6
+        //-             <form action="/find" method="post">
+        //-               <button type="submit" name="codeNumber" value=#{quest.code_number} class="btn-link questionnaire-link">#{quest.code_number}</button>
+        //-             </form>
+        //-           .col-md-6
+        //-             p #{quest.insert_date}
       else 
         .row(style="margin-top: 20px;")
             .col-md-12
