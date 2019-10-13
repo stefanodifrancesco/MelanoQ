@@ -27,7 +27,8 @@ body {
     padding: .35em .625em .75em;
 }
 
-legend {
+
+/* legend {
     display: block;
     width: 100%;
     margin-bottom: 7px;
@@ -35,7 +36,7 @@ legend {
     line-height: inherit;
     color: #444;
     border-bottom: 1px solid #e5e5e5;
-}
+} */
 
 .login-error {
     margin-bottom: 0rem;
@@ -44,28 +45,6 @@ legend {
 
 .login-alert {
     padding: .75rem 0rem;
-}
-
-.divTable {
-    display: table;
-    width: 100%;
-}
-
-.divTableBody {
-    display: table-row-group;
-}
-
-.divTableRow {
-    display: table-row;
-    text-align: center;
-}
-
-.divTableCell,
-.divTableHead {
-    border: 1px solid #999999;
-    display: table-cell;
-    padding: 3px 10px;
-    vertical-align: middle !important;
 }
 
 .group {

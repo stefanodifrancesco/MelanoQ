@@ -1,0 +1,24 @@
+.summary-div {
+    margin: auto;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+    width: 90%;
+    height: 600px;
+    margin-top: 90px;
+    padding-top: 0;
+}
+
+.summary-table {
+    width: 90%;
+    border-collapse: separate;
+    border-spacing: 15px;
+}
+
+.summary-table legend {
+    font-size: 1rem;
+}
+
+.summary-table span {
+    margin-bottom: 15px;
+}
