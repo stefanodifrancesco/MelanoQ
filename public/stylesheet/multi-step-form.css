@@ -51,12 +51,12 @@
     margin-top: 1rem;
 }
 
-::-webkit-scrollbar {
+#msform ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
 
- ::-webkit-scrollbar-thumb {
+#msform ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: #c2c9d2;
 }
@@ -118,6 +118,35 @@
     box-shadow: 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12), 0px 5px 5px -3px rgba(0, 0, 0, 0.2);
 }
 
+#msform .divTable {
+    display: table;
+    width: 100%;
+}
+
+#msform .divTableBody {
+    display: table-row-group;
+}
+
+#msform .divTableRow {
+    display: table-row;
+    text-align: center;
+}
+
+#msform .divTableCell,
+#msform .divTableHead {
+    border: 1px solid #999999;
+    display: table-cell;
+    padding: 3px 10px;
+    vertical-align: middle !important;
+}
+
+#msform .divTableCell input {
+    border: none;
+    border-bottom: 1px solid gray;
+    border-radius: 0px;
+    height: 30px;
+}
+
 
 /*error*/
 
@@ -166,6 +195,23 @@
 #msform .action-button {
     display: none;
     width: 100px;
+    background: #4285f4;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+}
+
+#msform .start {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    width: 80px;
     background: #4285f4;
     font-weight: bold;
     color: white;
@@ -239,7 +285,7 @@
     color: white;
     text-transform: uppercase;
     font-size: 9px;
-    width: 25%;
+    width: 20%;
     float: left;
     position: relative;
 }

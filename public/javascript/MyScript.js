@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-    console.log("hi");
     Initialize();
 
     $('.datepicker').datepicker({
@@ -210,7 +209,6 @@ $(document).ready(function() {
     });
 
     $("#id_UltravioletExposure").on("change", function(evt) {
-        console.log("hihi");
         if ($(this).val() == "Yes") {
             $(this).next().removeClass("hidden-control").addClass("show-control");
             $(this).next().find("input[type=text]").prop("required", true);

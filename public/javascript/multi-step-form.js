@@ -6,17 +6,84 @@ var animating; //flag to prevent quick multi-click glitches
 
 $(".scroll-button-bottom").click(function() {
     scrollerdiv = $(".scrollingdiv:visible");
-    offset = scrollerdiv.scrollTop() + 102;
+    offset = scrollerdiv.scrollTop() + 200;
     scrollerdiv.animate({ scrollTop: offset }, 300);
 });
 
 $(".scrollingdiv").on("scroll", function() {
-    if ($(this).scrollTop() + $(this).innerHeight() >= $(this).prop('scrollHeight')) {
+    if ($(this).scrollTop() + $(this).innerHeight() >= $(this).prop('scrollHeight') - 1) {
         $(".scroll-button-bottom").hide();
         $(this).nextAll(".action-button").css("display", "inline-block");
     }
 });
 
+$(".start").click(function() {
+
+    $("#msform").validate({
+        errorClass: 'invalid',
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+            error.insertAfter(element.next('span').children());
+        },
+        highlight: function(element) {
+            $(element).next('span').show();
+        },
+        unhighlight: function(element) {
+            $(element).next('span').hide();
+        }
+    });
+    if ((!$('#msform').valid())) {
+        return true;
+    }
+    if (animating) return false;
+    animating = true;
+
+    current_fs = $(this).parent();
+    next_fs = $(this).parent().next();
+
+    //show the next fieldset
+    next_fs.show();
+    //hide the current fieldset with style
+    current_fs.animate({ opacity: 0 }, {
+        step: function(now, mx) {
+            //as the opacity of current_fs reduces to 0 - stored in "now"
+            //1. scale current_fs down to 80%
+            scale = 1 - (1 - now) * 0.2;
+            //2. bring next_fs from the right(50%)
+            left = (now * 50) + "%";
+            //3. increase opacity of next_fs to 1 as it moves in
+            opacity = 1 - now;
+            current_fs.css({
+                'transform': 'scale(' + scale + ')',
+                'position': 'absolute'
+            });
+            next_fs.css({ 'left': left, 'opacity': opacity });
+        },
+        duration: 800,
+        complete: function() {
+            current_fs.hide();
+            animating = false;
+
+            scrollerdiv = $(".scrollingdiv:visible");
+            if (scrollerdiv.nextAll('.action-button').css('display') == 'none') {
+                if (scrollerdiv.prop('scrollHeight') == scrollerdiv.prop('clientHeight')) {
+                    scrollerdiv.nextAll(".action-button").fadeIn(200, function() {
+                        scrollerdiv.nextAll(".action-button").css("display", "inline-block");
+                    });
+                } else {
+                    scrollerdiv.nextAll(".scroll-button-bottom").fadeIn(200, function() {
+                        scrollerdiv.nextAll(".scroll-button-bottom").css("display", "block");
+                    });
+                }
+            }
+
+
+        },
+        //this comes from the custom easing plugin
+        easing: 'easeInOutBack'
+    });
+
+});
 
 $(".next").click(function() {
 
@@ -43,7 +110,7 @@ $(".next").click(function() {
     next_fs = $(this).parent().next();
 
     //activate next step on progressbar using the index of next_fs
-    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+    $("#progressbar li").eq($("fieldset").index(next_fs) - 2).addClass("active");
 
     //show the next fieldset
     next_fs.show();
@@ -125,7 +192,3 @@ $(".previous").click(function() {
     });
 
 });
-
-$(".submit").click(function() {
-    return false;
-})
