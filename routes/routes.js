@@ -1,4 +1,5 @@
 const express = require('express');
+var dateFormat = require('dateformat');
 
 const router = express.Router();
 
@@ -44,6 +45,7 @@ router.post('/login',
                 if (err) throw err;
                 var dbo = db.db("MelanoQ");
 
+                // Collecting user info
                 dbo.collection('nurses').findOne({ username: req.body.username }, function(err, user) {
 
                     if (user === null) {
@@ -51,8 +53,20 @@ router.post('/login',
                     } else if (user.username === req.body.username && user.password === req.body.password) {
                         sess = req.session;
                         sess.username = req.body.username;
-                        console.log(user);
-                        res.render('home', { profileData: user });
+
+                        // Collecting complete list of questionnaires
+                        dbo.collection('questionnaires').find({}, { projection: { codeNumber: 1, surveyDate: 1, _id: 1 } }).toArray(function(err, result) {
+
+                            // Adding creation timestamp to every json
+                            result.forEach(quest => {
+                                timestamp = quest._id.toString().substring(0, 8)
+                                date = new Date(parseInt(timestamp, 16) * 1000)
+                                var insert_date = dateFormat(date, 'dd mmmm yyyy "at" HH:MM:ss');
+                                quest["insert_date"] = insert_date;
+                            });
+
+                            res.render('home', { profileData: user, result: result });
+                        });
                     } else {
                         res.render('login', { message: "Username or password wrong!" });
                     }
@@ -71,10 +85,26 @@ router.get('/home', (req, res) => {
             },
             function(err, db) {
                 var dbo = db.db("MelanoQ");
+
+                // Collecting user info
                 dbo.collection('nurses').findOne({ username: sess.username }, function(err, user) {
 
-                    res.render('home', { profileData: user });
+                    // Collecting complete list of questionnaires
+                    dbo.collection('questionnaires').find({}, { projection: { codeNumber: 1, surveyDate: 1, _id: 1 } }).toArray(function(err, result) {
+
+                        // Adding creation timestamp to every json
+                        result.forEach(quest => {
+                            timestamp = quest._id.toString().substring(0, 8)
+                            date = new Date(parseInt(timestamp, 16) * 1000)
+                            var insert_date = dateFormat(date, 'dd mmmm yyyy "at" HH:MM:ss');
+                            quest["insert_date"] = insert_date;
+                        });
+
+                        res.render('home', { profileData: user, result: result });
+                    });
                 });
+
+
             });
     } else {
         res.render('login');
@@ -115,12 +145,13 @@ router.post("/stepform", (req, res) => {
             console.log("Record added as " + _id);
             timestamp = _id.toString().substring(0, 8)
             date = new Date(parseInt(timestamp, 16) * 1000)
-            console.log("date " + date);
+            var insert_date = dateFormat(date, 'dd mmmm yyyy "at" HH:MM:ss');
+            console.log("date " + insert_date);
 
             sess = req.session;
 
             dbo.collection('nurses').updateOne({ "username": sess.username }, // query matching , refId should be "ObjectId" type
-                { $push: { "questionnaires": { "code_number": myobj.codeNumber, "insert_date": date } } } //single object will be pushed to attachemnts
+                { $push: { "questionnaires": { "code_number": myobj.codeNumber, "insert_date": insert_date } } } //single object will be pushed to attachemnts
             );
 
             var query = { codeNumber: myobj.codeNumber };

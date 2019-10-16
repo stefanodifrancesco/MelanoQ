@@ -8,19 +8,33 @@
     width: 56%;
 }
 
-.profile-header h1 {
+.profile-header h2 {
     margin: auto;
     color: #ffffff;
     float: right;
     margin-right: 30px;
-    margin-top: 10px;
+    margin-top: 20px;
+    text-decoration: underline;
 }
 
-.profile-header button {
+.new-questionnaire-button {
+    float: left;
+    height: 100%;
+    border: 1px solid black;
+    width: 180px;
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.logout-button {
     float: right;
     height: 100%;
     border: 1px solid black;
-    width: 100px;
+    width: 180px;
     background-color: firebrick;
     border: none;
     color: white;
@@ -29,7 +43,11 @@
     cursor: pointer;
 }
 
-.profile-header button:hover {
+.new-questionnaire-button:hover {
+    background-color: lightgreen;
+}
+
+.logout-button:hover {
     background-color: lightcoral;
 }
 
@@ -54,6 +72,7 @@
 
 .questionnaires-tab {
     margin-top: 20px;
+    margin-left: -1px;
     border-bottom: 2px solid #ffffff;
     width: 90%;
     padding-left: 0px;
@@ -61,36 +80,61 @@
     left: 0;
     right: 0;
     margin: auto;
+    padding-top: 30px;
+}
+
+.nav-tabs .nav-item {
+    margin-bottom: 0px;
+}
+
+.nav-tabs .nav-link {
+    background: navajowhite;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    background: white;
+    border-color: white;
+}
+
+.tab-content {
+    width: 100%;
 }
 
 .questionnaires-table {
-    margin-top: 20px;
     border-bottom: 2px solid #ffffff;
-    width: 90%;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    width: 100%;
     padding-left: 0px;
     padding-right: 0px;
-    left: 0;
-    right: 0;
-    margin: auto;
     background: white;
+    box-shadow: 4px 7px 8px darkgoldenrod;
 }
 
 .questionnaires-list {
-    margin-top: 20px;
     width: 100%;
-    border-spacing: 10px;
-    border-collapse: separate;
+    border: 1px solid white;
+    border-collapse: collapse;
+    background: navajowhite;
 }
 
-.add-questionnaire-btn {
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 2px;
-    font-size: 0.8rem;
-    margin-left: 10px;
-    background: green;
-    color: white;
-    right: 0;
+.questionnaires-list th {
+    padding: 15px;
+    background-color: white;
+    color: black;
+}
+
+.questionnaires-list td {
+    padding: 15px;
+}
+
+.questionnaires-list tr:nth-child(even) {
+    background-color: rgb(255, 206, 132);
+}
+
+.questionnaires-list tr:nth-child(odd) {
+    background-color: navajowhite;
 }
 
 .questionnaire-link {
