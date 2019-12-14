@@ -1,6 +1,4 @@
-$(document).ready(function() {
-
-    Initialize();
+$(document).ready(function () {
 
     $('.datepicker').datepicker({
         format: 'dd-MM-yyyy',
@@ -30,11 +28,51 @@ $(document).ready(function() {
         });
     */
     var myMap = new google.maps.Map(document.getElementById("myMap"), {
-        center: { lat: 37.5, lng: -120 },
+        center: {lat: 37.5, lng: -120},
         zoom: 6
     });
 
     var ListaResidency = [];
+
+    $("#fieldsetCodeNumber #DatabaseCodeCountry").on("change", function (evt) {
+        if ($(this).val() != "No Choosed") {
+            $("#DatabaseCodeCenter").empty().append("<option value=\"No Choosed\" selected>Select Center ...</option>");
+            nation_val = $(this).val();
+            $.getJSON('Centers.json', function (result) {
+                $.each(result, function (index, value) {
+                    if (value.Nation == nation_val) {
+                        $("#DatabaseCodeCenter").append("<option value='" + value.Country + "'>" + value.Country + "</option>");
+                    }
+                });
+            });
+            $("DatabaseCodeCenter").val("No Choosed");
+            $("#fieldsetCodeNumber .hidden-control").removeClass("hidden-control").addClass("show-control");
+        }
+        if ($(this).val() == "No Choosed") {
+            $("#fieldsetCodeNumber .show-control").removeClass("show-control").addClass("hidden-control");
+            $("#DatabaseCodeCenter").empty();
+        }
+    });
+
+    $("#DatabaseCodeCountry,#DatabaseCodeCenter,#DatabaseCodeType").on("change", function (evt) {
+        currentCodeCountry = $("#DatabaseCodeCountry").val();
+        currentDatabaseCode = $("#DatabaseCodeCenter").val();
+        currentDatabaseCodeType = $("#DatabaseCodeType").val();
+
+        console.log("Hello World");
+        console.log("country : " + currentCodeCountry +
+            "\n" + "database : " + currentDatabaseCode +
+            "\n" + "type : " + currentDatabaseCodeType);
+
+        if (currentCodeCountry != "No Choosed" && currentDatabaseCode != "No Choosed" && currentDatabaseCodeType != "No Choosed") {
+            object_JSON = {
+                "code_country": currentCodeCountry,
+                "code_database": currentDatabaseCode,
+                "code_type": currentDatabaseCodeType
+            };
+            $("#codeNumber").val(send_Ajax_Data('localhost:8080', object_JSON));
+        }
+    });
 
     $("#residency").geocomplete({
         formId: "#myForm",
@@ -51,7 +89,7 @@ $(document).ready(function() {
         // the google map you would like to center based upon the selected location
         map: myMap,
 
-        onChange: function() {
+        onChange: function () {
             $(".residency_date_class").append("<span>Test</span>");
             $(".residency_date_class").html(
                 "<div class='residency_datepicker form-group'>" +
@@ -65,7 +103,7 @@ $(document).ready(function() {
             $(".new_datepicker").datepicker({
                 format: 'dd-MM-yyyy',
                 autoclose: true,
-                onChange: function() {
+                onChange: function () {
                     alert("Change");
                     start_date = $(".start_date").val();
                     end_date = $(".end_date").val();
@@ -93,7 +131,7 @@ $(document).ready(function() {
     });
     */
 
-    $("#skin-tan").on("change", function(evt) {
+    $("#skin-tan").on("change", function (evt) {
         var img = $(this).parents("#fieldSkin_tan").find("#skin-tan-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -116,7 +154,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#id_eyes_color").on("change", function(evt) {
+    $("#id_eyes_color").on("change", function (evt) {
         var img = $(this).parents("#fieldsetEye").find("#eye-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -135,7 +173,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#id_hair_color").on("change", function(evt) {
+    $("#id_hair_color").on("change", function (evt) {
         var img = $(this).parents("#fieldsetHair").find("#hair-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -162,7 +200,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#id_Nevi").on("change", function(evt) {
+    $("#id_Nevi").on("change", function (evt) {
         var img = $(this).parents("#fieldsetNevi").find("#Nevi-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -185,7 +223,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#id_Nevi").on("change", function(evt) {
+    $("#id_Nevi").on("change", function (evt) {
         var img = $(this).parents("#fieldsetNevi").find("#Nevi-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -208,18 +246,18 @@ $(document).ready(function() {
         }
     });
 
-    $("#id_UltravioletExposure").on("change", function(evt) {
+    $("#id_UltravioletExposure").on("change", function (evt) {
         if ($(this).val() == "Yes") {
-            $(this).next().removeClass("hidden-control").addClass("show-control");
-            $(this).next().find("input[type=text]").prop("required", true);
+            $(this).parents("#fieldsetUltravioletExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
+            $(this).parents("#fieldsetUltravioletExposure").find("input[type=text]").prop("required", true);
         }
         if ($(this).val() == "No") {
-            $(this).next().addClass("hidden-control").removeClass("show-control");
-            $(this).next().find("input:text").prop("required", false);
+            $(this).parents("#fieldsetUltravioletExposure").find(".show-control").addClass("hidden-control").removeClass("show-control");
+            $(this).parents("#fieldsetUltravioletExposure").find("input:text").prop("required", false);
         }
     });
 
-    $("#id_RecreationalExposure").on("change", function(evt) {
+    $("#id_RecreationalExposure").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetRecreationalExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
             $(this).parents("#fieldsetRecreationalExposure").find("input[type=text]").prop("required", true);
@@ -229,7 +267,7 @@ $(document).ready(function() {
             $(this).parents("#fieldsetRecreationalExposure").find("input:text").prop("required", false);
         }
     });
-    $("#id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function(evt) {
+    $("#id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control .special_on_div_table").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -240,7 +278,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#id_Sunlamp").on("change", function(evt) {
+    $("#id_Sunlamp").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetSunlamps").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSunlamps").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -251,7 +289,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#id_Smoking").on("change", function(evt) {
+    $("#id_Smoking").on("change", function (evt) {
         if ($(this).val() == "Former" || $(this).val() == "Current") {
             $(this).parents("#fieldsetSmoking").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", true);
@@ -264,7 +302,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#id_Vitamin").on("change", function(evt) {
+    $("#id_Vitamin").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetVitamin").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
         }
@@ -273,7 +311,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#selectQuestions").on("change", function(evt) {
+    $("#selectQuestions").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -284,7 +322,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#selectMediumSizedCN,#selectLargeSizedCN,#selectGiantSizedCN").on("change", function(evt) {
+    $("#selectMediumSizedCN,#selectLargeSizedCN,#selectGiantSizedCN").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -295,7 +333,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#selectBlueNevi").on("change", function(evt) {
+    $("#selectBlueNevi").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -306,7 +344,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#selectActinicKeratoses").on("change", function(evt) {
+    $("#selectActinicKeratoses").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesSite").prop("required", true);
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesDistribution").prop("required", true);
@@ -319,11 +357,23 @@ $(document).ready(function() {
         }
     });
 
+    $("#selectBCC,#selectSCC,#selectSCCSite").on("change", function (evt) {
+        if ($(this).val() == "Yes") {
+            $(this).parents(".divTable").find(".hidden-control input").prop("required", true);
+            $(this).parents(".divTable").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
+        }
+        if ($(this).val() != "Yes") {
+            $(this).parents(".divTable").find(".show-control input").prop("required", false);
+            $(this).parents(".divTable").find(".show-control").addClass("hidden-control").removeClass("show-control");
+        }
+    });
+
 
     function Initialize() {
         DDL_Other('Ethnicity', 'inputEthnicity');
         DDL_Other('Melanoma', 'inputMelanoma');
         DDL_from_JSON('History', 'siccodes.json');
+        //$("#ICD10_Search_Toggle").click();
     };
 
     function Create_Datepicker(tag_ID, tag_Append) {
@@ -336,86 +386,46 @@ $(document).ready(function() {
     };
 
     function DDL_from_JSON(tag_ID_DDL, url) {
-        var dropdown = $("#" + tag_ID_DDL).html("<option value='NoChoosed'>Select Sic Gruop ...</option>");
-        /*var dropdown2 = $("<select id='dropSIC' class='form-control'>").html("<option value='NoChoosed'>Select Sic Code ...</option>");
-        dropdown2.on("change", function () {
-            $(this).parents("fieldset").find(".div_date").empty();
-            if ($(dropdown2).val() != "NoChoosed") {
-                var date_input_start = $("<input type=text id='history_date_start' class='form-control datepicker auto-width'>");
-                $(date_input_start).datepicker({
-                    format: 'dd-MM-yyyy',
-                    autoclose: true
-                }).on("changeDate",function(evt){
-                    var date_input_end = $("<input type=text id='history_date_end' class='form-control datepicker auto-width'>");
-                    $(date_input_end).datepicker({
-                        format: 'dd-MM-yyyy',
-                        autoclose: true
-                    }).on("changeDate",function(evt){
-                        var history_row = {};
-                        history_row.SIC_Group = $("#fieldHistory").find("#History option:selected").text();
-                        history_row.SIC_Code = $("#fieldHistory").find("#dropSIC option:selected").text();
-                        history_row.Start_Date = $("#fieldHistory").find("#history_date_start").val();
-                        history_row.End_Date = $(this).val();
-                        var delete_btn = $("<input class=\"btn btn-primary\" type=\"button\" value=\"Delete\">");
-                        $(delete_btn).on("click",function (evt) {
-                           $(this).parents(".table").remove();
-                            $("#History").val("NoChoosed").trigger("change");
-                        });
-                        var div_table = $("<div class='table form-group'>");
-                        $("#fieldHistory").append(div_table);
-                        $(div_table).createTable([history_row]);
-                        $("#fieldHistory").find(".table").last().append(delete_btn);
-                    });
-                    $("#fieldHistory").find(".div_date").append($("<div class='form-group'>").append(date_input_end));
-                });
-                $("#fieldHistory").find(".div_date").append($("<div class='form-group'>").append(date_input_start));
-            }
-        });*/
-        $.getJSON('SicRanges.json', function(data) {
-            $.each(data, function(key, entry) {
+        var dropdown = $("#" + tag_ID_DDL).html("<option value='NoChoosed'>Select Sic Group ...</option>");
+        var history_list = [];
+
+        $.getJSON('SicRanges.json', function (data) {
+            $.each(data, function (key, entry) {
                 dropdown.append($('<option></option>').attr('value', entry.SIC_Range_Start + '*' + entry.SIC_Range_End).text(entry.Group_Title));
             });
         });
-        $("#" + tag_ID_DDL).on("change", function(data) {
-            $("#dropSIC").empty();
+        $("#" + tag_ID_DDL).on("change", function (data) {
+            $("#dropSIC,#history_date_start,#history_date_end").remove();
             var valore = $("#" + tag_ID_DDL).val();
-            if (valore == "NoChoosed") {
-                $("#dropSIC").remove();
-                $("#history_date_start,#history_date_end").remove();
-            }
             if (valore != "NoChoosed") {
                 var dropdown2 = $("<select id='dropSIC' class='form-control'>").html("<option value='NoChoosed'>Select Sic Code ...</option>");
-                dropdown2.on("change", function() {
+                dropdown2.on("change", function () {
+                    $("#history_date_start,#history_date_end").remove();
                     $(this).parents("fieldset").find(".div_date").empty();
                     if ($(dropdown2).val() != "NoChoosed") {
                         var date_input_start = $("<input type=text id='history_date_start' class='form-control datepicker auto-width'>");
                         $(date_input_start).datepicker({
                             format: 'dd-MM-yyyy',
                             autoclose: true
-                        }).on("changeDate", function(evt) {
+                        }).on("changeDate", function (evt) {
                             var date_input_end = $("<input type=text id='history_date_end' class='form-control datepicker auto-width'>");
                             $(date_input_end).datepicker({
                                 format: 'dd-MM-yyyy',
                                 autoclose: true
-                            }).on("changeDate", function(evt) {
+                            }).on("changeDate", function (evt) {
                                 var history_row = {};
                                 history_row.SIC_Group = $("#fieldHistory").find("#History option:selected").text();
                                 history_row.SIC_Code = $("#fieldHistory").find("#dropSIC option:selected").text();
                                 history_row.Start_Date = $("#fieldHistory").find("#history_date_start").val();
                                 history_row.End_Date = $(this).val();
-                                var delete_btn = $("<input class=\"btn btn-primary\" type=\"button\" value=\"Delete\">");
-                                $(delete_btn).on("click", function(evt) {
-                                    $(this).parents(".table").remove();
-                                    $("#History").val("NoChoosed").trigger("change");
-                                });
-                                var div_table = $("<div class='table form-group'>");
-                                $("#fieldHistory").append(div_table);
-                                $(div_table).createTable([history_row]);
-                                $("#fieldHistory").find(".table").last().append(delete_btn);
+                                history_list.push(history_row);
+                                create_Table_Delete(history_list,"json-table-wrapper-history","fieldHistory");
+                                $("#History").val("NoChoosed");
+                                $("#dropSIC,#history_date_start,#history_date_end,.div_date span").remove();
                             });
-                            $("#fieldHistory").find(".div_date").append($("<div class='form-group'>").append(date_input_end));
+                            $("#fieldHistory").find(".div_date").append($("<div class=''><span>Date end</span>").append(date_input_end));
                         });
-                        $("#fieldHistory").find(".div_date").append($("<div class='form-group'>").append(date_input_start));
+                        $("#fieldHistory").find(".div_date").append($("<div class=''><span>Date start </span>").append(date_input_start));
                     }
                 });
                 $("#fieldHistory").find(".dynamic_ddl").append(dropdown2);
@@ -423,8 +433,8 @@ $(document).ready(function() {
                 var end = parseInt(valore.split('*')[1]);
                 console.log(start);
                 console.log(end);
-                $.getJSON(url, function(data) {
-                    $.each(data, function(key, entry) {
+                $.getJSON(url, function (data) {
+                    $.each(data, function (key, entry) {
                         var Sic_Code = parseInt(entry.SIC_Code);
                         if (Sic_Code < end && Sic_Code > start) {
                             dropdown2.append($('<option></option>').attr('value', entry.SIC_Code).text(entry.Industry_Title));
@@ -435,8 +445,8 @@ $(document).ready(function() {
         });
     };
 
-    function DDL_Other(tag_ID, tag_Class, ) {
-        $("#" + tag_ID).on("change", function() {
+    function DDL_Other(tag_ID, tag_Class,) {
+        $("#" + tag_ID).on("change", function () {
             if ($(this).val() == "Other") {
                 $("." + tag_Class).removeClass("hidden-control").addClass("form-control");
             } else {
@@ -454,16 +464,16 @@ $(document).ready(function() {
         //const url = 'https://api.myjson.com/bins/7xq2x';
         my_url = Json_Url;
         // Populate dropdown with list of provinces
-        $.getJSON(my_url, function(data) {
-            $.each(data, function(key, entry) {
+        $.getJSON(my_url, function (data) {
+            $.each(data, function (key, entry) {
                 dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
             })
         });
     }
 
-    $('input.mutually_check').click(function() {
+    $('input.mutually_check').click(function () {
         checkedState = $(this).prop('checked');
-        $(this).parents('.form-group').find(".mutually_check:checked").each(function() {
+        $(this).parents('.form-group').find(".mutually_check:checked").each(function () {
             $(this).prop('checked', false);
         });
         $(this).prop('checked', checkedState);
@@ -478,67 +488,87 @@ $(document).ready(function() {
         }
     });
 
-    /*$('#bootstrapForm').submit(function (event) {
-        event.preventDefault();
-        var extraData = {};
-        {
-             Parsing input date id=700770343
-            var dateField = $("#700770343_date").val();
-            var timeField = $("#700770343_time").val();
-            let d = new Date(dateField);
-            if (!isNaN(d.getTime())) {
-                extraData["entry.700770343_year"] = d.getFullYear();
-                extraData["entry.700770343_month"] = d.getMonth() + 1;
-                extraData["entry.700770343_day"] = d.getUTCDate();
+    var ListaICD10 = [];
+    var ICD10_options_by_code = {
+        url: "icd10_codes.json",
+        getValue: function (element) {
+            return element.code;
+        },
+        template: {
+            type: "description",
+            fields: {
+                description: "desc"
             }
-            if (timeField && timeField.split(':').length >= 2) {
-                let values = timeField.split(':');
-                extraData["entry.700770343_hour"] = values[0];
-                extraData["entry.700770343_minute"] = values[1];
+        },
+        list: {
+            maxNumberOfElements: 5,
+            match: {
+                enabled: true
+            },
+            sort: {
+                enabled: true
+            },
+            onClickEvent: function (element) {
+                var code = $("#ICD10Code").val();
+                var description = $(".selected .eac-item span").text();
+                $("#ICD10Code").val($("#ICD10Code").val() + " " + description);
+                ListaICD10.push({"code": code, "desc": description});
+                create_Table_Delete(ListaICD10,"json_medical_history","fieldsetHistoryMedicalDiagnosis");
+            },
+            onChooseEvent: function (element) {
+
             }
-        }
-        {
-            Parsing input date id=1969236884
-            var dateField = $("#1969236884_date").val();
-            var timeField = $("#1969236884_time").val();
-            let d = new Date(dateField);
-            if (!isNaN(d.getTime())) {
-                extraData["entry.1969236884_year"] = d.getFullYear();
-                extraData["entry.1969236884_month"] = d.getMonth() + 1;
-                extraData["entry.1969236884_day"] = d.getUTCDate();
-            }
-            if (timeField && timeField.split(':').length >= 2) {
-                let values = timeField.split(':');
-                extraData["entry.1969236884_hour"] = values[0];
-                extraData["entry.1969236884_minute"] = values[1];
-            }
-        }
-        {
-            Parsing input date id=2126036184
-            var dateField2 = $("#2126036184_date").val();
-            var timeField2 = $("#2126036184_time").val();
-            let d = new Date(dateField2);
-            if (!isNaN(d.getTime())) {
-                extraData["entry.2126036184_year"] = d.getFullYear();
-                extraData["entry.2126036184_month"] = d.getMonth() + 1;
-                extraData["entry.2126036184_day"] = d.getUTCDate();
-            }
-            if (timeField2 && timeField2.split(':').length >= 2) {
-                let values = timeField2.split(':');
-                extraData["entry.2126036184_hour"] = values[0];
-                extraData["entry.2126036184_minute"] = values[1];
-            }
-        }
-        $('#bootstrapForm').ajaxSubmit({
-            data: extraData,
-            dataType: 'jsonp',  // This won't really work. It's just to use a GET instead of a POST to allow cookies from different domain.
-            error: function () {
-                // Submit of form should be successful but JSONP callback will fail because Google Forms
-                // does not support it, so this is handled as a failure.
-                alert('Form Submitted. Thanks.');
-                // You can also redirect the user to a custom thank-you page:
-                // window.location = 'http://www.mydomain.com/thankyoupage.html'
-            }
-        });
-    });*/
+        },
+        theme: "square"
+    };
+
+    $("#ICD10Code").easyAutocomplete(ICD10_options_by_code);
+    $("#ICD10Code").on("focus", function (element) {
+        $(this).val("");
+    });
+
+    Initialize();
+
 });
+
+function create_Table_Delete(lista_JSON, div_id,field_id) {
+    var delete_btn = "<input style=\"width:100%;\" class=\"btn btn-primary btn-delete\" type=\"button\" value=\"Delete\">";
+
+    $.each(lista_JSON, function (index, element) {
+        element.Action = delete_btn;
+    });
+    var local_field_id = "#"+field_id;
+    var local_div_id = "#"+div_id;
+    //var div_table = $("<div id='json_history_div' class='table form-group'>");
+    $(local_field_id).find(local_div_id).empty();
+    //$("#fieldHistory").append(div_table);
+    $(local_div_id).createTable(lista_JSON);
+    $(local_div_id).find(".btn-delete").on("click", function (evt) {
+        var deleted_item_index = $(this).parents("tr").find(".jsl").text();
+        $(this).parents("tr").remove();
+        var element_to_Delete  = (parseInt(deleted_item_index) - 1);
+        lista_JSON.splice(element_to_Delete,1);
+        console.log(lista_JSON);
+        $(local_div_id).empty();
+        if (lista_JSON.length > 0) {
+            create_Table_Delete(lista_JSON, div_id, field_id);
+        }
+    });
+};
+
+function send_Ajax_Data(custom_URL, object_JSON) {
+    $.ajax({
+        type: "POST",
+        url: custom_URL,
+        // The key needs to match your method's input parameter (case-sensitive).
+        data: JSON.stringify(object_JSON),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            return data;
+        },
+        failure: function (errMsg) {
+            console.log(errMsg);
+        }
+    });
+};
