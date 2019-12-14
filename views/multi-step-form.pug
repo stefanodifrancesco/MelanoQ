@@ -13,7 +13,7 @@ block content
     // multistep form
     form#msform(action="/stepform" method="POST" autocomplete="off")
     
-        fieldset(id='initial-fieldset')
+        fieldset
           div.scrollingdiv(id='scrollerdiv')
             h2.fs-title GENERAL
             h3.fs-subtitle Completed by phisician
@@ -26,10 +26,32 @@ block content
             span.error1(style='display: none;')
                 i.error-log.fa.fa-exclamation-triangle
 
-            label(for='593911901') Database Code Number
-            input#299016579.form-control(type='text' name='codeNumber' required='')
-            span.error1(style='display: none;')
-                i.error-log.fa.fa-exclamation-triangle
+            fieldset#fieldsetCodeNumber
+              label(for='593911901') Database Code Number
+              .divTable
+                .divTableBody
+                  .divTableRow
+                    .divTableCell(style='border: 0px solid white !important;')
+                      .form-group
+                        select#DatabaseCodeCountry.form-control(name='codeCountry')
+                          option(value='No Choosed' selected='') Select Country ...
+                          option(value='Greece') Greece
+                          option(value='Italy') Italy
+                          option(value='Spain') Spain
+                    .divTableCell(style='border: 0px solid white !important;')
+                      .form-group.hidden-control
+                        select#DatabaseCodeCenter.form-control(name='codeCenter')
+                          // <option value="No Choosed" selected>Select Center ...</option>
+                    .divTableCell(style='border: 0px solid white !important;')
+                      .form-group
+                        select#DatabaseCodeType.form-control(name='codeType')
+                          option(value='No Choosed' selected='') Select case type ...
+                          option(value='M') Melanoma Case
+                          option(value='C') Control subject
+                  .divTableRow
+                    .divTableCell(style='border: 0px solid white !important;')
+                      .form-group
+                        input#codeNumber(type='text' readonly='' value='' name='codeNumber')
 
             label(for='1763927487') Date of questionnaire administration and phenotyping
             input#1763927487.datepicker.form-control(type='text' placeholder='Select date' required='' name='surveyDate')
@@ -54,7 +76,7 @@ block content
 
           input.start(type='button', name='next', value='CONFIRM')
 
-        fieldset(id='initial-fieldset')
+        fieldset
           div.scrollingdiv(id='scrollerdiv')
             h2.fs-title GENERAL
             h3.fs-subtitle Completed by phisician
@@ -142,16 +164,16 @@ block content
             span.error1(style='display: none;')
                 i.error-log.fa.fa-exclamation-triangle
 
-            label(for='History' style='font-size: 12px;')
-              | History of occupation(optional History of occupation
-              | (starting from most recent and
-              | going backwards in time record duration from YYYY to YYYY)
-            select#History.form-control(name='occupational_history')
-            .form-group.dynamic_ddl(style='display: none;')
-            .form-group.div_date(style='display: none;')
-            .table(style='display: none;')
-            span.error1(style='display: none;')
-                i.error-log.fa.fa-exclamation-triangle
+            fieldset#fieldHistory
+              label(for='History', style='font-size: 12px;')
+                | History of occupation(optional History of occupation
+                | (starting from most recent and
+                | going backwards in time record duration from YYYY to YYYY)
+              .form-group
+                select#History.form-control(name='entry.History')
+              .form-group.dynamic_ddl
+              .form-group.div_date
+              .table
 
           div.alphaformfooter
           div.formfooter
@@ -193,16 +215,40 @@ block content
             span.error1(style='display: none;')
                 i.error-log.fa.fa-exclamation-triangle
 
-            label(for='id_hair_color') Hair color (at age of 18 yrs)
-            select#id_hair_color.form-control(name='hair_color')
-              option(value='') Select hair color ...
-              option(value='Red') Red
-              option(value='Blonde') Blonde
-              option(value='Light brown') Light brown
-              option(value='Dark brown') Dark brown
-              option(value='Black') Black
-            span.error1(style='display: none;')
-                i.error-log.fa.fa-exclamation-triangle
+            fieldset#fieldsetHair
+            label(for='1275694163') Hair color (at age of 18 yrs)
+            .form-group
+              .divTable
+                .divTableBody
+                  .divTableRow
+                    .divTableCell
+                      span Red Hair Color
+                      input#Red_Hair(type='radio' name='entry.Red_Color' value='red')
+                    .divTableCell
+                      span Blonde Hair Color
+                      input#Blonde_Hair(type='radio' name='entry.Blonde_Color' value='blonde')
+                    .divTableCell
+                      span Light Brown Color
+                      input#Light_brown_Hair(type='radio' name='entry.Light_Brown_Color' value='Light brown')
+                    .divTableCell
+                      span Dark Brown Color
+                      input#Dark_brown_Hair(type='radio' name='entry.Dark_brown' value='Dark brown')
+                    .divTableCell
+                      span Dark Color
+                      input#Dark_Hair(type='radio' name='entry.Dark_Color' value='red')
+                  .divTableRow
+                    .divTableCell
+                      img(src='img/Color-hair/Red_hair.png' width='150' height='50')
+                    .divTableCell
+                      img(src='img/Color-hair/Blonde_hair.png' width='150' height='50')
+                    .divTableCell
+                      img(src='img/Color-hair/Light_brown_hair.png' width='100' height='50' )
+                    .divTableCell
+                      img(src='img/Color-hair/Dark_brown_hair.png' width='150' height='50')
+                    .divTableCell
+                      img(src='img/Color-hair/Dark_hair.png' width='150' height='50')
+            .form-group.hidden-control
+              img#hair-img(src='' alt='' height='auto' width='auto')
 
             label(for='id_freckles') FrecklesDefinition: Light brown small macules since childhood, on the face, during summer time (disappear in winter)
             select#id_freckles.form-control(name='freckles' required='required' data-rule-required='true' data-msg-required='Required field')
@@ -303,31 +349,31 @@ block content
                   .divTableRow
                     .divTableCell Childhood (up to age 10 yrs)
                     .divTableCell
-                      input#Childhood_Period(type='text' name='exposure_childhood_period')
+                      input#Childhood_Period(type='number' name='exposure_childhood_period')
                       span.highlight
                       span.bar(style='')
                     .divTableCell
-                      input#Childhood_Time(type='text' name='exposure_childhood_time')
+                      input#Childhood_Time(type='number' name='exposure_childhood_time')
                       span.highlight
                       span.bar(style='')
                   .divTableRow
                     .divTableCell Adolescence (11-18 yrs)
                     .divTableCell
-                      input#Adolescence_Weeks(type='text' name='exposure_adolescence_period')
+                      input#Adolescence_Weeks(type='number' name='exposure_adolescence_period')
                       span.highlight
                       span.bar(style='')
                     .divTableCell
-                      input#Adolescence_Time(type='text' name='exposure_adolescence_time')
+                      input#Adolescence_Time(type='number' name='exposure_adolescence_time')
                       span.highlight
                       span.bar(style='')
                   .divTableRow
                     .divTableCell Adulthood (&ge;18 yrs)
                     .divTableCell
-                      input#Adulthood_Weeks(type='text' name='exposure_adulthood_period')
+                      input#Adulthood_Weeks(type='number' name='exposure_adulthood_period')
                       span.highlight
                       span.bar(style='')
                     .divTableCell
-                      input#Adulthood_Time(type='text' name='exposure_adulthood_time')
+                      input#Adulthood_Time(type='number' name='exposure_adulthood_time')
                       span.highlight
                       span.bar(style='')
                   .divTableRow
@@ -336,11 +382,11 @@ block content
                       | cases) or last 10 years
                       | (for controls)
                     .divTableCell
-                      input#10_years_before_period(type='text' name='exposure_10_years_before_period')
+                      input#10_years_before_period(type='number' name='exposure_10_years_before_period')
                       span.highlight
                       span.bar(style='')
                     .divTableCell
-                      input#10_years_before_time(type='text' name='exposure_10_years_before_time')
+                      input#10_years_before_time(type='number' name='exposure_10_years_before_time')
                       span.highlight
                       span.bar(style='')
 
@@ -527,30 +573,21 @@ block content
               option(value='Notknown') Not known
 
             label Sunlamps/sunbeds
-            .divTable
-              .divTableRow
-                .divTableCell.NoDivTableBorder(style='width:34%;')
-                  span Did you use sunlamps or sunbeads?
-                .divTableCell.NoDivTableBorder(style='width:32%;')
-                  select#id_Sunlamp.form-control(name='sunlamp')
-                    option(value='NoChoosed') Select ...
-                    option(value='No') No
-                    option(value='Yes') Yes
-            hidden-control(style='margin-top:20px;')
-              input#Sunlamp_sessions.special_on_div_table(type='number', name='number_sunlamp')
-              span.highlight
-              span.bar
-              label Lifetime number of sessions:
-            hidden-control
-              input#Sunlamp_first_age.special_on_div_table(type='number', name='first_sunlamp')
-              span.highlight
-              span.bar
-              label Age at first exposure:
-            hidden-control
+            
+            span Did you use sunlamps or sunbeads?
+            select#id_Sunlamp.form-control(name='sunlamp')
+              option(value='NoChoosed') Select ...
+              option(value='No') No
+              option(value='Yes') Yes
+            .hidden-control(style='margin-top:20px;')
+              span Lifetime number of sessions:
+              input#Sunlamp_sessions.special_on_div_table(type='number', name='number_sunlamp')              
+            .hidden-control
+              span Age at first exposure:
+              input#Sunlamp_first_age.special_on_div_table(type='number', name='first_sunlamp')              
+            .hidden-control
+              span Age at last exposure:
               input#Sunlamp_last_age.special_on_div_table(type='number', name='last_sunlamp')
-              span.highlight
-              span.bar
-              label Age at last exposure:
 
             label Phototherapy(UVB-PUVA) (Optional)
             .divTable
@@ -575,23 +612,20 @@ block content
             h3.fs-subtitle Completed by case/control
 
             label Smoking
-            .divTable
-              .divTableRow
-                .divTableCell.NoDivTableBorder(style='width:34%;')
-                  span Did you smoke?
-                .divTableCell.NoDivTableBorder(style='width:32%;')
-                  select#id_Smoking.form-control(name='smoking')
-                    option(value='') Select ...
-                    option(value='Never') Never
-                    option(value='Former') Former smoker (quit one year before diagnosis or earlier)
-                    option(value='Current') Current smoker
-            .group.hidden-control(style='margin-top:20px;')
-              input#Smoking_age.special_on_div_table(type='first_smoking', name="first_smoking")
-              label.hidden-label Age when you started:
-            .group.hidden-control
-              input#Smoking_years.special_on_div_table(type='smoking_period', name="smoking_period")
-              label.hidden-label How long have you been smoking ?(years):
-            .group.hidden-control
+            span
+            span Did you smoke?
+            select#id_Smoking.form-control(name='smoking')
+              option(value='') Select ...
+              option(value='Never') Never
+              option(value='Former') Former smoker (quit one year before diagnosis or earlier)
+              option(value='Current') Current smoker
+            .hidden-control(style='margin-top:20px;')
+              span Age when you started:
+              input#Smoking_age.special_on_div_table(type='number', name="first_smoking")              
+            .hidden-control
+              span How long have you been smoking ?(years):
+              input#Smoking_years.special_on_div_table(type='number', name="smoking_period")              
+            .hidden-control
               .divTable
                 .divTableRow
                   .divTableCell.NoDivTableBorder(style='width: 50%;')
@@ -609,7 +643,7 @@ block content
               option(value='') Select ...
               option(value='No') No
               option(value='Yes') Yes
-            .group.hidden-control
+            .hidden-control
               .divTable
                 .divTableRow
                   .divTableCell.NoDivTableBorder(style='width: 50%;')
@@ -976,22 +1010,17 @@ block content
                         option(value='NoChoosed') Select...
                         option(value='No') No
                         option(value='Yes') Yes
-            .form-group
-              .divTable
-                .divTableRow
-                  .divTableCell.NoDivTableBorder
-                  .divTableCell.NoDivTableBorder(style='width:32%;')
-                    .hidden-control
-                      .group(style='margin-bottom:0%;vertical-align: bottom;')
-                        select#selectActinicKeratosesSite.form-control
-                          option(value='NoChoosed') Select Site...
-                          option(value='Scalp') Scalp
-                          option(value='Face') Face
-                          option(value='Other')
-                            | Other exposed areas (hands, arms, trunk, legs)
-            .form-group(style='margin-top: 20px;')
-              .divTable(style='width: 100%;')
-                .divTableBody
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder
+                    .divTableCell.NoDivTableBorder(style='width:32%;')
+                      .hidden-control
+                        .group(style='margin-bottom:0%;vertical-align: bottom;')
+                          select#selectActinicKeratosesSite.form-control
+                            option(value='NoChoosed') Select Site...
+                            option(value='Scalp') Scalp
+                            option(value='Face') Face
+                            option(value='Other')
+                              | Other exposed areas (hands, arms, trunk, legs)
                   .divTableRow
                     .divTableCell.NoDivTableBorder &nbsp;
                     .divTableCell.NoDivTableBorder(style='width:32%;')
@@ -1007,4 +1036,4 @@ block content
           div.formfooter
           input.scroll-button-bottom(type='button')
           input.previous.action-button(type='button', name='previous', value='Previous')
-          input.submit.action-button(type='submit', value='Submit')
+          input.submit.action-button#submit(type='submit', value='Submit')

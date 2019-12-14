@@ -2,10 +2,10 @@ extends layout
 
 block content
     div.profile-header
-      button.new-questionnaire-button(onclick="window.location.href = '/logout';")
+      button.new-questionnaire-button(onclick="window.location.href = '/stepform';")
         i.fas.fa-plus
           |  new questionnaire
-      button.logout-button(onclick="window.location.href = '/stepform';")
+      button.logout-button(onclick="window.location.href = '/logout';")
         i.fas.fa-sign-out-alt
           |  Logout
       h2 #{profileData.username}
@@ -32,9 +32,8 @@ block content
                       each quest in profileData.questionnaires
                         tr
                           td(style='width: 400px;')
-                            <form action="/find" method="post">
-                              <button type="submit" name="codeNumber" value=#{quest.code_number} class="btn-link questionnaire-link">#{quest.code_number}</button>
-                            </form>
+                            form(action='/find' method='post')
+                              button.btn-link.questionnaire-link(type='submit' name='codeNumber' value='#{quest.code_number}') #{quest.code_number}
                           td #{quest.insert_date}
 
               else 
@@ -53,9 +52,12 @@ block content
                       each quest in result
                         tr
                           td(style='width: 400px;')
-                            <form action="/find" method="post">
-                              <button type="submit" name="codeNumber" value=#{quest.codeNumber} class="btn-link questionnaire-link">#{quest.codeNumber}</button>
-                            </form>
+                            form(action='/find' method='post')
+                              button.btn-link.questionnaire-link(
+                                type='submit' 
+                                name='codeNumber' 
+                                value='#{quest._source.codeNumber}'
+                              ) #{quest._source.codeCountry}, #{quest._source.codeCenter}, #{quest._source.codeType} - #{quest._source.codeNumber}
                           td #{quest.insert_date}
 
               else 

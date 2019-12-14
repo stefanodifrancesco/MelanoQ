@@ -29,7 +29,7 @@
     right: 0;
 }
 
-#msform fieldset {
+#msform>fieldset {
     background: white;
     border: 0 none;
     border-radius: 10px;
