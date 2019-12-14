@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.1.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.1.3-dist/Melanoq.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha256-2Pjr1OlpZMY6qesJM68t2v39t+lMLvxwpa8QlRjJroA=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="bootstrap-4.1.3-dist/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+        // This script requires jQuery and jquery-form plugin
+        // You can use these ones from Cloudflare CDN:
+
+        $(document).ready(function(){
+
+            $('input.mutually_check').click(function () {
+                checkedState = $(this).prop('checked');
+                $(this).parents('.form-group').find(".mutually_check:checked").each(function () {
+                    $(this).prop('checked', false);
+                });
+                $(this).prop('checked', checkedState);
+                if($(this).attr("name") == "entry.1037168325") {
+                    $(this).removeClass("hidden-form").addClass("form-control");
+                }else {
+                    $("#type_of_melanoma").removeClass("form-control").addClass("hidden-form");
+                }
+            });
+
+        });
+
+        $('#bootstrapForm').submit(function (event) {
+            event.preventDefault();
+            var extraData = {};
+            {
+                /* Parsing input date id=700770343 */
+                var dateField = $("#700770343_date").val();
+                var timeField = $("#700770343_time").val();
+                let d = new Date(dateField);
+                if (!isNaN(d.getTime())) {
+                    extraData["entry.700770343_year"] = d.getFullYear();
+                    extraData["entry.700770343_month"] = d.getMonth() + 1;
+                    extraData["entry.700770343_day"] = d.getUTCDate();
+                }
+                if (timeField && timeField.split(':').length >= 2) {
+                    let values = timeField.split(':');
+                    extraData["entry.700770343_hour"] = values[0];
+                    extraData["entry.700770343_minute"] = values[1];
+                }
+            }
+            {
+                /* Parsing input date id=1969236884 */
+                var dateField = $("#1969236884_date").val();
+                var timeField = $("#1969236884_time").val();
+                let d = new Date(dateField);
+                if (!isNaN(d.getTime())) {
+                    extraData["entry.1969236884_year"] = d.getFullYear();
+                    extraData["entry.1969236884_month"] = d.getMonth() + 1;
+                    extraData["entry.1969236884_day"] = d.getUTCDate();
+                }
+                if (timeField && timeField.split(':').length >= 2) {
+                    let values = timeField.split(':');
+                    extraData["entry.1969236884_hour"] = values[0];
+                    extraData["entry.1969236884_minute"] = values[1];
+                }
+            }
+            {
+                /* Parsing input date id=2126036184 */
+                var dateField2 = $("#2126036184_date").val();
+                var timeField2 = $("#2126036184_time").val();
+                let d = new Date(dateField2);
+                if (!isNaN(d.getTime())) {
+                    extraData["entry.2126036184_year"] = d.getFullYear();
+                    extraData["entry.2126036184_month"] = d.getMonth() + 1;
+                    extraData["entry.2126036184_day"] = d.getUTCDate();
+                }
+                if (timeField2 && timeField2.split(':').length >= 2) {
+                    let values = timeField2.split(':');
+                    extraData["entry.2126036184_hour"] = values[0];
+                    extraData["entry.2126036184_minute"] = values[1];
+                }
+            }
+            $('#bootstrapForm').ajaxSubmit({
+                data: extraData,
+                dataType: 'jsonp',  // This won't really work. It's just to use a GET instead of a POST to allow cookies from different domain.
+                error: function () {
+                    // Submit of form should be successful but JSONP callback will fail because Google Forms
+                    // does not support it, so this is handled as a failure.
+                    alert('Form Submitted. Thanks.');
+                    // You can also redirect the user to a custom thank-you page:
+                    // window.location = 'http://www.mydomain.com/thankyoupage.html'
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSdPDqxAyFc780u16p8va-WlH0xdqgli73wrYMBzmIZgPKgQwQ/formResponse"
+      target="_self"
+      id="bootstrapForm"
+      method="POST">
+    <fieldset>
+        <h2>MelanoQ Questionnaire</h2>
+    </fieldset>
+
+
+    <!-- Field type: "dropdown" id: "1237444630" -->
+    <fieldset>
+        <legend>Section A</legend>
+        <legend for="1237444630">Subject</legend>
+        <div class="form-group">
+            <select id="1237444630" name="entry.385415683" class="form-control">
+                <option value="Case">Case</option>
+                <option value="Control">Control</option>
+            </select>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "593911901" -->
+    <fieldset>
+        <legend for="593911901">Database Code Number</legend>
+        <div class="form-group">
+            <input id="299016579" type="text" name="entry.299016579" class="form-control" required>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "date" id: "1763927487" -->
+    <fieldset>
+        <legend for="1763927487">Date of questionnaire administration and phenotyping</legend>
+        <div class="form-group">
+            <input type="date" id="700770343_date" placeholder="DD/MMM/YYYY" class="form-control" required>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "date" id: "9069469" -->
+    <fieldset>
+        <legend for="9069469">Dates of updated questionnaire and/or phenotyping</legend>
+        <div class="form-group">
+            <input type="date" id="1969236884_date" placeholder="DD/MMM/YYYY" class="form-control" >
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "checkboxes" id: "1246281779" -->
+    <fieldset>
+        <legend for="1246281779">Type of melanoma </legend>
+        <div class="form-group">
+            <p class="help-block">(if subject is a melanoma case): sporadic or familial (the latter defined as ≥2 affected individuals, with in situ or invasive melanoma in 1st to 3rd degree relatives)*</p>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1037168325" value="Sporadic" class="mutually_check" >
+                    Sporadic
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1037168325" value="Familial" class="mutually_check">
+                    Familial
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1037168325" value="Don&#x27;t know" class="mutually_check">
+                    Don&#x27;t know
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="entry.1037168325" value="Other (complex family history), specify:" class="mutually_check" >
+                    Other (complex family history), specify:
+                </label>
+                <div>
+                    <label>
+                        <input type="text" id = "hidden_type_of_melanoma" name="optional_text" value="" class="hidden-control mutually_check" placeholder="Insert the other arguments" >
+                    </label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "section" id: "1133627517" -->
+    <fieldset>
+        <legend for="1133627517">DEMOGRAPHIC </legend>
+        <div class="form-group">
+            <p class="help-block">completed by case/control</p>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "dropdown" id: "1350866299" -->
+    <fieldset>
+        <legend for="1350866299">Sex</legend>
+        <div class="form-group">
+            <select id="1350866299" name="entry.913970556" class="form-control">
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+            </select>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "date" id: "80728029" -->
+    <fieldset>
+        <legend for="80728029">Date and place of birth</legend>
+        <div class="form-group">
+            <input type="date" id="2126036184_date" placeholder="8/8/2019" class="form-control" >
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "short" id: "248537302" -->
+    <fieldset>
+        <legend for="248537302">Weight and height</legend>
+        <div class="form-group">
+            <input id="1061275120" type="text" name="entry.1061275120" class="form-control" >
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "dropdown" id: "1761024152" -->
+    <fieldset>
+        <legend for="1761024152">Ethnicity </legend>
+        <div class="form-group">
+            <select id="1761024152" name="entry.1563825996" class="form-control">
+                <option value=""></option>
+                <option value="White">White</option>
+                <option value="Black or African American">Black or African American</option>
+                <option value="Asian">Asian</option>
+                <option value="Hispanic or Latino (i.e. from South or Central America)">Hispanic or Latino (i.e. from South or Central America)</option>
+                <option value="Other(Specify aggiungere paragraph per specificare)">Other(Specify aggiungere paragraph per specificare)</option>
+            </select>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "paragraph" id: "674142058" -->
+    <fieldset>
+        <legend for="674142058">Residency (Record all places where the case/control has resided for &gt;6 months Specify exact location (country, city/town) and time (from YYYY to YYYY)</legend>
+        <div class="form-group">
+            <textarea id="1215413166" name="entry.1215413166" class="form-control" ></textarea>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "dropdown" id: "261025725" -->
+    <fieldset>
+        <legend for="261025725">Education</legend>
+        <div class="form-group">
+            <select id="261025725" name="entry.1478884860" class="form-control">
+                <option value=""></option>
+                <option value="Up to junior high school (up to 14-16 yrs)">Up to junior high school (up to 14-16 yrs)</option>
+                <option value="High school (up to 18-19 yrs)">High school (up to 18-19 yrs)</option>
+                <option value="University">University</option>
+            </select>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "dropdown" id: "2111843347" -->
+    <fieldset>
+        <legend for="2111843347">Current occupational status</legend>
+        <div class="form-group">
+            <select id="2111843347" name="entry.623264529" class="form-control">
+                <option value=""></option>
+                <option value="Employed">Employed</option>
+                <option value="Working at home">Working at home</option>
+                <option value="Unemployed">Unemployed</option>
+                <option value="Student">Student</option>
+                <option value="Retired">Retired</option>
+            </select>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "paragraph" id: "1456128924" -->
+    <fieldset>
+        <legend for="1456128924">History of occupation(optional History of occupation (starting from most recent and going backwards in time record duration from YYYY to YYYY)</legend>
+        <div class="form-group">
+            <textarea id="891249725" name="entry.891249725" class="form-control" ></textarea>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "section" id: "581845255" -->
+    <fieldset>
+        <legend for="581845255">Section B</legend>
+        <div class="form-group">
+            <p class="help-block">PHENOTYPE (completed by case/control)</p>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "dropdown" id: "1548717344" -->
+    <fieldset>
+        <legend for="1548717344">Which of the following sentences does better describe your skin response to sun exposure at noon for 30 minutes in the first days of the summer without sunscreen/clothing protection?</legend>
+        <div class="form-group">
+            <select id="1548717344" name="entry.1532747195" class="form-control">
+                <option value=""></option>
+                <option value="Not burn">Not burn</option>
+                <option value="Burns lightly">Burns lightly</option>
+                <option value="Burns moderately">Burns moderately</option>
+                <option value="Burns severely">Burns severely</option>
+            </select>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "dropdown" id: "2143095268" -->
+    <fieldset>
+        <legend for="2143095268">2.	Does your skin tan after a prolonged and repeated sun exposure (e.g. after several days as at the end of the summer) without protecting it with sunscreen or clothing?</legend>
+        <div class="form-group">
+            <select id="2143095268" name="entry.1664734739" class="form-control">
+                <option value=""></option>
+                <option value="No tan">No tan</option>
+                <option value="Tans lightly">Tans lightly</option>
+                <option value="Tans moderately">Tans moderately</option>
+                <option value="Tans deeply">Tans deeply</option>
+            </select>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "dropdown" id: "1304821978" -->
+    <fieldset>
+        <legend for="1304821978">Eye Color</legend>
+        <div class="form-group">
+            <select id="1304821978" name="entry.1643627303" class="form-control">
+                <option value=""></option>
+                <option value="Light (green, blue, gray)">Light (green, blue, gray)</option>
+                <option value="Medium (light brown, hazel)">Medium (light brown, hazel)</option>
+                <option value="Dark (dark brown, black)">Dark (dark brown, black)</option>
+            </select>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "dropdown" id: "1275694163" -->
+    <fieldset>
+        <legend for="1275694163">Hair color (at age of 18 yrs)</legend>
+        <div class="form-group">
+            <select id="1275694163" name="entry.1213183385" class="form-control">
+                <option value=""></option>
+                <option value="Red">Red</option>
+                <option value="Blonde">Blonde</option>
+                <option value="Light brown">Light brown</option>
+                <option value="Dark brown">Dark brown</option>
+                <option value="Black">Black</option>
+            </select>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "dropdown" id: "627155725" -->
+    <fieldset>
+        <legend for="627155725">FrecklesDefinition: Light brown small macules since childhood, on the face, during summer time (disappear in winter)</legend>
+        <div class="form-group">
+            <select id="627155725" name="entry.1963256364" class="form-control">
+                <option value=""></option>
+                <option value="None">None</option>
+                <option value="Few">Few</option>
+                <option value="Some">Some</option>
+                <option value="Many">Many</option>
+            </select>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "choices" id: "274284065" -->
+    <fieldset>
+        <legend for="274284065">Nevi in childhood/adolescence (i.e., age of 18 yrs)</legend>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.564556076" value="None" >
+                    None
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.564556076" value="Few" >
+                    Few
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.564556076" value="Some" >
+                    Some
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.564556076" value="Many" >
+                    Many
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "section" id: "858926295" -->
+    <fieldset>
+        <legend for="858926295">HISTORY OF ULTRAVIOLET EXPOSURE </legend>
+        <div class="form-group">
+            <p class="help-block">(completed by case/control)</p>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "grid" id: "771490717" -->
+    <fieldset>
+        <legend for="771490717">Occupational sun exposure(i.e. outdoor occupation with at least 4 hours/day spent outdoor in the sun)</legend>
+        <div class="form-group">
+            <div>
+                <span>How many hours/day?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.757925340" value="Colonna 1" required>
+                    Colonna 1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.757925340" value="Colonna 2" required>
+                    Colonna 2
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.757925340" value="Colonna 3" required>
+                    Colonna 3
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.757925340" value="Colonna 4" required>
+                    Colonna 4
+                </label>
+            </div>
+            <div>
+                <span>How many days/month?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1372360459" value="Colonna 1" required>
+                    Colonna 1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1372360459" value="Colonna 2" required>
+                    Colonna 2
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1372360459" value="Colonna 3" required>
+                    Colonna 3
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1372360459" value="Colonna 4" required>
+                    Colonna 4
+                </label>
+            </div>
+            <div>
+                <span>How many months/year?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1283764120" value="Colonna 1" required>
+                    Colonna 1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1283764120" value="Colonna 2" required>
+                    Colonna 2
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1283764120" value="Colonna 3" required>
+                    Colonna 3
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1283764120" value="Colonna 4" required>
+                    Colonna 4
+                </label>
+            </div>
+            <div>
+                <span>How many years?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.148710385" value="Colonna 1" required>
+                    Colonna 1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.148710385" value="Colonna 2" required>
+                    Colonna 2
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.148710385" value="Colonna 3" required>
+                    Colonna 3
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.148710385" value="Colonna 4" required>
+                    Colonna 4
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "grid" id: "488897" -->
+    <fieldset>
+        <legend for="488897">Recreational sun exposure (i.e. outdoor hobbies or physical activities–other than sunbathing–with at least 4 hours/day spent outdoor in the sun)</legend>
+        <div class="form-group">
+            <div>
+                <span>How many hours/day?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1483774313" value="Colonna 1" required>
+                    Colonna 1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1483774313" value="Colonna 2" required>
+                    Colonna 2
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1483774313" value="Colonna 3" required>
+                    Colonna 3
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1483774313" value="Colonna 4" required>
+                    Colonna 4
+                </label>
+            </div>
+            <div>
+                <span>How many days/month?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.45521333" value="Colonna 1" required>
+                    Colonna 1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.45521333" value="Colonna 2" required>
+                    Colonna 2
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.45521333" value="Colonna 3" required>
+                    Colonna 3
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.45521333" value="Colonna 4" required>
+                    Colonna 4
+                </label>
+            </div>
+            <div>
+                <span>How many months/year?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1397800210" value="Colonna 1" required>
+                    Colonna 1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1397800210" value="Colonna 2" required>
+                    Colonna 2
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1397800210" value="Colonna 3" required>
+                    Colonna 3
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1397800210" value="Colonna 4" required>
+                    Colonna 4
+                </label>
+            </div>
+            <div>
+                <span>How many years?: </span>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1106354719" value="Colonna 1" required>
+                    Colonna 1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1106354719" value="Colonna 2" required>
+                    Colonna 2
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1106354719" value="Colonna 3" required>
+                    Colonna 3
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="entry.1106354719" value="Colonna 4" required>
+                    Colonna 4
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "paragraph" id: "665091332" -->
+    <fieldset>
+        <legend for="665091332">Intermittent sun exposure (i.e. sun exposure in spring and summer time, including vacation, during peak hours–11AM-4PM)</legend>
+        <div class="form-group">
+            <textarea id="1118602378" name="entry.1118602378" class="form-control" ></textarea>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "paragraph" id: "1411983333" -->
+    <fieldset>
+        <legend for="1411983333">Most recent intense intermittent sun exposure</legend>
+        <div class="form-group">
+            <textarea id="733267422" name="entry.733267422" class="form-control" ></textarea>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "paragraph" id: "42940743" -->
+    <fieldset>
+        <legend for="42940743">Severe sunburns (Grade 2), lifetime before diagnosis.Definition: suburns with erythema and pain for more than 2 days or with blisters (no matter for how long)</legend>
+        <div class="form-group">
+            <textarea id="1936534271" name="entry.1936534271" class="form-control" ></textarea>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "paragraph" id: "162128682" -->
+    <fieldset>
+        <legend for="162128682">Sunscreen use (summer time)</legend>
+        <div class="form-group">
+            <textarea id="593895488" name="entry.593895488" class="form-control" ></textarea>
+        </div>
+    </fieldset>
+
+    <input type="hidden" name="fvv" value="1">
+    <input type="hidden" name="fbzx" value="4521077100654506052">
+    <!--
+        CAVEAT: In multipages (multisection) forms, *pageHistory* field tells to google what sections we've currently completed.
+        This usually starts as "0" for the first page, then "0,1" in the second page... up to "0,1,2..N" in n-th page.
+        Keep this in mind if you plan to change this code to recreate any sort of multipage-feature in your exported form.
+        We're setting this to the total number of pages in this form because we're sending all fields from all the section together.
+    -->
+    <input type="hidden" name="pageHistory" value="0,1,2,3">
+
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+</body>
+</html>

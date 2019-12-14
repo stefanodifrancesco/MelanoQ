@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.1.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.1.3-dist/Melanoq.css">
+    <link rel="stylesheet" type="text/css" href="vitalets-bootstrap-datepicker/css/datepicker.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="EasyAutocomplete-1.3.5/easy-autocomplete.css">
+    <link rel="stylesheet" type="text/css" href="EasyAutocomplete-1.3.5/easy-autocomplete.themes.css">
+    <link rel="stylesheet" type="text/css" href="jQuery-JSON-To-Table-Plugin/JSON-to-Table.css">
+    <link href="Google-Address-Autocomplete-Plugin-geocomplete/dist/jquery.geocomplete.min.css" rel="stylesheet">
+    <link href="bootstrap-toggle-master/css/bootstrap-toggle.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"
+            integrity="sha256-2Pjr1OlpZMY6qesJM68t2v39t+lMLvxwpa8QlRjJroA=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="bootstrap-4.1.3-dist/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="vitalets-bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb4iHyy-7QdQO7zzVNYIKBhAn4QbwgIvs&libraries=places"></script>
+
+    <script src="Google-Address-Autocomplete-Plugin-geocomplete/dist/jquery.geocomplete.js"></script>
+
+    <script src="jQuery-JSON-To-Table-Plugin/JSON-to-Table-1.0.0.js"></script>
+
+    <script src="EasyAutocomplete-1.3.5/jquery.easy-autocomplete.js"></script>
+
+    <script src="bootstrap-toggle-master/js/bootstrap-toggle.js"></script>
+
+    <script src="MyScript.js"></script>
+
+
+</head>
+<body>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSdPDqxAyFc780u16p8va-WlH0xdqgli73wrYMBzmIZgPKgQwQ/formResponse"
+      target="_self"
+      id="bootstrapForm"
+      method="POST">
+    <fieldset>
+        <h2>MelanoQ Questionnaire</h2>
+    </fieldset>
+
+
+    <!-- Field type: "dropdown" id: "1237444630" -->
+    <fieldset id="fieldsetSectionA">
+        <legend>Section A</legend>
+        <fieldset>
+            <legend for="1237444630">Subject</legend>
+            <div class="form-group">
+                <select id="1237444630" name="entry.385415683" class="form-control">
+                    <option value="No Choosed" selected>Select Subject ...</option>
+                    <option value="Case">Case</option>
+                    <option value="Control">Control</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "short" id: "593911901" -->
+        <fieldset id="fieldsetCodeNumber">
+            <legend for="593911901">Database Code Number</legend>
+            <div class="divTable">
+                <div class="divTableBody">
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="border: 0px solid white !important;">
+                            <div class="form-group">
+                                <select id="DatabaseCodeCountry" name="entry.DatabaseCodeCountry" class="form-control">
+                                    <option value="No Choosed" selected>Select Country ...</option>
+                                    <option value="Greece">Greece</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Spain">Spain</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="divTableCell" style="border: 0px solid white !important;">
+                            <div class="form-group hidden-control">
+                                <select id="DatabaseCodeCenter" name="entry.DatabaseCodeCenter"
+                                        class="form-control">
+                                    <!--<option value="No Choosed" selected>Select Center ...</option>-->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="divTableCell" style="border: 0px solid white !important;">
+                            <div class="form-group">
+                                <select id="DatabaseCodeType" name="entry.DatabaseCodeType" class="form-control">
+                                    <option value="No Choosed" selected>Select case type ...</option>
+                                    <option value="M">Melanoma Case</option>
+                                    <option value="C">Control subject</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="border: 0px solid white !important;">
+                            <div class="form-group">
+                                <input id="codeNumber" type="text" readonly value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "date" id: "1763927487" -->
+        <fieldset id="fieldsetAdmin">
+            <legend for="1763927487">Date of questionnaire administration and phenotyping</legend>
+            <div class="form-group md-form">
+                <input type="text" id="700770343_date" placeholder="Select date" class="datepicker form-control"
+                       required>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "date" id: "9069469" -->
+        <fieldset id="fieldsetPhenotyping">
+            <legend for="9069469">Dates of updated questionnaire and/or phenotyping</legend>
+            <div class="form-group">
+                <input type="text" id="1969236884_date" placeholder="Select date" class="datepicker form-control"
+                       required>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetTypeOfMelanoma">
+            <legend for="type_of_melanoma">Type of melanoma</legend>
+            <div class="form-group">
+                <select id="Melanoma" name="entry.913970556" class="form-control">
+                    <option value="No Choosed" selected>Select Type ...</option>
+                    <option value="Sporadic">Sporadic</option>
+                    <option value="Familial">Familial</option>
+                    <option value="Don't know">Don't know</option>
+                    <option value="Other">Other (complex family history), specify:</option>
+                </select>
+            </div>
+            <input id="Other_Melanoma" class="hidden-control inputMelanoma" type="text">
+        </fieldset>
+
+        <!-- Field type: "section" id: "1133627517" -->
+        <fieldset id="fieldsetDemographic">
+            <legend for="1133627517">Demographic</legend>
+            <div class="form-group">
+                <p class="help-block">completed by case/control</p>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "dropdown" id: "1350866299" -->
+        <fieldset id="fieldsetGender">
+            <legend for="1350866299">Sex</legend>
+            <div class="form-group">
+                <select id="1350866299" name="entry.913970556" class="form-control">
+                    <option value="No Choosed" selected>Select Gender...</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "date" id: "80728029" -->
+        <fieldset id="fieldsetDateOfBirth">
+            <legend for="80728029">Date and place of birth</legend>
+            <div class="form-group">
+                <input type="text" id="2126036184_date" class="form-control datepicker">
+            </div>
+        </fieldset>
+
+        <!-- Field type: "short" id: "248537302" -->
+        <fieldset id="fieldsetWeightHeight">
+            <legend for="248537302">Weight(Kg)</legend>
+            <div class="form-group">
+                <input id="weight" type="number" name="entry.1061275120" class="form-control">
+            </div>
+
+            <legend for="248537302">Height(Cm)</legend>
+            <div class="form-group">
+                <input id="height" type="number" name="entry.1061275120" class="form-control">
+            </div>
+        </fieldset>
+
+        <!-- Field type: "dropdown" id: "1761024152" -->
+        <fieldset id="fieldsetEthnicity">
+            <legend for="1761024152">Ethnicity</legend>
+            <div class="form-group">
+                <select id="Ethnicity" name="entry.1563825996" class="form-control">
+                    <option value="No Choosed" selected>Select Ethnicity ...</option>
+                    <option value="White/Europe">White/Europe</option>
+                    <option value="White/NorthAfrica">White/NorthAfrica</option>
+                    <option value="White/MiddleEast">White/MiddleEast</option>
+                    <option value="White/Jewish">White/Jewish</option>
+                    <option value="Black or African American">Black or African American</option>
+                    <option value="Asian">Asian</option>
+                    <option value="Hispanic or Latino (i.e. from South or Central America)">Hispanic or Latino (i.e.
+                        from
+                        South or Central America)
+                    </option>
+                    <option value="Other">Other (Specify)</option>
+                </select>
+            </div>
+            <input id="OtherEthnicity" class="hidden-control inputEthnicity" type="text">
+        </fieldset>
+
+        <!-- Field type: "paragraph" id: "674142058" -->
+        <fieldset id="fieldResidency">
+            <legend>Residency
+            </legend>
+            <div id="myForm">
+                <div class="form-group">
+                    <input id="residency" type="text" data-geocomplete="street address" class="form-control">
+                </div>
+                <div class="residency_date_class">
+                </div>
+            </div>
+
+            <div id="myMap">
+            </div>
+            <div id="myJsonTab"></div>
+            <div class="table"></div>
+        </fieldset>
+
+        <!-- Field type: "dropdown" id: "261025725" -->
+        <fieldset id="fieldsetEducation">
+            <legend for="261025725">Education</legend>
+            <div class="form-group">
+                <select id="261025725" name="entry.1478884860" class="form-control">
+                    <option value="No Choosed" selected>Select Range...</option>
+                    <option value="Up to junior high school (up to 14-16 yrs)">Up to junior high school (up to 14-16
+                        yrs)
+                    </option>
+                    <option value="High school (up to 18-19 yrs)">High school (up to 18-19 yrs)</option>
+                    <option value="University">University</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "dropdown" id: "2111843347" -->
+        <fieldset id="fieldsetOccupational">
+            <legend for="2111843347">Current occupational status</legend>
+            <div class="form-group">
+                <select id="2111843347" name="entry.623264529" class="form-control">
+                    <option value="No Choosed" selected>Select Status...</option>
+                    <option value="Employed">Employed</option>
+                    <option value="Working at home">Working at home</option>
+                    <option value="Unemployed">Unemployed</option>
+                    <option value="Student">Student</option>
+                    <option value="Retired">Retired</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "paragraph" id: "1456128924" -->
+        <fieldset id="fieldHistory">
+            <legend for="History" style="font-size: 12px;">History of occupation(optional History of occupation
+                (starting from most recent and
+                going backwards in time record duration from YYYY to YYYY)
+            </legend>
+            <div class="form-group">
+                <select id="History" name="entry.History" class="form-control">
+                </select>
+            </div>
+            <div class="form-group dynamic_ddl"></div>
+            <div class="form-group div_date"></div>
+            <div id = "json-table-wrapper-history" class="table"></div>
+        </fieldset>
+    </fieldset>
+    <!-- Field type: "section" id: "581845255" -->
+    <fieldset id="fieldsetSectionB">
+        <legend for="581845255">Section B</legend>
+        <div class="form-group">
+            <p class="help-block">PHENOTYPE (completed by case/control)</p>
+        </div>
+
+        <!-- Field type: "dropdown" id: "1548717344" -->
+        <fieldset id="fieldsetSkinResponse">
+            <legend for="1548717344">Which of the following sentences does better describe your skin response to sun
+                exposure at noon for 30 minutes in the first days of the summer without sunscreen/clothing protection?
+            </legend>
+            <div class="form-group">
+                <select id="1548717344" name="entry.1532747195" class="form-control">
+                    <option value="NoChoosed">Select Skin Response ...</option>
+                    <option value="Not burn">Not burn</option>
+                    <option value="Burns lightly">Burns lightly</option>
+                    <option value="Burns moderately">Burns moderately</option>
+                    <option value="Burns severely">Burns severely</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "dropdown" id: "2143095268" -->
+        <fieldset id="fieldSkin_tan">
+            <legend for="2143095268">2. Does your skin tan after a prolonged and repeated sun exposure (e.g. after
+                several
+                days as at the end of the summer) without protecting it with sunscreen or clothing?
+            </legend>
+            <div class="form-group">
+                <select id="skin-tan" name="entry.skin-tan" class="form-control skin-tan">
+                    <option value="NoChoosed">Select Tan...</option>
+                    <option value="No tan">No tan</option>
+                    <option value="Tans lightly">Tans lightly</option>
+                    <option value="Tans moderately">Tans moderately</option>
+                    <option value="Tans deeply">Tans deeply</option>
+                </select>
+            </div>
+            <div class="form-group hidden-control">
+                <img id="skin-tan-img" src="" alt="" height="auto" width="auto">
+            </div>
+        </fieldset>
+
+        <!-- Field type: "dropdown" id: "1304821978" -->
+        <fieldset id="fieldsetEye">
+            <legend for="1304821978">Eye Color</legend>
+            <div class="form-group">
+                <select id="id_eyes_color" name="entry.Eye_color" class="form-control">
+                    <option value="">Select eye color...</option>
+                    <option value="Light">Light (green, blue, gray)</option>
+                    <option value="Medium">Medium (light brown, hazel)</option>
+                    <option value="Dark">Dark (dark brown, black)</option>
+                </select>
+            </div>
+            <div class="form-group hidden-control">
+                <img id="eye-img" src="" alt="" height="auto" width="auto">
+            </div>
+        </fieldset>
+
+        <!-- Field type: "dropdown" id: "1275694163" -->
+        <fieldset id="fieldsetHair">
+            <legend for="1275694163">Hair color (at age of 18 yrs)</legend>
+            <!--<div class="form-group">
+                <select id="id_hair_color" name="entry.Hair_color" class="form-control">
+                    <option value="">Select hair color ...</option>
+                    <option value="Red">Red</option>
+                    <option value="Blonde">Blonde</option>
+                    <option value="Light brown">Light brown</option>
+                    <option value="Dark brown">Dark brown</option>
+                    <option value="Black">Black</option>
+                </select>
+            </div>-->
+            <div class="form-group">
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell"><span>Red Hair Color<input
+                                    type="radio"
+                                    name="group.hair"
+                                    value="red"
+                                    id="Red_Hair i">
+                            </span>
+                            </div>
+                            <div class="divTableCell"><span class="">Blonde Hair Color<input
+                                    type="radio"
+                                    name="group.hair"
+                                    value="blonde"
+                                    id="Blonde_Hair"></span></div>
+                            <div class="divTableCell"><span>Light Brown Color</span><input
+                                    type="radio"
+                                    name="group.hair"
+                                    value="Light brown"
+                                    id="Light_brown_Hair"></div>
+                            <div class="divTableCell"><span>Dark Brown Color</span><input
+                                    type="radio"
+                                    name="group.hair"
+                                    value="Dark brown"
+                                    id="Dark_brown_Hair"></div>
+                            <div class="divTableCell"><span>Dark Color</span><input
+                                    type="radio"
+                                    name="group.hair"
+                                    value="red"
+                                    id="Dark_Hair"></div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"><img src="img/Color-hair/Red_hair-removebg.png" width="150"
+                                                           height="50">
+                            </div>
+                            <div class="divTableCell"><img src="img/Color-hair/Blonde_hair-removebg.png" width="150"
+                                                           height="50">
+                            </div>
+                            <div class="divTableCell"><img src="img/Color-hair/Light_brown_hair-removebg.png"
+                                                           width="100"
+                                                           height="50"></div>
+                            <div class="divTableCell"><img src="img/Color-hair/Dark_brown_hair-removebg.png" width="150"
+                                                           height="50"></div>
+                            <div class="divTableCell"><img src="img/Color-hair/Dark_hair-removebg.png" width="50"
+                                                           height="50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group hidden-control">
+                <img id="hair-img" src="" alt="" height="auto" width="auto">
+            </div>
+        </fieldset>
+
+        <!-- Field type: "dropdown" id: "627155725" -->
+        <fieldset id="fieldsetFreckles">
+            <legend for="id_freckles">FrecklesDefinition: Light brown small macules since childhood, on the face, during
+                summer time (disappear in winter)
+            </legend>
+            <div class="form-group">
+                <select id="id_freckles" name="entry.Freckles" class="form-control">
+                    <option value="NoChoosed">Select freckles frequency ...</option>
+                    <option value="None">None</option>
+                    <option value="Few">Few</option>
+                    <option value="Some">Some</option>
+                    <option value="Many">Many</option>
+                </select>
+            </div>
+            <div class="form-group hidden-control">
+                <img id="freckles-img" src="" alt="" height="auto" width="auto">
+            </div>
+        </fieldset>
+
+        <!-- Field type: "choices" id: "274284065" -->
+        <fieldset id="fieldsetNevi">
+            <legend for="id_Nevi">Nevi frequency</legend>
+            <div class="form-group">
+                <select id="id_Nevi" name="entry.Nevi" class="form-control">
+                    <option value="NoChoosed">Select Nevi frequency ...</option>
+                    <option value="None">None</option>
+                    <option value="Few">Few</option>
+                    <option value="Some">Some</option>
+                    <option value="Many">Many</option>
+                </select>
+            </div>
+            <div class="form-group hidden-control">
+                <img id="Nevi-img" src="" alt="" height="auto" width="auto">
+            </div>
+        </fieldset>
+
+        <!-- Field type: "section" id: "858926295" -->
+        <fieldset id="HistoryOfUltraVioletExposure">
+            <legend for="858926295">HISTORY OF ULTRAVIOLET EXPOSURE</legend>
+            <div class="form-group">
+                <p class="help-block">(completed by case/control)</p>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "grid" id: "771490717" -->
+        <fieldset id="fieldsetUltravioletExposure">
+            <legend for="771490717">Occupational sun exposure(i.e. outdoor occupation with at least 4 hours/day spent
+                outdoor in the sun)
+            </legend>
+            <div class="form-group">
+                <select id="id_UltravioletExposure" name="entry.UltravioletExposure" class="form-control">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+            <div class="form-group hidden-control" style="margin-top:20px;">
+                <div class="group">
+                    <input id="UltravioletExposure_Yes" type="text" name="entry.Occupation">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Specify the occupation:</label>
+                </div>
+                <div class="group">
+                    <input id="UltravioletExposure_hours_for_day" type="text" name="entry.Hour_day">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>How many hours/day?:</label>
+                </div>
+                <div class="group">
+                    <input id="UltravioletExposure_hours_for_month" type="text" name="entry.Hour_month">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>How many hours/month?:</label>
+                </div>
+                <div class="group">
+                    <input id="UltravioletExposure_hours_for_year" type="text" name="entry.Hour_year">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>How many hours/year?:</label>
+                </div>
+                <div class="group">
+                    <input id="UltravioletExposure_many_years" type="text" name="entry.Many_years">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>How many years ?:</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "grid" id: "488897" -->
+        <fieldset id="fieldsetRecreationalExposure">
+            <legend for="488897">Recreational sun exposure (i.e. outdoor hobbies or physical activities–other than
+                sunbathing–with at least 4 hours/day spent outdoor in the sun)
+            </legend>
+            <div class="form-group">
+                <select id="id_RecreationalExposure" name="entry.RecreationalExposure" class="form-control">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+            <div class="form-group hidden-control" style="margin-top:20px;">
+                <div class="group">
+                    <input id="RecreationalExposure_Yes" type="text" name="entry.Recreational">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Specify the occupation:</label>
+                </div>
+                <div class="group">
+                    <input id="Recreational_hours_for_day" type="text" name="entry.Hour_day">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>How many hours/day?:</label>
+                </div>
+                <div class="group">
+                    <input id="Recreational_hours_for_month" type="text" name="entry.Hour_month">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>How many hours/month?:</label>
+                </div>
+                <div class="group">
+                    <input id="Recreational_hours_for_year" type="text" name="entry.Hour_year">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>How many hours/year?:</label>
+                </div>
+                <div class="group">
+                    <input id="Recreational_many_years" type="text" name="entry.Many_years">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>How many years ?:</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "paragraph" id: "665091332" -->
+        <fieldset id="fieldsetIntermittent">
+            <legend>Intermittent sun exposure (i.e. sun exposure in spring and summer time, including
+                vacation, during peak hours–11AM-4PM)
+            </legend>
+            <div class="form-group">
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell">Age Period</div>
+                            <div class="divTableCell">Exposure Period</div>
+                            <div class="divTableCell">Exposure Time</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"></div>
+                            <div class="divTableCell">Weeks of vacation</div>
+                            <div class="divTableCell">Hours spent between 11AM and 4PM</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">Childhood (up to age 10 yrs)</div>
+                            <div class="divTableCell">
+                                <input id="Childhood_Period" type="text" name="entry.Childhood_Period">
+                                <span class="highlight"></span>
+                                <span class="bar" style=""></span>
+                            </div>
+                            <div class="divTableCell">
+                                <input id="Childhood_Time" type="text" name="entry.Childhood_Time">
+                                <span class="highlight"></span>
+                                <span class="bar" style=""></span>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">Adolescence (11-18 yrs)</div>
+                            <div class="divTableCell">
+                                <input id="Adolescence_Weeks" type="text" name="entry.Adolescence_Period">
+                                <span class="highlight"></span>
+                                <span class="bar" style=""></span>
+                            </div>
+                            <div class="divTableCell">
+                                <input id="Adolescence_Time" type="text" name="entry.Adolescence_Time">
+                                <span class="highlight"></span>
+                                <span class="bar" style=""></span>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">Adulthood (≥18 yrs)</div>
+                            <div class="divTableCell">
+                                <input id="Adulthood_Weeks" type="text" name="entry.Adulthood_Period">
+                                <span class="highlight"></span>
+                                <span class="bar" style=""></span>
+                            </div>
+                            <div class="divTableCell">
+                                <input id="Adulthood_Time" type="text" name="entry.Adulthood_Time">
+                                <span class="highlight"></span>
+                                <span class="bar" style=""></span>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell" style="font-size:10px;">10 years before melanoma diagnosis (for
+                                cases) or last 10 years
+                                (for controls)
+                            </div>
+                            <div class="divTableCell">
+                                <input id="10_years_before_period" type="text" name="entry.10_years_before_period">
+                                <span class="highlight"></span>
+                                <span class="bar" style=""></span>
+                            </div>
+                            <div class="divTableCell">
+                                <input id="10_years_before_time" type="text" name="entry.10_years_before_time">
+                                <span class="highlight"></span>
+                                <span class="bar" style=""></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "paragraph" id: "1411983333" -->
+        <fieldset id="fieldsetMostRecent">
+            <legend for="">Most recent intense intermittent sun exposure</legend>
+            <p style="font-size:10px;">Provide date or month of last time of intense intermittent sun exposure before
+                the diagnosis of melanoma (for cases) or before this interview (for controls)</p>
+            <div class="form-group">
+                <input type="text" id="most_recent_date" placeholder="Select date" class="datepicker form-control"
+                       required>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "paragraph" id: "42940743" -->
+        <fieldset id="fieldsetSevereSunburns" style="margin-top: 20px;">
+            <legend for="42940743">Severe sunburns (Grade 2), lifetime before diagnosis.
+            </legend>
+            <p style="font-size:10px">Definition: suburns with erythema and pain for more than 2 days or with blisters
+                (no matter for how long)</p>
+            <div class="form-group">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell NoDivTableBorder" style="width:34%;"><span>At age < 18 yrs ?</span>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <select id="id_Sunburns_less18"
+                                        name="entry.Sunburns_less18"
+                                        class="form-control">
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="NotKnow">Not know</option>
+                                </select>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <div class="hidden-control">
+                                    <div class="group" style="margin-bottom:-4%;">
+                                        <input id="Sunburns_Yes_less18" type="number" name="entry.Sunburns_Yes_less18"
+                                               class="special_on_div_table">
+                                        <span class="highlight special_on_div_table"></span>
+                                        <span class="bar special_on_div_table"></span>
+                                        <label>Number:</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell NoDivTableBorder" style="width:34%;">
+                                <span>At age >= 18 yrs ?</span></div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <select id="id_Sunburns_Yes_greater18" name="entry.Sunburns_Yes_greater18"
+                                        class="form-control">
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="NotKnow">Not know</option>
+                                </select>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <div class="hidden-control">
+                                    <div class="group" style="margin-bottom:-4%;">
+                                        <input id="Sunburns_Yes_greater18" type="number"
+                                               name="entry.Sunburns_Yes_greater18" class="special_on_div_table">
+                                        <span class="highlight special_on_div_table"></span>
+                                        <span class="bar special_on_div_table"></span>
+                                        <label>Number:</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell NoDivTableBorder" style="width:34%;">
+                                <span>At site of melanoma ?</span></div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <select id="id_Site_melanoma" name="entry.Site_melanoma" class="form-control">
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="NotKnow">Not know</option>
+                                </select>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell NoDivTableBorder" style="width:34%;">
+                                <span>In the last 5 years ?</span></div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <select id="id_Sunburns_last5" name="entry.Sunburns_last5" class="form-control">
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="NotKnow">Not know</option>
+                                </select>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <div class="group hidden-control" style="margin-bottom:-4%;">
+                                    <input id="Sunburns_last5" type="number" name="entry.Sunburns_last5"
+                                           class="special_on_div_table">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Number:</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Field type: "paragraph" id: "162128682" -->
+        <fieldset>
+            <legend for="162128682">Sunscreen use (summer time)</legend>
+            <div class="form-group">
+                <div class="divTable">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell">Age Period</div>
+                            <div class="divTableCell">Summer Sunscreen</div>
+                            <div class="divTableCell">Summer Sunscreen</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell"></div>
+                            <div class="divTableCell">Did you use sunscreen during summertime?</div>
+                            <div class="divTableCell">Type of sunscreen used</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">Childhood (up to age 10 yrs)</div>
+                            <div class="divTableCell">
+                                <select id="id_SunExposure_childhood" class="form-control">
+                                    <option value="NoChoosed">Select sun exposure...</option>
+                                    <option value="Never">Never</option>
+                                    <option value="less50">time exposure < 50%</option>
+                                    <option value="greater50">time exposure > 50%</option>
+                                    <option value="always">always</option>
+                                    <option value="notKnown">not known</option>
+                                </select>
+                            </div>
+                            <div class="divTableCell">
+                                <select id="id_Sunscreen_childhood" class="form-control">
+                                    <option value="NoChoosed">Select sunscreen protection...</option>
+                                    <option value="less20">SPF < or = 20</option>
+                                    <option value="greater20">SPF > 20</option>
+                                    <option value="notKnown">not known</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">Adolescence (11-18 yrs)</div>
+                            <div class="divTableCell">
+                                <select id="id_SunExposure_adolescence" class="form-control">
+                                    <option value="NoChoosed">Select sun exposure...</option>
+                                    <option value="Never">Never</option>
+                                    <option value="less50">time exposure < 50%</option>
+                                    <option value="greater50">time exposure > 50%</option>
+                                    <option value="always">always</option>
+                                    <option value="notKnown">not known</option>
+                                </select>
+                            </div>
+                            <div class="divTableCell">
+                                <select id="id_Sunscreen_adolescence" class="form-control">
+                                    <option value="NoChoosed">Select sunscreen protection...</option>
+                                    <option value="less20">SPF < or = 20</option>
+                                    <option value="greater20">SPF > 20</option>
+                                    <option value="notKnown">not known</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">Adulthood (≥18 yrs)</div>
+                            <div class="divTableCell">
+                                <select id="id_SunExposure_adulthood" class="form-control">
+                                    <option value="NoChoosed">Select sun exposure...</option>
+                                    <option value="Never">Never</option>
+                                    <option value="less50">time exposure < 50%</option>
+                                    <option value="greater50">time exposure > 50%</option>
+                                    <option value="always">always</option>
+                                    <option value="notKnown">not known</option>
+                                </select>
+                            </div>
+                            <div class="divTableCell">
+                                <select id="id_Sunscreen_adulthood" class="form-control">
+                                    <option value="NoChoosed">Select sunscreen protection...</option>
+                                    <option value="less20">SPF < or = 20</option>
+                                    <option value="greater20">SPF > 20</option>
+                                    <option value="notKnown">not known</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell" style="font-size:10px;">10 years before melanoma diagnosis (for
+                                cases) or last 10 years
+                                (for controls)
+                            </div>
+                            <div class="divTableCell">
+                                <select id="id_SunExposure_10years_before" class="form-control">
+                                    <option value="NoChoosed">Select sun exposure...</option>
+                                    <option value="Never">Never</option>
+                                    <option value="less50">time exposure < 50%</option>
+                                    <option value="greater50">time exposure > 50%</option>
+                                    <option value="always">always</option>
+                                    <option value="notKnown">not known</option>
+                                </select>
+                            </div>
+                            <div class="divTableCell">
+                                <select id="id_Sunscreen_10years_before" class="form-control">
+                                    <option value="NoChoosed">Select sunscreen protection...</option>
+                                    <option value="less20">SPF < or = 20</option>
+                                    <option value="greater20">SPF > 20</option>
+                                    <option value="notKnown">not known</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetHat">
+            <legend for="id_Hat">Sun protection other than sunscreen use (summertime over the last 10 yrs)
+                (Optional)
+            </legend>
+            <div class="form-group">
+                <span>Did you use a hat ?</span>
+                <select id="id_Hat" name="entry.Hat" class="form-control">
+                    <option value="NoChoosed">Select sun time exposure ...</option>
+                    <option value="Never">Never</option>
+                    <option value="less50">time exposure < 50%</option>
+                    <option value="greater50">time exposure > 50%</option>
+                    <option value="Always">Always</option>
+                    <option value="Notknown">Not known</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <span>Did you use protective clothing ?</span>
+                <select id="id_Clothing" name="entry.Clothing" class="form-control">
+                    <option value="NoChoosed">Select sun time exposure ...</option>
+                    <option value="Never">Never</option>
+                    <option value="less50">time exposure < 50%</option>
+                    <option value="greater50">time exposure > 50%</option>
+                    <option value="Always">Always</option>
+                    <option value="Notknown">Not known</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <span>Did you seek the shade or stay indoors during peak UVR hours?</span>
+                <select id="id_UVR" name="entry.UVR" class="form-control">
+                    <option value="NoChoosed">Select sun time exposure ...</option>
+                    <option value="Rarely">Rarely</option>
+                    <option value="Sometimes">Sometimes</option>
+                    <option value="Always">Always</option>
+                    <option value="Notknown">Not known</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetSunlamps" style="margin-top: 20px;">
+            <legend for="42940743">Sunlamps/sunbeds</legend>
+            <div class="form-group">
+
+                <div class="divTable">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder" style="width:34%;">
+                            <span>Did you use sunlamps or sunbeads?</span>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                            <select id="id_Sunlamp" name="entry.Sunlamp" class="form-control">
+                                <option value="NoChoosed">Select ...</option>
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group hidden-control" style="margin-top:20px;">
+                    <input id="Sunlamp_sessions" type="number" class="special_on_div_table">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Lifetime number of sessions:</label>
+                </div>
+
+                <div class="group hidden-control">
+                    <input id="Sunlamp_first_age" type="number" class="special_on_div_table">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Age at first exposure:</label>
+                </div>
+
+                <div class="group hidden-control">
+                    <input id="Sunlamp_last_age" type="number" class="special_on_div_table">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Age at last exposure:</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetPhototherapy" style="margin-top: 20px;">
+            <legend for="42940743">Phototherapy(UVB-PUVA) (Optional)
+            </legend>
+            <div class="form-group">
+                <div class="divTable">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder" style="width:34%;">
+                            <span>Did you use sunlamps or sunbeads?</span>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                            <select id="id_Phototherapy" class="form-control">
+                                <option value="NoChoosed">Select ...</option>
+                                <option value="Ever">Ever</option>
+                                <option value="Never">Never</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetSmoking" style="margin-top: 20px;">
+            <legend for="42940743">Smoking</legend>
+            <div class="form-group">
+
+                <div class="divTable">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder" style="width:34%;">
+                            <span>Did you use sunlamps or sunbeads?</span>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                            <select id="id_Smoking" name="entry.Smoking" class="form-control">
+                                <option value="NoChoosed">Select ...</option>
+                                <option value="Never">Never</option>
+                                <option value="Former">Former smoker (quit one year before diagnosis or earlier)
+                                </option>
+                                <option value="Current">Current smoker</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group hidden-control" style="margin-top:20px;">
+                    <input id="Smoking_age" type="number" class="special_on_div_table">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Age when you started:</label>
+                </div>
+
+                <div class="group hidden-control">
+                    <input id="Smoking_years" type="number" class="special_on_div_table">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>How long have you been smoking ?(years):</label>
+                </div>
+
+                <div class="group hidden-control">
+                    <div class="divTable">
+                        <div class="divTableRow">
+                            <div class="divTableCell NoDivTableBorder" style="width: 50%;">
+                                <span>How much did/do you typically smoke:</span>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width: 50%;">
+                                <select id="id_Smoke_quantity" name="entry.Smoke_quantity" class="form-control">
+                                    <option value="NoChoosed">Select quantity...</option>
+                                    <option value="One_or_more">One pack day or more</option>
+                                    <option value="Half">Up to half pack a day</option>
+                                    <option value="Occasionally">Occasionally</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetVitamin" style="margin-top: 20px;">
+            <legend for="42940743">Have you received vitamin pills during the last year?
+            </legend>
+            <p style="color:red;">(Optional)</p>
+
+            <div class="form-group">
+                <select id="id_Vitamin" name="entry.Vitamin" class="form-control">
+                    <option value="NoChoosed">Select ...</option>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes
+                    </option>
+                </select>
+            </div>
+
+            <div class="group hidden-control">
+                <div class="divTable">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder" style="width: 50%;">
+                            <span>How much:</span>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="width: 50%;">
+                            <select id="id_Vitamin_quantity" name="entry.Vitamin_quantity" class="form-control">
+                                <option value="NoChoosed">Select quantity...</option>
+                                <option value="Never">Never</option>
+                                <option value="13Month">1-3 days/month</option>
+                                <option value="13Week">1-3 days/week</option>
+                                <option value="46Week">4-6 days/week</option>
+                                <option value="Everyday">Everyday</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetVitaminType" style="margin-top: 20px;">
+            <legend for="42940743">What type of vitamins did you receive and how often?
+            </legend>
+            <p style="color:red;">(Optional)</p>
+
+            <div class="group">
+                <div class="divTable">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder" style="width:16%;">β-carotene</div>
+                        <div class="divTableCell NoDivTableBorder" style="width:16%;">Vitamin A</div>
+                        <div class="divTableCell NoDivTableBorder" style="width:16%;">Vitamin C</div>
+                        <div class="divTableCell NoDivTableBorder" style="width:16%;">Vitamin D</div>
+                        <div class="divTableCell NoDivTableBorder" style="width:16%;">Vitamin E</div>
+                        <div class="divTableCell NoDivTableBorder" style="width:16%;">Multivitamins</div>
+                    </div>
+
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="width:16%;">
+                            <select id="id_BetaCarotene_quantity" class="form-control">
+                                <option value="NoChoosed">Select quantity...</option>
+                                <option value="Never">Never</option>
+                                <option value="13Month">1-3 days/month</option>
+                                <option value="13Week">1-3 days/week</option>
+                                <option value="46Week">4-6 days/week</option>
+                                <option value="Everyday">Everyday</option>
+                            </select>
+                        </div>
+                        <div class="divTableCell" style="width:16%;">
+                            <select id="id_VitaminB_quantity" class="form-control">
+                                <option value="NoChoosed">Select quantity...</option>
+                                <option value="Never">Never</option>
+                                <option value="13Month">1-3 days/month</option>
+                                <option value="13Week">1-3 days/week</option>
+                                <option value="46Week">4-6 days/week</option>
+                                <option value="Everyday">Everyday</option>
+                            </select>
+                        </div>
+                        <div class="divTableCell" style="width:16%;">
+                            <select id="id_VitaminC_quantity" class="form-control">
+                                <option value="NoChoosed">Select quantity...</option>
+                                <option value="Never">Never</option>
+                                <option value="13Month">1-3 days/month</option>
+                                <option value="13Week">1-3 days/week</option>
+                                <option value="46Week">4-6 days/week</option>
+                                <option value="Everyday">Everyday</option>
+                            </select>
+                        </div>
+                        <div class="divTableCell" style="width:16%;">
+                            <select id="id_VitaminD_quantity" class="form-control">
+                                <option value="NoChoosed">Select quantity...</option>
+                                <option value="Never">Never</option>
+                                <option value="13Month">1-3 days/month</option>
+                                <option value="13Week">1-3 days/week</option>
+                                <option value="46Week">4-6 days/week</option>
+                                <option value="Everyday">Everyday</option>
+                            </select>
+                        </div>
+                        <div class="divTableCell" style="width:16%;">
+                            <select id="id_VitaminE_quantity" class="form-control">
+                                <option value="NoChoosed">Select quantity...</option>
+                                <option value="Never">Never</option>
+                                <option value="13Month">1-3 days/month</option>
+                                <option value="13Week">1-3 days/week</option>
+                                <option value="46Week">4-6 days/week</option>
+                                <option value="Everyday">Everyday</option>
+                            </select>
+                        </div>
+                        <div class="divTableCell" style="width:16%;">
+                            <select id="id_MultiVitamin_quantity" class="form-control">
+                                <option value="NoChoosed">Select quantity...</option>
+                                <option value="Never">Never</option>
+                                <option value="13Month">1-3 days/month</option>
+                                <option value="13Week">1-3 days/week</option>
+                                <option value="46Week">4-6 days/week</option>
+                                <option value="Everyday">Everyday</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetVitaminTime" style="margin-top: 20px;">
+            <legend for="42940743">For how long did you receive vitamins?
+            </legend>
+            <p style="color:red;">(Optional)</p>
+
+            <div class="group">
+                <div class="divTable">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder" style="width:16%;">β-carotene</div>
+                        <div class="divTableCell NoDivTableBorder" style="width:16%;">Vitamin A</div>
+                        <div class="divTableCell NoDivTableBorder" style="width:16%;">Vitamin C</div>
+                        <div class="divTableCell NoDivTableBorder" style="width:16%;">Vitamin D</div>
+                        <div class="divTableCell NoDivTableBorder" style="width:16%;">Vitamin E</div>
+                        <div class="divTableCell NoDivTableBorder" style="width:16%;">Multivitamins</div>
+                    </div>
+
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="width:16%;">
+                            <select id="id_BetaCarotene_Time" class="form-control">
+                                <option value="NoChoosed">Select quantity...</option>
+                                <option value="Never">< year</option>
+                                <option value="13Month">1-4 years</option>
+                                <option value="13Week">5-9 years</option>
+                                <option value="46Week">> 10 years</option>
+                            </select>
+                        </div>
+                        <div class="divTableCell" style="width:16%;">
+                            <select id="id_VitaminB_Time" class="form-control">
+                                <option value="NoChoosed">Select Time...</option>
+                                <option value="Never">< year</option>
+                                <option value="13Month">1-4 years</option>
+                                <option value="13Week">5-9 years</option>
+                                <option value="46Week">> 10 years</option>
+                            </select>
+                        </div>
+                        <div class="divTableCell" style="width:16%;">
+                            <select id="id_VitaminC_Time" class="form-control">
+                                <option value="NoChoosed">Select Time...</option>
+                                <option value="Never">< year</option>
+                                <option value="13Month">1-4 years</option>
+                                <option value="13Week">5-9 years</option>
+                                <option value="46Week">> 10 years</option>
+                            </select>
+                        </div>
+                        <div class="divTableCell" style="width:16%;">
+                            <select id="id_VitaminD_Time" class="form-control">
+                                <option value="NoChoosed">Select Time...</option>
+                                <option value="Never">< year</option>
+                                <option value="13Month">1-4 years</option>
+                                <option value="13Week">5-9 years</option>
+                                <option value="46Week">> 10 years</option>
+                            </select>
+                        </div>
+                        <div class="divTableCell" style="width:16%;">
+                            <select id="id_VitaminE_Time" class="form-control">
+                                <option value="NoChoosed">Select Time...</option>
+                                <option value="Never">< year</option>
+                                <option value="13Month">1-4 years</option>
+                                <option value="13Week">5-9 years</option>
+                                <option value="46Week">> 10 years</option>
+                            </select>
+                        </div>
+                        <div class="divTableCell" style="width:16%;">
+                            <select id="id_MultiVitamin_Time" class="form-control">
+                                <option value="NoChoosed">Select Time...</option>
+                                <option value="Never">< year</option>
+                                <option value="13Month">1-4 years</option>
+                                <option value="13Week">5-9 years</option>
+                                <option value="46Week">> 10 years</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetSectionBEval">
+            <legend>Section B Completion Evaluation Questions</legend>
+            <div class="form-group">
+                <div class="divTable">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder">
+                            <span>Were you able to respond to the questions of this Section ?</span>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="padding:10px !important;">
+                            <select id="selectEval" class="form-control">
+                                <option value="NoChoosed">Select...</option>
+                                <option value="All">All questions</option>
+                                <option value="Most">Most questions</option>
+                                <option value="Half">Nearly half of the questions</option>
+                                <option value="Few">Very few questions</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder">
+                            <span>Which questions of this Section did you consider difficult to fill in?</span>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="padding:10px !important;">
+                            <select id="selectQuestions" class="form-control">
+                                <option value="NoChoosed">Select...</option>
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group hidden-control" style="margin-top:20px;">
+                    <input id="QuestionHidden" type="number" class="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Number:</label>
+                </div>
+            </div>
+        </fieldset>
+    </fieldset>
+
+    <fieldset id="fieldsetSectionC">
+        <legend>Section C</legend>
+        <div class="form-group">
+            <p class="help-block">I. CLINICAL EXAMINATION (completed by physician/study nurse)</p>
+        </div>
+
+        <fieldset id="fieldsetLentigines">
+            <legend>Solar Lentigines</legend>
+            <p>Definition: permanent multiple macular pigmented lesions, aggregated, in areas of chronic sun exposure,
+                do not disappear in winter</p>
+            <div class="form-group">
+                <div class="divTable">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder">
+                            <span>Record according to severity:</span>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="padding:10px !important;">
+                            <select id="selectRecord" class="form-control">
+                                <option value="NoChoosed">Select...</option>
+                                <option value="None">None</option>
+                                <option value="Few">Few</option>
+                                <option value="Many">Many</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder">
+                            <span>At site of melanoma (i.e. area around the site w/ a 20 cm radius)?</span>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="padding:10px !important;">
+                            <select id="selectLentiginesSite" class="form-control">
+                                <option value="NoChoosed">Select...</option>
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetNeviCount">
+            <legend>Nevi count</legend>
+            <div class="form-group">
+
+                <div class="divTable">
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="width:40%;">Site</div>
+                        <div class="divTableCell" style="width:30%;">Number(left)</div>
+                        <div class="divTableCell" style="width:30%;">Number(right)</div>
+                    </div>
+
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="width:40%;">Scalp</div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputScalpLeft" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputScalpRight" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                    </div>
+
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="width:40%;">Face(including ears)</div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputFaceLeft" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputFaceRight" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                    </div>
+
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="width:40%;">Neck</div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputNeckLeft" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputNeckRight" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                    </div>
+
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="width:40%;">Anterior thorax + abdomen</div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputThoraxAbdomenLeft" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputThoraxAbdomenRight" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                    </div>
+
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="width:40%;">Back</div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputBackLeft" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputBackRight" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                    </div>
+
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="width:40%;">Upper extremities including deltoid</div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputDeltoidLeft" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputDeltoidRight" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                    </div>
+
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="width:40%;">Lower extremities including gluteus</div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputGluteusLeft" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputGluteusRight" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                    </div>
+
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="width:40%;">Palms</div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputPalmsLeft" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputPalmsRight" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                    </div>
+
+                    <div class="divTableRow">
+                        <div class="divTableCell" style="width:40%;">Soles</div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputSolesLeft" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                        <div class="divTableCell" style="width:30%;">
+                            <input id="inputSolesRight" type="text">
+                            <span class="highlight"></span>
+                            <span class="bar" style=""></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetNevi2mmCount">
+            <legend>Nevi 2mm count</legend>
+            <p style="color:red;">(Optional)</p>
+            <div class="form-group">
+                <div class="divTable">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder">
+                            <span>Consider nevi <= 2 mm</span>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="padding:10px !important;">
+                            <select id="select2mmNevi" class="form-control">
+                                <option value="NoChoosed">Select...</option>
+                                <option value="0">0</option>
+                                <option value="1-50">1-50</option>
+                                <option value="51-100">51-100</option>
+                                <option value="101-200">101-200</option>
+                                <option value="greater200">> 200</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetAtypicalNevi">
+            <legend>Clinically atypical nevi</legend>
+            <p>Clinical definition: macular (i.e. flat) component in at least part of the lesion (mandatory) and at
+                least 3 of the following criteria:
+            <ul>
+                <li>>5mm/li>
+                <li>multiple colors</li>
+                <li>hazy borders</li>
+                <li>erythema</li>
+            </ul>
+            </p>
+            <div class="form-group">
+                <div class="divTable">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder">
+                            <span>Record number of clinically atypical nevi as a continuous variable:</span>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="padding:10px !important;">
+                            <div class="form-group">
+                                <input id="inputNumberAtypicalNevi" type="number" class="" placeholder="Number:"
+                                       required style="width:50%;text-align:center;">
+                                <span class="highlight" style="width:50%;text-align:center;"></span>
+                                <span class="bar" style="width:50%;text-align:center;"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder">
+                            <span>At site of melanoma (i.e. area around the site with a 20 cm radius)? </span>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="padding:10px !important;">
+                            <div class="form-group">
+                                <select id="selectClinicalAtypicalNevi" class="form-control">
+                                    <option value="NoChoosed">Select...</option>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetCongenitalNevi" style="margin-top: 20px;">
+            <legend for="42940743">Congenital nevi, CN
+            </legend>
+            <p style="font-size:10px;">(only medium, large, or giant)</p>
+            <p style="font-size:10px;">Size at phenotyping for:</p>
+            <ul style="font-size:10px;">
+                <li>medium CN >1.5–19.9 cm</li>
+                <li>large CN ≥20 cm</li>
+                <li>giant CN ≥40 cm</li>
+            </ul>
+            <p style="font-size:10px;">Exclude small (i.e. ≤1.5 cm CN)</p>
+            <div class="form-group" style="margin-top: 20px;">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell NoDivTableBorder" style="width:34%;"><span>Medium sized CN</span>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <select id="selectMediumSizedCN" class="form-control">
+                                    <option value="NoChoosed">Select...</option>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <div class="hidden-control">
+                                    <div class="group google_special_label"
+                                         style="margin-bottom:0%;vertical-align: bottom;">
+                                        <input id="inputMediumSizedCN" type="text" class=""
+                                               placeholder="Right Arm,Left Feet" style="width:80%;margin-left:35%;">
+                                        <span class="highlight" style="width:80%;margin-left:35%;"></span>
+                                        <span class="bar" style="width:80%;margin-left:35%;"></span>
+                                        <label style="font-size: 12px;">Site(s):</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 20px;">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell NoDivTableBorder" style="width:34%;"><span>Large sized CN</span>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <select id="selectLargeSizedCN" class="form-control">
+                                    <option value="NoChoosed">Select...</option>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <div class="hidden-control">
+                                    <div class="group google_special_label"
+                                         style="margin-bottom:0%;vertical-align: bottom;">
+                                        <input id="inputLargeSizedCN" type="text" class=""
+                                               placeholder="Right Arm,Left Feet" style="width:80%;margin-left:35%;">
+                                        <span class="highlight" style="width:80%;margin-left:35%;"></span>
+                                        <span class="bar" style="width:80%;margin-left:35%;"></span>
+                                        <label style="font-size: 12px;">Site(s):</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 20px;">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell NoDivTableBorder" style="width:34%;"><span>Giant sized CN</span>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <select id="selectGiantSizedCN" class="form-control">
+                                    <option value="NoChoosed">Select...</option>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <div class="hidden-control">
+                                    <div class="group google_special_label"
+                                         style="margin-bottom:0%;vertical-align: bottom;">
+                                        <input id="inputGiantSizedCN" type="text" class=""
+                                               placeholder="Right Arm,Left Feet" style="width:80%;margin-left:35%;">
+                                        <span class="highlight" style="width:80%;margin-left:35%;"></span>
+                                        <span class="bar" style="width:80%;margin-left:35%;"></span>
+                                        <label style="font-size: 12px;">Site(s):</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetBlueNevi" style="margin-top: 20px;">
+            <legend for="42940743">Blue nevi
+            </legend>
+            <p style="color:red;">(Optional)</p>
+            <div class="form-group" style="margin-top: 20px;">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell NoDivTableBorder" style="width:34%;"><span>Medium sized CN</span>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <select id="selectBlueNevi" class="form-control">
+                                    <option value="NoChoosed">Select...</option>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <div class="hidden-control">
+                                    <div class="group google_special_label"
+                                         style="margin-bottom:0%;vertical-align: bottom;">
+                                        <input id="inputBlueNevi" type="number" class=""
+                                               style="width:80%;margin-left:35%;" required="">
+                                        <span class="highlight" style="width:80%;margin-left:35%;"></span>
+                                        <span class="bar" style="width:80%;margin-left:35%;"></span>
+                                        <label style="font-size: 12px;">Number:</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetActinicKeratoses" style="margin-top: 20px;">
+            <legend for="42940743">Actinic keratoses</legend>
+
+            <div class="form-group" style="margin-top: 20px;">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell NoDivTableBorder" style="width:34%;"><span>Actinic keratoses</span>
+                            </div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <select id="selectActinicKeratoses" class="form-control">
+                                    <option value="NoChoosed">Select...</option>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="divTable">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder">
+                            &nbsp;
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                            <div class="hidden-control">
+                                <div class="group" style="margin-bottom:0%;vertical-align: bottom;">
+                                    <select id="selectActinicKeratosesSite" class="form-control">
+                                        <option value="NoChoosed">Select Site...</option>
+                                        <option value="Scalp">Scalp</option>
+                                        <option value="Face">Face</option>
+                                        <option value="Other">Other exposed areas (hands, arms, trunk, legs)
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 20px;">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableBody">
+                        <div class="divTableRow">
+                            <div class="divTableCell NoDivTableBorder">&nbsp;</div>
+                            <div class="divTableCell NoDivTableBorder" style="width:32%;">
+                                <div class="hidden-control">
+                                    <div class="group" style="margin-bottom:0%;vertical-align: bottom;">
+                                        <select id="selectActinicKeratosesDistribution" class="form-control">
+                                            <option value="NoChoosed">Select Distribution...</option>
+                                            <option value="Isolated">Isolated/Scattered</option>
+                                            <option value="Clustered">Clustered</option>
+                                            <option value="Confluent">Confluent</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="fieldsetKSC_BCC_SCC" style="margin-top: 20px;">
+            <legend for="42940743">Current (i.e. at time of visit) non-melanoma skin cancer, KSC (basal cell carcinoma,
+                BCC, and squamous cell carcinoma, SCC)
+            </legend>
+            <div class="form-group">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder" style="width:50%;"><span>BCC:</span></div>
+                        <div class="divTableCell NoDivTableBorder" style="width:50%;">
+                            <select id="selectBCC" class="form-control">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder" style="width:50%;">
+                            <div class="hidden-control">
+                                <div class="group google_special_label" style="margin-bottom:-4%;">
+                                    <input id="inputBCCNumber" type="text" class="" style="width:80%;">
+                                    <span class="highlight" style="width:80%;"></span>
+                                    <span class="bar" style="width:80%;"></span>
+                                    <label>Number:</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="width:50%;">
+                            <div class="hidden-control">
+                                <div class="group google_special_label" style="margin-bottom:-4%;">
+                                    <input id="inputBCC" type="text" class="" style="width:80%;">
+                                    <span class="highlight" style="width:80%;"></span>
+                                    <span class="bar" style="width:80%;"></span>
+                                    <label>Site(s):</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder" style="width:50%;"><span>Invasive SCC:</span></div>
+                        <div class="divTableCell NoDivTableBorder" style="width:50%;">
+                            <select id="selectSCC" class="form-control">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder" style="width:50%;">
+                            <div class="hidden-control">
+                                <div class="group google_special_label" style="margin-bottom:-4%;">
+                                    <input id="inputSCCNumber" type="text" class="" style="width:80%;">
+                                    <span class="highlight" style="width:80%;"></span>
+                                    <span class="bar" style="width:80%;"></span>
+                                    <label>Number:</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="width:50%;">
+                            <div class="hidden-control">
+                                <div class="group google_special_label" style="margin-bottom:-4%;">
+                                    <input id="inputSCC" type="text" class="" style="width:80%;">
+                                    <span class="highlight" style="width:80%;"></span>
+                                    <span class="bar" style="width:80%;"></span>
+                                    <label>Site(s):</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="divTable" style="width: 100%;">
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder" style="width:50%;">
+                            <span>In situ SCC:</span></div>
+                        <div class="divTableCell NoDivTableBorder" style="width:50%;">
+                            <select id="selectSCCSite" class="form-control">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="divTableRow">
+                        <div class="divTableCell NoDivTableBorder" style="width:50%;">
+                            <div class="hidden-control">
+                                <div class="group google_special_label" style="margin-bottom:-4%;">
+                                    <input id="inputSCCSiteNumber" type="text" class="" style="width:80%;">
+                                    <span class="highlight" style="width:80%;"></span>
+                                    <span class="bar" style="width:80%;"></span>
+                                    <label>Number:</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divTableCell NoDivTableBorder" style="width:50%;">
+                            <div class="hidden-control">
+                                <div class="group google_special_label" style="margin-bottom:-4%;">
+                                    <input id="inputSCCSite" type="text" class="" style="width:80%;">
+                                    <span class="highlight" style="width:80%;"></span>
+                                    <span class="bar" style="width:80%;"></span>
+                                    <label>Site(s):</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <div id="Section C2"><span>MEDICAL HISTORY/MEDICATIONS</span>
+            <p class="help-block">(completed by physician/study nurse)</p>
+            <div id="fieldsetHistoryMedicalDiagnosis">
+                <legend for="593911901">History of medical (non-cancer) diagnoses</legend>
+                <div class="form-group">
+                    <div class="divTable ">
+                        <div class="divTableRow">
+                            <div class="divTableCell NoDivTableBorder" style="width:40%;">
+                                <input id="ICD10Code" type="text" value=""
+                                       placeholder="Search by ICD10 code or name of disease">
+                            </div>
+                            <div class="divTableCell NoDivTableBorder">
+                                <!--<input id="ICD10_Search_Toggle" type="checkbox" checked data-toggle="toggle"
+                                    data-on="Search by Code" data-off="Search by Desc" data-onstyle="success" data-offstyle="info">-->
+                                <!--                                <button id="btn-Add_ICD10" type="button" class="btn btn-info">Add</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="json_medical_history" class="form-group"></div>
+            </div>
+        </div>
+
+
+    </fieldset>
+
+    <input type="hidden" name="fvv" value="1">
+    <input type="hidden" name="fbzx" value="4521077100654506052">
+    <!--
+        CAVEAT: In multipages (multisection) forms, *pageHistory* field tells to google what sections we've currently completed.
+        This usually starts as "0" for the first page, then "0,1" in the second page... up to "0,1,2..N" in n-th page.
+        Keep this in mind if you plan to change this code to recreate any sort of multipage-feature in your exported form.
+        We're setting this to the total number of pages in this form because we're sending all fields from all the section together.
+    -->
+    <input type="hidden" name="pageHistory" value="0,1,2,3">
+
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+</body>
+</html>
