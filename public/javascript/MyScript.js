@@ -3,37 +3,34 @@ $(document).ready(function() {
     $('.datepicker').datepicker({
         format: 'dd-MM-yyyy',
         autoclose: true
-    }); <<
-    << << < HEAD
-        ===
-        === =
-        /*
-            $(".new_datepicker").datepicker({
-                format: 'dd-MM-yyyy',
-                autoclose: true
-            }).on('changeDate', function (event) {
-                console.log(ListaResidency);
-                start_date = $(".start_date").val();
-                end_date = $(".end_date").val();
-                if (start_date != '' && end_date != '') {
-                    residency = {};
-                    residency.start_date = start_date;
-                    residency.end_date = end_date;
-                    residency.address = $("#residency").val();
-                    ListaResidency.push(residency);
-                    //$("#myJsonTab")
-                    $('.table').createTable(ListaResidency,{});
-                    /*$.getJSON("sample-data.json", function (data) {
-                        console.log(data);
-                        $('.table').createTable(data, {});
-                    });
-                }
-            });
-        */
-        var myMap = new google.maps.Map(document.getElementById("myMap"), {
-            center: { lat: 37.5, lng: -120 },
-            zoom: 6
+    });
+    /*
+        $(".new_datepicker").datepicker({
+            format: 'dd-MM-yyyy',
+            autoclose: true
+        }).on('changeDate', function (event) {
+            console.log(ListaResidency);
+            start_date = $(".start_date").val();
+            end_date = $(".end_date").val();
+            if (start_date != '' && end_date != '') {
+                residency = {};
+                residency.start_date = start_date;
+                residency.end_date = end_date;
+                residency.address = $("#residency").val();
+                ListaResidency.push(residency);
+                //$("#myJsonTab")
+                $('.table').createTable(ListaResidency,{});
+                /*$.getJSON("sample-data.json", function (data) {
+                    console.log(data);
+                    $('.table').createTable(data, {});
+                });
+            }
         });
+    */
+    var myMap = new google.maps.Map(document.getElementById("myMap"), {
+        center: { lat: 37.5, lng: -120 },
+        zoom: 6
+    });
 
     var ListaResidency = [];
 
@@ -69,11 +66,28 @@ $(document).ready(function() {
 
         if (currentCodeCountry != "No Choosed" && currentDatabaseCode != "No Choosed" && currentDatabaseCodeType != "No Choosed") {
             object_JSON = {
-                "code_country": currentCodeCountry,
-                "code_database": currentDatabaseCode,
-                "code_type": currentDatabaseCodeType
+                "query": {
+                    "bool": {
+                        "must": [{
+                                "term": {
+                                    "codeCountry": currentCodeCountry
+                                }
+                            },
+                            {
+                                "term": {
+                                    "codeCenter": currentDatabaseCode
+                                }
+                            },
+                            {
+                                "term": {
+                                    "codeType": currentDatabaseCodeType
+                                }
+                            }
+                        ]
+                    }
+                }
             };
-            $("#codeNumber").val(send_Ajax_Data('localhost:8080', object_JSON));
+            $("#codeNumber").val(send_Ajax_Data('http://localhost:9200/melano_questionnaires/_search', object_JSON));
         }
     });
 
@@ -133,8 +147,6 @@ $(document).ready(function() {
         }
     });
     */
-    >>>
-    >>> > Eugenio
 
     $("#skin-tan").on("change", function(evt) {
         var img = $(this).parents("#fieldSkin_tan").find("#skin-tan-img");
@@ -534,6 +546,29 @@ $(document).ready(function() {
         $(this).val("");
     });
 
+    // $("#submit").on('click', function(e) {
+    //     e.preventDefault();
+    //     var serJson = $("#msform").serialize();
+    //     serJson.append(history_list);
+    //     console.log(serJson);
+    //     console.log("inside submit")
+    //         // send ajax
+    //         // $.ajax({
+    //         //     url: '/stepform', // url where to submit the request
+    //         //     type: "POST", // type of action POST || GET
+    //         //     dataType: 'json', // data type
+    //         //     data: serJson, // post data || get data
+    //         //     success: function(result) {
+    //         //         // you can see the result from the console
+    //         //         // tab of the developer tools
+    //         //         console.log(result);
+    //         //     },
+    //         //     error: function(xhr, resp, text) {
+    //         //         console.log(xhr, resp, text);
+    //         //     }
+    //         // })
+    // });
+
     Initialize();
 
 });
@@ -563,7 +598,7 @@ function create_Table_Delete(lista_JSON, div_id, field_id) {
     });
 };
 
-function send_Ajax_Data(custom_URL, object_JSON) {
+function send_Ajax_Data(custom_URL, object_JSON, handleDATA) {
     $.ajax({
         type: "POST",
         url: custom_URL,
@@ -572,10 +607,23 @@ function send_Ajax_Data(custom_URL, object_JSON) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data) {
-            return data;
+            myHandle(data);
         },
         failure: function(errMsg) {
             console.log(errMsg);
         }
     });
+};
+
+function zeroPad(num, places) {
+    return String(num).padStart(places, '0')
+};
+
+function myHandle(data) {
+    if (data.hits.hits.length == 0) {
+        $("#codeNumber").val("0001");
+    } else {
+        number = parseInt(data.hits.hits._source.codeNumber) + 1;
+        return zeroPad(number, 4);
+    }
 };

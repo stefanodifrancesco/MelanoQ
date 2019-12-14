@@ -1,0 +1,19 @@
+.json-to-table {
+
+}
+
+.json-to-table th {
+    padding: 8px;
+}
+
+.json-to-table td {
+    margin: auto;
+    padding: 2px 4px 2px 4px;
+}
+
+.json-to-table td input {
+    width: auto !important;
+    margin: auto;
+    display: block;
+}
+
