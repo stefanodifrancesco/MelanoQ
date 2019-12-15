@@ -30,115 +30,517 @@ router.get('/', (req, res) => {
     //             includeTypeName: 'true',
     //             body: {
     //                 properties: {
-    //                     subject: { type: 'text' },
-    //                     codeCountry: { type: 'keyword' },
-    //                     codeCenter: { type: 'keyword' },
-    //                     codeType: { type: 'keyword' },
-    //                     codeNumber: { type: 'integer' },
-    //                     surveyDate: { type: 'date', format: 'dd-MMM-yyyy' },
-    //                     updatedInDate: { type: 'date', format: 'dd-MMM-yyyy' },
-    //                     melanoma_type: { type: 'text' },
-    //                     other_melanoma_type: { type: 'text' },
-    //                     gender: { type: 'keyword' },
-    //                     birthdate: { type: 'date', format: 'dd-MMM-yyyy' },
-    //                     weight: { type: 'integer' },
-    //                     height: { type: 'integer' },
-    //                     ethnicity: { type: 'text' },
-    //                     other_ethnicity: { type: 'text' },
-    //                     residency: { type: 'text' },
-    //                     education: { type: 'text' },
-    //                     occupational_status: { type: 'keyword' },
-    //                     occupational_history: { type: 'text' },
-    //                     skin_response: { type: 'text' },
-    //                     skin_tan: { type: 'text' },
-    //                     eye_color: { type: 'text' },
-    //                     hair_color: { type: 'keyword' },
-    //                     freckles: { type: 'keyword' },
-    //                     nevi: { type: 'keyword' },
-    //                     occupational_sun_exposure: { type: 'keyword' },
-    //                     sun_exposure_occupation: { type: 'text' },
-    //                     sun_hour_day: { type: 'integer' },
-    //                     sun_hour_month: { type: 'integer' },
-    //                     sun_hour_year: { type: 'integer' },
-    //                     sun_num_years: { type: 'integer' },
-    //                     recreational_exposure: { type: 'keyword' },
-    //                     recreational_exposure_occupation: { type: 'text' },
-    //                     recreational_exposure_hour_day: { type: 'integer' },
-    //                     recreational_exposure_hour_month: { type: 'integer' },
-    //                     recreational_exposure_hour_year: { type: 'integer' },
-    //                     recreational_exposure_num_years: { type: 'integer' },
-    //                     exposure_childhood_period: { type: 'integer' },
-    //                     exposure_childhood_time: { type: 'integer' },
-    //                     exposure_adolescence_period: { type: 'integer' },
-    //                     exposure_adolescence_time: { type: 'integer' },
-    //                     exposure_adulthood_period: { type: 'integer' },
-    //                     exposure_adulthood_time: { type: 'integer' },
-    //                     exposure_10_years_before_period: { type: 'integer' },
-    //                     exposure_10_years_before_time: { type: 'integer' },
-    //                     most_recent_sunburn: { type: 'date', format: 'dd-MMM-yyyy' },
-    //                     sunburn_before_18: { type: 'keyword' },
-    //                     number_sunburns_before_18: { type: 'integer' },
-    //                     sunburn_after_18: { type: 'keyword' },
-    //                     number_sunburns_after_18: { type: 'integer' },
-    //                     sunburn_melanoma_site: { type: 'keyword' },
-    //                     sunburn_last5: { type: 'keyword' },
-    //                     number_sunburns_last5: { type: 'integer' },
-    //                     childhood_sunscreen_frequency: { type: 'text' },
-    //                     childhood_sunscreen_type: { type: 'text' },
-    //                     adolescence_sunscreen_frequency: { type: 'text' },
-    //                     adolescence_sunscreen_type: { type: 'text' },
-    //                     adulthood_sunscreen_frequency: { type: 'text' },
-    //                     adulthood_sunscreen_type: { type: 'text' },
-    //                     last10_sunscreen_frequency: { type: 'text' },
-    //                     last10_sunscreen_type: { type: 'text' },
-    //                     hat_frequency: { type: 'text' },
-    //                     clothing_frequency: { type: 'text' },
-    //                     UVR_frequency: { type: 'text' },
-    //                     sunlamp: { type: 'keyword' },
-    //                     number_sunlamp: { type: 'integer' },
-    //                     first_sunlamp: { type: 'integer' },
-    //                     last_sunlamp: { type: 'integer' },
-    //                     phototherapy: { type: 'keyword' },
-    //                     smoking: { type: 'text' },
-    //                     first_smoking: { type: 'integer' },
-    //                     smoking_period: { type: 'integer' },
-    //                     smoke_frequency: { type: 'text' },
-    //                     vitamin_last_year: { type: 'keyword' },
-    //                     vitamin_quantity_last_year: { type: 'keyword' },
-    //                     betacarotene_frequency: { type: 'keyword' },
-    //                     vitamin_A_frequency: { type: 'keyword' },
-    //                     vitamin_C_frequency: { type: 'keyword' },
-    //                     vitamin_D_frequency: { type: 'keyword' },
-    //                     vitamin_E_frequency: { type: 'keyword' },
-    //                     multivitamins_frequency: { type: 'keyword' },
-    //                     betacarotene_period: { type: 'keyword' },
-    //                     vitamin_A_period: { type: 'keyword' },
-    //                     vitamin_C_period: { type: 'keyword' },
-    //                     vitamin_D_period: { type: 'keyword' },
-    //                     vitamin_E_period: { type: 'keyword' },
-    //                     multivitamins_period: { type: 'keyword' },
-    //                     solar_lentigines_frequency: { type: 'keyword' },
-    //                     solar_lentigines_at_melanoma: { type: 'keyword' },
-    //                     nevi_count_left_scalp: { type: 'integer' },
-    //                     nevi_count_right_scalp: { type: 'integer' },
-    //                     nevi_count_left_face: { type: 'integer' },
-    //                     nevi_count_right_face: { type: 'integer' },
-    //                     nevi_count_left_neck: { type: 'integer' },
-    //                     nevi_count_right_neck: { type: 'integer' },
-    //                     nevi_count_left_thorax_abdomen: { type: 'integer' },
-    //                     nevi_count_right_thorax_abdomen: { type: 'integer' },
-    //                     nevi_count_left_back: { type: 'integer' },
-    //                     nevi_count_right_back: { type: 'integer' },
-    //                     nevi_count_left_deltoid: { type: 'integer' },
-    //                     nevi_count_right_deltoid: { type: 'integer' },
-    //                     nevi_count_left_gluteus: { type: 'integer' },
-    //                     nevi_count_right_gluteus: { type: 'integer' },
-    //                     nevi_count_left_palms: { type: 'integer' },
-    //                     nevi_count_right_palms: { type: 'integer' },
-    //                     nevi_count_left_soles: { type: 'integer' },
-    //                     nevi_count_right_soles: { type: 'integer' },
-    //                     nevi_2mm_count: { type: 'keyword' },
-    //                     atypical_nevi_number: { type: 'integer' }
+    //                     subject: {
+    //                         type: "keyword"
+    //                     },
+    //                     code_country: {
+    //                         type: "keyword"
+    //                     },
+    //                     code_center: {
+    //                         type: "keyword"
+    //                     },
+    //                     code_type: {
+    //                         type: "keyword"
+    //                     },
+    //                     code_number: {
+    //                         type: "keyword"
+    //                     },          
+    //                     survey_date: {
+    //                         type: 'date', 
+    //                         format: 'dd-MMM-yyyy'
+    //                     },
+    //                     last_update: {
+    //                         type: 'date', 
+    //                         format: 'dd-MMM-yyyy'
+    //                     },
+    //                     melanoma_type: {
+    //                         type: "keyword"
+    //                     },
+    //                     other_melanoma_type: {
+    //                         type: "text"
+    //                     },
+    //                     gender: {
+    //                         type: "keyword"
+    //                     },
+    //                     birthdate: {
+    //                         type: 'date', 
+    //                         format: 'dd-MMM-yyyy'
+    //                     },
+    //                     weight: {
+    //                         type: "integer"
+    //                     },
+    //                     height: {
+    //                         type: "integer",
+    //                     },
+    //                     ethnicity: {
+    //                         type: "keyword"
+    //                     },
+    //                     other_ethnicity: {
+    //                         type: "text"
+    //                     },
+    //                     residency: {
+    //                         type: "text"
+    //                     },
+    //                     education: {
+    //                         type: "keyword"
+    //                     },
+    //                     occupational_status: {
+    //                         type: "keyword"
+    //                     },
+    //                     skin_response: {
+    //                         type: "keyword"
+    //                     },
+    //                     skin_tan: {
+    //                         type: "keyword"
+    //                     },
+    //                     eye_color: {
+    //                         type: "keyword"
+    //                     },
+    //                     hair_color: {
+    //                         type: "keyword"
+    //                     },
+    //                     freckles: {
+    //                         type: "keyword"
+    //                     },
+    //                     nevi: {
+    //                         type: "keyword"
+    //                     },
+    //                     ultraviolet: {
+    //                         properties: {
+    //                             occupational_sun_exposure: {
+    //                                 properties: {
+    //                                     presence: {
+    //                                         type: "keyword"
+    //                                     },
+    //                                     occupation_name: {
+    //                                         type: "text"
+    //                                     },
+    //                                     hours_day: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     hours_month: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     hours_year: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     number_of_years: {
+    //                                         type: "integer"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             recreational_sun_exposure: {
+    //                                 properties: {
+    //                                     presence: {
+    //                                         type: "keyword"
+    //                                     },
+    //                                     occupation_name: {
+    //                                         type: "text"
+    //                                     },
+    //                                     hours_day: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     hours_month: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     hours_year: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     number_of_years: {
+    //                                         type: "integer"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             exposure_childhood: {
+    //                                 properties: {
+    //                                     period: {
+    //                                         type: "text"
+    //                                     },
+    //                                     time: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             exposure_adolescence: {
+    //                                 properties: {
+    //                                     "period": {
+    //                                         type: "text"
+    //                                     },
+    //                                     time: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             exposure_adulthood: {
+    //                                 properties: {
+    //                                     period: {
+    //                                         type: "text"
+    //                                     },
+    //                                     time: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             exposure_previous_10_years: {
+    //                                 properties: {
+    //                                     period: {
+    //                                         type: "text"
+    //                                     },
+    //                                     time: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             most_recent_sunburn: {
+    //                                 type: 'date', 
+    //                                 format: 'dd-MMM-yyyy'
+    //                             },
+    //                             sunburn_before_18: {
+    //                                 properties: {
+    //                                     number: {
+    //                                         type: "text"
+    //                                     },
+    //                                     presence: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             sunburn_after_18: {
+    //                                 properties: {
+    //                                     number: {
+    //                                         type: "text"
+    //                                     },
+    //                                     presence: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             sunburn_at_melanoma_site: {
+    //                                 type: "text"
+    //                             },
+    //                             sunburn_last_5_years: {
+    //                                 properties: {
+    //                                     number: {
+    //                                         type: "text"
+    //                                     },
+    //                                     presence: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             childhood_sunscreen: {
+    //                                 properties: {
+    //                                     frequency: {
+    //                                         type: "text"
+    //                                     },
+    //                                     type: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             adolescence_sunscreen: {
+    //                                 properties: {
+    //                                     frequency: {
+    //                                         type: "text"
+    //                                     },
+    //                                     type: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             adulthood_sunscreen: {
+    //                                 properties: {
+    //                                     frequency: {
+    //                                         type: "text"
+    //                                     },
+    //                                     type: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             last_10_years_sunscreen: {
+    //                                 properties: {
+    //                                     frequency: {
+    //                                         type: "text"
+    //                                     },
+    //                                     type: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             hat_frequency: {
+    //                                 type: "text"
+    //                             },
+    //                             clothing: {
+    //                                 type: "text"
+    //                             },
+    //                             peak_UVR_hours: {
+    //                                 type: "text"
+    //                             },
+    //                             sunlamp: {
+    //                                 properties: {
+    //                                     presence: {
+    //                                         type: "text"
+    //                                     },
+    //                                     number_of_sessions: {
+    //                                         type: "text"
+    //                                     },
+    //                                     age__of_first_sunlamp: {
+    //                                         type: "text"
+    //                                     },
+    //                                     age_of_last_sunlamp: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             phototherapy: {
+    //                                 type: "text"
+    //                             }  
+    //                         }
+    //                     },
+    //                     lifestyle: {
+    //                         properties: {
+    //                             smoking: {
+    //                                 properties: {
+    //                                     age_of_first_smoking: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     smoke_quantity: {
+    //                                         type: "text"
+    //                                     },
+    //                                     smoking_period: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             vitamins_last_year: {
+    //                                 properties: {
+    //                                     presence: {
+    //                                         type: "keyword"
+    //                                     },
+    //                                     quantity: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             betacarotene_frequency: {
+    //                                 type: "keyword"
+    //                             },
+    //                             betacarotene_period: {
+    //                                 type: "keyword"
+    //                             },
+    //                             multivitamins_frequency: {
+    //                                 type: "keyword"
+    //                             },
+    //                             multivitamins_period: {
+    //                                 type: "keyword"
+    //                             },                                
+    //                             vitamin_A_frequency: {
+    //                                 type: "keyword"
+    //                             },
+    //                             vitamin_A_period: {
+    //                                 type: "keyword"
+    //                             },
+    //                             vitamin_C_frequency: {
+    //                                 type: "keyword"
+    //                             },
+    //                             vitamin_C_period: {
+    //                                 type: "keyword"
+    //                             },
+    //                             vitamin_D_frequency: {
+    //                                 type: "keyword"
+    //                             },
+    //                             vitamin_D_period: {
+    //                                 type: "keyword"
+    //                             },
+    //                             vitamin_E_frequency: {
+    //                                 type: "keyword"
+    //                             },
+    //                             vitamin_E_period: {
+    //                                 type: "keyword"
+    //                             }
+    //                         }
+    //                     },
+    //                     clinical_examination: {
+    //                         properties: {
+    //                             solar_lentigines_frequency: {
+    //                                 type: "keyword"
+    //                             },
+    //                             solar_lentigines_at_melanoma: {
+    //                                 type: "keyword"
+    //                             },
+    //                             nevi_count: {
+    //                                 properties: {
+    //                                     left_back: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     left_deltoid: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     left_face: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     left_gluteus: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     left_neck: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     left_palms: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     left_scalp: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     left_soles: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     left_thorax_abdomen: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     right_back: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     right_deltoid: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     right_face: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     right_gluteus: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     right_neck: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     right_palms: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     right_scalp: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     right_soles: {
+    //                                         type: "integer"
+    //                                     },
+    //                                     right_thorax_abdomen: {
+    //                                         type: "integer"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             nevi_2mm_count: {
+    //                                 type: "integer"
+    //                             },
+    //                             atypical_nevi_count: {
+    //                                 type: "integer"
+    //                             },
+    //                             atypical_nevi_at_melanoma: {
+    //                                 type: "integer"
+    //                             },
+    //                             congenital_nevi: {
+    //                                 properties: {
+    //                                     giant_sized: {
+    //                                         properties: {
+    //                                             sitess: {
+    //                                                 type: "text"
+    //                                             },
+    //                                             presence: {
+    //                                                 type: "keyword"
+    //                                             }
+    //                                         }
+    //                                     },
+    //                                     large_sized: {
+    //                                         properties: {
+    //                                             sites: {
+    //                                                 type: "text"
+    //                                             },
+    //                                             presence: {
+    //                                                 type: "keyword"
+    //                                             }
+    //                                         }
+    //                                     },
+    //                                     medium_sized: {
+    //                                         properties: {
+    //                                             sites: {
+    //                                                 type: "text"
+    //                                             },
+    //                                             presence: {
+    //                                                 type: "keyword"
+    //                                             }
+    //                                         }
+    //                                     }
+    //                                 }
+    //                             },
+    //                             blue_nevi: {
+    //                                 properties: {
+    //                                     medium_sized: {
+    //                                         properties: {
+    //                                             presence: {
+    //                                                 type: "keyword"
+    //                                             },
+    //                                             count: {
+    //                                                 type: "integer"
+    //                                             }
+    //                                         }
+    //                                     }
+    //                                 }
+    //                             },
+    //                             actinic_keratoses: {
+    //                                 properties: {                                        
+    //                                     presence: {
+    //                                         type: "keyword"
+    //                                     },
+    //                                     distribution: {
+    //                                         type: "keyword"
+    //                                     },
+    //                                     site: {
+    //                                         type: "keyword"
+    //                                     },
+    //                                 }
+    //                             },
+    //                             BCC: {
+    //                                 properties: {
+    //                                     count: {
+    //                                         type: "text"
+    //                                     },
+    //                                     sites: {
+    //                                         type: "text"
+    //                                     },
+    //                                     presence: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             invasive_SCC: {
+    //                                 properties: {
+    //                                     count: {
+    //                                         type: "text"
+    //                                     },
+    //                                     sites: {
+    //                                         type: "text"
+    //                                     },
+    //                                     presence: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             },
+    //                             insitu_SCC: {
+    //                                 properties: {
+    //                                     count: {
+    //                                         type: "text"
+    //                                     },
+    //                                     sites: {
+    //                                         type: "text"
+    //                                     },
+    //                                     presence: {
+    //                                         type: "text"
+    //                                     }
+    //                                 }
+    //                             }
+    //                         }
+    //                     },
+    //                     timestamp: {
+    //                         type: "date"
+    //                     },
     //                 }
     //             }
     //         }, (err, resp, status) => {

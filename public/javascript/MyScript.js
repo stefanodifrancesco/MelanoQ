@@ -546,28 +546,28 @@ $(document).ready(function() {
         $(this).val("");
     });
 
-    // $("#submit").on('click', function(e) {
-    //     e.preventDefault();
-    //     var serJson = $("#msform").serialize();
-    //     serJson.append(history_list);
-    //     console.log(serJson);
-    //     console.log("inside submit")
-    //         // send ajax
-    //         // $.ajax({
-    //         //     url: '/stepform', // url where to submit the request
-    //         //     type: "POST", // type of action POST || GET
-    //         //     dataType: 'json', // data type
-    //         //     data: serJson, // post data || get data
-    //         //     success: function(result) {
-    //         //         // you can see the result from the console
-    //         //         // tab of the developer tools
-    //         //         console.log(result);
-    //         //     },
-    //         //     error: function(xhr, resp, text) {
-    //         //         console.log(xhr, resp, text);
-    //         //     }
-    //         // })
-    // });
+    $("#submit").on('click', function(e) {
+        e.preventDefault();
+        var serJson = $("#msform").serializeJSON();
+        //serJson.append(history_list);
+        console.log(serJson);
+        console.log("inside submit")
+
+        $.ajax({
+            url: '/stepform', // url where to submit the request
+            type: "POST", // type of action POST || GET
+            dataType: 'json', // data type
+            data: serJson, // post data || get data
+            success: function(result) {
+                // you can see the result from the console
+                // tab of the developer tools
+                console.log(result);
+            },
+            error: function(xhr, resp, text) {
+                console.log(xhr, resp, text);
+            }
+        })
+    });
 
     Initialize();
 
