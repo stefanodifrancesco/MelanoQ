@@ -94,10 +94,12 @@ block content
             fieldset#fieldsetGender
               label(for='1350866299') Sex
               .form-group
-                select#1350866299.form-control(name='entry.913970556')
+                select#1350866299.form-control(name='gender' required='required' data-rule-required='true' data-msg-required='Please select your gender')
                   option(value='No Choosed', selected='') Select Gender...
                   option(value='Female') Female
                   option(value='Male') Male
+                span.error1(style='display: none;')
+                  i.error-log.fa.fa-exclamation-triangle
                   
             fieldset#fieldsetDateOfBirth
               label(for='80728029') Date and place of birth
@@ -177,7 +179,7 @@ block content
           div.alphaformfooter
           div.formfooter
           input.scroll-button-bottom(type='button')
-          input.next.action-button(type='button', name='next', value='Next')
+          input#firstnext.next.action-button(type='button', name='next', value='Next')
 
 
         fieldset
@@ -289,8 +291,8 @@ block content
           div.alphaformfooter
           div.formfooter
           input.scroll-button-bottom(type='button')
-          input.previous.action-button(type='button', name='previous', value='Previous')
-          input.next.action-button(type='button', name='next', value='Next')
+          input#firstprevious.previous.action-button(type='button', name='previous', value='Previous')
+          input#secondnext.next.action-button(type='button', name='next', value='Next')
 
         fieldset
           div.scrollingdiv
@@ -644,8 +646,8 @@ block content
           div.alphaformfooter
           div.formfooter
           input.scroll-button-bottom(type='button')
-          input.previous.action-button(type='button', name='previous', value='Previous')
-          input.next.action-button(type='button', name='next', value='Next')
+          input#secondprevious.previous.action-button(type='button', name='previous', value='Previous')
+          input#thirdnext.next.action-button(type='button', name='next', value='Next')
 
         fieldset
           div.scrollingdiv
@@ -865,8 +867,8 @@ block content
           div.alphaformfooter
           div.formfooter
           input.scroll-button-bottom(type='button')
-          input.previous.action-button(type='button', name='previous', value='Previous')
-          input.next.action-button(type='button', name='next', value='Next')
+          input#thirdprevious.previous.action-button(type='button', name='previous', value='Previous')
+          input#forthnext.next.action-button(type='button', name='next', value='Next')
 
 
         fieldset
@@ -1277,5 +1279,5 @@ block content
           div.alphaformfooter
           div.formfooter
           input.scroll-button-bottom(type='button')
-          input.previous.action-button(type='button', name='previous', value='Previous')
+          input#forthprevious.previous.action-button(type='button', name='previous', value='Previous')
           input.submit.action-button#submit(type='submit', value='Submit')
