@@ -21,7 +21,7 @@ block content
             fieldset
               label(for='1237444630') Subject
               .form-group
-                select#1237444630.form-control(name='entry.385415683')
+                select#1237444630.form-control(name='subject')
                   option(value='No Choosed', selected='') Select Subject ...
                   option(value='Case') Case
                   option(value='Control') Control
@@ -33,38 +33,38 @@ block content
                   .divTableRow
                     .divTableCell(style='border: 0px solid white !important;')
                       .form-group
-                        select#DatabaseCodeCountry.form-control(name='codeCountry')
+                        select#DatabaseCodeCountry.form-control(name='code_country')
                           option(value='No Choosed' selected='') Select Country ...
                           option(value='Greece') Greece
                           option(value='Italy') Italy
                           option(value='Spain') Spain
                     .divTableCell(style='border: 0px solid white !important;')
                       .form-group.hidden-control
-                        select#DatabaseCodeCenter.form-control(name='codeCenter')
+                        select#DatabaseCodeCenter.form-control(name='code_center')
                           // <option value="No Choosed" selected>Select Center ...</option>
                     .divTableCell(style='border: 0px solid white !important;')
                       .form-group
-                        select#DatabaseCodeType.form-control(name='codeType')
+                        select#DatabaseCodeType.form-control(name='code_type')
                           option(value='No Choosed' selected='') Select case type ...
                           option(value='M') Melanoma Case
                           option(value='C') Control subject
                   .divTableRow
                     .divTableCell(style='border: 0px solid white !important;')
                       .form-group
-                        input#codeNumber(type='text' readonly='' value='' name='codeNumber')
+                        input#codeNumber(type='text' readonly='' value='' name='code_number')
 
             fieldset#fieldsetAdmin
               label(for='1763927487') Date of questionnaire administration and phenotyping
               .form-group.md-form
-                input#700770343_date.datepicker.form-control(type='text', placeholder='Select date', required='')
+                input#1763927487.datepicker.form-control(type='text' placeholder='Select date' required='' name='survey_date')
                 
             fieldset#fieldsetPhenotyping
               label(for='9069469') Dates of updated questionnaire and/or phenotyping
               .form-group
-                input#1969236884_date.datepicker.form-control(type='text', placeholder='Select date', required='')
+                input#1969236884_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='last_update')
 
             fieldset#fieldsetTypeOfMelanoma
-              label(for='type_of_melanoma') Type of melanoma
+              select#Melanoma.form-control(name='melanoma_type')
               .form-group
                 select#Melanoma.form-control(name='entry.913970556')
                   option(value='No Choosed', selected='') Select Type ...
@@ -72,7 +72,7 @@ block content
                   option(value='Familial') Familial
                   option(value="Don't know") Don't know
                   option(value='Other') Other (complex family history), specify:
-              input#Other_Melanoma.hidden-control.inputMelanoma(type='text')
+              input#Other_Melanoma.hidden-control.inputMelanoma(type='text' name="other_melanoma_type")
 
 
           input.start(type='button', name='next', value='CONFIRM')
@@ -104,20 +104,26 @@ block content
             fieldset#fieldsetDateOfBirth
               label(for='80728029') Date and place of birth
               .form-group
-                input#2126036184_date.form-control.datepicker(type='text')
+                input#2126036184_date.form-control.datepicker(type='text' name="birthdate"  required='required' data-rule-required='true' data-msg-required='Please include your birthday')
+                span.error1(style='display: none;')
+                    i.error-log.fa.fa-exclamation-triangle
                 
             fieldset#fieldsetWeightHeight
               label(for='248537302') Weight(Kg)
               .form-group
-                input#weight.form-control(type='number', name='entry.1061275120')
+                input#weight_input.form-control(type='number' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                span.error1(style='display: none;')
+                    i.error-log.fa.fa-exclamation-triangle
               label(for='248537302') Height(Cm)
               .form-group
-                input#height.form-control(type='number', name='entry.1061275120')
+                input#height_input.form-control(type='number' name='height' required='required' data-rule-required='true' data-msg-required='Please include your height')
+                span.error1(style='display: none;')
+                    i.error-log.fa.fa-exclamation-triangle
                 
             fieldset#fieldsetEthnicity
               label(for='1761024152') Ethnicity
               .form-group
-                select#Ethnicity.form-control(name='entry.1563825996')
+                select#ethnicity_input.form-control(name='ethnicity' required='required' data-rule-required='true' data-msg-required='Please include your ethnicity')
                   option(value='No Choosed', selected='') Select Ethnicity ...
                   option(value='White/Europe') White/Europe
                   option(value='White/NorthAfrica') White/NorthAfrica
@@ -130,14 +136,18 @@ block content
                     | from
                     | South or Central America)
                   option(value='Other') Other (Specify)
-              input#OtherEthnicity.hidden-control.inputEthnicity(type='text')
+              span.error1(style='display: none;')
+                i.error-log.fa.fa-exclamation-triangle
+              input#OtherEthnicity.hidden-control.inputEthnicity(type='text' name="other_ethnicity")
               
             fieldset#fieldResidency
               label
                 | Residency
               #myForm
                 .form-group
-                  input#residency.form-control(type='text', data-geocomplete='street address')
+                  input#residency.form-control(type='text' data-geocomplete='street address' name='residency' required='required' data-rule-required='true' data-msg-required='Please include your residency')
+                  span.error1(style='display: none;')
+                      i.error-log.fa.fa-exclamation-triangle
                 .residency_date_class
               #myMap
               #myJsonTab
@@ -146,18 +156,20 @@ block content
             fieldset#fieldsetEducation
               label(for='261025725') Education
               .form-group
-                select#261025725.form-control(name='entry.1478884860')
+                select#education_input.form-control(name='education' required='required' data-rule-required='true' data-msg-required='Please include your education')
                   option(value='No Choosed', selected='') Select Range...
                   option(value='Up to junior high school (up to 14-16 yrs)')
                     | Up to junior high school (up to 14-16
                     | yrs)
                   option(value='High school (up to 18-19 yrs)') High school (up to 18-19 yrs)
                   option(value='University') University
+                span.error1(style='display: none;')
+                  i.error-log.fa.fa-exclamation-triangle
                   
             fieldset#fieldsetOccupational
               label(for='2111843347') Current occupational status
               .form-group
-                select#2111843347.form-control(name='entry.623264529')
+                select#current_occupational_status.form-control(name='occupational_status' required='required' data-rule-required='true' data-msg-required='Please include your status')
                   option(value='No Choosed', selected='') Select Status...
                   option(value='Employed') Employed
                   option(value='Working at home') Working at home
@@ -192,7 +204,7 @@ block content
                 | Which of the following sentences does better describe your skin response to sun
                 | exposure at noon for 30 minutes in the first days of the summer without sunscreen/clothing protection?
               .form-group
-                select#1548717344.form-control(name='entry.1532747195')
+                select#skin-response.form-control(name='skin_response' required='required' data-rule-required='true' data-msg-required='Required field')
                   option(value='NoChoosed') Select Skin Response ...
                   option(value='Not burn') Not burn
                   option(value='Burns lightly') Burns lightly
@@ -205,7 +217,7 @@ block content
                 | several
                 | days as at the end of the summer) without protecting it with sunscreen or clothing?
               .form-group
-                select#skin-tan.form-control.skin-tan(name='entry.skin-tan')
+                select#skin-tan.form-control.skin-tan(name='skin_tan' required='required' data-rule-required='true' data-msg-required='Required field')
                   option(value='NoChoosed') Select Tan...
                   option(value='No tan') No tan
                   option(value='Tans lightly') Tans lightly
@@ -217,7 +229,7 @@ block content
             fieldset#fieldsetEye
               label(for='1304821978') Eye Color
               .form-group
-                select#id_eyes_color.form-control(name='entry.Eye_color')
+                select#id_eyes_color.form-control
                   option(value='') Select eye color...
                   option(value='Light') Light (green, blue, gray)
                   option(value='Medium') Medium (light brown, hazel)
@@ -267,7 +279,7 @@ block content
                 | FrecklesDefinition: Light brown small macules since childhood, on the face, during
                 | summer time (disappear in winter)
               .form-group
-                select#id_freckles.form-control(name='entry.Freckles')
+                select#id_freckles.form-control
                   option(value='NoChoosed') Select freckles frequency ...
                   option(value='None') None
                   option(value='Few') Few
@@ -279,7 +291,7 @@ block content
             fieldset#fieldsetNevi
               label(for='id_Nevi') Nevi frequency
               .form-group
-                select#id_Nevi.form-control(name='entry.Nevi')
+                select#id_Nevi.form-control
                   option(value='NoChoosed') Select Nevi frequency ...
                   option(value='None') None
                   option(value='Few') Few
@@ -304,50 +316,60 @@ block content
                 | Occupational sun exposure(i.e. outdoor occupation with at least 4 hours/day spent
                 | outdoor in the sun)
               .form-group
-                select#id_UltravioletExposure.form-control(name='entry.UltravioletExposure')
-                  option(value='No') No
+                select#id_UltravioletExposure.form-control(name='ultraviolet[occupational_sun_exposure][yes/no]' required='required' data-rule-required='true' data-msg-required='Required field')
+                option(value='No') No
                   option(value='Yes') Yes
               .form-group.hidden-control(style='margin-top:20px;')
                 .group
                   label Specify the occupation:
-                  input#UltravioletExposure_Yes(type='text', name='entry.Occupation')                  
+                  input#UltravioletExposure_Yes.form-control(type='text' name='ultraviolet[occupational_sun_exposure][occupation_name]')
+                span.error1(style='display: none;')
+                  i.error-log.fa.fa-exclamation-triangle                  
                 .group
                   label How many hours/day?:
-                  input#UltravioletExposure_hours_for_day(type='text', name='entry.Hour_day')
+                  input#UltravioletExposure_hours_for_day.form-control(type='text' name='ultraviolet[occupational_sun_exposure][hours_day]')
+                span.error1(style='display: none;')
+                  i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/month?:
-                  input#UltravioletExposure_hours_for_month(type='text', name='entry.Hour_month')
+                  input#UltravioletExposure_hours_for_month.form-control(type='text' name='ultraviolet[occupational_sun_exposure][hours_month]')
+                span.error1(style='display: none;')
+                  i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/year?:
-                  input#UltravioletExposure_hours_for_year(type='text', name='entry.Hour_year')
+                  input#UltravioletExposure_hours_for_year.form-control(type='text' name='ultraviolet[occupational_sun_exposure][hours_year]')
+                span.error1(style='display: none;')
+                  i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many years ?:
-                  input#UltravioletExposure_many_years(type='text', name='entry.Many_years')
+                  input#UltravioletExposure_many_years.form-control(type='text' name='ultraviolet[occupational_sun_exposure][number_of_years]')
+                span.error1(style='display: none;')
+                  i.error-log.fa.fa-exclamation-triangle
                   
             fieldset#fieldsetRecreationalExposure
               label(for='488897')
                 | Recreational sun exposure (i.e. outdoor hobbies or physical activities–other than
                 | sunbathing–with at least 4 hours/day spent outdoor in the sun)
               .form-group
-                select#id_RecreationalExposure.form-control(name='entry.RecreationalExposure')
+                select#id_RecreationalExposure.form-control(name='ultraviolet[recreational_sun_exposure][yes/no]' required='required' data-rule-required='true' data-msg-required='Required field')
                   option(value='No') No
                   option(value='Yes') Yes
               .form-group.hidden-control(style='margin-top:20px;')
                 .group
                   label Specify the occupation:
-                  input#RecreationalExposure_Yes(type='text', name='entry.Recreational')
+                  input#RecreationalExposure_Yes(type='text', name='ultraviolet[recreational_sun_exposure][occupation_name]')
                 .group
                   label How many hours/day?:
-                  input#Recreational_hours_for_day(type='text', name='entry.Hour_day')
+                  input#Recreational_hours_for_day(type='text', name='ultraviolet[recreational_sun_exposure][hours_day]')
                 .group
                   label How many hours/month?:
-                  input#Recreational_hours_for_month(type='text', name='entry.Hour_month')
+                  input#Recreational_hours_for_month(type='text', name='ultraviolet[recreational_sun_exposure][hours_month]')
                 .group
                   label How many hours/year?:
-                  input#Recreational_hours_for_year(type='text', name='entry.Hour_year')
+                  input#Recreational_hours_for_year(type='text', name='ultraviolet[recreational_sun_exposure][hours_year]')
                 .group
                   label How many years ?:
-                  input#Recreational_many_years(type='text', name='entry.Many_years')
+                  input#Recreational_many_years(type='text', name='ultraviolet[recreational_sun_exposure][number_of_years]')
                   
             fieldset#fieldsetIntermittent
               label
@@ -367,31 +389,31 @@ block content
                     .divTableRow
                       .divTableCell Childhood (up to age 10 yrs)
                       .divTableCell
-                        input#Childhood_Period(type='text', name='entry.Childhood_Period')
+                        input#Childhood_Period(type='text', name='ultraviolet[exposure_childhood][period]')
                         span.highlight
                         span.bar(style='')
                       .divTableCell
-                        input#Childhood_Time(type='text', name='entry.Childhood_Time')
+                        input#Childhood_Time(type='text', name='ultraviolet[exposure_childhood][time]')
                         span.highlight
                         span.bar(style='')
                     .divTableRow
                       .divTableCell Adolescence (11-18 yrs)
                       .divTableCell
-                        input#Adolescence_Weeks(type='text', name='entry.Adolescence_Period')
+                        input#Adolescence_Weeks(type='text', name='ultraviolet[exposure_adolescence][period]')
                         span.highlight
                         span.bar(style='')
                       .divTableCell
-                        input#Adolescence_Time(type='text', name='entry.Adolescence_Time')
+                        input#Adolescence_Time(type='text', name='ultraviolet[exposure_adolescence][time]')
                         span.highlight
                         span.bar(style='')
                     .divTableRow
                       .divTableCell Adulthood (≥18 yrs)
                       .divTableCell
-                        input#Adulthood_Weeks(type='text', name='entry.Adulthood_Period')
+                        input#Adulthood_Weeks(type='text', name='ultraviolet[exposure_adulthood][period]')
                         span.highlight
                         span.bar(style='')
                       .divTableCell
-                        input#Adulthood_Time(type='text', name='entry.Adulthood_Time')
+                        input#Adulthood_Time(type='text', name='ultraviolet[exposure_adulthood][time]')
                         span.highlight
                         span.bar(style='')
                     .divTableRow
@@ -400,11 +422,11 @@ block content
                         | cases) or last 10 years
                         | (for controls)
                       .divTableCell
-                        input#10_years_before_period(type='text', name='entry.10_years_before_period')
+                        input#10_years_before_period(type='text', name='ultraviolet[exposure_previous_10_years][period]')
                         span.highlight
                         span.bar(style='')
                       .divTableCell
-                        input#10_years_before_time(type='text', name='entry.10_years_before_time')
+                        input#10_years_before_time(type='text', name='ultraviolet[exposure_previous_10_years][time]')
                         span.highlight
                         span.bar(style='')
                         
@@ -414,8 +436,8 @@ block content
                 | Provide date or month of last time of intense intermittent sun exposure before
                 | the diagnosis of melanoma (for cases) or before this interview (for controls)
               .form-group
-                input#most_recent_date.datepicker.form-control(type='text', placeholder='Select date', required='')
-            // Field type: "paragraph" id: "42940743"
+                input#most_recent_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='most_recent_sunburn')
+                
             fieldset#fieldsetSevereSunburns(style='margin-top: 20px;')
               label(for='42940743')
                 | Severe sunburns (Grade 2), lifetime before diagnosis.
@@ -429,14 +451,14 @@ block content
                       .divTableCell.NoDivTableBorder(style='width:34%;')
                         span At age < 18 yrs ?
                       .divTableCell.NoDivTableBorder(style='width:32%;')
-                        select#id_Sunburns_less18.form-control(name='entry.Sunburns_less18')
+                        select#id_Sunburns_less18.form-control(name='ultraviolet[sunburn_before_18][yes/no]')
                           option(value='No') No
                           option(value='Yes') Yes
                           option(value='NotKnow') Not know
                       .divTableCell.NoDivTableBorder(style='width:32%;')
                         .hidden-control
                           .group(style='margin-bottom:-4%;')
-                            input#Sunburns_Yes_less18.special_on_div_table(type='number', name='entry.Sunburns_Yes_less18')
+                            input#Sunburns_Yes_less18.special_on_div_table(type='number', name='ultraviolet[sunburn_before_18][number]')
                             span.highlight.special_on_div_table
                             span.bar.special_on_div_table
                             label Number:
@@ -447,14 +469,14 @@ block content
                       .divTableCell.NoDivTableBorder(style='width:34%;')
                         span At age >= 18 yrs ?
                       .divTableCell.NoDivTableBorder(style='width:32%;')
-                        select#id_Sunburns_Yes_greater18.form-control(name='entry.Sunburns_Yes_greater18')
+                        select#id_Sunburns_Yes_greater18.form-control(name='ultraviolet[sunburn_after_18][yes/no]')
                           option(value='No') No
                           option(value='Yes') Yes
                           option(value='NotKnow') Not know
                       .divTableCell.NoDivTableBorder(style='width:32%;')
                         .hidden-control
                           .group(style='margin-bottom:-4%;')
-                            input#Sunburns_Yes_greater18.special_on_div_table(type='number', name='entry.Sunburns_Yes_greater18')
+                            input#Sunburns_Yes_greater18.special_on_div_table(type='number', name='ultraviolet[sunburn_after_18][number]')
                             span.highlight.special_on_div_table
                             span.bar.special_on_div_table
                             label Number:
@@ -465,7 +487,7 @@ block content
                       .divTableCell.NoDivTableBorder(style='width:34%;')
                         span At site of melanoma ?
                       .divTableCell.NoDivTableBorder(style='width:32%;')
-                        select#id_Site_melanoma.form-control(name='entry.Site_melanoma')
+                        select#id_Site_melanoma.form-control(name='ultraviolet[sunburn_at_melanoma_site]')
                           option(value='No') No
                           option(value='Yes') Yes
                           option(value='NotKnow') Not know
@@ -477,13 +499,13 @@ block content
                       .divTableCell.NoDivTableBorder(style='width:34%;')
                         span In the last 5 years ?
                       .divTableCell.NoDivTableBorder(style='width:32%;')
-                        select#id_Sunburns_last5.form-control(name='entry.Sunburns_last5')
+                        select#id_Sunburns_last5.form-control(name='ultraviolet[sunburn_last_5_years][yes/no]')
                           option(value='No') No
                           option(value='Yes') Yes
                           option(value='NotKnow') Not know
                       .divTableCell.NoDivTableBorder(style='width:32%;')
                         .group.hidden-control(style='margin-bottom:-4%;')
-                          input#Sunburns_last5.special_on_div_table(type='number', name='entry.Sunburns_last5')
+                          input#Sunburns_last5.special_on_div_table(type='number', name='ultraviolet[sunburn_last_5_years][number]')
                           span.highlight
                           span.bar
                           label Number:
@@ -504,7 +526,7 @@ block content
                     .divTableRow
                       .divTableCell Childhood (up to age 10 yrs)
                       .divTableCell
-                        select#id_SunExposure_childhood.form-control
+                        select#id_SunExposure_childhood.form-control(name='ultraviolet[childhood_sunscreen][frequency]')
                           option(value='NoChoosed') Select sun exposure...
                           option(value='Never') Never
                           option(value='less50') time exposure < 50%
@@ -512,7 +534,7 @@ block content
                           option(value='always') always
                           option(value='notKnown') not known
                       .divTableCell
-                        select#id_Sunscreen_childhood.form-control
+                        select#id_Sunscreen_childhood.form-control(name='ultraviolet[childhood_sunscreen][type]')
                           option(value='NoChoosed') Select sunscreen protection...
                           option(value='less20') SPF < or = 20
                           option(value='greater20') SPF > 20
@@ -520,7 +542,7 @@ block content
                     .divTableRow
                       .divTableCell Adolescence (11-18 yrs)
                       .divTableCell
-                        select#id_SunExposure_adolescence.form-control
+                        select#id_SunExposure_adolescence.form-control(name='ultraviolet[adolescence_sunscreen][frequency]')
                           option(value='NoChoosed') Select sun exposure...
                           option(value='Never') Never
                           option(value='less50') time exposure < 50%
@@ -528,7 +550,7 @@ block content
                           option(value='always') always
                           option(value='notKnown') not known
                       .divTableCell
-                        select#id_Sunscreen_adolescence.form-control
+                        select#id_Sunscreen_adolescence.form-control(name='ultraviolet[adolescence_sunscreen][type]')
                           option(value='NoChoosed') Select sunscreen protection...
                           option(value='less20') SPF < or = 20
                           option(value='greater20') SPF > 20
@@ -536,7 +558,7 @@ block content
                     .divTableRow
                       .divTableCell Adulthood (≥18 yrs)
                       .divTableCell
-                        select#id_SunExposure_adulthood.form-control
+                        select#id_SunExposure_adulthood.form-control(name='ultraviolet[adulthood_sunscreen][frequency]')
                           option(value='NoChoosed') Select sun exposure...
                           option(value='Never') Never
                           option(value='less50') time exposure < 50%
@@ -544,7 +566,7 @@ block content
                           option(value='always') always
                           option(value='notKnown') not known
                       .divTableCell
-                        select#id_Sunscreen_adulthood.form-control
+                        select#id_Sunscreen_adulthood.form-control(name='ultraviolet[adulthood_sunscreen][type]')
                           option(value='NoChoosed') Select sunscreen protection...
                           option(value='less20') SPF < or = 20
                           option(value='greater20') SPF > 20
@@ -555,7 +577,7 @@ block content
                         | cases) or last 10 years
                         | (for controls)
                       .divTableCell
-                        select#id_SunExposure_10years_before.form-control
+                        select#id_SunExposure_10years_before.form-control(name='ultraviolet[last_10_years_sunscreen][frequency]')
                           option(value='NoChoosed') Select sun exposure...
                           option(value='Never') Never
                           option(value='less50') time exposure < 50%
@@ -563,7 +585,7 @@ block content
                           option(value='always') always
                           option(value='notKnown') not known
                       .divTableCell
-                        select#id_Sunscreen_10years_before.form-control
+                        select#id_Sunscreen_10years_before.form-control(name='ultraviolet[last_10_years_sunscreen][type]')
                           option(value='NoChoosed') Select sunscreen protection...
                           option(value='less20') SPF < or = 20
                           option(value='greater20') SPF > 20
@@ -575,7 +597,7 @@ block content
                 | (Optional)
               .form-group
                 span Did you use a hat ?
-                select#id_Hat.form-control(name='entry.Hat')
+                select#id_Hat.form-control(name='ultraviolet[hat_frequency]')
                   option(value='NoChoosed') Select sun time exposure ...
                   option(value='Never') Never
                   option(value='less50') time exposure < 50%
@@ -584,7 +606,7 @@ block content
                   option(value='Notknown') Not known
               .form-group
                 span Did you use protective clothing ?
-                select#id_Clothing.form-control(name='entry.Clothing')
+                select#id_Clothing.form-control(name='ultraviolet[clothing]')
                   option(value='NoChoosed') Select sun time exposure ...
                   option(value='Never') Never
                   option(value='less50') time exposure < 50%
@@ -593,7 +615,7 @@ block content
                   option(value='Notknown') Not known
               .form-group
                 span Did you seek the shade or stay indoors during peak UVR hours?
-                select#id_UVR.form-control(name='entry.UVR')
+                select#id_UVR.form-control(name='ultraviolet[peak_UVR_hours]')
                   option(value='NoChoosed') Select sun time exposure ...
                   option(value='Rarely') Rarely
                   option(value='Sometimes') Sometimes
@@ -608,25 +630,19 @@ block content
                     .divTableCell.NoDivTableBorder(style='width:34%;')
                       span Did you use sunlamps or sunbeads?
                     .divTableCell.NoDivTableBorder(style='width:32%;')
-                      select#id_Sunlamp.form-control(name='entry.Sunlamp')
+                      select#id_Sunlamp.form-control(name='ultraviolet[sunlamp][yes/no]')
                         option(value='NoChoosed') Select ...
                         option(value='No') No
                         option(value='Yes') Yes
                 .group.hidden-control(style='margin-top:20px;')
-                  input#Sunlamp_sessions.special_on_div_table(type='number')
-                  span.highlight
-                  span.bar
                   label Lifetime number of sessions:
+                  input#Sunlamp_sessions.special_on_div_table(type='number', name='ultraviolet[sunlamp][number_of_sessions]')
                 .group.hidden-control
-                  input#Sunlamp_first_age.special_on_div_table(type='number')
-                  span.highlight
-                  span.bar
                   label Age at first exposure:
+                  input#Sunlamp_first_age.special_on_div_table(type='number', name='ultraviolet[sunlamp][age__of_first_sunlamp]')
                 .group.hidden-control
-                  input#Sunlamp_last_age.special_on_div_table(type='number')
-                  span.highlight
-                  span.bar
                   label Age at last exposure:
+                  input#Sunlamp_last_age.special_on_div_table(type='number', name='ultraviolet[sunlamp][age_of_last_sunlamp]')
 
             fieldset#fieldsetPhototherapy(style='margin-top: 20px;')
               label(for='42940743')
@@ -635,9 +651,9 @@ block content
                 .divTable
                   .divTableRow
                     .divTableCell.NoDivTableBorder(style='width:34%;')
-                      span Did you use sunlamps or sunbeads?
+                      span Did you have phototherapy?
                     .divTableCell.NoDivTableBorder(style='width:32%;')
-                      select#id_Phototherapy.form-control
+                      select#id_Phototherapy.form-control(name='ultraviolet[phototherapy]')
                         option(value='NoChoosed') Select ...
                         option(value='Ever') Ever
                         option(value='Never') Never
@@ -660,21 +676,21 @@ block content
                 .divTable
                   .divTableRow
                     .divTableCell.NoDivTableBorder(style='width:34%;')
-                      span Did you use sunlamps or sunbeads?
+                      span Did you smoke?
                     .divTableCell.NoDivTableBorder(style='width:32%;')
-                      select#id_Smoking.form-control(name='entry.Smoking')
+                      select#id_Smoking.form-control(name='lifestyle[smoking]')
                         option(value='NoChoosed') Select ...
                         option(value='Never') Never
                         option(value='Former')
                           | Former smoker (quit one year before diagnosis or earlier)
                         option(value='Current') Current smoker
                 .group.hidden-control(style='margin-top:20px;')
-                  input#Smoking_age.special_on_div_table(type='number')
+                  input#Smoking_age.special_on_div_table(type='number', name="lifestyle[smoking][age_of_first_smoking]")
                   span.highlight
                   span.bar
                   label Age when you started:
                 .group.hidden-control
-                  input#Smoking_years.special_on_div_table(type='number')
+                  input#Smoking_years.special_on_div_table(type='number', name="lifestyle[smoking][smoking_period]")
                   span.highlight
                   span.bar
                   label How long have you been smoking ?(years):
@@ -684,7 +700,7 @@ block content
                       .divTableCell.NoDivTableBorder(style='width: 50%;')
                         span How much did/do you typically smoke:
                       .divTableCell.NoDivTableBorder(style='width: 50%;')
-                        select#id_Smoke_quantity.form-control(name='entry.Smoke_quantity')
+                        select#id_Smoke_quantity.form-control(name='lifestyle[smoking][smoke_quantity]')
                           option(value='NoChoosed') Select quantity...
                           option(value='One_or_more') One pack day or more
                           option(value='Half') Up to half pack a day
@@ -695,7 +711,7 @@ block content
                 | Have you received vitamin pills during the last year?
               p(style='color:red;') (Optional)
               .form-group
-                select#id_Vitamin.form-control(name='entry.Vitamin')
+                select#id_Vitamin.form-control(name='lifestyle[vitamins_last_year][yes/no]')
                   option(value='NoChoosed') Select ...
                   option(value='No') No
                   option(value='Yes')
@@ -706,12 +722,12 @@ block content
                     .divTableCell.NoDivTableBorder(style='width: 50%;')
                       span How much:
                     .divTableCell.NoDivTableBorder(style='width: 50%;')
-                      select#id_Vitamin_quantity.form-control(name='entry.Vitamin_quantity')
+                      select#id_Vitamin_quantity.form-control(name='lifestyle[vitamins_last_year][quantity')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
-                        option(value='13Month') 1-3 days/month
-                        option(value='13Week') 1-3 days/week
-                        option(value='46Week') 4-6 days/week
+                        option(value='1/3_days_at_month') 1-3 days/month
+                        option(value='1/3_days_at_week') 1-3 days/week
+                        option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
 
             fieldset#fieldsetVitaminType(style='margin-top: 20px;')
@@ -729,52 +745,52 @@ block content
                     .divTableCell.NoDivTableBorder(style='width:16%;') Multivitamins
                   .divTableRow
                     .divTableCell(style='width:16%;')
-                      select#id_BetaCarotene_quantity.form-control
+                      select#id_BetaCarotene_quantity.form-control(name='lifestyle[betacarotene_frequency]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
-                        option(value='13Month') 1-3 days/month
-                        option(value='13Week') 1-3 days/week
-                        option(value='46Week') 4-6 days/week
+                        option(value='1/3_days_at_month') 1-3 days/month
+                        option(value='1/3_days_at_week') 1-3 days/week
+                        option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
                     .divTableCell(style='width:16%;')
-                      select#id_VitaminB_quantity.form-control
+                      select#id_VitaminB_quantity.form-control(name='lifestyle[vitamin_A_frequency]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
-                        option(value='13Month') 1-3 days/month
-                        option(value='13Week') 1-3 days/week
-                        option(value='46Week') 4-6 days/week
+                        option(value='1/3_days_at_month') 1-3 days/month
+                        option(value='1/3_days_at_week') 1-3 days/week
+                        option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
                     .divTableCell(style='width:16%;')
-                      select#id_VitaminC_quantity.form-control
+                      select#id_VitaminC_quantity.form-control(name='lifestyle[vitamin_C_frequency]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
-                        option(value='13Month') 1-3 days/month
-                        option(value='13Week') 1-3 days/week
-                        option(value='46Week') 4-6 days/week
+                        option(value='1/3_days_at_month') 1-3 days/month
+                        option(value='1/3_days_at_week') 1-3 days/week
+                        option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
                     .divTableCell(style='width:16%;')
-                      select#id_VitaminD_quantity.form-control
+                      select#id_VitaminD_quantity.form-control(name='lifestyle[vitamin_D_frequency]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
-                        option(value='13Month') 1-3 days/month
-                        option(value='13Week') 1-3 days/week
-                        option(value='46Week') 4-6 days/week
+                        option(value='1/3_days_at_month') 1-3 days/month
+                        option(value='1/3_days_at_week') 1-3 days/week
+                        option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
                     .divTableCell(style='width:16%;')
-                      select#id_VitaminE_quantity.form-control
+                      select#id_VitaminE_quantity.form-control(name='lifestyle[vitamin_E_frequency]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
-                        option(value='13Month') 1-3 days/month
-                        option(value='13Week') 1-3 days/week
-                        option(value='46Week') 4-6 days/week
+                        option(value='1/3_days_at_month') 1-3 days/month
+                        option(value='1/3_days_at_week') 1-3 days/week
+                        option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
                     .divTableCell(style='width:16%;')
-                      select#id_MultiVitamin_quantity.form-control
+                      select#id_MultiVitamin_quantity.form-control(name='lifestyle[multivitamins_frequency]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
-                        option(value='13Month') 1-3 days/month
-                        option(value='13Week') 1-3 days/week
-                        option(value='46Week') 4-6 days/week
+                        option(value='1/3_days_at_month') 1-3 days/month
+                        option(value='1/3_days_at_week') 1-3 days/week
+                        option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
 
             fieldset#fieldsetVitaminTime(style='margin-top: 20px;')
@@ -792,42 +808,42 @@ block content
                     .divTableCell.NoDivTableBorder(style='width:16%;') Multivitamins
                   .divTableRow
                     .divTableCell(style='width:16%;')
-                      select#id_BetaCarotene_Time.form-control
+                      select#id_BetaCarotene_Time.form-control(name='lifestyle[betacarotene_period]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') < year
                         option(value='13Month') 1-4 years
                         option(value='13Week') 5-9 years
                         option(value='46Week') > 10 years
                     .divTableCell(style='width:16%;')
-                      select#id_VitaminB_Time.form-control
+                      select#id_VitaminB_Time.form-control(name='lifestyle[vitamin_A_period]')
                         option(value='NoChoosed') Select Time...
                         option(value='Never') < year
                         option(value='13Month') 1-4 years
                         option(value='13Week') 5-9 years
                         option(value='46Week') > 10 years
                     .divTableCell(style='width:16%;')
-                      select#id_VitaminC_Time.form-control
+                      select#id_VitaminC_Time.form-control(name='lifestyle[vitamin_C_period]')
                         option(value='NoChoosed') Select Time...
                         option(value='Never') < year
                         option(value='13Month') 1-4 years
                         option(value='13Week') 5-9 years
                         option(value='46Week') > 10 years
                     .divTableCell(style='width:16%;')
-                      select#id_VitaminD_Time.form-control
+                      select#id_VitaminD_Time.form-control(name='lifestyle[vitamin_D_period]')
                         option(value='NoChoosed') Select Time...
                         option(value='Never') < year
                         option(value='13Month') 1-4 years
                         option(value='13Week') 5-9 years
                         option(value='46Week') > 10 years
                     .divTableCell(style='width:16%;')
-                      select#id_VitaminE_Time.form-control
+                      select#id_VitaminE_Time.form-control(name='lifestyle[vitamin_E_period]')
                         option(value='NoChoosed') Select Time...
                         option(value='Never') < year
                         option(value='13Month') 1-4 years
                         option(value='13Week') 5-9 years
                         option(value='46Week') > 10 years
                     .divTableCell(style='width:16%;')
-                      select#id_MultiVitamin_Time.form-control
+                      select#id_MultiVitamin_Time.form-control(name='lifestyle[multivitamins_period]')
                         option(value='NoChoosed') Select Time...
                         option(value='Never') < year
                         option(value='13Month') 1-4 years
@@ -887,7 +903,7 @@ block content
                     .divTableCell.NoDivTableBorder
                       span Record according to severity:
                     .divTableCell.NoDivTableBorder(style='padding:10px !important;')
-                      select#selectRecord.form-control
+                      select#selectRecord.form-control(name='clinical_examination[solar_lentigines_frequency]')
                         option(value='NoChoosed') Select...
                         option(value='None') None
                         option(value='Few') Few
@@ -896,7 +912,7 @@ block content
                     .divTableCell.NoDivTableBorder
                       span At site of melanoma (i.e. area around the site w/ a 20 cm radius)?
                     .divTableCell.NoDivTableBorder(style='padding:10px !important;')
-                      select#selectLentiginesSite.form-control
+                      select#selectLentiginesSite.form-control(name='clinical_examination[solar_lentigines_at_melanoma]')
                         option(value='NoChoosed') Select...
                         option(value='No') No
                         option(value='Yes') Yes
@@ -912,91 +928,91 @@ block content
                   .divTableRow
                     .divTableCell(style='width:40%;') Scalp
                     .divTableCell(style='width:30%;')
-                      input#inputScalpLeft(type='text')
+                      input#inputScalpLeft(type='text', name='clinical_examination[nevi_count][left_scalp]')
                       span.highlight
                       span.bar(style='')
                     .divTableCell(style='width:30%;')
-                      input#inputScalpRight(type='text')
+                      input#inputScalpRight(type='text', name='clinical_examination[nevi_count][right_scalp]')
                       span.highlight
                       span.bar(style='')
                   .divTableRow
                     .divTableCell(style='width:40%;') Face(including ears)
                     .divTableCell(style='width:30%;')
-                      input#inputFaceLeft(type='text')
+                      input#inputFaceLeft(type='text', name='clinical_examination[nevi_count][left_face]')
                       span.highlight
                       span.bar(style='')
                     .divTableCell(style='width:30%;')
-                      input#inputFaceRight(type='text')
+                      input#inputFaceRight(type='text', name='clinical_examination[nevi_count][right_face]')
                       span.highlight
                       span.bar(style='')
                   .divTableRow
                     .divTableCell(style='width:40%;') Neck
                     .divTableCell(style='width:30%;')
-                      input#inputNeckLeft(type='text')
+                      input#inputNeckLeft(type='text', name='clinical_examination[nevi_count][left_neck]')
                       span.highlight
                       span.bar(style='')
                     .divTableCell(style='width:30%;')
-                      input#inputNeckRight(type='text')
+                      input#inputNeckRight(type='text', name='clinical_examination[nevi_count][right_neck]')
                       span.highlight
                       span.bar(style='')
                   .divTableRow
                     .divTableCell(style='width:40%;') Anterior thorax + abdomen
                     .divTableCell(style='width:30%;')
-                      input#inputThoraxAbdomenLeft(type='text')
+                      input#inputThoraxAbdomenLeft(type='text', name='clinical_examination[nevi_count][left_thorax_abdomen]')
                       span.highlight
                       span.bar(style='')
                     .divTableCell(style='width:30%;')
-                      input#inputThoraxAbdomenRight(type='text')
+                      input#inputThoraxAbdomenRight(type='text', name='clinical_examination[nevi_count][right_thorax_abdomen]')
                       span.highlight
                       span.bar(style='')
                   .divTableRow
                     .divTableCell(style='width:40%;') Back
                     .divTableCell(style='width:30%;')
-                      input#inputBackLeft(type='text')
+                      input#inputBackLeft(type='text', name='clinical_examination[nevi_count][left_back]')
                       span.highlight
                       span.bar(style='')
                     .divTableCell(style='width:30%;')
-                      input#inputBackRight(type='text')
+                      input#inputBackRight(type='text', name='clinical_examination[nevi_count][right_back]')
                       span.highlight
                       span.bar(style='')
                   .divTableRow
                     .divTableCell(style='width:40%;') Upper extremities including deltoid
                     .divTableCell(style='width:30%;')
-                      input#inputDeltoidLeft(type='text')
+                      input#inputDeltoidLeft(type='text', name='clinical_examination[nevi_count][left_deltoid]')
                       span.highlight
                       span.bar(style='')
                     .divTableCell(style='width:30%;')
-                      input#inputDeltoidRight(type='text')
+                      input#inputDeltoidRight(type='text', name='clinical_examination[nevi_count][right_deltoid]')
                       span.highlight
                       span.bar(style='')
                   .divTableRow
                     .divTableCell(style='width:40%;') Lower extremities including gluteus
                     .divTableCell(style='width:30%;')
-                      input#inputGluteusLeft(type='text')
+                      input#inputGluteusLeft(type='text', name='clinical_examination[nevi_count][left_gluteus]')
                       span.highlight
                       span.bar(style='')
                     .divTableCell(style='width:30%;')
-                      input#inputGluteusRight(type='text')
+                      input#inputGluteusRight(type='text', name='clinical_examination[nevi_count][right_gluteus]')
                       span.highlight
                       span.bar(style='')
                   .divTableRow
                     .divTableCell(style='width:40%;') Palms
                     .divTableCell(style='width:30%;')
-                      input#inputPalmsLeft(type='text')
+                      input#inputPalmsLeft(type='text', name='clinical_examination[nevi_count][left_palms]')
                       span.highlight
                       span.bar(style='')
                     .divTableCell(style='width:30%;')
-                      input#inputPalmsRight(type='text')
+                      input#inputPalmsRight(type='text', name='clinical_examination[nevi_count][right_palms]')
                       span.highlight
                       span.bar(style='')
                   .divTableRow
                     .divTableCell(style='width:40%;') Soles
                     .divTableCell(style='width:30%;')
-                      input#inputSolesLeft(type='text')
+                      input#inputSolesLeft(type='text', name='clinical_examination[nevi_count][left_soles]')
                       span.highlight
                       span.bar(style='')
                     .divTableCell(style='width:30%;')
-                      input#inputSolesRight(type='text')
+                      input#inputSolesRight(type='text', name='clinical_examination[nevi_count][right_soles]')
                       span.highlight
                       span.bar(style='')
 
@@ -1009,13 +1025,13 @@ block content
                     .divTableCell.NoDivTableBorder
                       span Consider nevi <= 2 mm
                     .divTableCell.NoDivTableBorder(style='padding:10px !important;')
-                      select#select2mmNevi.form-control
+                      select#select2mmNevi.form-control(name='clinical_examination[nevi_2mm_count]')
                         option(value='NoChoosed') Select...
                         option(value='0') 0
                         option(value='1-50') 1-50
                         option(value='51-100') 51-100
                         option(value='101-200') 101-200
-                        option(value='greater200') > 200
+                        option(value='greater_than_200') > 200
 
             fieldset#fieldsetAtypicalNevi
               label Clinically atypical nevi
@@ -1036,13 +1052,13 @@ block content
                       span Record number of clinically atypical nevi as a continuous variable:
                     .divTableCell.NoDivTableBorder(style='padding:10px !important;')
                       .form-group
-                        input#inputNumberAtypicalNevi(type='number', placeholder='Number:', required='', style='width:50%;text-align:center;')
+                        input#inputNumberAtypicalNevi(type='number' placeholder='Number:' required='' style='width:50%;text-align:center;' name='clinical_examination[atypical_nevi_count]')
                         span.highlight(style='width:50%;text-align:center;')
                         span.bar(style='width:50%;text-align:center;')
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       span At site of melanoma (i.e. area around the site with a 20 cm radius)? 
-                    .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                    .divTableCell.NoDivTableBorder(style='padding:10px !important;' name='clinical_examination[atypical_nevi_at_melanoma]')
                       .form-group
                         select#selectClinicalAtypicalNevi.form-control
                           option(value='NoChoosed') Select...
@@ -1067,14 +1083,14 @@ block content
                       .divTableCell.NoDivTableBorder(style='width:34%;')
                         span Medium sized CN
                       .divTableCell.NoDivTableBorder(style='width:32%;')
-                        select#selectMediumSizedCN.form-control
+                        select#selectMediumSizedCN.form-control(name='clinical_examination[congenital_nevi][medium_sized][yes/no]')
                           option(value='NoChoosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
                       .divTableCell.NoDivTableBorder(style='width:32%;')
                         .hidden-control
                           .group.google_special_label(style='margin-bottom:0%;vertical-align: bottom;')
-                            input#inputMediumSizedCN(type='text', placeholder='Right Arm,Left Feet', style='width:80%;margin-left:35%;')
+                            input#inputMediumSizedCN(type='text' placeholder='Right Arm,Left Feet' style='width:80%;margin-left:35%;' name='clinical_examination[congenital_nevi][medium_sized][sites(s)]')
                             span.highlight(style='width:80%;margin-left:35%;')
                             span.bar(style='width:80%;margin-left:35%;')
                             label(style='font-size: 12px;') Site(s):
@@ -1085,14 +1101,14 @@ block content
                       .divTableCell.NoDivTableBorder(style='width:34%;')
                         span Large sized CN
                       .divTableCell.NoDivTableBorder(style='width:32%;')
-                        select#selectLargeSizedCN.form-control
+                        select#selectLargeSizedCN.form-control(name='clinical_examination[congenital_nevi][large_sized][yes/no]')
                           option(value='NoChoosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
                       .divTableCell.NoDivTableBorder(style='width:32%;')
                         .hidden-control
                           .group.google_special_label(style='margin-bottom:0%;vertical-align: bottom;')
-                            input#inputLargeSizedCN(type='text', placeholder='Right Arm,Left Feet', style='width:80%;margin-left:35%;')
+                            input#inputLargeSizedCN(type='text' placeholder='Right Arm,Left Feet' style='width:80%;margin-left:35%;' name='clinical_examination[congenital_nevi][large_sized][sites(s)]')
                             span.highlight(style='width:80%;margin-left:35%;')
                             span.bar(style='width:80%;margin-left:35%;')
                             label(style='font-size: 12px;') Site(s):
@@ -1103,14 +1119,14 @@ block content
                       .divTableCell.NoDivTableBorder(style='width:34%;')
                         span Giant sized CN
                       .divTableCell.NoDivTableBorder(style='width:32%;')
-                        select#selectGiantSizedCN.form-control
+                        select#selectGiantSizedCN.form-control(name='clinical_examination[congenital_nevi][giant_sized][yes/no]')
                           option(value='NoChoosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
                       .divTableCell.NoDivTableBorder(style='width:32%;')
                         .hidden-control
                           .group.google_special_label(style='margin-bottom:0%;vertical-align: bottom;')
-                            input#inputGiantSizedCN(type='text', placeholder='Right Arm,Left Feet', style='width:80%;margin-left:35%;')
+                            input#inputGiantSizedCN(type='text' placeholder='Right Arm,Left Feet' style='width:80%;margin-left:35%;' name='clinical_examination[congenital_nevi][giant_sized][sites(s)]')
                             span.highlight(style='width:80%;margin-left:35%;')
                             span.bar(style='width:80%;margin-left:35%;')
                             label(style='font-size: 12px;') Site(s):
@@ -1127,14 +1143,14 @@ block content
                       .divTableCell.NoDivTableBorder(style='width:34%;')
                         span Medium sized CN
                       .divTableCell.NoDivTableBorder(style='width:32%;')
-                        select#selectBlueNevi.form-control
+                        select#selectBlueNevi.form-control(name='clinical_examination[blue_nevi][medium_sized][yes/no]')
                           option(value='NoChoosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
                       .divTableCell.NoDivTableBorder(style='width:32%;')
                         .hidden-control
                           .group.google_special_label(style='margin-bottom:0%;vertical-align: bottom;')
-                            input#inputBlueNevi(type='number', style='width:80%;margin-left:35%;', required='')
+                            input#inputBlueNevi(type='number' style='width:80%;margin-left:35%;' name='clinical_examination[congenital_nevi][large_sized][sites(s)]' required='' )
                             span.highlight(style='width:80%;margin-left:35%;')
                             span.bar(style='width:80%;margin-left:35%;')
                             label(style='font-size: 12px;') Number:
@@ -1149,7 +1165,7 @@ block content
                       .divTableCell.NoDivTableBorder(style='width:34%;')
                         span Actinic keratoses
                       .divTableCell.NoDivTableBorder(style='width:32%;')
-                        select#selectActinicKeratoses.form-control
+                        select#selectActinicKeratoses.form-control(name='clinical_examination[actinic_keratoses][yes/no]')
                           option(value='NoChoosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
@@ -1160,7 +1176,7 @@ block content
                     .divTableCell.NoDivTableBorder(style='width:32%;')
                       .hidden-control
                         .group(style='margin-bottom:0%;vertical-align: bottom;')
-                          select#selectActinicKeratosesSite.form-control
+                          select#selectActinicKeratosesSite.form-control(name='clinical_examination[actinic_keratoses][site]')
                             option(value='NoChoosed') Select Site...
                             option(value='Scalp') Scalp
                             option(value='Face') Face
@@ -1174,7 +1190,7 @@ block content
                       .divTableCell.NoDivTableBorder(style='width:32%;')
                         .hidden-control
                           .group(style='margin-bottom:0%;vertical-align: bottom;')
-                            select#selectActinicKeratosesDistribution.form-control
+                            select#selectActinicKeratosesDistribution.form-control(name='clinical_examination[actinic_keratoses][distribution]')
                               option(value='NoChoosed') Select Distribution...
                               option(value='Isolated') Isolated/Scattered
                               option(value='Clustered') Clustered
@@ -1191,21 +1207,21 @@ block content
                     .divTableCell.NoDivTableBorder(style='width:50%;')
                       span BCC:
                     .divTableCell.NoDivTableBorder(style='width:50%;')
-                      select#selectBCC.form-control
+                      select#selectBCC.form-control(name='clinical_examination[BCC][yes/no]')
                         option(value='No') No
                         option(value='Yes') Yes
                   .divTableRow
                     .divTableCell.NoDivTableBorder(style='width:50%;')
                       .hidden-control
                         .group.google_special_label(style='margin-bottom:-4%;')
-                          input#inputBCCNumber(type='text', style='width:80%;')
+                          input#inputBCCNumber(type='text' style='width:80%;' name='clinical_examination[BCC][count]')
                           span.highlight(style='width:80%;')
                           span.bar(style='width:80%;')
                           label Number:
                     .divTableCell.NoDivTableBorder(style='width:50%;')
                       .hidden-control
                         .group.google_special_label(style='margin-bottom:-4%;')
-                          input#inputBCC(type='text', style='width:80%;')
+                          input#inputBCC(type='text' style='width:80%;' name='clinical_examination[BCC][site(s)]')
                           span.highlight(style='width:80%;')
                           span.bar(style='width:80%;')
                           label Site(s):
@@ -1215,21 +1231,21 @@ block content
                     .divTableCell.NoDivTableBorder(style='width:50%;')
                       span Invasive SCC:
                     .divTableCell.NoDivTableBorder(style='width:50%;')
-                      select#selectSCC.form-control
+                      select#selectSCC.form-control(name='clinical_examination[invasive_SCC][yes/no]')
                         option(value='No') No
                         option(value='Yes') Yes
                   .divTableRow
                     .divTableCell.NoDivTableBorder(style='width:50%;')
                       .hidden-control
                         .group.google_special_label(style='margin-bottom:-4%;')
-                          input#inputSCCNumber(type='text', style='width:80%;')
+                          input#inputSCCNumber(type='text' style='width:80%;' name='clinical_examination[invasive_SCC][count]')
                           span.highlight(style='width:80%;')
                           span.bar(style='width:80%;')
                           label Number:
                     .divTableCell.NoDivTableBorder(style='width:50%;')
                       .hidden-control
                         .group.google_special_label(style='margin-bottom:-4%;')
-                          input#inputSCC(type='text', style='width:80%;')
+                          input#inputSCC(type='text' style='width:80%;' name='clinical_examination[invasive_SCC][site(s)]')
                           span.highlight(style='width:80%;')
                           span.bar(style='width:80%;')
                           label Site(s):
@@ -1239,21 +1255,21 @@ block content
                     .divTableCell.NoDivTableBorder(style='width:50%;')
                       span In situ SCC:
                     .divTableCell.NoDivTableBorder(style='width:50%;')
-                      select#selectSCCSite.form-control
+                      select#selectSCCSite.form-control(name='clinical_examination[insitu_SCC][yes/no]')
                         option(value='No') No
                         option(value='Yes') Yes
                   .divTableRow
                     .divTableCell.NoDivTableBorder(style='width:50%;')
                       .hidden-control
                         .group.google_special_label(style='margin-bottom:-4%;')
-                          input#inputSCCSiteNumber(type='text', style='width:80%;')
+                          input#inputSCCSiteNumber(type='text' style='width:80%;' name='clinical_examination[insitu_SCC][count]')
                           span.highlight(style='width:80%;')
                           span.bar(style='width:80%;')
                           label Number:
                     .divTableCell.NoDivTableBorder(style='width:50%;')
                       .hidden-control
                         .group.google_special_label(style='margin-bottom:-4%;')
-                          input#inputSCCSite(type='text', style='width:80%;')
+                          input#inputSCCSite(type='text' style='width:80%;' name='clinical_examination[insitu_SCC][site(s)]')
                           span.highlight(style='width:80%;')
                           span.bar(style='width:80%;')
                           label Site(s):
