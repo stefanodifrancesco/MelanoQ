@@ -630,6 +630,41 @@ router.post('/login',
 );
 
 router.get('/home', (req, res) => {
+
+    if (req.session.userid != null) {
+
+        esClient.get({
+            index: 'melanoq_nurses',
+            type: '_doc',
+            id: req.session.userid
+        }, function(error, user, response) {
+            if (error) {
+                console.log('search error: ' + error)
+            } else {
+                // Collecting complete list of questionnaires
+                esClient.search({
+                    index: 'melano_questionnaires'
+                }, function(error, response, status) {
+
+                    questionnaires = response.hits.hits;
+
+                    // Adding creation timestamp to every json
+                    questionnaires.forEach(quest => {
+                        timestamp = quest._source.timestamp
+                        date = new Date(timestamp)
+                        var insert_date = dateFormat(date, 'dd mmmm yyyy "at" HH:MM:ss');
+                        quest["insert_date"] = insert_date;
+                    });
+
+                    res.render('home', { profileData: user.hits.hits[0]._source, result: questionnaires });
+                });
+            }
+        });
+
+    } else {
+        res.render('login');
+    }
+
     sess = req.session;
     if (sess.username != null) {
         MongoClient.connect(url, {
@@ -701,7 +736,7 @@ router.post("/stepform", (req, res) => {
                     inline: "ctx._source.questionnaires.add(params.quest)",
                     params: {
                         quest: {
-                            code_number: req.body.code_country + ", " + req.body.code_center + ", " + req.body.code_type + " - " + req.body.code_number,
+                            code_number: req.body.code_number,
                             insert_date: current_timestamp
                         }
                     }
@@ -797,7 +832,7 @@ router.post('/find', (req, res) => {
     esClient.get({
         index: 'melano_questionnaires',
         type: '_doc',
-        id: req.body.questID
+        id: req.body.codeNumber
     }, function(error, response) {
         res.render('summary', { result: response.hits.hits[0]._source });
     });
