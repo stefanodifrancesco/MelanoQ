@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     $('.datepicker').datepicker({
-        format: 'dd-MM-yyyy',
+        format: 'dd-M-yyyy',
         autoclose: true
     });
     /*
@@ -66,28 +66,34 @@ $(document).ready(function() {
 
         if (currentCodeCountry != "No Choosed" && currentDatabaseCode != "No Choosed" && currentDatabaseCodeType != "No Choosed") {
             object_JSON = {
+                "sort": [{
+                    "code_number": {
+                        "order": "desc"
+                    }
+                }],
                 "query": {
                     "bool": {
                         "must": [{
                                 "term": {
-                                    "codeCountry": currentCodeCountry
+                                    "code_country": currentCodeCountry
                                 }
                             },
                             {
                                 "term": {
-                                    "codeCenter": currentDatabaseCode
+                                    "code_center": currentDatabaseCode
                                 }
                             },
                             {
                                 "term": {
-                                    "codeType": currentDatabaseCodeType
+                                    "code_type": currentDatabaseCodeType
                                 }
                             }
                         ]
                     }
-                }
+                },
+                "size": 1
             };
-            $("#codeNumber").val(send_Ajax_Data('http://localhost:9200/melano_questionnaires/_search', object_JSON));
+            send_Ajax_Data('http://localhost:9200/melano_questionnaires/_search', object_JSON);
         }
     });
 
@@ -620,10 +626,11 @@ function zeroPad(num, places) {
 };
 
 function myHandle(data) {
+    console.log(data);
     if (data.hits.hits.length == 0) {
         $("#codeNumber").val("0001");
     } else {
-        number = parseInt(data.hits.hits._source.codeNumber) + 1;
-        return zeroPad(number, 4);
+        number = parseInt(data.hits.hits[0]._source.code_number) + 1;
+        $("#codeNumber").val(zeroPad(number, 4));
     }
 };
