@@ -184,81 +184,95 @@ block content
               option(value='Burns severely') Burns severely
 
 
-        // Field type: "dropdown" id: "2143095268"
-        fieldset#fieldSkin_tan.form-fieldset
-          legend(for='2143095268')
-            | 2. Does your skin tan after a prolonged and repeated sun exposure (e.g. after
-            | several
-            | days as at the end of the summer) without protecting it with sunscreen or clothing?
-          .form-group
-            select#skin-tan.form-control.skin-tan(name='skin_tan')
-              option(value='NoChoosed') Select Tan...
-              option(value='No tan') No tan
-              option(value='Tans lightly') Tans lightly
-              option(value='Tans moderately') Tans moderately
-              option(value='Tans deeply') Tans deeply
-          .form-group.hidden-control
-            img#skin-tan-img(src='' alt='' height='auto' width='auto')
-
-
-        // Field type: "dropdown" id: "1304821978"
-        fieldset#fieldsetEye.form-fieldset
-          legend(for='1304821978') Eye Color
-          .form-group
-            select#id_eyes_color.form-control(name='eye_color')
-              option(value='') Select eye color...
-              option(value='Light') Light (green, blue, gray)
-              option(value='Medium') Medium (light brown, hazel)
-              option(value='Dark') Dark (dark brown, black)
-          .form-group.hidden-control
-            img#eye-img(src='' alt='' height='auto' width='auto')
-
-
-        // Field type: "dropdown" id: "1275694163"
-        fieldset#fieldsetHair.form-fieldset
-          legend(for='1275694163') Hair color (at age of 18 yrs)
-          
-          fieldset#fieldsetHair
-  legend(for='1275694163') Hair color (at age of 18 yrs)
+        fieldset#fieldSkin_tan
+  legend(for='')
+    | 2. Does your skin tan after a prolonged and repeated sun exposure (e.g. after
+    | several
+    | days as at the end of the summer) without protecting it with sunscreen or clothing?
+  .form-group
+    .divTable.divImgTable
+      .divTableBody
+        .divTableRow
+          .divTableCell
+            span No Tan
+          .divTableCell
+            span Tan Lightly
+          .divTableCell
+            span Tan Moderately
+          .divTableCell
+            span Tan Deeply
+        .divTableRow
+          .divTableCell
+            input#No_Tan(type='radio', name='group.tan', value='NoTan')
+          .divTableCell
+            input#Tan_Light(type='radio', name='group.tan', value='TansLightly')
+          .divTableCell
+            input#Tan_Moderate(type='radio', name='group.tan', value='TansModerately')
+          .divTableCell
+            input#Tan_Deep(type='radio', name='group.tan', value='TansDeeply')
+        .divTableRow
+          .divTableCell
+            img(src='img/Skin-Tan/No_Tan_1.png', width='100', height='100')
+          .divTableCell
+            img(src='img/Skin-Tan/Light_Tan_1.png', width='100', height='100')
+          .divTableCell
+            img(src='img/Skin-Tan/Moderate_Tan_1.png', width='100', height='100')
+          .divTableCell
+            img(src='img/Skin-Tan/Deep_Tan_1.png', width='100', height='100')
   //
     <div class="form-group">
-    <select id="id_hair_color" name="entry.Hair_color" class="form-control">
-    <option value="">Select hair color ...</option>
-    <option value="Red">Red</option>
-    <option value="Blonde">Blonde</option>
-    <option value="Light brown">Light brown</option>
-    <option value="Dark brown">Dark brown</option>
-    <option value="Black">Black</option>
+    <select id="skin-tan" name="entry.skin-tan" class="form-control skin-tan">
+    <option value="NoChoosed">Select Tan...</option>
+    <option value="No tan">No tan</option>
+    <option value="Tans lightly">Tans lightly</option>
+    <option value="Tans moderately">Tans moderately</option>
+    <option value="Tans deeply">Tans deeply</option>
     </select>
     </div>
+    <div class="form-group hidden-control">
+    <img id="skin-tan-img" src="" alt="" height="auto" width="auto">
+    </div>
+// Field type: "dropdown" id: "1304821978"
+fieldset#fieldsetEye
+  legend(for='') Eye Color
+  .form-group
+    .divTable.divImgTable
+      .divTableBody
+        .divTableRow
+          .divTableCell
+            span Light (green,blue,gray)
+          .divTableCell
+            span Medium (light brown, hazel)
+          .divTableCell
+            span Dark (dark brown, black)
+        .divTableRow
+          .divTableCell
+            input#Light_Eyes(type='radio', name='group.eyes', value='light')
+          .divTableCell
+            input#Medium_Eyes(type='radio', name='group.eyes', value='medium')
+          .divTableCell
+            input#Dark_Eyes(type='radio', name='group.eyes', value='dark')
+        .divTableRow
+          .divTableCell
+            img(src='img/Color-Eye/Light_eyes-removebg.png', width='150', height='50')
+          .divTableCell
+            img(src='img/Color-Eye/Medium_eyes-removebg.png', width='100', height='50')
+          .divTableCell
+            img(src='img/Color-Eye/Dark_eyes-removebg.png', width='100', height='50')
   //
-    table class="table">
-    <thead class="thead-light">
-    <tr>
-    <th scope="col" style="width:25%;">Red Hair Color</th>
-    <th scope="col" style="width:25%;">Blonde Hair Color</th>
-    <th scope="col" style="width:15%;">Light Brown Color</th>
-    <th scope="col" style="width:25%;">Dark Brown</th>
-    <th scope="col" style="width:10%;">Dark Color</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td style="width:25%;"><input type="radio" name="group.hair" value="red" id="Red_Hair"></td>
-    <td style="width:25%;"><input type="radio" name="group.hair" value="blonde" id="Blonde_Hair"></td>
-    <td style="width:15%;"><input type="radio" name="group.hair" value="light_brown" id="Light_Brown_Hair"></td>
-    <td style="width:25%;"><input type="radio" name="group.hair" value="dark_brown" id="Dark_Brown_Hair"></td>
-    <td style="width:10%;"><input type="radio" name="group.hair" value="dark" id="Dark_Hair"></td>
-    </tr>
-    <tr>
-    <td style="width:25%;"><img src="img/Color-hair/Red_hair-removebg.png" width="150" height="50"></td>
-    <td style="width:25%;"><img src="img/Color-Hair/Blonde_hair-removebg.png" width="150" height="50"></td>
-    <td style="width:15%;"><img src="img/Color-Hair/Light_brown_hair-removebg.png" width="150" height="50"></td>
-    <td style="width:25%;"><img src="img/Color-Hair/Dark_brown_hair-removebg.png" width="150" height="50"></td>
-    <td style="width:10%;"><img src="img/Color-Hair/Dark_hair-removebg.png" width="150" height="50"></td>
-    </tr>
-    </tbody>
-    </table
+    select id="id_eyes_color" name="entry.Eye_color" class="form-control">
+    <option value="">Select eye color...</option>
+    <option value="Light">Light (green, blue, gray)</option>
+    <option value="Medium">Medium (light brown, hazel)</option>
+    <option value="Dark">Dark (dark brown, black)</option>
+    </select>
+    </div>
+    <div class="form-group hidden-control">
+    <img id="eye-img" src="" alt="" height="auto" width="auto">
+    </div>
+// Field type: "dropdown" id: "1275694163"
+fieldset#fieldsetHair
+  legend(for='') Hair color (at age of 18 yrs)
   .form-group
     .divTable.divImgTable
       .divTableBody
@@ -297,38 +311,101 @@ block content
           .divTableCell
             img(src='img/Color-hair/Dark_hair-removebg.png', width='50', height='50')
   .form-group.hidden-control
+// Field type: "dropdown" id: "627155725"
+fieldset#fieldsetFreckles
+  legend(for='id_freckles')
+    | FrecklesDefinition: Light brown small macules since childhood, on the face, during
+    | summer time (disappear in winter)
+  .form-group
+    .divTable.divImgTable
+      .divTableBody
+        .divTableRow
+          .divTableCell
+            span No Freckles
+          .divTableCell
+            span Few Freckles
+          .divTableCell
+            span Some Freckles
+          .divTableCell
+            span Many Freckles
+        .divTableRow
+          .divTableCell
+            input#No_Freckles(type='radio', name='group.freckles', value='NoFreckles')
+          .divTableCell
+            input#Few_Freckles(type='radio', name='group.freckles', value='FewFreckles')
+          .divTableCell
+            input#Some_Freckles(type='radio', name='group.freckles', value='SomeFreckles')
+          .divTableCell
+            input#Many_Freckles(type='radio', name='group.freckles', value='ManyFreckles')
+        .divTableRow
+          .divTableCell
+            img(src='img/Freckles/No_freckles.png', width='100', height='100')
+          .divTableCell
+            img(src='img/Freckles/Few_freckles.png', width='100', height='100')
+          .divTableCell
+            img(src='img/Freckles/Some_freckles.png', width='100', height='100')
+          .divTableCell
+            img(src='img/Freckles/Many_freckles.png', width='100', height='100')
+  //
+    <div class="form-group">
+    <select id="id_freckles" name="entry.Freckles" class="form-control">
+    <option value="NoChoosed">Select freckles frequency ...</option>
+    <option value="None">None</option>
+    <option value="Few">Few</option>
+    <option value="Some">Some</option>
+    <option value="Many">Many</option>
+    </select>
+    </div>
+    <div class="form-group hidden-control">
+    <img id="freckles-img" src="" alt="" height="auto" width="auto">
+    </div>
+// Field type: "choices" id: "274284065"
+fieldset#fieldsetNevi
+  legend(for='id_Nevi') Nevi frequency
+  .form-group
+    .divTable.divImgTable
+      .divTableBody
+        .divTableRow
+          .divTableCell
+            span None Nevi
+          .divTableCell
+            span Few Nevi
+          .divTableCell
+            span Some Nevi
+          .divTableCell
+            span Many Nevi
+        .divTableRow
+          .divTableCell
+            input#No_Nevi(type='radio', name='group.tan', value='NoNevi')
+          .divTableCell
+            input#Few_Nevi(type='radio', name='group.tan', value='FewNevi')
+          .divTableCell
+            input#Some_Nevi(type='radio', name='group.tan', value='SomeNevi')
+          .divTableCell
+            input#Many_Nevi(type='radio', name='group.tan', value='ManyNevi')
+        .divTableRow
+          .divTableCell
+            img(src='img/Nevi/None_Nevi.png', width='100', height='100')
+          .divTableCell
+            img(src='img/Nevi/Few_Nevi.png', width='100', height='100')
+          .divTableCell
+            img(src='img/Nevi/Some_Nevi.png', width='100', height='100')
+          .divTableCell
+            img(src='img/Nevi/Many_Nevi.png', width='100', height='100')
+  //
+    <div class="form-group">
+    <select id="id_Nevi" name="entry.Nevi" class="form-control">
+    <option value="NoChoosed">Select Nevi frequency ...</option>
+    <option value="None">None</option>
+    <option value="Few">Few</option>
+    <option value="Some">Some</option>
+    <option value="Many">Many</option>
+    </select>
+    </div>
+    <div class="form-group hidden-control">
+    <img id="Nevi-img" src="" alt="" height="auto" width="auto">
+    </div>
 
-
-
-
-        // Field type: "dropdown" id: "627155725"
-        fieldset#fieldsetFreckles.form-fieldset
-          legend(for='id_freckles')
-            | FrecklesDefinition: Light brown small macules since childhood, on the face, during
-            | summer time (disappear in winter)
-          .form-group
-            select#id_freckles.form-control(name='freckles')
-              option(value='NoChoosed') Select freckles frequency ...
-              option(value='None') None
-              option(value='Few') Few
-              option(value='Some') Some
-              option(value='Many') Many
-          .form-group.hidden-control
-            img#freckles-img(src='' alt='' height='auto' width='auto')
-
-
-        // Field type: "choices" id: "274284065"
-        fieldset#fieldsetNevi.form-fieldset
-          legend(for='id_Nevi') Nevi frequency
-          .form-group
-            select#id_Nevi.form-control(name='nevi')
-              option(value='NoChoosed') Select Nevi frequency ...
-              option(value='None') None
-              option(value='Few') Few
-              option(value='Some') Some
-              option(value='Many') Many
-          .form-group.hidden-control
-            img#Nevi-img(src='' alt='' height='auto' width='auto')
 
         // Field type: "section" id: "858926295"
         fieldset#HistoryOfUltraVioletExposure.form-fieldset
