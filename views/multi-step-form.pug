@@ -177,16 +177,16 @@ block content
                   option(value='Student') Student
                   option(value='Retired') Retired
 
-            //- fieldset#fieldHistory
-            //-   label(for='History', style='font-size: 12px;')
-            //-     | History of occupation(optional History of occupation
-            //-     | (starting from most recent and
-            //-     | going backwards in time record duration from YYYY to YYYY)
-            //-   .form-group
-            //-     select#History.form-control(name='entry.History')
-            //-   .form-group.dynamic_ddl
-            //-   .form-group.div_date
-            //-   #json-table-wrapper-history.table
+            fieldset#fieldHistory
+              label(for='History', style='font-size: 12px;')
+                | History of occupation(optional History of occupation
+                | (starting from most recent and
+                | going backwards in time record duration from YYYY to YYYY)
+              .form-group
+                select#History.form-control(name='entry.History')
+              .form-group.dynamic_ddl
+              .form-group.div_date
+              #json-table-wrapper-history.table
 
           div.alphaformfooter
           div.formfooter
@@ -212,93 +212,175 @@ block content
                   option(value='Burns severely') Burns severely
                   
             fieldset#fieldSkin_tan
-              label(for='2143095268')
+              label(for='')
                 | 2. Does your skin tan after a prolonged and repeated sun exposure (e.g. after
                 | several
                 | days as at the end of the summer) without protecting it with sunscreen or clothing?
               .form-group
-                select#skin-tan.form-control.skin-tan(name='skin_tan' required='required' data-rule-required='true' data-msg-required='Required field')
-                  option(value='NoChoosed') Select Tan...
-                  option(value='No tan') No tan
-                  option(value='Tans lightly') Tans lightly
-                  option(value='Tans moderately') Tans moderately
-                  option(value='Tans deeply') Tans deeply
-              .form-group.hidden-control
-                img#skin-tan-img(src='', alt='', height='auto', width='auto')
+                .divTable.divImgTable
+                  .divTableBody
+                    .divTableRow
+                      .divTableCell
+                        span No Tan
+                      .divTableCell
+                        span Tan Lightly
+                      .divTableCell
+                        span Tan Moderately
+                      .divTableCell
+                        span Tan Deeply
+                    .divTableRow
+                      .divTableCell
+                        input#No_Tan(type='radio', name='skin_tan', value='NoTan')
+                      .divTableCell
+                        input#Tan_Light(type='radio', name='skin_tan', value='TansLightly')
+                      .divTableCell
+                        input#Tan_Moderate(type='radio', name='skin_tan', value='TansModerately')
+                      .divTableCell
+                        input#Tan_Deep(type='radio', name='skin_tan', value='TansDeeply')
+                    .divTableRow
+                      .divTableCell
+                        img(src='img/Skin-Tan/No_Tan_1.png', width='100', height='100')
+                      .divTableCell
+                        img(src='img/Skin-Tan/Light_Tan_1.png', width='100', height='100')
+                      .divTableCell
+                        img(src='img/Skin-Tan/Moderate_Tan_1.png', width='100', height='100')
+                      .divTableCell
+                        img(src='img/Skin-Tan/Deep_Tan_1.png', width='100', height='100')
                 
             fieldset#fieldsetEye
-              label(for='1304821978') Eye Color
+              label(for='') Eye Color
               .form-group
-                select#id_eyes_color.form-control
-                  option(value='') Select eye color...
-                  option(value='Light') Light (green, blue, gray)
-                  option(value='Medium') Medium (light brown, hazel)
-                  option(value='Dark') Dark (dark brown, black)
-              .form-group.hidden-control
-                img#eye-img(src='', alt='', height='auto', width='auto')
+                .divTable.divImgTable
+                  .divTableBody
+                    .divTableRow
+                      .divTableCell
+                        span Light (green,blue,gray)
+                      .divTableCell
+                        span Medium (light brown, hazel)
+                      .divTableCell
+                        span Dark (dark brown, black)
+                    .divTableRow
+                      .divTableCell
+                        input#Light_Eyes(type='radio', name='eye_color', value='light')
+                      .divTableCell
+                        input#Medium_Eyes(type='radio', name='eye_color', value='medium')
+                      .divTableCell
+                        input#Dark_Eyes(type='radio', name='eye_color', value='dark')
+                    .divTableRow
+                      .divTableCell
+                        img(src='img/Color-Eye/Light_eyes-removebg.png', width='150', height='50')
+                      .divTableCell
+                        img(src='img/Color-Eye/Medium_eyes-removebg.png', width='100', height='50')
+                      .divTableCell
+                        img(src='img/Color-Eye/Dark_eyes-removebg.png', width='100', height='50')
 
             fieldset#fieldsetHair
               label(for='1275694163') Hair color (at age of 18 yrs)
               .form-group
-                .divTable
+                .divTable.divImgTable
                   .divTableBody
                     .divTableRow
                       .divTableCell
-                        span
-                          | Red Hair Color
-                          input(type='radio', name='hair', value='red', id='Red_Hair i')
+                        span Red Hair Color
                       .divTableCell
-                        span
-                          | Blonde Hair Color
-                          input#Blonde_Hair(type='radio', name='hair', value='blonde')
+                        span Blonde Hair Color
                       .divTableCell
                         span Light Brown Color
-                        input#Light_brown_Hair(type='radio', name='hair', value='Light brown')
                       .divTableCell
                         span Dark Brown Color
-                        input#Dark_brown_Hair(type='radio', name='hair', value='Dark brown')
                       .divTableCell
                         span Dark Color
-                        input#Dark_Hair(type='radio', name='hair', value='red')
                     .divTableRow
                       .divTableCell
-                        img(src='img/Color-hair/Red_hair.png', width='150', height='50')
+                        input#Red_Hair(type='radio', name='hair_color', value='red')
                       .divTableCell
-                        img(src='img/Color-hair/Blonde_hair.png', width='150', height='50')
+                        input#Blonde_Hair(type='radio', name='hair_color', value='blonde')
                       .divTableCell
-                        img(src='img/Color-hair/Light_brown_hair.png', width='100', height='50')
+                        input#Light_brown_Hair(type='radio', name='hair_color', value='Light brown')
                       .divTableCell
-                        img(src='img/Color-hair/Dark_brown_hair.png', width='150', height='50')
+                        input#Dark_brown_Hair(type='radio', name='hair_color', value='Dark brown')
                       .divTableCell
-                        img(src='img/Color-hair/Dark_hair.png', width='50', height='50')
+                        input#Dark_Hair(type='radio', name='hair_color', value='red')
+                    .divTableRow
+                      .divTableCell
+                        img(src='img/Color-hair/Red_hair-removebg.png', width='150', height='50')
+                      .divTableCell
+                        img(src='img/Color-hair/Blonde_hair-removebg.png', width='150', height='50')
+                      .divTableCell
+                        img(src='img/Color-hair/Light_brown_hair-removebg.png', width='100', height='50')
+                      .divTableCell
+                        img(src='img/Color-hair/Dark_brown_hair-removebg.png', width='150', height='50')
+                      .divTableCell
+                        img(src='img/Color-hair/Dark_hair-removebg.png', width='50', height='50')
               .form-group.hidden-control
-                img#hair-img(src='', alt='', height='auto', width='auto')
 
             fieldset#fieldsetFreckles
               label(for='id_freckles')
                 | FrecklesDefinition: Light brown small macules since childhood, on the face, during
                 | summer time (disappear in winter)
               .form-group
-                select#id_freckles.form-control
-                  option(value='NoChoosed') Select freckles frequency ...
-                  option(value='None') None
-                  option(value='Few') Few
-                  option(value='Some') Some
-                  option(value='Many') Many
-              .form-group.hidden-control
-                img#freckles-img(src='', alt='', height='auto', width='auto')
+                .divTable.divImgTable
+                  .divTableBody
+                    .divTableRow
+                      .divTableCell
+                        span No Freckles
+                      .divTableCell
+                        span Few Freckles
+                      .divTableCell
+                        span Some Freckles
+                      .divTableCell
+                        span Many Freckles
+                    .divTableRow
+                      .divTableCell
+                        input#No_Freckles(type='radio', name='freckles', value='NoFreckles')
+                      .divTableCell
+                        input#Few_Freckles(type='radio', name='freckles', value='FewFreckles')
+                      .divTableCell
+                        input#Some_Freckles(type='radio', name='freckles', value='SomeFreckles')
+                      .divTableCell
+                        input#Many_Freckles(type='radio', name='freckles', value='ManyFreckles')
+                    .divTableRow
+                      .divTableCell
+                        img(src='img/Freckles/No_freckles.png', width='100', height='100')
+                      .divTableCell
+                        img(src='img/Freckles/Few_freckles.png', width='100', height='100')
+                      .divTableCell
+                        img(src='img/Freckles/Some_freckles.png', width='100', height='100')
+                      .divTableCell
+                        img(src='img/Freckles/Many_freckles.png', width='100', height='100')
                 
             fieldset#fieldsetNevi
               label(for='id_Nevi') Nevi frequency
               .form-group
-                select#id_Nevi.form-control
-                  option(value='NoChoosed') Select Nevi frequency ...
-                  option(value='None') None
-                  option(value='Few') Few
-                  option(value='Some') Some
-                  option(value='Many') Many
-              .form-group.hidden-control
-                img#Nevi-img(src='', alt='', height='auto', width='auto')
+                .divTable.divImgTable
+                  .divTableBody
+                    .divTableRow
+                      .divTableCell
+                        span None Nevi
+                      .divTableCell
+                        span Few Nevi
+                      .divTableCell
+                        span Some Nevi
+                      .divTableCell
+                        span Many Nevi
+                    .divTableRow
+                      .divTableCell
+                        input#No_Nevi(type='radio', name='group.tan', value='NoNevi')
+                      .divTableCell
+                        input#Few_Nevi(type='radio', name='group.tan', value='FewNevi')
+                      .divTableCell
+                        input#Some_Nevi(type='radio', name='group.tan', value='SomeNevi')
+                      .divTableCell
+                        input#Many_Nevi(type='radio', name='group.tan', value='ManyNevi')
+                    .divTableRow
+                      .divTableCell
+                        img(src='img/Nevi/None_Nevi.png', width='100', height='100')
+                      .divTableCell
+                        img(src='img/Nevi/Few_Nevi.png', width='100', height='100')
+                      .divTableCell
+                        img(src='img/Nevi/Some_Nevi.png', width='100', height='100')
+                      .divTableCell
+                        img(src='img/Nevi/Many_Nevi.png', width='100', height='100')
 
           div.alphaformfooter
           div.formfooter
