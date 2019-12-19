@@ -40,8 +40,8 @@ $(document).ready(function() {
             nation_val = $(this).val();
             $.getJSON('Centers.json', function(result) {
                 $.each(result, function(index, value) {
-                    if (value.Nation == nation_val) {
-                        $("#DatabaseCodeCenter").append("<option value='" + value.Country + "'>" + value.Country + "</option>");
+                    if (value.codeNation == nation_val) {
+                        $("#DatabaseCodeCenter").append("<option value='" + value.codeCenter + "'>" + value.Country + "</option>");
                     }
                 });
             });
@@ -59,7 +59,6 @@ $(document).ready(function() {
         currentDatabaseCode = $("#DatabaseCodeCenter").val();
         currentDatabaseCodeType = $("#DatabaseCodeType").val();
 
-        console.log("Hello World");
         console.log("country : " + currentCodeCountry +
             "\n" + "database : " + currentDatabaseCode +
             "\n" + "type : " + currentDatabaseCodeType);
@@ -67,7 +66,7 @@ $(document).ready(function() {
         if (currentCodeCountry != "No Choosed" && currentDatabaseCode != "No Choosed" && currentDatabaseCodeType != "No Choosed") {
             object_JSON = {
                 "sort": [{
-                    "code_number": {
+                    "timestamp": {
                         "order": "desc"
                     }
                 }],
@@ -93,7 +92,7 @@ $(document).ready(function() {
                 },
                 "size": 1
             };
-            send_Ajax_Data('http://localhost:9200/melano_questionnaires/_search', object_JSON);
+            send_Ajax_Data('http://localhost:9200/melano_questionnaires/_search', object_JSON, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType);
         }
     });
 
@@ -604,7 +603,7 @@ function create_Table_Delete(lista_JSON, div_id, field_id) {
     });
 };
 
-function send_Ajax_Data(custom_URL, object_JSON, handleDATA) {
+function send_Ajax_Data(custom_URL, object_JSON, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType) {
     $.ajax({
         type: "POST",
         url: custom_URL,
@@ -613,7 +612,7 @@ function send_Ajax_Data(custom_URL, object_JSON, handleDATA) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data) {
-            myHandle(data);
+            myHandle(data, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType);
         },
         failure: function(errMsg) {
             console.log(errMsg);
@@ -625,12 +624,12 @@ function zeroPad(num, places) {
     return String(num).padStart(places, '0')
 };
 
-function myHandle(data) {
-    console.log(data);
+function myHandle(data, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType) {
+
     if (data.hits.hits.length == 0) {
-        $("#codeNumber").val("0001");
+        $("#codeNumber").val(currentCodeCountry + currentDatabaseCode + currentDatabaseCodeType + "0001");
     } else {
-        number = parseInt(data.hits.hits[0]._source.code_number) + 1;
-        $("#codeNumber").val(zeroPad(number, 4));
+        number = parseInt(data.hits.hits[0]._source.code_number.substr(5, 8)) + 1;
+        $("#codeNumber").val(currentCodeCountry + currentDatabaseCode + currentDatabaseCodeType + zeroPad(number, 4));
     }
 };
