@@ -656,44 +656,11 @@ router.get('/home', (req, res) => {
                         quest["insert_date"] = insert_date;
                     });
 
-                    res.render('home', { profileData: user.hits.hits[0]._source, result: questionnaires });
+                    res.render('home', { profileData: user._source, result: questionnaires });
                 });
             }
         });
 
-    } else {
-        res.render('login');
-    }
-
-    sess = req.session;
-    if (sess.username != null) {
-        MongoClient.connect(url, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true
-            },
-            function(err, db) {
-                var dbo = db.db("MelanoQ");
-
-                // Collecting user info
-                dbo.collection('nurses').findOne({ username: sess.username }, function(err, user) {
-
-                    // Collecting complete list of questionnaires
-                    dbo.collection('questionnaires').find({}, { projection: { codeNumber: 1, surveyDate: 1, _id: 1 } }).toArray(function(err, result) {
-
-                        // Adding creation timestamp to every json
-                        result.forEach(quest => {
-                            timestamp = quest._id.toString().substring(0, 8)
-                            date = new Date(parseInt(timestamp, 16) * 1000)
-                            var insert_date = dateFormat(date, 'dd mmmm yyyy "at" HH:MM:ss');
-                            quest["insert_date"] = insert_date;
-                        });
-
-                        res.render('home', { profileData: user, result: result });
-                    });
-                });
-
-
-            });
     } else {
         res.render('login');
     }

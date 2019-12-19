@@ -403,15 +403,16 @@ $(document).ready(function() {
     function Create_Datepicker(tag_ID, tag_Append) {
         var date_input = $("<input type=text id='" + tag_ID + "' class='form-control datepicker auto-width'>");
         $(date_input).datepicker({
-            format: 'dd-MM-yyyy',
+            format: 'dd-M-yyyy',
             autoclose: true
         });
         $("#" + tag_Append).find(".div_date").append($("<div class='form-group'>").append(date_input));
     };
 
+    var history_list = [];
+
     function DDL_from_JSON(tag_ID_DDL, url) {
         var dropdown = $("#" + tag_ID_DDL).html("<option value='NoChoosed'>Select Sic Group ...</option>");
-        var history_list = [];
 
         $.getJSON('SicRanges.json', function(data) {
             $.each(data, function(key, entry) {
@@ -429,19 +430,19 @@ $(document).ready(function() {
                     if ($(dropdown2).val() != "NoChoosed") {
                         var date_input_start = $("<input type=text id='history_date_start' class='form-control datepicker auto-width'>");
                         $(date_input_start).datepicker({
-                            format: 'dd-MM-yyyy',
+                            format: 'dd-M-yyyy',
                             autoclose: true
                         }).on("changeDate", function(evt) {
                             var date_input_end = $("<input type=text id='history_date_end' class='form-control datepicker auto-width'>");
                             $(date_input_end).datepicker({
-                                format: 'dd-MM-yyyy',
+                                format: 'dd-M-yyyy',
                                 autoclose: true
                             }).on("changeDate", function(evt) {
                                 var history_row = {};
                                 history_row.SIC_Group = $("#fieldHistory").find("#History option:selected").text();
                                 history_row.SIC_Code = $("#fieldHistory").find("#dropSIC option:selected").text();
-                                history_row.Start_Date = $("#fieldHistory").find("#history_date_start").val();
-                                history_row.End_Date = $(this).val();
+                                history_row.start_date = $("#fieldHistory").find("#history_date_start").val();
+                                history_row.end_date = $(this).val();
                                 history_list.push(history_row);
                                 create_Table_Delete(history_list, "json-table-wrapper-history", "fieldHistory");
                                 $("#History").val("NoChoosed");
@@ -554,9 +555,16 @@ $(document).ready(function() {
     $("#submit").on('click', function(e) {
         e.preventDefault();
         var serJson = $("#msform").serializeJSON();
-        //serJson.append(history_list);
-        console.log(serJson);
-        console.log("inside submit")
+
+        history_list.forEach(occupation => {
+            delete occupation.Action;
+        });
+        serJson.SIC_list = history_list;
+
+        ListaICD10.forEach(diagnoses => {
+            delete diagnoses.Action;
+        });
+        serJson.diagnoses = ListaICD10;
 
         $.ajax({
             url: '/stepform', // url where to submit the request
