@@ -33,7 +33,7 @@ block content
                         tr
                           td(style='width: 400px;')
                             form(action='/find' method='post')
-                              button.btn-link.questionnaire-link(type='submit' name='codeNumber' value='#{quest.code_number}') #{quest.code_number}
+                              button.btn-link.questionnaire-link(type='submit' name='codeNumber' value='' + quest.code_number) #{quest.code_number}
                           td #{quest.insert_date}
 
               else 
@@ -56,7 +56,7 @@ block content
                               button.btn-link.questionnaire-link(
                                 type='submit' 
                                 name='codeNumber' 
-                                value='#{quest._source.code_number}'
+                                value='' + quest._source.code_number
                               ) #{quest._source.code_number}
                           td #{quest.insert_date}
 
