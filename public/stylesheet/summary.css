@@ -13,17 +13,28 @@
 }
 
 .summary-table {
-    width: 90%;
+    width: 100%;
     border-collapse: separate;
     border-spacing: 15px;
 }
 
+.summary-table td {
+    border-bottom: 1px solid black;
+    vertical-align: bottom;
+}
+
 .summary-table legend {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    background-color: white;
+    color: cornflowerblue;
+    font-variant: small-caps;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .summary-table span {
-    margin-bottom: 15px;
+    margin-bottom: 0px;
+    font-size: 0.9rem;
 }
 
 *,
