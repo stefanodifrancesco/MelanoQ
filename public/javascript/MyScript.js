@@ -59,10 +59,6 @@ $(document).ready(function() {
         currentDatabaseCode = $("#DatabaseCodeCenter").val();
         currentDatabaseCodeType = $("#DatabaseCodeType").val();
 
-        console.log("country : " + currentCodeCountry +
-            "\n" + "database : " + currentDatabaseCode +
-            "\n" + "type : " + currentDatabaseCodeType);
-
         if (currentCodeCountry != "No Choosed" && currentDatabaseCode != "No Choosed" && currentDatabaseCodeType != "No Choosed") {
             object_JSON = {
                 "sort": [{
@@ -456,8 +452,7 @@ $(document).ready(function() {
                 $("#fieldHistory").find(".dynamic_ddl").append(dropdown2);
                 var start = parseInt(valore.split('*')[0]);
                 var end = parseInt(valore.split('*')[1]);
-                console.log(start);
-                console.log(end);
+
                 $.getJSON(url, function(data) {
                     $.each(data, function(key, entry) {
                         var Sic_Code = parseInt(entry.SIC_Code);
@@ -603,7 +598,7 @@ function create_Table_Delete(lista_JSON, div_id, field_id) {
         $(this).parents("tr").remove();
         var element_to_Delete = (parseInt(deleted_item_index) - 1);
         lista_JSON.splice(element_to_Delete, 1);
-        console.log(lista_JSON);
+
         $(local_div_id).empty();
         if (lista_JSON.length > 0) {
             create_Table_Delete(lista_JSON, div_id, field_id);
