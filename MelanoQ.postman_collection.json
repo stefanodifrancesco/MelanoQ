@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "44f96ca6-65ab-482e-ae36-5e767afdf481",
+		"name": "MelanoQ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9200/melanoq_nurses/_doc?type=_doc",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"max\",\r\n    \"password\": \"pass\",\r\n    \"questionnaires\": []\r\n  }"
+				},
+				"url": {
+					"raw": "http://localhost:9200/melanoq_nurses/_doc?type=_doc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"melanoq_nurses",
+						"_doc"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "_doc"
+						}
+					]
+				},
+				"description": "Index first nurse"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/melano_questionnaires",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9200/melano_questionnaires",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"melano_questionnaires"
+					]
+				},
+				"description": "Create questionnaires index"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/melano_questionnaires/_mapping?type=_doc&include_type_name=true",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"properties\": {\n        \"subject\": {\n            \"type\": \"keyword\"\n        },\n        \"code_country\": {\n            \"type\": \"keyword\"\n        },\n        \"code_center\": {\n            \"type\": \"keyword\"\n        },\n        \"code_type\": {\n            \"type\": \"keyword\"\n        },\n        \"code_number\": {\n            \"type\": \"keyword\"\n        },\n        \"survey_date\": {\n            \"type\": \"date\",\n            \"format\": \"dd-MMM-yyyy\"\n        },\n        \"last_update\": {\n            \"type\": \"date\",\n            \"format\": \"dd-MMM-yyyy\"\n        },\n        \"melanoma_type\": {\n            \"type\": \"keyword\"\n        },\n        \"other_melanoma_type\": {\n            \"type\": \"text\"\n        },\n        \"gender\": {\n            \"type\": \"keyword\"\n        },\n        \"birthdate\": {\n            \"type\": \"date\",\n            \"format\": \"dd-MMM-yyyy\"\n        },\n        \"weight\": {\n            \"type\": \"integer\"\n        },\n        \"height\": {\n            \"type\": \"integer\"\n        },\n        \"ethnicity\": {\n            \"type\": \"keyword\"\n        },\n        \"other_ethnicity\": {\n            \"type\": \"text\"\n        },\n        \"residency\": {\n            \"type\": \"text\"\n        },\n        \"education\": {\n            \"type\": \"keyword\"\n        },\n        \"occupational_status\": {\n            \"type\": \"keyword\"\n        },\n        \"skin_response\": {\n            \"type\": \"keyword\"\n        },\n        \"skin_tan\": {\n            \"type\": \"keyword\"\n        },\n        \"eye_color\": {\n            \"type\": \"keyword\"\n        },\n        \"hair_color\": {\n            \"type\": \"keyword\"\n        },\n        \"freckles\": {\n            \"type\": \"keyword\"\n        },\n        \"nevi\": {\n            \"type\": \"keyword\"\n        },\n        \"ultraviolet\": {\n            \"properties\": {\n                \"occupational_sun_exposure\": {\n                    \"properties\": {\n                        \"presence\": {\n                            \"type\": \"keyword\"\n                        },\n                        \"occupation_name\": {\n                            \"type\": \"text\"\n                        },\n                        \"hours_day\": {\n                            \"type\": \"integer\"\n                        },\n                        \"hours_month\": {\n                            \"type\": \"integer\"\n                        },\n                        \"hours_year\": {\n                            \"type\": \"integer\"\n                        },\n                        \"number_of_years\": {\n                            \"type\": \"integer\"\n                        }\n                    }\n                },\n                \"recreational_sun_exposure\": {\n                    \"properties\": {\n                        \"presence\": {\n                            \"type\": \"keyword\"\n                        },\n                        \"occupation_name\": {\n                            \"type\": \"text\"\n                        },\n                        \"hours_day\": {\n                            \"type\": \"integer\"\n                        },\n                        \"hours_month\": {\n                            \"type\": \"integer\"\n                        },\n                        \"hours_year\": {\n                            \"type\": \"integer\"\n                        },\n                        \"number_of_years\": {\n                            \"type\": \"integer\"\n                        }\n                    }\n                },\n                \"exposure_childhood\": {\n                    \"properties\": {\n                        \"period\": {\n                            \"type\": \"text\"\n                        },\n                        \"time\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"exposure_adolescence\": {\n                    \"properties\": {\n                        \"period\": {\n                            \"type\": \"text\"\n                        },\n                        \"time\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"exposure_adulthood\": {\n                    \"properties\": {\n                        \"period\": {\n                            \"type\": \"text\"\n                        },\n                        \"time\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"exposure_previous_10_years\": {\n                    \"properties\": {\n                        \"period\": {\n                            \"type\": \"text\"\n                        },\n                        \"time\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"most_recent_sunburn\": {\n                    \"type\": \"date\",\n                    \"format\": \"dd-MMM-yyyy\"\n                },\n                \"sunburn_before_18\": {\n                    \"properties\": {\n                        \"number\": {\n                            \"type\": \"text\"\n                        },\n                        \"presence\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"sunburn_after_18\": {\n                    \"properties\": {\n                        \"number\": {\n                            \"type\": \"text\"\n                        },\n                        \"presence\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"sunburn_at_melanoma_site\": {\n                    \"type\": \"text\"\n                },\n                \"sunburn_last_5_years\": {\n                    \"properties\": {\n                        \"number\": {\n                            \"type\": \"text\"\n                        },\n                        \"presence\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"childhood_sunscreen\": {\n                    \"properties\": {\n                        \"frequency\": {\n                            \"type\": \"text\"\n                        },\n                        \"type\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"adolescence_sunscreen\": {\n                    \"properties\": {\n                        \"frequency\": {\n                            \"type\": \"text\"\n                        },\n                        \"type\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"adulthood_sunscreen\": {\n                    \"properties\": {\n                        \"frequency\": {\n                            \"type\": \"text\"\n                        },\n                        \"type\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"last_10_years_sunscreen\": {\n                    \"properties\": {\n                        \"frequency\": {\n                            \"type\": \"text\"\n                        },\n                        \"type\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"hat_frequency\": {\n                    \"type\": \"text\"\n                },\n                \"clothing\": {\n                    \"type\": \"text\"\n                },\n                \"peak_UVR_hours\": {\n                    \"type\": \"text\"\n                },\n                \"sunlamp\": {\n                    \"properties\": {\n                        \"presence\": {\n                            \"type\": \"text\"\n                        },\n                        \"number_of_sessions\": {\n                            \"type\": \"text\"\n                        },\n                        \"age_of_first_sunlamp\": {\n                            \"type\": \"text\"\n                        },\n                        \"age_of_last_sunlamp\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"phototherapy\": {\n                    \"type\": \"text\"\n                }\n            }\n        },\n        \"lifestyle\": {\n            \"properties\": {\n                \"smoking\": {\n                    \"properties\": {\n                        \"age_of_first_smoking\": {\n                            \"type\": \"integer\"\n                        },\n                        \"smoke_quantity\": {\n                            \"type\": \"text\"\n                        },\n                        \"smoking_period\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"vitamins_last_year\": {\n                    \"properties\": {\n                        \"presence\": {\n                            \"type\": \"keyword\"\n                        },\n                        \"quantity\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"betacarotene_frequency\": {\n                    \"type\": \"keyword\"\n                },\n                \"betacarotene_period\": {\n                    \"type\": \"keyword\"\n                },\n                \"multivitamins_frequency\": {\n                    \"type\": \"keyword\"\n                },\n                \"multivitamins_period\": {\n                    \"type\": \"keyword\"\n                },\n                \"vitamin_A_frequency\": {\n                    \"type\": \"keyword\"\n                },\n                \"vitamin_A_period\": {\n                    \"type\": \"keyword\"\n                },\n                \"vitamin_C_frequency\": {\n                    \"type\": \"keyword\"\n                },\n                \"vitamin_C_period\": {\n                    \"type\": \"keyword\"\n                },\n                \"vitamin_D_frequency\": {\n                    \"type\": \"keyword\"\n                },\n                \"vitamin_D_period\": {\n                    \"type\": \"keyword\"\n                },\n                \"vitamin_E_frequency\": {\n                    \"type\": \"keyword\"\n                },\n                \"vitamin_E_period\": {\n                    \"type\": \"keyword\"\n                }\n            }\n        },\n        \"clinical_examination\": {\n            \"properties\": {\n                \"solar_lentigines_frequency\": {\n                    \"type\": \"keyword\"\n                },\n                \"solar_lentigines_at_melanoma\": {\n                    \"type\": \"keyword\"\n                },\n                \"nevi_count\": {\n                    \"properties\": {\n                        \"left_back\": {\n                            \"type\": \"integer\"\n                        },\n                        \"left_deltoid\": {\n                            \"type\": \"integer\"\n                        },\n                        \"left_face\": {\n                            \"type\": \"integer\"\n                        },\n                        \"left_gluteus\": {\n                            \"type\": \"integer\"\n                        },\n                        \"left_neck\": {\n                            \"type\": \"integer\"\n                        },\n                        \"left_palms\": {\n                            \"type\": \"integer\"\n                        },\n                        \"left_scalp\": {\n                            \"type\": \"integer\"\n                        },\n                        \"left_soles\": {\n                            \"type\": \"integer\"\n                        },\n                        \"left_thorax_abdomen\": {\n                            \"type\": \"integer\"\n                        },\n                        \"right_back\": {\n                            \"type\": \"integer\"\n                        },\n                        \"right_deltoid\": {\n                            \"type\": \"integer\"\n                        },\n                        \"right_face\": {\n                            \"type\": \"integer\"\n                        },\n                        \"right_gluteus\": {\n                            \"type\": \"integer\"\n                        },\n                        \"right_neck\": {\n                            \"type\": \"integer\"\n                        },\n                        \"right_palms\": {\n                            \"type\": \"integer\"\n                        },\n                        \"right_scalp\": {\n                            \"type\": \"integer\"\n                        },\n                        \"right_soles\": {\n                            \"type\": \"integer\"\n                        },\n                        \"right_thorax_abdomen\": {\n                            \"type\": \"integer\"\n                        }\n                    }\n                },\n                \"nevi_2mm_count\": {\n                    \"type\": \"keyword\"\n                },\n                \"atypical_nevi_count\": {\n                    \"type\": \"integer\"\n                },\n                \"atypical_nevi_at_melanoma\": {\n                    \"type\": \"integer\"\n                },\n                \"congenital_nevi\": {\n                    \"properties\": {\n                        \"giant_sized\": {\n                            \"properties\": {\n                                \"sites\": {\n                                    \"type\": \"text\"\n                                },\n                                \"presence\": {\n                                    \"type\": \"keyword\"\n                                }\n                            }\n                        },\n                        \"large_sized\": {\n                            \"properties\": {\n                                \"sites\": {\n                                    \"type\": \"text\"\n                                },\n                                \"presence\": {\n                                    \"type\": \"keyword\"\n                                }\n                            }\n                        },\n                        \"medium_sized\": {\n                            \"properties\": {\n                                \"sites\": {\n                                    \"type\": \"text\"\n                                },\n                                \"presence\": {\n                                    \"type\": \"keyword\"\n                                }\n                            }\n                        }\n                    }\n                },\n                \"blue_nevi\": {\n                    \"properties\": {\n                        \"medium_sized\": {\n                            \"properties\": {\n                                \"presence\": {\n                                    \"type\": \"keyword\"\n                                },\n                                \"count\": {\n                                    \"type\": \"integer\"\n                                }\n                            }\n                        }\n                    }\n                },\n                \"actinic_keratoses\": {\n                    \"properties\": {\n                        \"presence\": {\n                            \"type\": \"keyword\"\n                        },\n                        \"distribution\": {\n                            \"type\": \"keyword\"\n                        },\n                        \"site\": {\n                            \"type\": \"keyword\"\n                        }\n                    }\n                },\n                \"BCC\": {\n                    \"properties\": {\n                        \"count\": {\n                            \"type\": \"text\"\n                        },\n                        \"sites\": {\n                            \"type\": \"text\"\n                        },\n                        \"presence\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"invasive_SCC\": {\n                    \"properties\": {\n                        \"count\": {\n                            \"type\": \"text\"\n                        },\n                        \"sites\": {\n                            \"type\": \"text\"\n                        },\n                        \"presence\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                },\n                \"insitu_SCC\": {\n                    \"properties\": {\n                        \"count\": {\n                            \"type\": \"text\"\n                        },\n                        \"sites\": {\n                            \"type\": \"text\"\n                        },\n                        \"presence\": {\n                            \"type\": \"text\"\n                        }\n                    }\n                }\n            }\n        },\n        \"SIC_list\": {\n            \"properties\": {\n                \"SIC_Group\": {\n                    \"type\": \"text\"\n                },\n                \"SIC_Code\": {\n                    \"type\": \"text\"\n                },\n                \"start_date\": {\n                    \"type\": \"date\",\n            \t\t\"format\": \"dd-MMM-yyyy\"\n                },\n                \"end_date\": {\n                    \"type\": \"date\",\n            \t\t\"format\": \"dd-MMM-yyyy\"\n                }\n            }\n        },\n        \"diagnoses\": {\n        \t\"properties\": {\n        \t\t\"code\": {\n        \t\t\t\"type\": \"keyword\"\n        \t\t},\n        \t\t\"description\": {\n        \t\t\t\"type\": \"text\"\n        \t\t}\n        \t}\n        },\n        \"timestamp\": {\n            \"type\": \"date\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/melano_questionnaires/_mapping?type=_doc&include_type_name=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"melano_questionnaires",
+						"_mapping"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "_doc"
+						},
+						{
+							"key": "include_type_name",
+							"value": "true"
+						}
+					]
+				},
+				"description": "Creates types mapping"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/_ingest/pipeline/timestamp",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"description\": \"Creates a timestamp when a document is initially indexed\",\r\n\t\"processors\": [\r\n\t\t{\r\n\t\t\t\"set\": \r\n\t\t\t{\r\n\t\t\t\t\"field\": \"_source.timestamp\",\r\n\t\t\t\t\"value\": \"{{_ingest.timestamp}}\"\r\n\t\t\t}\r\n\t\t}\r\n\t]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9200/_ingest/pipeline/timestamp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"_ingest",
+						"pipeline",
+						"timestamp"
+					]
+				},
+				"description": "Timestamp preprocessor"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
