@@ -54,7 +54,7 @@ details {
     position: relative;
     border: 1px solid #78909C;
     border-radius: 6px;
-    background-color: #ECEFF1;
+    background-color: white;
     color: #263238;
     transition: background-color 1s;
 }

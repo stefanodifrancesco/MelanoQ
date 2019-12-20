@@ -358,23 +358,17 @@ block content
             tr
               td
                 legend Smoking
-                span #{result.smoking}
-            if result.smoking != "Never"
+            if result.lifestyle.smoking != "Never"
               tr
                 td
-                  h4
-                    strong Starting age
-                  span #{result.first_smoking}
-              tr
+                  legend Starting age
+                  span #{result.lifestyle.age_of_first_smoking}
                 td
-                  h4
-                    strong Number of years
-                  span #{result.smoking_period}
-              tr
+                  legend Number of years
+                  span #{result.lifestyle.smoking_period}
                 td
-                  h4
-                    strong Frequency
-                  span #{result.smoke_frequency}
+                  legend Frequency
+                  span #{result.lifestyle.smoke_quantity}
 
 
             tr
