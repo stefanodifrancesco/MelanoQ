@@ -3,12 +3,11 @@ extends layout
 block content
     div.profile-header
       button.new-questionnaire-button(onclick="window.location.href = '/stepform';")
-        i.fas.fa-plus
-          |  new questionnaire
+          |  Create new
+      button.statistics-button(onclick="window.location.href = '/statistics';")
+          |  Statistics
       button.logout-button(onclick="window.location.href = '/logout';")
-        i.fas.fa-sign-out-alt
           |  Logout
-      h2 #{profileData.username}
       
     .container            
       .row
