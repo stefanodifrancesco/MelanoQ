@@ -119,38 +119,38 @@ block content
           tr
             td
               legend Occupational sun exposure
-              span #{result.occupational_sun_exposure}
-          if result.occupational_sun_exposure == "Yes"
+              span #{result.ultraviolet.occupational_sun_exposure.presence}
+          if result.ultraviolet.occupational_sun_exposure.presence == "Yes"
             tr
               td
                 legend Occupation
-                span #{result.ultraviolet.sun_exposure_occupation.occupation_name}
+                span #{result.ultraviolet.occupational_sun_exposure.occupation_name}
             
               td
                 legend hours/day
-                span #{result.ultraviolet.sun_exposure_occupation.hours_day}
+                span #{result.ultraviolet.occupational_sun_exposure.hours_day}
             
               td
                 legend hours/month
-                span #{result.ultraviolet.sun_exposure_occupation.hours_month}
+                span #{result.ultraviolet.occupational_sun_exposure.hours_month}
             
               td
                 legend hours/year
-                span #{result.ultraviolet.sun_exposure_occupation.hours_year}
+                span #{result.ultraviolet.occupational_sun_exposure.hours_year}
             
               td
                 legend How many years ?
-                span #{result.ultraviolet.sun_exposure_occupation.number_of_years}
+                span #{result.ultraviolet.occupational_sun_exposure.number_of_years}
 
           tr
             td
               legend Recreational sun exposure 
-              span #{result.ultraviolet.recreational_sun_exposure}
-          if result.recreational_exposure == "Yes"
+              span #{result.ultraviolet.recreational_sun_exposure.presence}
+          if result.ultraviolet.recreational_sun_exposure.presence == "Yes"
             tr
               td
                 legend Occupation
-                span #{result.recreational_sun_exposure.occupation_name}
+                span #{result.ultraviolet.recreational_sun_exposure.occupation_name}
             
               td
                 legend hours/day
@@ -378,13 +378,13 @@ block content
             tr
               td
                 legend Have you received vitamin pills during the last year?
-                span #{result.vitamin_last_year}
-            if result.vitamin_last_year != "Never"
+                span #{result.lifestyle.vitamin_last_year}
+            if result.lifestyle.vitamin_last_year != "Never"
               tr
                 td
                   h4
                     strong Quantity
-                  span #{result.vitamin_quantity_last_year}
+                  span #{result.lifestyle.vitamin_quantity_last_year}
 
 
             tr
@@ -401,17 +401,17 @@ block content
                       .divTableCell.NoDivTableBorder(style='width:16%;') Multivitamins
                     .divTableRow
                       .divTableCell(style='width:16%;')
-                        span #{result.betacarotene_frequency}
+                        span #{result.lifestyle.betacarotene_frequency}
                       .divTableCell(style='width:16%;')
-                        span #{result.vitamin_A_frequency}
+                        span #{result.lifestyle.vitamin_A_frequency}
                       .divTableCell(style='width:16%;')
-                        span #{result.vitamin_C_frequency}
+                        span #{result.lifestyle.vitamin_C_frequency}
                       .divTableCell(style='width:16%;')
-                        span #{result.vitamin_D_frequency}
+                        span #{result.lifestyle.vitamin_D_frequency}
                       .divTableCell(style='width:16%;')
-                        span #{result.vitamin_E_frequency}
+                        span #{result.lifestyle.vitamin_E_frequency}
                       .divTableCell(style='width:16%;')
-                        span #{result.multivitamins_frequency}
+                        span #{result.lifestyle.multivitamins_frequency}
 
 
             tr
@@ -428,17 +428,17 @@ block content
                       .divTableCell.NoDivTableBorder(style='width:16%;') Multivitamins
                     .divTableRow
                       .divTableCell(style='width:16%;')
-                        span #{result.betacarotene_period}
+                        span #{result.lifestyle.betacarotene_period}
                       .divTableCell(style='width:16%;')
-                        span #{result.vitamin_A_period}
+                        span #{result.lifestyle.vitamin_A_period}
                       .divTableCell(style='width:16%;')
-                        span #{result.vitamin_C_period}
+                        span #{result.lifestyle.vitamin_C_period}
                       .divTableCell(style='width:16%;')
-                        span #{result.vitamin_D_period}
+                        span #{result.lifestyle.vitamin_D_period}
                       .divTableCell(style='width:16%;')
-                        span #{result.vitamin_E_period}
+                        span #{result.lifestyle.vitamin_E_period}
                       .divTableCell(style='width:16%;')
-                        span #{result.multivitamins_period}
+                        span #{result.lifestyle.multivitamins_period}
     </details>
 
     <details>
