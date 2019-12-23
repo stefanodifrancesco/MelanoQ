@@ -9,6 +9,9 @@ block content
         li ULTRAVIOLET EXPOSURE
         li LIFESTYLE HABITS
         li CLINICAL EXAMINATION
+        li MEDICAL HISTORY
+        li FAMILY HISTORY
+        li MELANOMA CHARACTERISTICS
   div.form
     // multistep form
     form#msform(action="/stepform" method="POST" autocomplete="off")
@@ -968,7 +971,7 @@ block content
         fieldset
           div.scrollingdiv
             h2.fs-title CLINICAL EXAMINATION
-            h3.fs-subtitle We will never sell it
+            h3.fs-subtitle completed by physician/study nurse
 
             fieldset#fieldsetLentigines
               label Solar Lentigines
@@ -1352,6 +1355,16 @@ block content
                           span.bar(style='width:80%;')
                           label Site(s):
 
+          div.alphaformfooter
+          div.formfooter
+          input.scroll-button-bottom(type='button')
+          input#forthprevious.previous.action-button(type='button', name='previous', value='Previous')
+          input#fifthnext.next.action-button(type='button', name='next', value='Next')
+                    
+        fieldset
+          div.scrollingdiv
+            h2.fs-title MEDICAL HISTORY
+            h3.fs-subtitle completed by physician/study nurse
 
             div(id='Section C2')
               span MEDICAL HISTORY/MEDICATIONS
@@ -1373,5 +1386,28 @@ block content
           div.alphaformfooter
           div.formfooter
           input.scroll-button-bottom(type='button')
-          input#forthprevious.previous.action-button(type='button', name='previous', value='Previous')
+          input#fifthprevious.previous.action-button(type='button', name='previous', value='Previous')
+          input#sixthnext.next.action-button(type='button', name='next', value='Next')
+                    
+        fieldset
+          div.scrollingdiv
+            h2.fs-title FAMILY HISTORY
+            h3.fs-subtitle completed by physician/study nurse
+
+
+          div.alphaformfooter
+          div.formfooter
+          input.scroll-button-bottom(type='button')
+          input#sixthprevious.previous.action-button(type='button', name='previous', value='Previous')
+          input#seventhnext.next.action-button(type='button', name='next', value='Next')
+                    
+        fieldset
+          div.scrollingdiv
+            h2.fs-title MELANOMA CHARACTERISTICS
+            h3.fs-subtitle completed by physician/study nurse
+
+          div.alphaformfooter
+          div.formfooter
+          input.scroll-button-bottom(type='button')
+          input#seventhprevious.previous.action-button(type='button', name='previous', value='Previous')
           input.submit.action-button#submit(type='submit', value='Submit')

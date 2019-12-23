@@ -277,7 +277,7 @@
     /*CSS counters to number the steps*/
     counter-reset: step;
     text-align: center;
-    width: 50%;
+    width: 70%;
     padding-top: 20px;
 }
 
@@ -286,7 +286,7 @@
     color: white;
     text-transform: uppercase;
     font-size: 9px;
-    width: 20%;
+    width: 12%;
     float: left;
     position: relative;
 }
