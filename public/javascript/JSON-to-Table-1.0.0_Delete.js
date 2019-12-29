@@ -16,10 +16,10 @@
         var table = '<table class="json-to-table">';
 
         table += '<thead><th class="jsl"></th>';
-        table += $.fn.createTable.parseTableData(data, true);
+        table += $.fn.createTable.parseTableData(data, true,element);
         table += '</thead>';
         table += '<tbody>';
-        table += $.fn.createTable.parseTableData(data, false);
+        table += $.fn.createTable.parseTableData(data, false,element);
         table += '</tbody>';
         table += '</table>';
 
@@ -37,7 +37,8 @@
             $(selector + '.jsl').css({
                 minWidth: '18px',
                 width: '18px',
-                padding: '0 10px 0 10px'
+                padding: '0 10px 0 10px',
+                verticalAlign: 'middle'
             });
 
             $(selector + '.json-to-table thead th:not(:first-child), .json-to-table tbody td:not(:first-child)').css({
@@ -85,24 +86,49 @@
         return column;
     };
 
-    $.fn.createTable.parseTableData = function (data, thead) {
+    $.fn.createTable.parseTableData = function (data, thead,element) {
 
         var row = '';
 
         for (var i = 0; i < data.length; i++) {
             if (thead === false) row += '<tr><td class="jsl">' + (i + 1) + '</td>';
             $.each(data[i], function (key, value) {
+                var obj_length = Object.keys(data[i]).length;
                 if (thead === true) {
                     if (i === $.fn.createTable.getHighestColumnCount(data).when) {
                         row += '<th>' + $.fn.humanize(key) + '</th>';
                     }
-                } else if (thead === false) {
+                    if (Object.keys(data[i]).indexOf(key) == obj_length - 1 && i == data.length - 1) {
+                        row += '<th>Action</th>';
+                    }
+                }
+                if (thead === false) {
                     row += '<td>' + value + '</td>';
+                    if (Object.keys(data[i]).indexOf(key) == obj_length - 1) {
+                        var delete_btn = "<input style=\"width:100%;\" class=\"btn btn-primary btn-delete\" type=\"button\" value=\"Delete\">";
+                        $(element).on("click",".btn-delete",function (evt) {
+                            evt.stopImmediatePropagation();
+                            // console.log("DELETED",$(this).parents("tr").find(".jsl").text());
+                            var deleted_item_index = $(this).parents("tr").find(".jsl").text();
+                            $(this).parents("tr").remove();
+                            var element_to_Delete  = (parseInt(deleted_item_index) - 1);
+                            data.splice(element_to_Delete,1);
+                            td_numbers = $(element).find("td.jsl");
+                            for (j = 0; j < data.length; j++) {
+                                var current_element = $(td_numbers).get(j);
+                                $(current_element).text(j + 1);
+                            }
+                            if(data.length == 0) {
+                                $(element).remove();
+                            }
+                        });
+                        row += '<td>' + delete_btn + '</td></tr>';
+                    }
                 }
             });
-            if (thead === false) row += '</tr>';
-        }
 
+             if (thead === false) row += '</tr>';
+        }
         return row;
     };
 

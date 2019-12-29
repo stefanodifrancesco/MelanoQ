@@ -1,0 +1,15 @@
+.modal-table {
+
+}
+
+.modal-table img {
+    width:50%;
+}
+
+.modal-table > .modal-title {
+    letter-spacing: 1px;
+    font-size: 3.5em;
+    color:lightgray;
+    font-variant: small-caps;
+    font-style: oblique;
+}
