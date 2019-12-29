@@ -1366,29 +1366,74 @@ block content
             h2.fs-title MEDICAL HISTORY
             h3.fs-subtitle completed by physician/study nurse
 
-            div(id='Section C2')
-              span MEDICAL HISTORY/MEDICATIONS
-              p.help-block (completed by physician/study nurse)
-              #fieldsetHistoryMedicalDiagnosis
-                label(for='593911901') History of medical (non-cancer) diagnoses
-                .form-group
-                  .divTable
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:40%;')
-                        input#ICD10Code(type='text', value='', placeholder='Search by ICD10 code or name of disease')
-                      .divTableCell.NoDivTableBorder
-                        //
-                          <input id="ICD10_Search_Toggle" type="checkbox" checked data-toggle="toggle"
-                          data-on="Search by Code" data-off="Search by Desc" data-onstyle="success" data-offstyle="info">
-                        // <button id="btn-Add_ICD10" type="button" class="btn btn-info">Add</button>
-                #json_medical_history.form-group
+            fieldset#fieldsetSection_C2(style='margin-top: 20px;')
+  legend Section C2
+  .form-group
+    p.help-block II. MEDICAL HISTORY/MEDICATIONS (completed by physician/study nurse)
+  #fieldsetHistoryMedicalDiagnosis
+    p.help-block History of medical (non-cancer) diagnoses
+    .form-group
+      .divTable
+        .divTableRow
+          .divTableCell.NoDivTableBorder(style='width:40%;margin-left: 2px;')
+            input#ICD10Code(type='text' value='' placeholder='Search by ICD10 code or name of disease')
+    #json_medical_history.form-group
+  #fieldset_C2_10
+    legend Previous and concomitant treatments (related to above-mentioned diagnoses)
+    p(style='color:red;') (Optional)
+    // Button to Open the Modal
+    p
+      button.btn.btn-info(type='button' data-toggle='modal' data-target='#MedicationModal')
+        | Insert
+        | Medication
+    // The Modal
+    #MedicationModal.modal.fade
+      .modal-dialog
+        .modal-content(style='position:center;')
+          // Modal Header
+          .modal-header.modal-table
+            table#Medications_ModalLabel.modal-title
+              thead
+                th(style='width:25%;')
+                  img(src='icons/medical-records-svgrepo-com.png')
+                th(style='width:75%;')
+                  span.modal-title Medications
+            button.close(type='button' data-dismiss='modal') &times;
+          // Modal body
+          .modal-body
+            table
+              thead.thead-dark
+                tr
+                  th(style='width:10%;') Number
+                  th(style='width:10%;')
+                  th(style='width:35%;') Start Date
+                  th(style='width:10%;')
+                  th(style='width:35%;') End Date
+              tbody
+                tr
+                  td.medication-number(style='width:10%;')
+                    input#Medication-Number(style='background-color:transparent;color:#0c4090;width:100%;text-align: end; font-size: large;' type='number' value='1' readonly='')
+                  td(style='width:10%;')
+                  td(style='width:35%;')
+                    input.form-control.datepicker.med-start-date(type='text')
+                  td(style='width:10%;')
+                  td(style='width:35%;')
+                    input.form-control.datepicker.med-end-date(type='text')
+          // Modal footer
+          .modal-footer
+            button#save_med.btn.btn-secondary(type='button' data-dismiss='modal') Save
+            button.btn.btn-danger(type='button' data-dismiss='modal') Close
+    #json-medications.form-group(style='width:50%;')
+
 
           div.alphaformfooter
           div.formfooter
           input.scroll-button-bottom(type='button')
           input#fifthprevious.previous.action-button(type='button', name='previous', value='Previous')
           input#sixthnext.next.action-button(type='button', name='next', value='Next')
-                    
+        
+
+
         fieldset
           div.scrollingdiv
             h2.fs-title FAMILY HISTORY
