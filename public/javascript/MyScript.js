@@ -12,6 +12,8 @@ $(document).ready(function() {
 
     var ListaResidency = [];
 
+
+
     $("#searchBox").autocomplete({
         source: function(request, response) {
             $.ajax({
@@ -23,6 +25,7 @@ $(document).ready(function() {
                 },
                 jsonp: "jsonp",
                 success: function(data) {
+                    console.log(data)
                     var result = data.resourceSets[0];
                     if (result) {
                         if (result.estimatedTotal > 0) {
@@ -42,11 +45,13 @@ $(document).ready(function() {
         change: function(event, ui) {
             if (!ui.item)
                 $("#searchBox").val('');
-        },
-        select: function(event, ui) {
-            displaySelectedItem(ui.item.data);
         }
     });
+
+    $("#searchBox").on("focus", function(evt) {
+        $("#fieldResidency").append($("#ui-id-1"));
+        $("#ui-id-1").css("position", "relative").css("top", "auto").css("left", "auto");
+    })
 
     $("#fieldsetCodeNumber #DatabaseCodeCountry").on("change", function(evt) {
         if ($(this).val() != "No Choosed") {
@@ -554,10 +559,6 @@ $(document).ready(function() {
         Initialize();
     });
 });
-
-function displaySelectedItem(item) {
-    $("#searchResult").empty().append('Result: ' + item.name).append(' (Latitude: ' + item.point.coordinates[0] + ' Longitude: ' + item.point.coordinates[1] + ')');
-}
 
 function create_Table_Delete(lista_JSON, div_id, field_id) {
     var delete_btn = "<input style=\"width:100%;\" class=\"btn btn-primary btn-delete\" type=\"button\" value=\"Delete\">";
