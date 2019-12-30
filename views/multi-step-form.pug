@@ -148,13 +148,11 @@ block content
                 | Residency
               #myForm
                 .form-group
-                  input#residency.form-control(type='text' data-geocomplete='street address' name='residency' required='required' data-rule-required='true' data-msg-required='Please include your residency')
+                  div(class="ui-widget")
+                    input#searchBox
+                  div#searchResult(class="ui-widget" style="margin-top: 1em;")
                   span.error1(style='display: none;')
                       i.error-log.fa.fa-exclamation-triangle
-                .residency_date_class
-              #myMap
-              #myJsonTab
-              .table
               
             fieldset#fieldsetEducation
               label(for='261025725') Education
@@ -1367,63 +1365,64 @@ block content
             h3.fs-subtitle completed by physician/study nurse
 
             fieldset#fieldsetSection_C2(style='margin-top: 20px;')
-  legend Section C2
-  .form-group
-    p.help-block II. MEDICAL HISTORY/MEDICATIONS (completed by physician/study nurse)
-  #fieldsetHistoryMedicalDiagnosis
-    p.help-block History of medical (non-cancer) diagnoses
-    .form-group
-      .divTable
-        .divTableRow
-          .divTableCell.NoDivTableBorder(style='width:40%;margin-left: 2px;')
-            input#ICD10Code(type='text' value='' placeholder='Search by ICD10 code or name of disease')
-    #json_medical_history.form-group
-  #fieldset_C2_10
-    legend Previous and concomitant treatments (related to above-mentioned diagnoses)
-    p(style='color:red;') (Optional)
-    // Button to Open the Modal
-    p
-      button.btn.btn-info(type='button' data-toggle='modal' data-target='#MedicationModal')
-        | Insert
-        | Medication
-    // The Modal
-    #MedicationModal.modal.fade
-      .modal-dialog
-        .modal-content(style='position:center;')
-          // Modal Header
-          .modal-header.modal-table
-            table#Medications_ModalLabel.modal-title
-              thead
-                th(style='width:25%;')
-                  img(src='icons/medical-records-svgrepo-com.png')
-                th(style='width:75%;')
-                  span.modal-title Medications
-            button.close(type='button' data-dismiss='modal') &times;
-          // Modal body
-          .modal-body
-            table
-              thead.thead-dark
-                tr
-                  th(style='width:10%;') Number
-                  th(style='width:10%;')
-                  th(style='width:35%;') Start Date
-                  th(style='width:10%;')
-                  th(style='width:35%;') End Date
-              tbody
-                tr
-                  td.medication-number(style='width:10%;')
-                    input#Medication-Number(style='background-color:transparent;color:#0c4090;width:100%;text-align: end; font-size: large;' type='number' value='1' readonly='')
-                  td(style='width:10%;')
-                  td(style='width:35%;')
-                    input.form-control.datepicker.med-start-date(type='text')
-                  td(style='width:10%;')
-                  td(style='width:35%;')
-                    input.form-control.datepicker.med-end-date(type='text')
-          // Modal footer
-          .modal-footer
-            button#save_med.btn.btn-secondary(type='button' data-dismiss='modal') Save
-            button.btn.btn-danger(type='button' data-dismiss='modal') Close
-    #json-medications.form-group(style='width:50%;')
+              label Section C2
+              .form-group
+                p.help-block II. MEDICAL HISTORY/MEDICATIONS (completed by physician/study nurse)
+              #fieldsetHistoryMedicalDiagnosis
+                p.help-block History of medical (non-cancer) diagnoses
+                .form-group
+                  .divTable
+                    .divTableRow
+                      .divTableCell.NoDivTableBorder(style='width:40%;margin-left: 2px;')
+                        input#ICD10Code(type='text' value='' placeholder='Search by ICD10 code or name of disease')
+                #json_medical_history.form-group
+
+            fieldset#fieldset_C2_10
+              label Previous and concomitant treatments (related to above-mentioned diagnoses)
+              p(style='color:red;') (Optional)
+              // Button to Open the Modal
+              p
+                button.btn.btn-info(type='button' data-toggle='modal' data-target='#MedicationModal')
+                  | Insert
+                  | Medication
+              // The Modal
+              #MedicationModal.modal.fade
+                .modal-dialog
+                  .modal-content(style='position:center;')
+                    // Modal Header
+                    .modal-header.modal-table
+                      table#Medications_ModalLabel.modal-title
+                        thead
+                          th(style='width:25%;')
+                            img(src='icons/medical-records-svgrepo-com.png')
+                          th(style='width:75%;')
+                            span.modal-title Medications
+                      button.close(type='button' data-dismiss='modal') &times;
+                    // Modal body
+                    .modal-body
+                      table
+                        thead.thead-dark
+                          tr
+                            th(style='width:10%;') Number
+                            th(style='width:10%;')
+                            th(style='width:35%;') Start Date
+                            th(style='width:10%;')
+                            th(style='width:35%;') End Date
+                        tbody
+                          tr
+                            td.medication-number(style='width:10%;')
+                              input#Medication-Number(style='background-color:transparent;color:#0c4090;width:100%;text-align: end; font-size: large;' type='number' value='1' readonly='')
+                            td(style='width:10%;')
+                            td(style='width:35%;')
+                              input.form-control.datepicker.med-start-date(type='text')
+                            td(style='width:10%;')
+                            td(style='width:35%;')
+                              input.form-control.datepicker.med-end-date(type='text')
+                    // Modal footer
+                    .modal-footer
+                      button#save_med.btn.btn-secondary(type='button' data-dismiss='modal') Save
+                      button.btn.btn-danger(type='button' data-dismiss='modal') Close
+              #json-medications.form-group(style='width:50%;')
 
 
           div.alphaformfooter
