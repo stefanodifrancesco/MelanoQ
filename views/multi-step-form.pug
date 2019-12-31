@@ -1158,56 +1158,45 @@ block content
                 .divTable(style='width: 100%;')
                   .divTableBody
                     .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:34%;')
+                      .divTableCell.NoDivTableBorder
                         span Medium sized CN
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
+                      .divTableCell.NoDivTableBorder
                         select#selectMediumSizedCN.form-control(name='clinical_examination[congenital_nevi][medium_sized][presence]')
                           option(value='NoChoosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
-                        .hidden-control
-                          .group.google_special_label(style='margin-bottom:0%;vertical-align: bottom;')
-                            input#inputMediumSizedCN(type='text' placeholder='Right Arm,Left Feet' style='width:80%;margin-left:35%;' name='clinical_examination[congenital_nevi][medium_sized][sites]')
-                            span.highlight(style='width:80%;margin-left:35%;')
-                            span.bar(style='width:80%;margin-left:35%;')
-                            label(style='font-size: 12px;') Site(s):
+                      .divTableCell.NoDivTableBorder.hidden-control
+                        label(style='font-size: 12px;') Site(s):
+                        input#inputMediumSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][medium_sized][sites]')
               .form-group(style='margin-top: 20px;')
                 .divTable(style='width: 100%;')
                   .divTableBody
                     .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:34%;')
+                      .divTableCell.NoDivTableBorder
                         span Large sized CN
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
+                      .divTableCell.NoDivTableBorder
                         select#selectLargeSizedCN.form-control(name='clinical_examination[congenital_nevi][large_sized][presence]')
                           option(value='NoChoosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
-                        .hidden-control
-                          .group.google_special_label(style='margin-bottom:0%;vertical-align: bottom;')
-                            input#inputLargeSizedCN(type='text' placeholder='Right Arm,Left Feet' style='width:80%;margin-left:35%;' name='clinical_examination[congenital_nevi][large_sized][sites]')
-                            span.highlight(style='width:80%;margin-left:35%;')
-                            span.bar(style='width:80%;margin-left:35%;')
-                            label(style='font-size: 12px;') Site(s):
+                      .divTableCell.NoDivTableBorder.hidden-control
+                        label(style='font-size: 12px;') Site(s):
+                        input#inputLargeSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][large_sized][sites]')
+
               .form-group(style='margin-top: 20px;')
                 .divTable(style='width: 100%;')
                   .divTableBody
                     .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:34%;')
+                      .divTableCell.NoDivTableBorder
                         span Giant sized CN
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
+                      .divTableCell.NoDivTableBorder
                         select#selectGiantSizedCN.form-control(name='clinical_examination[congenital_nevi][giant_sized][presence]')
                           option(value='NoChoosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
-                        .hidden-control
-                          .group.google_special_label(style='margin-bottom:0%;vertical-align: bottom;')
-                            input#inputGiantSizedCN(type='text' placeholder='Right Arm,Left Feet' style='width:80%;margin-left:35%;' name='clinical_examination[congenital_nevi][giant_sized][sites]')
-                            span.highlight(style='width:80%;margin-left:35%;')
-                            span.bar(style='width:80%;margin-left:35%;')
-                            label(style='font-size: 12px;') Site(s):
+                      .divTableCell.NoDivTableBorder.hidden-control(style='width:32%;')
+                        label(style='font-size: 12px;') Site(s):
+                        input#inputGiantSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][giant_sized][sites]')
 
 
             fieldset#fieldsetBlueNevi(style='margin-top: 20px;')
@@ -1448,6 +1437,67 @@ block content
           div.scrollingdiv
             h2.fs-title MELANOMA CHARACTERISTICS
             h3.fs-subtitle completed by physician/study nurse
+
+            fieldset#fieldsetMelanomaLesion(style='margin-top: 20px;')
+              .form-group(style='margin-top: 20px;')
+                .divTable(style='width: 100%;')
+                  .divTableBody
+                    .divTableRow
+                      .divTableCell.NoDivTableBorder
+                        span Pre-existing pigmented lesion at the same site of melanoma
+                      .divTableCell.NoDivTableBorder
+                        select#selectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
+                          option(value='NoChoosed') Select...
+                          option(value='No') No
+                          option(value='Yes') Yes
+                      .divTableCell.NoDivTableBorder.hidden-control
+                        label(style='font-size: 12px;') Number:
+                        input#inputLesionCount(type='number' name='melanoma_characteristics[lesion][count]' required='' )
+
+            
+            fieldset#fieldsetMelanomadetection(style='margin-top: 20px;')
+              label(for='42940743')
+                | Detection of melanoma
+              p(style='color:red;') (Optional)
+              .form-group
+                select#Melanomadetection.form-control(name='melanoma_characteristics[detection]')
+                  option(value='NoChoosed') Select ...
+                  option(value='Patient') Patient
+                  option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
+                  option(value='Physician') Physician
+                  option(value='Other') Other
+
+            fieldset#fieldsetMelanomadetection(style='margin-top: 20px;')
+              label(for='42940743')
+                | Detection of melanoma
+              p(style='color:red;') (Optional)
+              .form-group
+                select#Melanomadetection.form-control(name='melanoma_characteristics[detection]')
+                  option(value='NoChoosed') Select ...
+                  option(value='Patient') Patient
+                  option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
+                  option(value='Physician') Physician
+                  option(value='Other') Other
+
+            
+            fieldset#fieldsetSkinCheck(style='margin-top: 20px;')
+              label
+                | Self-skin exam
+              p(style='color:red;') (Optional)
+              .form-group(style='margin-top: 20px;')
+                .divTable(style='width: 100%;')
+                  .divTableBody
+                    .divTableRow
+                      .divTableCell.NoDivTableBorder(style='width:34%;')
+                        span How often did you check your skin in the past 3 yrs?
+                      .divTableCell.NoDivTableBorder(style='width:32%;')
+                        select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                          option(value='NoChoosed') Select...
+                          option(value='Never') Never
+                          option(value='Once') Once
+                          option(value='Once/year') Once/year
+                          option(value='More than once/year') More than once/year
+
 
           div.alphaformfooter
           div.formfooter
