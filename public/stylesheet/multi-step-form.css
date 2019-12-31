@@ -137,7 +137,7 @@
 #msform .divTableHead {
     border: 1px solid #999999;
     display: table-cell;
-    padding: 3px 10px;
+    padding: 0px 10px 0px 0px;
     vertical-align: middle !important;
     width: 32%;
 }
@@ -159,6 +159,12 @@
 
 #msform .hidden-control {
     display: none;
+}
+
+#msform #fieldsetCodeNumber input {
+    width: 17%;
+    font-size: 1rem;
+    height: 30px;
 }
 
 

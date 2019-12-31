@@ -51,10 +51,7 @@ block content
                           option(value='No Choosed' selected='') Select case type ...
                           option(value='M') Melanoma Case
                           option(value='C') Control subject
-                  .divTableRow
-                    .divTableCell(style='border: 0px solid white !important;')
-                      .form-group
-                        input#codeNumber(type='text' readonly='' value='' name='code_number')
+              input#codeNumber(type='text' readonly='' value='' name='code_number')
 
             fieldset#fieldsetAdmin
               label(for='1763927487') Date of questionnaire administration and phenotyping
@@ -152,6 +149,8 @@ block content
                     input#searchBox
                   span.error1(style='display: none;')
                       i.error-log.fa.fa-exclamation-triangle
+                .residency_date_class
+              .json_residency
               
             fieldset#fieldsetEducation
               label(for='261025725') Education
@@ -1454,7 +1453,6 @@ block content
                         label(style='font-size: 12px;') Number:
                         input#inputLesionCount(type='number' name='melanoma_characteristics[lesion][count]' required='' )
 
-            
             fieldset#fieldsetMelanomadetection(style='margin-top: 20px;')
               label(for='42940743')
                 | Detection of melanoma
@@ -1466,19 +1464,6 @@ block content
                   option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
                   option(value='Physician') Physician
                   option(value='Other') Other
-
-            fieldset#fieldsetMelanomadetection(style='margin-top: 20px;')
-              label(for='42940743')
-                | Detection of melanoma
-              p(style='color:red;') (Optional)
-              .form-group
-                select#Melanomadetection.form-control(name='melanoma_characteristics[detection]')
-                  option(value='NoChoosed') Select ...
-                  option(value='Patient') Patient
-                  option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
-                  option(value='Physician') Physician
-                  option(value='Other') Other
-
             
             fieldset#fieldsetSkinCheck(style='margin-top: 20px;')
               label

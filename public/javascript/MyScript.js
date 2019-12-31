@@ -12,8 +12,6 @@ $(document).ready(function() {
 
     var ListaResidency = [];
 
-
-
     $("#searchBox").autocomplete({
         source: function(request, response) {
             $.ajax({
@@ -45,6 +43,34 @@ $(document).ready(function() {
         change: function(event, ui) {
             if (!ui.item)
                 $("#searchBox").val('');
+
+        },
+        select: function(event, ui) {
+            $(".residency_date_class").append("<span>Test</span>");
+            $(".residency_date_class").html(
+                "<div class='residency_datepicker form-group'>" +
+                "<label>From:</label>" +
+                "<input class='new_datepicker form-control start_date' type='text' required>" +
+                "</div>" +
+                "<div class='residency_datepicker form-group'>" +
+                "<label>To:</label>" +
+                "<input class='new_datepicker form-control end_date' type='text' required>" +
+                "</div>");
+            $(".new_datepicker").datepicker({
+                format: 'dd-M-yyyy',
+                autoclose: true
+            }).on("changeDate", function(evt) {
+                start_date = $(".start_date").val();
+                end_date = $(".end_date").val();
+                if (start_date != '' && end_date != '') {
+                    residency = {};
+                    residency.start_date = start_date;
+                    residency.end_date = end_date;
+                    residency.address = $("#searchBox").val();
+                    ListaResidency.push(residency);
+                    $(".json_residency").createTable(ListaResidency);
+                }
+            });
         }
     });
 
