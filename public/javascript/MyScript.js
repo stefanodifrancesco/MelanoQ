@@ -211,6 +211,7 @@ $(document).ready(function () {
             $(this).parents("#fieldsetRecreationalExposure").find("input:text").prop("required", false);
         }
     });
+
     $("#id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control .special_on_div_table").prop("required", true);
@@ -312,109 +313,6 @@ $(document).ready(function () {
         }
     });
 
-    function Initialize() {
-        DDL_Other('Ethnicity', 'inputEthnicity');
-        DDL_Other('Melanoma', 'inputMelanoma');
-        DDL_from_JSON('History', 'siccodes.json');
-        //$("#ICD10_Search_Toggle").click();
-    };
-
-    function Create_Datepicker(tag_ID, tag_Append) {
-        var date_input = $("<input type=text id='" + tag_ID + "' class='form-control datepicker auto-width'>");
-        $(date_input).datepicker({
-            format: 'dd-M-yyyy',
-            autoclose: true
-        });
-        $("#" + tag_Append).find(".div_date").append($("<div class='form-group'>").append(date_input));
-    };
-
-    function DDL_from_JSON(tag_ID_DDL, url) {
-        var dropdown = $("#" + tag_ID_DDL).html("<option value='NoChoosed'>Select Sic Group ...</option>");
-        var history_list = [];
-
-        $.getJSON('SicRanges.json', function (data) {
-            $.each(data, function (key, entry) {
-                dropdown.append($('<option></option>').attr('value', entry.SIC_Range_Start + '*' + entry.SIC_Range_End).text(entry.Group_Title));
-            });
-        });
-        $("#" + tag_ID_DDL).on("change", function (data) {
-            $("#dropSIC,#history_date_start,#history_date_end").remove();
-            var valore = $("#" + tag_ID_DDL).val();
-            if (valore != "NoChoosed") {
-                var dropdown2 = $("<select id='dropSIC' class='form-control'>").html("<option value='NoChoosed'>Select Sic Code ...</option>");
-                dropdown2.on("change", function () {
-                    $("#history_date_start,#history_date_end").remove();
-                    $(this).parents("fieldset").find(".div_date").empty();
-                    if ($(dropdown2).val() != "NoChoosed") {
-                        var date_input_start = $("<input type=text id='history_date_start' class='form-control datepicker auto-width'>");
-                        $(date_input_start).datepicker({
-                            format: 'dd-M-yyyy',
-                            autoclose: true
-                        }).on("changeDate", function (evt) {
-                            var date_input_end = $("<input type=text id='history_date_end' class='form-control datepicker auto-width'>");
-                            $(date_input_end).datepicker({
-                                format: 'dd-M-yyyy',
-                                autoclose: true
-                            }).on("changeDate", function (evt) {
-                                var history_row = {};
-                                history_row.SIC_Group = $("#fieldHistory").find("#History option:selected").text();
-                                history_row.SIC_Code = $("#fieldHistory").find("#dropSIC option:selected").text();
-                                history_row.start_date = $("#fieldHistory").find("#history_date_start").val();
-                                history_row.end_date = $(this).val();
-                                history_list.push(history_row);
-                                // create_Table_Delete(history_list,"json-table-wrapper-history","fieldHistory");
-                                $("#json-table-wrapper-history").createTable(history_list);
-                                $("#History").val("NoChoosed");
-                                $("#dropSIC,#history_date_start,#history_date_end,.div_date span").remove();
-                            });
-                            $("#fieldHistory").find(".div_date").append($("<div class=''><span>Date end</span>").append(date_input_end));
-                        });
-                        $("#fieldHistory").find(".div_date").append($("<div class=''><span>Date start </span>").append(date_input_start));
-                    }
-                });
-                $("#fieldHistory").find(".dynamic_ddl").append(dropdown2);
-                var start = parseInt(valore.split('*')[0]);
-                var end = parseInt(valore.split('*')[1]);
-                console.log(start);
-                console.log(end);
-                $.getJSON(url, function (data) {
-                    $.each(data, function (key, entry) {
-                        var Sic_Code = parseInt(entry.SIC_Code);
-                        if (Sic_Code < end && Sic_Code > start) {
-                            dropdown2.append($('<option></option>').attr('value', entry.SIC_Code).text(entry.Industry_Title));
-                        }
-                    });
-                });
-            }
-        });
-    };
-
-    function DDL_Other(tag_ID, tag_Class,) {
-        $("#" + tag_ID).on("change", function () {
-            if ($(this).val() == "Other") {
-                $("." + tag_Class).removeClass("hidden-control").addClass("form-control");
-            } else {
-                $("." + tag_Class).addClass("hidden-control").removeClass("form-control");
-                $("." + tag_Class).val("");
-            }
-        });
-    };
-
-    function DropDownDynamic(Json_Url, classDropDown, titleDropDown) {
-        let dropdown = $('.' + classDropDown);
-        dropdown.empty();
-        dropdown.append('<option selected="true" disabled>titleDropDown</option>');
-        dropdown.prop('selectedIndex', 0);
-        //const url = 'https://api.myjson.com/bins/7xq2x';
-        my_url = Json_Url;
-        // Populate dropdown with list of provinces
-        $.getJSON(my_url, function (data) {
-            $.each(data, function (key, entry) {
-                dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
-            })
-        });
-    }
-
     $('input.mutually_check').click(function () {
         checkedState = $(this).prop('checked');
         $(this).parents('.form-group').find(".mutually_check:checked").each(function () {
@@ -473,6 +371,11 @@ $(document).ready(function () {
     });
 
     var List_Medications = [];
+    /*Da commitare Insert-Med*/
+    $("#Insert-Med").on("click",function(evt){
+        $("#Medication-Number").val(List_Medications.length + 1);
+    });
+    /*Da commitare save_med*/
     $("#save_med").on("click", function (evt) {
         var medication_start_date = $(".med-start-date").val();
         var medication_end_date = $(".med-end-date").val();
@@ -481,12 +384,32 @@ $(document).ready(function () {
             Medication.start_date = medication_start_date;
             Medication.end_date = medication_end_date;
             List_Medications.push(Medication);
-            $("#Medication-Number").val(List_Medications.length + 1);
             $(".med-start-date,.med-end-date").val("");
             $("#json-medications").createTable(List_Medications);
         } else {
             evt.preventDefault();
-            alert("Please Insert date-start and/or date-end fields");
+            alert("<div><p><span style='color:red;'>Please Insert date-start and/or date-end fields</span></p></div>");
+        }
+    });
+
+    /*Da commitare pregnancy*/
+    $("#fieldsetPregnancy_History #Pregnant_Yes,#Pregnant_No").on("click",function(evt){
+        if($(this).attr("id") == "Pregnant_Yes") {
+            $("#fieldsetPregnancy_History .Pregnancy_Stats").removeClass("hide-transition").addClass("show-transition");
+        }
+        if($(this).attr("id") == "Pregnant_No") {
+            $("#fieldsetPregnancy_History .Pregnancy_Stats").addClass("hide-transition").removeClass("show-transition");
+        }
+    });
+
+    /*Da commitare pregnancy*/
+    $("#fieldsetPregnancy_History #Pregnancy_Before input").on("click",function(evt){
+        if($(this).attr("id") == "Before_Yes") {
+            // $("#Pregnancy_Before").find(".hide-transition").css("borderTop","1px solid");
+            $("#Pregnancy_Before").find(".hide-transition").removeClass("hide-transition").addClass("show-transition");
+        }
+        if($(this).attr("id") == "Before_No") {
+            $("#Pregnancy_Before").find(".show-transition").addClass("hide-transition").removeClass("show-transition");
         }
     });
 
@@ -522,58 +445,163 @@ $(document).ready(function () {
         Initialize();
     });
 
-    function create_Table_Delete(lista_JSON, div_id, field_id) {
-        var delete_btn = "<input style=\"width:100%;\" class=\"btn btn-primary btn-delete\" type=\"button\" value=\"Delete\">";
+});/*Fine Doucment Ready*/
 
-        $.each(lista_JSON, function (index, element) {
-            element.Action = delete_btn;
+function Initialize() {
+    DDL_Other('Ethnicity', 'inputEthnicity');
+    DDL_Other('Melanoma', 'inputMelanoma');
+    DDL_from_JSON('History', 'siccodes.json');
+    //$("#ICD10_Search_Toggle").click();
+};
+
+function Create_Datepicker(tag_ID, tag_Append) {
+    var date_input = $("<input type=text id='" + tag_ID + "' class='form-control datepicker auto-width'>");
+    $(date_input).datepicker({
+        format: 'dd-M-yyyy',
+        autoclose: true
+    });
+    $("#" + tag_Append).find(".div_date").append($("<div class='form-group'>").append(date_input));
+};
+
+function DDL_from_JSON(tag_ID_DDL, url) {
+    var dropdown = $("#" + tag_ID_DDL).html("<option value='NoChoosed'>Select Sic Group ...</option>");
+    var history_list = [];
+
+    $.getJSON('SicRanges.json', function (data) {
+        $.each(data, function (key, entry) {
+            dropdown.append($('<option></option>').attr('value', entry.SIC_Range_Start + '*' + entry.SIC_Range_End).text(entry.Group_Title));
         });
-        var local_field_id = "#" + field_id;
-        var local_div_id = "#" + div_id;
-        //var div_table = $("<div id='json_history_div' class='table form-group'>");
-        $(local_field_id).find(local_div_id).empty();
-        //$("#fieldHistory").append(div_table);
-        $(local_div_id).createTable(lista_JSON);
-        $(local_div_id).find(".btn-delete").on("click", function (evt) {
-            var deleted_item_index = $(this).parents("tr").find(".jsl").text();
-            $(this).parents("tr").remove();
-            var element_to_Delete = (parseInt(deleted_item_index) - 1);
-            lista_JSON.splice(element_to_Delete, 1);
-            console.log(lista_JSON);
-            $(local_div_id).empty();
-            if (lista_JSON.length > 0) {
-                create_Table_Delete(lista_JSON, div_id, field_id);
-            }
-        });
-    };
-
-    function send_Ajax_Data(custom_URL, object_JSON, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType) {
-        $.ajax({
-            type: "POST",
-            url: custom_URL,
-            // The key needs to match your method's input parameter (case-sensitive).
-            data: JSON.stringify(object_JSON),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                myHandle(data, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType);
-            },
-            failure: function (errMsg) {
-                console.log(errMsg);
-            }
-        });
-    };
-
-    function zeroPad(num, places) {
-        return String(num).padStart(places, '0')
-    };
-
-    function myHandle(data, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType) {
-
-        if (data.hits.hits.length == 0) {
-            $("#codeNumber").val(currentCodeCountry + currentDatabaseCode + currentDatabaseCodeType + "0001");
-        } else {
-            number = parseInt(data.hits.hits[0]._source.code_number.substr(5, 8)) + 1;
-            $("#codeNumber").val(currentCodeCountry + currentDatabaseCode + currentDatabaseCodeType + zeroPad(number, 4));
+    });
+    $("#" + tag_ID_DDL).on("change", function (data) {
+        $("#dropSIC,#history_date_start,#history_date_end").remove();
+        var valore = $("#" + tag_ID_DDL).val();
+        if (valore != "NoChoosed") {
+            var dropdown2 = $("<select id='dropSIC' class='form-control'>").html("<option value='NoChoosed'>Select Sic Code ...</option>");
+            dropdown2.on("change", function () {
+                $("#history_date_start,#history_date_end").remove();
+                $(this).parents("fieldset").find(".div_date").empty();
+                if ($(dropdown2).val() != "NoChoosed") {
+                    var date_input_start = $("<input type=text id='history_date_start' class='form-control datepicker auto-width'>");
+                    $(date_input_start).datepicker({
+                        format: 'dd-M-yyyy',
+                        autoclose: true
+                    }).on("changeDate", function (evt) {
+                        var date_input_end = $("<input type=text id='history_date_end' class='form-control datepicker auto-width'>");
+                        $(date_input_end).datepicker({
+                            format: 'dd-M-yyyy',
+                            autoclose: true
+                        }).on("changeDate", function (evt) {
+                            var history_row = {};
+                            history_row.SIC_Group = $("#fieldHistory").find("#History option:selected").text();
+                            history_row.SIC_Code = $("#fieldHistory").find("#dropSIC option:selected").text();
+                            history_row.start_date = $("#fieldHistory").find("#history_date_start").val();
+                            history_row.end_date = $(this).val();
+                            history_list.push(history_row);
+                            // create_Table_Delete(history_list,"json-table-wrapper-history","fieldHistory");
+                            $("#json-table-wrapper-history").createTable(history_list);
+                            $("#History").val("NoChoosed");
+                            $("#dropSIC,#history_date_start,#history_date_end,.div_date span").remove();
+                        });
+                        $("#fieldHistory").find(".div_date").append($("<div class=''><span>Date end</span>").append(date_input_end));
+                    });
+                    $("#fieldHistory").find(".div_date").append($("<div class=''><span>Date start </span>").append(date_input_start));
+                }
+            });
+            $("#fieldHistory").find(".dynamic_ddl").append(dropdown2);
+            var start = parseInt(valore.split('*')[0]);
+            var end = parseInt(valore.split('*')[1]);
+            console.log(start);
+            console.log(end);
+            $.getJSON(url, function (data) {
+                $.each(data, function (key, entry) {
+                    var Sic_Code = parseInt(entry.SIC_Code);
+                    if (Sic_Code < end && Sic_Code > start) {
+                        dropdown2.append($('<option></option>').attr('value', entry.SIC_Code).text(entry.Industry_Title));
+                    }
+                });
+            });
         }
-    };
+    });
+};
+
+function DDL_Other(tag_ID, tag_Class,) {
+    $("#" + tag_ID).on("change", function () {
+        if ($(this).val() == "Other") {
+            $("." + tag_Class).removeClass("hidden-control").addClass("form-control");
+        } else {
+            $("." + tag_Class).addClass("hidden-control").removeClass("form-control");
+            $("." + tag_Class).val("");
+        }
+    });
+};
+
+function DropDownDynamic(Json_Url, classDropDown, titleDropDown) {
+    let dropdown = $('.' + classDropDown);
+    dropdown.empty();
+    dropdown.append('<option selected="true" disabled>titleDropDown</option>');
+    dropdown.prop('selectedIndex', 0);
+    //const url = 'https://api.myjson.com/bins/7xq2x';
+    my_url = Json_Url;
+    // Populate dropdown with list of provinces
+    $.getJSON(my_url, function (data) {
+        $.each(data, function (key, entry) {
+            dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
+        })
+    });
+};
+
+function create_Table_Delete(lista_JSON, div_id, field_id) {
+    var delete_btn = "<input style=\"width:100%;\" class=\"btn btn-primary btn-delete\" type=\"button\" value=\"Delete\">";
+
+    $.each(lista_JSON, function (index, element) {
+        element.Action = delete_btn;
+    });
+    var local_field_id = "#" + field_id;
+    var local_div_id = "#" + div_id;
+    //var div_table = $("<div id='json_history_div' class='table form-group'>");
+    $(local_field_id).find(local_div_id).empty();
+    //$("#fieldHistory").append(div_table);
+    $(local_div_id).createTable(lista_JSON);
+    $(local_div_id).find(".btn-delete").on("click", function (evt) {
+        var deleted_item_index = $(this).parents("tr").find(".jsl").text();
+        $(this).parents("tr").remove();
+        var element_to_Delete = (parseInt(deleted_item_index) - 1);
+        lista_JSON.splice(element_to_Delete, 1);
+        console.log(lista_JSON);
+        $(local_div_id).empty();
+        if (lista_JSON.length > 0) {
+            create_Table_Delete(lista_JSON, div_id, field_id);
+        }
+    });
+};
+
+function send_Ajax_Data(custom_URL, object_JSON, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType) {
+    $.ajax({
+        type: "POST",
+        url: custom_URL,
+        // The key needs to match your method's input parameter (case-sensitive).
+        data: JSON.stringify(object_JSON),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            myHandle(data, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType);
+        },
+        failure: function (errMsg) {
+            console.log(errMsg);
+        }
+    });
+};
+
+function zeroPad(num, places) {
+    return String(num).padStart(places, '0')
+};
+
+function myHandle(data, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType) {
+    if (data.hits.hits.length == 0) {
+        $("#codeNumber").val(currentCodeCountry + currentDatabaseCode + currentDatabaseCodeType + "0001");
+    } else {
+        number = parseInt(data.hits.hits[0]._source.code_number.substr(5, 8)) + 1;
+        $("#codeNumber").val(currentCodeCountry + currentDatabaseCode + currentDatabaseCodeType + zeroPad(number, 4));
+    }
+};
+
