@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     $('.datepicker').datepicker({
         format: 'dd-M-yyyy',
@@ -12,14 +12,81 @@ $(document).ready(function () {
 
     var ListaResidency = [];
 
-    $("#fieldsetCodeNumber #DatabaseCodeCountry").on("change", function (evt) {
+    $("#searchBox").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "http://dev.virtualearth.net/REST/v1/Locations",
+                dataType: "jsonp",
+                data: {
+                    key: "AiS8UkCUaZ33Y2biW1TO8QRGofSb2uRi4Ycz7KOM7mJrkz25Rc3amVFlmdQTajAK",
+                    q: request.term
+                },
+                jsonp: "jsonp",
+                success: function(data) {
+                    console.log(data)
+                    var result = data.resourceSets[0];
+                    if (result) {
+                        if (result.estimatedTotal > 0) {
+                            response($.map(result.resources, function(item) {
+                                return {
+                                    data: item,
+                                    label: item.name + ' (' + item.address.countryRegion + ')',
+                                    value: item.name
+                                }
+                            }));
+                        }
+                    }
+                }
+            });
+        },
+        minLength: 1,
+        change: function(event, ui) {
+            if (!ui.item)
+                $("#searchBox").val('');
+
+        },
+        select: function(event, ui) {
+            $(".residency_date_class").append("<span>Test</span>");
+            $(".residency_date_class").html(
+                "<div class='residency_datepicker form-group'>" +
+                "<label>From:</label>" +
+                "<input class='new_datepicker form-control start_date' type='text' required>" +
+                "</div>" +
+                "<div class='residency_datepicker form-group'>" +
+                "<label>To:</label>" +
+                "<input class='new_datepicker form-control end_date' type='text' required>" +
+                "</div>");
+            $(".new_datepicker").datepicker({
+                format: 'dd-M-yyyy',
+                autoclose: true
+            }).on("changeDate", function(evt) {
+                start_date = $(".start_date").val();
+                end_date = $(".end_date").val();
+                if (start_date != '' && end_date != '') {
+                    residency = {};
+                    residency.start_date = start_date;
+                    residency.end_date = end_date;
+                    residency.address = $("#searchBox").val();
+                    ListaResidency.push(residency);
+                    $(".json_residency").createTable(ListaResidency);
+                }
+            });
+        }
+    });
+
+    $("#searchBox").on("focus", function(evt) {
+        $("#fieldResidency").append($("#ui-id-1"));
+        $("#ui-id-1").css("position", "relative").css("top", "auto").css("left", "auto");
+    })
+
+    $("#fieldsetCodeNumber #DatabaseCodeCountry").on("change", function(evt) {
         if ($(this).val() != "No Choosed") {
             $("#DatabaseCodeCenter").empty().append("<option value=\"No Choosed\" selected>Select Center ...</option>");
             nation_val = $(this).val();
-            $.getJSON('Centers.json', function (result) {
-                $.each(result, function (index, value) {
-                    if (value.Nation == nation_val) {
-                        $("#DatabaseCodeCenter").append("<option value='" + value.Country + "'>" + value.Country + "</option>");
+            $.getJSON('Centers.json', function(result) {
+                $.each(result, function(index, value) {
+                    if (value.codeNation == nation_val) {
+                        $("#DatabaseCodeCenter").append("<option value='" + value.codeCenter + "'>" + value.Country + "</option>");
                     }
                 });
             });
@@ -32,15 +99,10 @@ $(document).ready(function () {
         }
     });
 
-    $("#DatabaseCodeCountry,#DatabaseCodeCenter,#DatabaseCodeType").on("change", function (evt) {
+    $("#DatabaseCodeCountry,#DatabaseCodeCenter,#DatabaseCodeType").on("change", function(evt) {
         currentCodeCountry = $("#DatabaseCodeCountry").val();
         currentDatabaseCode = $("#DatabaseCodeCenter").val();
         currentDatabaseCodeType = $("#DatabaseCodeType").val();
-
-        console.log("Hello World");
-        console.log("country : " + currentCodeCountry +
-            "\n" + "database : " + currentDatabaseCode +
-            "\n" + "type : " + currentDatabaseCodeType);
 
         if (currentCodeCountry != "No Choosed" && currentDatabaseCode != "No Choosed" && currentDatabaseCodeType != "No Choosed") {
             object_JSON = {
@@ -52,10 +114,10 @@ $(document).ready(function () {
                 "query": {
                     "bool": {
                         "must": [{
-                            "term": {
-                                "code_country": currentCodeCountry
-                            }
-                        },
+                                "term": {
+                                    "code_country": currentCodeCountry
+                                }
+                            },
                             {
                                 "term": {
                                     "code_center": currentDatabaseCode
@@ -75,7 +137,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#skin-tan").on("change", function (evt) {
+    $("#skin-tan").on("change", function(evt) {
         var img = $(this).parents("#fieldSkin_tan").find("#skin-tan-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -98,7 +160,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_eyes_color").on("change", function (evt) {
+    $("#id_eyes_color").on("change", function(evt) {
         var img = $(this).parents("#fieldsetEye").find("#eye-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -117,7 +179,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_hair_color").on("change", function (evt) {
+    $("#id_hair_color").on("change", function(evt) {
         var img = $(this).parents("#fieldsetHair").find("#hair-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -144,7 +206,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Nevi").on("change", function (evt) {
+    $("#id_Nevi").on("change", function(evt) {
         var img = $(this).parents("#fieldsetNevi").find("#Nevi-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -167,7 +229,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Nevi").on("change", function (evt) {
+    $("#id_Nevi").on("change", function(evt) {
         var img = $(this).parents("#fieldsetNevi").find("#Nevi-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -190,7 +252,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_UltravioletExposure").on("change", function (evt) {
+    $("#id_UltravioletExposure").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetUltravioletExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
             $(this).parents("#fieldsetUltravioletExposure").find("input[type=text]").prop("required", true);
@@ -201,7 +263,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_RecreationalExposure").on("change", function (evt) {
+    $("#id_RecreationalExposure").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetRecreationalExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
             $(this).parents("#fieldsetRecreationalExposure").find("input[type=text]").prop("required", true);
@@ -212,7 +274,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function (evt) {
+    $("#id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control .special_on_div_table").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -223,7 +285,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Sunlamp").on("change", function (evt) {
+    $("#id_Sunlamp").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetSunlamps").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSunlamps").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -234,7 +296,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Smoking").on("change", function (evt) {
+    $("#id_Smoking").on("change", function(evt) {
         if ($(this).val() == "Former" || $(this).val() == "Current") {
             $(this).parents("#fieldsetSmoking").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", true);
@@ -247,7 +309,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Vitamin").on("change", function (evt) {
+    $("#id_Vitamin").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetVitamin").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
         }
@@ -256,7 +318,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#selectQuestions").on("change", function (evt) {
+    $("#selectQuestions").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -267,7 +329,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#selectMediumSizedCN,#selectLargeSizedCN,#selectGiantSizedCN").on("change", function (evt) {
+    $("#selectMediumSizedCN,#selectLargeSizedCN,#selectGiantSizedCN").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -278,7 +340,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#selectBlueNevi").on("change", function (evt) {
+    $("#selectBlueNevi").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -289,7 +351,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#selectActinicKeratoses").on("change", function (evt) {
+    $("#selectActinicKeratoses").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesSite").prop("required", true);
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesDistribution").prop("required", true);
@@ -302,7 +364,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#selectBCC,#selectSCC,#selectSCCSite").on("change", function (evt) {
+    $("#selectBCC,#selectSCC,#selectSCCSite").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTable").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTable").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -315,7 +377,7 @@ $(document).ready(function () {
 
     $('input.mutually_check').click(function () {
         checkedState = $(this).prop('checked');
-        $(this).parents('.form-group').find(".mutually_check:checked").each(function () {
+        $(this).parents('.form-group').find(".mutually_check:checked").each(function() {
             $(this).prop('checked', false);
         });
         $(this).prop('checked', checkedState);
@@ -333,7 +395,7 @@ $(document).ready(function () {
     var ListaICD10 = [];
     var ICD10_options_by_code = {
         url: "icd10_codes.json",
-        getValue: function (element) {
+        getValue: function(element) {
             return element.code;
         },
         template: {
@@ -350,15 +412,15 @@ $(document).ready(function () {
             sort: {
                 enabled: true
             },
-            onClickEvent: function (element) {
+            onClickEvent: function(element) {
                 var code = $("#ICD10Code").val();
                 var description = $(".selected .eac-item span").text();
                 $("#ICD10Code").val($("#ICD10Code").val() + " " + description);
-                ListaICD10.push({"code": code, "desc": description});
+                ListaICD10.push({ "code": code, "desc": description });
                 // create_Table_Delete(ListaICD10,"json_medical_history","fieldsetHistoryMedicalDiagnosis");
                 $("#json_medical_history").createTable(ListaICD10);
             },
-            onChooseEvent: function (element) {
+            onChooseEvent: function(element) {
 
             }
         },
@@ -366,7 +428,7 @@ $(document).ready(function () {
     };
 
     $("#ICD10Code").easyAutocomplete(ICD10_options_by_code);
-    $("#ICD10Code").on("focus", function (element) {
+    $("#ICD10Code").on("focus", function(element) {
         $(this).val("");
     });
 
@@ -413,7 +475,18 @@ $(document).ready(function () {
         }
     });
 
-    $("#submit").on('click', function (e) {
+    $("#selectLesion").on("change", function(evt) {
+        if ($(this).val() == "Yes") {
+            $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
+        }
+        if ($(this).val() != "Yes") {
+            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
+        }
+    });
+
+    $("#submit").on('click', function(e) {
         e.preventDefault();
         var serJson = $("#msform").serializeJSON();
 
@@ -432,20 +505,20 @@ $(document).ready(function () {
             type: "POST", // type of action POST || GET
             dataType: 'json', // data type
             data: serJson, // post data || get data
-            success: function (result) {
+            success: function(result) {
                 // you can see the result from the console
                 // tab of the developer tools
                 console.log(result);
             },
-            error: function (xhr, resp, text) {
+            error: function(xhr, resp, text) {
                 console.log(xhr, resp, text);
             }
         })
 
         Initialize();
     });
-
-});/*Fine Doucment Ready*/
+});
+/*Fine Doucment Ready*/
 
 function Initialize() {
     DDL_Other('Ethnicity', 'inputEthnicity');

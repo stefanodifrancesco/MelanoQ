@@ -66,10 +66,6 @@ input {
     border: none;
 }
 
-.hidden-control {
-    display: none;
-}
-
 .special_on_div_table {
     width: 50%;
     margin-left: auto;
