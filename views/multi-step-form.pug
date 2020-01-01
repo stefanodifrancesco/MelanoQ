@@ -42,9 +42,9 @@ block content
                           option(value='02') Italy
                           option(value='03') Spain
                     .divTableCell(style='border: 0px solid white !important;')
-                      .form-group.hidden-control
-                        select#DatabaseCodeCenter.form-control(name='code_center')
-                          // <option value="No Choosed" selected>Select Center ...</option>
+                      .form-group
+                        select#DatabaseCodeCenter.form-control(name='code_center' disabled='disabled')
+                          <option value="No Choosed" selected>Select Center ...</option>
                     .divTableCell(style='border: 0px solid white !important;')
                       .form-group
                         select#DatabaseCodeType.form-control(name='code_type')
@@ -238,13 +238,13 @@ block content
                         input#Tan_Deep(type='radio', name='skin_tan', value='TansDeeply')
                     .divTableRow
                       .divTableCell
-                        img(src='img/Skin-Tan/No_Tan_1.png', width='100', height='100')
+                        img(src='img/Skin-Tan/No_Tan_1.png', width='100', height='110')
                       .divTableCell
-                        img(src='img/Skin-Tan/Light_Tan_1.png', width='100', height='100')
+                        img(src='img/Skin-Tan/Light_Tan_1.png', width='100', height='110')
                       .divTableCell
-                        img(src='img/Skin-Tan/Moderate_Tan_1.png', width='100', height='100')
+                        img(src='img/Skin-Tan/Moderate_Tan_1.png', width='100', height='110')
                       .divTableCell
-                        img(src='img/Skin-Tan/Deep_Tan_1.png', width='100', height='100')
+                        img(src='img/Skin-Tan/Deep_Tan_1.png', width='100', height='110')
                 
             fieldset#fieldsetEye
               label(for='') Eye Color
@@ -267,11 +267,11 @@ block content
                         input#Dark_Eyes(type='radio', name='eye_color', value='dark')
                     .divTableRow
                       .divTableCell
-                        img(src='img/Color-Eye/Light_eyes-removebg.png', width='150', height='50')
+                        img(src='img/Color-Eye/Light_eyes-removebg.png', width='150', height='75' style="margin-right: 10px;")
                       .divTableCell
-                        img(src='img/Color-Eye/Medium_eyes-removebg.png', width='100', height='50')
+                        img(src='img/Color-Eye/Medium_eyes-removebg.png', width='150', height='75' style="margin-left: 22px;")
                       .divTableCell
-                        img(src='img/Color-Eye/Dark_eyes-removebg.png', width='100', height='50')
+                        img(src='img/Color-Eye/Dark_eyes-removebg.png', width='120', height='75')
 
             fieldset#fieldsetHair
               label(for='1275694163') Hair color (at age of 18 yrs)
@@ -340,13 +340,13 @@ block content
                         input#Many_Freckles(type='radio', name='freckles', value='ManyFreckles')
                     .divTableRow
                       .divTableCell
-                        img(src='img/Freckles/No_freckles.png', width='100', height='100')
+                        img(src='img/Freckles/No_freckles.png', width='100', height='130')
                       .divTableCell
-                        img(src='img/Freckles/Few_freckles.png', width='100', height='100')
+                        img(src='img/Freckles/Few_freckles.png', width='100', height='130')
                       .divTableCell
-                        img(src='img/Freckles/Some_freckles.png', width='100', height='100')
+                        img(src='img/Freckles/Some_freckles.png', width='100', height='130')
                       .divTableCell
-                        img(src='img/Freckles/Many_freckles.png', width='100', height='100')
+                        img(src='img/Freckles/Many_freckles.png', width='100', height='130')
                 
             fieldset#fieldsetNevi
               label(for='id_Nevi') Nevi frequency
@@ -373,13 +373,13 @@ block content
                         input#Many_Nevi(type='radio', name='nevi', value='ManyNevi')
                     .divTableRow
                       .divTableCell
-                        img(src='img/Nevi/None_Nevi.png', width='100', height='100')
+                        img(src='img/Nevi/None_Nevi.png', width='100', height='130')
                       .divTableCell
-                        img(src='img/Nevi/Few_Nevi.png', width='100', height='100')
+                        img(src='img/Nevi/Few_Nevi.png', width='100', height='130')
                       .divTableCell
-                        img(src='img/Nevi/Some_Nevi.png', width='100', height='100')
+                        img(src='img/Nevi/Some_Nevi.png', width='100', height='130')
                       .divTableCell
-                        img(src='img/Nevi/Many_Nevi.png', width='100', height='100')
+                        img(src='img/Nevi/Many_Nevi.png', width='100', height='130')
 
           div.alphaformfooter
           div.formfooter

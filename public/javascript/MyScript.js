@@ -81,7 +81,7 @@ $(document).ready(function() {
 
     $("#fieldsetCodeNumber #DatabaseCodeCountry").on("change", function(evt) {
         if ($(this).val() != "No Choosed") {
-            $("#DatabaseCodeCenter").empty().append("<option value=\"No Choosed\" selected>Select Center ...</option>");
+            $("#DatabaseCodeCenter").prop("disabled", false);
             nation_val = $(this).val();
             $.getJSON('Centers.json', function(result) {
                 $.each(result, function(index, value) {
@@ -91,7 +91,6 @@ $(document).ready(function() {
                 });
             });
             $("DatabaseCodeCenter").val("No Choosed");
-            $("#fieldsetCodeNumber .hidden-control").removeClass("hidden-control").addClass("show-control");
         }
         if ($(this).val() == "No Choosed") {
             $("#fieldsetCodeNumber .show-control").removeClass("show-control").addClass("hidden-control");

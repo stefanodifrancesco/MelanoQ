@@ -137,9 +137,16 @@
 #msform .divTableHead {
     border: 1px solid #999999;
     display: table-cell;
-    padding: 0px 10px 0px 0px;
     vertical-align: middle !important;
     width: 32%;
+}
+
+#msform .divImgTable .divTableCell,
+#msform .divImgTable .divTableHead {
+    border: 1px solid #999999;
+    display: table-cell;
+    vertical-align: middle !important;
+    width: 0%;
 }
 
 #msform .divTableCell input {
@@ -149,6 +156,17 @@
     height: 30px;
     margin-left: 20%;
     width: 80%;
+}
+
+#msform .divTableCell input[type='radio'] {
+    border: none;
+    border-bottom: 1px solid gray;
+    border-radius: 0px;
+    height: 20px;
+    margin-left: 0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    width: 100%;
 }
 
 #msform .divTableCell label {
@@ -223,6 +241,7 @@
     cursor: pointer;
     padding: 10px 5px;
     margin-bottom: 10px;
+    outline: 0;
 }
 
 #msform .start {
@@ -351,6 +370,6 @@
 
 #progressbar li.active:before,
 #progressbar li.active:after {
-    background: #27AE60;
+    background: #4285f4;
     color: white;
 }

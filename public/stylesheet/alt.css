@@ -1,24 +1,22 @@
-.fade {
-    background-color: rgba(100,100,100,0.8);
+#msform .fade {
+    background-color: rgba(100, 100, 100, 0.8);
     transition: opacity .15s linear;
 }
 
-.fade.in {
-    background-color: rgba(100,100,100,0.8);
+#msform .fade.in {
+    background-color: rgba(100, 100, 100, 0.8);
 }
 
-.modal-table {
-
-}
+.modal-table {}
 
 .modal-table img {
-    width:50%;
+    width: 50%;
 }
 
-.modal-table > .modal-title {
+.modal-table>.modal-title {
     letter-spacing: 1px;
     font-size: 3.5em;
-    color:lightgray;
+    color: lightgray;
     font-variant: small-caps;
     font-style: oblique;
 }

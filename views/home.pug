@@ -22,19 +22,23 @@ block content
           div.tab-content
             div#personaltab.tab-pane.fade.show.active
               if profileData.questionnaires
-                .questionnaires-table
-                  table.questionnaires-list
-                    tbody
+                table.questionnaires-list
+                  tbody
+                    tr
+                      th Database code number
+                      th Creation date
+                      th Link to questionnaire
+                    each quest in profileData.questionnaires
                       tr
-                        th Database code number
-                        th Creation date
-                      each quest in profileData.questionnaires
-                        tr
-                          td(style='width: 400px;')
-                            form(action='/find' method='post')
-                              button.btn-link.questionnaire-link(type='submit' name='codeNumber' value='' + quest.code_number) #{quest.code_number}
-                          td #{quest.insert_date}
-
+                        td #{quest.code_number}
+                        td #{quest.insert_date}
+                        td
+                          form(action='/find' method='post')
+                            button.btn.questionnaire-summary(
+                              type='submit' 
+                              name='codeNumber' 
+                              value='' + quest.code_number
+                            ) Open questionnaire
               else 
                 .row
                   .col-sm-9.questionnaires-table
@@ -42,23 +46,23 @@ block content
 
             div#completetab.tab-pane.fade
               if result
-                .questionnaires-table
-                  table.questionnaires-list
-                    tbody
+                table.questionnaires-list
+                  tbody
+                    tr
+                      th Database code number
+                      th Creation date
+                      th Link to questionnaire
+                    each quest in result
                       tr
-                        th Database code number
-                        th Creation date
-                      each quest in result
-                        tr
-                          td(style='width: 400px;')
-                            form(action='/find' method='post')
-                              button.btn-link.questionnaire-link(
-                                type='submit' 
-                                name='codeNumber' 
-                                value='' + quest._source.code_number
-                              ) #{quest._source.code_number}
-                          td #{quest.insert_date}
-
+                        td #{quest._source.code_number}
+                        td #{quest.insert_date}
+                        td
+                          form(action='/find' method='post')
+                            button.btn.questionnaire-summary(
+                              type='submit' 
+                              name='codeNumber' 
+                              value='' + quest._source.code_number
+                            ) Open questionnaire
               else 
                 .row
                   .col-sm-9.questionnaires-table
