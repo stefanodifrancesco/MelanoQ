@@ -47,11 +47,6 @@ body {
     padding: .75rem 0rem;
 }
 
-.group {
-    position: relative;
-    margin-bottom: 45px;
-}
-
 .NoDivTableBorder {
     border: 0px solid !important;
     padding: 0px !important;
@@ -64,12 +59,6 @@ input {
     border-bottom: 1px solid;
     background-color: #fcfcfc;
     border: none;
-}
-
-.special_on_div_table {
-    width: 50%;
-    margin-left: auto;
-    text-align: center;
 }
 
 .hidden-label {

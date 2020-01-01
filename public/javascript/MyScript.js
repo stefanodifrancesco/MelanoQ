@@ -93,8 +93,8 @@ $(document).ready(function() {
             $("DatabaseCodeCenter").val("No Choosed");
         }
         if ($(this).val() == "No Choosed") {
-            $("#fieldsetCodeNumber .show-control").removeClass("show-control").addClass("hidden-control");
-            $("#DatabaseCodeCenter").empty();
+            $("#DatabaseCodeCenter").prop("disabled", true);
+            $("#DatabaseCodeCenter").val("No Choosed");
         }
     });
 

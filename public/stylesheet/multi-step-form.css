@@ -92,13 +92,13 @@
 
 #msform input,
 #msform textarea {
-    padding: 15px;
     border: 1px solid #ccc;
-    border-radius: 3px;
-    width: 100%;
+    border-radius: 30px;
+    width: 80%;
     box-sizing: border-box;
     color: #2C3E50;
     font-size: 13px;
+    outline: 0;
 }
 
 #msform .scroll-button-bottom {
@@ -139,6 +139,11 @@
     display: table-cell;
     vertical-align: middle !important;
     width: 32%;
+    padding: 10px;
+}
+
+#msform .NoDivTableBorder {
+    padding: 0px 10px 0px 0px !important;
 }
 
 #msform .divImgTable .divTableCell,
@@ -149,13 +154,19 @@
     width: 0%;
 }
 
-#msform .divTableCell input {
+#msform .divTableCell input[type='text'] {
     border: none;
     border-bottom: 1px solid gray;
     border-radius: 0px;
     height: 30px;
-    margin-left: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
     width: 80%;
+}
+
+#msform .NoDivTableBorder input[type='text'] {
+    margin-bottom: 22px;
 }
 
 #msform .divTableCell input[type='radio'] {
@@ -169,20 +180,58 @@
     width: 100%;
 }
 
+#msform .divTableCell input[type='number'] {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+#msform .NoDivTableBorder input[type='number'] {
+    margin-bottom: 22px;
+}
+
 #msform .divTableCell label {
-    margin-left: 20%;
-    margin-bottom: 0px;
-    margin-top: 0px;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    margin-top: -10px;
 }
 
 #msform .hidden-control {
     display: none;
 }
 
+#msform .divTableCell .hidden-control {
+    visibility: hidden;
+    display: table-cell;
+}
+
+#msform .divTableCell .show-control {
+    height: 100%;
+    visibility: visible;
+}
+
 #msform #fieldsetCodeNumber input {
     width: 17%;
     font-size: 1rem;
     height: 30px;
+    text-align: center;
+}
+
+#msform .datepicker {
+    width: 17%;
+    text-align: center;
+}
+
+#msform .new_datepicker {
+    width: 17%;
+    text-align: center;
+}
+
+#msform input[type='number'] {
+    width: 17%;
+    text-align: center;
+    padding-left: 25px;
 }
 
 
