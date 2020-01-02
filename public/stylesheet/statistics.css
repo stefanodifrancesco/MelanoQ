@@ -2,6 +2,7 @@
 
 .statistics-button {
     margin-top: 18px;
+    font-weight: bolder;
 }
 
 .statistics-button .fa-caret-down {

@@ -10,6 +10,7 @@
 
 .new-questionnaire-button {
     margin-top: 18px;
+    font-weight: bolder;
 }
 
 .new-questionnaire-button .fa-caret-down {
