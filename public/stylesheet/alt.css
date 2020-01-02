@@ -7,6 +7,26 @@
     background-color: rgba(100, 100, 100, 0.8);
 }
 
+#msform .modal-body th {
+    text-align: center;
+}
+
+#msform .modal-body input[type='number'] {
+    padding: 0px;
+    height: 35px;
+    width: 120px;
+}
+
+#msform .modal-body .datepicker {
+    width: 100%;
+    height: 35px;
+}
+
+#Medication-Number {
+    width: 120px;
+    text-align: center;
+}
+
 .modal-table {}
 
 .modal-table img {

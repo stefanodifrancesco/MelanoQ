@@ -1,96 +1,18 @@
-.profile-header {
-    position: fixed;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 70px;
-    width: 56%;
+/*header*/
+
+.questionnaires-list-button {
+    margin-top: 18px;
 }
 
-.profile-header h2 {
-    margin: auto;
-    color: #ffffff;
-    float: right;
-    margin-right: 30px;
-    margin-top: 20px;
-    text-decoration: underline;
+.questionnaires-list-button .fa-caret-down {
+    font-size: 2.5rem;
+    margin-top: -3px;
+    color: #66b78c;
+    display: block;
 }
 
-.new-questionnaire-button {
-    float: left;
-    height: 80%;
-    width: 180px;
-    background-color: #ffffffaa;
-    border: 1px solid black;
-    color: black;
-    padding: 12px 16px;
-    font-size: 20px;
-    cursor: pointer;
-    margin-top: 8px;
-    border-radius: .3rem;
-}
 
-.statistics-button {
-    float: center;
-    height: 80%;
-    width: 180px;
-    background-color: #ffffffaa;
-    border: 1px solid black;
-    color: black;
-    padding: 12px 16px;
-    font-size: 20px;
-    cursor: pointer;
-    margin-top: 8px;
-    margin-left: 10px;
-    border-radius: .3rem;
-}
-
-.logout-button {
-    float: right;
-    height: 80%;
-    border: 1px solid black;
-    width: 180px;
-    background-color: firebrick;
-    border: 1px solid black;
-    color: white;
-    padding: 12px 16px;
-    font-size: 20px;
-    cursor: pointer;
-    margin-top: 8px;
-    border-radius: .3rem;
-}
-
-.new-questionnaire-button:hover {
-    background-color: white;
-}
-
-.statistics-button:hover {
-    background-color: white;
-}
-
-.logout-button:hover {
-    background-color: red;
-}
-
-.logout-icon {
-    font-size: 2rem;
-}
-
-.navbar {
-    position: fixed;
-    background-color: #66b78c;
-    top: 0;
-    width: 100%;
-    overflow: hidden;
-    height: 70px;
-    padding: .5rem 1.5rem;
-}
-
-.navbar-brand {
-    margin-right: 0rem;
-    font-size: 1.8rem;
-}
+/*home*/
 
 .questionnaires-tab {
     margin-top: 20px;
@@ -135,18 +57,6 @@
     width: 100%;
     background: transparent;
 }
-
-
-/* .questionnaires-table {
-    border-bottom: 2px solid #ffffff;
-    border-left: 2px solid #ffffff;
-    border-right: 2px solid #ffffff;
-    width: 100%;
-    padding-left: 0px;
-    padding-right: 0px;
-    background: white;
-    box-shadow: 0px 5px 30px 8px gray;
-} */
 
 .questionnaires-list {
     width: 100%;

@@ -1,0 +1,115 @@
+.profile-header {
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    width: 56%;
+}
+
+.profile-header h2 {
+    margin: auto;
+    color: #ffffff;
+    float: right;
+    margin-right: 30px;
+    margin-top: 20px;
+    text-decoration: underline;
+}
+
+.questionnaires-list-button {
+    float: left;
+    height: 80%;
+    width: 200px;
+    background-color: transparent;
+    border: 0px solid white;
+    color: white;
+    padding: 12px 16px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 8px;
+    outline: 0 !important;
+}
+
+.new-questionnaire-button {
+    float: left;
+    height: 80%;
+    width: 180px;
+    background-color: transparent;
+    border: 0px solid white;
+    color: white;
+    padding: 12px 16px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-left: 20px;
+    outline: 0 !important;
+}
+
+.statistics-button {
+    float: center;
+    height: 80%;
+    width: 180px;
+    background-color: transparent;
+    border: 0px solid white;
+    color: white;
+    padding: 12px 16px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-left: 5px;
+    outline: 0 !important;
+}
+
+.logout-button {
+    float: right;
+    height: 80%;
+    border: 1px solid black;
+    width: 180px;
+    background-color: firebrick;
+    border: 1px solid black;
+    color: white;
+    padding: 12px 16px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 8px;
+    border-radius: .3rem;
+}
+
+.new-questionnaire-button:hover {
+    background-color: transparent;
+}
+
+.statistics-button:hover {
+    background-color: transparent;
+}
+
+.logout-button:hover {
+    background-color: red;
+}
+
+.fa-caret-down {
+    font-size: 2.5rem;
+    margin-top: 7px;
+    color: #66b78c;
+    display: none;
+}
+
+.logout-icon {
+    font-size: 2rem;
+}
+
+.navbar {
+    position: fixed;
+    background-color: #66b78c;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 70px;
+    padding: .5rem 1.5rem;
+}
+
+.navbar-brand {
+    margin-right: 0rem;
+    font-size: 1.8rem;
+}

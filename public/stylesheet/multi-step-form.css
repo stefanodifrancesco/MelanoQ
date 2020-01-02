@@ -6,6 +6,20 @@
 }
 
 
+/*header*/
+
+.new-questionnaire-button {
+    margin-top: 18px;
+}
+
+.new-questionnaire-button .fa-caret-down {
+    font-size: 2.5rem;
+    margin-top: -3px;
+    color: #66b78c;
+    display: block;
+}
+
+
 /*form styles*/
 
 .progressline {
@@ -14,6 +28,7 @@
     height: 70px;
     position: fixed;
     pointer-events: none;
+    display: none;
 }
 
 .form {
@@ -96,9 +111,14 @@
     border-radius: 30px;
     width: 80%;
     box-sizing: border-box;
-    color: #2C3E50;
+    color: black;
     font-size: 13px;
     outline: 0;
+}
+
+#msform input[type='button'] {
+    background-color: #66b78c;
+    color: white;
 }
 
 #msform .scroll-button-bottom {
@@ -138,7 +158,7 @@
     border: 1px solid #999999;
     display: table-cell;
     vertical-align: middle !important;
-    width: 32%;
+    width: 10%;
     padding: 10px;
 }
 
@@ -151,7 +171,6 @@
     border: 1px solid #999999;
     display: table-cell;
     vertical-align: middle !important;
-    width: 0%;
 }
 
 #msform .divTableCell input[type='text'] {
@@ -232,6 +251,10 @@
     width: 17%;
     text-align: center;
     padding-left: 25px;
+}
+
+.easy-autocomplete-container {
+    width: 500px;
 }
 
 
@@ -338,6 +361,14 @@
 
 
 /*headings*/
+
+#handchange h2 {
+    bottom: 80px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+}
 
 .fs-title {
     font-size: 15px;

@@ -1,4 +1,29 @@
-﻿html {
+﻿.fade-in-bck {
+    -webkit-animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.fade-in-top {
+    -webkit-animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.fade-out-top {
+    -webkit-animation: fade-out-top 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: fade-out-top 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.slit-in-horizontal {
+    -webkit-animation: slit-in-horizontal 0.45s ease-out both;
+    animation: slit-in-horizontal 0.45s ease-out both;
+}
+
+.slit-out-horizontal {
+    -webkit-animation: slit-out-horizontal 0.5s ease-in both;
+    animation: slit-out-horizontal 0.5s ease-in both;
+}
+
+html {
     background: lightgray;
     height: 100%;
     overflow: hidden;
