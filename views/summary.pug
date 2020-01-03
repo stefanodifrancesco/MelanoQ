@@ -1,8 +1,31 @@
 extends layout
 
+block append style
+    link(rel='stylesheet', href='/stylesheet/summary.css')
+
 block content
-  .container.summary-div
-        
+  div.profile-header
+      button.questionnaires-list-button(onclick="window.location.href = '/home';")
+        |  QUESTIONNAIRES<br>
+        i.fa.fa-caret-down
+
+      button.new-questionnaire-button(onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\"); window.location.href = '/stepform';")
+        |  CREATE NEW<br>
+        i.fa.fa-caret-down
+          
+      button.statistics-button(onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\"); window.location.href = '/statistics';")
+        |  STATISTICS<br>
+        i.fa.fa-caret-down
+
+      button.logout-button(onclick="window.location.href = '/logout';")
+          |  Logout
+
+  .container.summary-div.slide-in-bottom
+    
+    button.btn.back-button(onclick="var t = document.getElementsByClassName(\"summary-div\"); var q = t[0]; q.classList.add(\"slide-out-bottom\"); window.location.href = '/home';")
+      i.fa.fa-angle-up
+      |        Back
+
     <details>
       <summary>GENERAL</summary>
       <hr/>

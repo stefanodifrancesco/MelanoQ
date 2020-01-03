@@ -49,6 +49,7 @@ block content
                               type='submit' 
                               name='codeNumber' 
                               value='' + quest.code_number
+                              onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\");"
                             ) Open questionnaire
               else 
                 .row
@@ -73,6 +74,7 @@ block content
                               type='submit' 
                               name='codeNumber' 
                               value='' + quest._source.code_number
+                              onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\");"
                             ) Open questionnaire
               else 
                 .row
