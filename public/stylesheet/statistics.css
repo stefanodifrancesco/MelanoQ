@@ -11,3 +11,12 @@
     color: #66b78c;
     display: block;
 }
+
+.kibana {
+    position: absolute;
+    z-index: 0;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    margin-top: 68px;
+    border: 0px;
+}

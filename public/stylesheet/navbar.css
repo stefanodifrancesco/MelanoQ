@@ -1,10 +1,11 @@
 .profile-header {
-    position: fixed;
+    position: absolute;
     margin: auto;
     top: 0;
     left: 0;
     right: 0;
     height: 70px;
+    z-index: 1;
 }
 
 .profile-header h2 {
@@ -63,18 +64,15 @@
 
 .logout-button {
     float: right;
-    height: 70%;
-    border: 1px solid black;
-    width: 160px;
+    height: 40px;
+    width: 118px;
     background-color: firebrick;
-    border: 1px solid black;
     color: white;
-    padding: 12px 12px;
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 17px;
     margin-right: 20px;
-    border-radius: .3rem;
+    border-radius: .5rem;
 }
 
 .new-questionnaire-button:hover {
@@ -101,13 +99,14 @@
 }
 
 .navbar {
-    position: fixed;
+    position: absolute;
     background-color: #66b78c;
     top: 0;
     width: 100%;
     overflow: hidden;
     height: 70px;
     padding: .5rem 1.5rem;
+    z-index: 1;
 }
 
 .navbar-brand {
