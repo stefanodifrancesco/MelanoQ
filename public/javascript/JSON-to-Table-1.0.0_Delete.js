@@ -119,7 +119,8 @@
                                 $(current_element).text(j + 1);
                             }
                             if(data.length == 0) {
-                                $(element).remove();
+                                $(element).empty();
+                                // $(element).remove();
                             }
                         });
                         row += '<td>' + delete_btn + '</td></tr>';

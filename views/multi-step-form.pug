@@ -1364,53 +1364,746 @@ block content
                         input#ICD10Code(type='text' value='' placeholder='Search by ICD10 code or name of disease')
                 #json_medical_history.form-group
 
-            fieldset#fieldset_C2_10
-              label Previous and concomitant treatments (related to above-mentioned diagnoses)
-              p(style='color:red;') (Optional)
-              // Button to Open the Modal
-              p
-                button.btn.btn-info(type='button' data-toggle='modal' data-target='#MedicationModal')
-                  | Insert
-                  | Medication
-              // The Modal
-              #MedicationModal.modal.fade
-                .modal-dialog
-                  .modal-content(style='position:center;')
-                    // Modal Header
-                    .modal-header.modal-table
-                      table#Medications_ModalLabel.modal-title
-                        thead
-                          th(style='width:25%;')
+            /*TAB 08/01/2020*/
+            fieldset#fieldsetSection_C2(style='margin-top: 20px;')
+              legend Section C2
+              .form-group
+                p.help-block II. MEDICAL HISTORY/MEDICATIONS (completed by physician/study nurse)
+              #fieldsetHistoryMedicalDiagnosis
+                p.help-block History of medical (non-cancer) diagnoses
+                .form-group
+                  .divTable
+                    .divTableRow
+                      .divTableCell.NoDivTableBorder(style='width:40%;margin-left: 2px;')
+                        input#ICD10Code(type='text', value='', placeholder='Search by ICD10 code or name of disease')
+                #json_medical_history.form-group
+              // To commit
+              #fieldset_C2_10
+                legend Previous and concomitant treatments (related to above-mentioned diagnoses)
+                p(style='color:red;') (Optional)
+                // Button to Open the Modal
+                p
+                  // Da committare solo il button
+                  button#Insert-Med.btn.btn-info(type='button', data-toggle='modal', data-target='#MedicationDateModal')
+                    | Insert Medication
+                // The Modal
+                #json-medications.form-group(style='width:50%;')
+            // Da commitare
+            fieldset#fieldsetPregnancy_History(style='margin-top: 20px;')
+              legend Pregnancy history
+              .form-group
+                #Pregnancy_History.divTable
+                  .divTableRow(style='width: 100%;')
+                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                      span Have you ever become pregnant?
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span Yes
+                      input#Pregnant_Yes(type='radio', name='group.pregnancy', value='Yes')
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span No
+                      input#Pregnant_No(type='radio', name='group.pregnancy', value='No', checked='checked')
+              .form-group.Pregnancy_Stats.hide-transition
+                hr
+                .divTable
+                  .divTableRow
+                    .divTableCell.no-bottom-border.no-right-border
+                      span Number of full-term pregnancies:
+                    .divTableCell.no-bottom-border.no-right-border
+                      span Date of birth of children:
+                    .divTableCell.no-bottom-border.no-right-border
+                      span Number of miscarriages:
+                    .divTableCell.no-bottom-border
+                      span Number of full-term pregnancies:
+                  .divTableRow
+                    .divTableCell.no-right-border
+                      input(type='number', name='', value='')
+                    .divTableCell.no-right-border
+                      input.datepicker.form-control(type='text', value='', placeholder='dd/mm/yyyy')
+                    .divTableCell.no-right-border
+                      input(type='number', name='', value='')
+                    .divTableCell
+                      input(type='number', name='', value='')
+              .form-group
+                hr
+                #Pregnancy_During.divTable(style='')
+                  .divTableRow(style='width: 100%;')
+                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                      span
+                        | Did melanoma occur 
+                        span(style='color:#cc7b1d;text-decoration-line:underline;')
+                          b during
+                        |  pregnancy ?
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span Yes
+                      input#During_Yes(type='radio', name='group.during', value='Yes')
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span No
+                      input#During_No(type='radio', name='group.during', value='No', checked='checked')
+              #Pregnancy_Before.form-group
+                hr
+                .divTable
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                      span
+                        | Did melanoma occur 
+                        span(style='color:#1c7430;text-decoration-line:underline;')
+                          b before
+                        |  pregnancy ?
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span Yes
+                      input#Before_Yes(type='radio', name='group.before', value='Yes')
+                    .divTableCell.NoDivTableBorder(style='text-align:center;width: 10%;')
+                      span No
+                      input#Before_No(type='radio', name='group.before', value='No', checked='checked')
+                  .divTableRow.hide-transition
+                    .divTableCell.NoDivTableBorder(style='width:80%;')
+                      span
+                        | Specify how many years 
+                        span(style='color:#1c7430;text-decoration-line:underline;')
+                          b before
+                        |  pregnancy ?
+                    .divTableCell.NoDivTableBorder(style='width:10%;')
+                      input(style='width:20%;margin:auto;', type='number', name='', value='')
+                    .divTableCell.NoDivTableBorder(style='width:10%;')
+                      input(style='width:20%;margin:auto;display:none;', type='number', name='', value='')
+              #Pregnancy_After.form-group
+                hr
+                .divTable
+                  .divTableRow(style='width: 100%;')
+                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                      span
+                        | Did melanoma occur 
+                        span(style='color:#002752;text-decoration-line:underline;')
+                          b after
+                        |  pregnancy ?
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span Yes
+                      input#After_Yes(type='radio', name='group.after', value='Yes')
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span No
+                      input#After_No(type='radio', name='group.after', value='No', checked='checked')
+                  .divTableRow.hide-transition(style='width: 100%;')
+                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                      span
+                        | Specify how many years 
+                        span(style='color:#002752;text-decoration-line:underline;')
+                          b after
+                        |  pregnancy ?
+                    .divTableCell.NoDivTableBorder
+                      input(style='width:20%;margin:auto;', type='number', name='', value='')
+              .form-group
+                hr
+                #Pregnancy_Hormone_Assisted.divTable
+                  .divTableRow(style='width: 100%;')
+                    .divTableCell.NoDivTableBorder.thead-dark(style='width: 80%;')
+                      span
+                        | History of hormone-assisted pregnancy (IVF) 
+                        span(style='color:#1c7430;text-decoration-line:underline;')
+                          b before
+                        |  diagnosis ?
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span Yes
+                      input#Hormone_Yes(type='radio', name='group.hormone', value='Yes')
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span No
+                      input#Hormone_No(type='radio', name='group.hormone', value='No', checked='checked')
+            fieldset#fieldsetLifetime_History(style='margin-top: 20px;')
+              legend
+                | Lifetime history of non-melanoma skin cancer, KSC (basal cell carcinoma, BCC, and squamous cell
+                | carcinoma, SCC)
+              .form-group
+                #BBC_History.divTable
+                  .divTableRow(style='width: 100%;')
+                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                      span Number of BBCs
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      input(style='width:20%;margin:auto;', type='number', name='', value='')
+                  .divTableRow(style='width: 100%;')
+                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                      span Before or After melanoma diagnosis ?
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span Before
+                      input#BBC_Before_Diagnosis(type='radio', name='group.after', value='Yes')
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span After
+                      input#BBC_After_Diagnosis(type='radio', name='group.after', value='No', checked='checked')
+                .form-group(style='margin-top:15px;margin-left: 9px;')
+                  p
+                    // Da committare solo il button
+                    button#Insert-BCC_Sites.btn.btn-info(type='button', data-toggle='modal', data-target='#Sites_Modal')
+                      | Insert BBC Site(s)
+                  .BCC_Sites_Json_Table
+              hr
+              .form-group
+                #SCC_Invasive_History.divTable
+                  .divTableRow(style='width: 100%;')
+                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                      span Number of SSCs
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      input(style='width:20%;margin:auto;', type='number', name='', value='')
+                  .divTableRow(style='width: 100%;')
+                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                      span Before or After melanoma diagnosis ?
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span Before
+                      input#SSC_Invasive_Before_Diagnosis(type='radio', name='group.invasive', value='Yes')
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span After
+                      input#SSC_Invasive_After_Diagnosis(type='radio', name='group.invasive', value='No', checked='checked')
+                .form-group(style='margin-top:15px;margin-left: 9px;')
+                  p
+                    // Da committare solo il button
+                    button#Insert-SCC_Invasive_Sites.btn.btn-warning(type='button', data-toggle='modal', data-target='#Sites_Modal')
+                      | Insert SSC invasive Site(s)
+                  .SCC_Invasive_Sites_Json_Table
+              hr
+              .form-group
+                #SSC_InSitu__History.divTable
+                  .divTableRow(style='width: 100%;')
+                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                      span Number of 'in situ SCCs'
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      input(style='width:20%;margin:auto;', type='number', name='', value='')
+                  .divTableRow(style='width: 100%;')
+                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                      span Before or After melanoma diagnosis ?
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span Before
+                      input#SCC_InSitu_Before_Diagnosis(type='radio', name='group.inSitu', value='Yes')
+                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
+                      span After
+                      input#SCC_InSitu_After_Diagnosis(type='radio', name='group.inSitu', value='No', checked='checked')
+                .form-group(style='margin-top:15px;margin-left: 9px;')
+                  p
+                    // Da committare solo il button
+                    button#Insert-SCC_InSitu_Sites.btn.btn-secondary(type='button', data-toggle='modal', data-target='#Sites_Modal')
+                      | Insert in situ SCC Site(s)
+                  .SCC_InSitu_Sites_Json_Table
+            #SimpleDateModal.modal.fade
+              .modal-dialog
+                .modal-content
+                  // Modal Header
+                  .modal-header.modal-table
+                    table#SimpleData_ModalLabel.modal-title
+                      thead
+                        tr
+                          th.th-image(style='width:25%;')
                             img(src='icons/medical-records-svgrepo-com.png')
-                          th(style='width:75%;')
-                            span.modal-title Medications
-                      button.close(type='button' data-dismiss='modal') &times;
-                    // Modal body
-                    .modal-body
-                      table
-                        thead.thead-dark
-                          tr
-                            th(style='width:10%;') Number
-                            th(style='width:10%;')
-                            th(style='width:35%;') Start Date
-                            th(style='width:10%;')
-                            th(style='width:35%;') End Date
+                          th.th-title(style='width:75%;')
+                            table
+                              tbody
+                                tr
+                                  th
+                                    span.span-modal-title Insert Diagnosis Date
+                            table
+                              tbody
+                                tr
+                                  th
+                                    span.span-modal-subtitle.help-block (Optional)
+                    button.close(type='button', data-dismiss='modal') ×
+                  // Modal body
+                  .modal-body
+                    table
+                      thead.thead-dark
+                        tr
+                          th.hidden(style='width:25%;') Number of
+                          th(style='width:25%;') Diagnosis Date
+                          th(style='width:25%;')
+                          th(style='width:25%;')
+                      tbody
+                        tr
+                          td(style='width:25%;')
+                            input.hidden.number-control(style='width:50%;', type='number', min='1')
+                          td(style='width:25%;')
+                            input.form-control.datepicker.diagnosis-date(type='text')
+                          td(style='width:25%;')
+                          td(style='width:25%;')
+                  // Modal footer
+                  .modal-footer
+                    button#save_simple.btn.btn-secondary(type='button', data-dismiss='modal')
+                      | Save
+                    button.btn.btn-danger(type='button', data-dismiss='modal') Close
+            #MedicationDateModal.modal.fade
+              .modal-dialog
+                .modal-content
+                  // Modal Header
+                  .modal-header.modal-table
+                    table#Data_ModalLabel.modal-title
+                      thead
+                        tr
+                          th.th-image(style='width:25%;')
+                            img(src='icons/medical-records-svgrepo-com.png')
+                          th.th-title(style='width:75%;')
+                            span.span-modal-title
+                    button.close(type='button', data-dismiss='modal') ×
+                  // Modal body
+                  .modal-body
+                    table
+                      thead.thead-dark
+                        tr
+                          th(style='width:10%;') Number
+                          th(style='width:10%;')
+                          th(style='width:35%;') Start Date
+                          th(style='width:10%;')
+                          th(style='width:35%;') End Date
+                      tbody
+                        tr
+                          td.medication-number(style='width:10%;')
+                            input#Medication-Number(style='background-color:transparent;color:#0c4090;width:100%;text-align: end; font-size: large;', type='number', value='1', readonly='')
+                          td(style='width:10%;')
+                          td(style='width:35%;')
+                            input.form-control.datepicker.med-start-date(type='text')
+                          td(style='width:10%;')
+                          td(style='width:35%;')
+                            input.form-control.datepicker.med-end-date(type='text')
+                  // Modal footer
+                  .modal-footer
+                    button#save_med.btn.btn-secondary(type='button', data-dismiss='modal')
+                      | Save
+                    button.btn.btn-danger(type='button', data-dismiss='modal') Close
+            #Sites_Modal.modal.fade
+              .modal-dialog
+                .modal-content(style='width: auto;')
+                  span.hidden.modal-caller
+                  // Modal Header
+                  .modal-header.modal-table
+                    table#Sites_ModalTable.modal-title
+                      thead
+                        tr
+                          th.th-image(style='width:35%;')
+                            img(style='width: 35%;border: 1px solid black;border-radius:50px;margin-left: 10%;', src='icons/human body.png')
+                          th.th-title(style='width:65%;')
+                            span.modal-title
+                    button.close(type='button', data-dismiss='modal') ×
+                  // Modal body
+                  .modal-body
+                    .tg-wrap.form-check
+                      table.tg
                         tbody
                           tr
-                            td.medication-number(style='width:10%;')
-                              input#Medication-Number(style='background-color:transparent;color:#0c4090;width:100%;text-align: end; font-size: large;' type='number' value='1' readonly='')
-                            td(style='width:10%;')
-                            td(style='width:35%;')
-                              input.form-control.datepicker.med-start-date(type='text')
-                            td(style='width:10%;')
-                            td(style='width:35%;')
-                              input.form-control.datepicker.med-end-date(type='text')
-                    // Modal footer
-                    .modal-footer
-                      button#save_med.btn.btn-secondary(type='button' data-dismiss='modal') Save
-                      button.btn.btn-danger(type='button' data-dismiss='modal') Close
-              #json-medications.form-group(style='width:50%;')
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | anus
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | arm left anterior
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | arm_left_posterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | arm_right_anterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | arm_right_posterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | axilla_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | axilla_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | back_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | back_middle 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | back_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | buttock_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | buttock_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | cheek_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | cheek_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | chest_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | chest_middle 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | chest_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | chin 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | ear_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | ear_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | eye_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | eye_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | eyelid_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | eyelid_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | finger_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | finger_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | foot_left_dorsal 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | foot_left_plantar 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | foot_right_dorsal 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | foot_right_plantar 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | forearm_left_anterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | forearm_left_posterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | forearm_right_anterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | forearm_right_posterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | forehead 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | hand_left_dorsal 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | hand_left_palmar 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | hand_right_dorsal 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | hand_right_palmar 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | head 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | laterocervical_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | laterocervical_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | leg_left_anterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | leg_left_posterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | leg_right_anterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | leg_right_posterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | lip 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | lumbar 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | nail_finger_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | nail_finger_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | nail_toe_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | nail_toe_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | nose 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | penis_scrotum 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | scalp 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | shoulder_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | shoulder_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | thigh_left_anterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | thigh_left_posterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | thigh_right_anterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | thigh_right_posterior 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | toe_left 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | toe_right 
+                                  input(type='checkbox')
+                                  span.checkmark
+                          tr
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | vagina 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | vulva 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                                label.table-personal-label
+                                  | other 
+                                  input(type='checkbox')
+                                  span.checkmark
+                            td.tg-0lax
+                              .TEST2
+                  // Modal footer
+                  .modal-footer
+                    button#save_sites.btn.btn-secondary(type='button', data-dismiss='modal')
+                      | Save
+                    button#cancel_sites.btn.btn-danger(type='button', data-dismiss='modal') Cancel
 
+            /*TAB END*/
 
           div.alphaformfooter
           div.formfooter
