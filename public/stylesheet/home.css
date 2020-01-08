@@ -1,101 +1,23 @@
-.profile-header {
-    position: fixed;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 70px;
-    width: 56%;
+/*header*/
+
+.questionnaires-list-button {
+    margin-top: 18px;
+    font-weight: bolder;
 }
 
-.profile-header h2 {
-    margin: auto;
-    color: #ffffff;
-    float: right;
-    margin-right: 30px;
-    margin-top: 20px;
-    text-decoration: underline;
+.questionnaires-list-button .fa-caret-down {
+    font-size: 2.5rem;
+    margin-top: -4px;
+    color: #66b78c;
+    display: block;
 }
 
-.new-questionnaire-button {
-    float: left;
-    height: 80%;
-    border: 1px solid black;
-    width: 180px;
-    background-color: #66b78c;
-    border: none;
-    color: white;
-    padding: 12px 16px;
-    font-size: 20px;
-    cursor: pointer;
-    margin-top: 8px;
-    border-right: 1px solid black;
-}
 
-.statistics-button {
-    float: center;
-    height: 80%;
-    border: 1px solid black;
-    width: 180px;
-    background-color: #66b78c;
-    border: none;
-    color: white;
-    padding: 12px 16px;
-    font-size: 20px;
-    cursor: pointer;
-    margin-top: 8px;
-    border-left: 1px solid black;
-}
-
-.logout-button {
-    float: right;
-    height: 80%;
-    border: 1px solid black;
-    width: 180px;
-    background-color: firebrick;
-    border: none;
-    color: white;
-    padding: 12px 16px;
-    font-size: 20px;
-    cursor: pointer;
-    margin-top: 8px;
-}
-
-.new-questionnaire-button:hover {
-    background-color: lightgreen;
-}
-
-.statistics-button:hover {
-    background-color: lightgreen;
-}
-
-.logout-button:hover {
-    background-color: lightcoral;
-}
-
-.logout-icon {
-    font-size: 2rem;
-}
-
-.navbar {
-    position: fixed;
-    background-color: cornflowerblue;
-    top: 0;
-    width: 100%;
-    overflow: hidden;
-    height: 70px;
-    padding: .5rem 1.5rem;
-}
-
-.navbar-brand {
-    margin-right: 0rem;
-    font-size: 1.8rem;
-}
+/*home*/
 
 .questionnaires-tab {
     margin-top: 20px;
     margin-left: -1px;
-    border-bottom: 2px solid #ffffff;
     width: 90%;
     padding-left: 0px;
     padding-right: 0px;
@@ -110,62 +32,101 @@
 }
 
 .nav-tabs .nav-link {
-    background: #66c88c;
+    background: gray;
     color: white;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: .9rem;
+    border-radius: .3rem;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
     background: white;
-    border-color: white;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin-top: 0px;
 }
 
 .tab-content {
     width: 100%;
+    background: transparent;
 }
 
-.questionnaires-table {
-    border-bottom: 2px solid #ffffff;
-    border-left: 2px solid #ffffff;
-    border-right: 2px solid #ffffff;
+.tab-content .active {
     width: 100%;
-    padding-left: 0px;
-    padding-right: 0px;
-    background: white;
-    box-shadow: 4px 7px 8px #66b78c;
+    background: transparent;
 }
 
 .questionnaires-list {
     width: 100%;
-    border: 1px solid white;
     border-collapse: collapse;
-    background: #66c88c;
+    background: white;
+    border-radius: .8rem;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 }
 
 .questionnaires-list th {
     padding: 15px;
-    background-color: white;
+    background-color: transparent;
     color: black;
 }
 
 .questionnaires-list td {
     padding: 15px;
-    color: white;
+    color: black;
 }
 
 .questionnaires-list tr:nth-child(even) {
-    background-color: #66b78c;
+    background-color: transparent;
 }
 
 .questionnaires-list tr:nth-child(odd) {
-    background-color: #66c88c;
+    background-color: whitesmoke;
+}
+
+.questionnaires-list tr:first-child {
+    background-color: transparent;
+    border-bottom: 0px;
+}
+
+.questionnaires-list tr:last-child {
+    border-bottom: 0px;
+}
+
+.questionnaires-list tr:hover {
+    background-color: lightgray;
+}
+
+.questionnaires-list tr:first-child:hover {
+    background-color: transparent;
+    border-bottom: 0px;
+}
+
+.questionnaires-list tr:last-child:hover {
+    background-color: lightgray;
+    border-bottom: 0px;
+}
+
+.questionnaires-list tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.questionnaires-list tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
 }
 
 .questionnaire-link {
     background: transparent;
     border: 0px;
+    color: black;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.questionnaire-summary {
+    background-color: #66b78c;
     color: white;
     font-size: 1rem;
 }

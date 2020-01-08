@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     $("#fieldsetCodeNumber #DatabaseCodeCountry").on("change", function (evt) {
         if ($(this).val() != "No Choosed") {
-            $("#DatabaseCodeCenter").empty().append("<option value=\"No Choosed\" selected>Select Center ...</option>");
+            $("#DatabaseCodeCenter").prop("disabled", false);
             nation_val = $(this).val();
             $.getJSON('Centers.json', function (result) {
                 $.each(result, function (index, value) {
@@ -24,11 +24,10 @@ $(document).ready(function () {
                 });
             });
             $("DatabaseCodeCenter").val("No Choosed");
-            $("#fieldsetCodeNumber .hidden-control").removeClass("hidden-control").addClass("show-control");
         }
         if ($(this).val() == "No Choosed") {
-            $("#fieldsetCodeNumber .show-control").removeClass("show-control").addClass("hidden-control");
-            $("#DatabaseCodeCenter").empty();
+            $("#DatabaseCodeCenter").prop("disabled", true);
+            $("#DatabaseCodeCenter").val("No Choosed");
         }
     });
 
@@ -313,7 +312,7 @@ $(document).ready(function () {
         }
     });
 
-    $('input.mutually_check').click(function () {
+    $('input.mutually_check').click(function() {
         checkedState = $(this).prop('checked');
         $(this).parents('.form-group').find(".mutually_check:checked").each(function () {
             $(this).prop('checked', false);
@@ -629,17 +628,17 @@ function DDL_from_JSON(tag_ID_DDL, url) {
     var dropdown = $("#" + tag_ID_DDL).html("<option value='NoChoosed'>Select Sic Group ...</option>");
     var history_list = [];
 
-    $.getJSON('SicRanges.json', function (data) {
-        $.each(data, function (key, entry) {
+    $.getJSON('SicRanges.json', function(data) {
+        $.each(data, function(key, entry) {
             dropdown.append($('<option></option>').attr('value', entry.SIC_Range_Start + '*' + entry.SIC_Range_End).text(entry.Group_Title));
         });
     });
-    $("#" + tag_ID_DDL).on("change", function (data) {
+    $("#" + tag_ID_DDL).on("change", function(data) {
         $("#dropSIC,#history_date_start,#history_date_end").remove();
         var valore = $("#" + tag_ID_DDL).val();
         if (valore != "NoChoosed") {
             var dropdown2 = $("<select id='dropSIC' class='form-control'>").html("<option value='NoChoosed'>Select Sic Code ...</option>");
-            dropdown2.on("change", function () {
+            dropdown2.on("change", function() {
                 $("#history_date_start,#history_date_end").remove();
                 $(this).parents("fieldset").find(".div_date").empty();
                 if ($(dropdown2).val() != "NoChoosed") {
@@ -647,12 +646,12 @@ function DDL_from_JSON(tag_ID_DDL, url) {
                     $(date_input_start).datepicker({
                         format: 'dd-M-yyyy',
                         autoclose: true
-                    }).on("changeDate", function (evt) {
+                    }).on("changeDate", function(evt) {
                         var date_input_end = $("<input type=text id='history_date_end' class='form-control datepicker auto-width'>");
                         $(date_input_end).datepicker({
                             format: 'dd-M-yyyy',
                             autoclose: true
-                        }).on("changeDate", function (evt) {
+                        }).on("changeDate", function(evt) {
                             var history_row = {};
                             history_row.SIC_Group = $("#fieldHistory").find("#History option:selected").text();
                             history_row.SIC_Code = $("#fieldHistory").find("#dropSIC option:selected").text();
@@ -674,8 +673,8 @@ function DDL_from_JSON(tag_ID_DDL, url) {
             var end = parseInt(valore.split('*')[1]);
             console.log(start);
             console.log(end);
-            $.getJSON(url, function (data) {
-                $.each(data, function (key, entry) {
+            $.getJSON(url, function(data) {
+                $.each(data, function(key, entry) {
                     var Sic_Code = parseInt(entry.SIC_Code);
                     if (Sic_Code < end && Sic_Code > start) {
                         dropdown2.append($('<option></option>').attr('value', entry.SIC_Code).text(entry.Industry_Title));
@@ -686,8 +685,8 @@ function DDL_from_JSON(tag_ID_DDL, url) {
     });
 };
 
-function DDL_Other(tag_ID, tag_Class,) {
-    $("#" + tag_ID).on("change", function () {
+function DDL_Other(tag_ID, tag_Class, ) {
+    $("#" + tag_ID).on("change", function() {
         if ($(this).val() == "Other") {
             $("." + tag_Class).removeClass("hidden-control").addClass("form-control");
         } else {
@@ -705,8 +704,8 @@ function DropDownDynamic(Json_Url, classDropDown, titleDropDown) {
     //const url = 'https://api.myjson.com/bins/7xq2x';
     my_url = Json_Url;
     // Populate dropdown with list of provinces
-    $.getJSON(my_url, function (data) {
-        $.each(data, function (key, entry) {
+    $.getJSON(my_url, function(data) {
+        $.each(data, function(key, entry) {
             dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
         })
     });
@@ -715,7 +714,7 @@ function DropDownDynamic(Json_Url, classDropDown, titleDropDown) {
 function create_Table_Delete(lista_JSON, div_id, field_id) {
     var delete_btn = "<input style=\"width:100%;\" class=\"btn btn-primary btn-delete\" type=\"button\" value=\"Delete\">";
 
-    $.each(lista_JSON, function (index, element) {
+    $.each(lista_JSON, function(index, element) {
         element.Action = delete_btn;
     });
     var local_field_id = "#" + field_id;
@@ -724,7 +723,7 @@ function create_Table_Delete(lista_JSON, div_id, field_id) {
     $(local_field_id).find(local_div_id).empty();
     //$("#fieldHistory").append(div_table);
     $(local_div_id).createTable(lista_JSON);
-    $(local_div_id).find(".btn-delete").on("click", function (evt) {
+    $(local_div_id).find(".btn-delete").on("click", function(evt) {
         var deleted_item_index = $(this).parents("tr").find(".jsl").text();
         $(this).parents("tr").remove();
         var element_to_Delete = (parseInt(deleted_item_index) - 1);
@@ -745,10 +744,10 @@ function send_Ajax_Data(custom_URL, object_JSON, currentCodeCountry, currentData
         data: JSON.stringify(object_JSON),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (data) {
+        success: function(data) {
             myHandle(data, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType);
         },
-        failure: function (errMsg) {
+        failure: function(errMsg) {
             console.log(errMsg);
         }
     });
@@ -766,4 +765,3 @@ function myHandle(data, currentCodeCountry, currentDatabaseCode, currentDatabase
         $("#codeNumber").val(currentCodeCountry + currentDatabaseCode + currentDatabaseCodeType + zeroPad(number, 4));
     }
 };
-

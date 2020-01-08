@@ -1,24 +1,42 @@
-.fade {
-    background-color: rgba(100,100,100,0.8);
+#msform .fade {
+    background-color: rgba(100, 100, 100, 0.8);
     transition: opacity .15s linear;
 }
 
-.fade.in {
-    background-color: rgba(100,100,100,0.8);
+#msform .fade.in {
+    background-color: rgba(100, 100, 100, 0.8);
 }
 
-.modal-table {
-
+#msform .modal-body th {
+    text-align: center;
 }
+
+#msform .modal-body input[type='number'] {
+    padding: 0px;
+    height: 35px;
+    width: 120px;
+}
+
+#msform .modal-body .datepicker {
+    width: 100%;
+    height: 35px;
+}
+
+#Medication-Number {
+    width: 120px;
+    text-align: center;
+}
+
+.modal-table {}
 
 .modal-table img {
-    width:50%;
+    width: 50%;
 }
 
-.modal-table > .modal-title {
+.modal-table>.modal-title {
     letter-spacing: 1px;
     font-size: 3.5em;
-    color:lightgray;
+    color: lightgray;
     font-variant: small-caps;
     font-style: oblique;
 }

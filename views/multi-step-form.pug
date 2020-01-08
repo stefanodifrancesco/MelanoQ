@@ -1,6 +1,25 @@
 extends layout
 
+block append style
+    link(rel='stylesheet', href='/stylesheet/multi-step-form.css')
+
 block content
+  div.profile-header
+    button.questionnaires-list-button(onclick="var t = document.getElementById(\"msform\"); t.classList.add(\"fade-out-top\"); window.location.href = '/home';")
+      |  QUESTIONNAIRES<br>
+      i.fa.fa-caret-down
+
+    button.new-questionnaire-button(onclick="window.location.href = '/stepform';")
+      |  CREATE NEW<br>
+      i.fa.fa-caret-down
+          
+    button.statistics-button(onclick="var t = document.getElementById(\"msform\"); t.classList.add(\"fade-out-top\"); window.location.href = '/statistics';")
+      |  STATISTICS<br>
+      i.fa.fa-caret-down
+
+    button.logout-button(onclick="window.location.href = '/logout';")
+        |  Logout
+
   div.progressline
     // progressbar
     ul#progressbar
@@ -12,9 +31,10 @@ block content
         li MEDICAL HISTORY
         li FAMILY HISTORY
         li MELANOMA CHARACTERISTICS
+
   div.form
     // multistep form
-    form#msform(action="/stepform" method="POST" autocomplete="off")
+    form#msform.fade-in-top(action="/stepform" method="POST" autocomplete="off")
     
         fieldset
           div.scrollingdiv(id='scrollerdiv')
@@ -34,18 +54,18 @@ block content
               .divTable
                 .divTableBody
                   .divTableRow
-                    .divTableCell(style='border: 0px solid white !important;')
+                    .divTableCell.NoDivTableBorder
                       .form-group
                         select#DatabaseCodeCountry.form-control(name='code_country')
                           option(value='No Choosed' selected='') Select Country ...
                           option(value='01') Greece
                           option(value='02') Italy
                           option(value='03') Spain
-                    .divTableCell(style='border: 0px solid white !important;')
-                      .form-group.hidden-control
-                        select#DatabaseCodeCenter.form-control(name='code_center')
-                          // <option value="No Choosed" selected>Select Center ...</option>
-                    .divTableCell(style='border: 0px solid white !important;')
+                    .divTableCell.NoDivTableBorder
+                      .form-group
+                        select#DatabaseCodeCenter.form-control(name='code_center' disabled='disabled')
+                          <option value="No Choosed" selected>Select Center ...</option>
+                    .divTableCell.NoDivTableBorder
                       .form-group
                         select#DatabaseCodeType.form-control(name='code_type')
                           option(value='No Choosed' selected='') Select case type ...
@@ -75,16 +95,13 @@ block content
               input#Other_Melanoma.hidden-control.inputMelanoma(type='text' name="other_melanoma_type")
 
 
-          input.start(type='button', name='next', value='CONFIRM')
+          input#confirmbutton.start(type='button', value='CONFIRM')
 
         fieldset
-          div.scrollingdiv(id='scrollerdiv')
-            h2.fs-title GENERAL
-            h3.fs-subtitle Completed by phisician
-
-            legend(for='1237444630') Click start button to start questionnaire
+          div#handchange
+            h2.fs-title Click start button and let the client fill in the questionnaire
             
-          input.start(type='button', name='next', value='START')
+          input#fillbutton.start(type='button', value='START')
 
         fieldset
           div.scrollingdiv(id='scrollerdiv')
@@ -104,7 +121,7 @@ block content
             fieldset#fieldsetDateOfBirth
               label(for='80728029') Date and place of birth
               .form-group
-                input#2126036184_date.form-control.datepicker(type='text' name="birthdate"  required='required' data-rule-required='true' data-msg-required='Please include your birthday')
+                input#2126036184_date.form-control.datepicker(type='text' name="birthdate" placeholder='Select date' required='required' data-rule-required='true' data-msg-required='Please include your birthday')
                 span.error1(style='display: none;')
                     i.error-log.fa.fa-exclamation-triangle
                 
@@ -238,13 +255,13 @@ block content
                         input#Tan_Deep(type='radio', name='skin_tan', value='TansDeeply')
                     .divTableRow
                       .divTableCell
-                        img(src='img/Skin-Tan/No_Tan_1.png', width='100', height='100')
+                        img(src='img/Skin-Tan/No_Tan_1.png', width='100', height='110')
                       .divTableCell
-                        img(src='img/Skin-Tan/Light_Tan_1.png', width='100', height='100')
+                        img(src='img/Skin-Tan/Light_Tan_1.png', width='100', height='110')
                       .divTableCell
-                        img(src='img/Skin-Tan/Moderate_Tan_1.png', width='100', height='100')
+                        img(src='img/Skin-Tan/Moderate_Tan_1.png', width='100', height='110')
                       .divTableCell
-                        img(src='img/Skin-Tan/Deep_Tan_1.png', width='100', height='100')
+                        img(src='img/Skin-Tan/Deep_Tan_1.png', width='100', height='110')
                 
             fieldset#fieldsetEye
               label(for='') Eye Color
@@ -267,11 +284,11 @@ block content
                         input#Dark_Eyes(type='radio', name='eye_color', value='dark')
                     .divTableRow
                       .divTableCell
-                        img(src='img/Color-Eye/Light_eyes-removebg.png', width='150', height='50')
+                        img(src='img/Color-Eye/Light_eyes-removebg.png', width='150', height='75' style="margin-right: 10px;")
                       .divTableCell
-                        img(src='img/Color-Eye/Medium_eyes-removebg.png', width='100', height='50')
+                        img(src='img/Color-Eye/Medium_eyes-removebg.png', width='150', height='75' style="margin-left: 22px;")
                       .divTableCell
-                        img(src='img/Color-Eye/Dark_eyes-removebg.png', width='100', height='50')
+                        img(src='img/Color-Eye/Dark_eyes-removebg.png', width='120', height='75')
 
             fieldset#fieldsetHair
               label(for='1275694163') Hair color (at age of 18 yrs)
@@ -340,13 +357,13 @@ block content
                         input#Many_Freckles(type='radio', name='freckles', value='ManyFreckles')
                     .divTableRow
                       .divTableCell
-                        img(src='img/Freckles/No_freckles.png', width='100', height='100')
+                        img(src='img/Freckles/No_freckles.png', width='100', height='130')
                       .divTableCell
-                        img(src='img/Freckles/Few_freckles.png', width='100', height='100')
+                        img(src='img/Freckles/Few_freckles.png', width='100', height='130')
                       .divTableCell
-                        img(src='img/Freckles/Some_freckles.png', width='100', height='100')
+                        img(src='img/Freckles/Some_freckles.png', width='100', height='130')
                       .divTableCell
-                        img(src='img/Freckles/Many_freckles.png', width='100', height='100')
+                        img(src='img/Freckles/Many_freckles.png', width='100', height='130')
                 
             fieldset#fieldsetNevi
               label(for='id_Nevi') Nevi frequency
@@ -373,13 +390,13 @@ block content
                         input#Many_Nevi(type='radio', name='nevi', value='ManyNevi')
                     .divTableRow
                       .divTableCell
-                        img(src='img/Nevi/None_Nevi.png', width='100', height='100')
+                        img(src='img/Nevi/None_Nevi.png', width='100', height='130')
                       .divTableCell
-                        img(src='img/Nevi/Few_Nevi.png', width='100', height='100')
+                        img(src='img/Nevi/Few_Nevi.png', width='100', height='130')
                       .divTableCell
-                        img(src='img/Nevi/Some_Nevi.png', width='100', height='100')
+                        img(src='img/Nevi/Some_Nevi.png', width='100', height='130')
                       .divTableCell
-                        img(src='img/Nevi/Many_Nevi.png', width='100', height='100')
+                        img(src='img/Nevi/Many_Nevi.png', width='100', height='130')
 
           div.alphaformfooter
           div.formfooter
@@ -466,31 +483,31 @@ block content
                     .divTableRow
                       .divTableCell Childhood (up to age 10 yrs)
                       .divTableCell
-                        input#Childhood_Period(type='text', name='ultraviolet[exposure_childhood][period]')
+                        input#Childhood_Period(type='number', name='ultraviolet[exposure_childhood][period]')
                         span.highlight
                         span.bar(style='')
                       .divTableCell
-                        input#Childhood_Time(type='text', name='ultraviolet[exposure_childhood][time]')
+                        input#Childhood_Time(type='number', name='ultraviolet[exposure_childhood][time]')
                         span.highlight
                         span.bar(style='')
                     .divTableRow
                       .divTableCell Adolescence (11-18 yrs)
                       .divTableCell
-                        input#Adolescence_Weeks(type='text', name='ultraviolet[exposure_adolescence][period]')
+                        input#Adolescence_Weeks(type='number', name='ultraviolet[exposure_adolescence][period]')
                         span.highlight
                         span.bar(style='')
                       .divTableCell
-                        input#Adolescence_Time(type='text', name='ultraviolet[exposure_adolescence][time]')
+                        input#Adolescence_Time(type='number', name='ultraviolet[exposure_adolescence][time]')
                         span.highlight
                         span.bar(style='')
                     .divTableRow
                       .divTableCell Adulthood (≥18 yrs)
                       .divTableCell
-                        input#Adulthood_Weeks(type='text', name='ultraviolet[exposure_adulthood][period]')
+                        input#Adulthood_Weeks(type='number', name='ultraviolet[exposure_adulthood][period]')
                         span.highlight
                         span.bar(style='')
                       .divTableCell
-                        input#Adulthood_Time(type='text', name='ultraviolet[exposure_adulthood][time]')
+                        input#Adulthood_Time(type='number', name='ultraviolet[exposure_adulthood][time]')
                         span.highlight
                         span.bar(style='')
                     .divTableRow
@@ -499,11 +516,11 @@ block content
                         | cases) or last 10 years
                         | (for controls)
                       .divTableCell
-                        input#10_years_before_period(type='text', name='ultraviolet[exposure_previous_10_years][period]')
+                        input#10_years_before_period(type='number', name='ultraviolet[exposure_previous_10_years][period]')
                         span.highlight
                         span.bar(style='')
                       .divTableCell
-                        input#10_years_before_time(type='text', name='ultraviolet[exposure_previous_10_years][time]')
+                        input#10_years_before_time(type='number', name='ultraviolet[exposure_previous_10_years][time]')
                         span.highlight
                         span.bar(style='')
                         
@@ -525,67 +542,64 @@ block content
                 .divTable(style='width: 100%;')
                   .divTableBody
                     .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:34%;')
+                      .divTableCell.NoDivTableBorder
                         span At age < 18 yrs ?
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
+                      .divTableCell.NoDivTableBorder
                         select#id_Sunburns_less18.form-control(name='ultraviolet[sunburn_before_18][presence]')
                           option(value='No') No
                           option(value='Yes') Yes
                           option(value='NotKnow') Not know
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
+                      .divTableCell.NoDivTableBorder
                         .hidden-control
-                          .group(style='margin-bottom:-4%;')
-                            input#Sunburns_Yes_less18.special_on_div_table(type='number', name='ultraviolet[sunburn_before_18][number]')
-                            span.highlight.special_on_div_table
-                            span.bar.special_on_div_table
-                            label Number:
+                          label Number:
+                          input#Sunburns_Yes_less18(type='number', name='ultraviolet[sunburn_before_18][number]')
               .form-group
                 .divTable(style='width: 100%;')
                   .divTableBody
                     .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:34%;')
+                      .divTableCell.NoDivTableBorder
                         span At age >= 18 yrs ?
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
+                      .divTableCell.NoDivTableBorder
                         select#id_Sunburns_Yes_greater18.form-control(name='ultraviolet[sunburn_after_18][presence]')
                           option(value='No') No
                           option(value='Yes') Yes
                           option(value='NotKnow') Not know
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
+                      .divTableCell.NoDivTableBorder
                         .hidden-control
-                          .group(style='margin-bottom:-4%;')
-                            input#Sunburns_Yes_greater18.special_on_div_table(type='number', name='ultraviolet[sunburn_after_18][number]')
-                            span.highlight.special_on_div_table
-                            span.bar.special_on_div_table
-                            label Number:
+                          label Number:
+                          input#Sunburns_Yes_greater18(type='number', name='ultraviolet[sunburn_after_18][number]')
+                          
               .form-group
                 .divTable(style='width: 100%;')
                   .divTableBody
                     .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:34%;')
+                      .divTableCell.NoDivTableBorder
                         span At site of melanoma ?
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
+                      .divTableCell.NoDivTableBorder
                         select#id_Site_melanoma.form-control(name='ultraviolet[sunburn_at_melanoma_site]')
                           option(value='No') No
                           option(value='Yes') Yes
                           option(value='NotKnow') Not know
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
+                      .divTableCell.NoDivTableBorder
+                        .hidden-control
+                          label(style='visibility: hidden;') Number:
+                          input#Sunburns_last5(type='number', name='ultraviolet[sunburn_last_5_years][number]' style='visibility: hidden;')
+
               .form-group
                 .divTable(style='width: 100%;')
                   .divTableBody
                     .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:34%;')
+                      .divTableCell.NoDivTableBorder
                         span In the last 5 years ?
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
+                      .divTableCell.NoDivTableBorder
                         select#id_Sunburns_last5.form-control(name='ultraviolet[sunburn_last_5_years][presence]')
                           option(value='No') No
                           option(value='Yes') Yes
                           option(value='NotKnow') Not know
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
-                        .group.hidden-control(style='margin-bottom:-4%;')
-                          input#Sunburns_last5.special_on_div_table(type='number', name='ultraviolet[sunburn_last_5_years][number]')
-                          span.highlight
-                          span.bar
+                      .divTableCell.NoDivTableBorder
+                        .hidden-control
                           label Number:
+                          input#Sunburns_last5(type='number', name='ultraviolet[sunburn_last_5_years][number]')
                           
             fieldset
               label(for='162128682') Sunscreen use (summer time)
@@ -713,13 +727,13 @@ block content
                         option(value='Yes') Yes
                 .group.hidden-control(style='margin-top:20px;')
                   label Lifetime number of sessions:
-                  input#Sunlamp_sessions.special_on_div_table(type='number', name='ultraviolet[sunlamp][number_of_sessions]')
+                  input#Sunlamp_sessions(type='number', name='ultraviolet[sunlamp][number_of_sessions]')
                 .group.hidden-control
                   label Age at first exposure:
-                  input#Sunlamp_first_age.special_on_div_table(type='number', name='ultraviolet[sunlamp][age__of_first_sunlamp]')
+                  input#Sunlamp_first_age(type='number', name='ultraviolet[sunlamp][age__of_first_sunlamp]')
                 .group.hidden-control
                   label Age at last exposure:
-                  input#Sunlamp_last_age.special_on_div_table(type='number', name='ultraviolet[sunlamp][age_of_last_sunlamp]')
+                  input#Sunlamp_last_age(type='number', name='ultraviolet[sunlamp][age_of_last_sunlamp]')
 
             fieldset#fieldsetPhototherapy(style='margin-top: 20px;')
               label(for='42940743')
@@ -762,12 +776,12 @@ block content
                           | Former smoker (quit one year before diagnosis or earlier)
                         option(value='Current') Current smoker
                 .group.hidden-control(style='margin-top:20px;')
-                  input#Smoking_age.special_on_div_table(type='number', name="lifestyle[smoking][age_of_first_smoking]")
+                  input#Smoking_age(type='number', name="lifestyle[smoking][age_of_first_smoking]")
                   span.highlight
                   span.bar
                   label Age when you started:
                 .group.hidden-control
-                  input#Smoking_years.special_on_div_table(type='number', name="lifestyle[smoking][smoking_period]")
+                  input#Smoking_years(type='number', name="lifestyle[smoking][smoking_period]")
                   span.highlight
                   span.bar
                   label How long have you been smoking ?(years):
@@ -1153,7 +1167,7 @@ block content
                 li large CN ≥20 cm
                 li giant CN ≥40 cm
               p(style='font-size:10px;') Exclude small (i.e. ≤1.5 cm CN)
-              .form-group(style='margin-top: 20px;')
+              .form-group
                 .divTable(style='width: 100%;')
                   .divTableBody
                     .divTableRow
@@ -1164,10 +1178,12 @@ block content
                           option(value='NoChoosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
-                      .divTableCell.NoDivTableBorder.hidden-control
-                        label(style='font-size: 12px;') Site(s):
-                        input#inputMediumSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][medium_sized][sites]')
-              .form-group(style='margin-top: 20px;')
+                      .divTableCell.NoDivTableBorder
+                        .hidden-control
+                          label Site(s):
+                          input#inputMediumSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][medium_sized][sites]')
+
+              .form-group
                 .divTable(style='width: 100%;')
                   .divTableBody
                     .divTableRow
@@ -1178,11 +1194,12 @@ block content
                           option(value='NoChoosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
-                      .divTableCell.NoDivTableBorder.hidden-control
-                        label(style='font-size: 12px;') Site(s):
-                        input#inputLargeSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][large_sized][sites]')
+                      .divTableCell.NoDivTableBorder
+                        .hidden-control
+                          label Site(s):
+                          input#inputLargeSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][large_sized][sites]')
 
-              .form-group(style='margin-top: 20px;')
+              .form-group
                 .divTable(style='width: 100%;')
                   .divTableBody
                     .divTableRow
@@ -1193,9 +1210,10 @@ block content
                           option(value='NoChoosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
-                      .divTableCell.NoDivTableBorder.hidden-control(style='width:32%;')
-                        label(style='font-size: 12px;') Site(s):
-                        input#inputGiantSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][giant_sized][sites]')
+                      .divTableCell.NoDivTableBorder
+                        .hidden-control
+                          label Site(s):
+                          input#inputGiantSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][giant_sized][sites]')
 
 
             fieldset#fieldsetBlueNevi(style='margin-top: 20px;')
@@ -1270,75 +1288,55 @@ block content
               .form-group
                 .divTable(style='width: 100%;')
                   .divTableRow
-                    .divTableCell.NoDivTableBorder(style='width:50%;')
+                    .divTableCell.NoDivTableBorder
                       span BCC:
-                    .divTableCell.NoDivTableBorder(style='width:50%;')
+                    .divTableCell.NoDivTableBorder
                       select#selectBCC.form-control(name='clinical_examination[BCC][presence]')
                         option(value='No') No
                         option(value='Yes') Yes
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder(style='width:50%;')
+                    .divTableCell.NoDivTableBorder
                       .hidden-control
-                        .group.google_special_label(style='margin-bottom:-4%;')
-                          input#inputBCCNumber(type='text' style='width:80%;' name='clinical_examination[BCC][count]')
-                          span.highlight(style='width:80%;')
-                          span.bar(style='width:80%;')
-                          label Number:
-                    .divTableCell.NoDivTableBorder(style='width:50%;')
+                        label Number:
+                        input#inputBCCNumber(type='text' name='clinical_examination[BCC][count]')
+                    .divTableCell.NoDivTableBorder
                       .hidden-control
-                        .group.google_special_label(style='margin-bottom:-4%;')
-                          input#inputBCC(type='text' style='width:80%;' name='clinical_examination[BCC][sites]')
-                          span.highlight(style='width:80%;')
-                          span.bar(style='width:80%;')
-                          label Site(s):
+                        label Site(s):
+                        input#inputBCC(type='text' name='clinical_examination[BCC][sites]')
               .form-group
                 .divTable(style='width: 100%;')
                   .divTableRow
-                    .divTableCell.NoDivTableBorder(style='width:50%;')
+                    .divTableCell.NoDivTableBorder
                       span Invasive SCC:
-                    .divTableCell.NoDivTableBorder(style='width:50%;')
+                    .divTableCell.NoDivTableBorder
                       select#selectSCC.form-control(name='clinical_examination[invasive_SCC][presence]')
                         option(value='No') No
                         option(value='Yes') Yes
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder(style='width:50%;')
+                    .divTableCell.NoDivTableBorder
                       .hidden-control
-                        .group.google_special_label(style='margin-bottom:-4%;')
-                          input#inputSCCNumber(type='text' style='width:80%;' name='clinical_examination[invasive_SCC][count]')
-                          span.highlight(style='width:80%;')
-                          span.bar(style='width:80%;')
-                          label Number:
-                    .divTableCell.NoDivTableBorder(style='width:50%;')
+                        label Number:
+                        input#inputSCCNumber(type='text' name='clinical_examination[invasive_SCC][count]')
+                    .divTableCell.NoDivTableBorder
                       .hidden-control
-                        .group.google_special_label(style='margin-bottom:-4%;')
-                          input#inputSCC(type='text' style='width:80%;' name='clinical_examination[invasive_SCC][sites]')
-                          span.highlight(style='width:80%;')
-                          span.bar(style='width:80%;')
-                          label Site(s):
+                        label Site(s):
+                        input#inputSCC(type='text' style='width:80%;' name='clinical_examination[invasive_SCC][sites]')
+
               .form-group
                 .divTable(style='width: 100%;')
                   .divTableRow
-                    .divTableCell.NoDivTableBorder(style='width:50%;')
+                    .divTableCell.NoDivTableBorder
                       span In situ SCC:
-                    .divTableCell.NoDivTableBorder(style='width:50%;')
+                    .divTableCell.NoDivTableBorder
                       select#selectSCCSite.form-control(name='clinical_examination[insitu_SCC][presence]')
                         option(value='No') No
                         option(value='Yes') Yes
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder(style='width:50%;')
+                    .divTableCell.NoDivTableBorder
                       .hidden-control
-                        .group.google_special_label(style='margin-bottom:-4%;')
-                          input#inputSCCSiteNumber(type='text' style='width:80%;' name='clinical_examination[insitu_SCC][count]')
-                          span.highlight(style='width:80%;')
-                          span.bar(style='width:80%;')
-                          label Number:
-                    .divTableCell.NoDivTableBorder(style='width:50%;')
+                        label Number:
+                        input#inputSCCSiteNumber(type='text' name='clinical_examination[insitu_SCC][count]')
+                    .divTableCell.NoDivTableBorder
                       .hidden-control
-                        .group.google_special_label(style='margin-bottom:-4%;')
-                          input#inputSCCSite(type='text' style='width:80%;' name='clinical_examination[insitu_SCC][sites]')
-                          span.highlight(style='width:80%;')
-                          span.bar(style='width:80%;')
-                          label Site(s):
+                        label Site(s):
+                        input#inputSCCSite(type='text' name='clinical_examination[insitu_SCC][sites]')
 
           div.alphaformfooter
           div.formfooter
@@ -1358,10 +1356,7 @@ block content
               #fieldsetHistoryMedicalDiagnosis
                 p.help-block History of medical (non-cancer) diagnoses
                 .form-group
-                  .divTable
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:40%;margin-left: 2px;')
-                        input#ICD10Code(type='text' value='' placeholder='Search by ICD10 code or name of disease')
+                  input#ICD10Code(type='text' value='' placeholder='Search by ICD10 code or name of disease')
                 #json_medical_history.form-group
 
             /*TAB 08/01/2020*/

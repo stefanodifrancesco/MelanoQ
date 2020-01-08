@@ -17,7 +17,7 @@ $(".scrollingdiv").on("scroll", function() {
     }
 });
 
-$(".start").click(function() {
+$("#confirmbutton").click(function() {
 
     $("#msform").validate({
         errorClass: 'invalid',
@@ -59,7 +59,63 @@ $(".start").click(function() {
             });
             next_fs.css({ 'left': left, 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
+        complete: function() {
+            current_fs.hide();
+            animating = false;
+
+            scrollerdiv = $(".scrollingdiv:visible");
+            if (scrollerdiv.nextAll('.action-button').css('display') == 'none') {
+                if (scrollerdiv.prop('scrollHeight') == scrollerdiv.prop('clientHeight')) {
+                    scrollerdiv.nextAll(".action-button").fadeIn(200, function() {
+                        scrollerdiv.nextAll(".action-button").css("display", "inline-block");
+                    });
+                } else {
+                    scrollerdiv.nextAll(".scroll-button-bottom").fadeIn(200, function() {
+                        scrollerdiv.nextAll(".scroll-button-bottom").css("display", "block");
+                    });
+                }
+            }
+
+
+        },
+        //this comes from the custom easing plugin
+        easing: 'easeInOutBack'
+    });
+
+});
+
+$("#fillbutton").click(function() {
+
+    $(".profile-header").css("display", "none");
+    $(".progressline").css("display", "block");
+
+
+    if (animating) return false;
+    animating = true;
+
+    current_fs = $(this).parent();
+    next_fs = $(this).parent().next();
+
+    //show the next fieldset
+    next_fs.show();
+    //hide the current fieldset with style
+    current_fs.animate({ opacity: 0 }, {
+        step: function(now, mx) {
+            //as the opacity of current_fs reduces to 0 - stored in "now"
+            //1. scale current_fs down to 80%
+            scale = 1 - (1 - now) * 0.2;
+            //2. bring next_fs from the right(50%)
+            left = (now * 50) + "%";
+            //3. increase opacity of next_fs to 1 as it moves in
+            opacity = 1 - now;
+            current_fs.css({
+                'transform': 'scale(' + scale + ')',
+                'position': 'absolute'
+            });
+            next_fs.css({ 'left': left, 'opacity': opacity });
+        },
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -130,7 +186,7 @@ $("#firstnext").click(function() {
             });
             next_fs.css({ 'left': left, 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -201,7 +257,7 @@ $("#secondnext").click(function() {
             });
             next_fs.css({ 'left': left, 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -253,7 +309,7 @@ $("#firstprevious").click(function() {
             current_fs.css({ 'left': left });
             previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -309,7 +365,7 @@ $("#thirdnext").click(function() {
             });
             next_fs.css({ 'left': left, 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -361,7 +417,7 @@ $("#secondprevious").click(function() {
             current_fs.css({ 'left': left });
             previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -417,7 +473,7 @@ $("#forthnext").click(function() {
             });
             next_fs.css({ 'left': left, 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -469,7 +525,7 @@ $("#thirdprevious").click(function() {
             current_fs.css({ 'left': left });
             previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -525,7 +581,7 @@ $("#fifthnext").click(function() {
             });
             next_fs.css({ 'left': left, 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -577,7 +633,7 @@ $("#forthprevious").click(function() {
             current_fs.css({ 'left': left });
             previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -633,7 +689,7 @@ $("#sixthnext").click(function() {
             });
             next_fs.css({ 'left': left, 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -685,7 +741,7 @@ $("#fifthprevious").click(function() {
             current_fs.css({ 'left': left });
             previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -741,7 +797,7 @@ $("#seventhnext").click(function() {
             });
             next_fs.css({ 'left': left, 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -793,7 +849,7 @@ $("#sixthprevious").click(function() {
             current_fs.css({ 'left': left });
             previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;
@@ -830,7 +886,7 @@ $("#seventhprevious").click(function() {
             current_fs.css({ 'left': left });
             previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
         },
-        duration: 800,
+        duration: 600,
         complete: function() {
             current_fs.hide();
             animating = false;

@@ -6,6 +6,21 @@
 }
 
 
+/*header*/
+
+.new-questionnaire-button {
+    margin-top: 18px;
+    font-weight: bolder;
+}
+
+.new-questionnaire-button .fa-caret-down {
+    font-size: 2.5rem;
+    margin-top: -4px;
+    color: #66b78c;
+    display: block;
+}
+
+
 /*form styles*/
 
 .progressline {
@@ -14,6 +29,7 @@
     height: 70px;
     position: fixed;
     pointer-events: none;
+    display: none;
 }
 
 .form {
@@ -92,13 +108,18 @@
 
 #msform input,
 #msform textarea {
-    padding: 15px;
     border: 1px solid #ccc;
-    border-radius: 3px;
-    width: 100%;
+    border-radius: 30px;
+    width: 80%;
     box-sizing: border-box;
-    color: #2C3E50;
+    color: black;
     font-size: 13px;
+    outline: 0;
+}
+
+#msform input[type='button'] {
+    background-color: #66b78c;
+    color: white;
 }
 
 #msform .scroll-button-bottom {
@@ -137,34 +158,104 @@
 #msform .divTableHead {
     border: 1px solid #999999;
     display: table-cell;
-    padding: 0px 10px 0px 0px;
     vertical-align: middle !important;
-    width: 32%;
+    width: 10%;
+    padding: 10px;
 }
 
-#msform .divTableCell input {
+#msform .NoDivTableBorder {
+    padding: 0px 10px 0px 0px !important;
+}
+
+#msform .divImgTable .divTableCell,
+#msform .divImgTable .divTableHead {
+    border: 1px solid #999999;
+    display: table-cell;
+    vertical-align: middle !important;
+}
+
+#msform .divTableCell input[type='text'] {
     border: none;
     border-bottom: 1px solid gray;
     border-radius: 0px;
     height: 30px;
-    margin-left: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
     width: 80%;
 }
 
+#msform .NoDivTableBorder input[type='text'] {
+    margin-bottom: 22px;
+}
+
+#msform .divTableCell input[type='radio'] {
+    border: none;
+    border-bottom: 1px solid gray;
+    border-radius: 0px;
+    height: 20px;
+    margin-left: 0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+#msform .divTableCell input[type='number'] {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+#msform .NoDivTableBorder input[type='number'] {
+    margin-bottom: 22px;
+}
+
 #msform .divTableCell label {
-    margin-left: 20%;
-    margin-bottom: 0px;
-    margin-top: 0px;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    margin-top: -10px;
 }
 
 #msform .hidden-control {
     display: none;
 }
 
+#msform .divTableCell .hidden-control {
+    visibility: hidden;
+    display: table-cell;
+}
+
+#msform .divTableCell .show-control {
+    height: 100%;
+    visibility: visible;
+}
+
 #msform #fieldsetCodeNumber input {
     width: 17%;
     font-size: 1rem;
     height: 30px;
+    text-align: center;
+}
+
+#msform .datepicker {
+    width: 17%;
+    text-align: center;
+}
+
+#msform .new_datepicker {
+    width: 17%;
+    text-align: center;
+}
+
+#msform input[type='number'] {
+    width: 17%;
+    text-align: center;
+    padding-left: 25px;
+}
+
+.easy-autocomplete-container {
+    width: 500px;
 }
 
 
@@ -223,6 +314,7 @@
     cursor: pointer;
     padding: 10px 5px;
     margin-bottom: 10px;
+    outline: 0;
 }
 
 #msform .start {
@@ -270,6 +362,14 @@
 
 
 /*headings*/
+
+#handchange h2 {
+    bottom: 80px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+}
 
 .fs-title {
     font-size: 15px;
@@ -351,6 +451,6 @@
 
 #progressbar li.active:before,
 #progressbar li.active:after {
-    background: #27AE60;
+    background: #4285f4;
     color: white;
 }

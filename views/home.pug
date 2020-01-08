@@ -1,17 +1,28 @@
 extends layout
 
+block append style
+    link(rel='stylesheet', href='/stylesheet/home.css')
+
 block content
     div.profile-header
-      button.new-questionnaire-button(onclick="window.location.href = '/stepform';")
-          |  Create new
-      button.statistics-button(onclick="window.location.href = '/statistics';")
-          |  Statistics
+      button.questionnaires-list-button(onclick="window.location.href = '/home';")
+        |  QUESTIONNAIRES<br>
+        i.fa.fa-caret-down
+
+      button.new-questionnaire-button(onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\"); window.location.href = '/stepform';")
+        |  CREATE NEW<br>
+        i.fa.fa-caret-down
+          
+      button.statistics-button(onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\"); window.location.href = '/statistics';")
+        |  STATISTICS<br>
+        i.fa.fa-caret-down
+
       button.logout-button(onclick="window.location.href = '/logout';")
           |  Logout
       
     .container            
       .row
-        .col-sm-9.questionnaires-tab
+        .col-sm-9.questionnaires-tab.fade-in-top
                 
           ul.nav.nav-tabs(role='tablist')
             li.nav-item
@@ -22,19 +33,24 @@ block content
           div.tab-content
             div#personaltab.tab-pane.fade.show.active
               if profileData.questionnaires
-                .questionnaires-table
-                  table.questionnaires-list
-                    tbody
+                table.questionnaires-list
+                  tbody
+                    tr
+                      th Database code number
+                      th Creation date
+                      th Link to questionnaire
+                    each quest in profileData.questionnaires
                       tr
-                        th Database code number
-                        th Creation date
-                      each quest in profileData.questionnaires
-                        tr
-                          td(style='width: 400px;')
-                            form(action='/find' method='post')
-                              button.btn-link.questionnaire-link(type='submit' name='codeNumber' value='' + quest.code_number) #{quest.code_number}
-                          td #{quest.insert_date}
-
+                        td #{quest.code_number}
+                        td #{quest.insert_date}
+                        td
+                          form(action='/find' method='post')
+                            button.btn.questionnaire-summary(
+                              type='submit' 
+                              name='codeNumber' 
+                              value='' + quest.code_number
+                              onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\");"
+                            ) Open questionnaire
               else 
                 .row
                   .col-sm-9.questionnaires-table
@@ -42,23 +58,24 @@ block content
 
             div#completetab.tab-pane.fade
               if result
-                .questionnaires-table
-                  table.questionnaires-list
-                    tbody
+                table.questionnaires-list
+                  tbody
+                    tr
+                      th Database code number
+                      th Creation date
+                      th Link to questionnaire
+                    each quest in result
                       tr
-                        th Database code number
-                        th Creation date
-                      each quest in result
-                        tr
-                          td(style='width: 400px;')
-                            form(action='/find' method='post')
-                              button.btn-link.questionnaire-link(
-                                type='submit' 
-                                name='codeNumber' 
-                                value='' + quest._source.code_number
-                              ) #{quest._source.code_number}
-                          td #{quest.insert_date}
-
+                        td #{quest._source.code_number}
+                        td #{quest.insert_date}
+                        td
+                          form(action='/find' method='post')
+                            button.btn.questionnaire-summary(
+                              type='submit' 
+                              name='codeNumber' 
+                              value='' + quest._source.code_number
+                              onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\");"
+                            ) Open questionnaire
               else 
                 .row
                   .col-sm-9.questionnaires-table
