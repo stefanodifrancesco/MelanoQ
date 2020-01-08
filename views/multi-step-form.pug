@@ -2,6 +2,8 @@ extends layout
 
 block append style
     link(rel='stylesheet', href='/stylesheet/multi-step-form.css')
+    link(rel='stylesheet', href='/stylesheet/icheck.css')
+    link(rel='stylesheet', href='/stylesheet/alt.css')
 
 block content
   div.profile-header
@@ -77,11 +79,15 @@ block content
               label(for='1763927487') Date of questionnaire administration and phenotyping
               .form-group.md-form
                 input#1763927487.datepicker.form-control(type='text' placeholder='Select date' required='' name='survey_date')
+                span.error1
+                  i.error-log.fa.fa-exclamation-triangle
                 
             fieldset#fieldsetPhenotyping
               label(for='9069469') Dates of updated questionnaire and/or phenotyping
               .form-group
                 input#1969236884_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='last_update')
+                span.error1
+                  i.error-log.fa.fa-exclamation-triangle
 
             fieldset#fieldsetTypeOfMelanoma
               label(for='type_of_melanoma') Type of melanoma
@@ -115,26 +121,26 @@ block content
                   option(value='No Choosed', selected='') Select Gender...
                   option(value='Female') Female
                   option(value='Male') Male
-                span.error1(style='display: none;')
+                span.error1
                   i.error-log.fa.fa-exclamation-triangle
                   
             fieldset#fieldsetDateOfBirth
               label(for='80728029') Date and place of birth
               .form-group
                 input#2126036184_date.form-control.datepicker(type='text' name="birthdate" placeholder='Select date' required='required' data-rule-required='true' data-msg-required='Please include your birthday')
-                span.error1(style='display: none;')
+                span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 
             fieldset#fieldsetWeightHeight
               label(for='248537302') Weight(Kg)
               .form-group
                 input#weight_input.form-control(type='number' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
-                span.error1(style='display: none;')
+                span.error1
                     i.error-log.fa.fa-exclamation-triangle
               label(for='248537302') Height(Cm)
               .form-group
                 input#height_input.form-control(type='number' name='height' required='required' data-rule-required='true' data-msg-required='Please include your height')
-                span.error1(style='display: none;')
+                span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 
             fieldset#fieldsetEthnicity
@@ -153,7 +159,7 @@ block content
                     | from
                     | South or Central America)
                   option(value='Other') Other (Specify)
-              span.error1(style='display: none;')
+              span.error1
                 i.error-log.fa.fa-exclamation-triangle
               input#OtherEthnicity.hidden-control.inputEthnicity(type='text' name="other_ethnicity")
               
@@ -164,7 +170,7 @@ block content
                 .form-group
                   div(class="ui-widget")
                     input#searchBox
-                  span.error1(style='display: none;')
+                  span.error1
                       i.error-log.fa.fa-exclamation-triangle
                 .residency_date_class
               .json_residency
@@ -179,7 +185,7 @@ block content
                     | yrs)
                   option(value='High school (up to 18-19 yrs)') High school (up to 18-19 yrs)
                   option(value='University') University
-                span.error1(style='display: none;')
+                span.error1
                   i.error-log.fa.fa-exclamation-triangle
                   
             fieldset#fieldsetOccupational
@@ -215,6 +221,7 @@ block content
             h2.fs-title PHENOTYPE
             h3.fs-subtitle Completed by case/control
 
+            label(for='42940743') 1) Skin Type
             fieldset#fieldsetSkinResponse
               label(for='1548717344')
                 | Which of the following sentences does better describe your skin response to sun
@@ -229,7 +236,7 @@ block content
                   
             fieldset#fieldSkin_tan
               label(for='')
-                | 2. Does your skin tan after a prolonged and repeated sun exposure (e.g. after
+                | Does your skin tan after a prolonged and repeated sun exposure (e.g. after
                 | several
                 | days as at the end of the summer) without protecting it with sunscreen or clothing?
               .form-group
@@ -264,7 +271,7 @@ block content
                         img(src='img/Skin-Tan/Deep_Tan_1.png', width='100', height='110')
                 
             fieldset#fieldsetEye
-              label(for='') Eye Color
+              label(for='') 2) Eye Color
               .form-group
                 .divTable.divImgTable
                   .divTableBody
@@ -291,7 +298,7 @@ block content
                         img(src='img/Color-Eye/Dark_eyes-removebg.png', width='120', height='75')
 
             fieldset#fieldsetHair
-              label(for='1275694163') Hair color (at age of 18 yrs)
+              label(for='1275694163') 3) Hair color (at age of 18 yrs)
               .form-group
                 .divTable.divImgTable
                   .divTableBody
@@ -332,7 +339,7 @@ block content
 
             fieldset#fieldsetFreckles
               label(for='id_freckles')
-                | FrecklesDefinition: Light brown small macules since childhood, on the face, during
+                | 4) FrecklesDefinition: Light brown small macules since childhood, on the face, during
                 | summer time (disappear in winter)
               .form-group
                 .divTable.divImgTable
@@ -366,7 +373,7 @@ block content
                         img(src='img/Freckles/Many_freckles.png', width='100', height='130')
                 
             fieldset#fieldsetNevi
-              label(for='id_Nevi') Nevi frequency
+              label(for='id_Nevi') 5) Nevi frequency
               .form-group
                 .divTable.divImgTable
                   .divTableBody
@@ -411,12 +418,15 @@ block content
 
             fieldset#fieldsetUltravioletExposure
               label(for='771490717')
-                | Occupational sun exposure(i.e. outdoor occupation with at least 4 hours/day spent
+                | 6) Occupational sun exposure(i.e. outdoor occupation with at least 4 hours/day spent
                 | outdoor in the sun)
               .form-group
-                select#id_UltravioletExposure.form-control(name='ultraviolet[occupational_sun_exposure][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
+                select#id_UltravioletExposure.form-control(name='ultraviolet[occupational_sun_exposure][presence]' required='' data-rule-required='true' data-msg-required='Required field')
                   option(value='No') No
                   option(value='Yes') Yes
+                span.error1
+                  i.error-log.fa.fa-exclamation-triangle
+
               .form-group.hidden-control(style='margin-top:20px;')
                 .group
                   label Specify the occupation:
@@ -427,27 +437,30 @@ block content
                 .group
                   label How many hours/month?:
                   input#UltravioletExposure_hours_for_month.form-control(type='text' name='ultraviolet[occupational_sun_exposure][hours_month]')
-                span.error1(style='display: none;')
+                span.error1
                   i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/year?:
                   input#UltravioletExposure_hours_for_year.form-control(type='text' name='ultraviolet[occupational_sun_exposure][hours_year]')
-                span.error1(style='display: none;')
+                span.error1
                   i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many years ?:
                   input#UltravioletExposure_many_years.form-control(type='text' name='ultraviolet[occupational_sun_exposure][number_of_years]')
-                span.error1(style='display: none;')
+                span.error1
                   i.error-log.fa.fa-exclamation-triangle
                   
             fieldset#fieldsetRecreationalExposure
               label(for='488897')
-                | Recreational sun exposure (i.e. outdoor hobbies or physical activities–other than
+                | 7) Recreational sun exposure (i.e. outdoor hobbies or physical activities–other than
                 | sunbathing–with at least 4 hours/day spent outdoor in the sun)
               .form-group
-                select#id_RecreationalExposure.form-control(name='ultraviolet[recreational_sun_exposure][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
+                select#id_RecreationalExposure.form-control(name='ultraviolet[recreational_sun_exposure][presence]' required='' data-rule-required='true' data-msg-required='Required field')
                   option(value='No') No
                   option(value='Yes') Yes
+                span.error1
+                  i.error-log.fa.fa-exclamation-triangle
+
               .form-group.hidden-control(style='margin-top:20px;')
                 .group
                   label Specify the occupation:
@@ -467,7 +480,7 @@ block content
                   
             fieldset#fieldsetIntermittent
               label
-                | Intermittent sun exposure (i.e. sun exposure in spring and summer time, including
+                | 8) Intermittent sun exposure (i.e. sun exposure in spring and summer time, including
                 | vacation, during peak hours–11AM-4PM)
               .form-group
                 .divTable
@@ -485,31 +498,31 @@ block content
                       .divTableCell
                         input#Childhood_Period(type='number', name='ultraviolet[exposure_childhood][period]')
                         span.highlight
-                        span.bar(style='')
+                        span.bar
                       .divTableCell
                         input#Childhood_Time(type='number', name='ultraviolet[exposure_childhood][time]')
                         span.highlight
-                        span.bar(style='')
+                        span.bar
                     .divTableRow
                       .divTableCell Adolescence (11-18 yrs)
                       .divTableCell
                         input#Adolescence_Weeks(type='number', name='ultraviolet[exposure_adolescence][period]')
                         span.highlight
-                        span.bar(style='')
+                        span.bar
                       .divTableCell
                         input#Adolescence_Time(type='number', name='ultraviolet[exposure_adolescence][time]')
                         span.highlight
-                        span.bar(style='')
+                        span.bar
                     .divTableRow
                       .divTableCell Adulthood (≥18 yrs)
                       .divTableCell
                         input#Adulthood_Weeks(type='number', name='ultraviolet[exposure_adulthood][period]')
                         span.highlight
-                        span.bar(style='')
+                        span.bar
                       .divTableCell
                         input#Adulthood_Time(type='number', name='ultraviolet[exposure_adulthood][time]')
                         span.highlight
-                        span.bar(style='')
+                        span.bar
                     .divTableRow
                       .divTableCell(style='font-size:10px;')
                         | 10 years before melanoma diagnosis (for
@@ -518,28 +531,30 @@ block content
                       .divTableCell
                         input#10_years_before_period(type='number', name='ultraviolet[exposure_previous_10_years][period]')
                         span.highlight
-                        span.bar(style='')
+                        span.bar
                       .divTableCell
                         input#10_years_before_time(type='number', name='ultraviolet[exposure_previous_10_years][time]')
                         span.highlight
-                        span.bar(style='')
+                        span.bar
                         
             fieldset#fieldsetMostRecent
-              label(for='') Most recent intense intermittent sun exposure
+              label(for='') 9) Most recent intense intermittent sun exposure
               p(style='font-size:10px;')
                 | Provide date or month of last time of intense intermittent sun exposure before
                 | the diagnosis of melanoma (for cases) or before this interview (for controls)
               .form-group
                 input#most_recent_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='ultraviolet[most_recent_sunburn]')
+                span.error1
+                  i.error-log.fa.fa-exclamation-triangle
                 
-            fieldset#fieldsetSevereSunburns(style='margin-top: 20px;')
+            fieldset#fieldsetSevereSunburns
               label(for='42940743')
-                | Severe sunburns (Grade 2), lifetime before diagnosis.
+                | 10) Severe sunburns (Grade 2), lifetime before diagnosis.
               p(style='font-size:10px')
                 | Definition: suburns with erythema and pain for more than 2 days or with blisters
                 | (no matter for how long)
               .form-group
-                .divTable(style='width: 100%;')
+                .divTable
                   .divTableBody
                     .divTableRow
                       .divTableCell.NoDivTableBorder
@@ -554,7 +569,7 @@ block content
                           label Number:
                           input#Sunburns_Yes_less18(type='number', name='ultraviolet[sunburn_before_18][number]')
               .form-group
-                .divTable(style='width: 100%;')
+                .divTable
                   .divTableBody
                     .divTableRow
                       .divTableCell.NoDivTableBorder
@@ -570,7 +585,7 @@ block content
                           input#Sunburns_Yes_greater18(type='number', name='ultraviolet[sunburn_after_18][number]')
                           
               .form-group
-                .divTable(style='width: 100%;')
+                .divTable
                   .divTableBody
                     .divTableRow
                       .divTableCell.NoDivTableBorder
@@ -583,10 +598,10 @@ block content
                       .divTableCell.NoDivTableBorder
                         .hidden-control
                           label(style='visibility: hidden;') Number:
-                          input#Sunburns_last5(type='number', name='ultraviolet[sunburn_last_5_years][number]' style='visibility: hidden;')
+                          input(type='number', name='ultraviolet[sunburn_last_5_years][number]' style='visibility: hidden;')
 
               .form-group
-                .divTable(style='width: 100%;')
+                .divTable
                   .divTableBody
                     .divTableRow
                       .divTableCell.NoDivTableBorder
@@ -599,10 +614,10 @@ block content
                       .divTableCell.NoDivTableBorder
                         .hidden-control
                           label Number:
-                          input#Sunburns_last5(type='number', name='ultraviolet[sunburn_last_5_years][number]')
+                          input(type='number', name='ultraviolet[sunburn_last_5_years][number]')
                           
             fieldset
-              label(for='162128682') Sunscreen use (summer time)
+              label(for='162128682') 11) Sunscreen use (summer time)
               .form-group
                 .divTable
                   .divTableBody
@@ -684,7 +699,7 @@ block content
 
             fieldset#fieldsetHat
               label(for='id_Hat')
-                | Sun protection other than sunscreen use (summertime over the last 10 yrs)
+                | 12) Sun protection other than sunscreen use (summertime over the last 10 yrs)
                 | (Optional)
               .form-group
                 span Did you use a hat ?
@@ -713,8 +728,8 @@ block content
                   option(value='Always') Always
                   option(value='Notknown') Not known
 
-            fieldset#fieldsetSunlamps(style='margin-top: 20px;')
-              label(for='42940743') Sunlamps/sunbeds
+            fieldset#fieldsetSunlamps
+              label(for='42940743') 13) Sunlamps/sunbeds
               .form-group
                 .divTable
                   .divTableRow
@@ -735,9 +750,9 @@ block content
                   label Age at last exposure:
                   input#Sunlamp_last_age(type='number', name='ultraviolet[sunlamp][age_of_last_sunlamp]')
 
-            fieldset#fieldsetPhototherapy(style='margin-top: 20px;')
+            fieldset#fieldsetPhototherapy
               label(for='42940743')
-                | Phototherapy(UVB-PUVA) (Optional)
+                | 14) Phototherapy(UVB-PUVA) (Optional)
               .form-group
                 .divTable
                   .divTableRow
@@ -761,8 +776,8 @@ block content
             h2.fs-title LIFESTYLE HABITS
             h3.fs-subtitle Completed by case/control
 
-            fieldset#fieldsetSmoking(style='margin-top: 20px;')
-              label(for='42940743') Smoking
+            fieldset#fieldsetSmoking
+              label(for='42940743') 15) Smoking
               .form-group
                 .divTable
                   .divTableRow
@@ -797,9 +812,9 @@ block content
                           option(value='Half') Up to half pack a day
                           option(value='Occasionally') Occasionally
 
-            fieldset#fieldsetVitamin(style='margin-top: 20px;')
+            fieldset#fieldsetVitamin
               label(for='42940743')
-                | Have you received vitamin pills during the last year?
+                | 16) Have you received vitamin pills during the last year?
               p(style='color:red;') (Optional)
               .form-group
                 select#id_Vitamin.form-control(name='lifestyle[vitamins_last_year][presence]')
@@ -821,9 +836,9 @@ block content
                         option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
 
-            fieldset#fieldsetVitaminType(style='margin-top: 20px;')
+            fieldset#fieldsetVitaminType
               label(for='42940743')
-                | What type of vitamins did you receive and how often?
+                | 17) What type of vitamins did you receive and how often?
               p(style='color:red;') (Optional)
               .group
                 .divTable
@@ -884,9 +899,9 @@ block content
                         option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
 
-            fieldset#fieldsetVitaminTime(style='margin-top: 20px;')
+            fieldset#fieldsetVitaminTime
               label(for='42940743')
-                | For how long did you receive vitamins?
+                | 18) For how long did you receive vitamins?
               p(style='color:red;') (Optional)
               .group
                 .divTable
@@ -942,12 +957,12 @@ block content
                         option(value='46Week') > 10 years
 
             fieldset#fieldsetSectionBEval
-              label Section B Completion Evaluation Questions
+              label Completion Evaluation Questions
               .form-group
                 .divTable
                   .divTableRow
                     .divTableCell.NoDivTableBorder
-                      span Were you able to respond to the questions of this Section ?
+                      span 19) Were you able to respond to the questions of these last three sections ?
                     .divTableCell.NoDivTableBorder(style='padding:10px !important;')
                       select#selectEval.form-control
                         option(value='NoChoosed') Select...
@@ -957,17 +972,16 @@ block content
                         option(value='Few') Very few questions
                   .divTableRow
                     .divTableCell.NoDivTableBorder
-                      span Which questions of this Section did you consider difficult to fill in?
+                      span 20) Which questions of these last three sections did you consider difficult to fill in?
                     .divTableCell.NoDivTableBorder(style='padding:10px !important;')
                       select#selectQuestions.form-control
                         option(value='NoChoosed') Select...
-                        option(value='No') No
-                        option(value='Yes') Yes
-                .group.hidden-control(style='margin-top:20px;')
-                  input#QuestionHidden(type='number')
-                  span.highlight
-                  span.bar
-                  label Number:
+                        option(value='No') None
+                        option(value='Yes') Insert numbers
+                    .divTableCell.NoDivTableBorder
+                      .hidden-control
+                        label Questions numbers:
+                        input#QuestionHidden(type='text' placeholder='1, 2, 3, etc.')
 
 
 
@@ -1021,91 +1035,91 @@ block content
                     .divTableCell(style='width:30%;')
                       input#inputScalpLeft(type='number', name='clinical_examination[nevi_count][left_scalp]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                     .divTableCell(style='width:30%;')
                       input#inputScalpRight(type='number', name='clinical_examination[nevi_count][right_scalp]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                   .divTableRow
                     .divTableCell(style='width:40%;') Face(including ears)
                     .divTableCell(style='width:30%;')
                       input#inputFaceLeft(type='number', name='clinical_examination[nevi_count][left_face]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                     .divTableCell(style='width:30%;')
                       input#inputFaceRight(type='number', name='clinical_examination[nevi_count][right_face]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                   .divTableRow
                     .divTableCell(style='width:40%;') Neck
                     .divTableCell(style='width:30%;')
                       input#inputNeckLeft(type='number', name='clinical_examination[nevi_count][left_neck]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                     .divTableCell(style='width:30%;')
                       input#inputNeckRight(type='number', name='clinical_examination[nevi_count][right_neck]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                   .divTableRow
                     .divTableCell(style='width:40%;') Anterior thorax + abdomen
                     .divTableCell(style='width:30%;')
                       input#inputThoraxAbdomenLeft(type='number', name='clinical_examination[nevi_count][left_thorax_abdomen]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                     .divTableCell(style='width:30%;')
                       input#inputThoraxAbdomenRight(type='number', name='clinical_examination[nevi_count][right_thorax_abdomen]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                   .divTableRow
                     .divTableCell(style='width:40%;') Back
                     .divTableCell(style='width:30%;')
                       input#inputBackLeft(type='number', name='clinical_examination[nevi_count][left_back]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                     .divTableCell(style='width:30%;')
                       input#inputBackRight(type='number', name='clinical_examination[nevi_count][right_back]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                   .divTableRow
                     .divTableCell(style='width:40%;') Upper extremities including deltoid
                     .divTableCell(style='width:30%;')
                       input#inputDeltoidLeft(type='number', name='clinical_examination[nevi_count][left_deltoid]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                     .divTableCell(style='width:30%;')
                       input#inputDeltoidRight(type='number', name='clinical_examination[nevi_count][right_deltoid]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                   .divTableRow
                     .divTableCell(style='width:40%;') Lower extremities including gluteus
                     .divTableCell(style='width:30%;')
                       input#inputGluteusLeft(type='number', name='clinical_examination[nevi_count][left_gluteus]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                     .divTableCell(style='width:30%;')
                       input#inputGluteusRight(type='number', name='clinical_examination[nevi_count][right_gluteus]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                   .divTableRow
                     .divTableCell(style='width:40%;') Palms
                     .divTableCell(style='width:30%;')
                       input#inputPalmsLeft(type='number', name='clinical_examination[nevi_count][left_palms]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                     .divTableCell(style='width:30%;')
                       input#inputPalmsRight(type='number', name='clinical_examination[nevi_count][right_palms]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                   .divTableRow
                     .divTableCell(style='width:40%;') Soles
                     .divTableCell(style='width:30%;')
                       input#inputSolesLeft(type='number', name='clinical_examination[nevi_count][left_soles]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
                     .divTableCell(style='width:30%;')
                       input#inputSolesRight(type='number', name='clinical_examination[nevi_count][right_soles]')
                       span.highlight
-                      span.bar(style='')
+                      span.bar
 
             fieldset#fieldsetNevi2mmCount
               label Nevi 2mm count
@@ -1157,7 +1171,7 @@ block content
                           option(value='Yes') Yes
 
 
-            fieldset#fieldsetCongenitalNevi(style='margin-top: 20px;')
+            fieldset#fieldsetCongenitalNevi
               label(for='42940743')
                 | Congenital nevi, CN
               p(style='font-size:10px;') (only medium, large, or giant)
@@ -1168,7 +1182,7 @@ block content
                 li giant CN ≥40 cm
               p(style='font-size:10px;') Exclude small (i.e. ≤1.5 cm CN)
               .form-group
-                .divTable(style='width: 100%;')
+                .divTable
                   .divTableBody
                     .divTableRow
                       .divTableCell.NoDivTableBorder
@@ -1184,7 +1198,7 @@ block content
                           input#inputMediumSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][medium_sized][sites]')
 
               .form-group
-                .divTable(style='width: 100%;')
+                .divTable
                   .divTableBody
                     .divTableRow
                       .divTableCell.NoDivTableBorder
@@ -1200,7 +1214,7 @@ block content
                           input#inputLargeSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][large_sized][sites]')
 
               .form-group
-                .divTable(style='width: 100%;')
+                .divTable
                   .divTableBody
                     .divTableRow
                       .divTableCell.NoDivTableBorder
@@ -1216,12 +1230,12 @@ block content
                           input#inputGiantSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][giant_sized][sites]')
 
 
-            fieldset#fieldsetBlueNevi(style='margin-top: 20px;')
+            fieldset#fieldsetBlueNevi
               label(for='42940743')
                 | Blue nevi
               p(style='color:red;') (Optional)
-              .form-group(style='margin-top: 20px;')
-                .divTable(style='width: 100%;')
+              .form-group
+                .divTable
                   .divTableBody
                     .divTableRow
                       .divTableCell.NoDivTableBorder(style='width:34%;')
@@ -1240,10 +1254,10 @@ block content
                             label(style='font-size: 12px;') Number:
 
 
-            fieldset#fieldsetActinicKeratoses(style='margin-top: 20px;')
+            fieldset#fieldsetActinicKeratoses
               label(for='42940743') Actinic keratoses
-              .form-group(style='margin-top: 20px;')
-                .divTable(style='width: 100%;')
+              .form-group
+                .divTable
                   .divTableBody
                     .divTableRow
                       .divTableCell.NoDivTableBorder(style='width:34%;')
@@ -1266,8 +1280,8 @@ block content
                             option(value='Face') Face
                             option(value='Other')
                               | Other exposed areas (hands, arms, trunk, legs)
-              .form-group(style='margin-top: 20px;')
-                .divTable(style='width: 100%;')
+              .form-group
+                .divTable
                   .divTableBody
                     .divTableRow
                       .divTableCell.NoDivTableBorder  
@@ -1281,12 +1295,12 @@ block content
                               option(value='Confluent') Confluent
 
 
-            fieldset#fieldsetKSC_BCC_SCC(style='margin-top: 20px;')
+            fieldset#fieldsetKSC_BCC_SCC
               label(for='42940743')
                 | Current (i.e. at time of visit) non-melanoma skin cancer, KSC (basal cell carcinoma,
                 | BCC, and squamous cell carcinoma, SCC)
               .form-group
-                .divTable(style='width: 100%;')
+                .divTable
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       span BCC:
@@ -1303,7 +1317,7 @@ block content
                         label Site(s):
                         input#inputBCC(type='text' name='clinical_examination[BCC][sites]')
               .form-group
-                .divTable(style='width: 100%;')
+                .divTable
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       span Invasive SCC:
@@ -1318,10 +1332,10 @@ block content
                     .divTableCell.NoDivTableBorder
                       .hidden-control
                         label Site(s):
-                        input#inputSCC(type='text' style='width:80%;' name='clinical_examination[invasive_SCC][sites]')
+                        input#inputSCC(type='text' name='clinical_examination[invasive_SCC][sites]')
 
               .form-group
-                .divTable(style='width: 100%;')
+                .divTable
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       span In situ SCC:
@@ -1349,7 +1363,7 @@ block content
             h2.fs-title MEDICAL HISTORY
             h3.fs-subtitle completed by physician/study nurse
 
-            fieldset#fieldsetSection_C2(style='margin-top: 20px;')
+            fieldset#fieldsetSection_C2
               label Section C2
               .form-group
                 p.help-block II. MEDICAL HISTORY/MEDICATIONS (completed by physician/study nurse)
@@ -1358,22 +1372,8 @@ block content
                 .form-group
                   input#ICD10Code(type='text' value='' placeholder='Search by ICD10 code or name of disease')
                 #json_medical_history.form-group
-
-            /*TAB 08/01/2020*/
-            fieldset#fieldsetSection_C2(style='margin-top: 20px;')
-              legend Section C2
-              .form-group
-                p.help-block II. MEDICAL HISTORY/MEDICATIONS (completed by physician/study nurse)
-              #fieldsetHistoryMedicalDiagnosis
-                p.help-block History of medical (non-cancer) diagnoses
-                .form-group
-                  .divTable
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:40%;margin-left: 2px;')
-                        input#ICD10Code(type='text', value='', placeholder='Search by ICD10 code or name of disease')
-                #json_medical_history.form-group
-              // To commit
-              #fieldset_C2_10
+                
+            fieldset#fieldset_C2_10
                 legend Previous and concomitant treatments (related to above-mentioned diagnoses)
                 p(style='color:red;') (Optional)
                 // Button to Open the Modal
@@ -1383,19 +1383,19 @@ block content
                     | Insert Medication
                 // The Modal
                 #json-medications.form-group(style='width:50%;')
-            // Da commitare
-            fieldset#fieldsetPregnancy_History(style='margin-top: 20px;')
+            
+            fieldset#fieldsetPregnancy_History
               legend Pregnancy history
               .form-group
                 #Pregnancy_History.divTable
-                  .divTableRow(style='width: 100%;')
-                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder.question-cell
                       span Have you ever become pregnant?
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span Yes
+                    .divTableCell.NoDivTableBorder
+                      label Yes
                       input#Pregnant_Yes(type='radio', name='group.pregnancy', value='Yes')
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span No
+                    .divTableCell.NoDivTableBorder
+                      label No
                       input#Pregnant_No(type='radio', name='group.pregnancy', value='No', checked='checked')
               .form-group.Pregnancy_Stats.hide-transition
                 hr
@@ -1420,109 +1420,110 @@ block content
                       input(type='number', name='', value='')
               .form-group
                 hr
-                #Pregnancy_During.divTable(style='')
-                  .divTableRow(style='width: 100%;')
-                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                #Pregnancy_During.divTable
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder.question-cell
                       span
                         | Did melanoma occur 
                         span(style='color:#cc7b1d;text-decoration-line:underline;')
                           b during
                         |  pregnancy ?
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span Yes
+                    .divTableCell.NoDivTableBorder
+                      label Yes
                       input#During_Yes(type='radio', name='group.during', value='Yes')
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span No
+                    .divTableCell.NoDivTableBorder
+                      label No
                       input#During_No(type='radio', name='group.during', value='No', checked='checked')
               #Pregnancy_Before.form-group
                 hr
                 .divTable
                   .divTableRow
-                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                    .divTableCell.NoDivTableBorder.question-cell
                       span
                         | Did melanoma occur 
                         span(style='color:#1c7430;text-decoration-line:underline;')
                           b before
                         |  pregnancy ?
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span Yes
+                    .divTableCell.NoDivTableBorder
+                      label Yes
                       input#Before_Yes(type='radio', name='group.before', value='Yes')
-                    .divTableCell.NoDivTableBorder(style='text-align:center;width: 10%;')
-                      span No
+                    .divTableCell.NoDivTableBorder
+                      label No
                       input#Before_No(type='radio', name='group.before', value='No', checked='checked')
                   .divTableRow.hide-transition
-                    .divTableCell.NoDivTableBorder(style='width:80%;')
+                    .divTableCell.NoDivTableBorder
                       span
                         | Specify how many years 
                         span(style='color:#1c7430;text-decoration-line:underline;')
                           b before
                         |  pregnancy ?
-                    .divTableCell.NoDivTableBorder(style='width:10%;')
-                      input(style='width:20%;margin:auto;', type='number', name='', value='')
-                    .divTableCell.NoDivTableBorder(style='width:10%;')
-                      input(style='width:20%;margin:auto;display:none;', type='number', name='', value='')
+                    .divTableCell.NoDivTableBorder
+                      input(type='number', name='', value='')
+                    .divTableCell.NoDivTableBorder
+                      input(type='number', name='', value='')
               #Pregnancy_After.form-group
                 hr
                 .divTable
-                  .divTableRow(style='width: 100%;')
-                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder.question-cell
                       span
                         | Did melanoma occur 
                         span(style='color:#002752;text-decoration-line:underline;')
                           b after
                         |  pregnancy ?
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span Yes
+                    .divTableCell.NoDivTableBorder
+                      label Yes
                       input#After_Yes(type='radio', name='group.after', value='Yes')
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span No
+                    .divTableCell.NoDivTableBorder
+                      label No
                       input#After_No(type='radio', name='group.after', value='No', checked='checked')
-                  .divTableRow.hide-transition(style='width: 100%;')
-                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                  .divTableRow.hide-transition
+                    .divTableCell.NoDivTableBorder
                       span
                         | Specify how many years 
                         span(style='color:#002752;text-decoration-line:underline;')
                           b after
                         |  pregnancy ?
                     .divTableCell.NoDivTableBorder
-                      input(style='width:20%;margin:auto;', type='number', name='', value='')
+                      input(type='number', name='', value='')
               .form-group
                 hr
                 #Pregnancy_Hormone_Assisted.divTable
-                  .divTableRow(style='width: 100%;')
-                    .divTableCell.NoDivTableBorder.thead-dark(style='width: 80%;')
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder.question-cell
                       span
                         | History of hormone-assisted pregnancy (IVF) 
                         span(style='color:#1c7430;text-decoration-line:underline;')
                           b before
                         |  diagnosis ?
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span Yes
+                    .divTableCell.NoDivTableBorder
+                      label Yes
                       input#Hormone_Yes(type='radio', name='group.hormone', value='Yes')
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span No
+                    .divTableCell.NoDivTableBorder
+                      label No
                       input#Hormone_No(type='radio', name='group.hormone', value='No', checked='checked')
-            fieldset#fieldsetLifetime_History(style='margin-top: 20px;')
+            
+            fieldset#fieldsetLifetime_History
               legend
                 | Lifetime history of non-melanoma skin cancer, KSC (basal cell carcinoma, BCC, and squamous cell
                 | carcinoma, SCC)
               .form-group
                 #BBC_History.divTable
-                  .divTableRow(style='width: 100%;')
-                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder
                       span Number of BBCs
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      input(style='width:20%;margin:auto;', type='number', name='', value='')
-                  .divTableRow(style='width: 100%;')
-                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                    .divTableCell.NoDivTableBorder
+                      input(type='number', name='', value='')
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder.question-cell
                       span Before or After melanoma diagnosis ?
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span Before
+                    .divTableCell.NoDivTableBorder
+                      label Before
                       input#BBC_Before_Diagnosis(type='radio', name='group.after', value='Yes')
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span After
+                    .divTableCell.NoDivTableBorder
+                      label After
                       input#BBC_After_Diagnosis(type='radio', name='group.after', value='No', checked='checked')
-                .form-group(style='margin-top:15px;margin-left: 9px;')
+                .form-group
                   p
                     // Da committare solo il button
                     button#Insert-BCC_Sites.btn.btn-info(type='button', data-toggle='modal', data-target='#Sites_Modal')
@@ -1531,21 +1532,21 @@ block content
               hr
               .form-group
                 #SCC_Invasive_History.divTable
-                  .divTableRow(style='width: 100%;')
-                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder
                       span Number of SSCs
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      input(style='width:20%;margin:auto;', type='number', name='', value='')
-                  .divTableRow(style='width: 100%;')
-                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                    .divTableCell.NoDivTableBorder
+                      input(type='number', name='', value='')
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder.question-cell
                       span Before or After melanoma diagnosis ?
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span Before
+                    .divTableCell.NoDivTableBorder
+                      label Before
                       input#SSC_Invasive_Before_Diagnosis(type='radio', name='group.invasive', value='Yes')
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span After
+                    .divTableCell.NoDivTableBorder
+                      label After
                       input#SSC_Invasive_After_Diagnosis(type='radio', name='group.invasive', value='No', checked='checked')
-                .form-group(style='margin-top:15px;margin-left: 9px;')
+                .form-group
                   p
                     // Da committare solo il button
                     button#Insert-SCC_Invasive_Sites.btn.btn-warning(type='button', data-toggle='modal', data-target='#Sites_Modal')
@@ -1554,27 +1555,106 @@ block content
               hr
               .form-group
                 #SSC_InSitu__History.divTable
-                  .divTableRow(style='width: 100%;')
-                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder
                       span Number of 'in situ SCCs'
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      input(style='width:20%;margin:auto;', type='number', name='', value='')
-                  .divTableRow(style='width: 100%;')
-                    .divTableCell.NoDivTableBorder(style='width: 80%;')
+                    .divTableCell.NoDivTableBorder
+                      input(type='number', name='', value='')
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder.question-cell
                       span Before or After melanoma diagnosis ?
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span Before
+                    .divTableCell.NoDivTableBorder
+                      label Before
                       input#SCC_InSitu_Before_Diagnosis(type='radio', name='group.inSitu', value='Yes')
-                    .divTableCell.NoDivTableBorder(style='text-align: center;width: 10%;')
-                      span After
+                    .divTableCell.NoDivTableBorder
+                      label After
                       input#SCC_InSitu_After_Diagnosis(type='radio', name='group.inSitu', value='No', checked='checked')
-                .form-group(style='margin-top:15px;margin-left: 9px;')
+                .form-group
                   p
                     // Da committare solo il button
                     button#Insert-SCC_InSitu_Sites.btn.btn-secondary(type='button', data-toggle='modal', data-target='#Sites_Modal')
                       | Insert in situ SCC Site(s)
                   .SCC_InSitu_Sites_Json_Table
-            #SimpleDateModal.modal.fade
+            
+          div.alphaformfooter
+          div.formfooter
+          input.scroll-button-bottom(type='button')
+          input#fifthprevious.previous.action-button(type='button', name='previous', value='Previous')
+          input#sixthnext.next.action-button(type='button', name='next', value='Next')
+        
+
+
+        fieldset
+          div.scrollingdiv
+            h2.fs-title FAMILY HISTORY
+            h3.fs-subtitle completed by physician/study nurse
+
+
+          div.alphaformfooter
+          div.formfooter
+          input.scroll-button-bottom(type='button')
+          input#sixthprevious.previous.action-button(type='button', name='previous', value='Previous')
+          input#seventhnext.next.action-button(type='button', name='next', value='Next')
+                    
+        fieldset
+          div.scrollingdiv
+            h2.fs-title MELANOMA CHARACTERISTICS
+            h3.fs-subtitle completed by physician/study nurse
+
+            fieldset#fieldsetMelanomaLesion
+              .form-group
+                .divTable
+                  .divTableBody
+                    .divTableRow
+                      .divTableCell.NoDivTableBorder
+                        span Pre-existing pigmented lesion at the same site of melanoma
+                      .divTableCell.NoDivTableBorder
+                        select#selectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
+                          option(value='NoChoosed') Select...
+                          option(value='No') No
+                          option(value='Yes') Yes
+                      .divTableCell.NoDivTableBorder.hidden-control
+                        label(style='font-size: 12px;') Number:
+                        input#inputLesionCount(type='number' name='melanoma_characteristics[lesion][count]' required='' )
+
+            fieldset#fieldsetMelanomadetection
+              label(for='42940743')
+                | Detection of melanoma
+              p(style='color:red;') (Optional)
+              .form-group
+                select#Melanomadetection.form-control(name='melanoma_characteristics[detection]')
+                  option(value='NoChoosed') Select ...
+                  option(value='Patient') Patient
+                  option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
+                  option(value='Physician') Physician
+                  option(value='Other') Other
+            
+            fieldset#fieldsetSkinCheck
+              label
+                | Self-skin exam
+              p(style='color:red;') (Optional)
+              .form-group
+                .divTable
+                  .divTableBody
+                    .divTableRow
+                      .divTableCell.NoDivTableBorder(style='width:34%;')
+                        span How often did you check your skin in the past 3 yrs?
+                      .divTableCell.NoDivTableBorder(style='width:32%;')
+                        select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                          option(value='NoChoosed') Select...
+                          option(value='Never') Never
+                          option(value='Once') Once
+                          option(value='Once/year') Once/year
+                          option(value='More than once/year') More than once/year
+
+
+          div.alphaformfooter
+          div.formfooter
+          input.scroll-button-bottom(type='button')
+          input#seventhprevious.previous.action-button(type='button', name='previous', value='Previous')
+          input.submit.action-button#submit(type='submit', value='Submit')
+
+  #SimpleDateModal.modal.fade
               .modal-dialog
                 .modal-content
                   // Modal Header
@@ -1618,7 +1698,8 @@ block content
                     button#save_simple.btn.btn-secondary(type='button', data-dismiss='modal')
                       | Save
                     button.btn.btn-danger(type='button', data-dismiss='modal') Close
-            #MedicationDateModal.modal.fade
+            
+  #MedicationDateModal.modal.fade
               .modal-dialog
                 .modal-content
                   // Modal Header
@@ -1644,11 +1725,11 @@ block content
                       tbody
                         tr
                           td.medication-number(style='width:10%;')
-                            input#Medication-Number(style='background-color:transparent;color:#0c4090;width:100%;text-align: end; font-size: large;', type='number', value='1', readonly='')
-                          td(style='width:10%;')
+                            input#Medication-Number(type='number', value='1', readonly='')
+                          td
                           td(style='width:35%;')
                             input.form-control.datepicker.med-start-date(type='text')
-                          td(style='width:10%;')
+                          td
                           td(style='width:35%;')
                             input.form-control.datepicker.med-end-date(type='text')
                   // Modal footer
@@ -1656,7 +1737,8 @@ block content
                     button#save_med.btn.btn-secondary(type='button', data-dismiss='modal')
                       | Save
                     button.btn.btn-danger(type='button', data-dismiss='modal') Close
-            #Sites_Modal.modal.fade
+            
+  #Sites_Modal.modal.fade
               .modal-dialog
                 .modal-content(style='width: auto;')
                   span.hidden.modal-caller
@@ -2097,83 +2179,3 @@ block content
                     button#save_sites.btn.btn-secondary(type='button', data-dismiss='modal')
                       | Save
                     button#cancel_sites.btn.btn-danger(type='button', data-dismiss='modal') Cancel
-
-            /*TAB END*/
-
-          div.alphaformfooter
-          div.formfooter
-          input.scroll-button-bottom(type='button')
-          input#fifthprevious.previous.action-button(type='button', name='previous', value='Previous')
-          input#sixthnext.next.action-button(type='button', name='next', value='Next')
-        
-
-
-        fieldset
-          div.scrollingdiv
-            h2.fs-title FAMILY HISTORY
-            h3.fs-subtitle completed by physician/study nurse
-
-
-          div.alphaformfooter
-          div.formfooter
-          input.scroll-button-bottom(type='button')
-          input#sixthprevious.previous.action-button(type='button', name='previous', value='Previous')
-          input#seventhnext.next.action-button(type='button', name='next', value='Next')
-                    
-        fieldset
-          div.scrollingdiv
-            h2.fs-title MELANOMA CHARACTERISTICS
-            h3.fs-subtitle completed by physician/study nurse
-
-            fieldset#fieldsetMelanomaLesion(style='margin-top: 20px;')
-              .form-group(style='margin-top: 20px;')
-                .divTable(style='width: 100%;')
-                  .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder
-                        span Pre-existing pigmented lesion at the same site of melanoma
-                      .divTableCell.NoDivTableBorder
-                        select#selectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
-                          option(value='NoChoosed') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
-                      .divTableCell.NoDivTableBorder.hidden-control
-                        label(style='font-size: 12px;') Number:
-                        input#inputLesionCount(type='number' name='melanoma_characteristics[lesion][count]' required='' )
-
-            fieldset#fieldsetMelanomadetection(style='margin-top: 20px;')
-              label(for='42940743')
-                | Detection of melanoma
-              p(style='color:red;') (Optional)
-              .form-group
-                select#Melanomadetection.form-control(name='melanoma_characteristics[detection]')
-                  option(value='NoChoosed') Select ...
-                  option(value='Patient') Patient
-                  option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
-                  option(value='Physician') Physician
-                  option(value='Other') Other
-            
-            fieldset#fieldsetSkinCheck(style='margin-top: 20px;')
-              label
-                | Self-skin exam
-              p(style='color:red;') (Optional)
-              .form-group(style='margin-top: 20px;')
-                .divTable(style='width: 100%;')
-                  .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:34%;')
-                        span How often did you check your skin in the past 3 yrs?
-                      .divTableCell.NoDivTableBorder(style='width:32%;')
-                        select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
-                          option(value='NoChoosed') Select...
-                          option(value='Never') Never
-                          option(value='Once') Once
-                          option(value='Once/year') Once/year
-                          option(value='More than once/year') More than once/year
-
-
-          div.alphaformfooter
-          div.formfooter
-          input.scroll-button-bottom(type='button')
-          input#seventhprevious.previous.action-button(type='button', name='previous', value='Previous')
-          input.submit.action-button#submit(type='submit', value='Submit')

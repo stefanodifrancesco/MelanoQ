@@ -124,3 +124,7 @@ input {
     top: 10px;
     -webkit-transition: 0.2s ease all;
 }
+
+.hidden {
+    display: none;
+}

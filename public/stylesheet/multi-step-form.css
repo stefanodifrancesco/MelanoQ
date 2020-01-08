@@ -65,6 +65,11 @@
 
 .scrollingdiv label {
     margin-top: 1rem;
+    font-weight: bolder;
+}
+
+#fieldsetHat .form-group {
+    margin-left: 24px;
 }
 
 #msform ::-webkit-scrollbar {
@@ -174,6 +179,10 @@
     vertical-align: middle !important;
 }
 
+#msform .divTableCell.NoDivTableBorder.question-cell {
+    width: 40%;
+}
+
 #msform .divTableCell input[type='text'] {
     border: none;
     border-bottom: 1px solid gray;
@@ -270,7 +279,7 @@
     box-shadow: 0 0 0 transparent;
     padding: 0 10px;
     height: 39px;
-    display: block;
+    display: none;
     color: #ffffff;
     background: #e62163;
     border: 0;

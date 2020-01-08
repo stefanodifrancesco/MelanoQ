@@ -1,0 +1,87 @@
+.TEST2 .table-personal-label {
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.9);
+    font-variant: small-caps;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: fill !important;
+}
+
+
+/*Hide the browser's default checkbox*/
+
+.TEST2 .table-personal-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+
+/*Create a custom checkbox*/
+
+.TEST2 .checkmark {
+    display: block;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    height: 25px;
+    width: 25px;
+    background-color: transparent;
+}
+
+
+/*On mouse-over, add a grey background color*/
+
+.TEST2 .table-personal-label:hover input~.checkmark {
+    background-color: transparent;
+    border: 1px solid #66b78c;
+    border-radius: 15px;
+}
+
+
+/*When the checkbox is checked, add a blue background*/
+
+.TEST2 .table-personal-label input:checked~.checkmark {
+    background-color: #66b78c;
+    border: 1px solid #66b78c;
+    border-radius: 15px;
+}
+
+
+/*Create the checkmark/indicator (hidden when not checked)*/
+
+.TEST2 .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/*Show the checkmark when checked*/
+
+.TEST2 .table-personal-label input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/*Style the checkmark/indicator*/
+
+.TEST2 .table-personal-label .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    transform: rotate(40deg);
+}
