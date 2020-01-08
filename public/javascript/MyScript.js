@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     $('.datepicker').datepicker({
         format: 'dd-M-yyyy',
@@ -12,14 +12,81 @@ $(document).ready(function () {
 
     var ListaResidency = [];
 
-    $("#fieldsetCodeNumber #DatabaseCodeCountry").on("change", function (evt) {
+    $("#searchBox").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "http://dev.virtualearth.net/REST/v1/Locations",
+                dataType: "jsonp",
+                data: {
+                    key: "AiS8UkCUaZ33Y2biW1TO8QRGofSb2uRi4Ycz7KOM7mJrkz25Rc3amVFlmdQTajAK",
+                    q: request.term
+                },
+                jsonp: "jsonp",
+                success: function(data) {
+                    console.log(data)
+                    var result = data.resourceSets[0];
+                    if (result) {
+                        if (result.estimatedTotal > 0) {
+                            response($.map(result.resources, function(item) {
+                                return {
+                                    data: item,
+                                    label: item.name + ' (' + item.address.countryRegion + ')',
+                                    value: item.name
+                                }
+                            }));
+                        }
+                    }
+                }
+            });
+        },
+        minLength: 1,
+        change: function(event, ui) {
+            if (!ui.item)
+                $("#searchBox").val('');
+
+        },
+        select: function(event, ui) {
+            $(".residency_date_class").append("<span>Test</span>");
+            $(".residency_date_class").html(
+                "<div class='residency_datepicker form-group'>" +
+                "<label>From:</label>" +
+                "<input class='new_datepicker form-control start_date' type='text' required>" +
+                "</div>" +
+                "<div class='residency_datepicker form-group'>" +
+                "<label>To:</label>" +
+                "<input class='new_datepicker form-control end_date' type='text' required>" +
+                "</div>");
+            $(".new_datepicker").datepicker({
+                format: 'dd-M-yyyy',
+                autoclose: true
+            }).on("changeDate", function(evt) {
+                start_date = $(".start_date").val();
+                end_date = $(".end_date").val();
+                if (start_date != '' && end_date != '') {
+                    residency = {};
+                    residency.start_date = start_date;
+                    residency.end_date = end_date;
+                    residency.address = $("#searchBox").val();
+                    ListaResidency.push(residency);
+                    $(".json_residency").createTable(ListaResidency);
+                }
+            });
+        }
+    });
+
+    $("#searchBox").on("focus", function(evt) {
+        $("#fieldResidency").append($("#ui-id-1"));
+        $("#ui-id-1").css("position", "relative").css("top", "auto").css("left", "auto");
+    })
+
+    $("#fieldsetCodeNumber #DatabaseCodeCountry").on("change", function(evt) {
         if ($(this).val() != "No Choosed") {
             $("#DatabaseCodeCenter").prop("disabled", false);
             nation_val = $(this).val();
-            $.getJSON('Centers.json', function (result) {
-                $.each(result, function (index, value) {
-                    if (value.Nation == nation_val) {
-                        $("#DatabaseCodeCenter").append("<option value='" + value.Country + "'>" + value.Country + "</option>");
+            $.getJSON('Centers.json', function(result) {
+                $.each(result, function(index, value) {
+                    if (value.codeNation == nation_val) {
+                        $("#DatabaseCodeCenter").append("<option value='" + value.codeCenter + "'>" + value.Country + "</option>");
                     }
                 });
             });
@@ -31,15 +98,10 @@ $(document).ready(function () {
         }
     });
 
-    $("#DatabaseCodeCountry,#DatabaseCodeCenter,#DatabaseCodeType").on("change", function (evt) {
+    $("#DatabaseCodeCountry,#DatabaseCodeCenter,#DatabaseCodeType").on("change", function(evt) {
         currentCodeCountry = $("#DatabaseCodeCountry").val();
         currentDatabaseCode = $("#DatabaseCodeCenter").val();
         currentDatabaseCodeType = $("#DatabaseCodeType").val();
-
-        console.log("Hello World");
-        console.log("country : " + currentCodeCountry +
-            "\n" + "database : " + currentDatabaseCode +
-            "\n" + "type : " + currentDatabaseCodeType);
 
         if (currentCodeCountry != "No Choosed" && currentDatabaseCode != "No Choosed" && currentDatabaseCodeType != "No Choosed") {
             object_JSON = {
@@ -51,10 +113,10 @@ $(document).ready(function () {
                 "query": {
                     "bool": {
                         "must": [{
-                            "term": {
-                                "code_country": currentCodeCountry
-                            }
-                        },
+                                "term": {
+                                    "code_country": currentCodeCountry
+                                }
+                            },
                             {
                                 "term": {
                                     "code_center": currentDatabaseCode
@@ -74,7 +136,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#skin-tan").on("change", function (evt) {
+    $("#skin-tan").on("change", function(evt) {
         var img = $(this).parents("#fieldSkin_tan").find("#skin-tan-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -97,7 +159,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_eyes_color").on("change", function (evt) {
+    $("#id_eyes_color").on("change", function(evt) {
         var img = $(this).parents("#fieldsetEye").find("#eye-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -116,7 +178,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_hair_color").on("change", function (evt) {
+    $("#id_hair_color").on("change", function(evt) {
         var img = $(this).parents("#fieldsetHair").find("#hair-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -143,7 +205,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Nevi").on("change", function (evt) {
+    $("#id_Nevi").on("change", function(evt) {
         var img = $(this).parents("#fieldsetNevi").find("#Nevi-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -166,7 +228,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Nevi").on("change", function (evt) {
+    $("#id_Nevi").on("change", function(evt) {
         var img = $(this).parents("#fieldsetNevi").find("#Nevi-img");
         if ($(this).val() == "NoChoosed") {
             $(img).parent().addClass("hidden-control");
@@ -189,7 +251,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_UltravioletExposure").on("change", function (evt) {
+    $("#id_UltravioletExposure").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetUltravioletExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
             $(this).parents("#fieldsetUltravioletExposure").find("input[type=text]").prop("required", true);
@@ -200,7 +262,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_RecreationalExposure").on("change", function (evt) {
+    $("#id_RecreationalExposure").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetRecreationalExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
             $(this).parents("#fieldsetRecreationalExposure").find("input[type=text]").prop("required", true);
@@ -211,7 +273,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function (evt) {
+    $("#id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control .special_on_div_table").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -222,7 +284,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Sunlamp").on("change", function (evt) {
+    $("#id_Sunlamp").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetSunlamps").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSunlamps").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -233,7 +295,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Smoking").on("change", function (evt) {
+    $("#id_Smoking").on("change", function(evt) {
         if ($(this).val() == "Former" || $(this).val() == "Current") {
             $(this).parents("#fieldsetSmoking").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", true);
@@ -246,7 +308,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#id_Vitamin").on("change", function (evt) {
+    $("#id_Vitamin").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetVitamin").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
         }
@@ -255,7 +317,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#selectQuestions").on("change", function (evt) {
+    $("#selectQuestions").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -266,7 +328,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#selectMediumSizedCN,#selectLargeSizedCN,#selectGiantSizedCN").on("change", function (evt) {
+    $("#selectMediumSizedCN,#selectLargeSizedCN,#selectGiantSizedCN").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -277,7 +339,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#selectBlueNevi").on("change", function (evt) {
+    $("#selectBlueNevi").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -288,7 +350,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#selectActinicKeratoses").on("change", function (evt) {
+    $("#selectActinicKeratoses").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesSite").prop("required", true);
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesDistribution").prop("required", true);
@@ -301,7 +363,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#selectBCC,#selectSCC,#selectSCCSite").on("change", function (evt) {
+    $("#selectBCC,#selectSCC,#selectSCCSite").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTable").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTable").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -314,7 +376,7 @@ $(document).ready(function () {
 
     $('input.mutually_check').click(function() {
         checkedState = $(this).prop('checked');
-        $(this).parents('.form-group').find(".mutually_check:checked").each(function () {
+        $(this).parents('.form-group').find(".mutually_check:checked").each(function() {
             $(this).prop('checked', false);
         });
         $(this).prop('checked', checkedState);
@@ -332,7 +394,7 @@ $(document).ready(function () {
     var ListaICD10 = [];
     var ICD10_options_by_code = {
         url: "icd10_codes.json",
-        getValue: function (element) {
+        getValue: function(element) {
             return element.code;
         },
         template: {
@@ -349,15 +411,15 @@ $(document).ready(function () {
             sort: {
                 enabled: true
             },
-            onClickEvent: function (element) {
+            onClickEvent: function(element) {
                 var code = $("#ICD10Code").val();
                 var description = $(".selected .eac-item span").text();
                 $("#ICD10Code").val($("#ICD10Code").val() + " " + description);
-                ListaICD10.push({"code": code, "desc": description});
+                ListaICD10.push({ "code": code, "desc": description });
                 // create_Table_Delete(ListaICD10,"json_medical_history","fieldsetHistoryMedicalDiagnosis");
                 $("#json_medical_history").createTable(ListaICD10);
             },
-            onChooseEvent: function (element) {
+            onChooseEvent: function(element) {
 
             }
         },
@@ -365,20 +427,17 @@ $(document).ready(function () {
     };
 
     $("#ICD10Code").easyAutocomplete(ICD10_options_by_code);
-    $("#ICD10Code").on("focus", function (element) {
+    $("#ICD10Code").on("focus", function(element) {
         $(this).val("");
     });
 
     var List_Medications = [];
-    /*Da commitare 08/01/2020*/
-    $("#Insert-Med").on("click", function (evt) {
-        $("#MedicationDateModal .span-modal-title").text("Medications");
-        // $("#DateModal .modal-body th:first").remove();
-        // $("#DateModal .modal-body .medication-number").remove();
+    /*Da commitare Insert-Med*/
+    $("#Insert-Med").on("click", function(evt) {
         $("#Medication-Number").val(List_Medications.length + 1);
     });
-
-    $("#save_med").on("click", function (evt) {
+    /*Da commitare save_med*/
+    $("#save_med").on("click", function(evt) {
         var medication_start_date = $(".med-start-date").val();
         var medication_end_date = $(".med-end-date").val();
         if (medication_start_date != "" && medication_end_date != "") {
@@ -394,7 +453,8 @@ $(document).ready(function () {
         }
     });
 
-    $("#fieldsetPregnancy_History #Pregnant_Yes,#Pregnant_No").on("click", function (evt) {
+    /*Da commitare pregnancy*/
+    $("#fieldsetPregnancy_History #Pregnant_Yes,#Pregnant_No").on("click", function(evt) {
         if ($(this).attr("id") == "Pregnant_Yes") {
             $("#fieldsetPregnancy_History .Pregnancy_Stats").removeClass("hide-transition").addClass("show-transition");
         }
@@ -403,8 +463,10 @@ $(document).ready(function () {
         }
     });
 
-    $("#fieldsetPregnancy_History #Pregnancy_Before input").on("click", function (evt) {
+    /*Da commitare pregnancy*/
+    $("#fieldsetPregnancy_History #Pregnancy_Before input").on("click", function(evt) {
         if ($(this).attr("id") == "Before_Yes") {
+            // $("#Pregnancy_Before").find(".hide-transition").css("borderTop","1px solid");
             $("#Pregnancy_Before").find(".hide-transition").removeClass("hide-transition").addClass("show-transition");
         }
         if ($(this).attr("id") == "Before_No") {
@@ -412,168 +474,18 @@ $(document).ready(function () {
         }
     });
 
-    $("#fieldsetPregnancy_History #Pregnancy_After input").on("click", function (evt) {
-        if ($(this).attr("id") == "After_Yes") {
-            $("#Pregnancy_After").find(".hide-transition").removeClass("hide-transition").addClass("show-transition");
+    $("#selectLesion").on("change", function(evt) {
+        if ($(this).val() == "Yes") {
+            $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).attr("id") == "After_No") {
-            $("#Pregnancy_After").find(".show-transition").addClass("hide-transition").removeClass("show-transition");
-        }
-    });
-    /*Fine Commit*/
-    List_BCC_Sites = [];
-    List_SCC_Invasive_Sites = [];
-    List_SCC_InSitu_Sites = [];
-
-    $("#Insert-BCC_Sites,#Insert-SCC_Invasive_Sites,#Insert-SCC_InSitu_Sites").on("click", function (evt) {
-        switch ($(this).attr("id")) {
-            case "Insert-BCC_Sites":
-                $("#Sites_Modal span.modal-title").text("BCC Site(s)");
-                $("#Sites_Modal input").prop("checked", false);
-                $("#Sites_Modal .modal-caller").text("BCC");
-                $("#Sites_Modal .th-image img").attr("src", "icons/human-body-cyan.png");
-                if (List_BCC_Sites.length == 0) {
-                    $.each(List_BCC_Sites, function (key, value) {
-                        $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
-                    });
-                }
-                break;
-            case "Insert-SCC_Invasive_Sites":
-                $("#Sites_Modal span.modal-title").text("SCC Invasive Site(s)");
-                $("#Sites_Modal input").prop("checked", false);
-                $("#Sites_Modal .modal-caller").text("SCC_Invasive");
-                $("#Sites_Modal .th-image img").attr("src", "icons/human-body-purple.png");
-                if (List_SCC_Invasive_Sites.lenght != 0) {
-                    $.each(List_SCC_Invasive_Sites, function (key, value) {
-                        $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
-                    });
-                }
-                break;
-            case
-            "Insert-SCC_InSitu_Sites":
-                $("#Sites_Modal span.modal-title").text("SCC in situ Site(s)");
-                $("#Sites_Modal input").prop("checked", false);
-                $("#Sites_Modal .modal-caller").text("SCC_InSitu");
-                $("#Sites_Modal .th-image img").attr("src", "icons/human-body-grey.png");
-                if (List_SCC_InSitu_Sites.length != 0) {
-                    $.each(List_SCC_InSitu_Sites, function (key, value) {
-                        $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
-                    });
-                }
-                break;
+        if ($(this).val() != "Yes") {
+            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#Sites_Modal").on("change", "input", function (evt) {
-        var Caller = $("#Sites_Modal .modal-caller").text();
-        if ($(this).prop("checked") == true) {
-            var SimpleDataButton = $("<button id=\"Insert-Simple-Date\" type=\"button\" class=\"hidden-control\" data-toggle=\"modal\" data-target=\"#SimpleDateModal\">Insert Simple Date</button>");
-            var Site = {};
-            Site.Type = Caller;
-            Site.Site = $(this).parents(".TEST2").find(".table-personal-label").text();
-            $("#Sites_Modal .modal-body").append(SimpleDataButton);
-            $("#SimpleDateModal .diagnosis-date").val("");
-            $("#SimpleDateModal").addClass("hyper-modal");
-            $(SimpleDataButton).click();
-
-            if (Caller == "SCC_InSitu") {
-                $("#SimpleDateModal .hidden").removeClass("hidden").addClass("show");
-                $("#SimpleDateModal .number-control").val(1);
-            }
-
-            $("#SimpleDateModal #save_simple").one("click", function (evt) {
-                evt.preventDefault();
-                Site.Diagnosis_Date = $("#SimpleDateModal .diagnosis-date").val();
-                if (Caller == "BCC") {
-                    List_BCC_Sites.push(Site);
-                }
-                if (Caller == "SCC_Invasive") {
-                    List_SCC_Invasive_Sites.push(Site);
-                }
-                if (Caller == "SCC_InSitu") {
-                    Site.Number = $("#SimpleDateModal .number-control").val();
-                    console.log($("#SimpleDateModal .show"));
-                    $("#SimpleDateModal .show").removeClass("show").addClass("hidden");
-                    List_SCC_InSitu_Sites.push(Site);
-                }
-            });
-            $("#SimpleDateModal .close .btn-danger").on("click", function (evt) {
-                evt.preventDefault();
-                $("#SimpleDateModal").toggle().removeClass("hyper-modal");
-                if (Caller == "BCC") {
-                    List_BCC_Sites.push(Site);
-                }
-                if (Caller == "SCC_Invasive") {
-                    List_SCC_Invasive_Sites.push(Site);
-                }
-                if (Caller == "SCC_InSitu") {
-                    $("#SimpleDateModal .show").removeClass("show").addClass("hidden");
-                    List_SCC_InSitu_Sites.push(Site);
-                }
-            });
-        }
-        if ($(this).prop("checked") == false) {
-            var label_remove = $(this).parents(".TEST2").find(".table-personal-label").text();
-            if (Caller == "BCC") {
-                var filteredObj = List_BCC_Sites.find(function (item, i) {
-                    if (item.Site === label_remove) {
-                        List_BCC_Sites.splice(i, 1);
-                    }
-                });
-                if (List_BCC_Sites.length == 0) {
-                    $("#fieldsetLifetime_History .BCC_Sites_Json_Table").empty();
-                }
-            }
-            if (Caller == "SCC_Invasive") {
-                var filteredObj = List_SCC_Invasive_Sites.find(function (item, i) {
-                    if (item.Site === label_remove) {
-                        List_SCC_Invasive_Sites.splice(i, 1);
-                    }
-                });
-                if (List_SCC_Invasive_Sites.length == 0) {
-                    $("#fieldsetLifetime_History .BCC_Sites_Json_Table").empty();
-                }
-            }
-            if (Caller == "SCC_InSitu") {
-                var filteredObj = List_SCC_InSitu_Sites.find(function (item, i) {
-                    if (item.Site === label_remove) {
-                        List_SCC_InSitu_Sites.splice(i, 1);
-                    }
-                });
-                if (List_SCC_InSitu_Sites.length == 0) {
-                    $("#fieldsetLifetime_History .BCC_Sites_Json_Table").empty();
-                }
-            }
-        }
-    });
-
-    $("#Sites_Modal #save_sites").on("click", function (evt) {
-        var Caller = $("#Sites_Modal .modal-caller").text();
-        console.log("Sites Modal Saves Caller :", Caller);
-        switch (Caller) {
-            case "BCC":
-                if (List_BCC_Sites.length != 0) {
-                    $(".BCC_Sites_Json_Table").createTable(List_BCC_Sites);
-                }
-                break;
-            case "SCC_Invasive":
-                if (List_SCC_Invasive_Sites != 0) {
-                    $(".SCC_Invasive_Sites_Json_Table").createTable(List_SCC_Invasive_Sites);
-                }
-                break;
-            case "SCC_InSitu":
-                if (List_SCC_InSitu_Sites) {
-                    $(".SCC_InSitu_Sites_Json_Table").createTable(List_SCC_InSitu_Sites);
-                }
-                break;
-        }
-    });
-
-    $("#Sites_Modal #cancel_sites,#Sites_Modal .close").on("click", function (evt) {
-        //$("#HistoryBCC_Modal input").prop("checked",false);
-    });
-
-    $("#submit").on('click', function (e) {
+    $("#submit").on('click', function(e) {
         e.preventDefault();
         var serJson = $("#msform").serializeJSON();
 
@@ -592,21 +504,22 @@ $(document).ready(function () {
             type: "POST", // type of action POST || GET
             dataType: 'json', // data type
             data: serJson, // post data || get data
-            success: function (result) {
+            success: function(result) {
                 // you can see the result from the console
                 // tab of the developer tools
                 console.log(result);
             },
-            error: function (xhr, resp, text) {
+            error: function(xhr, resp, text) {
                 console.log(xhr, resp, text);
             }
-        });
+        })
+
+
     });
 
     Initialize();
-
-})
-;/*Fine Doucment Ready*/
+});
+/*Fine Doucment Ready*/
 
 function Initialize() {
     DDL_Other('Ethnicity', 'inputEthnicity');
