@@ -432,12 +432,15 @@ $(document).ready(function() {
     });
 
     var List_Medications = [];
-    /*Da commitare Insert-Med*/
-    $("#Insert-Med").on("click", function(evt) {
+
+    $("#Insert-Med").on("click", function (evt) {
+        $("#MedicationDateModal .span-modal-title").text("Medications");
+        // $("#DateModal .modal-body th:first").remove();
+        // $("#DateModal .modal-body .medication-number").remove();
         $("#Medication-Number").val(List_Medications.length + 1);
     });
-    /*Da commitare save_med*/
-    $("#save_med").on("click", function(evt) {
+
+    $("#save_med").on("click", function (evt) {
         var medication_start_date = $(".med-start-date").val();
         var medication_end_date = $(".med-end-date").val();
         if (medication_start_date != "" && medication_end_date != "") {
@@ -453,8 +456,7 @@ $(document).ready(function() {
         }
     });
 
-    /*Da commitare pregnancy*/
-    $("#fieldsetPregnancy_History #Pregnant_Yes,#Pregnant_No").on("click", function(evt) {
+    $("#fieldsetPregnancy_History #Pregnant_Yes,#Pregnant_No").on("click", function (evt) {
         if ($(this).attr("id") == "Pregnant_Yes") {
             $("#fieldsetPregnancy_History .Pregnancy_Stats").removeClass("hide-transition").addClass("show-transition");
         }
@@ -463,15 +465,170 @@ $(document).ready(function() {
         }
     });
 
-    /*Da commitare pregnancy*/
-    $("#fieldsetPregnancy_History #Pregnancy_Before input").on("click", function(evt) {
+    $("#fieldsetPregnancy_History #Pregnancy_Before input").on("click", function (evt) {
         if ($(this).attr("id") == "Before_Yes") {
-            // $("#Pregnancy_Before").find(".hide-transition").css("borderTop","1px solid");
             $("#Pregnancy_Before").find(".hide-transition").removeClass("hide-transition").addClass("show-transition");
         }
         if ($(this).attr("id") == "Before_No") {
             $("#Pregnancy_Before").find(".show-transition").addClass("hide-transition").removeClass("show-transition");
         }
+    });
+
+    $("#fieldsetPregnancy_History #Pregnancy_After input").on("click", function (evt) {
+        if ($(this).attr("id") == "After_Yes") {
+            $("#Pregnancy_After").find(".hide-transition").removeClass("hide-transition").addClass("show-transition");
+        }
+        if ($(this).attr("id") == "After_No") {
+            $("#Pregnancy_After").find(".show-transition").addClass("hide-transition").removeClass("show-transition");
+        }
+    });
+    /*Fine Commit*/
+    List_BCC_Sites = [];
+    List_SCC_Invasive_Sites = [];
+    List_SCC_InSitu_Sites = [];
+    List_To_Delete = []
+
+    $("#Insert-BCC_Sites,#Insert-SCC_Invasive_Sites,#Insert-SCC_InSitu_Sites").on("click", function (evt) {
+        switch ($(this).attr("id")) {
+            case "Insert-BCC_Sites":
+                $("#Sites_Modal span.modal-title").text("BCC Site(s)");
+                $("#Sites_Modal input").prop("checked", false);
+                $("#Sites_Modal .modal-caller").text("BCC");
+                $("#Sites_Modal .th-image img").attr("src", "icons/human-body-cyan.png");
+                if (List_BCC_Sites.length != 0) {
+                    $.each(List_BCC_Sites, function (key, value) {
+                        $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
+                    });
+                }
+                break;
+            case "Insert-SCC_Invasive_Sites":
+                $("#Sites_Modal span.modal-title").text("SCC Invasive Site(s)");
+                $("#Sites_Modal input").prop("checked", false);
+                $("#Sites_Modal .modal-caller").text("SCC_Invasive");
+                $("#Sites_Modal .th-image img").attr("src", "icons/human-body-purple.png");
+                if (List_SCC_Invasive_Sites.lenght != 0) {
+                    $.each(List_SCC_Invasive_Sites, function (key, value) {
+                        $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
+                    });
+                }
+                break;
+            case
+            "Insert-SCC_InSitu_Sites":
+                $("#Sites_Modal span.modal-title").text("SCC in situ Site(s)");
+                $("#Sites_Modal input").prop("checked", false);
+                $("#Sites_Modal .modal-caller").text("SCC_InSitu");
+                $("#Sites_Modal .th-image img").attr("src", "icons/human-body-grey.png");
+                if (List_SCC_InSitu_Sites.length != 0) {
+                    $.each(List_SCC_InSitu_Sites, function (key, value) {
+                        $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
+                    });
+                }
+                break;
+        }
+    });
+
+    $("#Sites_Modal").on("change", "input", function (evt) {
+        var Caller = $("#Sites_Modal .modal-caller").text();
+        if ($(this).prop("checked") == true) {
+            var SimpleDataButton = $("<button id=\"Insert-Simple-Date\" type=\"button\" class=\"hidden-control\" data-toggle=\"modal\" data-target=\"#SimpleDateModal\">Insert Simple Date</button>");
+            var Site = {};
+            Site.Type = Caller;
+            Site.Site = $(this).parents(".TEST2").find(".table-personal-label").text();
+            $("#Sites_Modal .modal-body").append(SimpleDataButton);
+            $("#SimpleDateModal .diagnosis-date").val("");
+            $("#SimpleDateModal").addClass("hyper-modal");
+            $(SimpleDataButton).click();
+
+            if (Caller == "SCC_InSitu") {
+                $("#SimpleDateModal .hidden").removeClass("hidden").addClass("show");
+                $("#SimpleDateModal .number-control").val(1);
+            }else{
+                $("#SimpleDateModal .show").removeClass("show").addClass("hidden");
+            }
+
+            $("#SimpleDateModal #save_simple").one("click", function (evt) {
+                evt.preventDefault();
+                Site.Diagnosis_Date = $("#SimpleDateModal .diagnosis-date").val();
+                if (Caller == "BCC") {
+                    List_BCC_Sites.push(Site);
+                }
+                if (Caller == "SCC_Invasive") {
+                    List_SCC_Invasive_Sites.push(Site);
+                }
+                if (Caller == "SCC_InSitu") {
+                    Site.Number = $("#SimpleDateModal .number-control").val();
+                    List_SCC_InSitu_Sites.push(Site);
+                }
+            });
+
+            $("#SimpleDateModal .close .btn-danger").on("click", function (evt) {
+                evt.preventDefault();
+                $("#SimpleDateModal").toggle().removeClass("hyper-modal");
+               /* if (Caller == "BCC") {
+                    List_BCC_Sites.push(Site);
+                }
+                if (Caller == "SCC_Invasive") {
+                    List_SCC_Invasive_Sites.push(Site);
+                }
+                if (Caller == "SCC_InSitu") {
+                    List_SCC_InSitu_Sites.push(Site);
+                }*/
+            });
+        }
+        if ($(this).prop("checked") == false) {
+            var label_remove = $(this).parents(".TEST2").find(".table-personal-label").text();
+            var temp_Array = [];
+            if (Caller == "BCC") {
+                temp_Array = List_BCC_Sites;
+            }
+            if (Caller == "SCC_Invasive") {
+                temp_Array = List_SCC_Invasive_Sites;
+            }
+            if (Caller == "SCC_InSitu") {
+                temp_Array = List_SCC_InSitu_Sites;
+            }
+            var filteredObj = temp_Array.find(function (item, i) {
+                console.log("Item",item,"\ni",i);
+                if (item.Site === label_remove) {
+                    List_To_Delete.push(i);
+                }
+            });
+        }
+    });
+
+    $("#Sites_Modal #save_sites").on("click", function (evt) {
+        var Caller = $("#Sites_Modal .modal-caller").text();
+        var temp_Array = [];
+        var classTableToReload = "";
+        switch (Caller) {
+            case "BCC":
+                temp_Array = List_BCC_Sites;
+                classTableToReload = ".BCC_Sites_Json_Table";
+                break;
+            case "SCC_Invasive":
+                temp_Array = List_SCC_Invasive_Sites;
+                classTableToReload = ".SCC_Invasive_Sites_Json_Table";
+                break;
+            case "SCC_InSitu":
+                temp_Array = List_SCC_InSitu_Sites;
+                classTableToReload = ".SCC_InSitu_Sites_Json_Table"
+                break;
+        }
+        if(List_To_Delete.length != 0) {
+            $.each(List_To_Delete, function (index, value) {
+                temp_Array.splice(value, 1);
+                List_To_Delete.pop();
+            });
+        }
+        if (temp_Array.length != 0) {
+            $(classTableToReload).createTable(temp_Array);
+        }else{
+            $(classTableToReload).empty();
+        }
+    });
+
+    $("#Sites_Modal #cancel_sites,#Sites_Modal .close").on("click", function (evt) {
+        //$("#HistoryBCC_Modal input").prop("checked",false);
     });
 
     $("#selectLesion").on("change", function(evt) {
