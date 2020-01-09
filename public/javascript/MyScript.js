@@ -488,7 +488,7 @@ $(document).ready(function() {
     List_SCC_InSitu_Sites = [];
     List_To_Delete = []
 
-    $("#Insert-BCC_Sites,#Insert-SCC_Invasive_Sites,#Insert-SCC_InSitu_Sites").on("click", function(evt) {
+    $("#Insert-BCC_Sites,#Insert-SCC_Invasive_Sites,#Insert-SCC_InSitu_Sites").on("click", function (evt) {
         switch ($(this).attr("id")) {
             case "Insert-BCC_Sites":
                 $("#Sites_Modal span.modal-title").text("BCC Site(s)");
@@ -496,7 +496,7 @@ $(document).ready(function() {
                 $("#Sites_Modal .modal-caller").text("BCC");
                 $("#Sites_Modal .th-image img").attr("src", "icons/human-body-cyan.png");
                 if (List_BCC_Sites.length != 0) {
-                    $.each(List_BCC_Sites, function(key, value) {
+                    $.each(List_BCC_Sites, function (key, value) {
                         $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
                     });
                 }
@@ -507,18 +507,19 @@ $(document).ready(function() {
                 $("#Sites_Modal .modal-caller").text("SCC_Invasive");
                 $("#Sites_Modal .th-image img").attr("src", "icons/human-body-purple.png");
                 if (List_SCC_Invasive_Sites.lenght != 0) {
-                    $.each(List_SCC_Invasive_Sites, function(key, value) {
+                    $.each(List_SCC_Invasive_Sites, function (key, value) {
                         $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
                     });
                 }
                 break;
-            case "Insert-SCC_InSitu_Sites":
+            case
+            "Insert-SCC_InSitu_Sites":
                 $("#Sites_Modal span.modal-title").text("SCC in situ Site(s)");
                 $("#Sites_Modal input").prop("checked", false);
                 $("#Sites_Modal .modal-caller").text("SCC_InSitu");
                 $("#Sites_Modal .th-image img").attr("src", "icons/human-body-grey.png");
                 if (List_SCC_InSitu_Sites.length != 0) {
-                    $.each(List_SCC_InSitu_Sites, function(key, value) {
+                    $.each(List_SCC_InSitu_Sites, function (key, value) {
                         $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
                     });
                 }
@@ -526,26 +527,23 @@ $(document).ready(function() {
         }
     });
 
-    $("#Sites_Modal").on("change", "input", function(evt) {
+    $("#Sites_Modal").on("change", "input", function (evt) {
         var Caller = $("#Sites_Modal .modal-caller").text();
         if ($(this).prop("checked") == true) {
-            var SimpleDataButton = $("<button id=\"Insert-Simple-Date\" type=\"button\" class=\"hidden-control\" data-toggle=\"modal\" data-target=\"#SimpleDateModal\">Insert Simple Date</button>");
             var Site = {};
             Site.Type = Caller;
             Site.Site = $(this).parents(".TEST2").find(".table-personal-label").text();
-            $("#Sites_Modal .modal-body").append(SimpleDataButton);
             $("#SimpleDateModal .diagnosis-date").val("");
-            $("#SimpleDateModal").addClass("hyper-modal");
-            $(SimpleDataButton).click();
+            $("#SimpleDateModal").addClass("hyper-modal").modal("show");
 
             if (Caller == "SCC_InSitu") {
                 $("#SimpleDateModal .hidden").removeClass("hidden").addClass("show");
                 $("#SimpleDateModal .number-control").val(1);
-            } else {
+            }else{
                 $("#SimpleDateModal .show").removeClass("show").addClass("hidden");
             }
 
-            $("#SimpleDateModal #save_simple").one("click", function(evt) {
+            $("#SimpleDateModal #save_simple").one("click", function (evt) {
                 evt.preventDefault();
                 Site.Diagnosis_Date = $("#SimpleDateModal .diagnosis-date").val();
                 if (Caller == "BCC") {
@@ -560,7 +558,7 @@ $(document).ready(function() {
                 }
             });
 
-            $("#SimpleDateModal .close .btn-danger").on("click", function(evt) {
+            $("#SimpleDateModal .close .btn-danger").on("click", function (evt) {
                 evt.preventDefault();
                 $("#SimpleDateModal").toggle().removeClass("hyper-modal");
                 /* if (Caller == "BCC") {
@@ -586,8 +584,7 @@ $(document).ready(function() {
             if (Caller == "SCC_InSitu") {
                 temp_Array = List_SCC_InSitu_Sites;
             }
-            var filteredObj = temp_Array.find(function(item, i) {
-                console.log("Item", item, "\ni", i);
+            var filteredObj = temp_Array.find(function (item, i) {
                 if (item.Site === label_remove) {
                     List_To_Delete.push(i);
                 }
@@ -595,7 +592,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#Sites_Modal #save_sites").on("click", function(evt) {
+    $("#Sites_Modal #save_sites").on("click", function (evt) {
         var Caller = $("#Sites_Modal .modal-caller").text();
         var temp_Array = [];
         var classTableToReload = "";
@@ -613,20 +610,20 @@ $(document).ready(function() {
                 classTableToReload = ".SCC_InSitu_Sites_Json_Table"
                 break;
         }
-        if (List_To_Delete.length != 0) {
-            $.each(List_To_Delete, function(index, value) {
+        if(List_To_Delete.length != 0) {
+            $.each(List_To_Delete, function (index, value) {
                 temp_Array.splice(value, 1);
                 List_To_Delete.pop();
             });
         }
         if (temp_Array.length != 0) {
             $(classTableToReload).createTable(temp_Array);
-        } else {
+        }else{
             $(classTableToReload).empty();
         }
     });
 
-    $("#Sites_Modal #cancel_sites,#Sites_Modal .close").on("click", function(evt) {
+    $("#Sites_Modal #cancel_sites,#Sites_Modal .close").on("click", function (evt) {
         //$("#HistoryBCC_Modal input").prop("checked",false);
     });
     
