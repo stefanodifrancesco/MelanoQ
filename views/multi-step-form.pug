@@ -1576,12 +1576,19 @@ block content
                       | Insert in situ SCC Site(s)
                   .SCC_InSitu_Sites_Json_Table
             
+            fieldset#fieldsetNonCutaneous(style='margin-top:20px;')
+              legend Other non-cutaneous neoplasia
+              p.help-block For each additional neoplasia
+              .form-group
+                p
+                  button.btn.add-Neoplasia(type='button', data-toggle='modal', data-target='#Additional_Neoplasia') Insert Additional Neoplasia
+              .json-non-cutaneous-additional-neoplasia.form-group      
+
           div.alphaformfooter
           div.formfooter
           input.scroll-button-bottom(type='button')
           input#fifthprevious.previous.action-button(type='button', name='previous', value='Previous')
           input#sixthnext.next.action-button(type='button', name='next', value='Next')
-        
 
 
         fieldset
@@ -2179,3 +2186,34 @@ block content
                     button#save_sites.btn.btn-secondary(type='button', data-dismiss='modal')
                       | Save
                     button#cancel_sites.btn.btn-danger(type='button', data-dismiss='modal') Cancel
+
+  #Additional_Neoplasia.modal.fade
+    .modal-dialog
+      .modal-content(style='width: auto;')
+        span.hidden.modal-caller
+        // Modal Header
+        .modal-header.modal-table
+          table.modal-title
+            thead
+              tr
+                th.th-image(style='width:35%;')
+                  img(style='width: 35%;border: 1px solid black;border-radius:50px;margin-left: 10%;', src='icons/medical-records-svgrepo-com.png')
+                th.th-title(style='width:65%;')
+                  span.modal-title(style='font-size:3.0rem;') Non cutaneous additional neoplasia
+          button.close(type='button', data-dismiss='modal') ×
+        // Modal body
+        .modal-body
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell
+                  select#NonCutaneous_Select.form-control
+                    option(value='No Choosed') Select Type ...
+                .divTableCell
+                  input.NonCutaneous-diagnosis-age(type='number', min='1', placeholder='Age of diagnosis')
+                .divTableCell
+                  input.form-control.year-datepicker(type='text', placeholder='Year of diagnosis')
+        // Modal footer
+        .modal-footer
+          button.btn.btn-secondary.save(type='button', data-dismiss='modal') Save
+          button.btn.btn-danger.cancel(type='button', data-dismiss='modal') Cancel
