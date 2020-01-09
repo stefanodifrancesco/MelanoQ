@@ -1,33 +1,35 @@
-#msform .fade {
-    background-color: rgba(100, 100, 100, 0.8);
-    transition: opacity .15s linear;
+.modal-table img {
+    width: 50%;
 }
 
-#msform .fade.in {
-    background-color: rgba(100, 100, 100, 0.8);
+.modal-table>.modal-title {
+    letter-spacing: 1px;
+    font-size: 3.5em;
+    color: lightgray;
+    font-variant: small-caps;
+    font-style: oblique;
 }
 
-#msform .modal-body th {
+.Pregnancy_Stats .divTableCell {
+    /* text-align: center; */
+    padding: 14px;
+}
+
+.modal-body th {
     text-align: center;
 }
 
-#msform .modal-body input[type='number'] {
+.modal-body input[type='number'] {
     padding: 0px;
     height: 35px;
-    width: 120px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    width: 80%;
+    box-sizing: border-box;
+    color: black;
+    font-size: 13px;
+    outline: 0;
 }
-
-#msform .modal-body .datepicker {
-    width: 100%;
-    height: 35px;
-}
-
-#Medication-Number {
-    width: 120px;
-    text-align: center;
-}
-
-.modal-table {}
 
 .modal-table img {
     width: 50%;
@@ -39,4 +41,152 @@
     color: lightgray;
     font-variant: small-caps;
     font-style: oblique;
+}
+
+.modal-body .datepicker {
+    width: 100%;
+    height: 35px;
+}
+
+#Medication-Number {
+    width: 120px;
+    text-align: center;
+}
+
+.Pregnancy_Stats input {
+    margin: auto !important;
+    padding: 4px;
+}
+
+#fieldsetPregnancy_History input[type=number] {
+    width: 20%;
+    text-align: end;
+    border: 1px solid;
+    font-size: 20px;
+    color: #0056b3;
+}
+
+.no-bottom-border {
+    border-bottom: 1px solid transparent;
+}
+
+.no-left-border {
+    border-left: 1px solid transparent;
+}
+
+.no-right-border {
+    border-right: 1px solid transparent;
+}
+
+.show-transition {
+    display: table-row;
+}
+
+.hide-transition {
+    display: none;
+}
+
+.tg-wrap {
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: #0c4090;
+    /* border: 1px solid darkblue; */
+}
+
+.tg-wrap td {
+    font-family: Arial;
+    font-size: 1.2rem;
+    padding: 10px 5px !important;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    word-break: normal;
+    border-color: black;
+    padding: 10px !important;
+    text-align: center;
+    width: 14%;
+}
+
+.tg-wrap td:hover {
+    background-color: #fbed50;
+    cursor: initial;
+}
+
+.tg-wrap th {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 10px 5px;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    word-break: normal;
+    border-color: black;
+}
+
+.tg-wrap .tg-y5l6 {
+    font-size: 18px;
+    font-family: Tahoma, Geneva, sans-serif !important;
+    ;
+    color: #000000;
+    border-color: inherit;
+    text-align: left;
+    vertical-align: top
+}
+
+.tg-wrap .tg-08jh {
+    font-size: 18px;
+    font-family: Tahoma, Geneva, sans-serif !important;
+    ;
+    color: #000000;
+    border-color: inherit;
+    text-align: left;
+    vertical-align: top
+}
+
+.tg-wrap .tg-o7c7 {
+    font-size: 18px;
+    font-family: Tahoma, Geneva, sans-serif !important;
+    ;
+    border-color: inherit;
+    text-align: left;
+    vertical-align: top
+}
+
+.hyper-modal {
+    z-index: 1080 !important;
+}
+
+span.span-modal-title {
+    font-size: 16px;
+}
+
+span.span-modal-subtitle {
+    font-size: 15px;
+    color: rgba(255, 0, 0, 0.5);
+}
+
+.modal {
+    overflow-y: auto !important;
+}
+
+#Sites_Modal {
+    z-index: 1041;
+}
+
+#Sites_Modal .modal-dialog {
+    max-width: 70%;
+}
+
+@media screen and (max-width: 767px) {
+    .tg {
+        width: auto !important;
+    }
+    .tg col {
+        width: auto !important;
+    }
+    .tg-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }

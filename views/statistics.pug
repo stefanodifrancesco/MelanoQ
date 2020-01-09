@@ -1,6 +1,29 @@
 extends layout
 
+block append style
+    link(rel='stylesheet', href='/stylesheet/statistics.css')
+
+block append script
+    script(src='/javascript/statistics.js')
+
 block content
-  iframe(style="width: -webkit-fill-available; height: -webkit-fill-available; margin-top: 70px;" src="http://localhost:5601/app/kibana#/dashboard?embed=true&_g=()&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:15,i:'9795bbc0-4367-4500-ba3f-2491724a3562',w:24,x:0,y:0),id:e4fdcab0-0ea2-11ea-8fc6-b5a2e5472e1f,panelIndex:'9795bbc0-4367-4500-ba3f-2491724a3562',type:visualization,version:'7.4.2')),query:(language:kuery,query:''),timeRestore:!f,title:'New+Dashboard',viewMode:edit)")
+    div.profile-header
+      button.questionnaires-list-button(onclick="var t = document.getElementsByClassName(\"kibana\"); var q = t[0]; q.classList.add(\"fade-out-top\"); window.location.href = '/home';")
+        |  QUESTIONNAIRES<br>
+        i.fa.fa-caret-down
+
+      button.new-questionnaire-button(onclick="var t = document.getElementsByClassName(\"kibana\"); var q = t[0]; q.classList.add(\"fade-out-top\"); window.location.href = '/stepform';")
+        |  CREATE NEW<br>
+        i.fa.fa-caret-down
+          
+      button.statistics-button(onclick="window.location.href = '/statistics';")
+        |  STATISTICS<br>
+        i.fa.fa-caret-down
+
+      button.btn.logout-button(onclick="window.location.href = '/logout';")
+        i.fa.fa-sign-out 
+        |  Logout
+
+    iframe.kibana(src="http://localhost:5601/app/kibana#/dashboard/f2dc9d80-2a56-11ea-abee-678cb5ff7497?_g=(filters%3A!())")
 
             
