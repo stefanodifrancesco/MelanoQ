@@ -630,7 +630,40 @@ $(document).ready(function() {
     $("#Sites_Modal #cancel_sites,#Sites_Modal .close").on("click", function (evt) {
         //$("#HistoryBCC_Modal input").prop("checked",false);
     });
+    
+    $("#Additional_Neoplasia .year-datepicker").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years"
+    });
 
+    List_Additional_Neoplasias = [];
+
+    $("#Additional_Neoplasia .save").on("click",function(evt){
+        var SelectAddNeoplasia = $("#Additional_Neoplasia #NonCutaneous_Select").val();
+        var NonCutaneousAge = $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val();
+        var YearNonCutaneous = $("#Additional_Neoplasia .year-datepicker").val();
+        var AdditionalNeoplasia = {};
+        if(SelectAddNeoplasia != "No Choosed" && NonCutaneousAge != "" && YearNonCutaneous != "") {
+            AdditionalNeoplasia.Name = SelectAddNeoplasia;
+            AdditionalNeoplasia.Age_of_diagnosis = NonCutaneousAge;
+            AdditionalNeoplasia.Year_of_diagnosis = YearNonCutaneous;
+            List_Additional_Neoplasias.push(AdditionalNeoplasia);
+            $(".json-non-cutaneous-additional-neoplasia").createTable(List_Additional_Neoplasias);
+            $("#Additional_Neoplasia #NonCutaneous_Select").val("No Choosed");
+            $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val(1);
+            $("#Additional_Neoplasia .year-datepicker").val("");
+        }else{
+            alert("<span class='' style='color:red;'>Please insert all fields</span>");
+        }
+    });
+
+    $("#Additional_Neoplasia .cancel .close").on("click",function(evt) {
+        $("#Additional_Neoplasia #NonCutaneous_Select").val("No Choosed");
+        $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val(1);
+        $("#Additional_Neoplasia .year-datepicker").val("");
+    });
+    
     $("#selectLesion").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
@@ -682,7 +715,20 @@ function Initialize() {
     DDL_Other('Ethnicity', 'inputEthnicity');
     DDL_Other('Melanoma', 'inputMelanoma');
     DDL_from_JSON('History', 'siccodes.json');
-    //$("#ICD10_Search_Toggle").click();
+    DDL_American_Cancer();
+    Modal_Draggable();
+};
+
+function DDL_American_Cancer() {
+    $.getJSON('american_cancer_json.json', function (result) {
+        $.each(result, function (index, value) {
+            $("#NonCutaneous_Select").append("<option value='" + value.Type + "'>" + value.Type + "</option>");
+        });
+    });
+};
+
+function Modal_Draggable(){
+    $(".modal-dialog").draggable();
 };
 
 function Create_Datepicker(tag_ID, tag_Append) {
