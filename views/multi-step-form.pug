@@ -1608,304 +1608,914 @@ block content
             h2.fs-title MELANOMA CHARACTERISTICS
             h3.fs-subtitle completed by physician/study nurse
 
-            fieldset#fieldsetMelanomaLesion
-              .form-group
-                .divTable
-                  .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Pre-existing pigmented lesion at the same site of melanoma
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select#selectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
-                          option(value='NoChoosed') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
-                      .divTableCell.NoDivTableBorder.hidden-control
-                        label(style='font-size: 12px;') Number:
-                        input#inputLesionCount(type='number' min='1' name='melanoma_characteristics[lesion][count]')
+            <details>
+              <summary>CHARACTERISTICS OF 1st PRIMARY MELANOMA</summary>
+              <hr/>
+              fieldset
+                fieldset#fieldsetMelanomaLesion
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Pre-existing pigmented lesion at the same site of melanoma
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#selectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='No') No
+                              option(value='Yes') Yes
+                          .divTableCell.NoDivTableBorder.hidden-control
+                            label(style='font-size: 12px;') Number:
+                            input#inputLesionCount(type='number' min='1' name='melanoma_characteristics[lesion][count]')
 
-            fieldset#fieldsetMelanomadetection
-              label(for='42940743')
-                | Detection of melanoma
-              p(style='color:red;') (Optional)
-              .form-group
-                .divTable
-                  .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder
-                        select#melanomaDetection.form-control(name='melanoma_characteristics[detection]')
-                          option(value='NoChoosed') Select ...
-                          option(value='Patient') Patient
-                          option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
-                          option(value='Physician') Physician
-                          option(value='Other') Other
-                      .divTableCell.NoDivTableBorder.hidden-control
-                        label(style='font-size: 12px;') Specify:
-                        input(type='text' name='melanoma_characteristics[detection][other]')
-            
-            fieldset#fieldsetSkinCheck
-              label
-                | Self-skin exam
-              p(style='color:red;') (Optional)
-              .form-group
-                .divTable
-                  .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span How often did you check your skin in the past 3 yrs?
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
-                          option(value='NoChoosed') Select...
-                          option(value='Never') Never
-                          option(value='Once') Once
-                          option(value='Once/year') Once/year
-                          option(value='More than once/year') More than once/year
+                fieldset#fieldsetMelanomadetection
+                  label(for='42940743')
+                    | Detection of melanoma
+                  p(style='color:red;') (Optional)
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder
+                            select#melanomaDetection.form-control(name='melanoma_characteristics[detection]')
+                              option(value='NoChoosed') Select ...
+                              option(value='Patient') Patient
+                              option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
+                              option(value='Physician') Physician
+                              option(value='Other') Other
+                          .divTableCell.NoDivTableBorder.hidden-control
+                            label(style='font-size: 12px;') Specify:
+                            input(type='text' name='melanoma_characteristics[detection][other]')
+                
+                fieldset#fieldsetSkinCheck
+                  label
+                    | Self-skin exam
+                  p(style='color:red;') (Optional)
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span How often did you check your skin in the past 3 yrs?
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                              option(value='NoChoosed') Select...
+                              option(value='Never') Never
+                              option(value='Once') Once
+                              option(value='Once/year') Once/year
+                              option(value='More than once/year') More than once/year
 
-            fieldset#fieldsetPhisicianSkinCheck
-              label
-                | Skin exam by physician
-              p(style='color:red;') (Optional)
-              .form-group
-                .divTable
-                  .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span How often did a physician examine your skin in the past 3 yrs?
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
-                          option(value='NoChoosed') Select...
-                          option(value='Never') Never
-                          option(value='Once') Once
-                          option(value='Once/year') Once/year
-                          option(value='More than once/year') More than once/year
-                          option(value='Do not recall a physician ever examining my skin') Do not recall a physician ever examining my skin
+                fieldset#fieldsetPhisicianSkinCheck
+                  label
+                    | Skin exam by physician
+                  p(style='color:red;') (Optional)
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span How often did a physician examine your skin in the past 3 yrs?
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                              option(value='NoChoosed') Select...
+                              option(value='Never') Never
+                              option(value='Once') Once
+                              option(value='Once/year') Once/year
+                              option(value='More than once/year') More than once/year
+                              option(value='Do not recall a physician ever examining my skin') Do not recall a physician ever examining my skin
 
-            fieldset#fieldsetSNL
-              .form-group
-                .divTable
-                  .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Sentinel Lymph Node (SLN) biopsy
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select#selectSNL.form-control(name='melanoma_characteristics[SNL][presence]')
-                          option(value='NoChoosed') Select...
-                          option(value='Yes') Yes
-                          option(value='No') No
-                          option(value='Not done') Not done
-                          option(value='Not known') Not known
-                      .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                        select.form-control(name='melanoma_characteristics[lesion][category]')
-                          option(value='NoChoosed') Positive/Negative
-                          option(value='Positive') Positive
-                          option(value='Negative') Negative
+                fieldset#fieldsetSNL
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Sentinel Lymph Node (SLN) biopsy
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#selectSNL.form-control(name='melanoma_characteristics[SNL][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='Yes') Yes
+                              option(value='No') No
+                              option(value='Not done') Not done
+                              option(value='Not known') Not known
+                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
+                            select.form-control(name='melanoma_characteristics[lesion][category]')
+                              option(value='NoChoosed') Positive/Negative
+                              option(value='Positive') Positive
+                              option(value='Negative') Negative
 
-            fieldset#fieldsetMPM
-              .form-group
-                .divTable
-                  .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Multiple primary melanoma (MPM) – concurrent or previous
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select.form-control(name='melanoma_characteristics[multiple_primary][presence]')
-                          option(value='NoChoosed') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
-                      .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                        label(style='font-size: 12px;') Number of primaries:
-                        input(type='number' min='1' name='melanoma_characteristics[multiple_primary][count]' required='' )
+                fieldset#fieldsetMPM
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Multiple primary melanoma (MPM) – concurrent or previous
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_characteristics[multiple_primary][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='No') No
+                              option(value='Yes') Yes
+                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
+                            label(style='font-size: 12px;') Number of primaries:
+                            input(type='number' min='1' name='melanoma_characteristics[multiple_primary][count]' required='' )
 
-            fieldset#fieldsetMelanomaDiagnosisDate
-              label(for='9069469') Dates of diagnosis
-              .form-group
-                input#1969236884_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
-                span.error1
-                  i.error-log.fa.fa-exclamation-triangle
+                fieldset#fieldsetMelanomaDiagnosisDate
+                  label(for='9069469') Dates of diagnosis
+                  .form-group
+                    input#1969236884_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
+                    span.error1
+                      i.error-log.fa.fa-exclamation-triangle
 
-            fieldset#fieldsetWeightHeight
-              label(for='248537302') Breslow thickness(mm)
-              .form-group
-                input#weight_input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
-                span.error1
-                    i.error-log.fa.fa-exclamation-triangle
+                fieldset#fieldsetWeightHeight
+                  label(for='248537302') Breslow thickness(mm)
+                  .form-group
+                    input#weight_input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                    span.error1
+                        i.error-log.fa.fa-exclamation-triangle
 
-            fieldset#fieldsetPhisicianSkinCheck
-              label
-                | Other main histopathologic features
-              .form-group
-                .divTable
-                  .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Subtype:
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select.form-control(name='melanoma_charcteristics[features][subtype]')
-                          option(value='NoChoosed') Select...
-                          option(value='SSM') SSM
-                          option(value='NM') NM
-                          option(value='LMM') LMM
-                          option(value='ALM') ALM
-                          option(value='Mucosal') Desmoplastic
-                          option(value='Desmoplastic') Mucosal
-                          option(value='Uveal') Uveal
-                          option(value='Other') Other
-                          option(value='NOS ') NOS
+                fieldset#fieldsetPhisicianSkinCheck
+                  label
+                    | Other main histopathologic features
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Subtype:
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][subtype]')
+                              option(value='NoChoosed') Select...
+                              option(value='SSM') SSM
+                              option(value='NM') NM
+                              option(value='LMM') LMM
+                              option(value='ALM') ALM
+                              option(value='Mucosal') Desmoplastic
+                              option(value='Desmoplastic') Mucosal
+                              option(value='Uveal') Uveal
+                              option(value='Other') Other
+                              option(value='NOS ') NOS
 
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Mitotic rate (number of mitoses/mm2):
-                      .divTableCell.NoDivTableBorder.input-cell
-                        input.form-control(type='number' min='1' name='melanoma_charcteristics[features][mitotic_rate]' required='required' data-rule-required='true' data-msg-required='Please include your weight')
-                        span.error1
-                            i.error-log.fa.fa-exclamation-triangle
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Mitotic rate (number of mitoses/mm2):
+                          .divTableCell.NoDivTableBorder.input-cell
+                            input.form-control(type='number' min='1' name='melanoma_charcteristics[features][mitotic_rate]' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                            span.error1
+                                i.error-log.fa.fa-exclamation-triangle
 
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Ulceration 
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select.form-control(name='melanoma_charcteristics[features][ulceration]')
-                          option(value='NoChoosed') Select...
-                          option(value='absent') Absent
-                          option(value='present') Present
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Ulceration 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][ulceration]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
 
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Tumor growth phase 
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select.form-control(name='melanoma_charcteristics[features][tumor_growth_phase]')
-                          option(value='NoChoosed') Select...
-                          option(value='radial') Radial
-                          option(value='vertical') Vertical
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Tumor growth phase 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][tumor_growth_phase]')
+                              option(value='NoChoosed') Select...
+                              option(value='radial') Radial
+                              option(value='vertical') Vertical
 
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Regression
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select#melanomaRegression.form-control(name='melanoma_charcteristics[features][regression][presence]')
-                          option(value='NoChoosed') Select...
-                          option(value='absent') Absent
-                          option(value='present') Present
-                      .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                        label(style='font-size: 12px;') Specify percentage:
-                        select.form-control(name='melanoma_charcteristics[features][regression][percentage]')
-                          option(value='NoChoosed') Select...
-                          option(value='less_than_50%') <50%
-                          option(value='greater_than_50%') >50%
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Regression
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#melanomaRegression.form-control(name='melanoma_charcteristics[features][regression][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
+                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
+                            label(style='font-size: 12px;') Specify percentage:
+                            select.form-control(name='melanoma_charcteristics[features][regression][percentage]')
+                              option(value='NoChoosed') Select...
+                              option(value='less_than_50%') <50%
+                              option(value='greater_than_50%') >50%
 
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Tumor Infiltrating Lymphocytes (TILs) 
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select.form-control(name='melanoma_charcteristics[features][TILs]')
-                          option(value='NoChoosed') Select...
-                          option(value='absent') Absent
-                          option(value='non-brisk') Non-brisk
-                          option(value='brisk') Brisk
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Tumor Infiltrating Lymphocytes (TILs) 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][TILs]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='non-brisk') Non-brisk
+                              option(value='brisk') Brisk
 
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Associated nevus
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select#melanomaNevus.form-control(name='melanoma_charcteristics[features][nevus][presence]')
-                          option(value='NoChoosed') Select...
-                          option(value='absent') Absent
-                          option(value='present') Present
-                      .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                        label(style='font-size: 12px;') Specify type:
-                        input(type='text' name='melanoma_characteristics[features][nevus][type]')
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Associated nevus
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#melanomaNevus.form-control(name='melanoma_charcteristics[features][nevus][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
+                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
+                            label(style='font-size: 12px;') Specify type:
+                            input(type='text' name='melanoma_characteristics[features][nevus][type]')
 
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Vascular invasion 
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select.form-control(name='melanoma_charcteristics[features][vascular_invasion]')
-                          option(value='NoChoosed') Select...
-                          option(value='absent') Absent
-                          option(value='present') Present
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Vascular invasion 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][vascular_invasion]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
 
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Microsatellitosis 
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select.form-control(name='melanoma_charcteristics[features][microsatellitosis]')
-                          option(value='NoChoosed') Select...
-                          option(value='absent') Absent
-                          option(value='partially_pigmented') Partially pigmented
-                          option(value='fully_pigmented') Fully pigmented
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Microsatellitosis 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][microsatellitosis]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='partially_pigmented') Partially pigmented
+                              option(value='fully_pigmented') Fully pigmented
 
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Solar elastosis 
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select.form-control(name='melanoma_charcteristics[features][solar_elastosis]')
-                          option(value='NoChoosed') Select...
-                          option(value='absent') Absent
-                          option(value='mild') Mild
-                          option(value='moderate') Moderate
-                          option(value='severe') Severe
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Solar elastosis 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][solar_elastosis]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='mild') Mild
+                              option(value='moderate') Moderate
+                              option(value='severe') Severe
 
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Pigmentation 
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select.form-control(name='melanoma_charcteristics[features][pigmentation]')
-                          option(value='NoChoosed') Select...
-                          option(value='absent') Absent
-                          option(value='present') Present
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Pigmentation 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][pigmentation]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
 
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Lateral margin status 
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select.form-control(name='melanoma_charcteristics[features][lateral_margin_status]')
-                          option(value='NoChoosed') Select...
-                          option(value='disease_free') Disease-free 
-                          option(value='not_diseasefree') Not disease-free
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Lateral margin status 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][lateral_margin_status]')
+                              option(value='NoChoosed') Select...
+                              option(value='disease_free') Disease-free 
+                              option(value='not_diseasefree') Not disease-free
 
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Deep margin status 
-                      .divTableCell.NoDivTableBorder.input-cell
-                        select.form-control(name='melanoma_charcteristics[features][deep_margin_status]')
-                          option(value='NoChoosed') Select...
-                          option(value='disease_free') Disease-free 
-                          option(value='not_diseasefree') Not disease-free
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Deep margin status 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][deep_margin_status]')
+                              option(value='NoChoosed') Select...
+                              option(value='disease_free') Disease-free 
+                              option(value='not_diseasefree') Not disease-free
 
-            fieldset#fieldsetMPM
-              .form-group
-                .divTable
-                  .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span AJCC stage at diagnosis using TNM staging system
-                      .divTableCell.NoDivTableBorder.input-cell
-                        label(style='font-size: 12px;') T category
-                        select.form-control(name='melanoma_characteristics[AJCC][T]' style='margin-bottom: 18px;')
-                          option(value='NoChoosed') Select...
-                          option(value='TX') TX - Primary tumor cannot be evaluated
-                          option(value='T0') T0 - No evidence of primary tumor
-                          option(value='Tis') Tis - Carcinoma in situ
-                          option(value='T1') T1 - Size and/or extent of the primary tumor
-                          option(value='T2') T2 - Size and/or extent of the primary tumor
-                          option(value='T3') T3 - Size and/or extent of the primary tumor
-                          option(value='T4') T4 - Size and/or extent of the primary tumor
-                      .divTableCell.NoDivTableBorder.input-cell
-                        label(style='font-size: 12px;') N category
-                        select.form-control(name='melanoma_characteristics[AJCC][N]' style='margin-bottom: 18px;')
-                          option(value='NoChoosed') Select...
-                          option(value='NX') NX - Regional lymph nodes cannot be evaluated
-                          option(value='NO') NO - No regional lymph node involvement
-                          option(value='N1') N1 - Involvement of regional lymph nodes
-                          option(value='N2') N2 - Involvement of regional lymph nodes
-                          option(value='N3') N3 - Involvement of regional lymph nodes
-                      .divTableCell.NoDivTableBorder.input-cell
-                        label(style='font-size: 12px;') M category
-                        select.form-control(name='melanoma_characteristics[AJCC][M]' style='margin-bottom: 18px;')
-                          option(value='NoChoosed') Select...
-                          option(value='MO') MO - No distant metastasis
-                          option(value='M1') M1 - Distant metastasis
+                fieldset#fieldsetMPM
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span AJCC stage at diagnosis using TNM staging system
+                          .divTableCell.NoDivTableBorder.input-cell
+                            label(style='font-size: 12px;') T category
+                            select.form-control(name='melanoma_characteristics[AJCC][T]' style='margin-bottom: 18px;')
+                              option(value='NoChoosed') Select...
+                              option(value='TX') TX - Primary tumor cannot be evaluated
+                              option(value='T0') T0 - No evidence of primary tumor
+                              option(value='Tis') Tis - Carcinoma in situ
+                              option(value='T1') T1 - Size and/or extent of the primary tumor
+                              option(value='T2') T2 - Size and/or extent of the primary tumor
+                              option(value='T3') T3 - Size and/or extent of the primary tumor
+                              option(value='T4') T4 - Size and/or extent of the primary tumor
+                          .divTableCell.NoDivTableBorder.input-cell
+                            label(style='font-size: 12px;') N category
+                            select.form-control(name='melanoma_characteristics[AJCC][N]' style='margin-bottom: 18px;')
+                              option(value='NoChoosed') Select...
+                              option(value='NX') NX - Regional lymph nodes cannot be evaluated
+                              option(value='NO') NO - No regional lymph node involvement
+                              option(value='N1') N1 - Involvement of regional lymph nodes
+                              option(value='N2') N2 - Involvement of regional lymph nodes
+                              option(value='N3') N3 - Involvement of regional lymph nodes
+                          .divTableCell.NoDivTableBorder.input-cell
+                            label(style='font-size: 12px;') M category
+                            select.form-control(name='melanoma_characteristics[AJCC][M]' style='margin-bottom: 18px;')
+                              option(value='NoChoosed') Select...
+                              option(value='MO') MO - No distant metastasis
+                              option(value='M1') M1 - Distant metastasis
+            </details>
 
+            <details>
+              <summary>CHARACTERISTICS OF 2nd PRIMARY MELANOMA</summary>
+              <hr/>
+              fieldset
+                fieldset#fieldsetMelanomaLesion
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Pre-existing pigmented lesion at the same site of melanoma
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#selectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='No') No
+                              option(value='Yes') Yes
+                          .divTableCell.NoDivTableBorder.hidden-control
+                            label(style='font-size: 12px;') Number:
+                            input#inputLesionCount(type='number' min='1' name='melanoma_characteristics[lesion][count]')
+
+                fieldset#fieldsetMelanomadetection
+                  label(for='42940743')
+                    | Detection of melanoma
+                  p(style='color:red;') (Optional)
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder
+                            select#melanomaDetection.form-control(name='melanoma_characteristics[detection]')
+                              option(value='NoChoosed') Select ...
+                              option(value='Patient') Patient
+                              option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
+                              option(value='Physician') Physician
+                              option(value='Other') Other
+                          .divTableCell.NoDivTableBorder.hidden-control
+                            label(style='font-size: 12px;') Specify:
+                            input(type='text' name='melanoma_characteristics[detection][other]')
+                
+                fieldset#fieldsetSkinCheck
+                  label
+                    | Self-skin exam
+                  p(style='color:red;') (Optional)
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span How often did you check your skin in the past 3 yrs?
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                              option(value='NoChoosed') Select...
+                              option(value='Never') Never
+                              option(value='Once') Once
+                              option(value='Once/year') Once/year
+                              option(value='More than once/year') More than once/year
+
+                fieldset#fieldsetPhisicianSkinCheck
+                  label
+                    | Skin exam by physician
+                  p(style='color:red;') (Optional)
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span How often did a physician examine your skin in the past 3 yrs?
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                              option(value='NoChoosed') Select...
+                              option(value='Never') Never
+                              option(value='Once') Once
+                              option(value='Once/year') Once/year
+                              option(value='More than once/year') More than once/year
+                              option(value='Do not recall a physician ever examining my skin') Do not recall a physician ever examining my skin
+
+                fieldset#fieldsetSNL
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Sentinel Lymph Node (SLN) biopsy
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#selectSNL.form-control(name='melanoma_characteristics[SNL][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='Yes') Yes
+                              option(value='No') No
+                              option(value='Not done') Not done
+                              option(value='Not known') Not known
+                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
+                            select.form-control(name='melanoma_characteristics[lesion][category]')
+                              option(value='NoChoosed') Positive/Negative
+                              option(value='Positive') Positive
+                              option(value='Negative') Negative
+
+                fieldset#fieldsetMPM
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Multiple primary melanoma (MPM) – concurrent or previous
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_characteristics[multiple_primary][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='No') No
+                              option(value='Yes') Yes
+                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
+                            label(style='font-size: 12px;') Number of primaries:
+                            input(type='number' min='1' name='melanoma_characteristics[multiple_primary][count]' required='' )
+
+                fieldset#fieldsetMelanomaDiagnosisDate
+                  label(for='9069469') Dates of diagnosis
+                  .form-group
+                    input#1969236884_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
+                    span.error1
+                      i.error-log.fa.fa-exclamation-triangle
+
+                fieldset#fieldsetWeightHeight
+                  label(for='248537302') Breslow thickness(mm)
+                  .form-group
+                    input#weight_input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                    span.error1
+                        i.error-log.fa.fa-exclamation-triangle
+
+                fieldset#fieldsetPhisicianSkinCheck
+                  label
+                    | Other main histopathologic features
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Subtype:
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][subtype]')
+                              option(value='NoChoosed') Select...
+                              option(value='SSM') SSM
+                              option(value='NM') NM
+                              option(value='LMM') LMM
+                              option(value='ALM') ALM
+                              option(value='Mucosal') Desmoplastic
+                              option(value='Desmoplastic') Mucosal
+                              option(value='Uveal') Uveal
+                              option(value='Other') Other
+                              option(value='NOS ') NOS
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Mitotic rate (number of mitoses/mm2):
+                          .divTableCell.NoDivTableBorder.input-cell
+                            input.form-control(type='number' min='1' name='melanoma_charcteristics[features][mitotic_rate]' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                            span.error1
+                                i.error-log.fa.fa-exclamation-triangle
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Ulceration 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][ulceration]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Tumor growth phase 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][tumor_growth_phase]')
+                              option(value='NoChoosed') Select...
+                              option(value='radial') Radial
+                              option(value='vertical') Vertical
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Regression
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#melanomaRegression.form-control(name='melanoma_charcteristics[features][regression][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
+                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
+                            label(style='font-size: 12px;') Specify percentage:
+                            select.form-control(name='melanoma_charcteristics[features][regression][percentage]')
+                              option(value='NoChoosed') Select...
+                              option(value='less_than_50%') <50%
+                              option(value='greater_than_50%') >50%
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Tumor Infiltrating Lymphocytes (TILs) 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][TILs]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='non-brisk') Non-brisk
+                              option(value='brisk') Brisk
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Associated nevus
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#melanomaNevus.form-control(name='melanoma_charcteristics[features][nevus][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
+                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
+                            label(style='font-size: 12px;') Specify type:
+                            input(type='text' name='melanoma_characteristics[features][nevus][type]')
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Vascular invasion 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][vascular_invasion]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Microsatellitosis 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][microsatellitosis]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='partially_pigmented') Partially pigmented
+                              option(value='fully_pigmented') Fully pigmented
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Solar elastosis 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][solar_elastosis]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='mild') Mild
+                              option(value='moderate') Moderate
+                              option(value='severe') Severe
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Pigmentation 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][pigmentation]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Lateral margin status 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][lateral_margin_status]')
+                              option(value='NoChoosed') Select...
+                              option(value='disease_free') Disease-free 
+                              option(value='not_diseasefree') Not disease-free
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Deep margin status 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][deep_margin_status]')
+                              option(value='NoChoosed') Select...
+                              option(value='disease_free') Disease-free 
+                              option(value='not_diseasefree') Not disease-free
+
+                fieldset#fieldsetMPM
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span AJCC stage at diagnosis using TNM staging system
+                          .divTableCell.NoDivTableBorder.input-cell
+                            label(style='font-size: 12px;') T category
+                            select.form-control(name='melanoma_characteristics[AJCC][T]' style='margin-bottom: 18px;')
+                              option(value='NoChoosed') Select...
+                              option(value='TX') TX - Primary tumor cannot be evaluated
+                              option(value='T0') T0 - No evidence of primary tumor
+                              option(value='Tis') Tis - Carcinoma in situ
+                              option(value='T1') T1 - Size and/or extent of the primary tumor
+                              option(value='T2') T2 - Size and/or extent of the primary tumor
+                              option(value='T3') T3 - Size and/or extent of the primary tumor
+                              option(value='T4') T4 - Size and/or extent of the primary tumor
+                          .divTableCell.NoDivTableBorder.input-cell
+                            label(style='font-size: 12px;') N category
+                            select.form-control(name='melanoma_characteristics[AJCC][N]' style='margin-bottom: 18px;')
+                              option(value='NoChoosed') Select...
+                              option(value='NX') NX - Regional lymph nodes cannot be evaluated
+                              option(value='NO') NO - No regional lymph node involvement
+                              option(value='N1') N1 - Involvement of regional lymph nodes
+                              option(value='N2') N2 - Involvement of regional lymph nodes
+                              option(value='N3') N3 - Involvement of regional lymph nodes
+                          .divTableCell.NoDivTableBorder.input-cell
+                            label(style='font-size: 12px;') M category
+                            select.form-control(name='melanoma_characteristics[AJCC][M]' style='margin-bottom: 18px;')
+                              option(value='NoChoosed') Select...
+                              option(value='MO') MO - No distant metastasis
+                              option(value='M1') M1 - Distant metastasis
+            </details>
+
+            <details>
+              <summary>CHARACTERISTICS OF 3th PRIMARY MELANOMA</summary>
+              <hr/>
+              fieldset
+                fieldset#fieldsetMelanomaLesion
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Pre-existing pigmented lesion at the same site of melanoma
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#selectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='No') No
+                              option(value='Yes') Yes
+                          .divTableCell.NoDivTableBorder.hidden-control
+                            label(style='font-size: 12px;') Number:
+                            input#inputLesionCount(type='number' min='1' name='melanoma_characteristics[lesion][count]')
+
+                fieldset#fieldsetMelanomadetection
+                  label(for='42940743')
+                    | Detection of melanoma
+                  p(style='color:red;') (Optional)
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder
+                            select#melanomaDetection.form-control(name='melanoma_characteristics[detection]')
+                              option(value='NoChoosed') Select ...
+                              option(value='Patient') Patient
+                              option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
+                              option(value='Physician') Physician
+                              option(value='Other') Other
+                          .divTableCell.NoDivTableBorder.hidden-control
+                            label(style='font-size: 12px;') Specify:
+                            input(type='text' name='melanoma_characteristics[detection][other]')
+                
+                fieldset#fieldsetSkinCheck
+                  label
+                    | Self-skin exam
+                  p(style='color:red;') (Optional)
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span How often did you check your skin in the past 3 yrs?
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                              option(value='NoChoosed') Select...
+                              option(value='Never') Never
+                              option(value='Once') Once
+                              option(value='Once/year') Once/year
+                              option(value='More than once/year') More than once/year
+
+                fieldset#fieldsetPhisicianSkinCheck
+                  label
+                    | Skin exam by physician
+                  p(style='color:red;') (Optional)
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span How often did a physician examine your skin in the past 3 yrs?
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                              option(value='NoChoosed') Select...
+                              option(value='Never') Never
+                              option(value='Once') Once
+                              option(value='Once/year') Once/year
+                              option(value='More than once/year') More than once/year
+                              option(value='Do not recall a physician ever examining my skin') Do not recall a physician ever examining my skin
+
+                fieldset#fieldsetSNL
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Sentinel Lymph Node (SLN) biopsy
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#selectSNL.form-control(name='melanoma_characteristics[SNL][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='Yes') Yes
+                              option(value='No') No
+                              option(value='Not done') Not done
+                              option(value='Not known') Not known
+                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
+                            select.form-control(name='melanoma_characteristics[lesion][category]')
+                              option(value='NoChoosed') Positive/Negative
+                              option(value='Positive') Positive
+                              option(value='Negative') Negative
+
+                fieldset#fieldsetMPM
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Multiple primary melanoma (MPM) – concurrent or previous
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_characteristics[multiple_primary][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='No') No
+                              option(value='Yes') Yes
+                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
+                            label(style='font-size: 12px;') Number of primaries:
+                            input(type='number' min='1' name='melanoma_characteristics[multiple_primary][count]' required='' )
+
+                fieldset#fieldsetMelanomaDiagnosisDate
+                  label(for='9069469') Dates of diagnosis
+                  .form-group
+                    input#1969236884_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
+                    span.error1
+                      i.error-log.fa.fa-exclamation-triangle
+
+                fieldset#fieldsetWeightHeight
+                  label(for='248537302') Breslow thickness(mm)
+                  .form-group
+                    input#weight_input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                    span.error1
+                        i.error-log.fa.fa-exclamation-triangle
+
+                fieldset#fieldsetPhisicianSkinCheck
+                  label
+                    | Other main histopathologic features
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Subtype:
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][subtype]')
+                              option(value='NoChoosed') Select...
+                              option(value='SSM') SSM
+                              option(value='NM') NM
+                              option(value='LMM') LMM
+                              option(value='ALM') ALM
+                              option(value='Mucosal') Desmoplastic
+                              option(value='Desmoplastic') Mucosal
+                              option(value='Uveal') Uveal
+                              option(value='Other') Other
+                              option(value='NOS ') NOS
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Mitotic rate (number of mitoses/mm2):
+                          .divTableCell.NoDivTableBorder.input-cell
+                            input.form-control(type='number' min='1' name='melanoma_charcteristics[features][mitotic_rate]' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                            span.error1
+                                i.error-log.fa.fa-exclamation-triangle
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Ulceration 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][ulceration]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Tumor growth phase 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][tumor_growth_phase]')
+                              option(value='NoChoosed') Select...
+                              option(value='radial') Radial
+                              option(value='vertical') Vertical
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Regression
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#melanomaRegression.form-control(name='melanoma_charcteristics[features][regression][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
+                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
+                            label(style='font-size: 12px;') Specify percentage:
+                            select.form-control(name='melanoma_charcteristics[features][regression][percentage]')
+                              option(value='NoChoosed') Select...
+                              option(value='less_than_50%') <50%
+                              option(value='greater_than_50%') >50%
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Tumor Infiltrating Lymphocytes (TILs) 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][TILs]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='non-brisk') Non-brisk
+                              option(value='brisk') Brisk
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Associated nevus
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select#melanomaNevus.form-control(name='melanoma_charcteristics[features][nevus][presence]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
+                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
+                            label(style='font-size: 12px;') Specify type:
+                            input(type='text' name='melanoma_characteristics[features][nevus][type]')
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Vascular invasion 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][vascular_invasion]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Microsatellitosis 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][microsatellitosis]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='partially_pigmented') Partially pigmented
+                              option(value='fully_pigmented') Fully pigmented
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Solar elastosis 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][solar_elastosis]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='mild') Mild
+                              option(value='moderate') Moderate
+                              option(value='severe') Severe
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Pigmentation 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][pigmentation]')
+                              option(value='NoChoosed') Select...
+                              option(value='absent') Absent
+                              option(value='present') Present
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Lateral margin status 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][lateral_margin_status]')
+                              option(value='NoChoosed') Select...
+                              option(value='disease_free') Disease-free 
+                              option(value='not_diseasefree') Not disease-free
+
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span Deep margin status 
+                          .divTableCell.NoDivTableBorder.input-cell
+                            select.form-control(name='melanoma_charcteristics[features][deep_margin_status]')
+                              option(value='NoChoosed') Select...
+                              option(value='disease_free') Disease-free 
+                              option(value='not_diseasefree') Not disease-free
+
+                fieldset#fieldsetMPM
+                  .form-group
+                    .divTable
+                      .divTableBody
+                        .divTableRow
+                          .divTableCell.NoDivTableBorder.question-cell
+                            span AJCC stage at diagnosis using TNM staging system
+                          .divTableCell.NoDivTableBorder.input-cell
+                            label(style='font-size: 12px;') T category
+                            select.form-control(name='melanoma_characteristics[AJCC][T]' style='margin-bottom: 18px;')
+                              option(value='NoChoosed') Select...
+                              option(value='TX') TX - Primary tumor cannot be evaluated
+                              option(value='T0') T0 - No evidence of primary tumor
+                              option(value='Tis') Tis - Carcinoma in situ
+                              option(value='T1') T1 - Size and/or extent of the primary tumor
+                              option(value='T2') T2 - Size and/or extent of the primary tumor
+                              option(value='T3') T3 - Size and/or extent of the primary tumor
+                              option(value='T4') T4 - Size and/or extent of the primary tumor
+                          .divTableCell.NoDivTableBorder.input-cell
+                            label(style='font-size: 12px;') N category
+                            select.form-control(name='melanoma_characteristics[AJCC][N]' style='margin-bottom: 18px;')
+                              option(value='NoChoosed') Select...
+                              option(value='NX') NX - Regional lymph nodes cannot be evaluated
+                              option(value='NO') NO - No regional lymph node involvement
+                              option(value='N1') N1 - Involvement of regional lymph nodes
+                              option(value='N2') N2 - Involvement of regional lymph nodes
+                              option(value='N3') N3 - Involvement of regional lymph nodes
+                          .divTableCell.NoDivTableBorder.input-cell
+                            label(style='font-size: 12px;') M category
+                            select.form-control(name='melanoma_characteristics[AJCC][M]' style='margin-bottom: 18px;')
+                              option(value='NoChoosed') Select...
+                              option(value='MO') MO - No distant metastasis
+                              option(value='M1') M1 - Distant metastasis
+            </details>
 
           div.alphaformfooter
           div.formfooter
