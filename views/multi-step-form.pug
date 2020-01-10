@@ -85,7 +85,7 @@ block content
             fieldset#fieldsetPhenotyping
               label(for='9069469') Dates of updated questionnaire and/or phenotyping
               .form-group
-                input#1969236884_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='last_update')
+                input.datepicker.form-control(type='text' placeholder='Select date' required='' name='last_update')
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
 
@@ -131,7 +131,7 @@ block content
                 span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 
-            fieldset#fieldsetWeightHeight
+            fieldset
               label(for='248537302') Weight(Kg)
               .form-group
                 input#weight_input.form-control(type='number' min='1' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
@@ -221,7 +221,7 @@ block content
             h2.fs-title PHENOTYPE
             h3.fs-subtitle Completed by case/control
 
-            label(for='42940743') 1) Skin Type
+            label 1) Skin Type
             fieldset#fieldsetSkinResponse
               label(for='1548717344')
                 | Which of the following sentences does better describe your skin response to sun
@@ -548,7 +548,7 @@ block content
                   i.error-log.fa.fa-exclamation-triangle
                 
             fieldset#fieldsetSevereSunburns
-              label(for='42940743')
+              label
                 | 10) Severe sunburns (Grade 2), lifetime before diagnosis.
               p(style='font-size:10px')
                 | Definition: suburns with erythema and pain for more than 2 days or with blisters
@@ -729,7 +729,7 @@ block content
                   option(value='Notknown') Not known
 
             fieldset#fieldsetSunlamps
-              label(for='42940743') 13) Sunlamps/sunbeds
+              label 13) Sunlamps/sunbeds
               .form-group
                 .divTable
                   .divTableRow
@@ -751,7 +751,7 @@ block content
                   input#Sunlamp_last_age(type='number', min='1', name='ultraviolet[sunlamp][age_of_last_sunlamp]')
 
             fieldset#fieldsetPhototherapy
-              label(for='42940743')
+              label
                 | 14) Phototherapy(UVB-PUVA) (Optional)
               .form-group
                 .divTable
@@ -777,7 +777,7 @@ block content
             h3.fs-subtitle Completed by case/control
 
             fieldset#fieldsetSmoking
-              label(for='42940743') 15) Smoking
+              label 15) Smoking
               .form-group
                 .divTable
                   .divTableRow
@@ -813,7 +813,7 @@ block content
                           option(value='Occasionally') Occasionally
 
             fieldset#fieldsetVitamin
-              label(for='42940743')
+              label
                 | 16) Have you received vitamin pills during the last year?
               p(style='color:red;') (Optional)
               .form-group
@@ -837,7 +837,7 @@ block content
                         option(value='Everyday') Everyday
 
             fieldset#fieldsetVitaminType
-              label(for='42940743')
+              label
                 | 17) What type of vitamins did you receive and how often?
               p(style='color:red;') (Optional)
               .group
@@ -847,7 +847,7 @@ block content
                     .divTableCell.NoDivTableBorder Vitamin A
                     .divTableCell.NoDivTableBorder Vitamin C
                   .divTableRow
-                    .divTableCell
+                    .divTableCell.NoDivTableBorder
                       select#id_BetaCarotene_quantity.form-control(name='lifestyle[betacarotene_frequency]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
@@ -855,7 +855,7 @@ block content
                         option(value='1/3_days_at_week') 1-3 days/week
                         option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
-                    .divTableCell
+                    .divTableCell.NoDivTableBorder
                       select#id_VitaminB_quantity.form-control(name='lifestyle[vitamin_A_frequency]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
@@ -863,7 +863,7 @@ block content
                         option(value='1/3_days_at_week') 1-3 days/week
                         option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
-                    .divTableCell
+                    .divTableCell.NoDivTableBorder
                       select#id_VitaminC_quantity.form-control(name='lifestyle[vitamin_C_frequency]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
@@ -876,7 +876,7 @@ block content
                     .divTableCell.NoDivTableBorder Vitamin E
                     .divTableCell.NoDivTableBorder Multivitamins
                   .divTableRow
-                    .divTableCell
+                    .divTableCell.NoDivTableBorder
                       select#id_VitaminD_quantity.form-control(name='lifestyle[vitamin_D_frequency]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
@@ -884,7 +884,7 @@ block content
                         option(value='1/3_days_at_week') 1-3 days/week
                         option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
-                    .divTableCell
+                    .divTableCell.NoDivTableBorder
                       select#id_VitaminE_quantity.form-control(name='lifestyle[vitamin_E_frequency]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
@@ -892,7 +892,7 @@ block content
                         option(value='1/3_days_at_week') 1-3 days/week
                         option(value='4/6_days_at_week') 4-6 days/week
                         option(value='Everyday') Everyday
-                    .divTableCell
+                    .divTableCell.NoDivTableBorder
                       select#id_MultiVitamin_quantity.form-control(name='lifestyle[multivitamins_frequency]')
                         option(value='NoChoosed') Select quantity...
                         option(value='Never') Never
@@ -902,7 +902,7 @@ block content
                         option(value='Everyday') Everyday
 
             fieldset#fieldsetVitaminTime
-              label(for='42940743')
+              label
                 | 18) For how long did you receive vitamins?
               p(style='color:red;') (Optional)
               .group
@@ -1176,7 +1176,7 @@ block content
 
 
             fieldset#fieldsetCongenitalNevi
-              label(for='42940743')
+              label
                 | Congenital nevi, CN
               p(style='font-size:10px;') (only medium, large, or giant)
               p(style='font-size:10px;') Size at phenotyping for:
@@ -1235,7 +1235,7 @@ block content
 
 
             fieldset#fieldsetBlueNevi
-              label(for='42940743')
+              label
                 | Blue nevi
               p(style='color:red;') (Optional)
               .form-group
@@ -1255,7 +1255,7 @@ block content
 
 
             fieldset#fieldsetActinicKeratoses
-              label(for='42940743') Actinic keratoses
+              label Actinic keratoses
               .form-group
                 .divTable
                   .divTableBody
@@ -1296,7 +1296,7 @@ block content
 
 
             fieldset#fieldsetKSC_BCC_SCC
-              label(for='42940743')
+              label
                 | Current (i.e. at time of visit) non-melanoma skin cancer, KSC (basal cell carcinoma,
                 | BCC, and squamous cell carcinoma, SCC)
               .form-group
@@ -1608,11 +1608,11 @@ block content
             h2.fs-title MELANOMA CHARACTERISTICS
             h3.fs-subtitle completed by physician/study nurse
 
-            <details>
+            details#firstMelanomaCharacteristics
               <summary>CHARACTERISTICS OF 1st PRIMARY MELANOMA</summary>
               <hr/>
               fieldset
-                fieldset#fieldsetMelanomaLesion
+                fieldset
                   .form-group
                     .divTable
                       .divTableBody
@@ -1620,16 +1620,16 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span Pre-existing pigmented lesion at the same site of melanoma
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#selectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
+                            select#firstSelectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
                               option(value='NoChoosed') Select...
                               option(value='No') No
                               option(value='Yes') Yes
                           .divTableCell.NoDivTableBorder.hidden-control
                             label(style='font-size: 12px;') Number:
-                            input#inputLesionCount(type='number' min='1' name='melanoma_characteristics[lesion][count]')
+                            input(type='number' min='1' name='melanoma_characteristics[lesion][count]')
 
-                fieldset#fieldsetMelanomadetection
-                  label(for='42940743')
+                fieldset
+                  label
                     | Detection of melanoma
                   p(style='color:red;') (Optional)
                   .form-group
@@ -1637,7 +1637,7 @@ block content
                       .divTableBody
                         .divTableRow
                           .divTableCell.NoDivTableBorder
-                            select#melanomaDetection.form-control(name='melanoma_characteristics[detection]')
+                            select#firstMelanomaDetection.form-control(name='melanoma_characteristics[detection]')
                               option(value='NoChoosed') Select ...
                               option(value='Patient') Patient
                               option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
@@ -1647,7 +1647,7 @@ block content
                             label(style='font-size: 12px;') Specify:
                             input(type='text' name='melanoma_characteristics[detection][other]')
                 
-                fieldset#fieldsetSkinCheck
+                fieldset
                   label
                     | Self-skin exam
                   p(style='color:red;') (Optional)
@@ -1658,14 +1658,14 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span How often did you check your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                            select.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
                               option(value='NoChoosed') Select...
                               option(value='Never') Never
                               option(value='Once') Once
                               option(value='Once/year') Once/year
                               option(value='More than once/year') More than once/year
 
-                fieldset#fieldsetPhisicianSkinCheck
+                fieldset
                   label
                     | Skin exam by physician
                   p(style='color:red;') (Optional)
@@ -1676,7 +1676,7 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span How often did a physician examine your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                            select.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
                               option(value='NoChoosed') Select...
                               option(value='Never') Never
                               option(value='Once') Once
@@ -1684,7 +1684,7 @@ block content
                               option(value='More than once/year') More than once/year
                               option(value='Do not recall a physician ever examining my skin') Do not recall a physician ever examining my skin
 
-                fieldset#fieldsetSNL
+                fieldset
                   .form-group
                     .divTable
                       .divTableBody
@@ -1692,7 +1692,7 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span Sentinel Lymph Node (SLN) biopsy
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#selectSNL.form-control(name='melanoma_characteristics[SNL][presence]')
+                            select#firstSelectSNL.form-control(name='melanoma_characteristics[SNL][presence]')
                               option(value='NoChoosed') Select...
                               option(value='Yes') Yes
                               option(value='No') No
@@ -1704,7 +1704,7 @@ block content
                               option(value='Positive') Positive
                               option(value='Negative') Negative
 
-                fieldset#fieldsetMPM
+                fieldset
                   .form-group
                     .divTable
                       .divTableBody
@@ -1720,21 +1720,21 @@ block content
                             label(style='font-size: 12px;') Number of primaries:
                             input(type='number' min='1' name='melanoma_characteristics[multiple_primary][count]' required='' )
 
-                fieldset#fieldsetMelanomaDiagnosisDate
+                fieldset
                   label(for='9069469') Dates of diagnosis
                   .form-group
-                    input#1969236884_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
+                    input.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
                     span.error1
                       i.error-log.fa.fa-exclamation-triangle
 
-                fieldset#fieldsetWeightHeight
+                fieldset
                   label(for='248537302') Breslow thickness(mm)
                   .form-group
-                    input#weight_input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                    input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
                     span.error1
                         i.error-log.fa.fa-exclamation-triangle
 
-                fieldset#fieldsetPhisicianSkinCheck
+                fieldset
                   label
                     | Other main histopathologic features
                   .form-group
@@ -1786,7 +1786,7 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span Regression
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#melanomaRegression.form-control(name='melanoma_charcteristics[features][regression][presence]')
+                            select#firstMelanomaRegression.form-control(name='melanoma_charcteristics[features][regression][presence]')
                               option(value='NoChoosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
@@ -1811,7 +1811,7 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span Associated nevus
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#melanomaNevus.form-control(name='melanoma_charcteristics[features][nevus][presence]')
+                            select#firstMelanomaNevus.form-control(name='melanoma_charcteristics[features][nevus][presence]')
                               option(value='NoChoosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
@@ -1876,7 +1876,7 @@ block content
                               option(value='disease_free') Disease-free 
                               option(value='not_diseasefree') Not disease-free
 
-                fieldset#fieldsetMPM
+                fieldset
                   .form-group
                     .divTable
                       .divTableBody
@@ -1909,13 +1909,17 @@ block content
                               option(value='NoChoosed') Select...
                               option(value='MO') MO - No distant metastasis
                               option(value='M1') M1 - Distant metastasis
-            </details>
 
-            <details>
+            .TEST2
+              label.table-personal-label
+                | Select if there is a second melanoma
+                input#secondMelanomaCheckbox(type="checkbox" name="second_melanoma[presence]" value="yes")
+                span.checkmark
+            details#secondMelanomaCharacteristics(style="pointer-events: none; opacity: 0.2;")
               <summary>CHARACTERISTICS OF 2nd PRIMARY MELANOMA</summary>
               <hr/>
               fieldset
-                fieldset#fieldsetMelanomaLesion
+                fieldset
                   .form-group
                     .divTable
                       .divTableBody
@@ -1923,16 +1927,16 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span Pre-existing pigmented lesion at the same site of melanoma
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#selectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
+                            select#secondSelectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
                               option(value='NoChoosed') Select...
                               option(value='No') No
                               option(value='Yes') Yes
                           .divTableCell.NoDivTableBorder.hidden-control
                             label(style='font-size: 12px;') Number:
-                            input#inputLesionCount(type='number' min='1' name='melanoma_characteristics[lesion][count]')
+                            input(type='number' min='1' name='melanoma_characteristics[lesion][count]')
 
-                fieldset#fieldsetMelanomadetection
-                  label(for='42940743')
+                fieldset
+                  label
                     | Detection of melanoma
                   p(style='color:red;') (Optional)
                   .form-group
@@ -1940,7 +1944,7 @@ block content
                       .divTableBody
                         .divTableRow
                           .divTableCell.NoDivTableBorder
-                            select#melanomaDetection.form-control(name='melanoma_characteristics[detection]')
+                            select#secondMelanomaDetection.form-control(name='melanoma_characteristics[detection]')
                               option(value='NoChoosed') Select ...
                               option(value='Patient') Patient
                               option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
@@ -1950,7 +1954,7 @@ block content
                             label(style='font-size: 12px;') Specify:
                             input(type='text' name='melanoma_characteristics[detection][other]')
                 
-                fieldset#fieldsetSkinCheck
+                fieldset
                   label
                     | Self-skin exam
                   p(style='color:red;') (Optional)
@@ -1961,14 +1965,14 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span How often did you check your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                            select.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
                               option(value='NoChoosed') Select...
                               option(value='Never') Never
                               option(value='Once') Once
                               option(value='Once/year') Once/year
                               option(value='More than once/year') More than once/year
 
-                fieldset#fieldsetPhisicianSkinCheck
+                fieldset
                   label
                     | Skin exam by physician
                   p(style='color:red;') (Optional)
@@ -1979,7 +1983,7 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span How often did a physician examine your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                            select.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
                               option(value='NoChoosed') Select...
                               option(value='Never') Never
                               option(value='Once') Once
@@ -1987,7 +1991,7 @@ block content
                               option(value='More than once/year') More than once/year
                               option(value='Do not recall a physician ever examining my skin') Do not recall a physician ever examining my skin
 
-                fieldset#fieldsetSNL
+                fieldset
                   .form-group
                     .divTable
                       .divTableBody
@@ -1995,7 +1999,7 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span Sentinel Lymph Node (SLN) biopsy
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#selectSNL.form-control(name='melanoma_characteristics[SNL][presence]')
+                            select#secondSelectSNL.form-control(name='melanoma_characteristics[SNL][presence]')
                               option(value='NoChoosed') Select...
                               option(value='Yes') Yes
                               option(value='No') No
@@ -2007,7 +2011,7 @@ block content
                               option(value='Positive') Positive
                               option(value='Negative') Negative
 
-                fieldset#fieldsetMPM
+                fieldset
                   .form-group
                     .divTable
                       .divTableBody
@@ -2023,21 +2027,21 @@ block content
                             label(style='font-size: 12px;') Number of primaries:
                             input(type='number' min='1' name='melanoma_characteristics[multiple_primary][count]' required='' )
 
-                fieldset#fieldsetMelanomaDiagnosisDate
+                fieldset
                   label(for='9069469') Dates of diagnosis
                   .form-group
-                    input#1969236884_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
+                    input.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
                     span.error1
                       i.error-log.fa.fa-exclamation-triangle
 
-                fieldset#fieldsetWeightHeight
+                fieldset
                   label(for='248537302') Breslow thickness(mm)
                   .form-group
-                    input#weight_input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                    input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
                     span.error1
                         i.error-log.fa.fa-exclamation-triangle
 
-                fieldset#fieldsetPhisicianSkinCheck
+                fieldset
                   label
                     | Other main histopathologic features
                   .form-group
@@ -2089,7 +2093,7 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span Regression
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#melanomaRegression.form-control(name='melanoma_charcteristics[features][regression][presence]')
+                            select#secondMelanomaRegression.form-control(name='melanoma_charcteristics[features][regression][presence]')
                               option(value='NoChoosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
@@ -2114,7 +2118,7 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span Associated nevus
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#melanomaNevus.form-control(name='melanoma_charcteristics[features][nevus][presence]')
+                            select#secondMelanomaNevus.form-control(name='melanoma_charcteristics[features][nevus][presence]')
                               option(value='NoChoosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
@@ -2179,7 +2183,7 @@ block content
                               option(value='disease_free') Disease-free 
                               option(value='not_diseasefree') Not disease-free
 
-                fieldset#fieldsetMPM
+                fieldset
                   .form-group
                     .divTable
                       .divTableBody
@@ -2212,13 +2216,17 @@ block content
                               option(value='NoChoosed') Select...
                               option(value='MO') MO - No distant metastasis
                               option(value='M1') M1 - Distant metastasis
-            </details>
 
-            <details>
+            .TEST2
+              label.table-personal-label
+                | Select if there is a third melanoma
+                input#thirdMelanomaCheckbox(type="checkbox" name="third_melanoma[presence]" value="yes")
+                span.checkmark
+            details#thirdMelanomaCharacteristics(style="pointer-events: none; opacity: 0.2;")
               <summary>CHARACTERISTICS OF 3th PRIMARY MELANOMA</summary>
               <hr/>
               fieldset
-                fieldset#fieldsetMelanomaLesion
+                fieldset
                   .form-group
                     .divTable
                       .divTableBody
@@ -2226,16 +2234,16 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span Pre-existing pigmented lesion at the same site of melanoma
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#selectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
+                            select#thirdSelectLesion.form-control(name='melanoma_characteristics[lesion][presence]')
                               option(value='NoChoosed') Select...
                               option(value='No') No
                               option(value='Yes') Yes
                           .divTableCell.NoDivTableBorder.hidden-control
                             label(style='font-size: 12px;') Number:
-                            input#inputLesionCount(type='number' min='1' name='melanoma_characteristics[lesion][count]')
+                            input(type='number' min='1' name='melanoma_characteristics[lesion][count]')
 
-                fieldset#fieldsetMelanomadetection
-                  label(for='42940743')
+                fieldset
+                  label
                     | Detection of melanoma
                   p(style='color:red;') (Optional)
                   .form-group
@@ -2243,7 +2251,7 @@ block content
                       .divTableBody
                         .divTableRow
                           .divTableCell.NoDivTableBorder
-                            select#melanomaDetection.form-control(name='melanoma_characteristics[detection]')
+                            select#thirdMelanomaDetection.form-control(name='melanoma_characteristics[detection]')
                               option(value='NoChoosed') Select ...
                               option(value='Patient') Patient
                               option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
@@ -2253,7 +2261,7 @@ block content
                             label(style='font-size: 12px;') Specify:
                             input(type='text' name='melanoma_characteristics[detection][other]')
                 
-                fieldset#fieldsetSkinCheck
+                fieldset
                   label
                     | Self-skin exam
                   p(style='color:red;') (Optional)
@@ -2264,14 +2272,14 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span How often did you check your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                            select.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
                               option(value='NoChoosed') Select...
                               option(value='Never') Never
                               option(value='Once') Once
                               option(value='Once/year') Once/year
                               option(value='More than once/year') More than once/year
 
-                fieldset#fieldsetPhisicianSkinCheck
+                fieldset
                   label
                     | Skin exam by physician
                   p(style='color:red;') (Optional)
@@ -2282,7 +2290,7 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span How often did a physician examine your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#selectSkinCheck.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
+                            select.form-control(name='melanoma_charcteristics[skin_check_last_3_years]')
                               option(value='NoChoosed') Select...
                               option(value='Never') Never
                               option(value='Once') Once
@@ -2290,7 +2298,7 @@ block content
                               option(value='More than once/year') More than once/year
                               option(value='Do not recall a physician ever examining my skin') Do not recall a physician ever examining my skin
 
-                fieldset#fieldsetSNL
+                fieldset
                   .form-group
                     .divTable
                       .divTableBody
@@ -2298,7 +2306,7 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span Sentinel Lymph Node (SLN) biopsy
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#selectSNL.form-control(name='melanoma_characteristics[SNL][presence]')
+                            select#thirdSelectSNL.form-control(name='melanoma_characteristics[SNL][presence]')
                               option(value='NoChoosed') Select...
                               option(value='Yes') Yes
                               option(value='No') No
@@ -2310,7 +2318,7 @@ block content
                               option(value='Positive') Positive
                               option(value='Negative') Negative
 
-                fieldset#fieldsetMPM
+                fieldset
                   .form-group
                     .divTable
                       .divTableBody
@@ -2326,21 +2334,21 @@ block content
                             label(style='font-size: 12px;') Number of primaries:
                             input(type='number' min='1' name='melanoma_characteristics[multiple_primary][count]' required='' )
 
-                fieldset#fieldsetMelanomaDiagnosisDate
+                fieldset
                   label(for='9069469') Dates of diagnosis
                   .form-group
-                    input#1969236884_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
+                    input.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
                     span.error1
                       i.error-log.fa.fa-exclamation-triangle
 
-                fieldset#fieldsetWeightHeight
+                fieldset
                   label(for='248537302') Breslow thickness(mm)
                   .form-group
-                    input#weight_input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                    input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
                     span.error1
                         i.error-log.fa.fa-exclamation-triangle
 
-                fieldset#fieldsetPhisicianSkinCheck
+                fieldset
                   label
                     | Other main histopathologic features
                   .form-group
@@ -2392,7 +2400,7 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span Regression
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#melanomaRegression.form-control(name='melanoma_charcteristics[features][regression][presence]')
+                            select#thirdMelanomaRegression.form-control(name='melanoma_charcteristics[features][regression][presence]')
                               option(value='NoChoosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
@@ -2417,7 +2425,7 @@ block content
                           .divTableCell.NoDivTableBorder.question-cell
                             span Associated nevus
                           .divTableCell.NoDivTableBorder.input-cell
-                            select#melanomaNevus.form-control(name='melanoma_charcteristics[features][nevus][presence]')
+                            select#thirdMelanomaNevus.form-control(name='melanoma_charcteristics[features][nevus][presence]')
                               option(value='NoChoosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
@@ -2482,7 +2490,7 @@ block content
                               option(value='disease_free') Disease-free 
                               option(value='not_diseasefree') Not disease-free
 
-                fieldset#fieldsetMPM
+                fieldset
                   .form-group
                     .divTable
                       .divTableBody
@@ -2515,7 +2523,6 @@ block content
                               option(value='NoChoosed') Select...
                               option(value='MO') MO - No distant metastasis
                               option(value='M1') M1 - Distant metastasis
-            </details>
 
           div.alphaformfooter
           div.formfooter
@@ -2524,7 +2531,7 @@ block content
           input.submit.action-button#submit(type='submit', value='Submit')
 
   #SimpleDateModal.modal.fade
-  .modal-dialog
+    .modal-dialog
     .modal-content
       // Modal Header
       .modal-header.modal-table
@@ -2568,8 +2575,9 @@ block content
         button#save_simple.btn.btn-secondary(type='button', data-dismiss='modal')
           | Save
         button.btn.btn-danger(type='button', data-dismiss='modal') Close
-#MedicationDateModal.modal.fade
-  .modal-dialog
+  
+  #MedicationDateModal.modal.fade
+    .modal-dialog
     .modal-content
       // Modal Header
       .modal-header.modal-table
@@ -2606,8 +2614,9 @@ block content
         button#save_med.btn.btn-secondary(type='button', data-dismiss='modal')
           | Save
         button.btn.btn-danger(type='button', data-dismiss='modal') Close
-#Sites_Modal.modal.fade
-  .modal-dialog
+  
+  #Sites_Modal.modal.fade
+    .modal-dialog
     .modal-content(style='width: auto;')
       span.hidden.modal-caller
       span.hidden.modal-checked
