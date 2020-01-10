@@ -10,7 +10,7 @@
     font-style: oblique;
 }
 
-.Pregnancy_Stats .divTableCell {
+#msform .Pregnancy_Stats .divTableCell {
     /* text-align: center; */
     padding: 14px;
 }
@@ -53,37 +53,42 @@
     text-align: center;
 }
 
-.Pregnancy_Stats input {
+#msform .Pregnancy_Stats input {
     margin: auto !important;
     padding: 4px;
 }
 
-#fieldsetPregnancy_History input[type=number] {
-    width: 20%;
-    text-align: end;
-    border: 1px solid;
-    font-size: 20px;
-    color: #0056b3;
+#msform #fieldsetPregnancy_History input[type=number] {
+    width: 55%;
+    text-align: center;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    border-radius: 15%;
+    margin-top: 12px;
 }
 
-.no-bottom-border {
+#msform .no-bottom-border {
     border-bottom: 1px solid transparent;
 }
 
-.no-left-border {
+#msform .no-left-border {
     border-left: 1px solid transparent;
 }
 
-.no-right-border {
+#msform .no-right-border {
     border-right: 1px solid transparent;
 }
 
-.show-transition {
+#msform .show-transition {
     display: table-row;
 }
 
-.hide-transition {
+#msform .hide-transition {
     display: none;
+}
+
+#Additional_Neoplasia .divTableCell {
+    margin-bottom: 30px;
 }
 
 .tg-wrap {
@@ -108,7 +113,7 @@
 }
 
 .tg-wrap td:hover {
-    background-color: #fbed50;
+    background-color: #66b78c;
     cursor: initial;
 }
 
@@ -157,10 +162,6 @@
     z-index: 1080 !important;
 }
 
-span.span-modal-title {
-    font-size: 16px;
-}
-
 span.span-modal-subtitle {
     font-size: 15px;
     color: rgba(255, 0, 0, 0.5);
@@ -172,6 +173,19 @@ span.span-modal-subtitle {
 
 #Sites_Modal {
     z-index: 1041;
+}
+
+.modal.show .modal-dialog {
+    margin-top: 140px;
+}
+
+.modal.show .modal-dialog .th-image {
+    width: 25%;
+}
+
+.modal.show .modal-dialog .th-title {
+    width: 75%;
+    font-size: 35px;
 }
 
 #Sites_Modal .modal-dialog {
