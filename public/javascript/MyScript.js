@@ -488,7 +488,7 @@ $(document).ready(function() {
     List_SCC_InSitu_Sites = [];
     List_To_Delete = []
 
-    $("#Insert-BCC_Sites,#Insert-SCC_Invasive_Sites,#Insert-SCC_InSitu_Sites").on("click", function (evt) {
+    $("#Insert-BCC_Sites,#Insert-SCC_Invasive_Sites,#Insert-SCC_InSitu_Sites").on("click", function(evt) {
         switch ($(this).attr("id")) {
             case "Insert-BCC_Sites":
                 $("#Sites_Modal span.modal-title").text("BCC Site(s)");
@@ -496,7 +496,7 @@ $(document).ready(function() {
                 $("#Sites_Modal .modal-caller").text("BCC");
                 $("#Sites_Modal .th-image img").attr("src", "icons/human-body-cyan.png");
                 if (List_BCC_Sites.length != 0) {
-                    $.each(List_BCC_Sites, function (key, value) {
+                    $.each(List_BCC_Sites, function(key, value) {
                         $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
                     });
                 }
@@ -507,19 +507,18 @@ $(document).ready(function() {
                 $("#Sites_Modal .modal-caller").text("SCC_Invasive");
                 $("#Sites_Modal .th-image img").attr("src", "icons/human-body-purple.png");
                 if (List_SCC_Invasive_Sites.lenght != 0) {
-                    $.each(List_SCC_Invasive_Sites, function (key, value) {
+                    $.each(List_SCC_Invasive_Sites, function(key, value) {
                         $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
                     });
                 }
                 break;
-            case
-            "Insert-SCC_InSitu_Sites":
+            case "Insert-SCC_InSitu_Sites":
                 $("#Sites_Modal span.modal-title").text("SCC in situ Site(s)");
                 $("#Sites_Modal input").prop("checked", false);
                 $("#Sites_Modal .modal-caller").text("SCC_InSitu");
                 $("#Sites_Modal .th-image img").attr("src", "icons/human-body-grey.png");
                 if (List_SCC_InSitu_Sites.length != 0) {
-                    $.each(List_SCC_InSitu_Sites, function (key, value) {
+                    $.each(List_SCC_InSitu_Sites, function(key, value) {
                         $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
                     });
                 }
@@ -527,7 +526,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#Sites_Modal").on("change", "input", function (evt) {
+    $("#Sites_Modal").on("change", "input", function(evt) {
         var Caller = $("#Sites_Modal .modal-caller").text();
         if ($(this).prop("checked") == true) {
             var Site = {};
@@ -539,11 +538,11 @@ $(document).ready(function() {
             if (Caller == "SCC_InSitu") {
                 $("#SimpleDateModal .hidden").removeClass("hidden").addClass("show");
                 $("#SimpleDateModal .number-control").val(1);
-            }else{
+            } else {
                 $("#SimpleDateModal .show").removeClass("show").addClass("hidden");
             }
 
-            $("#SimpleDateModal #save_simple").one("click", function (evt) {
+            $("#SimpleDateModal #save_simple").one("click", function(evt) {
                 evt.preventDefault();
                 Site.Diagnosis_Date = $("#SimpleDateModal .diagnosis-date").val();
                 if (Caller == "BCC") {
@@ -558,7 +557,7 @@ $(document).ready(function() {
                 }
             });
 
-            $("#SimpleDateModal .close .btn-danger").on("click", function (evt) {
+            $("#SimpleDateModal .close .btn-danger").on("click", function(evt) {
                 evt.preventDefault();
                 $("#SimpleDateModal").toggle().removeClass("hyper-modal");
                 /* if (Caller == "BCC") {
@@ -584,7 +583,7 @@ $(document).ready(function() {
             if (Caller == "SCC_InSitu") {
                 temp_Array = List_SCC_InSitu_Sites;
             }
-            var filteredObj = temp_Array.find(function (item, i) {
+            var filteredObj = temp_Array.find(function(item, i) {
                 if (item.Site === label_remove) {
                     List_To_Delete.push(i);
                 }
@@ -592,7 +591,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#Sites_Modal #save_sites").on("click", function (evt) {
+    $("#Sites_Modal #save_sites").on("click", function(evt) {
         var Caller = $("#Sites_Modal .modal-caller").text();
         var temp_Array = [];
         var classTableToReload = "";
@@ -610,23 +609,23 @@ $(document).ready(function() {
                 classTableToReload = ".SCC_InSitu_Sites_Json_Table"
                 break;
         }
-        if(List_To_Delete.length != 0) {
-            $.each(List_To_Delete, function (index, value) {
+        if (List_To_Delete.length != 0) {
+            $.each(List_To_Delete, function(index, value) {
                 temp_Array.splice(value, 1);
                 List_To_Delete.pop();
             });
         }
         if (temp_Array.length != 0) {
             $(classTableToReload).createTable(temp_Array);
-        }else{
+        } else {
             $(classTableToReload).empty();
         }
     });
 
-    $("#Sites_Modal #cancel_sites,#Sites_Modal .close").on("click", function (evt) {
+    $("#Sites_Modal #cancel_sites,#Sites_Modal .close").on("click", function(evt) {
         //$("#HistoryBCC_Modal input").prop("checked",false);
     });
-    
+
     $("#Additional_Neoplasia .year-datepicker").datepicker({
         format: "yyyy",
         viewMode: "years",
@@ -635,12 +634,12 @@ $(document).ready(function() {
 
     List_Additional_Neoplasias = [];
 
-    $("#Additional_Neoplasia .save").on("click",function(evt){
+    $("#Additional_Neoplasia .save").on("click", function(evt) {
         var SelectAddNeoplasia = $("#Additional_Neoplasia #NonCutaneous_Select").val();
         var NonCutaneousAge = $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val();
         var YearNonCutaneous = $("#Additional_Neoplasia .year-datepicker").val();
         var AdditionalNeoplasia = {};
-        if(SelectAddNeoplasia != "No Choosed" && NonCutaneousAge != "" && YearNonCutaneous != "") {
+        if (SelectAddNeoplasia != "No Choosed" && NonCutaneousAge != "" && YearNonCutaneous != "") {
             AdditionalNeoplasia.Name = SelectAddNeoplasia;
             AdditionalNeoplasia.Age_of_diagnosis = NonCutaneousAge;
             AdditionalNeoplasia.Year_of_diagnosis = YearNonCutaneous;
@@ -649,17 +648,17 @@ $(document).ready(function() {
             $("#Additional_Neoplasia #NonCutaneous_Select").val("No Choosed");
             $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val(1);
             $("#Additional_Neoplasia .year-datepicker").val("");
-        }else{
+        } else {
             alert("<span class='' style='color:red;'>Please insert all fields</span>");
         }
     });
 
-    $("#Additional_Neoplasia .cancel .close").on("click",function(evt) {
+    $("#Additional_Neoplasia .cancel .close").on("click", function(evt) {
         $("#Additional_Neoplasia #NonCutaneous_Select").val("No Choosed");
         $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val(1);
         $("#Additional_Neoplasia .year-datepicker").val("");
     });
-    
+
     $("#selectLesion").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
@@ -667,6 +666,50 @@ $(document).ready(function() {
         }
         if ($(this).val() != "Yes") {
             $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
+        }
+    });
+
+    $("#melanomaDetection").on("change", function(evt) {
+        if ($(this).val() == "Other") {
+            $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
+        }
+        if ($(this).val() != "Other") {
+            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
+        }
+    });
+
+    $("#selectSNL").on("change", function(evt) {
+        if ($(this).val() == "Yes") {
+            $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
+        }
+        if ($(this).val() != "Yes") {
+            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
+        }
+    });
+
+    $("#melanomaRegression").on("change", function(evt) {
+        if ($(this).val() == "present") {
+            $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
+        }
+        if ($(this).val() != "present") {
+            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
+        }
+    });
+
+    $("#melanomaNevus").on("change", function(evt) {
+        if ($(this).val() == "present") {
+            $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
+        }
+        if ($(this).val() != "present") {
+            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -716,14 +759,14 @@ function Initialize() {
 };
 
 function DDL_American_Cancer() {
-    $.getJSON('american_cancer_json.json', function (result) {
-        $.each(result, function (index, value) {
+    $.getJSON('american_cancer_json.json', function(result) {
+        $.each(result, function(index, value) {
             $("#NonCutaneous_Select").append("<option value='" + value.Type + "'>" + value.Type + "</option>");
         });
     });
 };
 
-function Modal_Draggable(){
+function Modal_Draggable() {
     $(".modal-dialog").draggable();
 };
 

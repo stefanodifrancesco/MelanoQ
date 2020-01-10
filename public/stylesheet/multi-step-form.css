@@ -181,6 +181,11 @@
 
 #msform .divTableCell.NoDivTableBorder.question-cell {
     width: 40%;
+    padding: 0px !important;
+}
+
+#msform .divTableCell.NoDivTableBorder.input-cell {
+    width: auto;
 }
 
 #msform .divTableCell input[type='text'] {
@@ -215,8 +220,16 @@
     margin: auto;
 }
 
-#msform .NoDivTableBorder input[type='number'] {
-    margin-bottom: 22px;
+#msform .NoDivTableBorder.show-control select {
+    margin-bottom: 18px;
+}
+
+#msform .NoDivTableBorder.show-control input[type='number'] {
+    margin-bottom: 18px;
+}
+
+#msform .NoDivTableBorder .show-control input[type='number'] {
+    margin-bottom: 18px;
 }
 
 #msform .divTableCell label {
@@ -406,14 +419,14 @@
     counter-reset: step;
     text-align: center;
     width: 70%;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 #progressbar li {
     list-style-type: none;
     color: white;
     text-transform: uppercase;
-    font-size: 9px;
+    font-size: 12px;
     width: 12%;
     float: left;
     position: relative;
