@@ -496,8 +496,11 @@ $(document).ready(function() {
                 $("#Sites_Modal .modal-caller").text("BCC");
                 $("#Sites_Modal .th-image img").attr("src", "icons/human-body-cyan.png");
                 if (List_BCC_Sites.length != 0) {
-                    $.each(List_BCC_Sites, function(key, value) {
-                        $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
+                    $.each(List_BCC_Sites, function (key, value) {
+                        var to_check = $.grep($("#Sites_Modal .tg input").parent(), function (G_key, G_value) {
+                            return ($(G_key).text().trim() == value.Site);
+                        });
+                        $(to_check).find("input").prop("checked", true);
                     });
                 }
                 break;
@@ -507,8 +510,11 @@ $(document).ready(function() {
                 $("#Sites_Modal .modal-caller").text("SCC_Invasive");
                 $("#Sites_Modal .th-image img").attr("src", "icons/human-body-purple.png");
                 if (List_SCC_Invasive_Sites.lenght != 0) {
-                    $.each(List_SCC_Invasive_Sites, function(key, value) {
-                        $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
+                    $.each(List_SCC_Invasive_Sites, function (key, value) {
+                        var to_check = $.grep($("#Sites_Modal .tg input").parent(), function (G_key, G_value) {
+                            return ($(G_key).text().trim() == value.Site);
+                        });
+                        $(to_check).find("input").prop("checked", true);
                     });
                 }
                 break;
@@ -518,22 +524,38 @@ $(document).ready(function() {
                 $("#Sites_Modal .modal-caller").text("SCC_InSitu");
                 $("#Sites_Modal .th-image img").attr("src", "icons/human-body-grey.png");
                 if (List_SCC_InSitu_Sites.length != 0) {
-                    $.each(List_SCC_InSitu_Sites, function(key, value) {
-                        $("#Sites_Modal .table-personal-label:contains(" + value.Site + ")").find("input[type=checkbox]").prop("checked", true);
+                    $.each(List_SCC_InSitu_Sites, function (key, value) {
+                        var to_check = $.grep($("#Sites_Modal .tg input").parent(), function (G_key, G_value) {
+                            return ($(G_key).text().trim() == value.Site);
+                        });
+                        $(to_check).find("input").prop("checked", true);
                     });
                 }
                 break;
         }
     });
 
-    $("#Sites_Modal").on("change", "input", function(evt) {
+    $("#Sites_Modal .tg input").on("click",function (evt) {
         var Caller = $("#Sites_Modal .modal-caller").text();
+        var Checked = $(this);
+        var temp_Array = [];
+        $("#Sites_Modal .modal-checked").text($(this).parent().text());
+
+        if (Caller == "BCC") {
+            temp_Array = List_BCC_Sites;
+        }
+        if (Caller == "SCC_Invasive") {
+            temp_Array = List_SCC_Invasive_Sites;
+        }
+        if (Caller == "SCC_InSitu") {
+            temp_Array = List_SCC_InSitu_Sites;
+        }
+
         if ($(this).prop("checked") == true) {
-            var Site = {};
-            Site.Type = Caller;
-            Site.Site = $(this).parents(".TEST2").find(".table-personal-label").text();
             $("#SimpleDateModal .diagnosis-date").val("");
             $("#SimpleDateModal").addClass("hyper-modal").modal("show");
+            $("#SimpleDateModal .span-modal-title").text("Insert diagnosis date for ");
+            $("#SimpleDateModal .span-modal-title-for").text($(Checked).parent().text());
 
             if (Caller == "SCC_InSitu") {
                 $("#SimpleDateModal .hidden").removeClass("hidden").addClass("show");
@@ -542,52 +564,21 @@ $(document).ready(function() {
                 $("#SimpleDateModal .show").removeClass("show").addClass("hidden");
             }
 
-            $("#SimpleDateModal #save_simple").one("click", function(evt) {
-                evt.preventDefault();
-                Site.Diagnosis_Date = $("#SimpleDateModal .diagnosis-date").val();
-                if (Caller == "BCC") {
-                    List_BCC_Sites.push(Site);
-                }
-                if (Caller == "SCC_Invasive") {
-                    List_SCC_Invasive_Sites.push(Site);
-                }
-                if (Caller == "SCC_InSitu") {
-                    Site.Number = $("#SimpleDateModal .number-control").val();
-                    List_SCC_InSitu_Sites.push(Site);
-                }
-            });
-
-            $("#SimpleDateModal .close .btn-danger").on("click", function(evt) {
-                evt.preventDefault();
-                $("#SimpleDateModal").toggle().removeClass("hyper-modal");
-                /* if (Caller == "BCC") {
-                     List_BCC_Sites.push(Site);
-                 }
-                 if (Caller == "SCC_Invasive") {
-                     List_SCC_Invasive_Sites.push(Site);
-                 }
-                 if (Caller == "SCC_InSitu") {
-                     List_SCC_InSitu_Sites.push(Site);
-                 }*/
-            });
+            var Site = {};
+            Site.Type = Caller;
+            Site.Site = $(Checked).parent().text();
+            temp_Array.push(Site);
         }
         if ($(this).prop("checked") == false) {
             var label_remove = $(this).parents(".TEST2").find(".table-personal-label").text();
-            var temp_Array = [];
-            if (Caller == "BCC") {
-                temp_Array = List_BCC_Sites;
-            }
-            if (Caller == "SCC_Invasive") {
-                temp_Array = List_SCC_Invasive_Sites;
-            }
-            if (Caller == "SCC_InSitu") {
-                temp_Array = List_SCC_InSitu_Sites;
-            }
-            var filteredObj = temp_Array.find(function(item, i) {
-                if (item.Site === label_remove) {
-                    List_To_Delete.push(i);
+            var filteredObj = 90;
+            $.each(temp_Array,function (index,item) {
+                if (item.Site === label_remove.trim()) {
+                    filteredObj = index;
                 }
             });
+            console.log("FILTERED OBJ",filteredObj);
+            temp_Array.splice(filteredObj,1);
         }
     });
 
@@ -606,14 +597,8 @@ $(document).ready(function() {
                 break;
             case "SCC_InSitu":
                 temp_Array = List_SCC_InSitu_Sites;
-                classTableToReload = ".SCC_InSitu_Sites_Json_Table"
+                classTableToReload = ".SCC_InSitu_Sites_Json_Table";
                 break;
-        }
-        if (List_To_Delete.length != 0) {
-            $.each(List_To_Delete, function(index, value) {
-                temp_Array.splice(value, 1);
-                List_To_Delete.pop();
-            });
         }
         if (temp_Array.length != 0) {
             $(classTableToReload).createTable(temp_Array);
@@ -622,8 +607,48 @@ $(document).ready(function() {
         }
     });
 
-    $("#Sites_Modal #cancel_sites,#Sites_Modal .close").on("click", function(evt) {
+    $("#Sites_Modal #cancel_sites,#Sites_Modal .close").on("click", function (evt) {
+        console.log("BBC list", List_BCC_Sites);
         //$("#HistoryBCC_Modal input").prop("checked",false);
+        // $("#Sites_Modal .tg input").off("click");
+    });
+
+    $("#SimpleDateModal #save_simple").on("click", function (evt) {
+        evt.preventDefault();
+
+        console.log("Evento:",evt.target);
+        console.log($._data($(this).get(0), "events"));
+
+        var Caller = $("#Sites_Modal .modal-caller").text();
+        var Checked = $("#Sites_Modal .modal-checked").text().trim();
+
+        if (Caller == "BCC") {
+            var Site = find_checked_object(List_BCC_Sites,Checked);
+            Site.Diagnosis_date = $("#SimpleDateModal .diagnosis-date").val();
+        }
+        if (Caller == "SCC_Invasive") {
+            var Site = find_checked_object(List_SCC_Invasive_Sites,Checked);
+            Site.Diagnosis_date = $("#SimpleDateModal .diagnosis-date").val();
+        }
+        if (Caller == "SCC_InSitu") {
+            var Site = find_checked_object(List_SCC_InSitu_Sites,Checked);
+            Site.Diagnosis_date = $("#SimpleDateModal .diagnosis-date").val();
+            Site.Number = $("#SimpleDateModal .number-control").val();
+        }
+    });
+
+    $("#SimpleDateModal .close,.btn-danger").on("click", function (evt) {
+        evt.preventDefault();
+        var Checked = $("#Sites_Modal .modal-checked").text().trim();
+        var TO_Uncheck = $.grep($("#Sites_Modal .tg input"),function(G_key,G_value){
+            if($(G_key).parent().text() == Checked) {
+                console.log($(G_key).parent().text());
+                return G_key;
+            }
+        });
+        $("#SimpleDateModal").toggle().removeClass("hyper-modal");
+        // $(TO_Uncheck).prop("checked",false);
+        $(TO_Uncheck).click();
     });
 
     $("#Additional_Neoplasia .year-datepicker").datepicker({
@@ -756,6 +781,16 @@ function Initialize() {
     DDL_from_JSON('History', 'siccodes.json');
     DDL_American_Cancer();
     Modal_Draggable();
+};
+
+function find_checked_object(temp_Array,obj) {
+    console.log("TEMP ARRAY in find checked = ",temp_Array,"\nOBJ = ",obj);
+    var finded =temp_Array.find(function (item, i) {
+        if (item.Site === obj.trim()) {
+            return item;
+        }
+    });
+    return finded;
 };
 
 function DDL_American_Cancer() {
