@@ -68,10 +68,6 @@
     font-weight: bolder;
 }
 
-#fieldsetHat .form-group {
-    margin-left: 24px;
-}
-
 #msform ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -163,8 +159,6 @@
 #msform .divTableHead {
     border: 1px solid #999999;
     display: table-cell;
-    vertical-align: middle !important;
-    width: 10%;
     padding: 10px;
 }
 
@@ -218,6 +212,16 @@
     width: 80%;
     text-align: center;
     margin: auto;
+    height: 35px;
+}
+
+#msform .divTableCell .form-group input[type='text'] {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    height: 35px;
 }
 
 #msform .NoDivTableBorder.show-control select {
@@ -237,6 +241,7 @@
     width: 100%;
     text-align: center;
     margin-top: -10px;
+    padding-bottom: 3px;
 }
 
 #msform .hidden-control {
@@ -251,6 +256,7 @@
 #msform .divTableCell .show-control {
     height: 100%;
     visibility: visible;
+    margin-top: -20px;
 }
 
 #msform #fieldsetCodeNumber input {
@@ -283,6 +289,10 @@
 
 /*error*/
 
+.NoDivTableBorder .form-group {
+    text-align: center;
+}
+
 .error1 {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -290,8 +300,7 @@
     -moz-box-shadow: 0 0 0 transparent;
     -webkit-box-shadow: 0 0 0 transparent;
     box-shadow: 0 0 0 transparent;
-    padding: 0 10px;
-    height: 39px;
+    padding: 5px 10px;
     display: none;
     color: #ffffff;
     background: #e62163;

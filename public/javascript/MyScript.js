@@ -48,13 +48,23 @@ $(document).ready(function() {
         select: function(event, ui) {
             $(".residency_date_class").append("<span>Test</span>");
             $(".residency_date_class").html(
+                "<div class='divTable'>" +
+                "<div class='divTableBody'>" +
+                "<div class='divTableRow'>" +
+                "<div class='divTableCell NoDivTableBorder'>" +
                 "<div class='residency_datepicker form-group'>" +
                 "<label>From:</label>" +
                 "<input class='new_datepicker form-control start_date' type='text' required>" +
                 "</div>" +
+                "</div>" +
+                "<div class='divTableCell NoDivTableBorder'>" +
                 "<div class='residency_datepicker form-group'>" +
                 "<label>To:</label>" +
                 "<input class='new_datepicker form-control end_date' type='text' required>" +
+                "</div>" +
+                "</div>" +
+                "</div>" +
+                "</div>" +
                 "</div>");
             $(".new_datepicker").datepicker({
                 format: 'dd-M-yyyy',
@@ -80,7 +90,7 @@ $(document).ready(function() {
     })
 
     $("#fieldsetCodeNumber #DatabaseCodeCountry").on("change", function(evt) {
-        if ($(this).val() != "No Choosed") {
+        if ($(this).val() != "") {
             $("#DatabaseCodeCenter").prop("disabled", false);
             nation_val = $(this).val();
             $.getJSON('Centers.json', function(result) {
@@ -90,11 +100,11 @@ $(document).ready(function() {
                     }
                 });
             });
-            $("DatabaseCodeCenter").val("No Choosed");
+            $("DatabaseCodeCenter").val("");
         }
-        if ($(this).val() == "No Choosed") {
+        if ($(this).val() == "") {
             $("#DatabaseCodeCenter").prop("disabled", true);
-            $("#DatabaseCodeCenter").val("No Choosed");
+            $("#DatabaseCodeCenter").val("");
         }
     });
 
@@ -103,7 +113,7 @@ $(document).ready(function() {
         currentDatabaseCode = $("#DatabaseCodeCenter").val();
         currentDatabaseCodeType = $("#DatabaseCodeType").val();
 
-        if (currentCodeCountry != "No Choosed" && currentDatabaseCode != "No Choosed" && currentDatabaseCodeType != "No Choosed") {
+        if (currentCodeCountry != "" && currentDatabaseCode != "" && currentDatabaseCodeType != "") {
             object_JSON = {
                 "sort": [{
                     "timestamp": {
@@ -719,6 +729,10 @@ $(document).ready(function() {
         }
     });
 
+    $('.datepicker').on("change", function(evt) {
+        $(this).next().css('display', 'none');
+    });
+
     $("#secondSelectLesion").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
@@ -919,7 +933,7 @@ $(document).ready(function() {
 /*Fine Doucment Ready*/
 
 function Initialize() {
-    DDL_Other('Ethnicity', 'inputEthnicity');
+    DDL_Other('ethnicity_input', 'inputEthnicity');
     DDL_Other('Melanoma', 'inputMelanoma');
     DDL_from_JSON('History', 'siccodes.json');
     DDL_American_Cancer();
@@ -1017,7 +1031,7 @@ function DDL_from_JSON(tag_ID_DDL, url) {
     });
 };
 
-function DDL_Other(tag_ID, tag_Class, ) {
+function DDL_Other(tag_ID, tag_Class) {
     $("#" + tag_ID).on("change", function() {
         if ($(this).val() == "Other") {
             $("." + tag_Class).removeClass("hidden-control").addClass("form-control");
