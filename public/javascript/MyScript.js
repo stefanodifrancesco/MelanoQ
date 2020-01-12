@@ -5,6 +5,11 @@ $(document).ready(function() {
         autoclose: true
     });
 
+    // Hides the required warning after date changed
+    $('.datepicker').on("change", function(evt) {
+        $(this).next().css('display', 'none');
+    });
+
     /*var myMap = new google.maps.Map(document.getElementById("myMap"), {
         center: {lat: 37.5, lng: -120},
         zoom: 6
@@ -23,7 +28,7 @@ $(document).ready(function() {
                 },
                 jsonp: "jsonp",
                 success: function(data) {
-                    console.log(data)
+
                     var result = data.resourceSets[0];
                     if (result) {
                         if (result.estimatedTotal > 0) {
@@ -694,15 +699,25 @@ $(document).ready(function() {
         $("#Additional_Neoplasia .year-datepicker").val("");
     });
 
+
+    /****** Checkboxes for enabling melanoma characteristics inputs ******/
+    $('#firstMelanomaCheckbox').click(function() {
+        if ($('#firstMelanomaCheckbox').is(':checked')) {
+            $('#firstMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
+            $('#firstMelanomaCharacteristics :input').attr('disabled', false);
+        } else {
+            $('#firstMelanomaCharacteristics').css('pointer-events', 'none').css('opacity', '0.2');
+            $('#firstMelanomaCharacteristics :input').attr('disabled', true);
+        }
+    });
+
     $('#secondMelanomaCheckbox').click(function() {
         if ($('#secondMelanomaCheckbox').is(':checked')) {
             $('#secondMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
             $('#secondMelanomaCharacteristics :input').attr('disabled', false);
-            $('#secondMelanomaCharacteristics :select').attr('disabled', false);
         } else {
             $('#secondMelanomaCharacteristics').css('pointer-events', 'none').css('opacity', '0.2');
             $('#secondMelanomaCharacteristics :input').attr('disabled', true);
-            $('#secondMelanomaCharacteristics :select').attr('disabled', true);
         }
     });
 
@@ -710,14 +725,15 @@ $(document).ready(function() {
         if ($('#thirdMelanomaCheckbox').is(':checked')) {
             $('#thirdMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
             $('#thirdMelanomaCharacteristics :input').attr('disabled', false);
-            $('#thirdMelanomaCharacteristics :select').attr('disabled', false);
         } else {
             $('#thirdMelanomaCharacteristics').css('pointer-events', 'none').css('opacity', '0.2');
             $('#thirdMelanomaCharacteristics :input').attr('disabled', true);
-            $('#thirdMelanomaCharacteristics :select').attr('disabled', true);
         }
     });
+    /****** Checkboxes for enabling melanoma characteristics inputs ******/
 
+
+    /****** Melanoma charcteristics selects changes ******/
     $("#firstSelectLesion").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
@@ -727,10 +743,6 @@ $(document).ready(function() {
             $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
-    });
-
-    $('.datepicker').on("change", function(evt) {
-        $(this).next().css('display', 'none');
     });
 
     $("#secondSelectLesion").on("change", function(evt) {
@@ -887,6 +899,49 @@ $(document).ready(function() {
         }
     });
 
+    $("#firstTumorKnown").on("change", function(evt) {
+        if ($(this).val() == "Yes") {
+            $('#firstKnownSite').removeClass("hidden");
+            $('#firstBreslowFieldset').removeClass("hidden");
+            $('#firstHistopatologicFieldset').removeClass("hidden");
+            $('#firstAJCCfieldset').removeClass("hidden");
+        } else {
+            $('#firstKnownSite').addClass("hidden");
+            $('#firstBreslowFieldset').addClass("hidden");
+            $('#firstHistopatologicFieldset').addClass("hidden");
+            $('#firstAJCCfieldset').addClass("hidden");
+        }
+    });
+
+    $("#secondTumorKnown").on("change", function(evt) {
+        if ($(this).val() == "Yes") {
+            $('#secondKnownSite').removeClass("hidden");
+            $('#secondBreslowFieldset').removeClass("hidden");
+            $('#secondHistopatologicFieldset').removeClass("hidden");
+            $('#secondAJCCfieldset').removeClass("hidden");
+        } else {
+            $('#secondKnownSite').addClass("hidden");
+            $('#secondBreslowFieldset').addClass("hidden");
+            $('#secondHistopatologicFieldset').addClass("hidden");
+            $('#secondAJCCfieldset').addClass("hidden");
+        }
+    });
+
+    $("#thirdTumorKnown").on("change", function(evt) {
+        if ($(this).val() == "Yes") {
+            $('#thirdKnownSite').removeClass("hidden");
+            $('#thirdBreslowFieldset').removeClass("hidden");
+            $('#thirdHistopatologicFieldset').removeClass("hidden");
+            $('#thirdAJCCfieldset').removeClass("hidden");
+        } else {
+            $('#thirdKnownSite').addClass("hidden");
+            $('#thirdBreslowFieldset').addClass("hidden");
+            $('#thirdHistopatologicFieldset').addClass("hidden");
+            $('#thirdAJCCfieldset').addClass("hidden");
+        }
+    });
+    /****** Melanoma charcteristics selects changes ******/
+
     $("#submit").on('click', function(e) {
         e.preventDefault();
         var serJson = $("#msform").serializeJSON();
@@ -919,14 +974,13 @@ $(document).ready(function() {
 
     });
 
+    /****** Initially disables all melanoma characteristics inputs ******/
     $('#firstMelanomaCharacteristics :input').attr('disabled', true);
-    $('#firstMelanomaCharacteristics :select').attr('disabled', true);
 
     $('#secondMelanomaCharacteristics :input').attr('disabled', true);
-    $('#secondMelanomaCharacteristics :select').attr('disabled', true);
 
     $('#thirdMelanomaCharacteristics :input').attr('disabled', true);
-    $('#thirdMelanomaCharacteristics :select').attr('disabled', true);
+    /****** Initially disables all melanoma characteristics inputs ******/
 
     Initialize();
 });

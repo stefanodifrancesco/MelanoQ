@@ -1101,8 +1101,6 @@ block content
                         label Questions numbers:
                         input#QuestionHidden(type='text' placeholder='1, 2, 3, etc.')
 
-
-
           div.alphaformfooter
           div.formfooter
           input.scroll-button-bottom(type='button')
@@ -1242,6 +1240,7 @@ block content
                       input#inputSolesRight(type='number' min='1' name='clinical_examination[nevi_count][right_soles]' required='required' data-rule-required='true' data-msg-required='Required field')
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
+
             fieldset#fieldsetNevi2mmCount
               label Nevi 2mm count
               p(style='color:red;') (Optional)
@@ -1292,7 +1291,6 @@ block content
                           option(value='Yes') Yes
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
-
 
             fieldset#fieldsetCongenitalNevi
               label
@@ -1358,7 +1356,6 @@ block content
                           label Site(s):
                           input#inputGiantSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][giant_sized][sites]')
 
-
             fieldset#fieldsetBlueNevi
               label
                 | Blue nevi
@@ -1376,9 +1373,7 @@ block content
                         .hidden-control
                             label(style='font-size: 12px;') Number:
                             input#inputBlueNevi(type='number' min='1' name='clinical_examination[blue_nevi][medium_sized][count]')
-                            
-
-
+            
             fieldset#fieldsetActinicKeratoses
               label Actinic keratoses
               .form-group
@@ -1409,7 +1404,6 @@ block content
                               option(value='Isolated') Isolated/Scattered
                               option(value='Clustered') Clustered
                               option(value='Confluent') Confluent
-
 
             fieldset#fieldsetKSC_BCC_SCC
               label(style='margin-bottom: 40px;')
@@ -1730,7 +1724,12 @@ block content
             h2.fs-title MELANOMA CHARACTERISTICS
             h3.fs-subtitle completed by physician/study nurse
 
-            details#firstMelanomaCharacteristics
+            .TEST2
+              label.table-personal-label(style='padding-left: 50px;')
+                | Select if there is a first primary melanoma
+                input#firstMelanomaCheckbox(type="checkbox" name="first_melanoma[presence]" value="yes" style="margin-left: -30px; margin-top: -23px;")
+                span.checkmark(style="margin-left: -30px; margin-top: -23px;")
+            details#firstMelanomaCharacteristics(style="pointer-events: none; opacity: 0.2;")
               <summary>CHARACTERISTICS OF 1st PRIMARY MELANOMA</summary>
               <hr/>
               fieldset
@@ -1843,20 +1842,107 @@ block content
                             input(type='number' min='1' name='melanoma_characteristics[multiple_primary][count]' required='' )
 
                 fieldset
-                  label(for='9069469') Dates of diagnosis
+                  label 
+                    | Dates of diagnosis
                   .form-group
                     input.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
                     span.error1
                       i.error-log.fa.fa-exclamation-triangle
 
                 fieldset
-                  label(for='248537302') Breslow thickness(mm)
+                  label 
+                    | Is the primary tumor known?
+                  .form-group
+                    select#firstTumorKnown.form-control(name='melanoma_characteristics[known][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      option(value='' selected='') Select...
+                      option(value='Yes') Yes
+                      option(value='No') No
+                    span.error1
+                      i.error-log.fa.fa-exclamation-triangle
+
+                fieldset#firstKnownSite.hidden
+                  label 
+                    | Site
+                  .form-group
+                    select#firstKnownSiteSelect.form-control(name='melanoma_characteristics[known][site]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      option(value='' selected='') Select...
+                      option(value='anus') anus
+                      option(value='arm_left_anterior') arm_left_anterior
+                      option(value='arm_left_posterior') arm_left_posterior
+                      option(value='arm_right_anterior') arm_right_anterior
+                      option(value='arm_right_posterior') arm_right_posterior
+                      option(value='axilla_left') axilla_left
+                      option(value='axilla_right') axilla_right
+                      option(value='back_left') back_left
+                      option(value='back_middle') back_middle
+                      option(value='back_right') back_right
+                      option(value='buttock_left') buttock_left
+                      option(value='buttock_right') buttock_right
+                      option(value='cheek_left') cheek_left
+                      option(value='cheek_right') cheek_right
+                      option(value='chest_left') chest_left
+                      option(value='chest_middle') chest_middle
+                      option(value='chest_right') chest_right
+                      option(value='chin') chin
+                      option(value='ear_left') ear_left
+                      option(value='ear_right') ear_right
+                      option(value='eye_left') eye_left
+                      option(value='eye_right') eye_right
+                      option(value='eyelid_left') eyelid_left
+                      option(value='eyelid_right') eyelid_right
+                      option(value='finger_left') finger_left
+                      option(value='finger_right') finger_right
+                      option(value='foot_left_dorsal') foot_left_dorsal
+                      option(value='foot_left_plantar') foot_left_plantar
+                      option(value='foot_right_dorsal') foot_right_dorsal
+                      option(value='foot_right_plantar') foot_right_plantar
+                      option(value='forearm_left_anterior') forearm_left_anterior
+                      option(value='forearm_left_posterior') forearm_left_posterior
+                      option(value='forearm_right_anterior') forearm_right_anterior
+                      option(value='forearm_right_posterior') forearm_right_posterior
+                      option(value='forehead') forehead
+                      option(value='hand_left_dorsal') hand_left_dorsal
+                      option(value='hand_left_palmar') hand_left_palmar
+                      option(value='hand_right_dorsal') hand_right_dorsal
+                      option(value='hand_right_palmar') hand_right_palmar
+                      option(value='head') head
+                      option(value='laterocervical_left') laterocervical_left
+                      option(value='laterocervical_right') laterocervical_right
+                      option(value='leg_left_anterior') leg_left_anterior
+                      option(value='leg_left_posterior') leg_left_posterior
+                      option(value='leg_right_anterior') leg_right_anterior
+                      option(value='leg_right_posterior') leg_right_posterior
+                      option(value='lip') lip
+                      option(value='lumbar') lumbar
+                      option(value='nail_finger_left') nail_finger_left
+                      option(value='nail_finger_right') Yes
+                      option(value='nail_toe_left') nail_toe_left
+                      option(value='nail_toe_right') nail_toe_right
+                      option(value='nose') nose
+                      option(value='penis_scrotum') penis_scrotum
+                      option(value='scalp') scalp
+                      option(value='shoulder_left') shoulder_left
+                      option(value='shoulder_right') shoulder_right
+                      option(value='thigh_left_anterior') thigh_left_anterior
+                      option(value='thigh_left_posterior') thigh_left_posterior
+                      option(value='thigh_right_anterior') thigh_right_anterior
+                      option(value='thigh_right_posterior') thigh_right_posterior
+                      option(value='toe_left') toe_left
+                      option(value='toe_right') toe_right
+                      option(value='vagina') vagina
+                      option(value='vulva') vulva
+                    span.error1
+                      i.error-log.fa.fa-exclamation-triangle
+
+                fieldset#firstBreslowFieldset.hidden
+                  label 
+                    | Breslow thickness(mm)
                   .form-group
                     input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
                     span.error1
                         i.error-log.fa.fa-exclamation-triangle
 
-                fieldset
+                fieldset#firstHistopatologicFieldset.hidden
                   label
                     | Other main histopathologic features
                   .form-group
@@ -1998,7 +2084,7 @@ block content
                               option(value='disease_free') Disease-free 
                               option(value='not_diseasefree') Not disease-free
 
-                fieldset
+                fieldset#firstAJCCfieldset.hidden
                   .form-group
                     .divTable
                       .divTableBody
@@ -2033,10 +2119,10 @@ block content
                               option(value='M1') M1 - Distant metastasis
 
             .TEST2
-              label.table-personal-label
-                | Select if there is a second melanoma
-                input#secondMelanomaCheckbox(type="checkbox" name="second_melanoma[presence]" value="yes")
-                span.checkmark
+              label.table-personal-label(style='padding-left: 50px;')
+                | Select if there is a second primary melanoma
+                input#secondMelanomaCheckbox(type="checkbox" name="second_melanoma[presence]" value="yes" style="margin-left: -30px; margin-top: -23px;")
+                span.checkmark(style="margin-left: -30px; margin-top: -23px;")
             details#secondMelanomaCharacteristics(style="pointer-events: none; opacity: 0.2;")
               <summary>CHARACTERISTICS OF 2nd PRIMARY MELANOMA</summary>
               <hr/>
@@ -2150,20 +2236,107 @@ block content
                             input(type='number' min='1' name='melanoma_characteristics[multiple_primary][count]' required='' )
 
                 fieldset
-                  label(for='9069469') Dates of diagnosis
+                  label 
+                    | Dates of diagnosis
                   .form-group
                     input.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
                     span.error1
                       i.error-log.fa.fa-exclamation-triangle
 
                 fieldset
-                  label(for='248537302') Breslow thickness(mm)
+                  label 
+                    | Is the primary tumor known?
+                  .form-group
+                    select#secondTumorKnown.form-control(name='melanoma_characteristics[known][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      option(value='' selected='') Select...
+                      option(value='Yes') Yes
+                      option(value='No') No
+                    span.error1
+                      i.error-log.fa.fa-exclamation-triangle
+
+                fieldset#secondKnownSite.hidden
+                  label 
+                    | Site
+                  .form-group
+                    select#secondKnownSiteSelect.form-control(name='melanoma_characteristics[known][site]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      option(value='' selected='') Select...
+                      option(value='anus') anus
+                      option(value='arm_left_anterior') arm_left_anterior
+                      option(value='arm_left_posterior') arm_left_posterior
+                      option(value='arm_right_anterior') arm_right_anterior
+                      option(value='arm_right_posterior') arm_right_posterior
+                      option(value='axilla_left') axilla_left
+                      option(value='axilla_right') axilla_right
+                      option(value='back_left') back_left
+                      option(value='back_middle') back_middle
+                      option(value='back_right') back_right
+                      option(value='buttock_left') buttock_left
+                      option(value='buttock_right') buttock_right
+                      option(value='cheek_left') cheek_left
+                      option(value='cheek_right') cheek_right
+                      option(value='chest_left') chest_left
+                      option(value='chest_middle') chest_middle
+                      option(value='chest_right') chest_right
+                      option(value='chin') chin
+                      option(value='ear_left') ear_left
+                      option(value='ear_right') ear_right
+                      option(value='eye_left') eye_left
+                      option(value='eye_right') eye_right
+                      option(value='eyelid_left') eyelid_left
+                      option(value='eyelid_right') eyelid_right
+                      option(value='finger_left') finger_left
+                      option(value='finger_right') finger_right
+                      option(value='foot_left_dorsal') foot_left_dorsal
+                      option(value='foot_left_plantar') foot_left_plantar
+                      option(value='foot_right_dorsal') foot_right_dorsal
+                      option(value='foot_right_plantar') foot_right_plantar
+                      option(value='forearm_left_anterior') forearm_left_anterior
+                      option(value='forearm_left_posterior') forearm_left_posterior
+                      option(value='forearm_right_anterior') forearm_right_anterior
+                      option(value='forearm_right_posterior') forearm_right_posterior
+                      option(value='forehead') forehead
+                      option(value='hand_left_dorsal') hand_left_dorsal
+                      option(value='hand_left_palmar') hand_left_palmar
+                      option(value='hand_right_dorsal') hand_right_dorsal
+                      option(value='hand_right_palmar') hand_right_palmar
+                      option(value='head') head
+                      option(value='laterocervical_left') laterocervical_left
+                      option(value='laterocervical_right') laterocervical_right
+                      option(value='leg_left_anterior') leg_left_anterior
+                      option(value='leg_left_posterior') leg_left_posterior
+                      option(value='leg_right_anterior') leg_right_anterior
+                      option(value='leg_right_posterior') leg_right_posterior
+                      option(value='lip') lip
+                      option(value='lumbar') lumbar
+                      option(value='nail_finger_left') nail_finger_left
+                      option(value='nail_finger_right') Yes
+                      option(value='nail_toe_left') nail_toe_left
+                      option(value='nail_toe_right') nail_toe_right
+                      option(value='nose') nose
+                      option(value='penis_scrotum') penis_scrotum
+                      option(value='scalp') scalp
+                      option(value='shoulder_left') shoulder_left
+                      option(value='shoulder_right') shoulder_right
+                      option(value='thigh_left_anterior') thigh_left_anterior
+                      option(value='thigh_left_posterior') thigh_left_posterior
+                      option(value='thigh_right_anterior') thigh_right_anterior
+                      option(value='thigh_right_posterior') thigh_right_posterior
+                      option(value='toe_left') toe_left
+                      option(value='toe_right') toe_right
+                      option(value='vagina') vagina
+                      option(value='vulva') vulva
+                    span.error1
+                      i.error-log.fa.fa-exclamation-triangle
+
+                fieldset#secondBreslowFieldset.hidden
+                  label 
+                    | Breslow thickness(mm)
                   .form-group
                     input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
                     span.error1
                         i.error-log.fa.fa-exclamation-triangle
 
-                fieldset
+                fieldset#secondHistopatologicFieldset.hidden
                   label
                     | Other main histopathologic features
                   .form-group
@@ -2305,7 +2478,7 @@ block content
                               option(value='disease_free') Disease-free 
                               option(value='not_diseasefree') Not disease-free
 
-                fieldset
+                fieldset#secondAJCCfieldset.hidden
                   .form-group
                     .divTable
                       .divTableBody
@@ -2340,10 +2513,10 @@ block content
                               option(value='M1') M1 - Distant metastasis
 
             .TEST2
-              label.table-personal-label
-                | Select if there is a third melanoma
-                input#thirdMelanomaCheckbox(type="checkbox" name="third_melanoma[presence]" value="yes")
-                span.checkmark
+              label.table-personal-label(style='padding-left: 50px;')
+                | Select if there is a third primary melanoma
+                input#thirdMelanomaCheckbox(type="checkbox" name="third_melanoma[presence]" value="yes" style="margin-left: -30px; margin-top: -23px;")
+                span.checkmark(style="margin-left: -30px; margin-top: -23px;")
             details#thirdMelanomaCharacteristics(style="pointer-events: none; opacity: 0.2;")
               <summary>CHARACTERISTICS OF 3th PRIMARY MELANOMA</summary>
               <hr/>
@@ -2457,20 +2630,107 @@ block content
                             input(type='number' min='1' name='melanoma_characteristics[multiple_primary][count]' required='' )
 
                 fieldset
-                  label(for='9069469') Dates of diagnosis
+                  label 
+                    | Dates of diagnosis
                   .form-group
                     input.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[diagnosis_date]')
                     span.error1
                       i.error-log.fa.fa-exclamation-triangle
 
                 fieldset
-                  label(for='248537302') Breslow thickness(mm)
+                  label 
+                    | Is the primary tumor known?
+                  .form-group
+                    select#thirdTumorKnown.form-control(name='melanoma_characteristics[known][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      option(value='' selected='') Select...
+                      option(value='Yes') Yes
+                      option(value='No') No
+                    span.error1
+                      i.error-log.fa.fa-exclamation-triangle
+
+                fieldset#thirdKnownSite.hidden
+                  label 
+                    | Site
+                  .form-group
+                    select#thirdKnownSiteSelect.form-control(name='melanoma_characteristics[known][site]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      option(value='' selected='') Select...
+                      option(value='anus') anus
+                      option(value='arm_left_anterior') arm_left_anterior
+                      option(value='arm_left_posterior') arm_left_posterior
+                      option(value='arm_right_anterior') arm_right_anterior
+                      option(value='arm_right_posterior') arm_right_posterior
+                      option(value='axilla_left') axilla_left
+                      option(value='axilla_right') axilla_right
+                      option(value='back_left') back_left
+                      option(value='back_middle') back_middle
+                      option(value='back_right') back_right
+                      option(value='buttock_left') buttock_left
+                      option(value='buttock_right') buttock_right
+                      option(value='cheek_left') cheek_left
+                      option(value='cheek_right') cheek_right
+                      option(value='chest_left') chest_left
+                      option(value='chest_middle') chest_middle
+                      option(value='chest_right') chest_right
+                      option(value='chin') chin
+                      option(value='ear_left') ear_left
+                      option(value='ear_right') ear_right
+                      option(value='eye_left') eye_left
+                      option(value='eye_right') eye_right
+                      option(value='eyelid_left') eyelid_left
+                      option(value='eyelid_right') eyelid_right
+                      option(value='finger_left') finger_left
+                      option(value='finger_right') finger_right
+                      option(value='foot_left_dorsal') foot_left_dorsal
+                      option(value='foot_left_plantar') foot_left_plantar
+                      option(value='foot_right_dorsal') foot_right_dorsal
+                      option(value='foot_right_plantar') foot_right_plantar
+                      option(value='forearm_left_anterior') forearm_left_anterior
+                      option(value='forearm_left_posterior') forearm_left_posterior
+                      option(value='forearm_right_anterior') forearm_right_anterior
+                      option(value='forearm_right_posterior') forearm_right_posterior
+                      option(value='forehead') forehead
+                      option(value='hand_left_dorsal') hand_left_dorsal
+                      option(value='hand_left_palmar') hand_left_palmar
+                      option(value='hand_right_dorsal') hand_right_dorsal
+                      option(value='hand_right_palmar') hand_right_palmar
+                      option(value='head') head
+                      option(value='laterocervical_left') laterocervical_left
+                      option(value='laterocervical_right') laterocervical_right
+                      option(value='leg_left_anterior') leg_left_anterior
+                      option(value='leg_left_posterior') leg_left_posterior
+                      option(value='leg_right_anterior') leg_right_anterior
+                      option(value='leg_right_posterior') leg_right_posterior
+                      option(value='lip') lip
+                      option(value='lumbar') lumbar
+                      option(value='nail_finger_left') nail_finger_left
+                      option(value='nail_finger_right') Yes
+                      option(value='nail_toe_left') nail_toe_left
+                      option(value='nail_toe_right') nail_toe_right
+                      option(value='nose') nose
+                      option(value='penis_scrotum') penis_scrotum
+                      option(value='scalp') scalp
+                      option(value='shoulder_left') shoulder_left
+                      option(value='shoulder_right') shoulder_right
+                      option(value='thigh_left_anterior') thigh_left_anterior
+                      option(value='thigh_left_posterior') thigh_left_posterior
+                      option(value='thigh_right_anterior') thigh_right_anterior
+                      option(value='thigh_right_posterior') thigh_right_posterior
+                      option(value='toe_left') toe_left
+                      option(value='toe_right') toe_right
+                      option(value='vagina') vagina
+                      option(value='vulva') vulva
+                    span.error1
+                      i.error-log.fa.fa-exclamation-triangle
+
+                fieldset#thirdBreslowFieldset.hidden
+                  label 
+                    | Breslow thickness(mm)
                   .form-group
                     input.form-control(type='number' step="0.01" min='0.01' name='weight' required='required' data-rule-required='true' data-msg-required='Please include your weight')
                     span.error1
                         i.error-log.fa.fa-exclamation-triangle
 
-                fieldset
+                fieldset#thirdHistopatologicFieldset.hidden
                   label
                     | Other main histopathologic features
                   .form-group
@@ -2612,7 +2872,7 @@ block content
                               option(value='disease_free') Disease-free 
                               option(value='not_diseasefree') Not disease-free
 
-                fieldset
+                fieldset#thirdAJCCfieldset.hidden
                   .form-group
                     .divTable
                       .divTableBody
@@ -3179,7 +3439,6 @@ block content
         button#save_sites.btn.btn-secondary(type='button' data-dismiss='modal')
           | Save
         button#cancel_sites.btn.btn-danger(type='button' data-dismiss='modal') Cancel
-
 
   #Additional_Neoplasia.modal.fade
     .modal-dialog

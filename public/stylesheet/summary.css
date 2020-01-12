@@ -47,10 +47,6 @@
     box-sizing: border-box;
 }
 
-html {
-    background-color: #CFD8DC;
-}
-
 details {
     margin: 1rem auto;
     padding: 0 1rem;
@@ -61,6 +57,7 @@ details {
     background-color: white;
     color: #263238;
     transition: background-color 1s;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 }
 
 details> :last-child {
