@@ -946,17 +946,27 @@ $(document).ready(function() {
         e.preventDefault();
         var serJson = $("#msform").serializeJSON();
 
-        serJson.residency_list = ListaResidency;
+        serJson.demographic.residency_list = ListaResidency;
 
         history_list.forEach(occupation => {
             delete occupation.Action;
         });
-        serJson.SIC_list = history_list;
+        serJson.demographic.SIC_list = history_list;
 
         ListaICD10.forEach(diagnoses => {
             delete diagnoses.Action;
         });
-        serJson.diagnoses = ListaICD10;
+        serJson.medical_history.diagnoses = ListaICD10;
+
+        serJson.medical_history.medication_list = List_Medications;
+
+        serJson.medical_history.BCC.sites = List_BCC_Sites;
+
+        serJson.medical_history.SSC.sites = List_SCC_Invasive_Sites;
+
+        serJson.medical_history.SSC_in_situ.sites = List_SCC_InSitu_Sites;
+
+        serJson.medical_history.neoplasias = List_Additional_Neoplasias;
 
         console.log(serJson);
 
