@@ -946,6 +946,8 @@ $(document).ready(function() {
         e.preventDefault();
         var serJson = $("#msform").serializeJSON();
 
+        serJson.residency_list = ListaResidency;
+
         history_list.forEach(occupation => {
             delete occupation.Action;
         });
@@ -956,17 +958,20 @@ $(document).ready(function() {
         });
         serJson.diagnoses = ListaICD10;
 
+        console.log(serJson);
+
         $.ajax({
             url: '/stepform', // url where to submit the request
             type: "POST", // type of action POST || GET
-            dataType: 'json', // data type
             data: serJson, // post data || get data
             success: function(result) {
                 // you can see the result from the console
                 // tab of the developer tools
-                console.log(result);
+                console.log("success");
+                document.write(result);
             },
             error: function(xhr, resp, text) {
+                console.log("error");
                 console.log(xhr, resp, text);
             }
         })
@@ -1025,9 +1030,11 @@ function Create_Datepicker(tag_ID, tag_Append) {
     $("#" + tag_Append).find(".div_date").append($("<div class='form-group'>").append(date_input));
 };
 
+var history_list = [];
+
 function DDL_from_JSON(tag_ID_DDL, url) {
     var dropdown = $("#" + tag_ID_DDL).html("<option value='NoChoosed'>Select Sic Group ...</option>");
-    var history_list = [];
+
 
     $.getJSON('SicRanges.json', function(data) {
         $.each(data, function(key, entry) {

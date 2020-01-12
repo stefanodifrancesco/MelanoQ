@@ -89,14 +89,16 @@ block content
               input#codeNumber(type='text' readonly='' value='' name='code_number')
 
             fieldset#fieldsetAdmin
-              label(for='1763927487') Date of questionnaire administration and phenotyping
+              label 
+                | Date of questionnaire administration and phenotyping
               .form-group
                 input.datepicker.form-control(type='text' placeholder='Select date' name='survey_date' required='required' data-rule-required='true' data-msg-required='Required field')
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
                 
             fieldset#fieldsetPhenotyping
-              label(for='9069469') Dates of updated questionnaire and/or phenotyping
+              label 
+                | Dates of updated questionnaire and/or phenotyping
               .form-group
                 input.datepicker.form-control(type='text' placeholder='Select date' name='last_update' required='required' data-rule-required='true' data-msg-required='Required field')
                 span.error1
@@ -153,7 +155,7 @@ block content
                     .divTableCell.NoDivTableBorder
                       label Birthday
                       .form-group
-                        input.form-control.datepicker(type='text' name="birthdate" placeholder='Select date' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input.datepicker.form-control(type='text' name="birthday" placeholder='Select date' required='required' data-rule-required='true' data-msg-required='Required field')
                         span.error1
                             i.error-log.fa.fa-exclamation-triangle
                     .divTableCell.NoDivTableBorder
@@ -238,7 +240,7 @@ block content
                 | (starting from most recent and
                 | going backwards in time record duration from YYYY to YYYY)
               .form-group
-                select#History.form-control(name='entry.History')
+                select#History.form-control
               .form-group.dynamic_ddl
               .form-group.div_date
               #json-table-wrapper-history.table
@@ -481,22 +483,22 @@ block content
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/day?:
-                  input#UltravioletExposure_hours_for_day.form-control(type='text' name='ultraviolet[occupational_sun_exposure][hours_day]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#UltravioletExposure_hours_for_day.form-control(type='number' min='0' name='ultraviolet[occupational_sun_exposure][hours_day]' required='required' data-rule-required='true' data-msg-required='Required field')
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/month?:
-                  input#UltravioletExposure_hours_for_month.form-control(type='text' name='ultraviolet[occupational_sun_exposure][hours_month]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#UltravioletExposure_hours_for_month.form-control(type='number' min='0' name='ultraviolet[occupational_sun_exposure][hours_month]' required='required' data-rule-required='true' data-msg-required='Required field')
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/year?:
-                  input#UltravioletExposure_hours_for_year.form-control(type='text' name='ultraviolet[occupational_sun_exposure][hours_year]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#UltravioletExposure_hours_for_year.form-control(type='number' min='0' name='ultraviolet[occupational_sun_exposure][hours_year]' required='required' data-rule-required='true' data-msg-required='Required field')
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many years ?:
-                  input#UltravioletExposure_many_years.form-control(type='text' name='ultraviolet[occupational_sun_exposure][number_of_years]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#UltravioletExposure_many_years.form-control(type='number' min='0' name='ultraviolet[occupational_sun_exposure][number_of_years]' required='required' data-rule-required='true' data-msg-required='Required field')
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                   
@@ -520,22 +522,22 @@ block content
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/day?:
-                  input#Recreational_hours_for_day(type='text' name='ultraviolet[recreational_sun_exposure][hours_day]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#Recreational_hours_for_day(type='number' min='0' name='ultraviolet[recreational_sun_exposure][hours_day]' required='required' data-rule-required='true' data-msg-required='Required field')
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/month?:
-                  input#Recreational_hours_for_month(type='text' name='ultraviolet[recreational_sun_exposure][hours_month]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#Recreational_hours_for_month(type='number' min='0' name='ultraviolet[recreational_sun_exposure][hours_month]' required='required' data-rule-required='true' data-msg-required='Required field')
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/year?:
-                  input#Recreational_hours_for_year(type='text' name='ultraviolet[recreational_sun_exposure][hours_year]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#Recreational_hours_for_year(type='number' min='0' name='ultraviolet[recreational_sun_exposure][hours_year]' required='required' data-rule-required='true' data-msg-required='Required field')
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many years ?:
-                  input#Recreational_many_years(type='text' name='ultraviolet[recreational_sun_exposure][number_of_years]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#Recreational_many_years(type='number' min='0' name='ultraviolet[recreational_sun_exposure][number_of_years]' required='required' data-rule-required='true' data-msg-required='Required field')
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
 
