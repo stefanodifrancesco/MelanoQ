@@ -1023,7 +1023,7 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       select#id_BetaCarotene_Time.form-control(name='lifestyle[betacarotene_period]')
-                        option(value='NoChoosed') Select quantity...
+                        option(value='NoChoosed') Select Time...
                         option(value='less_than_1_year') < 1 year
                         option(value='from_1_to_4_years') 1-4 years
                         option(value='from_5_to_9_years') 5-9 years
@@ -1705,6 +1705,205 @@ block content
             h2.fs-title FAMILY HISTORY
             h3.fs-subtitle completed by physician/study nurse
 
+            fieldset#fieldsetSection_C3(style='margin-top: 20px;')
+              legend Section C3
+              .form-group
+                p.help-block
+                  | ΙΙI.FAMILY HISTORY OF MELANOMA OR OTHER CANCERS (completed by physician/study
+                  | nurse)
+                button.btn.add-Relative(type='button', data-toggle='modal', data-target='#FamilyHistoryUpTo3Degree')
+                  | Insert relatives affected
+              #FamilyHistoryUpTo3Degree.modal.fade
+                .modal-dialog
+                  .modal-content(style='width:auto;')
+                    // Modal Header
+                    .modal-header.modal-table
+                      table.modal-title
+                        thead
+                          tr
+                            th.th-image(style='width:25%;')
+                              img(src='icons/medical-records-svgrepo-com.png')
+                            th.th-title(style='width:75%;')
+                              table
+                                tbody
+                                  tr
+                                    th
+                                      span.span-modal-title Family history of melanoma
+                              table
+                                tbody
+                                  tr
+                                    th
+                                      span.span-modal-subtitle.help-block (up to 3rd degree relatives)
+                      button.close(type='button', data-dismiss='modal') ×
+                    // Modal body
+                    .modal-body
+                      .form-group
+                        .divTable
+                          .divTableRow
+                            .divTableCell
+                              span Any relative with Melanoma ?
+                              br
+                              span (Up to 3rd degree)
+                            .divTableCell.hidden.hidden-control
+                              span Type of melanoma
+                            .divTableCell.hidden.hidden-control
+                              span Maternal or Paternal
+                            .divTableCell.hidden.hidden-control
+                              span Degree
+                            .divTableCell.hidden.hidden-control
+                              span Diagnosis age
+                          .divTableRow
+                            .divTableCell
+                              select#relative.form-control
+                                option(value='NoChoosed') Select ...
+                                option(value='Yes') Yes
+                                option(value='No') No
+                                option(value='Not know') Not know
+                                option(value='Other') Other
+                            .divTableCell.hidden.hidden-control
+                              select#selectMelanomaType.form-control
+                                option(value='NoChoosed') Select type...
+                                option(value='Cutaneous') Cutaneous
+                                option(value='Uveal') Uveal
+                                option(value='Other') Other
+                                option(value="Don't know") Don't know
+                            .divTableCell.hidden.hidden-control
+                              select#selectRelativeSide.form-control
+                                option(value='NoChoosed') Select side...
+                                option(value='Maternal') Maternal
+                                option(value='Paternal') Paternal
+                            .divTableCell.hidden.hidden-control
+                              select#selectRelativeDegree.form-control
+                                option(value='NoChoosed') Select degree...
+                                option(value='1dg') 1st
+                                option(value='2dg') 2st
+                                option(value='3dg') 3rd
+                            .divTableCell.hidden.hidden-control
+                              input.diagnosis-age(type='number', style='width:100%;', placeholder='Specify age', min='1')
+                          .divTableRow.hidden
+                            .divTableCell
+                              input.specify(type='text', style='width:auto;', placeholder='Specify relative')
+                            .divTableCell
+                            .divTableCell
+                            .divTableCell
+                            .divTableCell
+                    // Modal footer
+                    .modal-footer
+                      button.btn.btn-secondary.save(type='button', data-dismiss='modal') Save
+                      button.btn.btn-danger.cancel(type='button', data-dismiss='modal') Cancel
+              .json-relative-table.form-group
+            fieldset#fieldsetSection_Germline(style='margin-top: 20px;')
+              legend Germline status
+              .form-group
+                p(style='color:red;') (Optional)
+              .form-group
+                select#germline.form-control(style='margin-left:0px !important')
+                  option(value='NoChoosed') Select germline...
+                  option(value='Not tested') Not tested
+                  option(value='Not tested') CDKN2A
+                  option(value='Not tested') CDK4
+                  option(value='Not tested') BAP-1
+                  option(value='Not tested') MC1R
+                  option(value='Not tested') TERT
+                  option(value='Not tested') MITF
+                  option(value='Not tested') POT1
+                  option(value='Not tested') Other
+            fieldset#fieldsetFamilyHistoryOther(style='margin-top: 20px;')
+              legend Family history of other cancers
+              .form-group
+                p.help-block (up to 3rd degree relatives)
+                button.btn.add-Other-Relative(type='button', data-toggle='modal', data-target='#FamilyHistoryOtherUpTo3Degree')
+                  | Insert relatives affected
+              #FamilyHistoryOtherUpTo3Degree.modal.fade
+                .modal-dialog
+                  .modal-content(style='width:auto;')
+                    // Modal Header
+                    .modal-header.modal-table
+                      table.modal-title
+                        thead
+                          tr
+                            th.th-image(style='width:25%;')
+                              img(src='icons/medical-records-svgrepo-com.png')
+                            th.th-title(style='width:75%;')
+                              table
+                                tbody
+                                  tr
+                                    th
+                                      span.span-modal-title Family history to other cancers
+                              table
+                                tbody
+                                  tr
+                                    th
+                                      span.span-modal-subtitle.help-block (up to 3rd degree relatives)
+                      button.close(type='button', data-dismiss='modal') ×
+                    // Modal body
+                    .modal-body
+                      .form-group
+                        .divTable
+                          .divTableRow
+                            .divTableCell
+                              span Type of cancer
+                              br
+                              span.help-block (exclude NMSC and melanoma)
+                            .divTableCell
+                              span Maternal or Paternal
+                            .divTableCell
+                              span Degree
+                            .divTableCell
+                              span Provide Pedigree
+                          .divTableRow
+                            .divTableCell
+                              select#selectOtherCancerType.form-control
+                                option(value='NoChoosed') Select type...
+                            .divTableCell
+                              select#selectOtherRelativeSide.form-control
+                                option(value='NoChoosed') Select side...
+                                option(value='Maternal') Maternal
+                                option(value='Paternal') Paternal
+                            .divTableCell
+                              select#selectOtherRelativeDegree.form-control
+                                option(value='NoChoosed') Select degree...
+                                option(value='1dg') 1st
+                                option(value='2dg') 2st
+                                option(value='3dg') 3rd
+                            .divTableCell
+                              // Textarea with icon prefix
+                              .md-form
+                                textarea#pedigree.md-textarea.form-control(rows='5', cols='50', placeholder='Provide pedigree here')
+                    // Modal footer
+                    .modal-footer
+                      button.btn.btn-secondary.save(type='button', data-dismiss='modal') Save
+                      button.btn.btn-danger.cancel(type='button', data-dismiss='modal') Cancel
+              .json-other-relative-tables.form-group
+            fieldset#fieldsetSectionCEval
+              legend Section C Completion Evaluation Questions
+              .form-group
+                p(style='color:red;') (Optional)
+              .form-group
+                .divTable
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder
+                      span Were you able to respond to the questions of this Section ?
+                    .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                      select#selectEvalC.form-control
+                        option(value='NoChoosed') Select...
+                        option(value='All') All questions
+                        option(value='Most') Most questions
+                        option(value='Half') Nearly half of the questions
+                        option(value='Few') Very few questions
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder
+                      span Which questions of this Section did you consider difficult to fill in?
+                    .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                      select.form-control.selectQuestions
+                        option(value='NoChoosed') Select...
+                        option(value='No') No
+                        option(value='Yes') Yes
+                .group.hidden-control(style='margin-top:20px;')
+                  input#QuestionHiddenC(type='text', placeholder='Example 1,5,7')
+                  span.highlight
+                  span.bar
+                  label Number:
 
           div.alphaformfooter
           div.formfooter
