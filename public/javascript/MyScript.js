@@ -699,6 +699,79 @@ $(document).ready(function() {
         $("#Additional_Neoplasia .year-datepicker").val("");
     });
 
+    List_Family_History_3Degree = [];
+
+    $("#FamilyHistoryUpTo3Degree #relative").on("change",function(evt){
+        $("#FamilyHistoryUpTo3Degree .divTableRow input").attr("style","width:100%;");
+        if ($(this).val() != "NoChoosed" || $(this).val() != "No" || $(this).val() != "Not know") {
+            $("#FamilyHistoryUpTo3Degree").find(".hidden-control").removeClass("hidden").addClass("show");
+            if($(this).val() == "Other") {
+                $("#FamilyHistoryUpTo3Degree .specify").parents(".divTableRow").removeClass("hidden").addClass("show");
+                $("#FamilyHistoryUpTo3Degree .divTableRow").css("text-align","left");
+            }
+        }
+        if ($(this).val() == "NoChoosed" || $(this).val() == "No" || $(this).val() == "Not know") {
+            $("#FamilyHistoryUpTo3Degree").find(".show").removeClass("show").addClass("hidden");
+            $("#FamilyHistoryUpTo3Degree .specify").val("");
+            $("#FamilyHistoryUpTo3Degree #selectMelanomaType,#FamilyHistoryUpTo3Degree #selectRelativeSide,#FamilyHistoryUpTo3Degree #selectRelativeDegree").val("NoChoosed");
+            $("#FamilyHistoryUpTo3Degree .hidden-control input[type=number]").val("");
+            $("#FamilyHistoryUpTo3Degree .divTableRow").css("text-align","center");
+        }
+    });
+
+    $("#FamilyHistoryUpTo3Degree .save").on("click",function(evt){
+        var Relative = {};
+        var Parent = $("#FamilyHistoryUpTo3Degree #relative").val();
+        Relative.Parent = Parent;
+        Relative.Melanoma = $("#FamilyHistoryUpTo3Degree #selectMelanomaType").val();
+        Relative.Side = $("#FamilyHistoryUpTo3Degree #selectRelativeSide").val();
+        Relative.Degree = $("#FamilyHistoryUpTo3Degree #selectRelativeDegree").val();
+        Relative.Diagnosis_Age = $("#FamilyHistoryUpTo3Degree .diagnosis-age").val();
+        if(Parent == "Other") {
+            Relative.Parent = $("#FamilyHistoryUpTo3Degree .specify").val();
+        }
+        List_Family_History_3Degree.push(Relative);
+        $(".json-relative-table").createTable(List_Family_History_3Degree);
+        Reset_Values("#FamilyHistoryUpTo3Degree");
+    });
+
+    $("#FamilyHistoryUpTo3Degree .cancel,.close").on("click",function(evt){
+        Reset_Values("#FamilyHistoryUpTo3Degree");
+    });
+
+    $("#FamilyHistoryOtherUpTo3Degree .add-Other-Relative").on("click",function(evt){
+
+    });
+
+    List_Family_History_Other_3Degree = [];
+
+    $("#FamilyHistoryOtherUpTo3Degree .save").on("click",function(evt){
+        var Relative = {};               
+        Relative.Other_Cancer_Type = $("#FamilyHistoryOtherUpTo3Degree #selectOtherCancerType").val();
+        Relative.Side = $("#FamilyHistoryOtherUpTo3Degree #selectOtherRelativeSide").val();
+        Relative.Degree = $("#FamilyHistoryOtherUpTo3Degree #selectOtherRelativeDegree").val();
+        Relative.Pedigree = $("#FamilyHistoryOtherUpTo3Degree #pedigree").val();
+
+        List_Family_History_Other_3Degree.push(Relative);
+        console.log(List_Family_History_Other_3Degree);
+        $(".json-other-relative-tables").createTable(List_Family_History_Other_3Degree);
+        Reset_Values("#FamilyHistoryOtherUpTo3Degree");
+    });
+
+    $("#FamilyHistoryOtherUpTo3Degree .cancel,.close").on("click",function(evt){
+        Reset_Values("#FamilyHistoryOtherUpTo3Degree");
+    });
+
+    $("#fieldsetSectionCEval .selectQuestions").on("change", function (evt) {
+        if ($(this).val() == "Yes") {
+            $(this).parents("#fieldsetSectionCEval").find(".hidden-control input[type=number]").prop("required", true);
+            $(this).parents("#fieldsetSectionCEval").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
+        }
+        if ($(this).val() == "No") {
+            $(this).parents("#fieldsetSectionCEval").find(".show-control input[type=number]").prop("required", false).val("");
+            $(this).parents("#fieldsetSectionCEval").find(".show-control").addClass("hidden-control").removeClass("show-control");
+        }
+    });/*Da ricontrollare su select after yes*/
 
     /****** Checkboxes for enabling melanoma characteristics inputs ******/
     $('#firstMelanomaCheckbox').click(function() {
