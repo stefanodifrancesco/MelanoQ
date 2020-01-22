@@ -4,6 +4,7 @@ block append style
     link(rel='stylesheet' href='/stylesheet/multi-step-form.css')
     link(rel='stylesheet' href='/stylesheet/icheck.css')
     link(rel='stylesheet' href='/stylesheet/alt.css')
+    link(rel='stylesheet' href='/stylesheet/modal.css')
 
 block content
   div.profile-header
@@ -619,10 +620,10 @@ block content
               .form-group
                 .divTable
                   .divTableBody
-                    .divTableRow
+                    .divTableRow.spaced
                       .divTableCell.NoDivTableBorder.question-cell
-                        span At age < 18 yrs ?
-                      .divTableCell.NoDivTableBorder
+                        span At age less than 18 years ?
+                      .divTableCell.NoDivTableBorder.input-cell
                         select#id_Sunburns_less18.form-control(name='ultraviolet[sunburn_before_18][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
                           option(value='' selected='') Select...
                           option(value='No') No
@@ -630,18 +631,17 @@ block content
                           option(value='NotKnow') Not know
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
-                      .divTableCell.NoDivTableBorder
+                      .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
-                          label Number:
-                          input#Sunburns_Yes_less18(type='number' min='0' name='ultraviolet[sunburn_before_18][number]')
+                          input#Sunburns_Yes_less18(type='number' min='0' placeholder="Number" name='ultraviolet[sunburn_before_18][number]')
 
               .form-group
                 .divTable
                   .divTableBody
-                    .divTableRow
+                    .divTableRow.spaced
                       .divTableCell.NoDivTableBorder.question-cell
-                        span At age >= 18 yrs ?
-                      .divTableCell.NoDivTableBorder
+                        span At age greater or equal than 18 years ?
+                      .divTableCell.NoDivTableBorder.input-cell
                         select#id_Sunburns_Yes_greater18.form-control(name='ultraviolet[sunburn_after_18][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
                           option(value='' selected='') Select...
                           option(value='No') No
@@ -649,18 +649,17 @@ block content
                           option(value='NotKnow') Not know
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
-                      .divTableCell.NoDivTableBorder
+                      .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
-                          label Number:
-                          input#Sunburns_Yes_greater18(type='number' min='0' name='ultraviolet[sunburn_after_18][number]')
+                          input#Sunburns_Yes_greater18(type='number' min='0' placeholder="Number" name='ultraviolet[sunburn_after_18][number]')
 
               .form-group
                 .divTable
                   .divTableBody
-                    .divTableRow
+                    .divTableRow.spaced
                       .divTableCell.NoDivTableBorder.question-cell
                         span At site of melanoma ?
-                      .divTableCell.NoDivTableBorder
+                      .divTableCell.NoDivTableBorder.input-cell
                         select#id_Site_melanoma.form-control(name='ultraviolet[sunburn_at_melanoma_site]' required='required' data-rule-required='true' data-msg-required='Required field')
                           option(value='' selected='') Select...
                           option(value='No') No
@@ -668,14 +667,17 @@ block content
                           option(value='NotKnow') Not know
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
+                      .divTableCell.NoDivTableBorder.input-cell
+                        .hidden-control
+                          input(type='number')
 
               .form-group
                 .divTable
                   .divTableBody
-                    .divTableRow
+                    .divTableRow.spaced
                       .divTableCell.NoDivTableBorder.question-cell
                         span In the last 5 years ?
-                      .divTableCell.NoDivTableBorder
+                      .divTableCell.NoDivTableBorder.input-cell
                         select#id_Sunburns_last5.form-control(name='ultraviolet[sunburn_last_5_years][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
                           option(value='' selected='') Select...
                           option(value='No') No
@@ -683,13 +685,12 @@ block content
                           option(value='NotKnow') Not know
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
-                      .divTableCell.NoDivTableBorder
+                      .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
-                          label Number:
-                          input(type='number' min='0' name='ultraviolet[sunburn_last_5_years][number]')
+                          input(type='number' min='0' placeholder="Number" name='ultraviolet[sunburn_last_5_years][number]')
                           
             fieldset
-              label(for='162128682') 11) Sunscreen use (summer time)
+              label 11) Sunscreen use (summer time)
               .form-group
                 .divTable
                   .divTableBody
@@ -1074,29 +1075,29 @@ block content
 
             fieldset#fieldsetSectionBEval
               label Completion Evaluation Questions
+              <br>
               .form-group
                 .divTable
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder
+                  .divTableRow.spaced
+                    .divTableCell.NoDivTableBorder.question-cell
                       span 19) Were you able to respond to the questions of these last three sections ?
-                    .divTableCell.NoDivTableBorder(style='padding:10px !important;' name='section_B_evaluation[completed]')
+                    .divTableCell.NoDivTableBorder.input-cell(name='section_B_evaluation[completed]')
                       select#selectEval.form-control
                         option(value='NoChoosed' selected='') Select...
                         option(value='All') All questions
                         option(value='Most') Most questions
                         option(value='Half') Nearly half of the questions
                         option(value='Few') Very few questions
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder
+                  .divTableRow.spaced
+                    .divTableCell.NoDivTableBorder.question-cell
                       span 20) Which questions of these last three sections did you consider difficult to fill in?
-                    .divTableCell.NoDivTableBorder(style='padding:10px !important;' name='section_B_evaluation[difficult][answer]')
+                    .divTableCell.NoDivTableBorder.input-cell(name='section_B_evaluation[difficult][answer]')
                       select#selectQuestions.form-control
                         option(value='NoChoosed' selected='') Select...
                         option(value='No') None
-                        option(value='Yes') Insert numbers
-                    .divTableCell.NoDivTableBorder
+                        option(value='Yes') Insert numbers of questions
+                    .divTableCell.NoDivTableBorder.input-cell
                       .hidden-control
-                        label Questions numbers:
                         input#QuestionHidden(type='text' placeholder='1, 2, 3, etc.' name='section_B_evaluation[difficult][questions]')
 
           div.alphaformfooter
@@ -1303,10 +1304,9 @@ block content
               .form-group
                 .divTable
                   .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Medium sized CN
+                    .divTableRow.spaced
                       .divTableCell.NoDivTableBorder.input-cell
+                        label Medium sized CN
                         select#selectMediumSizedCN.form-control(name='clinical_examination[congenital_nevi][medium_sized][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
                           option(value='' selected='') Select...
                           option(value='No') No
@@ -1321,10 +1321,9 @@ block content
               .form-group
                 .divTable
                   .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Large sized CN
+                    .divTableRow.spaced
                       .divTableCell.NoDivTableBorder.input-cell
+                        label Large sized CN
                         select#selectLargeSizedCN.form-control(name='clinical_examination[congenital_nevi][large_sized][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
                           option(value='' selected='') Select...
                           option(value='No') No
@@ -1339,10 +1338,9 @@ block content
               .form-group
                 .divTable
                   .divTableBody
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder.question-cell
-                        span Giant sized CN
+                    .divTableRow.spaced
                       .divTableCell.NoDivTableBorder.input-cell
+                        label Giant sized CN
                         select#selectGiantSizedCN.form-control(name='clinical_examination[congenital_nevi][giant_sized][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
                           option(value='' selected='') Select...
                           option(value='No') No
@@ -1362,12 +1360,13 @@ block content
                 .divTable
                   .divTableBody
                     .divTableRow
-                      .divTableCell.NoDivTableBorder
+                      .divTableCell.NoDivTableBorder.input-cell
+                        label(style='color: transparent;') fake
                         select#selectBlueNevi.form-control(name='clinical_examination[blue_nevi][medium_sized][presence]')
                           option(value='NoChoosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
-                      .divTableCell.NoDivTableBorder
+                      .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
                             label(style='font-size: 12px;') Number:
                             input#inputBlueNevi(type='number' min='1' name='clinical_examination[blue_nevi][medium_sized][count]')
@@ -1409,10 +1408,9 @@ block content
                 | BCC, and squamous cell carcinoma, SCC)
               .form-group
                 .divTable
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder.question-cell
-                      span BCC:
+                  .divTableRow.spaced
                     .divTableCell.NoDivTableBorder.input-cell
+                      label BCC:
                       select#selectBCC.form-control(name='clinical_examination[BCC][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
                         option(value='' selected='') Select...
                         option(value='No') No
@@ -1429,10 +1427,9 @@ block content
                         input#inputBCC(type='text' name='clinical_examination[BCC][sites]')
               .form-group
                 .divTable
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder.question-cell
-                      span Invasive SCC:
+                  .divTableRow.spaced
                     .divTableCell.NoDivTableBorder.input-cell
+                      label Invasive SCC:
                       select#selectSCC.form-control(name='clinical_examination[invasive_SCC][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
                         option(value='' selected='') Select...
                         option(value='No') No
@@ -1450,10 +1447,9 @@ block content
 
               .form-group
                 .divTable
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder.question-cell
-                      span In situ SCC:
+                  .divTableRow.spaced
                     .divTableCell.NoDivTableBorder.input-cell
+                      label In situ SCC:
                       select#selectSCCSite.form-control(name='clinical_examination[insitu_SCC][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
                         option(value='' selected='') Select...
                         option(value='No') No
@@ -1522,14 +1518,14 @@ block content
                       span Number of full-term pregnancies:
                     .divTableCell.no-bottom-border.no-right-border
                       span Date of birth of children:
-                    .divTableCell.no-bottom-border.no-right-border
+                    .divTableCell.no-bottom-border
                       span Number of miscarriages:
                   .divTableRow
                     .divTableCell.no-right-border
                       input(type='number' min='1' value='' name='medical_history[pregnancy][count]')
                     .divTableCell.no-right-border
                       input.datepicker.form-control(type='text' value='' placeholder='dd/mm/yyyy' name='medical_history[pregnancy][birthday]')
-                    .divTableCell.no-right-border
+                    .divTableCell
                       input(type='number' min='1' value='' name='medical_history[pregnancy][miscarriages]')
                       
               .form-group
@@ -1713,85 +1709,9 @@ block content
                   | nurse)
                 button.btn.add-Relative(type='button', data-toggle='modal', data-target='#FamilyHistoryUpTo3Degree')
                   | Insert relatives affected
-              #FamilyHistoryUpTo3Degree.modal.fade
-                .modal-dialog
-                  .modal-content(style='width:auto;')
-                    // Modal Header
-                    .modal-header.modal-table
-                      table.modal-title
-                        thead
-                          tr
-                            th.th-image(style='width:25%;')
-                              img(src='icons/medical-records-svgrepo-com.png')
-                            th.th-title(style='width:75%;')
-                              table
-                                tbody
-                                  tr
-                                    th
-                                      span.span-modal-title Family history of melanoma
-                              table
-                                tbody
-                                  tr
-                                    th
-                                      span.span-modal-subtitle.help-block (up to 3rd degree relatives)
-                      button.close(type='button', data-dismiss='modal') ×
-                    // Modal body
-                    .modal-body
-                      .form-group
-                        .divTable
-                          .divTableRow
-                            .divTableCell
-                              span Any relative with Melanoma ?
-                              br
-                              span (Up to 3rd degree)
-                            .divTableCell.hidden.hidden-control
-                              span Type of melanoma
-                            .divTableCell.hidden.hidden-control
-                              span Maternal or Paternal
-                            .divTableCell.hidden.hidden-control
-                              span Degree
-                            .divTableCell.hidden.hidden-control
-                              span Diagnosis age
-                          .divTableRow
-                            .divTableCell
-                              select#relative.form-control
-                                option(value='NoChoosed') Select ...
-                                option(value='Yes') Yes
-                                option(value='No') No
-                                option(value='Not know') Not know
-                                option(value='Other') Other
-                            .divTableCell.hidden.hidden-control
-                              select#selectMelanomaType.form-control
-                                option(value='NoChoosed') Select type...
-                                option(value='Cutaneous') Cutaneous
-                                option(value='Uveal') Uveal
-                                option(value='Other') Other
-                                option(value="Don't know") Don't know
-                            .divTableCell.hidden.hidden-control
-                              select#selectRelativeSide.form-control
-                                option(value='NoChoosed') Select side...
-                                option(value='Maternal') Maternal
-                                option(value='Paternal') Paternal
-                            .divTableCell.hidden.hidden-control
-                              select#selectRelativeDegree.form-control
-                                option(value='NoChoosed') Select degree...
-                                option(value='1dg') 1st
-                                option(value='2dg') 2st
-                                option(value='3dg') 3rd
-                            .divTableCell.hidden.hidden-control
-                              input.diagnosis-age(type='number', style='width:100%;', placeholder='Specify age', min='1')
-                          .divTableRow.hidden
-                            .divTableCell
-                              input.specify(type='text', style='width:auto;', placeholder='Specify relative')
-                            .divTableCell
-                            .divTableCell
-                            .divTableCell
-                            .divTableCell
-                    // Modal footer
-                    .modal-footer
-                      button.btn.btn-secondary.save(type='button', data-dismiss='modal') Save
-                      button.btn.btn-danger.cancel(type='button', data-dismiss='modal') Cancel
               .json-relative-table.form-group
+
+
             fieldset#fieldsetSection_Germline(style='margin-top: 20px;')
               legend Germline status
               .form-group
@@ -1808,73 +1728,17 @@ block content
                   option(value='Not tested') MITF
                   option(value='Not tested') POT1
                   option(value='Not tested') Other
+
+
             fieldset#fieldsetFamilyHistoryOther(style='margin-top: 20px;')
               legend Family history of other cancers
               .form-group
                 p.help-block (up to 3rd degree relatives)
                 button.btn.add-Other-Relative(type='button', data-toggle='modal', data-target='#FamilyHistoryOtherUpTo3Degree')
                   | Insert relatives affected
-              #FamilyHistoryOtherUpTo3Degree.modal.fade
-                .modal-dialog
-                  .modal-content(style='width:auto;')
-                    // Modal Header
-                    .modal-header.modal-table
-                      table.modal-title
-                        thead
-                          tr
-                            th.th-image(style='width:25%;')
-                              img(src='icons/medical-records-svgrepo-com.png')
-                            th.th-title(style='width:75%;')
-                              table
-                                tbody
-                                  tr
-                                    th
-                                      span.span-modal-title Family history to other cancers
-                              table
-                                tbody
-                                  tr
-                                    th
-                                      span.span-modal-subtitle.help-block (up to 3rd degree relatives)
-                      button.close(type='button', data-dismiss='modal') ×
-                    // Modal body
-                    .modal-body
-                      .form-group
-                        .divTable
-                          .divTableRow
-                            .divTableCell
-                              span Type of cancer
-                              br
-                              span.help-block (exclude NMSC and melanoma)
-                            .divTableCell
-                              span Maternal or Paternal
-                            .divTableCell
-                              span Degree
-                            .divTableCell
-                              span Provide Pedigree
-                          .divTableRow
-                            .divTableCell
-                              select#selectOtherCancerType.form-control
-                                option(value='NoChoosed') Select type...
-                            .divTableCell
-                              select#selectOtherRelativeSide.form-control
-                                option(value='NoChoosed') Select side...
-                                option(value='Maternal') Maternal
-                                option(value='Paternal') Paternal
-                            .divTableCell
-                              select#selectOtherRelativeDegree.form-control
-                                option(value='NoChoosed') Select degree...
-                                option(value='1dg') 1st
-                                option(value='2dg') 2st
-                                option(value='3dg') 3rd
-                            .divTableCell
-                              // Textarea with icon prefix
-                              .md-form
-                                textarea#pedigree.md-textarea.form-control(rows='5', cols='50', placeholder='Provide pedigree here')
-                    // Modal footer
-                    .modal-footer
-                      button.btn.btn-secondary.save(type='button', data-dismiss='modal') Save
-                      button.btn.btn-danger.cancel(type='button', data-dismiss='modal') Cancel
               .json-other-relative-tables.form-group
+
+
             fieldset#fieldsetSectionCEval
               legend Section C Completion Evaluation Questions
               .form-group
@@ -1884,7 +1748,7 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       span Were you able to respond to the questions of this Section ?
-                    .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                    .divTableCell.NoDivTableBorder
                       select#selectEvalC.form-control
                         option(value='NoChoosed') Select...
                         option(value='All') All questions
@@ -1894,16 +1758,14 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       span Which questions of this Section did you consider difficult to fill in?
-                    .divTableCell.NoDivTableBorder(style='padding:10px !important;')
+                    .divTableCell.NoDivTableBorder
                       select.form-control.selectQuestions
                         option(value='NoChoosed') Select...
                         option(value='No') No
-                        option(value='Yes') Yes
-                .group.hidden-control(style='margin-top:20px;')
-                  input#QuestionHiddenC(type='text', placeholder='Example 1,5,7')
-                  span.highlight
-                  span.bar
-                  label Number:
+                        option(value='Yes') Insert numbers of questions
+                    .divTableCell.NoDivTableBorder
+                      .hidden-control
+                        input#QuestionHiddenC(type='text', placeholder='Example 1,5,7')
 
           div.alphaformfooter
           div.formfooter
@@ -2138,7 +2000,7 @@ block content
                   label
                     | Other main histopathologic features
                   .form-group
-                    .divTable
+                    .divTable(style='border-spacing: 15px;')
                       .divTableBody
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
@@ -2532,7 +2394,7 @@ block content
                   label
                     | Other main histopathologic features
                   .form-group
-                    .divTable
+                    .divTable(style='border-spacing: 15px;')
                       .divTableBody
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
@@ -2926,7 +2788,7 @@ block content
                   label
                     | Other main histopathologic features
                   .form-group
-                    .divTable
+                    .divTable(style='border-spacing: 15px;')
                       .divTableBody
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
@@ -3106,531 +2968,531 @@ block content
 
   #SimpleDateModal.modal.fade
     .modal-dialog
-    .modal-content
-      // Modal Header
-      .modal-header.modal-table
-        table#SimpleData_ModalLabel.modal-title
-          thead
-            tr
-              th.th-image(style='width:25%;')
-                img(src='icons/medical-records-svgrepo-com.png')
-              th.th-title(style='width:75%;')
-                table
-                  tbody
-                    tr
-                      th
-                        span.span-modal-title Insert Diagnosis Date
-                        span.span-modal-title-for
-                table
-                  tbody
-                    tr
-                      th
-                        span.span-modal-subtitle.help-block (Optional)
-        button.close(type='button' data-dismiss='modal') ×
-      // Modal body
-      .modal-body
-        table
-          thead.thead-dark
-            tr
-              th.hidden(style='width:25%;') Number of
-              th(style='width:25%;') Diagnosis Date
-              th(style='width:25%;')
-              th(style='width:25%;')
-          tbody
-            tr
-              td(style='width:25%;')
-                input.hidden.number-control(style='width:50%;' type='number' min='1')
-              td(style='width:25%;')
-                input.form-control.datepicker.diagnosis-date(type='text')
-              td(style='width:25%;')
-              td(style='width:25%;')
-      // Modal footer
-      .modal-footer
-        button#save_simple.btn.btn-secondary(type='button' data-dismiss='modal')
-          | Save
-        button.btn.btn-danger(type='button' data-dismiss='modal') Close
+      .modal-content
+        // Modal Header
+        .modal-header.modal-table
+          table#SimpleData_ModalLabel.modal-title
+            thead
+              tr
+                th.th-image(style='width:25%;')
+                  img(src='icons/medical-records-svgrepo-com.png')
+                th.th-title(style='width:75%;')
+                  table
+                    tbody
+                      tr
+                        th
+                          span.span-modal-title Insert Diagnosis Date
+                          span.span-modal-title-for
+                  table
+                    tbody
+                      tr
+                        th
+                          span.span-modal-subtitle.help-block (Optional)
+          button.close(type='button' data-dismiss='modal') ×
+        // Modal body
+        .modal-body
+          table
+            thead.thead-dark
+              tr
+                th.hidden(style='width:25%;') Number of
+                th(style='width:25%;') Diagnosis Date
+                th(style='width:25%;')
+                th(style='width:25%;')
+            tbody
+              tr
+                td(style='width:25%;')
+                  input.hidden.number-control(style='width:50%;' type='number' min='1')
+                td(style='width:25%;')
+                  input.form-control.datepicker.diagnosis-date(type='text')
+                td(style='width:25%;')
+                td(style='width:25%;')
+        // Modal footer
+        .modal-footer
+          button#save_simple.btn.btn-secondary(type='button' data-dismiss='modal')
+            | Save
+          button.btn.btn-danger(type='button' data-dismiss='modal') Close
   
   #MedicationDateModal.modal.fade
     .modal-dialog
-    .modal-content
-      // Modal Header
-      .modal-header.modal-table
-        table#Data_ModalLabel.modal-title
-          thead
-            tr
-              th.th-image(style='width:25%;')
-                img(src='icons/medical-records-svgrepo-com.png')
-              th.th-title(style='width:75%;')
-                span.span-modal-title
-        button.close(type='button' data-dismiss='modal') ×
-      // Modal body
-      .modal-body
-        table
-          thead.thead-dark
-            tr
-              th(style='width:10%;') Number
-              th(style='width:10%;')
-              th(style='width:35%;') Start Date
-              th(style='width:10%;')
-              th(style='width:35%;') End Date
-          tbody
-            tr
-              td.medication-number(style='width:10%;')
-                input#Medication-Number(style='background-color:transparent;color:#0c4090;width:100%;text-align: end; font-size: large;' type='number' value='1' readonly='')
-              td(style='width:10%;')
-              td(style='width:35%;')
-                input.form-control.datepicker.med-start-date(type='text')
-              td(style='width:10%;')
-              td(style='width:35%;')
-                input.form-control.datepicker.med-end-date(type='text')
-      // Modal footer
-      .modal-footer
-        button#save_med.btn.btn-secondary(type='button' data-dismiss='modal')
-          | Save
-        button.btn.btn-danger(type='button' data-dismiss='modal') Close
+      .modal-content
+        // Modal Header
+        .modal-header.modal-table
+          table#Data_ModalLabel.modal-title
+            thead
+              tr
+                th.th-image(style='width:25%;')
+                  img(src='icons/medical-records-svgrepo-com.png')
+                th.th-title(style='width:75%;')
+                  span.span-modal-title
+          button.close(type='button' data-dismiss='modal') ×
+        // Modal body
+        .modal-body
+          table
+            thead.thead-dark
+              tr
+                th(style='width:10%;') Number
+                th(style='width:10%;')
+                th(style='width:35%;') Start Date
+                th(style='width:10%;')
+                th(style='width:35%;') End Date
+            tbody
+              tr
+                td.medication-number(style='width:10%;')
+                  input#Medication-Number(style='background-color:transparent;color:#0c4090;width:100%;text-align: end; font-size: large;' type='number' value='1' readonly='')
+                td(style='width:10%;')
+                td(style='width:35%;')
+                  input.form-control.datepicker.med-start-date(type='text')
+                td(style='width:10%;')
+                td(style='width:35%;')
+                  input.form-control.datepicker.med-end-date(type='text')
+        // Modal footer
+        .modal-footer
+          button#save_med.btn.btn-secondary(type='button' data-dismiss='modal')
+            | Save
+          button.btn.btn-danger(type='button' data-dismiss='modal') Close
   
   #Sites_Modal.modal.fade
     .modal-dialog
-    .modal-content(style='width: auto;')
-      span.hidden.modal-caller
-      span.hidden.modal-checked
-      // Modal Header
-      .modal-header.modal-table
-        table#Sites_ModalTable.modal-title
-          thead
-            tr
-              th.th-image(style='width:35%;')
-                img(style='width: 35%;border: 1px solid black;border-radius:50px;margin-left: 10%;' src='icons/human body.png')
-              th.th-title(style='width:65%;')
-                span.modal-title
-        button.close(type='button' data-dismiss='modal') ×
-      // Modal body
-      .modal-body
-        .tg-wrap.form-check
-          table.tg
-            tbody
+      .modal-content(style='width: auto;')
+        span.hidden.modal-caller
+        span.hidden.modal-checked
+        // Modal Header
+        .modal-header.modal-table
+          table#Sites_ModalTable.modal-title
+            thead
               tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | anus
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | arm left anterior
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | arm_left_posterior
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | arm_right_anterior
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | arm_right_posterior
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | axilla_left
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | axilla_right
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | back_left
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | back_middle
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | back_right
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | buttock_left
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | buttock_right
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | cheek_left
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | cheek_right
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | chest_left
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | chest_middle
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | chest_right
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | chin
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | ear_left
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | ear_right
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | eye_left
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | eye_right
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | eyelid_left
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | eyelid_right
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | finger_left
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | finger_right
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | foot_left_dorsal
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | foot_left_plantar
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | foot_right_dorsal
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | foot_right_plantar
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | forearm_left_anterior
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | forearm_left_posterior
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | forearm_right_anterior
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | forearm_right_posterior
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | forehead
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | hand_left_dorsal
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | hand_left_palmar
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | hand_right_dorsal
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | hand_right_palmar
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | head
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | laterocervical_left
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | laterocervical_right
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | leg_left_anterior
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | leg_left_posterior
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | leg_right_anterior
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | leg_right_posterior
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | lip
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | lumbar
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | nail_finger_left
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | nail_finger_right
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | nail_toe_lef
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | nail_toe_right 
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | nose 
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | penis_scrotum 
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | scalp 
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | shoulder_left
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | shoulder_right
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | thigh_left_anterior
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | thigh_left_posterior
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | thigh_right_anterior
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | thigh_right_posterior
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | toe_left
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | toe_right
-                      input(type='checkbox')
-                      span.checkmark
-              tr
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | vagina
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | vulva
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-                    label.table-personal-label
-                      | other
-                      input(type='checkbox')
-                      span.checkmark
-                td.tg-0lax
-                  .TEST2
-      // Modal footer
-      .modal-footer
-        button#save_sites.btn.btn-secondary(type='button' data-dismiss='modal')
-          | Save
-        button#cancel_sites.btn.btn-danger(type='button' data-dismiss='modal') Cancel
+                th.th-image(style='width:35%;')
+                  img(style='width: 35%;border: 1px solid black;border-radius:50px;margin-left: 10%;' src='icons/human body.png')
+                th.th-title(style='width:65%;')
+                  span.modal-title
+          button.close(type='button' data-dismiss='modal') ×
+        // Modal body
+        .modal-body
+          .tg-wrap.form-check
+            table.tg
+              tbody
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | anus
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | arm left anterior
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | arm_left_posterior
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | arm_right_anterior
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | arm_right_posterior
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | axilla_left
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | axilla_right
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | back_left
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | back_middle
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | back_right
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | buttock_left
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | buttock_right
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | cheek_left
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | cheek_right
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | chest_left
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | chest_middle
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | chest_right
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | chin
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | ear_left
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | ear_right
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | eye_left
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | eye_right
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | eyelid_left
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | eyelid_right
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | finger_left
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | finger_right
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | foot_left_dorsal
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | foot_left_plantar
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | foot_right_dorsal
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | foot_right_plantar
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | forearm_left_anterior
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | forearm_left_posterior
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | forearm_right_anterior
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | forearm_right_posterior
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | forehead
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | hand_left_dorsal
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | hand_left_palmar
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | hand_right_dorsal
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | hand_right_palmar
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | head
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | laterocervical_left
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | laterocervical_right
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | leg_left_anterior
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | leg_left_posterior
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | leg_right_anterior
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | leg_right_posterior
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | lip
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | lumbar
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | nail_finger_left
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | nail_finger_right
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | nail_toe_lef
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | nail_toe_right 
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | nose 
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | penis_scrotum 
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | scalp 
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | shoulder_left
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | shoulder_right
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | thigh_left_anterior
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | thigh_left_posterior
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | thigh_right_anterior
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | thigh_right_posterior
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | toe_left
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | toe_right
+                        input(type='checkbox')
+                        span.checkmark
+                tr
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | vagina
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | vulva
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+                      label.table-personal-label
+                        | other
+                        input(type='checkbox')
+                        span.checkmark
+                  td.tg-0lax
+                    .TEST2
+        // Modal footer
+        .modal-footer
+          button#save_sites.btn.btn-secondary(type='button' data-dismiss='modal')
+            | Save
+          button#cancel_sites.btn.btn-danger(type='button' data-dismiss='modal') Cancel
 
   #Additional_Neoplasia.modal.fade
     .modal-dialog
@@ -3668,3 +3530,144 @@ block content
         .modal-footer
           button.btn.btn-secondary.save(type='button' data-dismiss='modal') Save
           button.btn.btn-danger.cancel(type='button' data-dismiss='modal') Cancel
+
+  #FamilyHistoryUpTo3Degree.modal.fade
+    .modal-dialog
+      .modal-content(style='width:auto;')
+        // Modal Header
+        .modal-header.modal-table
+          table.modal-title
+            thead
+              tr
+                th.th-image(style='width:25%;')
+                  img(src='icons/medical-records-svgrepo-com.png')
+                th.th-title(style='width:75%;')
+                  table
+                    tbody
+                      tr
+                        th
+                          span.span-modal-title Family history of melanoma
+                  table
+                    tbody
+                      tr
+                        th
+                          span.span-modal-subtitle.help-block (up to 3rd degree relatives)
+          button.close(type='button', data-dismiss='modal') ×
+        // Modal body
+        .modal-body
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span Any relative with Melanoma ?
+                  br
+                  span (Up to 3rd degree)
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                  span Type of melanoma
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                  span Maternal or Paternal
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                  span Degree
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                  span Diagnosis age
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  select#relative.form-control
+                    option(value='NoChoosed') Select ...
+                    option(value='Yes') Yes
+                    option(value='No') No
+                    option(value='Not know') Not know
+                    option(value='Other') Other
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                  select#selectMelanomaType.form-control
+                    option(value='NoChoosed') Select type...
+                    option(value='Cutaneous') Cutaneous
+                    option(value='Uveal') Uveal
+                    option(value='Other') Other
+                    option(value="Don't know") Don't know
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                  select#selectRelativeSide.form-control
+                    option(value='NoChoosed') Select side...
+                    option(value='Maternal') Maternal
+                    option(value='Paternal') Paternal
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                  select#selectRelativeDegree.form-control
+                    option(value='NoChoosed') Select degree...
+                    option(value='1dg') 1st
+                    option(value='2dg') 2st
+                    option(value='3dg') 3rd
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                  input.diagnosis-age(type='number', style='width:100%;', placeholder='Specify age', min='1')
+              .divTableRow.hidden
+                .divTableCell.NoDivTableBorder
+                  input.specify(type='text', style='width:auto;', placeholder='Specify relative')
+                .divTableCell.NoDivTableBorder
+                .divTableCell.NoDivTableBorder
+                .divTableCell.NoDivTableBorder
+                .divTableCell.NoDivTableBorder
+        // Modal footer
+        .modal-footer
+          button.btn.btn-secondary.save(type='button', data-dismiss='modal') Save
+          button.btn.btn-danger.cancel(type='button', data-dismiss='modal') Cancel
+
+  #FamilyHistoryOtherUpTo3Degree.modal.fade
+    .modal-dialog
+      .modal-content(style='width:auto;')
+        // Modal Header
+        .modal-header.modal-table
+          table.modal-title
+            thead
+              tr
+                th.th-image(style='width:25%;')
+                  img(src='icons/medical-records-svgrepo-com.png')
+                th.th-title(style='width:75%;')
+                  table
+                    tbody
+                      tr
+                        th
+                          span.span-modal-title Family history to other cancers
+                  table
+                    tbody
+                      tr
+                        th
+                          span.span-modal-subtitle.help-block (up to 3rd degree relatives)
+          button.close(type='button', data-dismiss='modal') ×
+        // Modal body
+        .modal-body
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span Type of cancer
+                  br
+                  span.help-block (exclude NMSC and melanoma)
+                .divTableCell.NoDivTableBorder
+                  span Maternal or Paternal
+                .divTableCell.NoDivTableBorder
+                  span Degree
+                .divTableCell.NoDivTableBorder
+                  span Provide Pedigree
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  select#selectOtherCancerType.form-control
+                    option(value='NoChoosed') Select type...
+                .divTableCell.NoDivTableBorder
+                  select#selectOtherRelativeSide.form-control
+                    option(value='NoChoosed') Select side...
+                    option(value='Maternal') Maternal
+                    option(value='Paternal') Paternal
+                .divTableCell.NoDivTableBorder
+                  select#selectOtherRelativeDegree.form-control
+                    option(value='NoChoosed') Select degree...
+                    option(value='1dg') 1st
+                    option(value='2dg') 2st
+                    option(value='3dg') 3rd
+                .divTableCell.NoDivTableBorder
+                  // Textarea with icon prefix
+                  .md-form
+                    textarea#pedigree.md-textarea.form-control(rows='5', cols='50', placeholder='Provide pedigree here')
+        // Modal footer
+        .modal-footer
+          button.btn.btn-secondary.save(type='button', data-dismiss='modal') Save
+          button.btn.btn-danger.cancel(type='button', data-dismiss='modal') Cancel
+                         

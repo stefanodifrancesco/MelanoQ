@@ -141,33 +141,37 @@
     outline: 0;
 }
 
-#msform .divTable {
+.divTable {
     display: table;
     width: 100%;
 }
 
-#msform .divTableBody {
+.divTableBody {
     display: table-row-group;
 }
 
-#msform .divTableRow {
+.divTableRow {
     display: table-row;
     text-align: center;
 }
 
-#msform .divTableCell,
-#msform .divTableHead {
+#msform .divTableRow.spaced {
+    height: 70px;
+}
+
+.divTableCell,
+.divTableHead {
     border: 1px solid #999999;
     display: table-cell;
     padding: 10px;
 }
 
-#msform .NoDivTableBorder {
+.NoDivTableBorder {
     padding: 0px 10px 0px 0px !important;
 }
 
-#msform .divImgTable .divTableCell,
-#msform .divImgTable .divTableHead {
+.divImgTable .divTableCell,
+.divImgTable .divTableHead {
     border: 1px solid #999999;
     display: table-cell;
     vertical-align: middle !important;
@@ -176,26 +180,28 @@
 #msform .divTableCell.NoDivTableBorder.question-cell {
     width: 40%;
     padding: 0px !important;
+    vertical-align: middle;
 }
 
 #msform .divTableCell.NoDivTableBorder.input-cell {
     width: auto;
+    vertical-align: middle;
 }
 
 #msform .divTableCell input[type='text'] {
     border: none;
     border-bottom: 1px solid gray;
     border-radius: 0px;
-    height: 30px;
     left: 0;
     right: 0;
     margin: auto;
     width: 80%;
 }
 
-#msform .NoDivTableBorder input[type='text'] {
+
+/* #msform .NoDivTableBorder input[type='text'] {
     margin-bottom: 22px;
-}
+} */
 
 #msform .divTableCell input[type='radio'] {
     border: none;
@@ -232,9 +238,10 @@
     margin-bottom: 18px;
 }
 
-#msform .NoDivTableBorder .show-control input[type='number'] {
+
+/* #msform .NoDivTableBorder .show-control input[type='number'] {
     margin-bottom: 18px;
-}
+} */
 
 #msform .divTableCell label {
     margin: auto;
@@ -244,19 +251,18 @@
     padding-bottom: 3px;
 }
 
-#msform .hidden-control {
+.hidden-control {
     display: none;
 }
 
-#msform .divTableCell .hidden-control {
+.divTableCell .hidden-control {
     visibility: hidden;
     display: table-cell;
 }
 
-#msform .divTableCell .show-control {
+.divTableCell .show-control {
     height: 100%;
     visibility: visible;
-    margin-top: -20px;
 }
 
 #msform #fieldsetCodeNumber input {
@@ -497,6 +503,7 @@ details {
     color: #263238;
     transition: background-color 1s;
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    margin-bottom: 50px;
 }
 
 details> :last-child {
