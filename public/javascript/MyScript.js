@@ -1079,16 +1079,22 @@ $(document).ready(function() {
 /*Fine Doucment Ready*/
 
 function Initialize() {
-    DDL_Other('ethnicity_input', 'inputEthnicity');
     DDL_Other('Melanoma', 'inputMelanoma');
     DDL_from_JSON('History', 'siccodes.json');
-    DDL_American_Cancer();
+    DDL_American_Cancer("#NonCutaneous_Select",[]);
+    DDL_American_Cancer("#selectOtherCancerType",["Neuroblastoma ","Melanoma Skin Cancer"]);
     Modal_Draggable();
 };
 
-function find_checked_object(temp_Array, obj) {
-    console.log("TEMP ARRAY in find checked = ", temp_Array, "\nOBJ = ", obj);
-    var finded = temp_Array.find(function(item, i) {
+function Reset_Values(tag_fieldset) {
+    $(tag_fieldset + " " + "input").val("");
+    $(tag_fieldset + " " + "select").val("NoChoosed");
+    $(tag_fieldset + " " + "textarea").val("");
+};
+
+function find_checked_object(temp_Array,obj) {
+    console.log("TEMP ARRAY in find checked = ",temp_Array,"\nOBJ = ",obj);
+    var finded =temp_Array.find(function (item, i) {
         if (item.Site === obj.trim()) {
             return item;
         }
@@ -1096,10 +1102,29 @@ function find_checked_object(temp_Array, obj) {
     return finded;
 };
 
-function DDL_American_Cancer() {
-    $.getJSON('american_cancer_json.json', function(result) {
-        $.each(result, function(index, value) {
-            $("#NonCutaneous_Select").append("<option value='" + value.Type + "'>" + value.Type + "</option>");
+function DDL_American_Cancer(tag_select_id,filter) {
+    $.getJSON('american_cancer_json.json', function (result) {
+        // $.each(result, function (index, value) {
+        //     // $(tag_select_id).append("<option value='" + value.Type + "'>" + value.Type + "</option>");
+        //     var Finded = false;
+        //     $.each(filter,function(Filter_index,Filter_value) {
+        //
+        //     });
+        // });
+        var FindIndex = [];
+        $.each(filter,function(F_index,F_value){
+            $.each(result,function(index,value){
+                if(value.Type.trim() == F_value.trim()){
+                    FindIndex.push(index);
+                }
+            });
+        });
+        var Filtered_Result = [];
+        $.each(FindIndex,function(index,value){
+            result.splice(value,1);
+        });
+        $.each(result, function (index, value) {
+            $(tag_select_id).append("<option value='" + value.Type + "'>" + value.Type + "</option>");
         });
     });
 };
