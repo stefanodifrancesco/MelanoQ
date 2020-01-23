@@ -1717,17 +1717,17 @@ block content
               .form-group
                 p(style='color:red;') (Optional)
               .form-group
-                select#germline.form-control(style='margin-left:0px !important')
-                  option(value='NoChoosed') Select germline...
+                select#germline.form-control(style='margin-left:0px !important' name='family_history[germline]')
+                  option(value='' selected='') Select germline...
                   option(value='Not tested') Not tested
-                  option(value='Not tested') CDKN2A
-                  option(value='Not tested') CDK4
-                  option(value='Not tested') BAP-1
-                  option(value='Not tested') MC1R
-                  option(value='Not tested') TERT
-                  option(value='Not tested') MITF
-                  option(value='Not tested') POT1
-                  option(value='Not tested') Other
+                  option(value='CDKN2A') CDKN2A
+                  option(value='CDK4') CDK4
+                  option(value='BAP-1') BAP-1
+                  option(value='MC1R') MC1R
+                  option(value='TERT') TERT
+                  option(value='MITF') MITF
+                  option(value='POT1') POT1
+                  option(value='Other') Other
 
 
             fieldset#fieldsetFamilyHistoryOther(style='margin-top: 20px;')
@@ -3593,9 +3593,9 @@ block content
                 .divTableCell.NoDivTableBorder.hidden.hidden-control
                   select#selectRelativeDegree.form-control
                     option(value='NoChoosed') Select degree...
-                    option(value='1dg') 1st
-                    option(value='2dg') 2st
-                    option(value='3dg') 3rd
+                    option(value='1st_degree') 1st
+                    option(value='2nd_degree') 2nd
+                    option(value='3rd_degree') 3rd
                 .divTableCell.NoDivTableBorder.hidden.hidden-control
                   input.diagnosis-age(type='number', style='width:100%;', placeholder='Specify age', min='1')
               .divTableRow.hidden
@@ -3659,9 +3659,9 @@ block content
                 .divTableCell.NoDivTableBorder
                   select#selectOtherRelativeDegree.form-control
                     option(value='NoChoosed') Select degree...
-                    option(value='1dg') 1st
-                    option(value='2dg') 2st
-                    option(value='3dg') 3rd
+                    option(value='1st_degree') 1st
+                    option(value='2nd_degree') 2nd
+                    option(value='3rd_degree') 3rd
                 .divTableCell.NoDivTableBorder
                   // Textarea with icon prefix
                   .md-form
