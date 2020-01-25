@@ -1741,14 +1741,13 @@ block content
 
             fieldset#fieldsetSectionCEval
               legend Section C Completion Evaluation Questions
-              .form-group
-                p(style='color:red;') (Optional)
+              <br>
               .form-group
                 .divTable
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder
+                  .divTableRow.spaced
+                    .divTableCell.NoDivTableBorder.question-cell
                       span Were you able to respond to the questions of this Section ?
-                    .divTableCell.NoDivTableBorder
+                    .divTableCell.NoDivTableBorder.input-cell(name='section_C_evaluation[completed]')
                       select#selectEvalC.form-control
                         option(value='NoChoosed') Select...
                         option(value='All') All questions
@@ -1756,16 +1755,16 @@ block content
                         option(value='Half') Nearly half of the questions
                         option(value='Few') Very few questions
                   .divTableRow
-                    .divTableCell.NoDivTableBorder
+                    .divTableCell.NoDivTableBorder.question-cell
                       span Which questions of this Section did you consider difficult to fill in?
-                    .divTableCell.NoDivTableBorder
+                    .divTableCell.NoDivTableBorder.input-cell(name='section_C_evaluation[difficult][answer]')
                       select.form-control.selectQuestions
                         option(value='NoChoosed') Select...
                         option(value='No') No
                         option(value='Yes') Insert numbers of questions
-                    .divTableCell.NoDivTableBorder
+                    .divTableCell.NoDivTableBorder.input-cell
                       .hidden-control
-                        input#QuestionHiddenC(type='text', placeholder='Example 1,5,7')
+                        input#QuestionHiddenC(type='text', placeholder='1, 2, 3, etc.' name='section_C_evaluation[difficult][questions]')
 
           div.alphaformfooter
           div.formfooter
@@ -2967,7 +2966,7 @@ block content
           input.submit.action-button#submit(type='submit' value='Submit')
 
   #SimpleDateModal.modal.fade
-    .modal-dialog
+    .modal-dialog(style='max-width: 28%;')
       .modal-content
         // Modal Header
         .modal-header.modal-table
@@ -2994,14 +2993,13 @@ block content
           table
             thead.thead-dark
               tr
-                th.hidden(style='width:25%;') Number of
+                th(style='width:25%;')
                 th(style='width:25%;') Diagnosis Date
                 th(style='width:25%;')
                 th(style='width:25%;')
             tbody
               tr
                 td(style='width:25%;')
-                  input.hidden.number-control(style='width:50%;' type='number' min='1')
                 td(style='width:25%;')
                   input.form-control.datepicker.diagnosis-date(type='text')
                 td(style='width:25%;')
@@ -3013,7 +3011,7 @@ block content
           button.btn.btn-danger(type='button' data-dismiss='modal') Close
   
   #MedicationDateModal.modal.fade
-    .modal-dialog
+    .modal-dialog(style='max-width: 32%;')
       .modal-content
         // Modal Header
         .modal-header.modal-table
@@ -3052,7 +3050,7 @@ block content
           button.btn.btn-danger(type='button' data-dismiss='modal') Close
   
   #Sites_Modal.modal.fade
-    .modal-dialog
+    .modal-dialog(style='max-width: 48%;')
       .modal-content(style='width: auto;')
         span.hidden.modal-caller
         span.hidden.modal-checked
@@ -3495,7 +3493,7 @@ block content
           button#cancel_sites.btn.btn-danger(type='button' data-dismiss='modal') Cancel
 
   #Additional_Neoplasia.modal.fade
-    .modal-dialog
+    .modal-dialog(style='max-width: 38%;')
       .modal-content(style='width: auto;')
         span.hidden.modal-caller
         // Modal Header
@@ -3521,11 +3519,11 @@ block content
                 .divTableCell
                   label
                     | Age of diagnosis
-                  input.NonCutaneous-diagnosis-age(type='number' min='1' placeholder='Age of diagnosis')
+                  input.NonCutaneous-diagnosis-age(type='number' min='1')
                 .divTableCell
                   label
                     | Year of diagnosis
-                  input.form-control.year-datepicker(type='text' placeholder='Year of diagnosis')
+                  input.form-control.year-datepicker(type='text')
         // Modal footer
         .modal-footer
           button.btn.btn-secondary.save(type='button' data-dismiss='modal') Save
@@ -3533,7 +3531,7 @@ block content
 
   #FamilyHistoryUpTo3Degree.modal.fade
     .modal-dialog
-      .modal-content(style='width:auto;')
+      .modal-content
         // Modal Header
         .modal-header.modal-table
           table.modal-title
@@ -3559,16 +3557,16 @@ block content
             .divTable
               .divTableRow
                 .divTableCell.NoDivTableBorder
-                  span Any relative with Melanoma ?
+                  span A relative with melanoma?
                   br
                   span (Up to 3rd degree)
-                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
                   span Type of melanoma
-                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
                   span Maternal or Paternal
-                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
                   span Degree
-                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
                   span Diagnosis age
               .divTableRow
                 .divTableCell.NoDivTableBorder
@@ -3578,29 +3576,29 @@ block content
                     option(value='No') No
                     option(value='Not know') Not know
                     option(value='Other') Other
-                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
                   select#selectMelanomaType.form-control
                     option(value='NoChoosed') Select type...
                     option(value='Cutaneous') Cutaneous
                     option(value='Uveal') Uveal
                     option(value='Other') Other
                     option(value="Don't know") Don't know
-                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
                   select#selectRelativeSide.form-control
                     option(value='NoChoosed') Select side...
                     option(value='Maternal') Maternal
                     option(value='Paternal') Paternal
-                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
                   select#selectRelativeDegree.form-control
                     option(value='NoChoosed') Select degree...
                     option(value='1st_degree') 1st
                     option(value='2nd_degree') 2nd
                     option(value='3rd_degree') 3rd
-                .divTableCell.NoDivTableBorder.hidden.hidden-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
                   input.diagnosis-age(type='number', style='width:100%;', placeholder='Specify age', min='1')
               .divTableRow.hidden
                 .divTableCell.NoDivTableBorder
-                  input.specify(type='text', style='width:auto;', placeholder='Specify relative')
+                  input.specify(type='text', style='width:auto;', placeholder='Specify relative history')
                 .divTableCell.NoDivTableBorder
                 .divTableCell.NoDivTableBorder
                 .divTableCell.NoDivTableBorder
@@ -3612,7 +3610,7 @@ block content
 
   #FamilyHistoryOtherUpTo3Degree.modal.fade
     .modal-dialog
-      .modal-content(style='width:auto;')
+      .modal-content
         // Modal Header
         .modal-header.modal-table
           table.modal-title

@@ -29,6 +29,11 @@
     color: black;
     font-size: 13px;
     outline: 0;
+    margin: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-left: 10px;
 }
 
 .modal-table img {
@@ -188,10 +193,6 @@ span.span-modal-subtitle {
 .modal.show .modal-dialog .th-title {
     width: 75%;
     font-size: 35px;
-}
-
-#Sites_Modal .modal-dialog {
-    max-width: 70%;
 }
 
 @media screen and (max-width: 767px) {

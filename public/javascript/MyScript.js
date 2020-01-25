@@ -704,7 +704,7 @@ $(document).ready(function() {
     $("#FamilyHistoryUpTo3Degree #relative").on("change", function(evt) {
         $("#FamilyHistoryUpTo3Degree .divTableRow input").attr("style", "width:100%;");
         if ($(this).val() != "NoChoosed" || $(this).val() != "No" || $(this).val() != "Not know") {
-            $("#FamilyHistoryUpTo3Degree").find(".hidden-control").removeClass("hidden").addClass("show");
+            $("#FamilyHistoryUpTo3Degree").find(".hidden-modal-control").removeClass("hidden").addClass("show");
             if ($(this).val() == "Other") {
                 $("#FamilyHistoryUpTo3Degree .specify").parents(".divTableRow").removeClass("hidden").addClass("show");
                 $("#FamilyHistoryUpTo3Degree .divTableRow").css("text-align", "left");
@@ -714,7 +714,7 @@ $(document).ready(function() {
             $("#FamilyHistoryUpTo3Degree").find(".show").removeClass("show").addClass("hidden");
             $("#FamilyHistoryUpTo3Degree .specify").val("");
             $("#FamilyHistoryUpTo3Degree #selectMelanomaType,#FamilyHistoryUpTo3Degree #selectRelativeSide,#FamilyHistoryUpTo3Degree #selectRelativeDegree").val("NoChoosed");
-            $("#FamilyHistoryUpTo3Degree .hidden-control input[type=number]").val("");
+            $("#FamilyHistoryUpTo3Degree .hidden-modal-control input[type=number]").val("");
             $("#FamilyHistoryUpTo3Degree .divTableRow").css("text-align", "center");
         }
     });
@@ -727,8 +727,8 @@ $(document).ready(function() {
         Relative.side = $("#FamilyHistoryUpTo3Degree #selectRelativeSide").val();
         Relative.degree = $("#FamilyHistoryUpTo3Degree #selectRelativeDegree").val();
         Relative.diagnosis_age = $("#FamilyHistoryUpTo3Degree .diagnosis-age").val();
-        if (Parent == "Other") {
-            Relative.Parent = $("#FamilyHistoryUpTo3Degree .specify").val();
+        if (presence == "Other") {
+            Relative.presence = $("#FamilyHistoryUpTo3Degree .specify").val();
         }
         List_Family_History_3Degree.push(Relative);
         $(".json-relative-table").createTable(List_Family_History_3Degree);
