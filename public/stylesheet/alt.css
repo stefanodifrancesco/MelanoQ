@@ -11,7 +11,7 @@
 }
 
 #msform .Pregnancy_Stats .divTableCell {
-    /* text-align: center; */
+    text-align: center;
     padding: 14px;
 }
 
@@ -60,20 +60,6 @@
     text-align: center;
 }
 
-#msform .Pregnancy_Stats input {
-    margin: auto !important;
-    padding: 4px;
-}
-
-#msform #fieldsetPregnancy_History input[type=number] {
-    width: 55%;
-    text-align: center;
-    border: 1px solid #ccc;
-    font-size: 18px;
-    border-radius: 15%;
-    margin-top: 12px;
-}
-
 #msform .no-bottom-border {
     border-bottom: 1px solid transparent;
 }
@@ -84,10 +70,6 @@
 
 #msform .no-right-border {
     border-right: 1px solid transparent;
-}
-
-#msform .show-transition {
-    display: table-row;
 }
 
 #msform .hide-transition {
