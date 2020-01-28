@@ -146,7 +146,7 @@ router.post("/stepform", (req, res) => {
                     inline: "ctx._source.questionnaires.add(params.quest)",
                     params: {
                         quest: {
-                            code_number: req.body.code_number,
+                            code_number: req.body.general.code_number,
                             insert_date: current_timestamp
                         }
                     }
@@ -179,7 +179,7 @@ router.post('/find', (req, res) => {
         body: {
             query: {
                 term: {
-                    code_number: req.body.codeNumber
+                    "general.code_number": req.body.codeNumber
                 }
             }
         }

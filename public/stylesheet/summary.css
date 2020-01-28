@@ -2,6 +2,123 @@
     font-size: 1.5rem;
 }
 
+.form {
+    padding-top: 70px;
+}
+
+#msform {
+    width: 50%;
+    margin: 40px auto;
+    position: absolute;
+    height: 80%;
+    left: 0;
+    right: 0;
+}
+
+#msform>fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    /*stacking fieldsets above each other*/
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.scrollingdiv {
+    overflow: auto;
+    height: 90%;
+    padding: 20px 30px 30px 30px;
+}
+
+.fs-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.scrollingdiv label {
+    margin-top: 1rem;
+    font-weight: bolder;
+}
+
+#msform ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+#msform ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #c2c9d2;
+}
+
+.alphaformfooter {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    margin-top: -60px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, whitesmoke 100%);
+    pointer-events: none;
+}
+
+.formfooter {
+    background: whitesmoke;
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    bottom: 0;
+    border-radius: 0px 0px 10px 10px;
+    border-top: 1px solid lightgray;
+}
+
+.divTable {
+    display: table;
+    width: 100%;
+}
+
+.divTableBody {
+    display: table-row-group;
+}
+
+.divTableRow {
+    display: table-row;
+    text-align: center;
+}
+
+#msform .divTableRow.spaced {
+    height: 70px;
+}
+
+.divTableCell,
+.divTableHead {
+    border: 1px solid #999999;
+    display: table-cell;
+    padding: 10px;
+}
+
+.NoDivTableBorder {
+    padding: 0px 10px 0px 0px !important;
+}
+
+.divImgTable .divTableCell,
+.divImgTable .divTableHead {
+    border: 1px solid #999999;
+    display: table-cell;
+    vertical-align: middle !important;
+}
+
 .summary-div {
     margin: auto;
     left: 0;
@@ -28,12 +145,9 @@
 }
 
 .summary-table legend {
-    font-size: 1.2rem;
+    font-size: 1rem;
     background-color: white;
     color: cornflowerblue;
-    font-variant: small-caps;
-    font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .summary-table span {
@@ -57,7 +171,7 @@ details {
     background-color: white;
     color: #263238;
     transition: background-color 1s;
-    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
 }
 
 details> :last-child {
