@@ -163,221 +163,112 @@ $(document).ready(function() {
         }
     });
 
-    $("#skin-tan").on("change", function(evt) {
-        var img = $(this).parents("#fieldSkin_tan").find("#skin-tan-img");
-        if ($(this).val() == "NoChoosed") {
-            $(img).parent().addClass("hidden-control");
-        }
-        if ($(this).val() == "No tan") {
-            $(img).attr("src", "img/Skin-Tan/No_Tan_1.png").attr("alt", "No Tan");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Tans lightly") {
-            $(img).attr("src", "img/Skin-Tan/Light_Tan_1.png").attr("alt", "Light Tan");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Tans moderately") {
-            $(img).attr("src", "img/Skin-Tan/Moderate_Tan_1.png").attr("alt", "Moderate Tan");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Tans deeply") {
-            $(img).attr("src", "img/Skin-Tan/Deep_Tan_1.png").attr("alt", "Deep Tan");
-            $(img).parent().removeClass("hidden-control");
-        }
-    });
-
-    $("#id_eyes_color").on("change", function(evt) {
-        var img = $(this).parents("#fieldsetEye").find("#eye-img");
-        if ($(this).val() == "NoChoosed") {
-            $(img).parent().addClass("hidden-control");
-        }
-        if ($(this).val() == "Light") {
-            $(img).attr("src", "img/Color-Eye/Light_eyes.png").attr("alt", "category of light color of eyes");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Medium") {
-            $(img).attr("src", "img/Color-Eye/Medium_eyes.png").attr("alt", "category of medium color of eyes");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Dark") {
-            $(img).attr("src", "img/Color-Eye/Dark_eyes.png").attr("alt", "category of dark color of eyes");
-            $(img).parent().removeClass("hidden-control");
-        }
-    });
-
-    $("#id_hair_color").on("change", function(evt) {
-        var img = $(this).parents("#fieldsetHair").find("#hair-img");
-        if ($(this).val() == "NoChoosed") {
-            $(img).parent().addClass("hidden-control");
-        }
-        if ($(this).val() == "Red") {
-            $(img).attr("src", "img/Color-hair/Red_hair.png").attr("alt", "category of red hair color");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Blonde") {
-            $(img).attr("src", "img/Color-hair/Blonde_hair.png").attr("alt", "category of blonde hair color");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Light brown") {
-            $(img).attr("src", "img/Color-hair/Light_brown_hair.png").attr("alt", "category of light brown hair color");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Dark brown") {
-            $(img).attr("src", "img/Color-hair/Dark_brown_hair.png").attr("alt", "category of dark brown hair color");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Black") {
-            $(img).attr("src", "img/Color-hair/Dark_hair.png").attr("alt", "category of dark hair color");
-            $(img).parent().removeClass("hidden-control");
-        }
-    });
-
-    $("#id_Nevi").on("change", function(evt) {
-        var img = $(this).parents("#fieldsetNevi").find("#Nevi-img");
-        if ($(this).val() == "NoChoosed") {
-            $(img).parent().addClass("hidden-control");
-        }
-        if ($(this).val() == "None") {
-            $(img).attr("src", "img/Nevi/No_Nevi.png").attr("alt", "no Nevi");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Few") {
-            $(img).attr("src", "img/Nevi/Few_Nevi.png").attr("alt", "few Nevi");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Some") {
-            $(img).attr("src", "img/Nevi/Some_Nevi.png").attr("alt", "some Nevi");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Many") {
-            $(img).attr("src", "img/Nevi/Many_Nevi.png").attr("alt", "many Nevi");
-            $(img).parent().removeClass("hidden-control");
-        }
-    });
-
-    $("#id_Nevi").on("change", function(evt) {
-        var img = $(this).parents("#fieldsetNevi").find("#Nevi-img");
-        if ($(this).val() == "NoChoosed") {
-            $(img).parent().addClass("hidden-control");
-        }
-        if ($(this).val() == "None") {
-            $(img).attr("src", "img/Nevi/None_Nevi.png").attr("alt", "no Nevi");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Few") {
-            $(img).attr("src", "img/Nevi/Few_Nevi.png").attr("alt", "few Nevi");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Some") {
-            $(img).attr("src", "img/Nevi/Some_Nevi.png").attr("alt", "some Nevi");
-            $(img).parent().removeClass("hidden-control");
-        }
-        if ($(this).val() == "Many") {
-            $(img).attr("src", "img/Nevi/Many_Nevi.png").attr("alt", "many Nevi");
-            $(img).parent().removeClass("hidden-control");
-        }
-    });
-
-    $("#id_UltravioletExposure").on("change", function(evt) {
+    $("#fieldsetUltravioletExposure #id_UltravioletExposure").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetUltravioletExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
             $(this).parents("#fieldsetUltravioletExposure").find("input[type=text]").prop("required", true);
         }
         if ($(this).val() == "No") {
             $(this).parents("#fieldsetUltravioletExposure").find(".show-control").addClass("hidden-control").removeClass("show-control");
-            $(this).parents("#fieldsetUltravioletExposure").find("input:text").prop("required", false);
+            $(this).parents("#fieldsetUltravioletExposure").find("input[type=text]").prop("required", false).val("");
+            $(this).parents("#fieldsetUltravioletExposure").find("input[type=number]").val("");
         }
     });
 
-    $("#id_RecreationalExposure").on("change", function(evt) {
+    $("#fieldsetRecreationalExposure #id_RecreationalExposure").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetRecreationalExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
             $(this).parents("#fieldsetRecreationalExposure").find("input[type=text]").prop("required", true);
         }
         if ($(this).val() == "No") {
             $(this).parents("#fieldsetRecreationalExposure").find(".show-control").addClass("hidden-control").removeClass("show-control");
-            $(this).parents("#fieldsetRecreationalExposure").find("input:text").prop("required", false);
+            $(this).parents("#fieldsetRecreationalExposure").find("input:text").prop("required", false).val("");
+            $(this).parents("#fieldsetRecreationalExposure").find("input[type=number]").val("");
         }
     });
 
-    $("#id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function(evt) {
+    $("#fieldsetSevereSunburns #id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function (evt) {
         if ($(this).val() == "Yes") {
-            $(this).parents(".divTableRow").find(".hidden-control .special_on_div_table").prop("required", true);
-            $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
+            $(this).parents(".divTableRow").find("div.hidden-control").prop("required", true);
+            console.log($(this).parents(".divTableRow").find("div.hidden-control"));
+            $(this).parents(".divTableRow").find("div.hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() != "Yes") {
+        if ($(this).val() == "No" || $(this).val() == "NotKnow") {
+            $(this).parents(".divTableRow").find(".show-control input").val("");
             $(this).parents(".divTableRow").find(".show-control .special_on_div_table").prop("required", false);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#id_Sunlamp").on("change", function(evt) {
+    $("#fieldsetSunlamps #id_Sunlamp").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetSunlamps").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSunlamps").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() != "Yes") {
-            $(this).parents("#fieldsetSunlamps").find(".show-control input[type=number]").prop("required", false);
+        if ($(this).val() == "No" || $(this).val() == "NoChoosed") {
+            $(this).parents("#fieldsetSunlamps").find(".show-control input[type=number]").prop("required", false).val("");
             $(this).parents("#fieldsetSunlamps").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#id_Smoking").on("change", function(evt) {
+    $("#fieldsetSmoking #id_Smoking").on("change", function (evt) {
         if ($(this).val() == "Former" || $(this).val() == "Current") {
             $(this).parents("#fieldsetSmoking").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", true);
             $(this).parents("#fieldsetSmoking").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "Never") {
-            $(this).parents("#fieldsetSmoking").find(".show-control input[type=number]").prop("required", false);
-            $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", false);
+        if ($(this).val() == "Never" || $(this).val() == "NoChoosed") {
+            $(this).parents("#fieldsetSmoking").find(".show-control input[type=number]").prop("required", false).val("");
+            $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", false).val("");
             $(this).parents("#fieldsetSmoking").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#id_Vitamin").on("change", function(evt) {
+    $("#fieldsetVitamin #id_Vitamin").on("change", function (evt) {
         if ($(this).val() == "Yes") {
+            $(this).parents("#fieldsetVitamin").find(".hidden-control select").prop("required",true);
             $(this).parents("#fieldsetVitamin").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
         }
-        if ($(this).val() == "No") {
-            $(this).parents("#fieldsetRecreationalExposure").find(".show-control").addClass("hidden-control").removeClass("show-control");
+        if ($(this).val() == "No" || $(this).val() == "NoChoosed") {
+            $(this).parents("#fieldsetVitamin").find(".show-control select").prop("required",false).val("NoChoosed");
+            $(this).parents("#fieldsetVitamin").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#selectQuestions").on("change", function(evt) {
+    $("#fieldsetSectionBEval .selectQuestions").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "No") {
-            $(this).parents("#fieldsetSectionBEval").find(".show-control input[type=number]").prop("required", false);
+        if ($(this).val() == "No" || $(this).val() == "NoChoosed") {
+            $(this).parents("#fieldsetSectionBEval").find(".show-control input[type=number]").prop("required", false).val("");
             $(this).parents("#fieldsetSectionBEval").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#selectMediumSizedCN,#selectLargeSizedCN,#selectGiantSizedCN").on("change", function(evt) {
+    $("#fieldsetCongenitalNevi #selectMediumSizedCN,#fieldsetCongenitalNevi #selectLargeSizedCN,#fieldsetCongenitalNevi #selectGiantSizedCN").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control input[type=text]").prop("required", false);
+        if ($(this).val() == "No" || $(this).val() == "NoChoosed") {
+            $(this).parents(".divTableRow").find(".show-control input[type=text]").prop("required", false).val("");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#selectBlueNevi").on("change", function(evt) {
+    $("#fieldsetBlueNevi #selectBlueNevi").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false).val("");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#selectActinicKeratoses").on("change", function(evt) {
+    $("#fieldsetActinicKeratoses #selectActinicKeratoses").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesSite").prop("required", true);
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesDistribution").prop("required", true);
@@ -390,18 +281,18 @@ $(document).ready(function() {
         }
     });
 
-    $("#selectBCC,#selectSCC,#selectSCCSite").on("change", function(evt) {
+    $("#fieldsetKSC_BCC_SCC #selectBCC,#fieldsetKSC_BCC_SCC #selectSCC,#fieldsetKSC_BCC_SCC #selectSCCSite").on("change", function (evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTable").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTable").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() != "Yes") {
-            $(this).parents(".divTable").find(".show-control input").prop("required", false);
+        if ($(this).val() == "No" || $(this).value() == "NoChoosed") {
+            $(this).parents(".divTable").find(".show-control input").prop("required", false).val("");
             $(this).parents(".divTable").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $('input.mutually_check').click(function() {
+    /*$('input.mutually_check').click(function() {
         checkedState = $(this).prop('checked');
         $(this).parents('.form-group').find(".mutually_check:checked").each(function() {
             $(this).prop('checked', false);
