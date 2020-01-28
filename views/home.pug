@@ -39,6 +39,7 @@ block content
                       th Database code number
                       th Creation date
                       th Link to questionnaire
+                      th Update questionnaire
                     each quest in profileData.questionnaires
                       tr
                         td #{quest.code_number}
@@ -50,7 +51,15 @@ block content
                               name='codeNumber' 
                               value='' + quest.code_number
                               onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\");"
-                            ) Open questionnaire
+                            ) Open summary
+                        td
+                          form(action='/update' method='post')
+                            button.btn.questionnaire-summary(
+                              type='submit' 
+                              name='codeNumber' 
+                              value='' + quest.code_number
+                              onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\");"
+                            ) Update
               else 
                 .row
                   .col-sm-9.questionnaires-table
@@ -64,6 +73,7 @@ block content
                       th Database code number
                       th Creation date
                       th Link to questionnaire
+                      th Update questionnaire
                     each quest in result
                       tr
                         td #{quest._source.code_number}
@@ -75,7 +85,15 @@ block content
                               name='codeNumber' 
                               value='' + quest._source.code_number
                               onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\");"
-                            ) Open questionnaire
+                            ) Open summary
+                        td
+                          form(action='/update' method='post')
+                            button.btn.questionnaire-summary(
+                              type='submit' 
+                              name='codeNumber' 
+                              value='' + quest.code_number
+                              onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\");"
+                            ) Update
               else 
                 .row
                   .col-sm-9.questionnaires-table

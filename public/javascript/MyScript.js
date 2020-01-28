@@ -1086,6 +1086,9 @@ $(document).ready(function() {
     $('#thirdMelanomaCharacteristics :input').attr('disabled', true);
     /****** Initially disables all melanoma characteristics inputs ******/
 
+
+
+
     Initialize();
 });
 /*Fine Doucment Ready*/
@@ -1097,6 +1100,12 @@ function Initialize() {
     DDL_American_Cancer("#NonCutaneous_Select", []);
     DDL_American_Cancer("#selectOtherCancerType", ["Neuroblastoma ", "Melanoma Skin Cancer"]);
     Modal_Draggable();
+
+    /****** Trigger change on all input of type select ******/
+
+    $('#Melanoma').trigger('change');
+
+    /****** Trigger change on all input of type select ******/
 };
 
 function Reset_Values(tag_fieldset) {

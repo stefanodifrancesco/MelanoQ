@@ -40,9 +40,45 @@ block content
     form#msform.fade-in-top(action="/stepform" method="POST" autocomplete="off")
     
         fieldset
+          div(style='width: 100%; text-align: center; background-color: orange; height: 25px; border-radius: 10px 10px 0px 0px;')
+            span(style='width: 100%; color: white; font-weight: bold; font-size: 1.2rem; padding-right: 10px;') UPDATE MODE
           div.scrollingdiv(id='scrollerdiv')
             h2.fs-title GENERAL
             h3.fs-subtitle Completed by phisician
+
+            fieldset#fieldsetCodeNumber
+              label 
+                | Database Code Number
+              input#codeNumber(type='text' readonly='' value=result.general.code_number name='general[code_number]')
+              
+              .divTable(style='visibility: hidden;')
+                .divTableBody
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder
+                      .form-group
+                        select#DatabaseCodeCountry.form-control(name='general[code_country]' required='required' data-rule-required='true' data-msg-required='Please select the country')
+                          option(value='' selected=(result.general.code_country == '')) Select Country ...
+                          option(value='01' selected=(result.general.code_country == '01')) Greece
+                          option(value='02' selected=(result.general.code_country == '02')) Italy
+                          option(value='03' selected=(result.general.code_country == '03')) Spain
+                        span.error1
+                          i.error-log.fa.fa-exclamation-triangle
+
+                    .divTableCell.NoDivTableBorder
+                      .form-group
+                        select#DatabaseCodeCenter.form-control(name='general[code_center]' required='required' data-rule-required='true' data-msg-required='Please select the center')
+                          <option value=#{result.general.code_center} selected>Select Center ...</option>
+                        span.error1
+                          i.error-log.fa.fa-exclamation-triangle
+
+                    .divTableCell.NoDivTableBorder
+                      .form-group
+                        select#DatabaseCodeType.form-control(name='general[code_type]' required='required' data-rule-required='true' data-msg-required='Select melanoma case')
+                          option(value='' selected=(result.general.code_type == '')) Select case type ...
+                          option(value='M' selected=(result.general.code_type == 'M')) Melanoma Case
+                          option(value='C' selected=(result.general.code_type == 'C')) Control subject
+                        span.error1
+                          i.error-log.fa.fa-exclamation-triangle
 
             fieldset
               label 
@@ -55,57 +91,26 @@ block content
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
 
-            fieldset#fieldsetCodeNumber
+            
+
+                
+            fieldset#fieldsetPhenotyping
               label 
-                | Database Code Number
-              .divTable
-                .divTableBody
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder
-                      .form-group
-                        select#DatabaseCodeCountry.form-control(name='general[code_country]' required='required' data-rule-required='true' data-msg-required='Please select the country')
-                          option(value='' selected='') Select Country ...
-                          option(value='01') Greece
-                          option(value='02') Italy
-                          option(value='03') Spain
-                        span.error1
-                          i.error-log.fa.fa-exclamation-triangle
-
-                    .divTableCell.NoDivTableBorder
-                      .form-group
-                        select#DatabaseCodeCenter.form-control(name='general[code_center]' disabled='disabled' required='required' data-rule-required='true' data-msg-required='Please select the center')
-                          <option value="" selected>Select Center ...</option>
-                        span.error1
-                          i.error-log.fa.fa-exclamation-triangle
-
-                    .divTableCell.NoDivTableBorder
-                      .form-group
-                        select#DatabaseCodeType.form-control(name='general[code_type]' required='required' data-rule-required='true' data-msg-required='Select melanoma case')
-                          option(value='' selected='') Select case type ...
-                          option(value='M') Melanoma Case
-                          option(value='C') Control subject
-                        span.error1
-                          i.error-log.fa.fa-exclamation-triangle
-
-              input#codeNumber(type='text' readonly='' name='general[code_number]')
-
-            fieldset#fieldsetAdmin
-              label 
-                | Date of questionnaire administration and phenotyping
+                | Dates of updated questionnaire and/or phenotyping
               .form-group
-                input.datepicker.form-control(type='text' placeholder='Select date' name='general[survey_date]' required='required' data-rule-required='true' data-msg-required='Required field')
+                input.datepicker.form-control(type='text' placeholder='Select date' name='general[last_update]' required='required' data-rule-required='true' data-msg-required='Required field')
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
-                
+
             fieldset#fieldsetTypeOfMelanoma
               label(for='type_of_melanoma') Type of melanoma
               .form-group
                 select#Melanoma.form-control(name='general[melanoma_type]' required='required' data-rule-required='true' data-msg-required='Required field')
-                  option(value='' selected='') Select Type ...
-                  option(value='Sporadic') Sporadic
-                  option(value='Familial') Familial
-                  option(value="Don't know") Don't know
-                  option(value='Other') Other (complex family history), specify:
+                  option(value='' selected=(result.general.melanoma_type == '')) Select Type ...
+                  option(value='Sporadic' selected=(result.general.melanoma_type == 'Sporadic')) Sporadic
+                  option(value='Familial' selected=(result.general.melanoma_type == 'Familial')) Familial
+                  option(value="Don't know" selected=(result.general.melanoma_type == "Don't know")) Don't know
+                  option(value='Other' selected=(result.general.melanoma_type == 'Other')) Other (complex family history), specify:
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
               input#Other_Melanoma.hidden-control.inputMelanoma(type='text' name="general[other_melanoma_type]")
@@ -114,12 +119,16 @@ block content
           input#confirmbutton.start(type='button' value='CONFIRM')
 
         fieldset
+          div(style='width: 100%; text-align: center; background-color: orange; height: 25px; border-radius: 10px 10px 0px 0px;')
+            span(style='width: 100%; color: white; font-weight: bold; font-size: 1.2rem; padding-right: 10px;') UPDATE MODE
           div#handchange
             h2.fs-title Click start button and let the client fill in the questionnaire
             
           input#fillbutton.start(type='button' value='START')
 
         fieldset
+          div(style='width: 100%; text-align: center; background-color: orange; height: 25px; border-radius: 10px 10px 0px 0px;')
+            span(style='width: 100%; color: white; font-weight: bold; font-size: 1.2rem; padding-right: 10px;') UPDATE MODE
           div.scrollingdiv(id='scrollerdiv')
             h2.fs-title DEMOGRAPHIC
             h3.fs-subtitle Completed by case/control
@@ -243,6 +252,8 @@ block content
 
 
         fieldset
+          div(style='width: 100%; text-align: center; background-color: orange; height: 25px; border-radius: 10px 10px 0px 0px;')
+            span(style='width: 100%; color: white; font-weight: bold; font-size: 1.2rem; padding-right: 10px;') UPDATE MODE
           div.scrollingdiv
             h2.fs-title PHENOTYPE
             h3.fs-subtitle Completed by case/control
@@ -450,6 +461,8 @@ block content
           input#secondnext.next.action-button(type='button' name='next' value='Next')
 
         fieldset
+          div(style='width: 100%; text-align: center; background-color: orange; height: 25px; border-radius: 10px 10px 0px 0px;')
+            span(style='width: 100%; color: white; font-weight: bold; font-size: 1.2rem; padding-right: 10px;') UPDATE MODE
           div.scrollingdiv
             h2.fs-title HISTORY OF ULTRAVIOLET EXPOSURE
             h3.fs-subtitle Completed by case/control
@@ -865,6 +878,8 @@ block content
           input#thirdnext.next.action-button(type='button' name='next' value='Next')
 
         fieldset
+          div(style='width: 100%; text-align: center; background-color: orange; height: 25px; border-radius: 10px 10px 0px 0px;')
+            span(style='width: 100%; color: white; font-weight: bold; font-size: 1.2rem; padding-right: 10px;') UPDATE MODE
           div.scrollingdiv
             h2.fs-title LIFESTYLE HABITS
             h3.fs-subtitle Completed by case/control
@@ -1098,6 +1113,8 @@ block content
 
 
         fieldset
+          div(style='width: 100%; text-align: center; background-color: orange; height: 25px; border-radius: 10px 10px 0px 0px;')
+            span(style='width: 100%; color: white; font-weight: bold; font-size: 1.2rem; padding-right: 10px;') UPDATE MODE
           div.scrollingdiv
             h2.fs-title CLINICAL EXAMINATION
             h3.fs-subtitle completed by physician/study nurse
@@ -1462,6 +1479,8 @@ block content
           input#fifthnext.next.action-button(type='button' name='next' value='Next')
                     
         fieldset
+          div(style='width: 100%; text-align: center; background-color: orange; height: 25px; border-radius: 10px 10px 0px 0px;')
+            span(style='width: 100%; color: white; font-weight: bold; font-size: 1.2rem; padding-right: 10px;') UPDATE MODE
           div.scrollingdiv
             h2.fs-title MEDICAL HISTORY
             h3.fs-subtitle completed by physician/study nurse
@@ -1741,6 +1760,8 @@ block content
 
 
         fieldset
+          div(style='width: 100%; text-align: center; background-color: orange; height: 25px; border-radius: 10px 10px 0px 0px;')
+            span(style='width: 100%; color: white; font-weight: bold; font-size: 1.2rem; padding-right: 10px;') UPDATE MODE
           div.scrollingdiv
             h2.fs-title FAMILY HISTORY
             h3.fs-subtitle completed by physician/study nurse
@@ -1817,6 +1838,8 @@ block content
           input#seventhnext.next.action-button(type='button' name='next' value='Next')
                     
         fieldset
+          div(style='width: 100%; text-align: center; background-color: orange; height: 25px; border-radius: 10px 10px 0px 0px;')
+            span(style='width: 100%; color: white; font-weight: bold; font-size: 1.2rem; padding-right: 10px;') UPDATE MODE
           div.scrollingdiv
             h2.fs-title MELANOMA CHARACTERISTICS
             h3.fs-subtitle completed by physician/study nurse

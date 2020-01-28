@@ -187,9 +187,28 @@ router.post('/find', (req, res) => {
         if (error) {
             console.log('search error: ' + error)
         }
-        console.log("search result: ");
-        console.log(questionnaire);
+
         res.render('summary', { result: questionnaire.hits.hits[0]._source });
+    });
+});
+
+router.post('/update', (req, res) => {
+    esClient.search({
+        index: 'melano_questionnaires',
+        size: 1,
+        body: {
+            query: {
+                term: {
+                    "general.code_number": req.body.codeNumber
+                }
+            }
+        }
+    }, function(error, questionnaire, status) {
+        if (error) {
+            console.log('search error: ' + error)
+        }
+
+        res.render('multi-step-form-update', { result: questionnaire.hits.hits[0]._source });
     });
 });
 
