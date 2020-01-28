@@ -307,7 +307,8 @@ $(document).ready(function() {
                 $("#hidden_type_of_melanoma").val("");
             }
         }
-    });*/
+    });
+    */
 
     var ListaICD10 = [];
     var ICD10_options_by_code = {
