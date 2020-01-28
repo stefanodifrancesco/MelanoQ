@@ -17,6 +17,9 @@ $(document).ready(function() {
 
     var ListaResidency = [];
 
+    var Lat = 0;
+    var Lon = 0;
+
     $("#searchBox").autocomplete({
         source: function(request, response) {
             $.ajax({
@@ -28,11 +31,15 @@ $(document).ready(function() {
                 },
                 jsonp: "jsonp",
                 success: function(data) {
-
+                    console.log(data);
                     var result = data.resourceSets[0];
                     if (result) {
                         if (result.estimatedTotal > 0) {
                             response($.map(result.resources, function(item) {
+
+                                Lat = item.point.coordinates[0];
+                                Lon = item.point.coordinates[1];
+
                                 return {
                                     data: item,
                                     label: item.name + ' (' + item.address.countryRegion + ')',
@@ -59,13 +66,17 @@ $(document).ready(function() {
                 "<div class='divTableCell NoDivTableBorder'>" +
                 "<div class='residency_datepicker form-group'>" +
                 "<label>From:</label>" +
-                "<input class='new_datepicker form-control start_date' type='text' required>" +
+                "<input class='new_datepicker form-control start_date' type='text' required='required' data-rule-required='true' data-msg-required='Required field'>" +
+                "<span class='error1'>" +
+                "<i class='error-log fa fa-exclamation-triangle'></i>" +
                 "</div>" +
                 "</div>" +
                 "<div class='divTableCell NoDivTableBorder'>" +
                 "<div class='residency_datepicker form-group'>" +
                 "<label>To:</label>" +
-                "<input class='new_datepicker form-control end_date' type='text' required>" +
+                "<input class='new_datepicker form-control end_date' type='text' required='required' data-rule-required='true' data-msg-required='Required field'>" +
+                "<span class='error1'>" +
+                "<i class='error-log fa fa-exclamation-triangle'></i>" +
                 "</div>" +
                 "</div>" +
                 "</div>" +
@@ -82,6 +93,7 @@ $(document).ready(function() {
                     residency.start_date = start_date;
                     residency.end_date = end_date;
                     residency.address = $("#searchBox").val();
+                    residency.coordinates = Lat + "," + Lon;
                     ListaResidency.push(residency);
                     $(".json_residency").createTable(ListaResidency);
                 }
@@ -1018,7 +1030,7 @@ $(document).ready(function() {
     $("#submit").on('click', function(e) {
         e.preventDefault();
         var serJson = $("#msform").serializeJSON();
-
+        console.log(ListaResidency);
         serJson.demographic.residency_list = ListaResidency;
 
         history_list.forEach(occupation => {
