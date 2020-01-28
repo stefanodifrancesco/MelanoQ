@@ -862,6 +862,9 @@ $(document).ready(function() {
     });
     /****** Melanoma charcteristics selects changes ******/
 
+    // ID of the document to update
+    var doc_id = '';
+
     $("#submit").on('click', function(e) {
         e.preventDefault();
         var serJson = $("#msform").serializeJSON();
@@ -892,16 +895,13 @@ $(document).ready(function() {
 
         serJson.family_history.relatives_with_other_cancers = List_Family_History_Other_3Degree;
 
-        console.log(serJson);
+        serJson.doc_id = doc_id;
 
         $.ajax({
-            url: '/stepform', // url where to submit the request
+            url: '/updateform', // url where to submit the request
             type: "POST", // type of action POST || GET
             data: serJson, // post data || get data
             success: function(result) {
-                // you can see the result from the console
-                // tab of the developer tools
-                console.log("success");
                 document.write(result);
             },
             error: function(xhr, resp, text) {
@@ -944,6 +944,8 @@ $(document).ready(function() {
             if (data.hits.hits.length == 0) {
                 console.log("Error")
             } else {
+                doc_id = data.hits.hits[0]._id;
+
                 console.log("original json:");
                 returned_JSON = data.hits.hits[0]._source;
                 console.log(returned_JSON);

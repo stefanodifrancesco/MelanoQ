@@ -122,7 +122,6 @@ router.get('/stepform', (req, res) => {
 
 router.post("/stepform", (req, res) => {
 
-
     console.log("Ricevuto una richiesta POST");
 
     esClient.index({
@@ -209,6 +208,40 @@ router.post('/update', (req, res) => {
         }
 
         res.render('multi-step-form-update', { result: questionnaire.hits.hits[0]._source });
+    });
+});
+
+router.post("/updateform", (req, res) => {
+
+    console.log("Ricevuto una richiesta UPDATE");
+
+    var doc_id = req.body.doc_id;
+    delete req.body.doc_id;
+
+    esClient.index({
+        index: 'melano_questionnaires',
+        type: '_doc',
+        id: doc_id,
+        pipeline: 'timestamp',
+        body: req.body
+    }, function(err, resp, status) {
+
+        _id = resp._id;
+        console.log("Record added as " + _id);
+
+        var current_timestamp = dateFormat(new Date(), 'dd mmmm yyyy "at" HH:MM:ss');
+
+        esClient.get({
+            index: 'melano_questionnaires',
+            type: '_doc',
+            id: resp._id
+        }, function(error, quest, response) {
+            if (error) {
+                console.log('search error: ' + error)
+            }
+            res.render('summary', { result: quest._source });
+        });
+
     });
 });
 
