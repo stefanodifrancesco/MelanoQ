@@ -560,7 +560,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#SimpleDateModal .close,.btn-danger").on("click", function(evt) {
+    $("#SimpleDateModal .close,#SimpleDateModal.btn-danger").on("click", function(evt) {
         evt.preventDefault();
         var Checked = $("#Sites_Modal .modal-checked").text().trim();
         var TO_Uncheck = $.grep($("#Sites_Modal .tg input"), function(G_key, G_value) {
