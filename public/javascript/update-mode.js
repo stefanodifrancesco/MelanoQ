@@ -106,67 +106,6 @@ $(document).ready(function() {
         $("#ui-id-1").css("position", "relative").css("top", "auto").css("left", "auto");
     })
 
-    $("#fieldsetCodeNumber #DatabaseCodeCountry").on("change", function(evt) {
-        if ($(this).val() != "") {
-            $("#DatabaseCodeCenter").prop("disabled", false);
-            nation_val = $(this).val();
-            $("#DatabaseCodeCenter").find('option').remove();
-            $("#DatabaseCodeCenter").append("<option value=''>Select Center ... </option>");
-
-            $.getJSON('Centers.json', function(result) {
-                $.each(result, function(index, value) {
-                    if (value.codeNation == nation_val) {
-                        $("#DatabaseCodeCenter").append("<option value='" + value.codeCenter + "'>" + value.Country + "</option>");
-                    }
-                });
-            });
-
-            $("DatabaseCodeCenter").val("");
-        }
-        if ($(this).val() == "") {
-            $("#DatabaseCodeCenter").prop("disabled", true);
-            $("#DatabaseCodeCenter").val("");
-        }
-    });
-
-    $("#DatabaseCodeCountry,#DatabaseCodeCenter,#DatabaseCodeType").on("change", function(evt) {
-        currentCodeCountry = $("#DatabaseCodeCountry").val();
-        currentDatabaseCode = $("#DatabaseCodeCenter").val();
-        currentDatabaseCodeType = $("#DatabaseCodeType").val();
-
-        if (currentCodeCountry != "" && currentDatabaseCode != "" && currentDatabaseCodeType != "") {
-            object_JSON = {
-                "sort": [{
-                    "timestamp": {
-                        "order": "desc"
-                    }
-                }],
-                "query": {
-                    "bool": {
-                        "must": [{
-                                "match": {
-                                    "general.code_country": currentCodeCountry
-                                }
-                            },
-                            {
-                                "match": {
-                                    "general.code_center": currentDatabaseCode
-                                }
-                            },
-                            {
-                                "match": {
-                                    "general.code_type": currentDatabaseCodeType
-                                }
-                            }
-                        ]
-                    }
-                },
-                "size": 1
-            };
-            send_Ajax_Data('http://localhost:9200/melano_questionnaires/_search', object_JSON, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType);
-        }
-    });
-
     $("#fieldsetUltravioletExposure #id_UltravioletExposure").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetUltravioletExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
@@ -982,10 +921,39 @@ $(document).ready(function() {
     $('#thirdMelanomaCharacteristics :input').attr('disabled', true);
     /****** Initially disables all melanoma characteristics inputs ******/
 
-
-
-
     Initialize();
+
+    returned_JSON = "";
+
+    input_JSON = {
+        "query": {
+            "term": {
+                "general.code_number": $("#codeNumber").val()
+            }
+        },
+        "size": 1
+    };
+
+    $.ajax({
+        type: "POST",
+        url: 'http://localhost:9200/melano_questionnaires/_search',
+        data: JSON.stringify(input_JSON),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data) {
+            if (data.hits.hits.length == 0) {
+                console.log("Error")
+            } else {
+                console.log("original json:");
+                returned_JSON = data.hits.hits[0]._source;
+                console.log(returned_JSON);
+            }
+        },
+        failure: function(errMsg) {
+            console.log(errMsg);
+        }
+    });
+
 });
 /*Fine Doucment Ready*/
 
@@ -996,6 +964,12 @@ function Initialize() {
     DDL_American_Cancer("#NonCutaneous_Select", []);
     DDL_American_Cancer("#selectOtherCancerType", ["Neuroblastoma ", "Melanoma Skin Cancer"]);
     Modal_Draggable();
+
+    /****** Trigger change on all input of type select with an hidden control ******/
+
+    $("[name='general[melanoma_type]']").trigger('change');
+
+    /****** Trigger change on all input of type select with an hidden control ******/
 };
 
 function Reset_Values(tag_fieldset) {
@@ -1165,34 +1139,4 @@ function create_Table_Delete(lista_JSON, div_id, field_id) {
             create_Table_Delete(lista_JSON, div_id, field_id);
         }
     });
-};
-
-function send_Ajax_Data(custom_URL, object_JSON, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType) {
-    $.ajax({
-        type: "POST",
-        url: custom_URL,
-        // The key needs to match your method's input parameter (case-sensitive).
-        data: JSON.stringify(object_JSON),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function(data) {
-            myHandle(data, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType);
-        },
-        failure: function(errMsg) {
-            console.log(errMsg);
-        }
-    });
-};
-
-function zeroPad(num, places) {
-    return String(num).padStart(places, '0')
-};
-
-function myHandle(data, currentCodeCountry, currentDatabaseCode, currentDatabaseCodeType) {
-    if (data.hits.hits.length == 0) {
-        $("#codeNumber").val(currentCodeCountry + currentDatabaseCode + currentDatabaseCodeType + "0001");
-    } else {
-        number = parseInt(data.hits.hits[0]._source.general.code_number.substr(5, 8)) + 1;
-        $("#codeNumber").val(currentCodeCountry + currentDatabaseCode + currentDatabaseCodeType + zeroPad(number, 4));
-    }
 };

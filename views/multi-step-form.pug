@@ -6,6 +6,9 @@ block append style
     link(rel='stylesheet' href='/stylesheet/alt.css')
     link(rel='stylesheet' href='/stylesheet/modal.css')
 
+block append script
+    script(src='/javascript/MyScript.js')
+
 block content
   div.profile-header
     button.questionnaires-list-button(onclick="var t = document.getElementById(\"msform\"); t.classList.add(\"fade-out-top\"); window.location.href = '/home';")
