@@ -163,7 +163,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#fieldsetUltravioletExposure #id_UltravioletExposure").on("change", function (evt) {
+    $("#fieldsetUltravioletExposure #id_UltravioletExposure").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetUltravioletExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
             $(this).parents("#fieldsetUltravioletExposure").find("input[type=text]").prop("required", true);
@@ -175,7 +175,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#fieldsetRecreationalExposure #id_RecreationalExposure").on("change", function (evt) {
+    $("#fieldsetRecreationalExposure #id_RecreationalExposure").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetRecreationalExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
             $(this).parents("#fieldsetRecreationalExposure").find("input[type=text]").prop("required", true);
@@ -187,7 +187,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#fieldsetSevereSunburns #id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function (evt) {
+    $("#fieldsetSevereSunburns #id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find("div.hidden-control").prop("required", true);
             console.log($(this).parents(".divTableRow").find("div.hidden-control"));
@@ -200,7 +200,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#fieldsetSunlamps #id_Sunlamp").on("change", function (evt) {
+    $("#fieldsetSunlamps #id_Sunlamp").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetSunlamps").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSunlamps").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -211,7 +211,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#fieldsetSmoking #id_Smoking").on("change", function (evt) {
+    $("#fieldsetSmoking #id_Smoking").on("change", function(evt) {
         if ($(this).val() == "Former" || $(this).val() == "Current") {
             $(this).parents("#fieldsetSmoking").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", true);
@@ -224,18 +224,18 @@ $(document).ready(function() {
         }
     });
 
-    $("#fieldsetVitamin #id_Vitamin").on("change", function (evt) {
+    $("#fieldsetVitamin #id_Vitamin").on("change", function(evt) {
         if ($(this).val() == "Yes") {
-            $(this).parents("#fieldsetVitamin").find(".hidden-control select").prop("required",true);
+            $(this).parents("#fieldsetVitamin").find(".hidden-control select").prop("required", true);
             $(this).parents("#fieldsetVitamin").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
         }
         if ($(this).val() == "No" || $(this).val() == "NoChoosed") {
-            $(this).parents("#fieldsetVitamin").find(".show-control select").prop("required",false).val("NoChoosed");
+            $(this).parents("#fieldsetVitamin").find(".show-control select").prop("required", false).val("NoChoosed");
             $(this).parents("#fieldsetVitamin").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
-    $("#fieldsetSectionBEval .selectQuestions").on("change", function (evt) {
+    $("#fieldsetSectionBEval .selectQuestions").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -246,7 +246,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#fieldsetCongenitalNevi #selectMediumSizedCN,#fieldsetCongenitalNevi #selectLargeSizedCN,#fieldsetCongenitalNevi #selectGiantSizedCN").on("change", function (evt) {
+    $("#fieldsetCongenitalNevi #selectMediumSizedCN,#fieldsetCongenitalNevi #selectLargeSizedCN,#fieldsetCongenitalNevi #selectGiantSizedCN").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -257,7 +257,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#fieldsetBlueNevi #selectBlueNevi").on("change", function (evt) {
+    $("#fieldsetBlueNevi #selectBlueNevi").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
@@ -268,7 +268,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#fieldsetActinicKeratoses #selectActinicKeratoses").on("change", function (evt) {
+    $("#fieldsetActinicKeratoses #selectActinicKeratoses").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesSite").prop("required", true);
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control #selectActinicKeratosesDistribution").prop("required", true);
@@ -281,12 +281,12 @@ $(document).ready(function() {
         }
     });
 
-    $("#fieldsetKSC_BCC_SCC #selectBCC,#fieldsetKSC_BCC_SCC #selectSCC,#fieldsetKSC_BCC_SCC #selectSCCSite").on("change", function (evt) {
+    $("#fieldsetKSC_BCC_SCC #selectBCC,#fieldsetKSC_BCC_SCC #selectSCC,#fieldsetKSC_BCC_SCC #selectSCCSite").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTable").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTable").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "No" || $(this).value() == "NoChoosed") {
+        if ($(this).val() == "No" || $(this).val() == "NoChoosed") {
             $(this).parents(".divTable").find(".show-control input").prop("required", false).val("");
             $(this).parents(".divTable").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
@@ -994,7 +994,7 @@ function Initialize() {
 
     /****** Trigger change on all input of type select ******/
 
-    $('#Melanoma').trigger('change');
+    $("[name='general[melanoma_type]']").trigger('change');
 
     /****** Trigger change on all input of type select ******/
 };
