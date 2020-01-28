@@ -85,9 +85,9 @@ block content
                 | Subject
               .form-group
                 select.form-control(name='general[subject]' required='required' data-rule-required='true' data-msg-required='Required field')
-                  option(value='' selected='') Select Subject ...
-                  option(value='Case') Case
-                  option(value='Control') Control
+                  option(value='' selected=(result.general.subject == '')) Select Subject ...
+                  option(value='Case' selected=(result.general.subject == 'Case')) Case
+                  option(value='Control' selected=(result.general.subject == 'Control')) Control
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
 
@@ -98,7 +98,7 @@ block content
               label 
                 | Dates of updated questionnaire and/or phenotyping
               .form-group
-                input.datepicker.form-control(type='text' placeholder='Select date' name='general[last_update]' required='required' data-rule-required='true' data-msg-required='Required field')
+                input.datepicker.form-control(type='text' value=result.general.last_update placeholder='Select date' name='general[last_update]' required='required' data-rule-required='true' data-msg-required='Required field')
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
 
