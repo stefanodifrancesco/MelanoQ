@@ -198,11 +198,6 @@
     width: 80%;
 }
 
-
-/* #msform .NoDivTableBorder input[type='text'] {
-    margin-bottom: 22px;
-} */
-
 #msform .divTableCell input[type='radio'] {
     border: none;
     border-bottom: 1px solid gray;

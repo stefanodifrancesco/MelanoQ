@@ -87,7 +87,7 @@ block content
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
 
-              input#codeNumber(type='text' readonly='' value='' name='general[code_number]')
+              input#codeNumber(type='text' readonly='' name='general[code_number]')
 
             fieldset#fieldsetAdmin
               label 
@@ -160,15 +160,13 @@ block content
                         span.error1
                             i.error-log.fa.fa-exclamation-triangle
                     .divTableCell.NoDivTableBorder
-                      label 
-                        | Weight(Kg)
+                      label Weight(Kg)
                       .form-group
                         input#weight_input.form-control(type='number' min='1' name='demographic[weight]' placeholder='Weight' required='required' data-rule-required='true' data-msg-required='Required field')
                         span.error1
                             i.error-log.fa.fa-exclamation-triangle
                     .divTableCell.NoDivTableBorder
-                      label 
-                        | Height(Cm)
+                      label Height(Cm)
                       .form-group
                         input#height_input.form-control(type='number' min='1' name='demographic[height]' placeholder='Height' required='required' data-rule-required='true' data-msg-required='Required field')
                         span.error1
@@ -1535,7 +1533,7 @@ block content
                       .form-group
                         input(type='number' min='1' value='' name='medical_history[pregnancy][count]')
                     .divTableCell.NoDivTableBorder
-                      input.datepicker.form-control(type='text' value='' placeholder='dd/mm/yyyy' name='medical_history[pregnancy][birthday]')
+                      input.datepicker.form-control(type='text' placeholder='dd/mm/yyyy' name='medical_history[pregnancy][birthday]')
                     .divTableCell.NoDivTableBorder
                       .form-group
                         input(type='number' min='1' value='' name='medical_history[pregnancy][miscarriages]')

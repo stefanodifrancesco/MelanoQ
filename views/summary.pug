@@ -20,563 +20,494 @@ block content
       button.btn.logout-button(onclick="window.location.href = '/logout';")
           |  Logout
 
-  .container.summary-div.slide-in-bottom
-    
-    button.btn.back-button(onclick="var t = document.getElementsByClassName(\"summary-div\"); var q = t[0]; q.classList.add(\"slide-out-bottom\"); window.location.href = '/home';")
-      i.fa.fa-angle-up
-      |        Back
-
-    <details>
-      <summary>GENERAL</summary>
-      <hr/>
+  .form
+    #msform
       fieldset
-        table.summary-table
-          tbody
-            tr
-              td
-                legend Subject
-                span #{result.subject}
-                    
-              td
-                legend Database code number
-                span #{result.code_number}
-
-            tr
-              td
-                legend Date of questionnaire administration and phenotyping
-                span #{result.survey_date}
-
-              td
-                legend Dates of updated questionnaire and/or phenotyping
-                span #{result.last_update}
-
-            tr
-              td
-                legend Type of melanoma
-                span #{result.melanoma_type}
-            if result.melanoma_type == "Other"
-              tr
-                td
-                  legend Other (complex family history)
-                  span #{result.other_melanoma_type}
-    </details>
-
-    <details>
-      <summary>DEMOGRAPHIC</summary>
-      <hr/>
-      table.summary-table
-        tbody
-          tr
-            td
-              legend Sex
-              span #{result.gender}
-
-            td
-              legend Date and place of birth
-              span #{result.birthday} at #{result.place_of_birth}
-
-            td
-              legend Weight and height
-              span #{result.weight} cm #{result.height} Kg
-
-          tr
-            td
-              legend Ethnicity
-              span #{result.ethnicity}
-            if result.ethnicity == "Other"
-              td
-                legend Other ethnicity
-                span #{result.other_ethnicity}
-
-            td
-              legend Residency
-              span #{result.residency}
-
-
-          tr
-            td
-              legend Education
-              span #{result.education}
-
-            td
-              legend Current occupational status
-              span #{result.occupational_status}
-
-            td
-              legend History of occupation
-              span #{result.occupational_history}
-    </details>
-
-    <details>
-      <summary>PHENOTYPE</summary>
-      <hr/>
-      table.summary-table
-        tbody
-          tr
-            td
-              legend Skin response to sun exposure
-              span #{result.skin_response}
-
-            td
-              legend Skin tan
-              span #{result.skin_tan}
-
-
-          tr
-            td
-              legend Eye color
-              span #{result.eye_color}
-
-            td
-              legend Hair color (at age of 18 yrs)
-              span #{result.hair_color}
-
-            td
-              legend Freckles
-              span #{result.freckles}
-
-            td
-              legend Nevi frequency
-              span #{result.nevi}
-
-
-          tr
-            td
-              legend Occupational sun exposure
-              span #{result.ultraviolet.occupational_sun_exposure.presence}
-          if result.ultraviolet.occupational_sun_exposure.presence == "Yes"
-            tr
-              td
-                legend Occupation
-                span #{result.ultraviolet.occupational_sun_exposure.occupation_name}
-            
-              td
-                legend hours/day
-                span #{result.ultraviolet.occupational_sun_exposure.hours_day}
-            
-              td
-                legend hours/month
-                span #{result.ultraviolet.occupational_sun_exposure.hours_month}
-            
-              td
-                legend hours/year
-                span #{result.ultraviolet.occupational_sun_exposure.hours_year}
-            
-              td
-                legend How many years ?
-                span #{result.ultraviolet.occupational_sun_exposure.number_of_years}
-
-          tr
-            td
-              legend Recreational sun exposure 
-              span #{result.ultraviolet.recreational_sun_exposure.presence}
-          if result.ultraviolet.recreational_sun_exposure.presence == "Yes"
-            tr
-              td
-                legend Occupation
-                span #{result.ultraviolet.recreational_sun_exposure.occupation_name}
-            
-              td
-                legend hours/day
-                span #{result.ultraviolet.recreational_sun_exposure.hours_day}
-            
-              td
-                legend hours/month
-                span #{result.ultraviolet.recreational_sun_exposure.hours_month}
-            
-              td
-                legend hours/year
-                span #{result.ultraviolet.recreational_sun_exposure.hours_year}
-            
-              td
-                legend How many years ?
-                span #{result.ultraviolet.recreational_sun_exposure.number_of_years}
-
-
-          tr
-            td
-              legend Intermittent sun exposure 
-              .form-group
-                .divTable
-                  .divTableBody
-                    .divTableRow
-                      .divTableCell Age Period
-                      .divTableCell Exposure Period
-                      .divTableCell Exposure Time
-                    .divTableRow
-                      .divTableCell
-                      .divTableCell Weeks of vacation
-                      .divTableCell Hours spent between 11AM and 4PM
-                    .divTableRow
-                      .divTableCell Childhood (ulegend to age 10 yrs)
-                      .divTableCell
-                        span #{result.ultraviolet.exposure_childhood.period}
-                      .divTableCell
-                        span #{result.ultraviolet.exposure_childhood.time}
-                    .divTableRow
-                      .divTableCell Adolescence (11-18 yrs)
-                      .divTableCell
-                        span #{result.ultraviolet.exposure_adolescence.period}
-                      .divTableCell
-                        span #{result.ultraviolet.exposure_adolescence.time}
-                    .divTableRow
-                      .divTableCell Adulthood (&ge;18 yrs)
-                      .divTableCell
-                        span #{result.ultraviolet.exposure_adulthood.period}
-                      .divTableCell
-                        span #{result.ultraviolet.exposure_adulthood.time}
-                    .divTableRow
-                      .divTableCell(style='font-size:10px;')
-                        | 10 years before melanoma diagnosis (for
-                        | cases) or last 10 years
-                        | (for controls)
-                      .divTableCell
-                        span #{result.ultraviolet.exposure_previous_10_years.period}
-                      .divTableCell
-                        span #{result.ultraviolet.exposure_previous_10_years.time}
-
-
-          tr
-            td
-              legend Most recent intense intermittent sun exposure
-              span #{result.ultraviolet.most_recent_sunburn}
-          
-
-          tr
-            td
-              legend At age less 18 yrs
-              span #{result.ultraviolet.sunburn_before_18.presence}
-          if result.ultraviolet.sunburn_before_18.presence == "Yes"
-            tr
-              td
-                h4
-                  strong Number at age less 18 yrs
-                span #{result.ultraviolet.sunburn_before_18.number}
-
-          
-          tr
-            td
-              legend At age greater 18 yrs
-              span #{result.ultraviolet.sunburn_after_18.prsence}
-          if result.ultraviolet.sunburn_after_18.prsence == "Yes"
-            tr
-              td
-                h4
-                  strong Number at age greater 18 yrs
-                span #{result.ultraviolet.sunburn_after_18.number}
-
-
-          tr
-            td
-              legend At site of melanoma
-              span #{result.ultraviolet.sunburn_melanoma_site}
-
-
-          tr
-            td
-              legend In the last 5 years
-              span #{result.ultraviolet.sunburn_last_5_years.presence}
-          if result.ultraviolet.sunburn_last_5_years.presence == "Yes"
-            tr
-              td
-                h4
-                  strong Number in the last 5 years
-                span #{result.ultraviolet.sunburn_last_5_years.number}
-
-
-          tr
-            td
-              legend Sunscreen use 
-              .form-group
-                .divTable
-                  .divTableBody
-                    .divTableRow
-                      .divTableCell Age Period
-                      .divTableCell Summer Sunscreen
-                      .divTableCell Summer Sunscreen
-                    .divTableRow
-                      .divTableCell
-                      .divTableCell Did you use sunscreen during summertime?
-                      .divTableCell Type of sunscreen used
-                    .divTableRow
-                      .divTableCell Childhood (ulegend to age 10 yrs)
-                      .divTableCell
-                        span #{result.ultraviolet.childhood_sunscreen.frequency}
-                      .divTableCell
-                        span #{result.ultraviolet.childhood_sunscreen.type}
-                    .divTableRow
-                      .divTableCell Adolescence (11-18 yrs)
-                      .divTableCell
-                        span #{result.ultraviolet.adolescence_sunscreen.frequency}
-                      .divTableCell
-                        span #{result.ultraviolet.adolescence_sunscreen.type}
-                    .divTableRow
-                      .divTableCell Adulthood (&ge;18 yrs)
-                      .divTableCell
-                        span #{result.ultraviolet.adulthood_sunscreen.frequency}
-                      .divTableCell
-                        span #{result.ultraviolet.adulthood_sunscreen.type}
-                    .divTableRow
-                      .divTableCell(style='font-size:10px;')
-                        | 10 years before melanoma diagnosis (for
-                        | cases) or last 10 years
-                        | (for controls)
-                      .divTableCell
-                        span #{result.ultraviolet.last_10_years_sunscreen.frequency}
-                      .divTableCell
-                        span #{result.ultraviolet.last_10_years_sunscreen.type}
-
-
-          tr
-            td
-              legend Did you use a hat?
-              span #{result.ultraviolet.hat_frequency}
-
-
-          tr
-            td
-              legend Did you use protective clothing?
-              span #{result.ultraviolet.clothing}
-
-
-          tr
-            td
-              legend Exposure during peak UVR hours
-              span #{result.ultraviolet.peak_UVR_hours}
-
-
-          tr
-            td
-              legend Sunlamps/sunbeds
-              span #{result.ultraviolet.sunlamp.presence}
-          if result.ultraviolet.sunlamp.presence == "Yes"
-            tr
-              td
-                h4
-                  strong Number of sunlamps/sunbeds
-                span #{result.ultraviolet.sunlamp.number_of_session}
-            tr
-              td
-                h4
-                  strong Age of first sunlamps/sunbeds
-                span #{result.ultraviolet.sunlamp.age_of_first_sunlamp}
-            tr
-              td
-                h4
-                  strong Age of last sunlamps/sunbeds
-                span #{result.ultraviolet.sunlamp.age_of_last_sunlamp}
-
-            
-          tr
-            td
-              legend Phototherapy (UVB-PUVA)
-              span #{result.ultraviolet.phototherapy}
-    </details>
-
-    <details>
-      <summary>LIFESTYLE</summary>
-      <hr/>
-      table.summary-table
-        tbody
-            tr
-              td
-                legend Smoking
-            if result.lifestyle.smoking != "Never"
-              tr
-                td
-                  legend Starting age
-                  span #{result.lifestyle.age_of_first_smoking}
-                td
-                  legend Number of years
-                  span #{result.lifestyle.smoking_period}
-                td
-                  legend Frequency
-                  span #{result.lifestyle.smoke_quantity}
-
-
-            tr
-              td
-                legend Have you received vitamin pills during the last year?
-                span #{result.lifestyle.vitamin_last_year}
-            if result.lifestyle.vitamin_last_year != "Never"
-              tr
-                td
-                  legend Quantity
-                  span #{result.lifestyle.vitamin_quantity_last_year}
-
-
-            tr
-              td
-                legend What type of vitamins did you receive and how often?
-                .group
-                  .divTable
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:16%;') &beta;-carotene
-                      .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin A
-                      .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin C
-                      .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin D
-                      .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin E
-                      .divTableCell.NoDivTableBorder(style='width:16%;') Multivitamins
-                    .divTableRow
-                      .divTableCell(style='width:16%;')
-                        span #{result.lifestyle.betacarotene_frequency}
-                      .divTableCell(style='width:16%;')
-                        span #{result.lifestyle.vitamin_A_frequency}
-                      .divTableCell(style='width:16%;')
-                        span #{result.lifestyle.vitamin_C_frequency}
-                      .divTableCell(style='width:16%;')
-                        span #{result.lifestyle.vitamin_D_frequency}
-                      .divTableCell(style='width:16%;')
-                        span #{result.lifestyle.vitamin_E_frequency}
-                      .divTableCell(style='width:16%;')
-                        span #{result.lifestyle.multivitamins_frequency}
-
-
-            tr
-              td
-                legend For how long did you receive vitamins?
-                .group
-                  .divTable
-                    .divTableRow
-                      .divTableCell.NoDivTableBorder(style='width:16%;') &beta;-carotene
-                      .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin A
-                      .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin C
-                      .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin D
-                      .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin E
-                      .divTableCell.NoDivTableBorder(style='width:16%;') Multivitamins
-                    .divTableRow
-                      .divTableCell(style='width:16%;')
-                        span #{result.lifestyle.betacarotene_period}
-                      .divTableCell(style='width:16%;')
-                        span #{result.lifestyle.vitamin_A_period}
-                      .divTableCell(style='width:16%;')
-                        span #{result.lifestyle.vitamin_C_period}
-                      .divTableCell(style='width:16%;')
-                        span #{result.lifestyle.vitamin_D_period}
-                      .divTableCell(style='width:16%;')
-                        span #{result.lifestyle.vitamin_E_period}
-                      .divTableCell(style='width:16%;')
-                        span #{result.lifestyle.multivitamins_period}
-    </details>
-
-    <details>
-      <summary>CLINICAL EXAMINATION</summary>
-      <hr/>
-      table.summary-table
-        tbody
-          tr
-            td
-              legend Solar lentigines severity
-              span #{result.solar_lentigines_frequency}
-
-
-          tr
-            td
-              legend Solar lentigines at melanoma
-              span #{result.solar_lentigines_at_melanoma}
-
-
-          tr
-            td
-              legend Nevi count
-              .form-group
-                .divTable
-                  .divTableRow
-                    .divTableCell(style='width:40%;') Site
-                    .divTableCell(style='width:30%;') Number(left)
-                    .divTableCell(style='width:30%;') Number(right)
-                  .divTableRow
-                    .divTableCell(style='width:40%;') Scalp
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_left_scalp}
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_right_scalp}
-                  .divTableRow
-                    .divTableCell(style='width:40%;') Face(including ears)
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_left_face}
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_right_face}
-                  .divTableRow
-                    .divTableCell(style='width:40%;') Neck
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_left_neck}
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_right_neck}
-                  .divTableRow
-                    .divTableCell(style='width:40%;') Anterior thorax + abdomen
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_left_thorax_abdomen}
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_right_thorax_abdomen}
-                  .divTableRow
-                    .divTableCell(style='width:40%;') Back
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_left_back}
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_right_back}
-                  .divTableRow
-                    .divTableCell(style='width:40%;') Upper extremities including deltoid
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_left_deltoid}
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_right_deltoid}
-                  .divTableRow
-                    .divTableCell(style='width:40%;') Lower extremities including gluteus
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_left_gluteus}
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_right_gluteus}
-                  .divTableRow
-                    .divTableCell(style='width:40%;') Palms
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_left_palms}
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_right_palms}
-                  .divTableRow
-                    .divTableCell(style='width:40%;') Soles
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_left_soles}
-                    .divTableCell(style='width:30%;')
-                      span #{result.nevi_count_right_soles}
-
-
-
-          tr
-            td
-              legend Clinically atypical nevi
-              span #{result.atypical_nevi_number}
-
-
-          tr
-            td
-              legend Congenital nevi
-              span #{result.surveyDate}
-
-
-          tr
-            td
-              legend Actinic keratoses
-              span #{result.surveyDate}
-    </details>
-
-    table.summary-table
-      tbody
-          tr
-            td
-              legend Were you able to respond to the questions of this Section?
-              span #{result.surveyDate}
-
-
-          tr
-            td
-              legend Which questions of this Section did you consider difficult to fill in?
-              span #{result.surveyDate}
-
-    <details>
-      <summary>DIAGNOSES</summary>
-    </details>
-
-    <details>
-      <summary>What about accessibility? Is that the catch?</summary>
-    </details>
+        div.scrollingdiv
+          h2.fs-title QUESTIONNAIRE SUMMARY
+          h3.fs-subtitle Database code number #{result.general.code_number}
+          <details>
+            <summary>GENERAL</summary>
+            <hr/>
+            fieldset
+              table.summary-table
+                tbody
+                  tr
+                    td
+                      legend Subject
+                      span #{result.general.subject}
+                          
+                    td
+                      legend Database code number
+                      span #{result.general.code_number}
+                  tr
+                    td
+                      legend Date of questionnaire administration and phenotyping
+                      span #{result.general.survey_date}
+                    td
+                      legend Dates of updated questionnaire and/or phenotyping
+                      span #{result.general.last_update}
+                  tr
+                    td
+                      legend Type of melanoma
+                      span #{result.general.melanoma_type}
+                  if result.melanoma_type == "Other"
+                    tr
+                      td
+                        legend Other (complex family history)
+                        span #{result.general.other_melanoma_type}
+          </details>
+          <details>
+            <summary>DEMOGRAPHIC</summary>
+            <hr/>
+            table.summary-table
+              tbody
+                tr
+                  td
+                    legend Sex
+                    span #{result.gender}
+                  td
+                    legend Date and place of birth
+                    span #{result.birthday} at #{result.place_of_birth}
+                  td
+                    legend Weight and height
+                    span #{result.weight} cm #{result.height} Kg
+                tr
+                  td
+                    legend Ethnicity
+                    span #{result.ethnicity}
+                  if result.ethnicity == "Other"
+                    td
+                      legend Other ethnicity
+                      span #{result.other_ethnicity}
+                  td
+                    legend Residency
+                    span #{result.residency}
+                tr
+                  td
+                    legend Education
+                    span #{result.education}
+                  td
+                    legend Current occupational status
+                    span #{result.occupational_status}
+                  td
+                    legend History of occupation
+                    span #{result.occupational_history}
+          </details>
+          <details>
+            <summary>PHENOTYPE</summary>
+            <hr/>
+            table.summary-table
+              tbody
+                tr
+                  td
+                    legend Skin response to sun exposure
+                    span #{result.skin_response}
+                  td
+                    legend Skin tan
+                    span #{result.skin_tan}
+                tr
+                  td
+                    legend Eye color
+                    span #{result.eye_color}
+                  td
+                    legend Hair color (at age of 18 yrs)
+                    span #{result.hair_color}
+                  td
+                    legend Freckles
+                    span #{result.freckles}
+                  td
+                    legend Nevi frequency
+                    span #{result.nevi}
+                tr
+                  td
+                    legend Occupational sun exposure
+                    span #{result.ultraviolet.occupational_sun_exposure.presence}
+                if result.ultraviolet.occupational_sun_exposure.presence == "Yes"
+                  tr
+                    td
+                      legend Occupation
+                      span #{result.ultraviolet.occupational_sun_exposure.occupation_name}
+                  
+                    td
+                      legend hours/day
+                      span #{result.ultraviolet.occupational_sun_exposure.hours_day}
+                  
+                    td
+                      legend hours/month
+                      span #{result.ultraviolet.occupational_sun_exposure.hours_month}
+                  
+                    td
+                      legend hours/year
+                      span #{result.ultraviolet.occupational_sun_exposure.hours_year}
+                  
+                    td
+                      legend How many years ?
+                      span #{result.ultraviolet.occupational_sun_exposure.number_of_years}
+                tr
+                  td
+                    legend Recreational sun exposure 
+                    span #{result.ultraviolet.recreational_sun_exposure.presence}
+                if result.ultraviolet.recreational_sun_exposure.presence == "Yes"
+                  tr
+                    td
+                      legend Occupation
+                      span #{result.ultraviolet.recreational_sun_exposure.occupation_name}
+                  
+                    td
+                      legend hours/day
+                      span #{result.ultraviolet.recreational_sun_exposure.hours_day}
+                  
+                    td
+                      legend hours/month
+                      span #{result.ultraviolet.recreational_sun_exposure.hours_month}
+                  
+                    td
+                      legend hours/year
+                      span #{result.ultraviolet.recreational_sun_exposure.hours_year}
+                  
+                    td
+                      legend How many years ?
+                      span #{result.ultraviolet.recreational_sun_exposure.number_of_years}
+                tr
+                  td(colspan='4')
+                    legend Intermittent sun exposure 
+                    .form-group
+                      .divTable
+                        .divTableBody
+                          .divTableRow
+                            .divTableCell Age Period
+                            .divTableCell Exposure Period
+                            .divTableCell Exposure Time
+                          .divTableRow
+                            .divTableCell
+                            .divTableCell Weeks of vacation
+                            .divTableCell Hours spent between 11AM and 4PM
+                          .divTableRow
+                            .divTableCell Childhood (ulegend to age 10 yrs)
+                            .divTableCell
+                              span #{result.ultraviolet.exposure_childhood.period}
+                            .divTableCell
+                              span #{result.ultraviolet.exposure_childhood.time}
+                          .divTableRow
+                            .divTableCell Adolescence (11-18 yrs)
+                            .divTableCell
+                              span #{result.ultraviolet.exposure_adolescence.period}
+                            .divTableCell
+                              span #{result.ultraviolet.exposure_adolescence.time}
+                          .divTableRow
+                            .divTableCell Adulthood (&ge;18 yrs)
+                            .divTableCell
+                              span #{result.ultraviolet.exposure_adulthood.period}
+                            .divTableCell
+                              span #{result.ultraviolet.exposure_adulthood.time}
+                          .divTableRow
+                            .divTableCell(style='font-size:10px;')
+                              | 10 years before melanoma diagnosis (for
+                              | cases) or last 10 years
+                              | (for controls)
+                            .divTableCell
+                              span #{result.ultraviolet.exposure_previous_10_years.period}
+                            .divTableCell
+                              span #{result.ultraviolet.exposure_previous_10_years.time}
+                tr
+                  td
+                    legend Most recent intense intermittent sun exposure
+                    span #{result.ultraviolet.most_recent_sunburn}
+                
+                tr
+                  td
+                    legend At age less 18 yrs
+                    span #{result.ultraviolet.sunburn_before_18.presence}
+                if result.ultraviolet.sunburn_before_18.presence == "Yes"
+                  tr
+                    td
+                      h4
+                        strong Number at age less 18 yrs
+                      span #{result.ultraviolet.sunburn_before_18.number}
+                
+                tr
+                  td
+                    legend At age greater 18 yrs
+                    span #{result.ultraviolet.sunburn_after_18.prsence}
+                if result.ultraviolet.sunburn_after_18.prsence == "Yes"
+                  tr
+                    td
+                      h4
+                        strong Number at age greater 18 yrs
+                      span #{result.ultraviolet.sunburn_after_18.number}
+                tr
+                  td
+                    legend At site of melanoma
+                    span #{result.ultraviolet.sunburn_melanoma_site}
+                tr
+                  td
+                    legend In the last 5 years
+                    span #{result.ultraviolet.sunburn_last_5_years.presence}
+                if result.ultraviolet.sunburn_last_5_years.presence == "Yes"
+                  tr
+                    td
+                      h4
+                        strong Number in the last 5 years
+                      span #{result.ultraviolet.sunburn_last_5_years.number}
+                tr
+                  td(colspan='4')
+                    legend Sunscreen use 
+                    .form-group
+                      .divTable
+                        .divTableBody
+                          .divTableRow
+                            .divTableCell Age Period
+                            .divTableCell Summer Sunscreen
+                            .divTableCell Summer Sunscreen
+                          .divTableRow
+                            .divTableCell
+                            .divTableCell Did you use sunscreen during summertime?
+                            .divTableCell Type of sunscreen used
+                          .divTableRow
+                            .divTableCell Childhood (ulegend to age 10 yrs)
+                            .divTableCell
+                              span #{result.ultraviolet.childhood_sunscreen.frequency}
+                            .divTableCell
+                              span #{result.ultraviolet.childhood_sunscreen.type}
+                          .divTableRow
+                            .divTableCell Adolescence (11-18 yrs)
+                            .divTableCell
+                              span #{result.ultraviolet.adolescence_sunscreen.frequency}
+                            .divTableCell
+                              span #{result.ultraviolet.adolescence_sunscreen.type}
+                          .divTableRow
+                            .divTableCell Adulthood (&ge;18 yrs)
+                            .divTableCell
+                              span #{result.ultraviolet.adulthood_sunscreen.frequency}
+                            .divTableCell
+                              span #{result.ultraviolet.adulthood_sunscreen.type}
+                          .divTableRow
+                            .divTableCell(style='font-size:10px;')
+                              | 10 years before melanoma diagnosis (for
+                              | cases) or last 10 years
+                              | (for controls)
+                            .divTableCell
+                              span #{result.ultraviolet.last_10_years_sunscreen.frequency}
+                            .divTableCell
+                              span #{result.ultraviolet.last_10_years_sunscreen.type}
+                tr
+                  td
+                    legend Did you use a hat?
+                    span #{result.ultraviolet.hat_frequency}
+                tr
+                  td
+                    legend Did you use protective clothing?
+                    span #{result.ultraviolet.clothing}
+                tr
+                  td
+                    legend Exposure during peak UVR hours
+                    span #{result.ultraviolet.peak_UVR_hours}
+                tr
+                  td
+                    legend Sunlamps/sunbeds
+                    span #{result.ultraviolet.sunlamp.presence}
+                if result.ultraviolet.sunlamp.presence == "Yes"
+                  tr
+                    td
+                      h4
+                        strong Number of sunlamps/sunbeds
+                      span #{result.ultraviolet.sunlamp.number_of_session}
+                  tr
+                    td
+                      h4
+                        strong Age of first sunlamps/sunbeds
+                      span #{result.ultraviolet.sunlamp.age_of_first_sunlamp}
+                  tr
+                    td
+                      h4
+                        strong Age of last sunlamps/sunbeds
+                      span #{result.ultraviolet.sunlamp.age_of_last_sunlamp}
+                  
+                tr
+                  td
+                    legend Phototherapy (UVB-PUVA)
+                    span #{result.ultraviolet.phototherapy}
+          </details>
+          <details>
+            <summary>LIFESTYLE</summary>
+            <hr/>
+            table.summary-table
+              tbody
+                  tr
+                    td
+                      legend Smoking
+                  if result.lifestyle.smoking != "Never"
+                    tr
+                      td
+                        legend Starting age
+                        span #{result.lifestyle.age_of_first_smoking}
+                      td
+                        legend Number of years
+                        span #{result.lifestyle.smoking_period}
+                      td
+                        legend Frequency
+                        span #{result.lifestyle.smoke_quantity}
+                  tr
+                    td
+                      legend Have you received vitamin pills during the last year?
+                      span #{result.lifestyle.vitamin_last_year}
+                  if result.lifestyle.vitamin_last_year != "Never"
+                    tr
+                      td
+                        legend Quantity
+                        span #{result.lifestyle.vitamin_quantity_last_year}
+                  tr
+                    td(colspan='4')
+                      legend What type of vitamins did you receive and how often?
+                      .group
+                        .divTable
+                          .divTableRow
+                            .divTableCell.NoDivTableBorder(style='width:16%;') &beta;-carotene
+                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin A
+                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin C
+                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin D
+                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin E
+                            .divTableCell.NoDivTableBorder(style='width:16%;') Multivitamins
+                          .divTableRow
+                            .divTableCell(style='width:16%;')
+                              span #{result.lifestyle.betacarotene_frequency}
+                            .divTableCell(style='width:16%;')
+                              span #{result.lifestyle.vitamin_A_frequency}
+                            .divTableCell(style='width:16%;')
+                              span #{result.lifestyle.vitamin_C_frequency}
+                            .divTableCell(style='width:16%;')
+                              span #{result.lifestyle.vitamin_D_frequency}
+                            .divTableCell(style='width:16%;')
+                              span #{result.lifestyle.vitamin_E_frequency}
+                            .divTableCell(style='width:16%;')
+                              span #{result.lifestyle.multivitamins_frequency}
+                  tr
+                    td(colspan='4')
+                      legend For how long did you receive vitamins?
+                      .group
+                        .divTable
+                          .divTableRow
+                            .divTableCell.NoDivTableBorder(style='width:16%;') &beta;-carotene
+                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin A
+                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin C
+                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin D
+                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin E
+                            .divTableCell.NoDivTableBorder(style='width:16%;') Multivitamins
+                          .divTableRow
+                            .divTableCell(style='width:16%;')
+                              span #{result.lifestyle.betacarotene_period}
+                            .divTableCell(style='width:16%;')
+                              span #{result.lifestyle.vitamin_A_period}
+                            .divTableCell(style='width:16%;')
+                              span #{result.lifestyle.vitamin_C_period}
+                            .divTableCell(style='width:16%;')
+                              span #{result.lifestyle.vitamin_D_period}
+                            .divTableCell(style='width:16%;')
+                              span #{result.lifestyle.vitamin_E_period}
+                            .divTableCell(style='width:16%;')
+                              span #{result.lifestyle.multivitamins_period}
+          </details>
+          <details>
+            <summary>CLINICAL EXAMINATION</summary>
+            <hr/>
+            table.summary-table
+              tbody
+                tr
+                  td
+                    legend Solar lentigines severity
+                    span #{result.solar_lentigines_frequency}
+                tr
+                  td
+                    legend Solar lentigines at melanoma
+                    span #{result.solar_lentigines_at_melanoma}
+                tr
+                  td(colspan='4')
+                    legend Nevi count
+                    .form-group
+                      .divTable
+                        .divTableRow
+                          .divTableCell(style='width:40%;') Site
+                          .divTableCell(style='width:30%;') Number(left)
+                          .divTableCell(style='width:30%;') Number(right)
+                        .divTableRow
+                          .divTableCell(style='width:40%;') Scalp
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_left_scalp}
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_right_scalp}
+                        .divTableRow
+                          .divTableCell(style='width:40%;') Face(including ears)
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_left_face}
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_right_face}
+                        .divTableRow
+                          .divTableCell(style='width:40%;') Neck
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_left_neck}
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_right_neck}
+                        .divTableRow
+                          .divTableCell(style='width:40%;') Anterior thorax + abdomen
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_left_thorax_abdomen}
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_right_thorax_abdomen}
+                        .divTableRow
+                          .divTableCell(style='width:40%;') Back
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_left_back}
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_right_back}
+                        .divTableRow
+                          .divTableCell(style='width:40%;') Upper extremities including deltoid
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_left_deltoid}
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_right_deltoid}
+                        .divTableRow
+                          .divTableCell(style='width:40%;') Lower extremities including gluteus
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_left_gluteus}
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_right_gluteus}
+                        .divTableRow
+                          .divTableCell(style='width:40%;') Palms
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_left_palms}
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_right_palms}
+                        .divTableRow
+                          .divTableCell(style='width:40%;') Soles
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_left_soles}
+                          .divTableCell(style='width:30%;')
+                            span #{result.nevi_count_right_soles}
+                tr
+                  td
+                    legend Clinically atypical nevi
+                    span #{result.atypical_nevi_number}
+                tr
+                  td
+                    legend Congenital nevi
+                    span #{result.surveyDate}
+                tr
+                  td
+                    legend Actinic keratoses
+                    span #{result.surveyDate}
+          </details>
+          table.summary-table
+            tbody
+                tr
+                  td
+                    legend Were you able to respond to the questions of this section? #{result.section_B_evaluation.completed}
+                tr
+                  td
+                    legend Which questions of this section did you consider difficult to fill in? #{result.section_B_evaluation.difficult.questions}
+          <details>
+            <summary>DIAGNOSES</summary>
+          </details>
+          <details>
+            <summary>What about accessibility? Is that the catch?</summary>
+          </details>
