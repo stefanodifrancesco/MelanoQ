@@ -13,7 +13,6 @@
     z-index: 1050;
     -webkit-overflow-scrolling: touch;
     outline: 0;
-    padding-right: 0px !important;
 }
 
 .fade {
@@ -41,9 +40,7 @@
 .modal-dialog {
     position: relative;
     width: auto;
-    margin: 10px;
-    width: 100% !important;
-    max-width: 52%;
+    margin: 10px
 }
 
 .modal-content {
@@ -55,7 +52,7 @@
     box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
     background-clip: padding-box;
     outline: 0;
-    width: 100%;
+    width: auto;
 }
 
 .modal-backdrop {

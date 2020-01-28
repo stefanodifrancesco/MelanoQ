@@ -87,7 +87,7 @@ block content
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
 
-              input#codeNumber(type='text' readonly='' name='general[code_number]')
+              input#codeNumber(type='text' readonly='' value='' name='general[code_number]')
 
             fieldset#fieldsetAdmin
               label 
@@ -160,13 +160,15 @@ block content
                         span.error1
                             i.error-log.fa.fa-exclamation-triangle
                     .divTableCell.NoDivTableBorder
-                      label Weight(Kg)
+                      label 
+                        | Weight(Kg)
                       .form-group
                         input#weight_input.form-control(type='number' min='1' name='demographic[weight]' placeholder='Weight' required='required' data-rule-required='true' data-msg-required='Required field')
                         span.error1
                             i.error-log.fa.fa-exclamation-triangle
                     .divTableCell.NoDivTableBorder
-                      label Height(Cm)
+                      label 
+                        | Height(Cm)
                       .form-group
                         input#height_input.form-control(type='number' min='1' name='demographic[height]' placeholder='Height' required='required' data-rule-required='true' data-msg-required='Required field')
                         span.error1
@@ -1483,8 +1485,7 @@ block content
                 .form-group
                   input#ICD10Code(type='text' value='' placeholder='Search by ICD10 code or name of disease')
                 #json_medical_history.form-group
-            <br>
-            <br>
+                
             fieldset#fieldset_C2_10
                 legend Previous and concomitant treatments (related to above-mentioned diagnoses)
                 p(style='color:red;') (Optional)
@@ -1495,174 +1496,121 @@ block content
                     | Insert Medication
                 // The Modal
                 #json-medications.form-group(style='width:50%;')
-            <br>
-            <br>
+            
             fieldset#fieldsetPregnancy_History
               legend Pregnancy history
               .form-group
                 #Pregnancy_History.divTable
                   .divTableRow
                     .divTableCell.NoDivTableBorder.question-cell
-                      span 
+                      span Have you ever become pregnant?
                     .divTableCell.NoDivTableBorder
                       label Yes
+                      input#Pregnant_Yes(type='radio' name='medical_history[pregnancy][presence]' value='Yes')
                     .divTableCell.NoDivTableBorder
                       label No
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder.question-cell
-                      span(style='font-weight: bold;') Have you ever become pregnant?
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#Pregnant_Yes(type='radio' name='medical_history[pregnancy][presence]' value='Yes')
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
                       input#Pregnant_No(type='radio' name='medical_history[pregnancy][presence]' value='No' checked='checked')
-                    .divTableCell.NoDivTableBorder(style='width: auto;')
-                      span
-                      
               .form-group.Pregnancy_Stats.hide-transition
-                hr(style='width: 60%;')
+                hr
                 .divTable
                   .divTableRow
-                    .divTableCell.NoDivTableBorder
-                      label Number of full-term pregnancies:
-                    .divTableCell.NoDivTableBorder
-                      label Date of birth of children:
-                    .divTableCell.NoDivTableBorder
-                      label Number of miscarriages:
+                    .divTableCell.no-bottom-border.no-right-border
+                      span Number of full-term pregnancies:
+                    .divTableCell.no-bottom-border.no-right-border
+                      span Date of birth of children:
+                    .divTableCell.no-bottom-border
+                      span Number of miscarriages:
                   .divTableRow
-                    .divTableCell.NoDivTableBorder
-                      .form-group
-                        input(type='number' min='1' value='' name='medical_history[pregnancy][count]')
-                    .divTableCell.NoDivTableBorder
-                      input.datepicker.form-control(type='text' placeholder='dd/mm/yyyy' name='medical_history[pregnancy][birthday]')
-                    .divTableCell.NoDivTableBorder
-                      .form-group
-                        input(type='number' min='1' value='' name='medical_history[pregnancy][miscarriages]')
+                    .divTableCell.no-right-border
+                      input(type='number' min='1' value='' name='medical_history[pregnancy][count]')
+                    .divTableCell.no-right-border
+                      input.datepicker.form-control(type='text' value='' placeholder='dd/mm/yyyy' name='medical_history[pregnancy][birthday]')
+                    .divTableCell
+                      input(type='number' min='1' value='' name='medical_history[pregnancy][miscarriages]')
                       
               .form-group
-                hr(style='width: 60%;')
+                hr
                 #Pregnancy_During.divTable
                   .divTableRow
                     .divTableCell.NoDivTableBorder.question-cell
                       span
-                    .divTableCell.NoDivTableBorder
-                      label Yes
-                    .divTableCell.NoDivTableBorder
-                      label No
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder.question-cell
-                      span(style='font-weight: bold;')
                         | Did melanoma occur 
                         span(style='color:#cc7b1d;text-decoration-line:underline;')
                           b during
                         |  pregnancy ?
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
+                    .divTableCell.NoDivTableBorder
+                      label Yes
                       input#During_Yes(type='radio' name='medical_history[pregnancy][melanoma_in_the_same_period]' value='Yes')
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
+                    .divTableCell.NoDivTableBorder
+                      label No
                       input#During_No(type='radio' name='medical_history[pregnancy][melanoma_in_the_same_period]' value='No' checked='checked')
-                    .divTableCell.NoDivTableBorder(style='width: auto;')
-                      span
-
               #Pregnancy_Before.form-group
-                hr(style='width: 60%;')
+                hr
                 .divTable
                   .divTableRow
                     .divTableCell.NoDivTableBorder.question-cell
                       span
-                    .divTableCell.NoDivTableBorder
-                      label Yes
-                    .divTableCell.NoDivTableBorder
-                      label No
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder.question-cell
-                      span(style='font-weight: bold;')
                         | Did melanoma occur 
                         span(style='color:#1c7430;text-decoration-line:underline;')
                           b before
                         |  pregnancy ?
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
+                    .divTableCell.NoDivTableBorder
+                      label Yes
                       input#Before_Yes(type='radio' name='medical_history[pregnancy][melanoma_before_pregnancy][presence]' value='Yes')
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#Before_No(type='radio' name='medical_history[pregnancy][melanoma_before_pregnancy][presence]' value='No' checked='checked')
-                    .divTableCell.NoDivTableBorder(style='width: auto;')
-                      span
-                  
-                  .divTableRow.hide-transition                    
-                    .divTableCell.NoDivTableBorder
-                      span(style='font-weight: bold;')
-                        | How many years 
-                        span(style='color:#1c7430;text-decoration-line:underline;')
-                          b before
-                        |  pregnancy ?
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input(type='number' min='1' name='medical_history[pregnancy][melanoma_before_pregnancy][years_before]' style='margin: 10px 0px 0px 0px; width: 100%;')
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input(type='number' style='margin: 10px 0px 0px 0px; width: 100%; visibility: hidden;')
-                    .divTableCell.NoDivTableBorder(style='width: auto;')
-                      input(type='number' style='margin: 10px 0px 0px 0px; width: 100%; visibility: hidden;')
-                     
-              #Pregnancy_After.form-group
-                hr(style='width: 60%;')
-                .divTable
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder.question-cell
-                      span
-                    .divTableCell.NoDivTableBorder
-                      label Yes
                     .divTableCell.NoDivTableBorder
                       label No
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder.question-cell
-                      span(style='font-weight: bold;')
-                        | Did melanoma occur 
-                        span(style='color:#002752;text-decoration-line:underline;')
-                          b after
-                        |  pregnancy ?
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#After_Yes(type='radio' name='medical_history[pregnancy][melanoma_after_pregnancy][presence]' value='Yes')
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#After_No(type='radio' name='medical_history[pregnancy][melanoma_after_pregnancy][presence]' value='No' checked='checked')
-                    .divTableCell.NoDivTableBorder(style='width: auto;')
-                      span
-
+                      input#Before_No(type='radio' name='medical_history[pregnancy][melanoma_before_pregnancy][presence]' value='No' checked='checked')
                   .divTableRow.hide-transition
                     .divTableCell.NoDivTableBorder
-                      span(style='font-weight: bold;')
-                        | How many years 
+                      span
+                        | Specify how many years 
+                        span(style='color:#1c7430;text-decoration-line:underline;')
+                          b before
+                        |  pregnancy ?
+                    .divTableCell.NoDivTableBorder
+                      input(type='number' min='1' name='medical_history[pregnancy][melanoma_before_pregnancy][years_before]' value='')
+              #Pregnancy_After.form-group
+                hr
+                .divTable
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder.question-cell
+                      span
+                        | Did melanoma occur 
                         span(style='color:#002752;text-decoration-line:underline;')
                           b after
                         |  pregnancy ?
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input(type='number' min='1' name='medical_history[pregnancy][melanoma_after_pregnancy][years_after]' style='margin: 10px 0px 0px 0px; width: 100%;')
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input(type='number' style='margin: 10px 0px 0px 0px; width: 100%; visibility: hidden;')
-                    .divTableCell.NoDivTableBorder(style='width: auto;')
-                      input(type='number' style='margin: 10px 0px 0px 0px; width: 100%; visibility: hidden;')
-                      
+                    .divTableCell.NoDivTableBorder
+                      label Yes
+                      input#After_Yes(type='radio' name='medical_history[pregnancy][melanoma_after_pregnancy][presence]' value='Yes')
+                    .divTableCell.NoDivTableBorder
+                      label No
+                      input#After_No(type='radio' name='medical_history[pregnancy][melanoma_after_pregnancy][presence]' value='No' checked='checked')
+                  .divTableRow.hide-transition
+                    .divTableCell.NoDivTableBorder
+                      span
+                        | Specify how many years 
+                        span(style='color:#002752;text-decoration-line:underline;')
+                          b after
+                        |  pregnancy ?
+                    .divTableCell.NoDivTableBorder
+                      input(type='number' min='1' name='medical_history[pregnancy][melanoma_after_pregnancy][years_after]' value='')
               .form-group
-                hr(style='width: 50%;')
+                hr
                 #Pregnancy_Hormone_Assisted.divTable
                   .divTableRow
                     .divTableCell.NoDivTableBorder.question-cell
                       span
-                    .divTableCell.NoDivTableBorder
-                      label Yes
-                    .divTableCell.NoDivTableBorder
-                      label No
-                  .divTableRow
-                    .divTableCell.NoDivTableBorder.question-cell
-                      span(style='font-weight: bold;')
                         | History of hormone-assisted pregnancy (IVF) 
                         span(style='color:#1c7430;text-decoration-line:underline;')
                           b before
                         |  diagnosis ?
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
+                    .divTableCell.NoDivTableBorder
+                      label Yes
                       input#Hormone_Yes(type='radio' name='medical_history[pregnancy][hormone]' value='Yes')
-                    .divTableCell.NoDivTableBorder(style='width: 10%;')
+                    .divTableCell.NoDivTableBorder
+                      label No
                       input#Hormone_No(type='radio' name='medical_history[pregnancy][hormone]' value='No' checked='checked')
-                    .divTableCell.NoDivTableBorder(style='width: auto;')
-                      span
-            <br>
-            <br>
+            
             fieldset#fieldsetLifetime_History
               legend
                 | Lifetime history of non-melanoma skin cancer, KSC (basal cell carcinoma, BCC, and squamous cell
@@ -1769,17 +1717,17 @@ block content
               .form-group
                 p(style='color:red;') (Optional)
               .form-group
-                select#germline.form-control(style='margin-left:0px !important' name='family_history[germline]')
-                  option(value='' selected='') Select germline...
+                select#germline.form-control(style='margin-left:0px !important')
+                  option(value='NoChoosed') Select germline...
                   option(value='Not tested') Not tested
-                  option(value='CDKN2A') CDKN2A
-                  option(value='CDK4') CDK4
-                  option(value='BAP-1') BAP-1
-                  option(value='MC1R') MC1R
-                  option(value='TERT') TERT
-                  option(value='MITF') MITF
-                  option(value='POT1') POT1
-                  option(value='Other') Other
+                  option(value='Not tested') CDKN2A
+                  option(value='Not tested') CDK4
+                  option(value='Not tested') BAP-1
+                  option(value='Not tested') MC1R
+                  option(value='Not tested') TERT
+                  option(value='Not tested') MITF
+                  option(value='Not tested') POT1
+                  option(value='Not tested') Other
 
 
             fieldset#fieldsetFamilyHistoryOther(style='margin-top: 20px;')
@@ -1793,13 +1741,14 @@ block content
 
             fieldset#fieldsetSectionCEval
               legend Section C Completion Evaluation Questions
-              <br>
+              .form-group
+                p(style='color:red;') (Optional)
               .form-group
                 .divTable
-                  .divTableRow.spaced
-                    .divTableCell.NoDivTableBorder.question-cell
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder
                       span Were you able to respond to the questions of this Section ?
-                    .divTableCell.NoDivTableBorder.input-cell(name='section_C_evaluation[completed]')
+                    .divTableCell.NoDivTableBorder
                       select#selectEvalC.form-control
                         option(value='NoChoosed') Select...
                         option(value='All') All questions
@@ -1807,16 +1756,16 @@ block content
                         option(value='Half') Nearly half of the questions
                         option(value='Few') Very few questions
                   .divTableRow
-                    .divTableCell.NoDivTableBorder.question-cell
+                    .divTableCell.NoDivTableBorder
                       span Which questions of this Section did you consider difficult to fill in?
-                    .divTableCell.NoDivTableBorder.input-cell(name='section_C_evaluation[difficult][answer]')
+                    .divTableCell.NoDivTableBorder
                       select.form-control.selectQuestions
                         option(value='NoChoosed') Select...
                         option(value='No') No
                         option(value='Yes') Insert numbers of questions
-                    .divTableCell.NoDivTableBorder.input-cell
+                    .divTableCell.NoDivTableBorder
                       .hidden-control
-                        input#QuestionHiddenC(type='text', placeholder='1, 2, 3, etc.' name='section_C_evaluation[difficult][questions]')
+                        input#QuestionHiddenC(type='text', placeholder='Example 1,5,7')
 
           div.alphaformfooter
           div.formfooter
@@ -3018,7 +2967,7 @@ block content
           input.submit.action-button#submit(type='submit' value='Submit')
 
   #SimpleDateModal.modal.fade
-    .modal-dialog(style='max-width: 28%;')
+    .modal-dialog
       .modal-content
         // Modal Header
         .modal-header.modal-table
@@ -3045,13 +2994,14 @@ block content
           table
             thead.thead-dark
               tr
-                th(style='width:25%;')
+                th.hidden(style='width:25%;') Number of
                 th(style='width:25%;') Diagnosis Date
                 th(style='width:25%;')
                 th(style='width:25%;')
             tbody
               tr
                 td(style='width:25%;')
+                  input.hidden.number-control(style='width:50%;' type='number' min='1')
                 td(style='width:25%;')
                   input.form-control.datepicker.diagnosis-date(type='text')
                 td(style='width:25%;')
@@ -3063,7 +3013,7 @@ block content
           button.btn.btn-danger(type='button' data-dismiss='modal') Close
   
   #MedicationDateModal.modal.fade
-    .modal-dialog(style='max-width: 32%;')
+    .modal-dialog
       .modal-content
         // Modal Header
         .modal-header.modal-table
@@ -3102,8 +3052,8 @@ block content
           button.btn.btn-danger(type='button' data-dismiss='modal') Close
   
   #Sites_Modal.modal.fade
-    .modal-dialog(style='max-width: 48%; height: 100%; margin-top: 220px;')
-      .modal-content(style='width: auto; height: 100%; overflow-y: scroll; overflow-x: hidden;')
+    .modal-dialog
+      .modal-content(style='width: auto;')
         span.hidden.modal-caller
         span.hidden.modal-checked
         // Modal Header
@@ -3117,7 +3067,7 @@ block content
                   span.modal-title
           button.close(type='button' data-dismiss='modal') ×
         // Modal body
-        .modal-body(style='padding: 0px;')
+        .modal-body
           .tg-wrap.form-check
             table.tg
               tbody
@@ -3539,14 +3489,13 @@ block content
                   td.tg-0lax
                     .TEST2
         // Modal footer
-        .alphaformfooter(style='position: fixed; bottom: 0; margin-bottom: 80px;')
-        .modal-footer(style='position: fixed; right: 0; bottom: 0; background: white; width: 100%; margin-bottom: 2px;')
+        .modal-footer
           button#save_sites.btn.btn-secondary(type='button' data-dismiss='modal')
             | Save
           button#cancel_sites.btn.btn-danger(type='button' data-dismiss='modal') Cancel
 
   #Additional_Neoplasia.modal.fade
-    .modal-dialog(style='max-width: 38%;')
+    .modal-dialog
       .modal-content(style='width: auto;')
         span.hidden.modal-caller
         // Modal Header
@@ -3564,19 +3513,19 @@ block content
           .form-group
             .divTable
               .divTableRow
-                .divTableCell.NoDivTableBorder
+                .divTableCell
                   label 
                     | Non cutaneous additional neoplasia
                   select#NonCutaneous_Select.form-control
                     option(value='No Choosed') Select Type ...
-                .divTableCell.NoDivTableBorder
+                .divTableCell
                   label
                     | Age of diagnosis
-                  input.NonCutaneous-diagnosis-age(type='number' min='1')
-                .divTableCell.NoDivTableBorder
+                  input.NonCutaneous-diagnosis-age(type='number' min='1' placeholder='Age of diagnosis')
+                .divTableCell
                   label
                     | Year of diagnosis
-                  input.form-control.year-datepicker(type='text')
+                  input.form-control.year-datepicker(type='text' placeholder='Year of diagnosis')
         // Modal footer
         .modal-footer
           button.btn.btn-secondary.save(type='button' data-dismiss='modal') Save
@@ -3584,7 +3533,7 @@ block content
 
   #FamilyHistoryUpTo3Degree.modal.fade
     .modal-dialog
-      .modal-content
+      .modal-content(style='width:auto;')
         // Modal Header
         .modal-header.modal-table
           table.modal-title
@@ -3610,16 +3559,16 @@ block content
             .divTable
               .divTableRow
                 .divTableCell.NoDivTableBorder
-                  span A relative with melanoma?
+                  span Any relative with Melanoma ?
                   br
                   span (Up to 3rd degree)
-                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
                   span Type of melanoma
-                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
                   span Maternal or Paternal
-                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
                   span Degree
-                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
                   span Diagnosis age
               .divTableRow
                 .divTableCell.NoDivTableBorder
@@ -3629,29 +3578,29 @@ block content
                     option(value='No') No
                     option(value='Not know') Not know
                     option(value='Other') Other
-                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
                   select#selectMelanomaType.form-control
                     option(value='NoChoosed') Select type...
                     option(value='Cutaneous') Cutaneous
                     option(value='Uveal') Uveal
                     option(value='Other') Other
                     option(value="Don't know") Don't know
-                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
                   select#selectRelativeSide.form-control
                     option(value='NoChoosed') Select side...
                     option(value='Maternal') Maternal
                     option(value='Paternal') Paternal
-                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
                   select#selectRelativeDegree.form-control
                     option(value='NoChoosed') Select degree...
-                    option(value='1st_degree') 1st
-                    option(value='2nd_degree') 2nd
-                    option(value='3rd_degree') 3rd
-                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                    option(value='1dg') 1st
+                    option(value='2dg') 2st
+                    option(value='3dg') 3rd
+                .divTableCell.NoDivTableBorder.hidden.hidden-control
                   input.diagnosis-age(type='number', style='width:100%;', placeholder='Specify age', min='1')
               .divTableRow.hidden
                 .divTableCell.NoDivTableBorder
-                  input.specify(type='text', style='width:auto;', placeholder='Specify relative history')
+                  input.specify(type='text', style='width:auto;', placeholder='Specify relative')
                 .divTableCell.NoDivTableBorder
                 .divTableCell.NoDivTableBorder
                 .divTableCell.NoDivTableBorder
@@ -3663,7 +3612,7 @@ block content
 
   #FamilyHistoryOtherUpTo3Degree.modal.fade
     .modal-dialog
-      .modal-content
+      .modal-content(style='width:auto;')
         // Modal Header
         .modal-header.modal-table
           table.modal-title
@@ -3710,9 +3659,9 @@ block content
                 .divTableCell.NoDivTableBorder
                   select#selectOtherRelativeDegree.form-control
                     option(value='NoChoosed') Select degree...
-                    option(value='1st_degree') 1st
-                    option(value='2nd_degree') 2nd
-                    option(value='3rd_degree') 3rd
+                    option(value='1dg') 1st
+                    option(value='2dg') 2st
+                    option(value='3dg') 3rd
                 .divTableCell.NoDivTableBorder
                   // Textarea with icon prefix
                   .md-form
