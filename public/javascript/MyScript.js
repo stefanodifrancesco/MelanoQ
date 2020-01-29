@@ -15,7 +15,7 @@ $(document).ready(function() {
         zoom: 6
     });*/
 
-    var ListaResidency = [];
+    var List_Residency = [];
 
     var Lat = 0;
     var Lon = 0;
@@ -94,8 +94,8 @@ $(document).ready(function() {
                     residency.end_date = end_date;
                     residency.address = $("#searchBox").val();
                     residency.coordinates = Lat + "," + Lon;
-                    ListaResidency.push(residency);
-                    $(".json_residency").createTable(ListaResidency);
+                    List_Residency.push(residency);
+                    $(".json_residency").createTable(List_Residency);
                 }
             });
         }
@@ -556,7 +556,7 @@ $(document).ready(function() {
         if (Caller == "SCC_InSitu") {
             var Site = find_checked_object(List_SCC_InSitu_Sites, Checked);
             Site.Diagnosis_date = $("#SimpleDateModal .diagnosis-date").val();
-            Site.Number = $("#SimpleDateModal .number-control").val();
+            //Site.Number = $("#SimpleDateModal .number-control").val();
         }
     });
 
@@ -926,8 +926,8 @@ $(document).ready(function() {
     $("#submit").on('click', function(e) {
         e.preventDefault();
         var serJson = $("#msform").serializeJSON();
-        console.log(ListaResidency);
-        serJson.demographic.residency_list = ListaResidency;
+        console.log(List_Residency);
+        serJson.demographic.residency_list = List_Residency;
 
         history_list.forEach(occupation => {
             delete occupation.Action;
