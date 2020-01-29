@@ -16,7 +16,7 @@
     position: absolute;
     z-index: 0;
     width: -webkit-fill-available;
-    height: -webkit-fill-available;
+    height: 92%;
     margin-top: 68px;
     border: 0px;
 }

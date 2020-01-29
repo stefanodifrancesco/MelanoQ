@@ -66,7 +66,7 @@ $(document).ready(function() {
                 "<div class='divTableCell NoDivTableBorder'>" +
                 "<div class='residency_datepicker form-group'>" +
                 "<label>From:</label>" +
-                "<input class='new_datepicker form-control start_date' type='text' required='required' data-rule-required='true' data-msg-required='Required field'>" +
+                "<input class='new_datepicker form-control start_date' type='text' placeholder='dd-M-yyyy' required='required' data-rule-required='true' data-msg-required='Required field'>" +
                 "<span class='error1'>" +
                 "<i class='error-log fa fa-exclamation-triangle'></i>" +
                 "</div>" +
@@ -74,7 +74,7 @@ $(document).ready(function() {
                 "<div class='divTableCell NoDivTableBorder'>" +
                 "<div class='residency_datepicker form-group'>" +
                 "<label>To:</label>" +
-                "<input class='new_datepicker form-control end_date' type='text' required='required' data-rule-required='true' data-msg-required='Required field'>" +
+                "<input class='new_datepicker form-control end_date' type='text' placeholder='dd-M-yyyy' required='required' data-rule-required='true' data-msg-required='Required field'>" +
                 "<span class='error1'>" +
                 "<i class='error-log fa fa-exclamation-triangle'></i>" +
                 "</div>" +
@@ -94,8 +94,10 @@ $(document).ready(function() {
                     residency.end_date = end_date;
                     residency.address = $("#searchBox").val();
                     residency.coordinates = Lat + "," + Lon;
-                    ListaResidency.push(residency);
-                    $(".json_residency").createTable(ListaResidency);
+                    List_Residency.push(residency);
+                    $(".json_residency").createTable(List_Residency);
+                    $('#searchBox').val('');
+                    $("#fieldResidency .new_datepicker").val('');
                 }
             });
         }
@@ -178,7 +180,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#fieldsetSectionBEval .selectQuestions").on("change", function(evt) {
+    $("#fieldsetSectionBEval #selectQuestions").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control").addClass("show-control").removeClass("hidden-control");

@@ -44,6 +44,7 @@ block content
                     td
                       legend Date of questionnaire administration and phenotyping
                       span #{result.general.survey_date}
+                  if result.general.survey_date == ""
                     td
                       legend Dates of updated questionnaire and/or phenotyping
                       span #{result.general.last_update}
@@ -51,7 +52,7 @@ block content
                     td
                       legend Type of melanoma
                       span #{result.general.melanoma_type}
-                  if result.melanoma_type == "Other"
+                  if result.general.melanoma_type == "Other"
                     tr
                       td
                         legend Other (complex family history)
@@ -65,34 +66,79 @@ block content
                 tr
                   td
                     legend Sex
-                    span #{result.gender}
+                    span #{result.demographic.gender}
                   td
                     legend Date and place of birth
-                    span #{result.birthday} at #{result.place_of_birth}
+                    span #{result.demographic.birthday} at #{result.demographic.place_of_birth}
                   td
                     legend Weight and height
-                    span #{result.weight} cm #{result.height} Kg
+                    span #{result.demographic.weight} cm #{result.demographic.height} Kg
+
                 tr
                   td
                     legend Ethnicity
-                    span #{result.ethnicity}
-                  if result.ethnicity == "Other"
+                    span #{result.demographic.ethnicity}
+                  if result.demographic.ethnicity == "Other"
                     td
                       legend Other ethnicity
-                      span #{result.other_ethnicity}
-                  td
-                    legend Residency
-                    span #{result.residency}
+                      span #{result.demographic.other_ethnicity}
+                    
                 tr
                   td
                     legend Education
-                    span #{result.education}
+                    span #{result.demographic.education}
                   td
                     legend Current occupational status
-                    span #{result.occupational_status}
-                  td
-                    legend History of occupation
-                    span #{result.occupational_history}
+                    span #{result.demographic.occupational_status}
+
+            
+            <div class="tables_list">
+              legend History of occupations
+              <table class="json-to-table" style="border-collapse: collapse; width: 100%; border: 1px solid rgb(221, 221, 221); font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">
+                <thead>
+                  <tr>
+                    <th class="jsl" style="min-width: 18px; width: 18px; padding: 0px 10px; vertical-align: middle; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;"></th>
+                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">SIC Group</th>
+                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">SIC Code</th>
+                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">Start Date</th>
+                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">End Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="jsl" style="min-width: 18px; width: 18px; padding: 0px 10px; vertical-align: middle; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">1</td>
+                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">Finance, Insurance and Real Estate</td>
+                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">SECURITY BROKERS, DEALERS &amp; FLOTATION COMPANIES</td>
+                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">05-Jan-2020</td><td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">30-Jan-2020</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+              
+            <div class="tables_list">
+              legend Residency list
+              <table class="json-to-table" style="border-collapse: collapse; width: 100%; border: 1px solid rgb(221, 221, 221); font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">
+                <thead>
+                  <tr>
+                    <th class="jsl" style="min-width: 18px; width: 18px; padding: 0px 10px; vertical-align: middle; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;"></th>
+                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">Start Date</th>
+                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">End Date</th>
+                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">Address</th>
+                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">Coordinates</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="jsl" style="min-width: 18px; width: 18px; padding: 0px 10px; vertical-align: middle; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">1</td>
+                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">24-Jan-2020</td>
+                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">06-Feb-2020</td>
+                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">Reutlingen</td>
+                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">48.40645980834961,9.365389823913574</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
           </details>
           <details>
             <summary>PHENOTYPE</summary>
@@ -511,3 +557,9 @@ block content
           <details>
             <summary>What about accessibility? Is that the catch?</summary>
           </details>
+
+        div.alphaformfooter
+        div.formfooter
+        input.scroll-button-bottom(type='button')
+        input#firstprevious.previous.action-button(type='button' name='previous' value='Go back')
+        input#secondnext.next.action-button(type='button' name='next' value='Update')

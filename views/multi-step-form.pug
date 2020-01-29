@@ -194,7 +194,7 @@ block content
               #myForm
                 .form-group
                   div(class="ui-widget")
-                    input#searchBox(required='required' data-rule-required='true' data-msg-required='Please record all places where the case/control has resided for >6 months')
+                    input#searchBox(placeholder='Insert at least 2 characters' required='required' data-rule-required='true' data-msg-required='Please record all places where the case/control has resided for more than 6 months')
                     span.error1
                       i.error-log.fa.fa-exclamation-triangle
                 .residency_date_class
@@ -1664,19 +1664,25 @@ block content
                 | carcinoma, SCC)
               .form-group
                 #BBC_History.divTable
-                  .divTableRow                      
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder.question-cell
+                      span
                     .divTableCell.NoDivTableBorder
-                      label Number of BBCs
-                      input(type='number' min='1' name='medical_history[BCC][count]' value='')
+                      label Before
+                    .divTableCell.NoDivTableBorder
+                      label After
+                    .divTableCell.NoDivTableBorder
+                      label Number of BCCs
                   .divTableRow
                     .divTableCell.NoDivTableBorder.question-cell
                       span Before or After melanoma diagnosis ?
-                    .divTableCell.NoDivTableBorder
-                      label Before
+                    .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
                       input#BBC_Before_Diagnosis(type='radio' name='medical_history[BCC][period]' value='before')
-                    .divTableCell.NoDivTableBorder
-                      label After
+                    .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
                       input#BBC_After_Diagnosis(type='radio' name='medical_history[BCC][period]' value='after' checked='checked')
+                    .divTableCell.NoDivTableBorder(style='width: auto;')
+                      input(type='number' min='1' name='medical_history[BCC][count]' value='')
+
                 .form-group
                   p
                     // Da committare solo il button
@@ -1686,19 +1692,24 @@ block content
               hr
               .form-group
                 #SCC_Invasive_History.divTable
-                  .divTableRow                      
+                  .divTableRow
+                    .divTableCell.NoDivTableBorder.question-cell
+                      span
+                    .divTableCell.NoDivTableBorder
+                      label Before
+                    .divTableCell.NoDivTableBorder
+                      label After  
                     .divTableCell.NoDivTableBorder
                       label Number of SSCs
-                      input(type='number' min='1' name='medical_history[SSC][count]' value='')
                   .divTableRow
                     .divTableCell.NoDivTableBorder.question-cell
                       span Before or After melanoma diagnosis ?
-                    .divTableCell.NoDivTableBorder
-                      label Before
+                    .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
                       input#SSC_Invasive_Before_Diagnosis(type='radio' name='medical_history[SSC][period]' value='before')
-                    .divTableCell.NoDivTableBorder
-                      label After
+                    .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
                       input#SSC_Invasive_After_Diagnosis(type='radio' name='medical_history[SSC][period]' value='after' checked='checked')
+                    .divTableCell.NoDivTableBorder(style='width: auto;')
+                      input(type='number' min='1' name='medical_history[SSC][count]' value='')
                 .form-group
                   p
                     // Da committare solo il button
@@ -1709,18 +1720,24 @@ block content
               .form-group
                 #SSC_InSitu__History.divTable
                   .divTableRow
+                    .divTableCell.NoDivTableBorder.question-cell
+                      span
+                    .divTableCell.NoDivTableBorder
+                      label Before
+                    .divTableCell.NoDivTableBorder
+                      label After
                     .divTableCell.NoDivTableBorder
                       label Number of 'in situ SCCs'
-                      input(type='number' min='1' name='medical_history[SSC_in_situ][count]' value='')
                   .divTableRow
                     .divTableCell.NoDivTableBorder.question-cell
                       span Before or After melanoma diagnosis ?
-                    .divTableCell.NoDivTableBorder
-                      label Before
+                    .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
                       input#SCC_InSitu_Before_Diagnosis(type='radio' name='medical_history[SSC_in_situ][period]' value='Yes')
-                    .divTableCell.NoDivTableBorder
-                      label After
+                    .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
                       input#SCC_InSitu_After_Diagnosis(type='radio' name='medical_history[SSC_in_situ][period]' value='No' checked='checked')
+                    .divTableCell.NoDivTableBorder(style='width: auto;')
+                      input(type='number' min='1' name='medical_history[SSC_in_situ][count]' value='')
+
                 .form-group
                   p
                     // Da committare solo il button

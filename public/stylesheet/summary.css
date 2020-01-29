@@ -139,12 +139,17 @@
     border-spacing: 15px;
 }
 
+.tables_list {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 .summary-table td {
     border-bottom: 1px solid black;
     vertical-align: bottom;
 }
 
-.summary-table legend {
+legend {
     font-size: 1rem;
     background-color: white;
     color: cornflowerblue;
@@ -266,4 +271,61 @@ pre>code {
     display: block;
     padding: 1em;
     margin: 0;
+}
+
+#msform .action-button {
+    display: none;
+    width: 100px;
+    background: #4285f4;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    outline: 0;
+}
+
+#msform .start {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    width: 80px;
+    background: #4285f4;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+}
+
+.previous {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-left: 10px;
+}
+
+.next {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 10px;
+}
+
+.submit {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 10px;
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #4285f4;
 }

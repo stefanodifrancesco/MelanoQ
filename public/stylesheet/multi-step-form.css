@@ -572,3 +572,11 @@ summary::-webkit-details-marker {
 .hidden {
     display: none;
 }
+
+
+/***** specific ******/
+
+#searchBox {
+    width: 100% !important;
+    padding-left: 10px;
+}
