@@ -1732,9 +1732,9 @@ block content
                     .divTableCell.NoDivTableBorder.question-cell
                       span Before or After melanoma diagnosis ?
                     .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
-                      input#SCC_InSitu_Before_Diagnosis(type='radio' name='medical_history[SSC_in_situ][period]' value='Yes')
+                      input#SCC_InSitu_Before_Diagnosis(type='radio' name='medical_history[SSC_in_situ][period]' value='before')
                     .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
-                      input#SCC_InSitu_After_Diagnosis(type='radio' name='medical_history[SSC_in_situ][period]' value='No' checked='checked')
+                      input#SCC_InSitu_After_Diagnosis(type='radio' name='medical_history[SSC_in_situ][period]' value='after' checked='checked')
                     .divTableCell.NoDivTableBorder(style='width: auto;')
                       input(type='number' min='1' name='medical_history[SSC_in_situ][count]' value='')
               hr
@@ -2055,7 +2055,7 @@ block content
                   label 
                     | Breslow thickness(mm)
                   .form-group
-                    input.form-control(type='number' step="0.01" min='0.01' name='melanoma_characteristics[first_melanoma][known][breslow_thickness]' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                    input.form-control(type='number' step="0.001" min='0.001' name='melanoma_characteristics[first_melanoma][known][breslow_thickness]' required='required' data-rule-required='true' data-msg-required='Please include your weight')
                     span.error1
                         i.error-log.fa.fa-exclamation-triangle
 

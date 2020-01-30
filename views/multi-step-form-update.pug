@@ -121,7 +121,7 @@ block content
                   option(value='Other' selected=(result.general.melanoma_type == 'Other')) Other (complex family history), specify:
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
-              input#Other_Melanoma.hidden-control.inputMelanoma(type='text' name="general[other_melanoma_type]")
+              input#Other_Melanoma.hidden-control.inputMelanoma(type='text' name="general[other_melanoma_type]" value=result.general.other_melanoma_type)
 
 
           input#confirmbutton.start(type='button' value='CONFIRM')
@@ -146,9 +146,9 @@ block content
                 | Sex
               .form-group
                 select.form-control(name='demographic[gender]' required='required' data-rule-required='true' data-msg-required='Required field')
-                  option(value='' selected='') Select Gender...
-                  option(value='Female') Female
-                  option(value='Male') Male
+                  option(value='' selected=(result.demographic.gender == '')) Select Gender...
+                  option(value='Female' selected=(result.demographic.gender == 'Female')) Female
+                  option(value='Male' selected=(result.demographic.gender == 'Male')) Male
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
                     
@@ -159,25 +159,25 @@ block content
                     .divTableCell.NoDivTableBorder
                       label Place of birth
                       .form-group
-                        input.form-control(type='text' name="demographic[place_of_birth]" placeholder='Place' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input.form-control(type='text' name="demographic[place_of_birth]" placeholder='Place' required='required' data-rule-required='true' data-msg-required='Required field' value=result.demographic.place_of_birth)
                         span.error1
                             i.error-log.fa.fa-exclamation-triangle
                     .divTableCell.NoDivTableBorder
                       label Birthday
                       .form-group
-                        input.datepicker.form-control(type='text' name="demographic[birthday]" placeholder='Select date' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input.datepicker.form-control(type='text' name="demographic[birthday]" placeholder='Select date' required='required' data-rule-required='true' data-msg-required='Required field' value=result.demographic.birthday)
                         span.error1
                             i.error-log.fa.fa-exclamation-triangle
                     .divTableCell.NoDivTableBorder
                       label Weight(Kg)
                       .form-group
-                        input#weight_input.form-control(type='number' min='30' max='150' name='demographic[weight]' placeholder='Weight' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#weight_input.form-control(type='number' min='30' max='150' name='demographic[weight]' placeholder='Weight' required='required' data-rule-required='true' data-msg-required='Required field' value=result.demographic.weight)
                         span.error1
                             i.error-log.fa.fa-exclamation-triangle
                     .divTableCell.NoDivTableBorder
                       label Height(Cm)
                       .form-group
-                        input#height_input.form-control(type='number' min='50' max='210' name='demographic[height]' placeholder='Height' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#height_input.form-control(type='number' min='50' max='210' name='demographic[height]' placeholder='Height' required='required' data-rule-required='true' data-msg-required='Required field' value=result.demographic.height)
                         span.error1
                             i.error-log.fa.fa-exclamation-triangle
                 
@@ -186,21 +186,21 @@ block content
                 | Ethnicity
               .form-group
                 select#ethnicity_input.form-control(name='demographic[ethnicity]' required='required' data-rule-required='true' data-msg-required='Please include your ethnicity')
-                  option(value='' selected='') Select Ethnicity ...
-                  option(value='White/Europe') White/Europe
-                  option(value='White/NorthAfrica') White/NorthAfrica
-                  option(value='White/MiddleEast') White/MiddleEast
-                  option(value='White/Jewish') White/Jewish
-                  option(value='Black or African American') Black or African American
-                  option(value='Asian') Asian
-                  option(value='Hispanic or Latino (i.e. from South or Central America)')
+                  option(value='' selected=(result.demographic.ethnicity == '')) Select Ethnicity ...
+                  option(value='White/Europe' selected=(result.demographic.ethnicity == 'White/Europe')) White/Europe
+                  option(value='White/NorthAfrica' selected=(result.demographic.ethnicity == 'White/NorthAfrica')) White/NorthAfrica
+                  option(value='White/MiddleEast' selected=(result.demographic.ethnicity == 'White/MiddleEast')) White/MiddleEast
+                  option(value='White/Jewish' selected=(result.demographic.ethnicity == 'White/Jewish')) White/Jewish
+                  option(value='Black or African American' selected=(result.demographic.ethnicity == 'Black or African American')) Black or African American
+                  option(value='Asian' selected=(result.demographic.ethnicity == 'Asian')) Asian
+                  option(value='Hispanic or Latino (i.e. from South or Central America)' selected=(result.demographic.ethnicity == 'Hispanic or Latino (i.e. from South or Central America)'))
                     | Hispanic or Latino (i.e.
                     | from
                     | South or Central America)
-                  option(value='Other') Other (Specify)
+                  option(value='Other' selected=(result.demographic.ethnicity == 'Other')) Other (Specify)
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
-              input#OtherEthnicity.hidden-control.inputEthnicity(type='text' name="demographic[other_ethnicity]" placeholder="Specify ethnicity")
+              input#OtherEthnicity.hidden-control.inputEthnicity(type='text' name="demographic[other_ethnicity]" placeholder="Specify ethnicity" value=result.demographic.other_ethnicity)
               
             fieldset#fieldResidency
               label
@@ -218,12 +218,12 @@ block content
                 | Education
               .form-group
                 select#education_input.form-control(name='demographic[education]' required='required' data-rule-required='true' data-msg-required='Please include your education')
-                  option(value='' selected='') Select Range...
-                  option(value='Up to junior high school (up to 14-16 yrs)')
+                  option(value='' selected=(result.demographic.education == '')) Select Range...
+                  option(value='Up to junior high school (up to 14-16 yrs)' selected=(result.demographic.education == 'Up to junior high school (up to 14-16 yrs)'))
                     | Up to junior high school (up to 14-16
                     | yrs)
-                  option(value='High school (up to 18-19 yrs)') High school (up to 18-19 yrs)
-                  option(value='University') University
+                  option(value='High school (up to 18-19 yrs)' selected=(result.demographic.education == 'High school (up to 18-19 yrs)')) High school (up to 18-19 yrs)
+                  option(value='University' selected=(result.demographic.education == 'University')) University
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
                   
@@ -232,12 +232,12 @@ block content
                 | Current occupational status
               .form-group
                 select#current_occupational_status.form-control(name='demographic[occupational_status]' required='required' data-rule-required='true' data-msg-required='Please include your status')
-                  option(value='' selected='') Select Status...
-                  option(value='Employed') Employed
-                  option(value='Working at home') Working at home
-                  option(value='Unemployed') Unemployed
-                  option(value='Student') Student
-                  option(value='Retired') Retired
+                  option(value='' selected=(result.demographic.occupational_status == '')) Select Status...
+                  option(value='Employed' selected=(result.demographic.occupational_status == 'Employed')) Employed
+                  option(value='Working at home' selected=(result.demographic.occupational_status == 'Working at home')) Working at home
+                  option(value='Unemployed' selected=(result.demographic.occupational_status == 'Unemployed')) Unemployed
+                  option(value='Student' selected=(result.demographic.occupational_status == 'Student')) Student
+                  option(value='Retired' selected=(result.demographic.occupational_status == 'Retired')) Retired
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
 
@@ -272,11 +272,11 @@ block content
                 | exposure at noon for 30 minutes in the first days of the summer without sunscreen/clothing protection?
               .form-group
                 select#skin-response.form-control(name='phenotype[skin_response]' required='required' data-rule-required='true' data-msg-required='Required field')
-                  option(value='') Select Skin Response ...
-                  option(value='Not burn') Not burn
-                  option(value='Burns lightly') Burns lightly
-                  option(value='Burns moderately') Burns moderately
-                  option(value='Burns severely') Burns severely
+                  option(value='' selected=(result.phenotype.skin_response == '')) Select Skin Response ...
+                  option(value='Not burn' selected=(result.phenotype.skin_response == 'Not burn')) Not burn
+                  option(value='Burns lightly' selected=(result.phenotype.skin_response == 'Burns lightly')) Burns lightly
+                  option(value='Burns moderately' selected=(result.phenotype.skin_response == 'Burns moderately')) Burns moderately
+                  option(value='Burns severely' selected=(result.phenotype.skin_response == 'Burns severely')) Burns severely
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
                   
@@ -299,15 +299,15 @@ block content
                         span Tan Deeply
                     .divTableRow
                       .divTableCell
-                        input#No_Tan(type='radio' name='phenotype[skin_tan]' value='No tan' required='required' data-rule-required='true' data-msg-required='Select exactly one')
+                        input#No_Tan(type='radio' name='phenotype[skin_tan]' value='No tan' required='required' data-rule-required='true' data-msg-required='Select exactly one' checked = (result.phenotype.skin_tan == "No tan"))
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Tan_Light(type='radio' name='phenotype[skin_tan]' value='Tans lightly')
+                        input#Tan_Light(type='radio' name='phenotype[skin_tan]' value='Tans lightly' checked = (result.phenotype.skin_tan == "Tans lightly"))
                       .divTableCell
-                        input#Tan_Moderate(type='radio' name='phenotype[skin_tan]' value='Tans moderately')
+                        input#Tan_Moderate(type='radio' name='phenotype[skin_tan]' value='Tans moderately' checked = (result.phenotype.skin_tan == "Tans moderately"))
                       .divTableCell
-                        input#Tan_Deep(type='radio' name='phenotype[skin_tan]' value='Tans deeply')
+                        input#Tan_Deep(type='radio' name='phenotype[skin_tan]' value='Tans deeply' checked = (result.phenotype.skin_tan == "Tans deeply"))
                     .divTableRow
                       .divTableCell
                         img(src='img/Skin-Tan/No_Tan_1.png' width='100' height='110')
@@ -332,13 +332,13 @@ block content
                         span Dark (dark brown, black)
                     .divTableRow
                       .divTableCell
-                        input#Light_Eyes(type='radio' name='phenotype[eye_color]' value='Light' required='required' data-rule-required='true' data-msg-required='Select exactly one')
+                        input#Light_Eyes(type='radio' name='phenotype[eye_color]' value='Light' required='required' data-rule-required='true' data-msg-required='Select exactly one' checked = (result.phenotype.eye_color == "Light"))
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Medium_Eyes(type='radio' name='phenotype[eye_color]' value='Medium')
+                        input#Medium_Eyes(type='radio' name='phenotype[eye_color]' value='Medium' checked = (result.phenotype.eye_color == "Medium"))
                       .divTableCell
-                        input#Dark_Eyes(type='radio' name='phenotype[eye_color]' value='Dark')
+                        input#Dark_Eyes(type='radio' name='phenotype[eye_color]' value='Dark' checked = (result.phenotype.eye_color == "Dark"))
                     .divTableRow
                       .divTableCell
                         img(src='img/Color-Eye/Light_eyes-removebg.png' width='150' height='75' style="margin-right: 10px;")
@@ -365,17 +365,17 @@ block content
                         span Dark Color
                     .divTableRow
                       .divTableCell
-                        input#Red_Hair(type='radio' name='phenotype[hair_color]' value='Red' required='required' data-rule-required='true' data-msg-required='Select exactly one')
+                        input#Red_Hair(type='radio' name='phenotype[hair_color]' value='Red' required='required' data-rule-required='true' data-msg-required='Select exactly one' checked = (result.phenotype.hair_color == "Red"))
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Blonde_Hair(type='radio' name='phenotype[hair_color]' value='Blonde')
+                        input#Blonde_Hair(type='radio' name='phenotype[hair_color]' value='Blonde' checked = (result.phenotype.hair_color == "Blonde"))
                       .divTableCell
-                        input#Light_brown_Hair(type='radio' name='phenotype[hair_color]' value='Light brown')
+                        input#Light_brown_Hair(type='radio' name='phenotype[hair_color]' value='Light brown' checked = (result.phenotype.hair_color == "Light brown"))
                       .divTableCell
-                        input#Dark_brown_Hair(type='radio' name='phenotype[hair_color]' value='Dark brown')
+                        input#Dark_brown_Hair(type='radio' name='phenotype[hair_color]' value='Dark brown' checked = (result.phenotype.hair_color == "Dark brown"))
                       .divTableCell
-                        input#Dark_Hair(type='radio' name='phenotype[hair_color]' value='Black')
+                        input#Dark_Hair(type='radio' name='phenotype[hair_color]' value='Black' checked = (result.phenotype.hair_color == "Black"))
                     .divTableRow
                       .divTableCell
                         img(src='img/Color-hair/Red_hair-removebg.png' width='150' height='50')
@@ -407,15 +407,15 @@ block content
                         span Many Freckles
                     .divTableRow
                       .divTableCell
-                        input#No_Freckles(type='radio' name='phenotype[freckles]' value='None' required='required' data-rule-required='true' data-msg-required='Select exactly one')
+                        input#No_Freckles(type='radio' name='phenotype[freckles]' value='None' required='required' data-rule-required='true' data-msg-required='Select exactly one' checked = (result.phenotype.freckles == "None"))
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Few_Freckles(type='radio' name='phenotype[freckles]' value='Few')
+                        input#Few_Freckles(type='radio' name='phenotype[freckles]' value='Few' checked = (result.phenotype.freckles == "Few"))
                       .divTableCell
-                        input#Some_Freckles(type='radio' name='phenotype[freckles]' value='Some')
+                        input#Some_Freckles(type='radio' name='phenotype[freckles]' value='Some' checked = (result.phenotype.freckles == "Some"))
                       .divTableCell
-                        input#Many_Freckles(type='radio' name='phenotype[freckles]' value='Many')
+                        input#Many_Freckles(type='radio' name='phenotype[freckles]' value='Many' checked = (result.phenotype.freckles == "Many"))
                     .divTableRow
                       .divTableCell
                         img(src='img/Freckles/No_freckles.png' width='100' height='130')
@@ -442,15 +442,15 @@ block content
                         span Many Nevi
                     .divTableRow
                       .divTableCell
-                        input#No_Nevi(type='radio' name='phenotype[nevi]' value='None' required='required' data-rule-required='true' data-msg-required='Select exactly one')
+                        input#No_Nevi(type='radio' name='phenotype[nevi]' value='None' required='required' data-rule-required='true' data-msg-required='Select exactly one' checked = (result.phenotype.freckles == "nevi"))
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Few_Nevi(type='radio' name='phenotype[nevi]' value='Few')
+                        input#Few_Nevi(type='radio' name='phenotype[nevi]' value='Few' checked = (result.phenotype.freckles == "Few"))
                       .divTableCell
-                        input#Some_Nevi(type='radio' name='phenotype[nevi]' value='Some')
+                        input#Some_Nevi(type='radio' name='phenotype[nevi]' value='Some' checked = (result.phenotype.freckles == "Some"))
                       .divTableCell
-                        input#Many_Nevi(type='radio' name='phenotype[nevi]' value='Many')
+                        input#Many_Nevi(type='radio' name='phenotype[nevi]' value='Many' checked = (result.phenotype.freckles == "Many"))
                     .divTableRow
                       .divTableCell
                         img(src='img/Nevi/None_Nevi.png' width='100' height='130')
@@ -480,36 +480,36 @@ block content
                 | outdoor in the sun)
               .form-group
                 select#id_UltravioletExposure.form-control(name='ultraviolet[occupational_sun_exposure][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                  option(value='' selected='') Select...
-                  option(value='No') No
-                  option(value='Yes') Yes
+                  option(value='' selected=(result.ultraviolet.occupational_sun_exposure.presence == '')) Select...
+                  option(value='No' selected=(result.ultraviolet.occupational_sun_exposure.presence == 'No')) No
+                  option(value='Yes' selected=(result.ultraviolet.occupational_sun_exposure.presence == 'Yes')) Yes
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
 
               .form-group.hidden-control(style='margin-top:20px;')
                 .group
                   label Specify the occupation:
-                  input#UltravioletExposure_Yes.form-control(type='text' name='ultraviolet[occupational_sun_exposure][occupation_name]' required='required' data-rule-required='true' data-msg-required='Required field')           
+                  input#UltravioletExposure_Yes.form-control(type='text' name='ultraviolet[occupational_sun_exposure][occupation_name]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.occupational_sun_exposure.occupation_name)           
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/day?:
-                  input#UltravioletExposure_hours_for_day.form-control(type='number' min='0' max='12' name='ultraviolet[occupational_sun_exposure][hours_day]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#UltravioletExposure_hours_for_day.form-control(type='number' min='0' max='12' name='ultraviolet[occupational_sun_exposure][hours_day]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.occupational_sun_exposure.hours_day)
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/month?:
-                  input#UltravioletExposure_hours_for_month.form-control(type='number' min='0' max='360' name='ultraviolet[occupational_sun_exposure][hours_month]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#UltravioletExposure_hours_for_month.form-control(type='number' min='0' max='360' name='ultraviolet[occupational_sun_exposure][hours_month]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.occupational_sun_exposure.hours_month)
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/year?:
-                  input#UltravioletExposure_hours_for_year.form-control(type='number' min='0' max='4520' name='ultraviolet[occupational_sun_exposure][hours_year]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#UltravioletExposure_hours_for_year.form-control(type='number' min='0' max='4520' name='ultraviolet[occupational_sun_exposure][hours_year]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.occupational_sun_exposure.hours_year)
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many years ?:
-                  input#UltravioletExposure_many_years.form-control(type='number' min='0' max='50' name='ultraviolet[occupational_sun_exposure][number_of_years]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#UltravioletExposure_many_years.form-control(type='number' min='0' max='50' name='ultraviolet[occupational_sun_exposure][number_of_years]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.occupational_sun_exposure.number_of_years)
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                   
@@ -519,36 +519,36 @@ block content
                 | sunbathing–with at least 4 hours/day spent outdoor in the sun)
               .form-group
                 select#id_RecreationalExposure.form-control(name='ultraviolet[recreational_sun_exposure][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                  option(value='' selected='') Select...
-                  option(value='No') No
-                  option(value='Yes') Yes
+                  option(value='' selected=(result.ultraviolet.recreational_sun_exposure.presence == '')) Select...
+                  option(value='No' selected=(result.ultraviolet.recreational_sun_exposure.presence == 'No')) No
+                  option(value='Yes' selected=(result.ultraviolet.recreational_sun_exposure.presence == 'Yes')) Yes
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
 
               .form-group.hidden-control(style='margin-top:20px;')
                 .group
                   label Specify the occupation:
-                  input#RecreationalExposure_Yes(type='text' name='ultraviolet[recreational_sun_exposure][occupation_name]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#RecreationalExposure_Yes(type='text' name='ultraviolet[recreational_sun_exposure][occupation_name]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.recreational_sun_exposure.occupation_name)
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/day?:
-                  input#Recreational_hours_for_day(type='number' min='0' max='12' name='ultraviolet[recreational_sun_exposure][hours_day]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#Recreational_hours_for_day(type='number' min='0' max='12' name='ultraviolet[recreational_sun_exposure][hours_day]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.recreational_sun_exposure.hours_day)
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/month?:
-                  input#Recreational_hours_for_month(type='number' min='0' max='360' name='ultraviolet[recreational_sun_exposure][hours_month]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#Recreational_hours_for_month(type='number' min='0' max='360' name='ultraviolet[recreational_sun_exposure][hours_month]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.recreational_sun_exposure.hours_month)
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many hours/year?:
-                  input#Recreational_hours_for_year(type='number' min='0' max='4520' name='ultraviolet[recreational_sun_exposure][hours_year]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#Recreational_hours_for_year(type='number' min='0' max='4520' name='ultraviolet[recreational_sun_exposure][hours_year]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.recreational_sun_exposure.hours_year)
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
                 .group
                   label How many years ?:
-                  input#Recreational_many_years(type='number' min='0' max='50' name='ultraviolet[recreational_sun_exposure][number_of_years]' required='required' data-rule-required='true' data-msg-required='Required field')
+                  input#Recreational_many_years(type='number' min='0' max='50' name='ultraviolet[recreational_sun_exposure][number_of_years]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.recreational_sun_exposure.number_of_years)
                   span.error1
                     i.error-log.fa.fa-exclamation-triangle
 
@@ -570,31 +570,31 @@ block content
                     .divTableRow
                       .divTableCell Childhood (up to age 10 yrs)
                       .divTableCell
-                        input#Childhood_Period(type='number' min='0' max='12' name='ultraviolet[exposure_childhood][period]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#Childhood_Period(type='number' min='0' max='12' name='ultraviolet[exposure_childhood][period]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.exposure_childhood.period)
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Childhood_Time(type='number' min='0' name='ultraviolet[exposure_childhood][time]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#Childhood_Time(type='number' min='0' name='ultraviolet[exposure_childhood][time]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.exposure_childhood.time)
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                     .divTableRow
                       .divTableCell Adolescence (11-18 yrs)
                       .divTableCell
-                        input#Adolescence_Weeks(type='number' min='0' max='12' name='ultraviolet[exposure_adolescence][period]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#Adolescence_Weeks(type='number' min='0' max='12' name='ultraviolet[exposure_adolescence][period]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.exposure_adolescence.period)
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Adolescence_Time(type='number' min='0' max='5' name='ultraviolet[exposure_adolescence][time]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#Adolescence_Time(type='number' min='0' max='5' name='ultraviolet[exposure_adolescence][time]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.exposure_adolescence.time)
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                     .divTableRow
                       .divTableCell Adulthood (≥18 yrs)
                       .divTableCell
-                        input#Adulthood_Weeks(type='number' min='0' max='12' name='ultraviolet[exposure_adulthood][period]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#Adulthood_Weeks(type='number' min='0' max='12' name='ultraviolet[exposure_adulthood][period]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.exposure_adulthood.period)
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Adulthood_Time(type='number' min='0' max='5' name='ultraviolet[exposure_adulthood][time]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#Adulthood_Time(type='number' min='0' max='5' name='ultraviolet[exposure_adulthood][time]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.exposure_adulthood.time)
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                     .divTableRow
@@ -603,11 +603,11 @@ block content
                         | cases) or last 10 years
                         | (for controls)
                       .divTableCell
-                        input#10_years_before_period(type='number' max='12' min='0' name='ultraviolet[exposure_previous_10_years][period]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#10_years_before_period(type='number' max='12' min='0' name='ultraviolet[exposure_previous_10_years][period]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.exposure_previous_10_years.period)
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#10_years_before_time(type='number' min='0' max='5' name='ultraviolet[exposure_previous_10_years][time]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#10_years_before_time(type='number' min='0' max='5' name='ultraviolet[exposure_previous_10_years][time]' required='required' data-rule-required='true' data-msg-required='Required field' value = result.ultraviolet.exposure_previous_10_years.time)
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
 
@@ -617,7 +617,7 @@ block content
                 | Provide date or month of last time of intense intermittent sun exposure before
                 | the diagnosis of melanoma (for cases) or before this interview (for controls)
               .form-group
-                input#most_recent_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='ultraviolet[most_recent_sunburn]')
+                input#most_recent_date.datepicker.form-control(type='text' placeholder='Select date' required='' name='ultraviolet[most_recent_sunburn]' value = result.ultraviolet.most_recent_sunburn)
                 span.error1
                   i.error-log.fa.fa-exclamation-triangle
                 
@@ -635,15 +635,15 @@ block content
                         span At age less than 18 years ?
                       .divTableCell.NoDivTableBorder.input-cell
                         select#id_Sunburns_less18.form-control(name='ultraviolet[sunburn_before_18][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
-                          option(value='Not known') Not know
+                          option(value='' selected=(result.ultraviolet.sunburn_before_18.presence == '')) Select...
+                          option(value='No' selected=(result.ultraviolet.sunburn_before_18.presence == 'No')) No
+                          option(value='Yes' selected=(result.ultraviolet.sunburn_before_18.presence == 'Yes')) Yes
+                          option(value='Not known' selected=(result.ultraviolet.sunburn_before_18.presence == 'Not known')) Not know
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
-                          input#Sunburns_Yes_less18(type='number' min='0' placeholder="Number" name='ultraviolet[sunburn_before_18][number]')
+                          input#Sunburns_Yes_less18(type='number' min='0' placeholder="Number" name='ultraviolet[sunburn_before_18][number]' value=result.ultraviolet.sunburn_before_18.number)
 
               .form-group
                 .divTable
@@ -653,15 +653,15 @@ block content
                         span At age greater or equal than 18 years ?
                       .divTableCell.NoDivTableBorder.input-cell
                         select#id_Sunburns_Yes_greater18.form-control(name='ultraviolet[sunburn_after_18][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
-                          option(value='Not known') Not know
+                          option(value='' selected=(result.ultraviolet.sunburn_after_18.presence == '')) Select...
+                          option(value='No' selected=(result.ultraviolet.sunburn_after_18.presence == 'No')) No
+                          option(value='Yes' selected=(result.ultraviolet.sunburn_after_18.presence == 'Yes')) Yes
+                          option(value='Not known' selected=(result.ultraviolet.sunburn_after_18.presence == 'Not known')) Not know
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
-                          input#Sunburns_Yes_greater18(type='number' min='0' placeholder="Number" name='ultraviolet[sunburn_after_18][number]')
+                          input#Sunburns_Yes_greater18(type='number' min='0' placeholder="Number" name='ultraviolet[sunburn_after_18][number]' value=result.ultraviolet.sunburn_after_18.number)
 
               .form-group
                 .divTable
@@ -671,10 +671,10 @@ block content
                         span At site of melanoma ?
                       .divTableCell.NoDivTableBorder.input-cell
                         select#id_Site_melanoma.form-control(name='ultraviolet[sunburn_at_melanoma_site]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
-                          option(value='Not known') Not know
+                          option(value='' selected=(result.ultraviolet.sunburn_at_melanoma_site == '')) Select...
+                          option(value='No' selected=(result.ultraviolet.sunburn_at_melanoma_site == 'No')) No
+                          option(value='Yes' selected=(result.ultraviolet.sunburn_at_melanoma_site == 'Yes')) Yes
+                          option(value='Not known' selected=(result.ultraviolet.sunburn_at_melanoma_site == 'Not known')) Not know
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder.input-cell
@@ -689,15 +689,15 @@ block content
                         span In the last 5 years ?
                       .divTableCell.NoDivTableBorder.input-cell
                         select#id_Sunburns_last5.form-control(name='ultraviolet[sunburn_last_5_years][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
-                          option(value='Not known') Not know
+                          option(value='' selected=(result.ultraviolet.sunburn_last_5_years.presence == '')) Select...
+                          option(value='No' selected=(result.ultraviolet.sunburn_last_5_years.presence == 'No')) No
+                          option(value='Yes' selected=(result.ultraviolet.sunburn_last_5_years.presence == 'Yes')) Yes
+                          option(value='Not known' selected=(result.ultraviolet.sunburn_last_5_years.presence == 'Not known')) Not know
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
-                          input(type='number' min='0' placeholder="Number" name='ultraviolet[sunburn_last_5_years][number]')
+                          input(type='number' min='0' placeholder="Number" name='ultraviolet[sunburn_last_5_years][number]' value=result.ultraviolet.sunburn_last_5_years.number)
                           
             fieldset
               label 11) Sunscreen use (summer time)
@@ -716,60 +716,60 @@ block content
                       .divTableCell Childhood (up to age 10 yrs)
                       .divTableCell
                         select#id_SunExposure_childhood.form-control(name='ultraviolet[childhood_sunscreen][frequency]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select sun exposure...
-                          option(value='never') Never
-                          option(value='less_than_50%') time exposure < 50%
-                          option(value='greater_than_50%') time exposure > 50%
-                          option(value='always') always
-                          option(value='not_known') not known
+                          option(value='' selected=(result.ultraviolet.childhood_sunscreen.frequency == '')) Select sun exposure...
+                          option(value='never' selected=(result.ultraviolet.childhood_sunscreen.frequency == 'never')) Never
+                          option(value='less_than_50%' selected=(result.ultraviolet.childhood_sunscreen.frequency == 'less_than_50%')) time exposure < 50%
+                          option(value='greater_than_50%' selected=(result.ultraviolet.childhood_sunscreen.frequency == 'greater_than_50%')) time exposure > 50%
+                          option(value='always' selected=(result.ultraviolet.childhood_sunscreen.frequency == 'always')) always
+                          option(value='not_known' selected=(result.ultraviolet.childhood_sunscreen.frequency == 'not_known')) not known
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
                         select#id_Sunscreen_childhood.form-control(name='ultraviolet[childhood_sunscreen][type]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select sunscreen protection...
-                          option(value='SPF_less_than_20') SPF < or = 20
-                          option(value='SPF_greater_than_20') SPF > 20
-                          option(value='not_known') not known
+                          option(value='' selected=(result.ultraviolet.childhood_sunscreen.type == '')) Select sunscreen protection...
+                          option(value='SPF_less_than_20' selected=(result.ultraviolet.childhood_sunscreen.type == 'SPF_less_than_20')) SPF < or = 20
+                          option(value='SPF_greater_than_20' selected=(result.ultraviolet.childhood_sunscreen.type == 'SPF_greater_than_20')) SPF > 20
+                          option(value='not_known' selected=(result.ultraviolet.childhood_sunscreen.type == 'not_known')) not known
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                     .divTableRow
                       .divTableCell Adolescence (11-18 yrs)
                       .divTableCell
                         select#id_SunExposure_adolescence.form-control(name='ultraviolet[adolescence_sunscreen][frequency]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select sun exposure...
-                          option(value='never') Never
-                          option(value='less_than_50%') time exposure < 50%
-                          option(value='greater_than_50%') time exposure > 50%
-                          option(value='always') always
-                          option(value='not_known') not known
+                          option(value='' selected=(result.ultraviolet.adolescence_sunscreen.frequency == '')) Select sun exposure...
+                          option(value='never' selected=(result.ultraviolet.adolescence_sunscreen.frequency == 'never')) Never
+                          option(value='less_than_50%' selected=(result.ultraviolet.adolescence_sunscreen.frequency == 'less_than_50%')) time exposure < 50%
+                          option(value='greater_than_50%' selected=(result.ultraviolet.adolescence_sunscreen.frequency == 'greater_than_50%')) time exposure > 50%
+                          option(value='always' selected=(result.ultraviolet.adolescence_sunscreen.frequency == 'always')) always
+                          option(value='not_known' selected=(result.ultraviolet.adolescence_sunscreen.frequency == 'not_known')) not known
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
                         select#id_Sunscreen_adolescence.form-control(name='ultraviolet[adolescence_sunscreen][type]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select sunscreen protection...
-                          option(value='SPF_less_than_20') SPF < or = 20
-                          option(value='SPF_greater_than_20') SPF > 20
-                          option(value='not_known') not known
+                          option(value='' selected=(result.ultraviolet.adolescence_sunscreen.type == '')) Select sunscreen protection...
+                          option(value='SPF_less_than_20' selected=(result.ultraviolet.adolescence_sunscreen.type == 'SPF_less_than_20')) SPF < or = 20
+                          option(value='SPF_greater_than_20' selected=(result.ultraviolet.adolescence_sunscreen.type == 'SPF_greater_than_20')) SPF > 20
+                          option(value='not_known' selected=(result.ultraviolet.adolescence_sunscreen.type == 'not_known')) not known
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                     .divTableRow
                       .divTableCell Adulthood (≥18 yrs)
                       .divTableCell
                         select#id_SunExposure_adulthood.form-control(name='ultraviolet[adulthood_sunscreen][frequency]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select sun exposure...
-                          option(value='Never') Never
-                          option(value='less_than_50%') time exposure < 50%
-                          option(value='greater_than_50%') time exposure > 50%
-                          option(value='always') always
-                          option(value='not_known') not known
+                          option(value='' selected=(result.ultraviolet.adulthood_sunscreen.frequency == '')) Select sun exposure...
+                          option(value='Never' selected=(result.ultraviolet.adulthood_sunscreen.frequency == 'Never')) Never
+                          option(value='less_than_50%' selected=(result.ultraviolet.adulthood_sunscreen.frequency == 'less_than_50%')) time exposure < 50%
+                          option(value='greater_than_50%' selected=(result.ultraviolet.adulthood_sunscreen.frequency == 'greater_than_50%')) time exposure > 50%
+                          option(value='always' selected=(result.ultraviolet.adulthood_sunscreen.frequency == 'always')) always
+                          option(value='not_known' selected=(result.ultraviolet.adulthood_sunscreen.frequency == 'not_known')) not known
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
                         select#id_Sunscreen_adulthood.form-control(name='ultraviolet[adulthood_sunscreen][type]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select sunscreen protection...
-                          option(value='SPF_less_than_20') SPF < or = 20
-                          option(value='SPF_greater_than_20') SPF > 20
-                          option(value='not_known') not known
+                          option(value='' selected=(result.ultraviolet.adulthood_sunscreen.type == '')) Select sunscreen protection...
+                          option(value='SPF_less_than_20' selected=(result.ultraviolet.adulthood_sunscreen.type == 'SPF_less_than_20')) SPF < or = 20
+                          option(value='SPF_greater_than_20' selected=(result.ultraviolet.adulthood_sunscreen.type == 'SPF_greater_than_20')) SPF > 20
+                          option(value='not_known' selected=(result.ultraviolet.adulthood_sunscreen.type == 'not_known')) not known
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                     .divTableRow
@@ -779,20 +779,20 @@ block content
                         | (for controls)
                       .divTableCell
                         select#id_SunExposure_10years_before.form-control(name='ultraviolet[last_10_years_sunscreen][frequency]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select sun exposure...
-                          option(value='never') Never
-                          option(value='less_than_50%') time exposure < 50%
-                          option(value='greater_than_50%') time exposure > 50%
-                          option(value='always') always
-                          option(value='not_known') not known
+                          option(value='' selected=(result.ultraviolet.last_10_years_sunscreen.frequency == '')) Select sun exposure...
+                          option(value='never' selected=(result.ultraviolet.last_10_years_sunscreen.frequency == 'never')) Never
+                          option(value='less_than_50%' selected=(result.ultraviolet.last_10_years_sunscreen.frequency == 'less_than_50%')) time exposure < 50%
+                          option(value='greater_than_50%' selected=(result.ultraviolet.last_10_years_sunscreen.frequency == 'greater_than_50%')) time exposure > 50%
+                          option(value='always' selected=(result.ultraviolet.last_10_years_sunscreen.frequency == 'always')) always
+                          option(value='not_known' selected=(result.ultraviolet.last_10_years_sunscreen.frequency == 'not_knnown')) not known
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
                         select#id_Sunscreen_10years_before.form-control(name='ultraviolet[last_10_years_sunscreen][type]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select sunscreen protection...
-                          option(value='SPF_less_than_20') SPF < or = 20
-                          option(value='SPF_greater_than_20') SPF > 20
-                          option(value='not_known') not known
+                          option(value='' selected=(result.ultraviolet.last_10_years_sunscreen.type == '')) Select sunscreen protection...
+                          option(value='SPF_less_than_20' selected=(result.ultraviolet.last_10_years_sunscreen.type == 'SPF_less_than_20')) SPF < or = 20
+                          option(value='SPF_greater_than_20' selected=(result.ultraviolet.last_10_years_sunscreen.type == 'SPF_greater_than_20')) SPF > 20
+                          option(value='not_known' selected=(result.ultraviolet.last_10_years_sunscreen.type == 'not_known')) not known
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
 
@@ -803,29 +803,29 @@ block content
               .form-group
                 span Did you use a hat ?
                 select#id_Hat.form-control(name='ultraviolet[hat_frequency]')
-                  option(value='Not choosed') Select sun time exposure ...
-                  option(value='never') Never
-                  option(value='less_than_50%') time exposure < 50%
-                  option(value='greater_than_50%') time exposure > 50%
-                  option(value='always') Always
-                  option(value='not_known') Not known
+                  option(value='Not choosed' selected=(result.ultraviolet.hat_frequency == 'Not choosed')) Select sun time exposure ...
+                  option(value='never' selected=(result.ultraviolet.hat_frequency == 'never')) Never
+                  option(value='less_than_50%' selected=(result.ultraviolet.hat_frequency == 'less_than_50%')) time exposure < 50%
+                  option(value='greater_than_50%' selected=(result.ultraviolet.hat_frequency == 'greater_than_50%')) time exposure > 50%
+                  option(value='always' selected=(result.ultraviolet.hat_frequency == 'always')) Always
+                  option(value='not_known' selected=(result.ultraviolet.hat_frequency == 'not_known')) Not known
               .form-group
                 span Did you use protective clothing ?
                 select#id_Clothing.form-control(name='ultraviolet[clothing]')
-                  option(value='Not choosed') Select sun time exposure ...
-                  option(value='never') Never
-                  option(value='less_than_50%') time exposure < 50%
-                  option(value='greater_than_50%') time exposure > 50%
-                  option(value='always') Always
-                  option(value='not_known') Not known
+                  option(value='Not choosed' selected=(result.ultraviolet.clothing == 'Not choosed')) Select sun time exposure ...
+                  option(value='never' selected=(result.ultraviolet.clothing == 'never')) Never
+                  option(value='less_than_50%' selected=(result.ultraviolet.clothing == 'less_than_50%')) time exposure < 50%
+                  option(value='greater_than_50%' selected=(result.ultraviolet.clothing == 'greater_than_50%')) time exposure > 50%
+                  option(value='always' selected=(result.ultraviolet.clothing == 'always')) Always
+                  option(value='not_known' selected=(result.ultraviolet.clothing == 'not_known')) Not known
               .form-group
                 span Did you seek the shade or stay indoors during peak UVR hours?
                 select#id_UVR.form-control(name='ultraviolet[peak_UVR_hours]')
-                  option(value='Not choosed') Select sun time exposure ...
-                  option(value='rarely') Rarely
-                  option(value='sometimes') Sometimes
-                  option(value='always') Always
-                  option(value='not_known') Not known
+                  option(value='Not choosed' selected=(result.ultraviolet.peak_UVR_hours == 'Not choosed')) Select sun time exposure ...
+                  option(value='rarely' selected=(result.ultraviolet.peak_UVR_hours == 'rarely')) Rarely
+                  option(value='sometimes' selected=(result.ultraviolet.peak_UVR_hours == 'sometimes')) Sometimes
+                  option(value='always' selected=(result.ultraviolet.peak_UVR_hours == 'always')) Always
+                  option(value='not_known' selected=(result.ultraviolet.peak_UVR_hours == 'not_known')) Not known
 
             fieldset#fieldsetSunlamps
               label 13) Sunlamps/sunbeds
@@ -836,9 +836,9 @@ block content
                       span Did you use sunlamps or sunbeads?
                     .divTableCell.NoDivTableBorder
                       select#id_Sunlamp.form-control(name='ultraviolet[sunlamp][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                        option(value='') Select ...
-                        option(value='No') No
-                        option(value='Yes') Yes
+                        option(value='' selected=(result.ultraviolet.sunlamp.presence == '')) Select ...
+                        option(value='No' selected=(result.ultraviolet.sunlamp.presence == 'No')) No
+                        option(value='Yes' selected=(result.ultraviolet.sunlamp.presence == 'Yes')) Yes
                       span.error1
                           i.error-log.fa.fa-exclamation-triangle
                           
@@ -848,17 +848,17 @@ block content
                       .divTableRow
                         .divTableCell.NoDivTableBorder
                           label Lifetime number of sessions:
-                          input#Sunlamp_sessions(type='number' placeholder='Number' min='1' name='ultraviolet[sunlamp][number_of_sessions]' required='required' data-rule-required='true' data-msg-required='Required field')
+                          input#Sunlamp_sessions(type='number' placeholder='Number' min='1' name='ultraviolet[sunlamp][number_of_sessions]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.ultraviolet.sunlamp.number_of_sessions)
                           span.error1(style="margin-left: 60px;")
                             i.error-log.fa.fa-exclamation-triangle
                         .divTableCell.NoDivTableBorder
                           label Age at first exposure:
-                          input#Sunlamp_first_age(type='number' placeholder='Number' min='1' name='ultraviolet[sunlamp][age__of_first_sunlamp]' required='required' data-rule-required='true' data-msg-required='Required field')
+                          input#Sunlamp_first_age(type='number' placeholder='Number' min='1' name='ultraviolet[sunlamp][age__of_first_sunlamp]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.ultraviolet.sunlamp.age__of_first_sunlamp)
                           span.error1(style="margin-left: 60px;")
                             i.error-log.fa.fa-exclamation-triangle
                         .divTableCell.NoDivTableBorder
                           label Age at last exposure:
-                          input#Sunlamp_last_age(type='number' placeholder='Number' min='1' name='ultraviolet[sunlamp][age_of_last_sunlamp]' required='required' data-rule-required='true' data-msg-required='Required field')
+                          input#Sunlamp_last_age(type='number' placeholder='Number' min='1' name='ultraviolet[sunlamp][age_of_last_sunlamp]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.ultraviolet.sunlamp.age_of_last_sunlamp)
                           span.error1(style="margin-left: 60px;")
                             i.error-log.fa.fa-exclamation-triangle                  
 
@@ -873,9 +873,9 @@ block content
                       span Did you have phototherapy?
                     .divTableCell.NoDivTableBorder(style='width:32%;')
                       select#id_Phototherapy.form-control(name='ultraviolet[phototherapy]')
-                        option(value='Not choosed') Select ...
-                        option(value='ever') Ever
-                        option(value='never') Never
+                        option(value='Not choosed' selected=(result.ultraviolet.phototherapy == 'Not choosed')) Select ...
+                        option(value='ever' selected=(result.ultraviolet.phototherapy == 'ever')) Ever
+                        option(value='never' selected=(result.ultraviolet.phototherapy == 'never')) Never
 
 
           div.alphaformfooter
@@ -900,11 +900,11 @@ block content
                       span Did you smoke?
                     .divTableCell.NoDivTableBorder(style='width:32%;')
                       select#id_Smoking.form-control(name='lifestyle[smoking][frequency]' required='required' data-rule-required='true' data-msg-required='Required field')
-                        option(value='' selected='') Select ...
-                        option(value='Never') Never
-                        option(value='Former')
+                        option(value='' selected=(result.lifestyle.smoking.frequency == '')) Select ...
+                        option(value='Never' selected=(result.lifestyle.smoking.frequency == 'Never')) Never
+                        option(value='Former' selected=(result.lifestyle.smoking.frequency == 'Former'))
                           | Former smoker (quit one year before diagnosis or earlier)
-                        option(value='Current') Current smoker
+                        option(value='Current' selected=(result.lifestyle.smoking.frequency == 'Current')) Current smoker
                       span.error1
                           i.error-log.fa.fa-exclamation-triangle
 
@@ -913,21 +913,21 @@ block content
                     .divTableRow
                       .divTableCell.NoDivTableBorder
                         label Age when you started:
-                        input#Smoking_age(type='number' min='1' placeholder='age' name="lifestyle[smoking][age_of_first_smoking]" required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#Smoking_age(type='number' min='1' placeholder='age' name="lifestyle[smoking][age_of_first_smoking]" required='required' data-rule-required='true' data-msg-required='Required field' value=result.lifestyle.smoking.age_of_first_smoking)
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder
                         label How long have you been smoking?:
-                        input#Smoking_years(type='number' min='1' placeholder='years' name="lifestyle[smoking][smoking_period]" required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#Smoking_years(type='number' min='1' placeholder='years' name="lifestyle[smoking][smoking_period]" required='required' data-rule-required='true' data-msg-required='Required field' value=result.lifestyle.smoking.smoking_period)
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder(style='width: 50%;')
                         label How much did/do you typically smoke:
                         select#id_Smoke_quantity.form-control(name='lifestyle[smoking][smoke_quantity]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select quantity...
-                          option(value='One_or_more_pack_a_day') One pack day or more
-                          option(value='Half_pack_a_day') Up to half pack a day
-                          option(value='Occasionally') Occasionally
+                          option(value='' selected=(result.lifestyle.smoking.smoke_quantity == '')) Select quantity...
+                          option(value='One_or_more_pack_a_day' selected=(result.lifestyle.smoking.smoke_quantity == 'One_or_more_pack_a_day')) One pack day or more
+                          option(value='Half_pack_a_day' selected=(result.lifestyle.smoking.smoke_quantity == 'Half_pack_a_day')) Up to half pack a day
+                          option(value='Occasionally' selected=(result.lifestyle.smoking.smoke_quantity == 'Occasionally')) Occasionally
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
 
@@ -937,9 +937,9 @@ block content
               p(style='color:red;') (Optional)
               .form-group
                 select#id_Vitamin.form-control(name='lifestyle[vitamins_last_year][presence]')
-                  option(value='Not choosed') Select ...
-                  option(value='No') No
-                  option(value='Yes')
+                  option(value='Not choosed' selected=(result.lifestyle.vitamins_last_year.presence == 'Not choosed')) Select ...
+                  option(value='No' selected=(result.lifestyle.vitamins_last_year.presence == 'No')) No
+                  option(value='Yes' selected=(result.lifestyle.vitamins_last_year.presence == 'Yes'))
                     | Yes
               .group.hidden-control
                 .divTable
@@ -948,12 +948,12 @@ block content
                       span How much:
                     .divTableCell.NoDivTableBorder(style='width: 50%;')
                       select#id_Vitamin_quantity.form-control(name='lifestyle[vitamins_last_year][quantity]')
-                        option(value='Not choosed') Select quantity...
-                        option(value='Never') Never
-                        option(value='1/3_days_at_month') 1-3 days/month
-                        option(value='1/3_days_at_week') 1-3 days/week
-                        option(value='4/6_days_at_week') 4-6 days/week
-                        option(value='Everyday') Everyday
+                        option(value='Not choosed' selected=(result.lifestyle.vitamins_last_year.quantity == 'Not choosed')) Select quantity...
+                        option(value='Never' selected=(result.lifestyle.vitamins_last_year.quantity == 'Never')) Never
+                        option(value='1/3_days_at_month' selected=(result.lifestyle.vitamins_last_year.quantity == '1/3_days_at_month')) 1-3 days/month
+                        option(value='1/3_days_at_week' selected=(result.lifestyle.vitamins_last_year.quantity == '1/3_days_at_week')) 1-3 days/week
+                        option(value='4/6_days_at_week' selected=(result.lifestyle.vitamins_last_year.quantity == '4/6_days_at_week')) 4-6 days/week
+                        option(value='Everyday' selected=(result.lifestyle.vitamins_last_year.quantity == 'Everyday')) Everyday
 
             fieldset#fieldsetVitaminType
               label
@@ -968,28 +968,28 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       select#id_BetaCarotene_quantity.form-control(name='lifestyle[betacarotene_frequency]')
-                        option(value='Not choosed') Select quantity...
-                        option(value='Never') Never
-                        option(value='1/3_days_at_month') 1-3 days/month
-                        option(value='1/3_days_at_week') 1-3 days/week
-                        option(value='4/6_days_at_week') 4-6 days/week
-                        option(value='Everyday') Everyday
+                        option(value='Not choosed' selected=(result.lifestyle.betacarotene_frequency == 'Not choosed')) Select quantity...
+                        option(value='Never' selected=(result.lifestyle.betacarotene_frequency == 'Never')) Never
+                        option(value='1/3_days_at_month' selected=(result.lifestyle.betacarotene_frequency == '1/3_days_at_month')) 1-3 days/month
+                        option(value='1/3_days_at_week' selected=(result.lifestyle.betacarotene_frequency == '1/3_days_at_week')) 1-3 days/week
+                        option(value='4/6_days_at_week' selected=(result.lifestyle.betacarotene_frequency == '4/6_days_at_week')) 4-6 days/week
+                        option(value='Everyday' selected=(result.lifestyle.betacarotene_frequency == 'Everyday')) Everyday
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminB_quantity.form-control(name='lifestyle[vitamin_A_frequency]')
-                        option(value='Not choosed') Select quantity...
-                        option(value='Never') Never
-                        option(value='1/3_days_at_month') 1-3 days/month
-                        option(value='1/3_days_at_week') 1-3 days/week
-                        option(value='4/6_days_at_week') 4-6 days/week
-                        option(value='Everyday') Everyday
+                        option(value='Not choosed' selected=(result.lifestyle.vitamin_A_frequency == 'Not choosed')) Select quantity...
+                        option(value='Never' selected=(result.lifestyle.vitamin_A_frequency == 'Never')) Never
+                        option(value='1/3_days_at_month' selected=(result.lifestyle.vitamin_A_frequency == '1/3_days_at_month')) 1-3 days/month
+                        option(value='1/3_days_at_week' selected=(result.lifestyle.vitamin_A_frequency == '1/3_days_at_week')) 1-3 days/week
+                        option(value='4/6_days_at_week' selected=(result.lifestyle.vitamin_A_frequency == '4/6_days_at_week')) 4-6 days/week
+                        option(value='Everyday' selected=(result.lifestyle.vitamin_A_frequency == 'Everyday')) Everyday
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminC_quantity.form-control(name='lifestyle[vitamin_C_frequency]')
-                        option(value='Not choosed') Select quantity...
-                        option(value='Never') Never
-                        option(value='1/3_days_at_month') 1-3 days/month
-                        option(value='1/3_days_at_week') 1-3 days/week
-                        option(value='4/6_days_at_week') 4-6 days/week
-                        option(value='Everyday') Everyday
+                        option(value='Not choosed' selected=(result.lifestyle.vitamin_C_frequency == 'Not choosed')) Select quantity...
+                        option(value='Never' selected=(result.lifestyle.vitamin_C_frequency == 'Never')) Never
+                        option(value='1/3_days_at_month' selected=(result.lifestyle.vitamin_C_frequency == '1/3_days_at_month')) 1-3 days/month
+                        option(value='1/3_days_at_week' selected=(result.lifestyle.vitamin_C_frequency == '1/3_days_at_week')) 1-3 days/week
+                        option(value='4/6_days_at_week' selected=(result.lifestyle.vitamin_C_frequency == '4/6_days_at_week')) 4-6 days/week
+                        option(value='Everyday' selected=(result.lifestyle.vitamin_C_frequency == 'Everyday')) Everyday
               br
               .group
                 .divTable
@@ -1000,28 +1000,28 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminD_quantity.form-control(name='lifestyle[vitamin_D_frequency]')
-                        option(value='Not choosed') Select quantity...
-                        option(value='Never') Never
-                        option(value='1/3_days_at_month') 1-3 days/month
-                        option(value='1/3_days_at_week') 1-3 days/week
-                        option(value='4/6_days_at_week') 4-6 days/week
-                        option(value='Everyday') Everyday
+                        option(value='Not choosed' selected=(result.lifestyle.vitamin_D_frequency == 'Not choosed')) Select quantity...
+                        option(value='Never' selected=(result.lifestyle.vitamin_D_frequency == 'Never')) Never
+                        option(value='1/3_days_at_month' selected=(result.lifestyle.vitamin_D_frequency == '1/3_days_at_month')) 1-3 days/month
+                        option(value='1/3_days_at_week' selected=(result.lifestyle.vitamin_D_frequency == '1/3_days_at_week')) 1-3 days/week
+                        option(value='4/6_days_at_week' selected=(result.lifestyle.vitamin_D_frequency == '4/6_days_at_week')) 4-6 days/week
+                        option(value='Everyday' selected=(result.lifestyle.vitamin_D_frequency == 'Everyday')) Everyday
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminE_quantity.form-control(name='lifestyle[vitamin_E_frequency]')
-                        option(value='Not choosed') Select quantity...
-                        option(value='Never') Never
-                        option(value='1/3_days_at_month') 1-3 days/month
-                        option(value='1/3_days_at_week') 1-3 days/week
-                        option(value='4/6_days_at_week') 4-6 days/week
-                        option(value='Everyday') Everyday
+                        option(value='Not choosed' selected=(result.lifestyle.vitamin_E_frequency == 'Not choosed')) Select quantity...
+                        option(value='Never' selected=(result.lifestyle.vitamin_E_frequency == 'Never')) Never
+                        option(value='1/3_days_at_month' selected=(result.lifestyle.vitamin_E_frequency == '1/3_days_at_month')) 1-3 days/month
+                        option(value='1/3_days_at_week' selected=(result.lifestyle.vitamin_E_frequency == '1/3_days_at_week')) 1-3 days/week
+                        option(value='4/6_days_at_week' selected=(result.lifestyle.vitamin_E_frequency == '4/6_days_at_week')) 4-6 days/week
+                        option(value='Everyday' selected=(result.lifestyle.vitamin_E_frequency == 'Everyday')) Everyday
                     .divTableCell.NoDivTableBorder
                       select#id_MultiVitamin_quantity.form-control(name='lifestyle[multivitamins_frequency]')
-                        option(value='Not choosed') Select quantity...
-                        option(value='Never') Never
-                        option(value='1/3_days_at_month') 1-3 days/month
-                        option(value='1/3_days_at_week') 1-3 days/week
-                        option(value='4/6_days_at_week') 4-6 days/week
-                        option(value='Everyday') Everyday
+                        option(value='Not choosed' selected=(result.lifestyle.multivitamins_frequency == 'Not choosed')) Select quantity...
+                        option(value='Never' selected=(result.lifestyle.multivitamins_frequency == 'Never')) Never
+                        option(value='1/3_days_at_month' selected=(result.lifestyle.multivitamins_frequency == '1/3_days_at_month')) 1-3 days/month
+                        option(value='1/3_days_at_week' selected=(result.lifestyle.multivitamins_frequency == '1/3_days_at_week')) 1-3 days/week
+                        option(value='4/6_days_at_week' selected=(result.lifestyle.multivitamins_frequency == '4/6_days_at_week')) 4-6 days/week
+                        option(value='Everyday' selected=(result.lifestyle.multivitamins_frequency == 'Everyday')) Everyday
 
             fieldset#fieldsetVitaminTime
               label
@@ -1036,25 +1036,25 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       select#id_BetaCarotene_Time.form-control(name='lifestyle[betacarotene_period]')
-                        option(value='Not choosed') Select Time...
-                        option(value='less_than_1_year') < 1 year
-                        option(value='from_1_to_4_years') 1-4 years
-                        option(value='from_5_to_9_years') 5-9 years
-                        option(value='more_than_10_years') > 10 years
+                        option(value='Not choosed' selected=(result.lifestyle.betacarotene_period == 'Not choosed')) Select Time...
+                        option(value='less_than_1_year' selected=(result.lifestyle.betacarotene_period == 'less_than_1_year')) < 1 year
+                        option(value='from_1_to_4_years' selected=(result.lifestyle.betacarotene_period == 'from_1_to_4_years')) 1-4 years
+                        option(value='from_5_to_9_years' selected=(result.lifestyle.betacarotene_period == 'from_5_to_9_years')) 5-9 years
+                        option(value='more_than_10_years' selected=(result.lifestyle.betacarotene_period == 'more_than_10_years')) > 10 years
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminB_Time.form-control(name='lifestyle[vitamin_A_period]')
-                        option(value='Not choosed') Select Time...
-                        option(value='less_than_1_year') < 1 year
-                        option(value='from_1_to_4_years') 1-4 years
-                        option(value='from_5_to_9_years') 5-9 years
-                        option(value='more_than_10_years') > 10 years
+                        option(value='Not choosed' selected=(result.lifestyle.vitamin_A_period == 'Not choosed')) Select Time...
+                        option(value='less_than_1_year' selected=(result.lifestyle.vitamin_A_period == 'less_than_1_year')) < 1 year
+                        option(value='from_1_to_4_years' selected=(result.lifestyle.vitamin_A_period == 'from_1_to_4_years')) 1-4 years
+                        option(value='from_5_to_9_years' selected=(result.lifestyle.vitamin_A_period == 'from_5_to_9_years')) 5-9 years
+                        option(value='more_than_10_years' selected=(result.lifestyle.vitamin_A_period == 'more_than_10_years')) > 10 years
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminC_Time.form-control(name='lifestyle[vitamin_C_period]')
-                        option(value='Not choosed') Select Time...
-                        option(value='less_than_1_year') < 1 year
-                        option(value='from_1_to_4_years') 1-4 years
-                        option(value='from_5_to_9_years') 5-9 years
-                        option(value='more_than_10_years') > 10 years
+                        option(value='Not choosed' selected=(result.lifestyle.vitamin_C_period == 'Not choosed')) Select Time...
+                        option(value='less_than_1_year' selected=(result.lifestyle.vitamin_C_period == 'less_than_1_year')) < 1 year
+                        option(value='from_1_to_4_years' selected=(result.lifestyle.vitamin_C_period == 'from_1_to_4_years')) 1-4 years
+                        option(value='from_5_to_9_years' selected=(result.lifestyle.vitamin_C_period == 'from_5_to_9_years')) 5-9 years
+                        option(value='more_than_10_years' selected=(result.lifestyle.vitamin_C_period == 'more_than_10_years')) > 10 years
               br
               .group
                 .divTable
@@ -1065,25 +1065,25 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminD_Time.form-control(name='lifestyle[vitamin_D_period]')
-                        option(value='Not choosed') Select Time...
-                        option(value='less_than_1_year') < 1 year
-                        option(value='from_1_to_4_years') 1-4 years
-                        option(value='from_5_to_9_years') 5-9 years
-                        option(value='more_than_10_years') > 10 years
+                        option(value='Not choosed' selected=(result.lifestyle.vitamin_D_period == 'Not choosed')) Select Time...
+                        option(value='less_than_1_year' selected=(result.lifestyle.vitamin_D_period == 'less_than_1_year')) < 1 year
+                        option(value='from_1_to_4_years' selected=(result.lifestyle.vitamin_D_period == 'from_1_to_4_years')) 1-4 years
+                        option(value='from_5_to_9_years' selected=(result.lifestyle.vitamin_D_period == 'from_5_to_9_years')) 5-9 years
+                        option(value='more_than_10_years' selected=(result.lifestyle.vitamin_D_period == 'more_than_10_years')) > 10 years
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminE_Time.form-control(name='lifestyle[vitamin_E_period]')
-                        option(value='Not choosed') Select Time...
-                        option(value='less_than_1_year') < 1 year
-                        option(value='from_1_to_4_years') 1-4 years
-                        option(value='from_5_to_9_years') 5-9 years
-                        option(value='more_than_10_years') > 10 years
+                        option(value='Not choosed' selected=(result.lifestyle.vitamin_E_period == 'Not choosed')) Select Time...
+                        option(value='less_than_1_year' selected=(result.lifestyle.vitamin_E_period == 'less_than_1_year')) < 1 year
+                        option(value='from_1_to_4_years' selected=(result.lifestyle.vitamin_E_period == 'from_1_to_4_years')) 1-4 years
+                        option(value='from_5_to_9_years' selected=(result.lifestyle.vitamin_E_period == 'from_5_to_9_years')) 5-9 years
+                        option(value='more_than_10_years' selected=(result.lifestyle.vitamin_E_period == 'more_than_10_years')) > 10 years
                     .divTableCell.NoDivTableBorder
                       select#id_MultiVitamin_Time.form-control(name='lifestyle[multivitamins_period]')
-                        option(value='Not choosed') Select Time...
-                        option(value='less_than_1_year') < 1 year
-                        option(value='from_1_to_4_years') 1-4 years
-                        option(value='from_5_to_9_years') 5-9 years
-                        option(value='more_than_10_years') > 10 years
+                        option(value='Not choosed' selected=(result.lifestyle.multivitamins_period == 'Not choosed')) Select Time...
+                        option(value='less_than_1_year' selected=(result.lifestyle.multivitamins_period == 'less_than_1_year')) < 1 year
+                        option(value='from_1_to_4_years' selected=(result.lifestyle.multivitamins_period == 'from_1_to_4_years')) 1-4 years
+                        option(value='from_5_to_9_years' selected=(result.lifestyle.multivitamins_period == 'from_5_to_9_years')) 5-9 years
+                        option(value='more_than_10_years' selected=(result.lifestyle.multivitamins_period == 'more_than_10_years')) > 10 years
 
             fieldset#fieldsetSectionBEval
               label Completion Evaluation Questions
@@ -1095,22 +1095,22 @@ block content
                       span 19) Were you able to respond to the questions of the last three sections ?
                     .divTableCell.NoDivTableBorder.input-cell(name='section_B_evaluation[completed]')
                       select#selectEval.form-control
-                        option(value='Not choosed' selected='') Select...
-                        option(value='All') All questions
-                        option(value='Most') Most questions
-                        option(value='Half') Nearly half of the questions
-                        option(value='Few') Very few questions
+                        option(value='Not choosed' selected=(result.section_B_evaluation.completed == 'Not choosed')) Select...
+                        option(value='All' selected=(result.section_B_evaluation.completed == 'All')) All questions
+                        option(value='Most' selected=(result.section_B_evaluation.completed == 'Most')) Most questions
+                        option(value='Half' selected=(result.section_B_evaluation.completed == 'Half')) Nearly half of the questions
+                        option(value='Few' selected=(result.section_B_evaluation.completed == 'Few')) Very few questions
                   .divTableRow.spaced
                     .divTableCell.NoDivTableBorder.question-cell
                       span 20) Which questions of these last three sections did you consider difficult to fill in?
                     .divTableCell.NoDivTableBorder.input-cell(name='section_B_evaluation[difficult][answer]')
                       select#selectQuestions.form-control
-                        option(value='Not choosed' selected='') Select...
-                        option(value='None') None
-                        option(value='Yes') Insert numbers of questions
+                        option(value='Not choosed' selected=(result.section_B_evaluation.difficult.answer == 'Not choosed')) Select...
+                        option(value='None' selected=(result.section_B_evaluation.difficult.answer == 'None')) None
+                        option(value='Yes' selected=(result.section_B_evaluation.difficult.answer == 'Yes')) Insert numbers of questions
                     .divTableCell.NoDivTableBorder.input-cell
                       .hidden-control
-                        input#QuestionHidden(type='text' placeholder='1, 2, 3, etc.' name='section_B_evaluation[difficult][questions]')
+                        input#QuestionHidden(type='text' placeholder='1, 2, 3, etc.' name='section_B_evaluation[difficult][questions]' value=result.section_B_evaluation.difficult.questions)
 
           div.alphaformfooter
           div.formfooter
@@ -1138,10 +1138,10 @@ block content
                       span Record according to severity:
                     .divTableCell.NoDivTableBorder(style='padding:10px !important;')
                       select#selectRecord.form-control(name='clinical_examination[solar_lentigines_frequency]' required='required' data-rule-required='true' data-msg-required='Required field')
-                        option(value='' selected='') Select...
-                        option(value='None') None
-                        option(value='Few') Few
-                        option(value='Many') Many
+                        option(value='' selected=(result.clinical_examination.solar_lentigines_frequency == '')) Select...
+                        option(value='None' selected=(result.clinical_examination.solar_lentigines_frequency == 'None')) None
+                        option(value='Few' selected=(result.clinical_examination.solar_lentigines_frequency == 'Few')) Few
+                        option(value='Many' selected=(result.clinical_examination.solar_lentigines_frequency == 'Many')) Many
                       span.error1
                           i.error-log.fa.fa-exclamation-triangle
                   .divTableRow
@@ -1149,9 +1149,9 @@ block content
                       span At site of melanoma (i.e. area around the site w/ a 20 cm radius)?
                     .divTableCell.NoDivTableBorder(style='padding:10px !important;')
                       select#selectLentiginesSite.form-control(name='clinical_examination[solar_lentigines_at_melanoma]' required='required' data-rule-required='true' data-msg-required='Required field')
-                        option(value='' selected='') Select...
-                        option(value='No') No
-                        option(value='Yes') Yes
+                        option(value='' selected=(result.clinical_examination.solar_lentigines_at_melanoma == '')) Select...
+                        option(value='No' selected=(result.clinical_examination.solar_lentigines_at_melanoma == 'No')) No
+                        option(value='Yes' selected=(result.clinical_examination.solar_lentigines_at_melanoma == 'Yes')) Yes
                       span.error1
                           i.error-log.fa.fa-exclamation-triangle
 
@@ -1166,91 +1166,91 @@ block content
                   .divTableRow
                     .divTableCell(style='width:40%;') Scalp
                     .divTableCell(style='width:30%;')
-                      input#inputScalpLeft(type='number' min='0' name='clinical_examination[nevi_count][left_scalp]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputScalpLeft(type='number' min='0' name='clinical_examination[nevi_count][left_scalp]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.left_scalp)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                     .divTableCell(style='width:30%;')
-                      input#inputScalpRight(type='number' min='0' name='clinical_examination[nevi_count][right_scalp]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputScalpRight(type='number' min='0' name='clinical_examination[nevi_count][right_scalp]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.right_scalp)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                   .divTableRow
                     .divTableCell(style='width:40%;') Face(including ears)
                     .divTableCell(style='width:30%;')
-                      input#inputFaceLeft(type='number' min='0' name='clinical_examination[nevi_count][left_face]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputFaceLeft(type='number' min='0' name='clinical_examination[nevi_count][left_face]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.left_face)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                     .divTableCell(style='width:30%;')
-                      input#inputFaceRight(type='number' min='0' name='clinical_examination[nevi_count][right_face]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputFaceRight(type='number' min='0' name='clinical_examination[nevi_count][right_face]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.right_face)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                   .divTableRow
                     .divTableCell(style='width:40%;') Neck
                     .divTableCell(style='width:30%;')
-                      input#inputNeckLeft(type='number' min='0' name='clinical_examination[nevi_count][left_neck]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputNeckLeft(type='number' min='0' name='clinical_examination[nevi_count][left_neck]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.left_neck)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                     .divTableCell(style='width:30%;')
-                      input#inputNeckRight(type='number' min='0' name='clinical_examination[nevi_count][right_neck]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputNeckRight(type='number' min='0' name='clinical_examination[nevi_count][right_neck]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.right_neck)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                   .divTableRow
                     .divTableCell(style='width:40%;') Anterior thorax + abdomen
                     .divTableCell(style='width:30%;')
-                      input#inputThoraxAbdomenLeft(type='number' min='0' name='clinical_examination[nevi_count][left_thorax_abdomen]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputThoraxAbdomenLeft(type='number' min='0' name='clinical_examination[nevi_count][left_thorax_abdomen]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.left_thorax_abdomen)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                     .divTableCell(style='width:30%;')
-                      input#inputThoraxAbdomenRight(type='number' min='0' name='clinical_examination[nevi_count][right_thorax_abdomen]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputThoraxAbdomenRight(type='number' min='0' name='clinical_examination[nevi_count][right_thorax_abdomen]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.right_thorax_abdomen)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                   .divTableRow
                     .divTableCell(style='width:40%;') Back
                     .divTableCell(style='width:30%;')
-                      input#inputBackLeft(type='number' min='0' name='clinical_examination[nevi_count][left_back]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputBackLeft(type='number' min='0' name='clinical_examination[nevi_count][left_back]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.left_back)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                     .divTableCell(style='width:30%;')
-                      input#inputBackRight(type='number' min='0' name='clinical_examination[nevi_count][right_back]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputBackRight(type='number' min='0' name='clinical_examination[nevi_count][right_back]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.right_back)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                   .divTableRow
                     .divTableCell(style='width:40%;') Upper extremities including deltoid
                     .divTableCell(style='width:30%;')
-                      input#inputDeltoidLeft(type='number' min='0' name='clinical_examination[nevi_count][left_deltoid]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputDeltoidLeft(type='number' min='0' name='clinical_examination[nevi_count][left_deltoid]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.left_deltoid)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                     .divTableCell(style='width:30%;')
-                      input#inputDeltoidRight(type='number' min='0' name='clinical_examination[nevi_count][right_deltoid]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputDeltoidRight(type='number' min='0' name='clinical_examination[nevi_count][right_deltoid]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.right_deltoid)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                   .divTableRow
                     .divTableCell(style='width:40%;') Lower extremities including gluteus
                     .divTableCell(style='width:30%;')
-                      input#inputGluteusLeft(type='number' min='0' name='clinical_examination[nevi_count][left_gluteus]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputGluteusLeft(type='number' min='0' name='clinical_examination[nevi_count][left_gluteus]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.left_gluteus)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                     .divTableCell(style='width:30%;')
-                      input#inputGluteusRight(type='number' min='0' name='clinical_examination[nevi_count][right_gluteus]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputGluteusRight(type='number' min='0' name='clinical_examination[nevi_count][right_gluteus]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.right_gluteus)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                   .divTableRow
                     .divTableCell(style='width:40%;') Palms
                     .divTableCell(style='width:30%;')
-                      input#inputPalmsLeft(type='number' min='0' name='clinical_examination[nevi_count][left_palms]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputPalmsLeft(type='number' min='0' name='clinical_examination[nevi_count][left_palms]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.left_palms)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                     .divTableCell(style='width:30%;')
-                      input#inputPalmsRight(type='number' min='0' name='clinical_examination[nevi_count][right_palms]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputPalmsRight(type='number' min='0' name='clinical_examination[nevi_count][right_palms]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.right_palms)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                   .divTableRow
                     .divTableCell(style='width:40%;') Soles
                     .divTableCell(style='width:30%;')
-                      input#inputSolesLeft(type='number' min='0' name='clinical_examination[nevi_count][left_soles]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputSolesLeft(type='number' min='0' name='clinical_examination[nevi_count][left_soles]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.left_soles)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
                     .divTableCell(style='width:30%;')
-                      input#inputSolesRight(type='number' min='0' name='clinical_examination[nevi_count][right_soles]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      input#inputSolesRight(type='number' min='0' name='clinical_examination[nevi_count][right_soles]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.nevi_count.right_soles)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
 
@@ -1264,12 +1264,12 @@ block content
                       span Consider nevi <= 2 mm
                     .divTableCell.NoDivTableBorder(style='padding:10px !important;')
                       select#select2mmNevi.form-control(name='clinical_examination[nevi_2mm_count]')
-                        option(value='Not choosed') Select...
-                        option(value='0') 0
-                        option(value='1-50') 1-50
-                        option(value='51-100') 51-100
-                        option(value='101-200') 101-200
-                        option(value='greater_than_200') > 200
+                        option(value='Not choosed' selected=(result.clinical_examination.nevi_2mm_count == 'Not choosed')) Select...
+                        option(value='0' selected=(result.clinical_examination.nevi_2mm_count == '0')) 0
+                        option(value='1-50' selected=(result.clinical_examination.nevi_2mm_count == '1-50')) 1-50
+                        option(value='51-100' selected=(result.clinical_examination.nevi_2mm_count == '51-100')) 51-100
+                        option(value='101-200' selected=(result.clinical_examination.nevi_2mm_count == '101-200')) 101-200
+                        option(value='greater_than_200' selected=(result.clinical_examination.nevi_2mm_count == 'greater_than_200')) > 200
 
             fieldset#fieldsetAtypicalNevi
               label Clinically atypical nevi
@@ -1290,7 +1290,7 @@ block content
                       span Record number of clinically atypical nevi as a continuous variable:
                     .divTableCell.NoDivTableBorder(style='padding:10px !important;')
                       .form-group
-                        input#inputNumberAtypicalNevi(type='number' min='0' placeholder='Number:' style='width:50%;text-align:center;' name='clinical_examination[atypical_nevi_count]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        input#inputNumberAtypicalNevi(type='number' min='0' placeholder='Number:' style='width:50%;text-align:center;' name='clinical_examination[atypical_nevi_count]' required='required' data-rule-required='true' data-msg-required='Required field' value=result.clinical_examination.atypical_nevi_count)
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                   .divTableRow
@@ -1299,9 +1299,9 @@ block content
                     .divTableCell.NoDivTableBorder(style='padding:10px !important;' name='clinical_examination[atypical_nevi_at_melanoma]' required='required' data-rule-required='true' data-msg-required='Required field')
                       .form-group
                         select#selectClinicalAtypicalNevi.form-control
-                          option(value='' selected='') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
+                          option(value='' selected=(result.clinical_examination.atypical_nevi_at_melanoma == '')) Select...
+                          option(value='No' selected=(result.clinical_examination.atypical_nevi_at_melanoma == 'No')) No
+                          option(value='Yes' selected=(result.clinical_examination.atypical_nevi_at_melanoma == 'Yes')) Yes
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
 
@@ -1322,15 +1322,15 @@ block content
                       .divTableCell.NoDivTableBorder.input-cell
                         label Medium sized CN
                         select#selectMediumSizedCN.form-control(name='clinical_examination[congenital_nevi][medium_sized][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
+                          option(value='' selected=(result.clinical_examination.congenital_nevi.medium_sized.presence == '')) Select...
+                          option(value='No' selected=(result.clinical_examination.congenital_nevi.medium_sized.presence == 'No')) No
+                          option(value='Yes' selected=(result.clinical_examination.congenital_nevi.medium_sized.presence == 'Yes')) Yes
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
                           label Site(s):
-                          input#inputMediumSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][medium_sized][sites]')
+                          input#inputMediumSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][medium_sized][sites]' value=result.clinical_examination.congenital_nevi.medium_sized.sites)
 
               .form-group
                 .divTable
@@ -1339,15 +1339,15 @@ block content
                       .divTableCell.NoDivTableBorder.input-cell
                         label Large sized CN
                         select#selectLargeSizedCN.form-control(name='clinical_examination[congenital_nevi][large_sized][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
+                          option(value='' selected=(result.clinical_examination.congenital_nevi.large_sized.presence == '')) Select...
+                          option(value='No' selected=(result.clinical_examination.congenital_nevi.large_sized.presence == 'No')) No
+                          option(value='Yes' selected=(result.clinical_examination.congenital_nevi.large_sized.presence == 'Yes')) Yes
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
                           label Site(s):
-                          input#inputLargeSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][large_sized][sites]')
+                          input#inputLargeSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][large_sized][sites]' value=result.clinical_examination.congenital_nevi.large_sized.sites)
 
               .form-group
                 .divTable
@@ -1356,15 +1356,15 @@ block content
                       .divTableCell.NoDivTableBorder.input-cell
                         label Giant sized CN
                         select#selectGiantSizedCN.form-control(name='clinical_examination[congenital_nevi][giant_sized][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
+                          option(value='' selected=(result.clinical_examination.congenital_nevi.giant_sized.presence == '')) Select...
+                          option(value='No' selected=(result.clinical_examination.congenital_nevi.giant_sized.presence == 'No')) No
+                          option(value='Yes' selected=(result.clinical_examination.congenital_nevi.giant_sized.presence == 'Yes')) Yes
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
                           label Site(s):
-                          input#inputGiantSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][giant_sized][sites]')
+                          input#inputGiantSizedCN(type='text' placeholder='Right Arm,Left Feet' name='clinical_examination[congenital_nevi][giant_sized][sites]' value=result.clinical_examination.congenital_nevi.giant_sized.sites)
 
             fieldset#fieldsetBlueNevi
               label
@@ -1377,13 +1377,13 @@ block content
                       .divTableCell.NoDivTableBorder.input-cell
                         label(style='color: transparent;') fake
                         select#selectBlueNevi.form-control(name='clinical_examination[blue_nevi][medium_sized][presence]')
-                          option(value='Not choosed') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
+                          option(value='Not choosed' selected=(result.clinical_examination.blue_nevi.medium_sized.presence == 'Not choosed')) Select...
+                          option(value='No' selected=(result.clinical_examination.blue_nevi.medium_sized.presence == 'No')) No
+                          option(value='Yes' selected=(result.clinical_examination.blue_nevi.medium_sized.presence == 'Yes')) Yes
                       .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
                             label(style='font-size: 12px;') Number:
-                            input#inputBlueNevi(type='number' min='1' name='clinical_examination[blue_nevi][medium_sized][count]')
+                            input#inputBlueNevi(type='number' min='1' name='clinical_examination[blue_nevi][medium_sized][count]' value=result.clinical_examination.blue_nevi.medium_sized.count)
             
             fieldset#fieldsetActinicKeratoses
               label Actinic keratoses
@@ -1393,28 +1393,28 @@ block content
                     .divTableRow
                       .divTableCell.NoDivTableBorder.input-cell
                         select#selectActinicKeratoses.form-control(name='clinical_examination[actinic_keratoses][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                          option(value='' selected='') Select...
-                          option(value='No') No
-                          option(value='Yes') Yes
+                          option(value='' selected=(result.clinical_examination.actinic_keratoses.presence == '')) Select...
+                          option(value='No' selected=(result.clinical_examination.actinic_keratoses.presence == 'No')) No
+                          option(value='Yes' selected=(result.clinical_examination.actinic_keratoses.presence == 'Yes')) Yes
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
                           .group(style='margin-bottom:0%;vertical-align: bottom;')
                             select#selectActinicKeratosesSite.form-control(name='clinical_examination[actinic_keratoses][site]')
-                              option(value='' selected='') Select Site...
-                              option(value='Scalp') Scalp
-                              option(value='Face') Face
-                              option(value='Other')
+                              option(value='' selected=(result.clinical_examination.actinic_keratoses.site == '')) Select Site...
+                              option(value='Scalp' selected=(result.clinical_examination.actinic_keratoses.site == 'Scalp')) Scalp
+                              option(value='Face' selected=(result.clinical_examination.actinic_keratoses.site == 'Face')) Face
+                              option(value='Other' selected=(result.clinical_examination.actinic_keratoses.site == 'Other'))
                                 | Other exposed areas (hands, arms, trunk, legs)
                       .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
                           .group(style='margin-bottom:0%;vertical-align: bottom;')
                             select#selectActinicKeratosesDistribution.form-control(name='clinical_examination[actinic_keratoses][distribution]')
-                              option(value='' selected='') Select Distribution...
-                              option(value='Isolated') Isolated/Scattered
-                              option(value='Clustered') Clustered
-                              option(value='Confluent') Confluent
+                              option(value='' selected=(result.clinical_examination.actinic_keratoses.distribution == '')) Select Distribution...
+                              option(value='Isolated' selected=(result.clinical_examination.actinic_keratoses.distribution == 'Isolated')) Isolated/Scattered
+                              option(value='Clustered' selected=(result.clinical_examination.actinic_keratoses.distribution == 'Clustered')) Clustered
+                              option(value='Confluent' selected=(result.clinical_examination.actinic_keratoses.distribution == 'Confluent')) Confluent
 
             fieldset#fieldsetKSC_BCC_SCC
               label(style='margin-bottom: 40px;')
@@ -1426,38 +1426,38 @@ block content
                     .divTableCell.NoDivTableBorder.input-cell
                       label BCC:
                       select#selectBCC.form-control(name='clinical_examination[BCC][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                        option(value='' selected='') Select...
-                        option(value='No') No
-                        option(value='Yes') Yes
+                        option(value='' selected=(result.clinical_examination.BCC.presence == '')) Select...
+                        option(value='No' selected=(result.clinical_examination.BCC.presence == 'No')) No
+                        option(value='Yes' selected=(result.clinical_examination.BCC.presence == 'Yes')) Yes
                       span.error1
                           i.error-log.fa.fa-exclamation-triangle
                     .divTableCell.NoDivTableBorder.input-cell
                       .hidden-control
                         label Number:
-                        input#inputBCCNumber(type='number' min='1' name='clinical_examination[BCC][count]')
+                        input#inputBCCNumber(type='number' min='1' name='clinical_examination[BCC][count]' value=result.clinical_examination.BCC.count)
                     .divTableCell.NoDivTableBorder.input-cell
                       .hidden-control
                         label Site(s):
-                        input#inputBCC(type='text' name='clinical_examination[BCC][sites]')
+                        input#inputBCC(type='text' name='clinical_examination[BCC][sites]' value=result.clinical_examination.BCC.sites)
               .form-group
                 .divTable
                   .divTableRow.spaced
                     .divTableCell.NoDivTableBorder.input-cell
                       label Invasive SCC:
                       select#selectSCC.form-control(name='clinical_examination[invasive_SCC][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                        option(value='' selected='') Select...
-                        option(value='No') No
-                        option(value='Yes') Yes
+                        option(value='' selected=(result.clinical_examination.invasive_SCC.presence == '')) Select...
+                        option(value='No' selected=(result.clinical_examination.invasive_SCC.presence == 'No')) No
+                        option(value='Yes' selected=(result.clinical_examination.invasive_SCC.presence == 'Yes')) Yes
                       span.error1
                           i.error-log.fa.fa-exclamation-triangle
                     .divTableCell.NoDivTableBorder.input-cell
                       .hidden-control
                         label Number:
-                        input#inputSCCNumber(type='number' min='1' name='clinical_examination[invasive_SCC][count]')
+                        input#inputSCCNumber(type='number' min='1' name='clinical_examination[invasive_SCC][count]' value=result.clinical_examination.invasive_SCC.count)
                     .divTableCell.NoDivTableBorder.input-cell
                       .hidden-control
                         label Site(s):
-                        input#inputSCC(type='text' name='clinical_examination[invasive_SCC][sites]')
+                        input#inputSCC(type='text' name='clinical_examination[invasive_SCC][sites]' value=result.clinical_examination.invasive_SCC.sites)
 
               .form-group
                 .divTable
@@ -1465,19 +1465,19 @@ block content
                     .divTableCell.NoDivTableBorder.input-cell
                       label In situ SCC:
                       select#selectSCCSite.form-control(name='clinical_examination[insitu_SCC][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                        option(value='' selected='') Select...
-                        option(value='No') No
-                        option(value='Yes') Yes
+                        option(value='' selected=(result.clinical_examination.insitu_SCC.presence == '')) Select...
+                        option(value='No' selected=(result.clinical_examination.insitu_SCC.presence == 'No')) No
+                        option(value='Yes' selected=(result.clinical_examination.insitu_SCC.presence == 'Yes')) Yes
                       span.error1
                           i.error-log.fa.fa-exclamation-triangle
                     .divTableCell.NoDivTableBorder.input-cell
                       .hidden-control
                         label Number:
-                        input#inputSCCSiteNumber(type='number' min='1' name='clinical_examination[insitu_SCC][count]')
+                        input#inputSCCSiteNumber(type='number' min='1' name='clinical_examination[insitu_SCC][count]' value=result.clinical_examination.insitu_SCC.count)
                     .divTableCell.NoDivTableBorder.input-cell
                       .hidden-control
                         label Site(s):
-                        input#inputSCCSite(type='text' name='clinical_examination[insitu_SCC][sites]')
+                        input#inputSCCSite(type='text' name='clinical_examination[insitu_SCC][sites]' value=result.clinical_examination.insitu_SCC.sites)
 
           div.alphaformfooter
           div.formfooter
@@ -1530,9 +1530,9 @@ block content
                     .divTableCell.NoDivTableBorder.question-cell
                       span(style='font-weight: bold;') Have you ever become pregnant?
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#Pregnant_Yes(type='radio' name='medical_history[pregnancy][presence]' value='Yes')
+                      input#Pregnant_Yes(type='radio' name='medical_history[pregnancy][presence]' value='Yes' checked=(result.medical_history.pregnancy.presence == "Yes"))
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#Pregnant_No(type='radio' name='medical_history[pregnancy][presence]' value='No' checked='checked')
+                      input#Pregnant_No(type='radio' name='medical_history[pregnancy][presence]' value='No' checked=(result.medical_history.pregnancy.presence == "No"))
                     .divTableCell.NoDivTableBorder(style='width: auto;')
                       span
                       
@@ -1549,12 +1549,12 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       .form-group
-                        input(type='number' min='1' value='' name='medical_history[pregnancy][count]')
+                        input(type='number' min='1' name='medical_history[pregnancy][count]' value=result.medical_history.pregnancy.count)
                     .divTableCell.NoDivTableBorder
-                      input.datepicker.form-control(type='text' placeholder='dd/mm/yyyy' name='medical_history[pregnancy][birthday]')
+                      input.datepicker.form-control(type='text' placeholder='dd/mm/yyyy' name='medical_history[pregnancy][birthday]' value=result.medical_history.pregnancy.birthday)
                     .divTableCell.NoDivTableBorder
                       .form-group
-                        input(type='number' min='1' value='' name='medical_history[pregnancy][miscarriages]')
+                        input(type='number' min='1' name='medical_history[pregnancy][miscarriages]' value=result.medical_history.pregnancy.miscarriages)
                       
               .form-group
                 hr(style='width: 60%;')
@@ -1574,9 +1574,9 @@ block content
                           b during
                         |  pregnancy ?
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#During_Yes(type='radio' name='medical_history[pregnancy][melanoma_in_the_same_period]' value='Yes')
+                      input#During_Yes(type='radio' name='medical_history[pregnancy][melanoma_in_the_same_period]' value='Yes' checked=(result.medical_history.pregnancy.melanoma_in_the_same_period == "Yes"))
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#During_No(type='radio' name='medical_history[pregnancy][melanoma_in_the_same_period]' value='No' checked='checked')
+                      input#During_No(type='radio' name='medical_history[pregnancy][melanoma_in_the_same_period]' value='No' checked=(result.medical_history.pregnancy.melanoma_in_the_same_period == "No"))
                     .divTableCell.NoDivTableBorder(style='width: auto;')
                       span
 
@@ -1598,9 +1598,9 @@ block content
                           b before
                         |  pregnancy ?
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#Before_Yes(type='radio' name='medical_history[pregnancy][melanoma_before_pregnancy][presence]' value='Yes')
+                      input#Before_Yes(type='radio' name='medical_history[pregnancy][melanoma_before_pregnancy][presence]' value='Yes' checked=(result.medical_history.pregnancy.melanoma_before_pregnancy.presence == "Yes"))
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#Before_No(type='radio' name='medical_history[pregnancy][melanoma_before_pregnancy][presence]' value='No' checked='checked')
+                      input#Before_No(type='radio' name='medical_history[pregnancy][melanoma_before_pregnancy][presence]' value='No' checked=(result.medical_history.pregnancy.melanoma_before_pregnancy.presence == "No"))
                     .divTableCell.NoDivTableBorder(style='width: auto;')
                       span
                   
@@ -1612,7 +1612,7 @@ block content
                           b before
                         |  pregnancy ?
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input(type='number' min='1' name='medical_history[pregnancy][melanoma_before_pregnancy][years_before]' style='margin: 10px 0px 0px 0px; width: 100%;')
+                      input(type='number' min='1' name='medical_history[pregnancy][melanoma_before_pregnancy][years_before]' style='margin: 10px 0px 0px 0px; width: 100%;' value=result.medical_history.pregnancy.melanoma_before_pregnancy.years_before)
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
                       input(type='number' style='margin: 10px 0px 0px 0px; width: 100%; visibility: hidden;')
                     .divTableCell.NoDivTableBorder(style='width: auto;')
@@ -1636,9 +1636,9 @@ block content
                           b after
                         |  pregnancy ?
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#After_Yes(type='radio' name='medical_history[pregnancy][melanoma_after_pregnancy][presence]' value='Yes')
+                      input#After_Yes(type='radio' name='medical_history[pregnancy][melanoma_after_pregnancy][presence]' value='Yes' checked=(result.medical_history.pregnancy.melanoma_after_pregnancy.presence == "Yes"))
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#After_No(type='radio' name='medical_history[pregnancy][melanoma_after_pregnancy][presence]' value='No' checked='checked')
+                      input#After_No(type='radio' name='medical_history[pregnancy][melanoma_after_pregnancy][presence]' value='No' checked=(result.medical_history.pregnancy.melanoma_after_pregnancy.presence == "No"))
                     .divTableCell.NoDivTableBorder(style='width: auto;')
                       span
 
@@ -1650,7 +1650,7 @@ block content
                           b after
                         |  pregnancy ?
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input(type='number' min='1' name='medical_history[pregnancy][melanoma_after_pregnancy][years_after]' style='margin: 10px 0px 0px 0px; width: 100%;')
+                      input(type='number' min='1' name='medical_history[pregnancy][melanoma_after_pregnancy][years_after]' style='margin: 10px 0px 0px 0px; width: 100%;' value=result.medical_history.pregnancy.melanoma_after_pregnancy.years_after)
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
                       input(type='number' style='margin: 10px 0px 0px 0px; width: 100%; visibility: hidden;')
                     .divTableCell.NoDivTableBorder(style='width: auto;')
@@ -1674,9 +1674,9 @@ block content
                           b before
                         |  diagnosis ?
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#Hormone_Yes(type='radio' name='medical_history[pregnancy][hormone]' value='Yes')
+                      input#Hormone_Yes(type='radio' name='medical_history[pregnancy][hormone]' value='Yes' checked=(result.medical_history.pregnancy.hormone == "Yes"))
                     .divTableCell.NoDivTableBorder(style='width: 10%;')
-                      input#Hormone_No(type='radio' name='medical_history[pregnancy][hormone]' value='No' checked='checked')
+                      input#Hormone_No(type='radio' name='medical_history[pregnancy][hormone]' value='No' checked=(result.medical_history.pregnancy.hormone == "No"))
                     .divTableCell.NoDivTableBorder(style='width: auto;')
                       span
             <br>
@@ -1700,11 +1700,11 @@ block content
                     .divTableCell.NoDivTableBorder.question-cell
                       span Before or After melanoma diagnosis ?
                     .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
-                      input#BBC_Before_Diagnosis(type='radio' name='medical_history[BCC][period]' value='before')
+                      input#BBC_Before_Diagnosis(type='radio' name='medical_history[BCC][period]' value='before' checked=(result.medical_history.BCC.period=="before"))
                     .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
-                      input#BBC_After_Diagnosis(type='radio' name='medical_history[BCC][period]' value='after' checked='checked')
+                      input#BBC_After_Diagnosis(type='radio' name='medical_history[BCC][period]' value='after' checked=(result.medical_history.BCC.period=="after"))
                     .divTableCell.NoDivTableBorder(style='width: auto;')
-                      input(type='number' min='1' name='medical_history[BCC][count]' value='')
+                      input(type='number' min='1' name='medical_history[BCC][count]' value=result.medical_history.BCC.count)
               hr
               .form-group
                 p
@@ -1728,11 +1728,11 @@ block content
                     .divTableCell.NoDivTableBorder.question-cell
                       span Before or After melanoma diagnosis ?
                     .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
-                      input#SSC_Invasive_Before_Diagnosis(type='radio' name='medical_history[SSC][period]' value='before')
+                      input#SSC_Invasive_Before_Diagnosis(type='radio' name='medical_history[SSC][period]' value='before' checked=(result.medical_history.SSC.period=="before"))
                     .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
-                      input#SSC_Invasive_After_Diagnosis(type='radio' name='medical_history[SSC][period]' value='after' checked='checked')
+                      input#SSC_Invasive_After_Diagnosis(type='radio' name='medical_history[SSC][period]' value='after' checked=(result.medical_history.SSC.period=="after"))
                     .divTableCell.NoDivTableBorder(style='width: auto;')
-                      input(type='number' min='1' name='medical_history[SSC][count]' value='')
+                      input(type='number' min='1' name='medical_history[SSC][count]' value=result.medical_history.SSC.count)
               hr
               .form-group
                 p
@@ -1756,11 +1756,11 @@ block content
                     .divTableCell.NoDivTableBorder.question-cell
                       span Before or After melanoma diagnosis ?
                     .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
-                      input#SCC_InSitu_Before_Diagnosis(type='radio' name='medical_history[SSC_in_situ][period]' value='Yes')
+                      input#SCC_InSitu_Before_Diagnosis(type='radio' name='medical_history[SSC_in_situ][period]' value='before' checked=(result.medical_history.SSC_in_situ.period=="before"))
                     .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
-                      input#SCC_InSitu_After_Diagnosis(type='radio' name='medical_history[SSC_in_situ][period]' value='No' checked='checked')
+                      input#SCC_InSitu_After_Diagnosis(type='radio' name='medical_history[SSC_in_situ][period]' value='after' checked=(result.medical_history.SSC_in_situ.period=="after"))
                     .divTableCell.NoDivTableBorder(style='width: auto;')
-                      input(type='number' min='1' name='medical_history[SSC_in_situ][count]' value='')
+                      input(type='number' min='1' name='medical_history[SSC_in_situ][count]' value=result.medical_history.SSC_in_situ.count)
               hr
               .form-group
                 p
@@ -1808,16 +1808,16 @@ block content
                 p(style='color:red;') (Optional)
               .form-group
                 select#germline.form-control(style='margin-left:0px !important' name='family_history[germline]')
-                  option(value='' selected='') Select germline...
-                  option(value='Not tested') Not tested
-                  option(value='CDKN2A') CDKN2A
-                  option(value='CDK4') CDK4
-                  option(value='BAP-1') BAP-1
-                  option(value='MC1R') MC1R
-                  option(value='TERT') TERT
-                  option(value='MITF') MITF
-                  option(value='POT1') POT1
-                  option(value='Other') Other
+                  option(value='' selected=(result.family_history.germline == '')) Select germline...
+                  option(value='Not tested' selected=(result.family_history.germline == '')) Not tested
+                  option(value='CDKN2A' selected=(result.family_history.germline == 'CDKN2A')) CDKN2A
+                  option(value='CDK4' selected=(result.family_history.germline == 'CDK4')) CDK4
+                  option(value='BAP-1' selected=(result.family_history.germline == 'BAP-1')) BAP-1
+                  option(value='MC1R' selected=(result.family_history.germline == 'MC1R')) MC1R
+                  option(value='TERT' selected=(result.family_history.germline == 'TERT')) TERT
+                  option(value='MITF' selected=(result.family_history.germline == 'MITF')) MITF
+                  option(value='POT1' selected=(result.family_history.germline == 'POT1')) POT1
+                  option(value='Other' selected=(result.family_history.germline == 'Other')) Other
 
 
             fieldset#fieldsetFamilyHistoryOther(style='margin-top: 20px;')
@@ -1839,22 +1839,22 @@ block content
                       span Were you able to respond to the questions of the last three sections?
                     .divTableCell.NoDivTableBorder.input-cell(name='section_C_evaluation[completed]')
                       select#selectEvalC.form-control
-                        option(value='Not choosed' selected='') Select...
-                        option(value='All') All questions
-                        option(value='Most') Most questions
-                        option(value='Half') Nearly half of the questions
-                        option(value='Few') Very few questions
+                        option(value='Not choosed' selected=(result.section_C_evaluation.completed == 'Not choosed')) Select...
+                        option(value='All' selected=(result.section_C_evaluation.completed == 'All')) All questions
+                        option(value='Most' selected=(result.section_C_evaluation.completed == 'Most')) Most questions
+                        option(value='Half' selected=(result.section_C_evaluation.completed == 'Half')) Nearly half of the questions
+                        option(value='Few' selected=(result.section_C_evaluation.completed == 'Few')) Very few questions
                   .divTableRow
                     .divTableCell.NoDivTableBorder.question-cell
                       span Which questions of this Section did you consider difficult to fill in?
                     .divTableCell.NoDivTableBorder.input-cell(name='section_C_evaluation[difficult][answer]')
                       select.form-control.selectQuestions
-                        option(value='Not choosed' selected='') Select...
-                        option(value='None') None
-                        option(value='Yes') Insert numbers of questions
+                        option(value='Not choosed' selected=(result.section_C_evaluation.difficult.answer == 'Not choosed')) Select...
+                        option(value='None' selected=(result.section_C_evaluation.difficult.answer == 'None')) None
+                        option(value='Yes' selected=(result.section_C_evaluation.difficult.answer == 'Yes')) Insert numbers of questions
                     .divTableCell.NoDivTableBorder.input-cell
                       .hidden-control
-                        input#QuestionHiddenC(type='text', placeholder='1, 2, 3, etc.' name='section_C_evaluation[difficult][questions]')
+                        input#QuestionHiddenC(type='text', placeholder='1, 2, 3, etc.' name='section_C_evaluation[difficult][questions]' value=result.section_C_evaluation.difficult.questions)
 
           div.alphaformfooter
           div.formfooter
@@ -2083,7 +2083,7 @@ block content
                   label 
                     | Breslow thickness(mm)
                   .form-group
-                    input.form-control(type='number' step="0.01" min='0.01' name='melanoma_characteristics[first_melanoma][known][breslow_thickness]' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                    input.form-control(type='number' step="0.001" min='0.001' name='melanoma_characteristics[first_melanoma][known][breslow_thickness]' required='required' data-rule-required='true' data-msg-required='Please include your weight')
                     span.error1
                         i.error-log.fa.fa-exclamation-triangle
 
