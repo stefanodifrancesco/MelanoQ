@@ -979,6 +979,75 @@ block content
           <details>
             <summary>FAMILY HISTORY</summary>
             
+            .tables_list
+              legend Family history of melanoma
+              <table class="json-to-table">
+                <thead>
+                  <tr>
+                    <th class="jsl"></th>
+                    <th>Presence</th>
+                    <th>Melanoma</th>
+                    <th>Side</th>
+                    <th>Degree</th>
+                    <th>Diagnosis age</th>
+                  </tr>
+                </thead>
+                <tbody>
+                if (typeof(result.family_history.relatives_with_melanoma) !== 'undefined')
+                  each rel in result.family_history.relatives_with_melanoma
+                    <tr>
+                      <td class="jsl">1</td>
+                      <td>#{rel.presence}</td>
+                      <td>#{rel.melanoma}</td>
+                      <td>#{rel.side}</td>                      
+                      <td>#{rel.degree}</td>                      
+                      <td>#{rel.diagnosis_age}</td>
+                    </tr>
+                else
+                  <tr>
+                    <td class="jsl"></td>
+                    <td colspan='2'>No relatives with melanoma</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            if (typeof(result.family_history.germline) !== 'undefined')
+              table.summary-table                  
+                tbody
+                    tr
+                      td
+                        legend Germline status
+                        span #{result.family_history.germline}
+
+            .tables_list
+              legend Family history of other cancers
+              <table class="json-to-table">
+                <thead>
+                  <tr>
+                    <th class="jsl"></th>
+                    <th>Cancer Type</th>
+                    <th>Side</th>
+                    <th>Degree</th>
+                    <th>Pedigree</th>
+                  </tr>
+                </thead>
+                <tbody>
+                if (typeof(result.family_history.relatives_with_other_cancers) !== 'undefined')
+                  each rel in result.family_history.relatives_with_other_cancers
+                    <tr>
+                      <td class="jsl">1</td>
+                      <td>#{rel.cancer_type}</td>
+                      <td>#{rel.side}</td>
+                      <td>#{rel.degree}</td>                      
+                      <td>#{rel.pedigree}</td>
+                    </tr>
+                else
+                  <tr>
+                    <td class="jsl"></td>
+                    <td colspan='2'>No relatives with other cancers</td>
+                  </tr>
+                </tbody>
+              </table>
             
           
           </details>
