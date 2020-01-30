@@ -977,8 +977,8 @@ $(document).ready(function() {
 function set_JSON_Tables(json_object) {
 
     if (json_object.demographic.residency_list != undefined) {
-        List_Residency = sort_JSON_Object(json_object.demographic.residency_list, ["start_date", "end_date", "address", "coordinates"]);
-        $("#fieldResidency .json_residency").createTable(List_Residency);
+        List_Residency = sort_JSON_Object(json_object.demographic.residency_list, ["address","start_date", "end_date","coordinates"]);
+        $(".json_residency").createTable(List_Residency);
     }
     if (json_object.demographic.SIC_list != undefined) {
         history_list = sort_JSON_Object(json_object.demographic.SIC_list, ["SIC_Code", "SIC_Group", "start_date", "end_date"]);
