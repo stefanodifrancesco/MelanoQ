@@ -153,7 +153,7 @@ $(document).ready(function() {
             $(this).parents("#fieldsetSunlamps").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSunlamps").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "No" || $(this).val() == "NoChoosed") {
+        if ($(this).val() == "No" || $(this).val() == "Not choosed") {
             $(this).parents("#fieldsetSunlamps").find(".show-control input[type=number]").prop("required", false).val("");
             $(this).parents("#fieldsetSunlamps").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
@@ -165,7 +165,7 @@ $(document).ready(function() {
             $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", true);
             $(this).parents("#fieldsetSmoking").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "Never" || $(this).val() == "NoChoosed") {
+        if ($(this).val() == "Never" || $(this).val() == "Not choosed") {
             $(this).parents("#fieldsetSmoking").find(".show-control input[type=number]").prop("required", false).val("");
             $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", false).val("");
             $(this).parents("#fieldsetSmoking").find(".show-control").addClass("hidden-control").removeClass("show-control");
@@ -177,8 +177,8 @@ $(document).ready(function() {
             $(this).parents("#fieldsetVitamin").find(".hidden-control select").prop("required", true);
             $(this).parents("#fieldsetVitamin").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
         }
-        if ($(this).val() == "No" || $(this).val() == "NoChoosed") {
-            $(this).parents("#fieldsetVitamin").find(".show-control select").prop("required", false).val("NoChoosed");
+        if ($(this).val() == "No" || $(this).val() == "Not choosed") {
+            $(this).parents("#fieldsetVitamin").find(".show-control select").prop("required", false).val("Not choosed");
             $(this).parents("#fieldsetVitamin").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -188,7 +188,7 @@ $(document).ready(function() {
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "No" || $(this).val() == "NoChoosed") {
+        if ($(this).val() == "No" || $(this).val() == "Not choosed") {
             $(this).parents("#fieldsetSectionBEval").find(".show-control input[type=number]").prop("required", false).val("");
             $(this).parents("#fieldsetSectionBEval").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
@@ -199,7 +199,7 @@ $(document).ready(function() {
             $(this).parents(".divTableRow").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "No" || $(this).val() == "NoChoosed") {
+        if ($(this).val() == "No" || $(this).val() == "Not choosed") {
             $(this).parents(".divTableRow").find(".show-control input[type=text]").prop("required", false).val("");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
@@ -223,8 +223,8 @@ $(document).ready(function() {
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents("#fieldsetActinicKeratoses").find(".show-control #selectActinicKeratosesSite").prop("required", false).val("NoChoosed");
-            $(this).parents("#fieldsetActinicKeratoses").find(".show-control #selectActinicKeratosesDistribution").prop("required", false).val("NoChoosed");
+            $(this).parents("#fieldsetActinicKeratoses").find(".show-control #selectActinicKeratosesSite").prop("required", false).val("Not choosed");
+            $(this).parents("#fieldsetActinicKeratoses").find(".show-control #selectActinicKeratosesDistribution").prop("required", false).val("Not choosed");
             $(this).parents("#fieldsetActinicKeratoses").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -234,7 +234,7 @@ $(document).ready(function() {
             $(this).parents(".divTable").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTable").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "No" || $(this).val() == "NoChoosed") {
+        if ($(this).val() == "No" || $(this).val() == "Not choosed") {
             $(this).parents(".divTable").find(".show-control input").prop("required", false).val("");
             $(this).parents(".divTable").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
@@ -532,13 +532,13 @@ $(document).ready(function() {
         var NonCutaneousAge = $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val();
         var YearNonCutaneous = $("#Additional_Neoplasia .year-datepicker").val();
         var AdditionalNeoplasia = {};
-        if (SelectAddNeoplasia != "No Choosed" && NonCutaneousAge != "" && YearNonCutaneous != "") {
+        if (SelectAddNeoplasia != "Not choosed" && NonCutaneousAge != "" && YearNonCutaneous != "") {
             AdditionalNeoplasia.Name = SelectAddNeoplasia;
             AdditionalNeoplasia.Age_of_diagnosis = NonCutaneousAge;
             AdditionalNeoplasia.Year_of_diagnosis = YearNonCutaneous;
             List_Additional_Neoplasias.push(AdditionalNeoplasia);
             $(".json-non-cutaneous-additional-neoplasia").createTable(List_Additional_Neoplasias);
-            $("#Additional_Neoplasia #NonCutaneous_Select").val("No Choosed");
+            $("#Additional_Neoplasia #NonCutaneous_Select").val("Not choosed");
             $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val(1);
             $("#Additional_Neoplasia .year-datepicker").val("");
         } else {
@@ -547,7 +547,7 @@ $(document).ready(function() {
     });
 
     $("#Additional_Neoplasia .cancel .close").on("click", function(evt) {
-        $("#Additional_Neoplasia #NonCutaneous_Select").val("No Choosed");
+        $("#Additional_Neoplasia #NonCutaneous_Select").val("Not choosed");
         $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val(1);
         $("#Additional_Neoplasia .year-datepicker").val("");
     });
@@ -556,17 +556,17 @@ $(document).ready(function() {
 
     $("#FamilyHistoryUpTo3Degree #relative").on("change", function(evt) {
         $("#FamilyHistoryUpTo3Degree .divTableRow input").attr("style", "width:100%;");
-        if ($(this).val() != "NoChoosed" || $(this).val() != "No" || $(this).val() != "Not know") {
+        if ($(this).val() != "Not choosed" || $(this).val() != "No" || $(this).val() != "Not know") {
             $("#FamilyHistoryUpTo3Degree").find(".hidden-modal-control").removeClass("hidden").addClass("show");
             if ($(this).val() == "Other") {
                 $("#FamilyHistoryUpTo3Degree .specify").parents(".divTableRow").removeClass("hidden").addClass("show");
                 $("#FamilyHistoryUpTo3Degree .divTableRow").css("text-align", "left");
             }
         }
-        if ($(this).val() == "NoChoosed" || $(this).val() == "No" || $(this).val() == "Not know") {
+        if ($(this).val() == "Not choosed" || $(this).val() == "No" || $(this).val() == "Not know") {
             $("#FamilyHistoryUpTo3Degree").find(".show").removeClass("show").addClass("hidden");
             $("#FamilyHistoryUpTo3Degree .specify").val("");
-            $("#FamilyHistoryUpTo3Degree #selectMelanomaType,#FamilyHistoryUpTo3Degree #selectRelativeSide,#FamilyHistoryUpTo3Degree #selectRelativeDegree").val("NoChoosed");
+            $("#FamilyHistoryUpTo3Degree #selectMelanomaType,#FamilyHistoryUpTo3Degree #selectRelativeSide,#FamilyHistoryUpTo3Degree #selectRelativeDegree").val("Not choosed");
             $("#FamilyHistoryUpTo3Degree .hidden-modal-control input[type=number]").val("");
             $("#FamilyHistoryUpTo3Degree .divTableRow").css("text-align", "center");
         }
@@ -1069,7 +1069,7 @@ function Initialize() {
 
 function Reset_Values(tag_fieldset) {
     $(tag_fieldset + " " + "input").val("");
-    $(tag_fieldset + " " + "select").val("NoChoosed");
+    $(tag_fieldset + " " + "select").val("Not choosed");
     $(tag_fieldset + " " + "textarea").val("");
 };
 
@@ -1126,7 +1126,7 @@ function Create_Datepicker(tag_ID, tag_Append) {
 history_list = [];
 
 function DDL_from_JSON(tag_ID_DDL, url) {
-    var dropdown = $("#" + tag_ID_DDL).html("<option value='NoChoosed'>Select Sic Group ...</option>");
+    var dropdown = $("#" + tag_ID_DDL).html("<option value='Not choosed'>Select Sic Group ...</option>");
 
 
     $.getJSON('SicRanges.json', function(data) {
@@ -1137,12 +1137,12 @@ function DDL_from_JSON(tag_ID_DDL, url) {
     $("#" + tag_ID_DDL).on("change", function(data) {
         $("#dropSIC,#history_date_start,#history_date_end").remove();
         var valore = $("#" + tag_ID_DDL).val();
-        if (valore != "NoChoosed") {
-            var dropdown2 = $("<select id='dropSIC' class='form-control'>").html("<option value='NoChoosed'>Select Sic Code ...</option>");
+        if (valore != "Not choosed") {
+            var dropdown2 = $("<select id='dropSIC' class='form-control'>").html("<option value='Not choosed'>Select Sic Code ...</option>");
             dropdown2.on("change", function() {
                 $("#history_date_start,#history_date_end").remove();
                 $(this).parents("fieldset").find(".div_date").empty();
-                if ($(dropdown2).val() != "NoChoosed") {
+                if ($(dropdown2).val() != "Not choosed") {
                     var date_input_start = $("<input type=text id='history_date_start' class='form-control datepicker auto-width'>");
                     $(date_input_start).datepicker({
                         format: 'dd-M-yyyy',
@@ -1161,7 +1161,7 @@ function DDL_from_JSON(tag_ID_DDL, url) {
                             history_list.push(history_row);
                             // create_Table_Delete(history_list,"json-table-wrapper-history","fieldHistory");
                             $("#json-table-wrapper-history").createTable(history_list);
-                            $("#History").val("NoChoosed");
+                            $("#History").val("Not choosed");
                             $("#dropSIC,#history_date_start,#history_date_end,.div_date span").remove();
                         });
                         $("#fieldHistory").find(".div_date").append($("<div class=''><span>Date end</span>").append(date_input_end));
