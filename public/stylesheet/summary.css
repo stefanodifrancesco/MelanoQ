@@ -136,11 +136,10 @@
 .summary-table {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 15px;
+    border-spacing: 0px 15px;
 }
 
 .tables_list {
-    padding-left: 15px;
     padding-right: 15px;
 }
 
@@ -327,4 +326,61 @@ pre>code {
 #msform .action-button:hover,
 #msform .action-button:focus {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #4285f4;
+}
+
+.json-to-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid rgb(221, 221, 221);
+    font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;
+}
+
+.json-to-table th {
+    width: 50%;
+    border: 1px solid rgb(221, 221, 221);
+    background-color: rgb(243, 243, 243);
+    color: rgb(14, 14, 14);
+    height: 30px;
+    font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+th.jsl {
+    min-width: 18px;
+    width: 18px;
+    padding: 0px 10px;
+    vertical-align: middle;
+    border: 1px solid rgb(221, 221, 221);
+    background-color: rgb(243, 243, 243);
+    color: rgb(14, 14, 14);
+    height: 30px;
+    font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.json-to-table td {
+    width: 50%;
+    border: 1px solid rgb(221, 221, 221);
+    background-color: rgb(255, 255, 255);
+    color: rgb(14, 14, 14);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 25px;
+    font-size: 13px;
+    font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;
+}
+
+td.jsl {
+    min-width: 18px;
+    width: 18px;
+    padding: 0px 10px;
+    vertical-align: middle;
+    border: 1px solid rgb(221, 221, 221);
+    background-color: rgb(255, 255, 255);
+    color: rgb(14, 14, 14);
+    height: 25px;
+    font-size: 13px;
+    font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;
 }

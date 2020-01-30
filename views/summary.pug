@@ -58,8 +58,11 @@ block content
                       td
                         legend Other (complex family history)
                         span #{result.general.other_melanoma_type}
+          
           </details>
           
+
+
           <details>
             <summary>DEMOGRAPHIC</summary>
             <hr/>
@@ -94,53 +97,57 @@ block content
                     span #{result.demographic.occupational_status}
 
             
-            <div class="tables_list">
+            .tables_list
               legend History of occupations
-              <table class="json-to-table" style="border-collapse: collapse; width: 100%; border: 1px solid rgb(221, 221, 221); font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">
+              <table class="json-to-table">
                 <thead>
                   <tr>
-                    <th class="jsl" style="min-width: 18px; width: 18px; padding: 0px 10px; vertical-align: middle; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;"></th>
-                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">SIC Group</th>
-                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">SIC Code</th>
-                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">Start Date</th>
-                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">End Date</th>
+                    <th class="jsl"></th>
+                    <th>SIC Group</th>
+                    <th>SIC Code</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="jsl" style="min-width: 18px; width: 18px; padding: 0px 10px; vertical-align: middle; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">1</td>
-                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">Finance, Insurance and Real Estate</td>
-                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">SECURITY BROKERS, DEALERS &amp; FLOTATION COMPANIES</td>
-                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">05-Jan-2020</td><td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">30-Jan-2020</td>
-                  </tr>
+                  each SIC in result.demographic.SIC_list
+                    <tr>
+                      <td class="jsl">1</td>
+                      <td>#{SIC.SIC_Group}</td>
+                      <td>#{SIC.SIC_Code}</td>
+                      <td>#{SIC.start_date}</td>
+                      <td>#{SIC.end_date}</td>
+                    </tr>
                 </tbody>
               </table>
-            </div>
               
-            <div class="tables_list">
+            .tables_list
               legend Residencies list
-              <table class="json-to-table" style="border-collapse: collapse; width: 100%; border: 1px solid rgb(221, 221, 221); font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">
+              <table class="json-to-table">
                 <thead>
                   <tr>
-                    <th class="jsl" style="min-width: 18px; width: 18px; padding: 0px 10px; vertical-align: middle; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;"></th>
-                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">Start Date</th>
-                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">End Date</th>
-                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">Address</th>
-                    <th style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;">Coordinates</th>
+                    <th class="jsl"></th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Address</th>
+                    <th>Coordinates</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="jsl" style="min-width: 18px; width: 18px; padding: 0px 10px; vertical-align: middle; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">1</td>
-                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">24-Jan-2020</td>
-                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">06-Feb-2020</td>
-                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">Reutlingen</td>
-                    <td style="width: 25%; border: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255); color: rgb(14, 14, 14); padding-left: 10px; padding-right: 10px; height: 25px; font-size: 13px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;">48.40645980834961,9.365389823913574</td>
-                  </tr>
+                  each residency in result.demographic.residency_list
+                    <tr>
+                      <td class="jsl">1</td>
+                      <td>#{residency.start_date}</td>
+                      <td>#{residency.end_date}</td>
+                      <td>#{residency.address}</td>
+                      <td>#{residency.coordinates}</td>
+                    </tr>
                 </tbody>
               </table>
-            </div>
+              
           </details>
+
+
 
           <details>
             <summary>PHENOTYPE</summary>
@@ -224,8 +231,11 @@ block content
                     if result.phenotype.nevi == "Many"
                       div(style="height: 135px; width: 118px;")
                         img(src='img/Nevi/Many_Nevi.png' width='100' height='130' style="margin-left: 8px;")      
+          
           </details>
           
+
+
           <details>
             <summary>ULTRAVIOLET EXPOSURE</summary>
             <hr/>
@@ -286,7 +296,7 @@ block content
               .form-group
                 .divTable
                   .divTableBody
-                    .divTableRow
+                    .divTableRow(style="border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;")
                       .divTableCell Age Period
                       .divTableCell Exposure Period
                       .divTableCell Exposure Time
@@ -365,7 +375,7 @@ block content
               .form-group
                 .divTable
                   .divTableBody
-                    .divTableRow
+                    .divTableRow(style="border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;")
                       .divTableCell Age Period
                       .divTableCell Summer Sunscreen
                       .divTableCell Summer Sunscreen
@@ -437,8 +447,11 @@ block content
                   td
                     legend Phototherapy (UVB-PUVA)
                     span #{result.ultraviolet.phototherapy}
+          
           </details>
           
+
+
           <details>
             <summary>LIFESTYLE HABITS</summary>
             <hr/>
@@ -469,60 +482,60 @@ block content
                       td
                         legend Quantity
                         span #{result.lifestyle.vitamins_last_year.quantity}
-                  tr
-                    td(colspan='4')
-                      legend What type of vitamins did you receive and how often?
-                      .group
-                        .divTable
-                          .divTableRow
-                            .divTableCell.NoDivTableBorder(style='width:16%;') &beta;-carotene
-                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin A
-                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin C
-                          .divTableRow
-                            .divTableCell(style='width:16%;')
-                              span #{result.lifestyle.betacarotene_frequency}
-                            .divTableCell(style='width:16%;')
-                              span #{result.lifestyle.vitamin_A_frequency}
-                            .divTableCell(style='width:16%;')
-                              span #{result.lifestyle.vitamin_C_frequency}
-                          .divTableRow
-                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin D
-                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin E
-                            .divTableCell.NoDivTableBorder(style='width:16%;') Multivitamins
-                          .divTableRow
-                            .divTableCell(style='width:16%;')
-                              span #{result.lifestyle.vitamin_D_frequency}
-                            .divTableCell(style='width:16%;')
-                              span #{result.lifestyle.vitamin_E_frequency}
-                            .divTableCell(style='width:16%;')
-                              span #{result.lifestyle.multivitamins_frequency}
-                  tr
-                    td(colspan='4')
-                      legend For how long did you receive vitamins?
-                      .group
-                        .divTable
-                          .divTableRow
-                            .divTableCell.NoDivTableBorder(style='width:16%;') &beta;-carotene
-                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin A
-                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin C
-                          .divTableRow
-                            .divTableCell(style='width:16%;')
-                              span #{result.lifestyle.betacarotene_period}
-                            .divTableCell(style='width:16%;')
-                              span #{result.lifestyle.vitamin_A_period}
-                            .divTableCell(style='width:16%;')
-                              span #{result.lifestyle.vitamin_C_period}
-                          .divTableRow
-                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin D
-                            .divTableCell.NoDivTableBorder(style='width:16%;') Vitamin E
-                            .divTableCell.NoDivTableBorder(style='width:16%;') Multivitamins
-                          .divTableRow
-                            .divTableCell(style='width:16%;')
-                              span #{result.lifestyle.vitamin_D_period}
-                            .divTableCell(style='width:16%;')
-                              span #{result.lifestyle.vitamin_E_period}
-                            .divTableCell(style='width:16%;')
-                              span #{result.lifestyle.multivitamins_period}
+            .tables_list      
+              legend What type of vitamins did you receive and how often?
+              .group
+                .divTable
+                  .divTableRow(style="border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;")
+                    .divTableCell &beta;-carotene
+                    .divTableCell Vitamin A
+                    .divTableCell Vitamin C
+                  .divTableRow
+                    .divTableCell
+                      span #{result.lifestyle.betacarotene_frequency}
+                    .divTableCell
+                      span #{result.lifestyle.vitamin_A_frequency}
+                    .divTableCell
+                      span #{result.lifestyle.vitamin_C_frequency}
+                  .divTableRow(style="border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;")
+                    .divTableCell Vitamin D
+                    .divTableCell Vitamin E
+                    .divTableCell Multivitamins
+                  .divTableRow
+                    .divTableCell
+                      span #{result.lifestyle.vitamin_D_frequency}
+                    .divTableCell
+                      span #{result.lifestyle.vitamin_E_frequency}
+                    .divTableCell
+                      span #{result.lifestyle.multivitamins_frequency}
+
+            .tables_list
+              legend For how long did you receive vitamins?
+              .group
+                .divTable
+                  .divTableRow(style="border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;")
+                    .divTableCell &beta;-carotene
+                    .divTableCell Vitamin A
+                    .divTableCell Vitamin C
+                  .divTableRow
+                    .divTableCell
+                      span #{result.lifestyle.betacarotene_period}
+                    .divTableCell
+                      span #{result.lifestyle.vitamin_A_period}
+                    .divTableCell
+                      span #{result.lifestyle.vitamin_C_period}
+                  .divTableRow(style="border: 1px solid rgb(221, 221, 221); background-color: rgb(243, 243, 243); color: rgb(14, 14, 14); height: 30px; font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif; font-size: 14px; text-transform: capitalize;")
+                    .divTableCell Vitamin D
+                    .divTableCell Vitamin E
+                    .divTableCell Multivitamins
+                  .divTableRow
+                    .divTableCell
+                      span #{result.lifestyle.vitamin_D_period}
+                    .divTableCell
+                      span #{result.lifestyle.vitamin_E_period}
+                    .divTableCell
+                      span #{result.lifestyle.multivitamins_period}
+          
           </details>
           
           <details>
@@ -607,10 +620,12 @@ block content
                   td
                     legend Nevi 2mm count
                     span #{result.clinical_examination.nevi_2mm_count}
+
                 tr
                   td
                     legend Clinically atypical nevi
                     span #{result.clinical_examination.atypical_nevi_count}
+
                 tr
                   td
                     legend Congenital nevi Medium sized
@@ -638,6 +653,15 @@ block content
                       
                 tr
                   td
+                    legend Blue Nevi
+                    span #{result.clinical_examination.blue_nevi.presence}
+                  if result.clinical_examination.blue_nevi.presence == "Yes"
+                    td
+                      legend Count
+                      span #{result.clinical_examination.blue_nevi.count}
+
+                tr
+                  td
                     legend Actinic keratoses
                     span #{result.clinical_examination.actinic_keratoses.presence}
                   if result.clinical_examination.actinic_keratoses.presence == "Yes"
@@ -648,7 +672,44 @@ block content
                       legend Distribution
                       span #{result.clinical_examination.actinic_keratoses.distribution}
 
+                span Current (i.e. at time of visit) non-melanoma skin cancer
+                tr
+                  td
+                    legend BCC
+                    span #{result.clinical_examination.BCC.presence}
+                  if result.clinical_examination.BCC.presence == "Yes"
+                    td
+                      legend Sites
+                      span #{result.clinical_examination.BCC.sites}
+                    td
+                      legend Count
+                      span #{result.clinical_examination.BCC.count}
+                tr
+                  td
+                    legend Invasive SCC
+                    span #{result.clinical_examination.invasive_SCC.presence}
+                  if result.clinical_examination.BCC.presence == "Yes"
+                    td
+                      legend Sites
+                      span #{result.clinical_examination.invasive_SCC.sites}
+                    td
+                      legend Count
+                      span #{result.clinical_examination.invasive_SCC.count}
+                tr
+                  td
+                    legend In situ SCC
+                    span #{result.clinical_examination.insitu_SCC.presence}
+                  if result.clinical_examination.BCC.presence == "Yes"
+                    td
+                      legend Sites
+                      span #{result.clinical_examination.insitu_SCC.sites}
+                    td
+                      legend Count
+                      span #{result.clinical_examination.insitu_SCC.count}
+          
           </details>
+
+
 
           table.summary-table
             tbody
@@ -665,13 +726,264 @@ block content
                       legend Questions numbers:
                       span #{result.section_B_evaluation.difficult.questions}
 
+
+
           <details>
             <summary>MEDICAL HISTORY</summary>
+          
+            .tables_list
+              legend History of medical (non-cancer) diagnoses
+              <table class="json-to-table">
+                <thead>
+                  <tr>
+                    <th class="jsl"></th>
+                    <th>Code</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                if (typeof(result.medical_history.diagnoses) !== 'undefined')
+                  each diagnose in result.medical_history.diagnoses
+                    <tr>
+                      <td class="jsl">1</td>
+                      <td>#{diagnose.code}</td>
+                      <td>#{diagnose.description}</td>
+                    </tr>
+                else
+                  <tr>
+                    <td class="jsl"></td>
+                    <td colspan='2'>No diagnoses</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            <br>
+
+            .tables_list
+              legend Previous and concomitant treatments (related to above-mentioned diagnoses)
+              <table class="json-to-table">
+                <thead>
+                  <tr>
+                    <th class="jsl"></th>
+                    <th>Start date</th>
+                    <th>End date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                if (typeof(result.medical_history.medication_list) !== 'undefined')
+                  each med in result.medical_history.medication_list
+                    <tr>
+                      <td class="jsl">1</td>
+                      <td>#{med.start_date}</td>
+                      <td>#{med.end_date}</td>
+                    </tr>
+                else
+                  <tr>
+                    <td class="jsl"></td>
+                    <td colspan='2'>No medications</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            legend Have you ever become pregnant?
+            span #{result.medical_history.pregnancy.presence}
+            if result.medical_history.pregnancy.presence == "Yes"
+              table.summary-table
+                tbody
+                  tr
+                    td
+                      legend Number of full-term pregnancies:
+                      span #{result.medical_history.pregnancy.count}
+                    td
+                      legend Date of birth of children:
+                      span #{result.medical_history.pregnancy.birthday}
+                    td
+                      legend Number of miscarriages:
+                      span #{result.medical_history.pregnancy.miscarriages}
+
+                  tr
+                    td
+                      legend Did melanoma occur during pregnancy ?
+                      span #{result.medical_history.pregnancy.melanoma_in_the_same_period}
+
+                  tr
+                    td
+                      legend Did melanoma occur before pregnancy ?
+                      span #{result.medical_history.pregnancy.melanoma_before_pregnancy.presence}
+                    if result.medical_history.pregnancy.melanoma_before_pregnancy.presence == "Yes"
+                      td
+                        legend How many years before pregnancy ?
+                        span #{result.medical_history.pregnancy.melanoma_before_pregnancy.years_before}
+
+                  tr
+                    td
+                      legend Did melanoma occur after pregnancy ?
+                      span #{result.medical_history.pregnancy.melanoma_after_pregnancy.presence}
+                    if result.medical_history.pregnancy.melanoma_after_pregnancy.presence == "Yes"
+                      td
+                        legend How many years after pregnancy ?
+                        span #{result.medical_history.pregnancy.melanoma_after_pregnancy.years_after}
+
+                  tr
+                    td
+                      legend History of hormone-assisted pregnancy (IVF) before diagnosis ?
+                      span #{result.medical_history.pregnancy.hormone}
+
+            table.summary-table
+              legend Lifetime history of non-melanoma skin cancer, KSC (basal cell carcinoma, BCC, and squamous cell carcinoma, SCC)                    
+              tbody
+                  tr
+                    td
+                      legend Before or After melanoma diagnosis?
+                      span #{result.medical_history.BCC.period}
+                    td
+                      legend Number of BCCs
+                      span #{result.medical_history.BCC.count}
+              
+            .tables_list
+              legend BCC list
+              <table class="json-to-table">
+                <thead>
+                  <tr>
+                    <th class="jsl"></th>
+                    <th>Type</th>
+                    <th>Site</th>
+                    <th>Diagnosis Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                if (typeof(result.medical_history.BCC.sites) !== 'undefined')
+                  each bcc in result.medical_history.BCC.sites
+                    <tr>
+                      <td class="jsl">1</td>
+                      <td>#{bcc.Site}</td>
+                      <td>#{bcc.Type}</td>
+                      <td>#{bcc.Diagnosis_date}</td>
+                    </tr>
+                else
+                  <tr>
+                    <td class="jsl"></td>
+                    <td colspan='2'>No BCCs</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            table.summary-table                   
+              tbody
+                  tr
+                    td
+                      legend Before or After melanoma diagnosis?
+                      span #{result.medical_history.SSC.period}
+                    td
+                      legend Number of SCCs
+                      span #{result.medical_history.SSC.count}
+
+            .tables_list
+              legend Invasive SCC list
+              <table class="json-to-table">
+                <thead>
+                  <tr>
+                    <th class="jsl"></th>
+                    <th>Type</th>
+                    <th>Site</th>
+                    <th>Diagnosis Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                if (typeof(result.medical_history.SSC.sites) !== 'undefined')
+                  each scc in result.medical_history.SSC.sites
+                    <tr>
+                      <td class="jsl">1</td>
+                      <td>#{scc.Site}</td>
+                      <td>#{scc.Type}</td>
+                      <td>#{scc.Diagnosis_date}</td>
+                    </tr>
+                else
+                  <tr>
+                    <td class="jsl"></td>
+                    <td colspan='2'>No SCCs</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            table.summary-table                  
+              tbody
+                  tr
+                    td
+                      legend Before or After melanoma diagnosis?
+                      span #{result.medical_history.SSC_in_situ.period}
+                    td
+                      legend Number of 'in situ SCCs'
+                      span #{result.medical_history.SSC_in_situ.count}
+
+            .tables_list
+              legend In situ SCC list
+              <table class="json-to-table">
+                <thead>
+                  <tr>
+                    <th class="jsl"></th>
+                    <th>Type</th>
+                    <th>Site</th>
+                    <th>Diagnosis Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                if (typeof(result.medical_history.SSC_in_situ.sites) !== 'undefined')
+                  each insituSCC in result.medical_history.SSC_in_situ.sites
+                    <tr>
+                      <td class="jsl">1</td>
+                      <td>#{insituSCC.Site}</td>
+                      <td>#{insituSCC.Type}</td>
+                      <td>#{insituSCC.Diagnosis_date}</td>
+                    </tr>
+                else
+                  <tr>
+                    <td class="jsl"></td>
+                    <td colspan='2'>No SCCs</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            .tables_list
+              legend Other non-cutaneous neoplasia
+              <table class="json-to-table">
+                <thead>
+                  <tr>
+                    <th class="jsl"></th>
+                    <th>Name</th>
+                    <th>Age Of Diagnosis</th>
+                    <th>Year Of Diagnosis</th>
+                  </tr>
+                </thead>
+                <tbody>
+                if (typeof(result.medical_history.neoplasias) !== 'undefined')
+                  each neoplasia in result.medical_history.neoplasias
+                    <tr>
+                      <td class="jsl">1</td>
+                      <td>#{neoplasia.Name}</td>
+                      <td>#{neoplasia.Age_of_diagnosis}</td>
+                      <td>#{neoplasia.Year_of_diagnosis}</td>
+                    </tr>
+                else
+                  <tr>
+                    <td class="jsl"></td>
+                    <td colspan='2'>No neoplasia</td>
+                  </tr>
+                </tbody>
+              </table>
+
           </details>
+
+
 
           <details>
             <summary>FAMILY HISTORY</summary>
+            
+            
+          
           </details>
+
+
 
           table.summary-table
             tbody
