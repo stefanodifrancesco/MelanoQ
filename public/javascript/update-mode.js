@@ -325,9 +325,11 @@ $(document).ready(function() {
     $("#fieldsetPregnancy_History #Pregnant_Yes,#Pregnant_No").on("click", function(evt) {
         if ($(this).attr("id") == "Pregnant_Yes") {
             $("#fieldsetPregnancy_History .Pregnancy_Stats").removeClass("hide-transition").addClass("show-transition");
+            $("#fieldsetPregnancy_History .Pregnancy_Stats :input").prop("disabled", false);
         }
         if ($(this).attr("id") == "Pregnant_No") {
             $("#fieldsetPregnancy_History .Pregnancy_Stats").addClass("hide-transition").removeClass("show-transition");
+            $("#fieldsetPregnancy_History .Pregnancy_Stats :input").prop("disabled", true);
         }
     });
 
@@ -923,6 +925,9 @@ $(document).ready(function() {
 
     $('#thirdMelanomaCharacteristics :input').attr('disabled', true);
     /****** Initially disables all melanoma characteristics inputs ******/
+
+    $("#fieldsetPregnancy_History .Pregnancy_Stats :input").prop("disabled", true);
+
 
     Initialize();
 
