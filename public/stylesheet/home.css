@@ -16,8 +16,6 @@
 /*home*/
 
 .questionnaires-tab {
-    margin-top: 20px;
-    margin-left: -1px;
     width: 90%;
     padding-left: 0px;
     padding-right: 0px;
@@ -25,6 +23,10 @@
     right: 0;
     margin: auto;
     padding-top: 30px;
+}
+
+.nav-tabs {
+    border-bottom: 0px;
 }
 
 .nav-tabs .nav-item {
@@ -46,7 +48,8 @@
     background: white;
     font-weight: bolder;
     font-size: 1rem;
-    margin-top: 0px;
+    margin-top: 2px;
+    border-color: #dee2e6;
 }
 
 .tab-content {
@@ -135,4 +138,25 @@
     background-color: #3ab372;
     color: white;
     font-size: 1rem;
+}
+
+tbody {
+    display: block;
+    height: 550px;
+    overflow: auto;
+}
+
+thead,
+tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+thead {
+    width: calc( 100% - 1em)
+}
+
+table {
+    width: 400px;
 }

@@ -34,12 +34,13 @@ block content
             div#personaltab.tab-pane.fade.show.active
               if profileData.questionnaires
                 table.questionnaires-list
-                  tbody
+                  thead
                     tr
                       th Database code number
                       th Creation date
                       th Link to questionnaire
                       th Update questionnaire
+                  tbody
                     each quest in profileData.questionnaires
                       tr
                         td #{quest.code_number}
@@ -68,12 +69,13 @@ block content
             div#completetab.tab-pane.fade
               if result
                 table.questionnaires-list
-                  tbody
+                  thead
                     tr
                       th Database code number
                       th Creation date
                       th Link to questionnaire
                       th Update questionnaire
+                  tbody
                     each quest in result
                       tr
                         td #{quest._source.general.code_number}
