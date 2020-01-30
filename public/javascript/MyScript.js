@@ -31,7 +31,7 @@ $(document).ready(function() {
                 },
                 jsonp: "jsonp",
                 success: function(data) {
-                    console.log(data);
+
                     var result = data.resourceSets[0];
                     if (result) {
                         if (result.estimatedTotal > 0) {
@@ -66,7 +66,7 @@ $(document).ready(function() {
                 "<div class='divTableCell NoDivTableBorder'>" +
                 "<div class='residency_datepicker form-group'>" +
                 "<label>From:</label>" +
-                "<input class='new_datepicker form-control start_date' type='text' placeholder='dd-M-yyyy' required='required' data-rule-required='true' data-msg-required='Required field'>" +
+                "<input class='new_datepicker form-control start_date' type='text' placeholder='dd-M-yyyy'>" +
                 "<span class='error1'>" +
                 "<i class='error-log fa fa-exclamation-triangle'></i>" +
                 "</div>" +
@@ -74,7 +74,7 @@ $(document).ready(function() {
                 "<div class='divTableCell NoDivTableBorder'>" +
                 "<div class='residency_datepicker form-group'>" +
                 "<label>To:</label>" +
-                "<input class='new_datepicker form-control end_date' type='text' placeholder='dd-M-yyyy' required='required' data-rule-required='true' data-msg-required='Required field'>" +
+                "<input class='new_datepicker form-control end_date' type='text' placeholder='dd-M-yyyy'>" +
                 "<span class='error1'>" +
                 "<i class='error-log fa fa-exclamation-triangle'></i>" +
                 "</div>" +
@@ -82,6 +82,7 @@ $(document).ready(function() {
                 "</div>" +
                 "</div>" +
                 "</div>");
+            $(".residency_date_class").removeClass("hidden-control");
             $(".new_datepicker").datepicker({
                 format: 'dd-M-yyyy',
                 autoclose: true
@@ -98,6 +99,7 @@ $(document).ready(function() {
                     $(".json_residency").createTable(List_Residency);
                     $('#searchBox').val('');
                     $("#fieldResidency .new_datepicker").val('');
+                    $(".residency_date_class").addClass("hidden-control");
                 }
             });
         }

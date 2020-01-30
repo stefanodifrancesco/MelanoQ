@@ -76,7 +76,7 @@ block content
                       th Update questionnaire
                     each quest in result
                       tr
-                        td #{quest._source.code_number}
+                        td #{quest._source.general.code_number}
                         td #{quest.insert_date}
                         td
                           form(action='/find' method='post')

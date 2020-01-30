@@ -205,14 +205,13 @@ block content
             fieldset#fieldResidency
               label
                 | Residency (multiple residency can be added)
-              #myForm
-                .form-group
-                  div(class="ui-widget")
-                    input#searchBox(required='required' data-rule-required='true' data-msg-required='Please record all places where the case/control has resided for >6 months')
-                    span.error1
-                      i.error-log.fa.fa-exclamation-triangle
-                .residency_date_class
-              .json_residency
+              .form-group
+                div(class="ui-widget")
+                  input#searchBox(placeholder='Insert at least 2 characters' required='required' data-rule-required='true' data-msg-required='Please record all places where the case/control has resided for more than 6 months')
+                  span.error1
+                    i.error-log.fa.fa-exclamation-triangle
+            .residency_date_class
+            .json_residency
               
             fieldset#fieldsetEducation
               label 
@@ -300,15 +299,15 @@ block content
                         span Tan Deeply
                     .divTableRow
                       .divTableCell
-                        input#No_Tan(type='radio' name='phenotype[skin_tan]' value='NoTan' required='required' data-rule-required='true' data-msg-required='Select exactly one')
+                        input#No_Tan(type='radio' name='phenotype[skin_tan]' value='No tan' required='required' data-rule-required='true' data-msg-required='Select exactly one')
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Tan_Light(type='radio' name='phenotype[skin_tan]' value='TansLightly')
+                        input#Tan_Light(type='radio' name='phenotype[skin_tan]' value='Tans lightly')
                       .divTableCell
-                        input#Tan_Moderate(type='radio' name='phenotype[skin_tan]' value='TansModerately')
+                        input#Tan_Moderate(type='radio' name='phenotype[skin_tan]' value='Tans moderately')
                       .divTableCell
-                        input#Tan_Deep(type='radio' name='phenotype[skin_tan]' value='TansDeeply')
+                        input#Tan_Deep(type='radio' name='phenotype[skin_tan]' value='Tans deeply')
                     .divTableRow
                       .divTableCell
                         img(src='img/Skin-Tan/No_Tan_1.png' width='100' height='110')
@@ -333,13 +332,13 @@ block content
                         span Dark (dark brown, black)
                     .divTableRow
                       .divTableCell
-                        input#Light_Eyes(type='radio' name='phenotype[eye_color]' value='light' required='required' data-rule-required='true' data-msg-required='Select exactly one')
+                        input#Light_Eyes(type='radio' name='phenotype[eye_color]' value='Light' required='required' data-rule-required='true' data-msg-required='Select exactly one')
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Medium_Eyes(type='radio' name='phenotype[eye_color]' value='medium')
+                        input#Medium_Eyes(type='radio' name='phenotype[eye_color]' value='Medium')
                       .divTableCell
-                        input#Dark_Eyes(type='radio' name='phenotype[eye_color]' value='dark')
+                        input#Dark_Eyes(type='radio' name='phenotype[eye_color]' value='Dark')
                     .divTableRow
                       .divTableCell
                         img(src='img/Color-Eye/Light_eyes-removebg.png' width='150' height='75' style="margin-right: 10px;")
@@ -366,17 +365,17 @@ block content
                         span Dark Color
                     .divTableRow
                       .divTableCell
-                        input#Red_Hair(type='radio' name='phenotype[hair_color]' value='red' required='required' data-rule-required='true' data-msg-required='Select exactly one')
+                        input#Red_Hair(type='radio' name='phenotype[hair_color]' value='Red' required='required' data-rule-required='true' data-msg-required='Select exactly one')
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Blonde_Hair(type='radio' name='phenotype[hair_color]' value='blonde')
+                        input#Blonde_Hair(type='radio' name='phenotype[hair_color]' value='Blonde')
                       .divTableCell
                         input#Light_brown_Hair(type='radio' name='phenotype[hair_color]' value='Light brown')
                       .divTableCell
                         input#Dark_brown_Hair(type='radio' name='phenotype[hair_color]' value='Dark brown')
                       .divTableCell
-                        input#Dark_Hair(type='radio' name='phenotype[hair_color]' value='red')
+                        input#Dark_Hair(type='radio' name='phenotype[hair_color]' value='Black')
                     .divTableRow
                       .divTableCell
                         img(src='img/Color-hair/Red_hair-removebg.png' width='150' height='50')
@@ -408,15 +407,15 @@ block content
                         span Many Freckles
                     .divTableRow
                       .divTableCell
-                        input#No_Freckles(type='radio' name='phenotype[freckles]' value='NoFreckles' required='required' data-rule-required='true' data-msg-required='Select exactly one')
+                        input#No_Freckles(type='radio' name='phenotype[freckles]' value='None' required='required' data-rule-required='true' data-msg-required='Select exactly one')
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Few_Freckles(type='radio' name='phenotype[freckles]' value='FewFreckles')
+                        input#Few_Freckles(type='radio' name='phenotype[freckles]' value='Few')
                       .divTableCell
-                        input#Some_Freckles(type='radio' name='phenotype[freckles]' value='SomeFreckles')
+                        input#Some_Freckles(type='radio' name='phenotype[freckles]' value='Some')
                       .divTableCell
-                        input#Many_Freckles(type='radio' name='phenotype[freckles]' value='ManyFreckles')
+                        input#Many_Freckles(type='radio' name='phenotype[freckles]' value='Many')
                     .divTableRow
                       .divTableCell
                         img(src='img/Freckles/No_freckles.png' width='100' height='130')
@@ -443,15 +442,15 @@ block content
                         span Many Nevi
                     .divTableRow
                       .divTableCell
-                        input#No_Nevi(type='radio' name='phenotype[nevi]' value='NoNevi' required='required' data-rule-required='true' data-msg-required='Select exactly one')
+                        input#No_Nevi(type='radio' name='phenotype[nevi]' value='None' required='required' data-rule-required='true' data-msg-required='Select exactly one')
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        input#Few_Nevi(type='radio' name='phenotype[nevi]' value='FewNevi')
+                        input#Few_Nevi(type='radio' name='phenotype[nevi]' value='Few')
                       .divTableCell
-                        input#Some_Nevi(type='radio' name='phenotype[nevi]' value='SomeNevi')
+                        input#Some_Nevi(type='radio' name='phenotype[nevi]' value='Some')
                       .divTableCell
-                        input#Many_Nevi(type='radio' name='phenotype[nevi]' value='ManyNevi')
+                        input#Many_Nevi(type='radio' name='phenotype[nevi]' value='Many')
                     .divTableRow
                       .divTableCell
                         img(src='img/Nevi/None_Nevi.png' width='100' height='130')
@@ -639,7 +638,7 @@ block content
                           option(value='' selected='') Select...
                           option(value='No') No
                           option(value='Yes') Yes
-                          option(value='NotKnow') Not know
+                          option(value='Not known') Not know
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder.input-cell
@@ -657,7 +656,7 @@ block content
                           option(value='' selected='') Select...
                           option(value='No') No
                           option(value='Yes') Yes
-                          option(value='NotKnow') Not know
+                          option(value='Not known') Not know
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder.input-cell
@@ -675,7 +674,7 @@ block content
                           option(value='' selected='') Select...
                           option(value='No') No
                           option(value='Yes') Yes
-                          option(value='NotKnow') Not know
+                          option(value='Not known') Not know
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder.input-cell
@@ -693,7 +692,7 @@ block content
                           option(value='' selected='') Select...
                           option(value='No') No
                           option(value='Yes') Yes
-                          option(value='NotKnow') Not know
+                          option(value='Not known') Not know
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell.NoDivTableBorder.input-cell
@@ -804,7 +803,7 @@ block content
               .form-group
                 span Did you use a hat ?
                 select#id_Hat.form-control(name='ultraviolet[hat_frequency]')
-                  option(value='NoChoosed') Select sun time exposure ...
+                  option(value='Not choosed') Select sun time exposure ...
                   option(value='never') Never
                   option(value='less_than_50%') time exposure < 50%
                   option(value='greater_than_50%') time exposure > 50%
@@ -813,7 +812,7 @@ block content
               .form-group
                 span Did you use protective clothing ?
                 select#id_Clothing.form-control(name='ultraviolet[clothing]')
-                  option(value='NoChoosed') Select sun time exposure ...
+                  option(value='Not choosed') Select sun time exposure ...
                   option(value='never') Never
                   option(value='less_than_50%') time exposure < 50%
                   option(value='greater_than_50%') time exposure > 50%
@@ -822,7 +821,7 @@ block content
               .form-group
                 span Did you seek the shade or stay indoors during peak UVR hours?
                 select#id_UVR.form-control(name='ultraviolet[peak_UVR_hours]')
-                  option(value='NoChoosed') Select sun time exposure ...
+                  option(value='Not choosed') Select sun time exposure ...
                   option(value='rarely') Rarely
                   option(value='sometimes') Sometimes
                   option(value='always') Always
@@ -874,7 +873,7 @@ block content
                       span Did you have phototherapy?
                     .divTableCell.NoDivTableBorder(style='width:32%;')
                       select#id_Phototherapy.form-control(name='ultraviolet[phototherapy]')
-                        option(value='NoChoosed') Select ...
+                        option(value='Not choosed') Select ...
                         option(value='ever') Ever
                         option(value='never') Never
 
@@ -938,7 +937,7 @@ block content
               p(style='color:red;') (Optional)
               .form-group
                 select#id_Vitamin.form-control(name='lifestyle[vitamins_last_year][presence]')
-                  option(value='NoChoosed') Select ...
+                  option(value='Not choosed') Select ...
                   option(value='No') No
                   option(value='Yes')
                     | Yes
@@ -949,7 +948,7 @@ block content
                       span How much:
                     .divTableCell.NoDivTableBorder(style='width: 50%;')
                       select#id_Vitamin_quantity.form-control(name='lifestyle[vitamins_last_year][quantity]')
-                        option(value='NoChoosed') Select quantity...
+                        option(value='Not choosed') Select quantity...
                         option(value='Never') Never
                         option(value='1/3_days_at_month') 1-3 days/month
                         option(value='1/3_days_at_week') 1-3 days/week
@@ -969,7 +968,7 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       select#id_BetaCarotene_quantity.form-control(name='lifestyle[betacarotene_frequency]')
-                        option(value='NoChoosed') Select quantity...
+                        option(value='Not choosed') Select quantity...
                         option(value='Never') Never
                         option(value='1/3_days_at_month') 1-3 days/month
                         option(value='1/3_days_at_week') 1-3 days/week
@@ -977,7 +976,7 @@ block content
                         option(value='Everyday') Everyday
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminB_quantity.form-control(name='lifestyle[vitamin_A_frequency]')
-                        option(value='NoChoosed') Select quantity...
+                        option(value='Not choosed') Select quantity...
                         option(value='Never') Never
                         option(value='1/3_days_at_month') 1-3 days/month
                         option(value='1/3_days_at_week') 1-3 days/week
@@ -985,7 +984,7 @@ block content
                         option(value='Everyday') Everyday
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminC_quantity.form-control(name='lifestyle[vitamin_C_frequency]')
-                        option(value='NoChoosed') Select quantity...
+                        option(value='Not choosed') Select quantity...
                         option(value='Never') Never
                         option(value='1/3_days_at_month') 1-3 days/month
                         option(value='1/3_days_at_week') 1-3 days/week
@@ -1001,7 +1000,7 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminD_quantity.form-control(name='lifestyle[vitamin_D_frequency]')
-                        option(value='NoChoosed') Select quantity...
+                        option(value='Not choosed') Select quantity...
                         option(value='Never') Never
                         option(value='1/3_days_at_month') 1-3 days/month
                         option(value='1/3_days_at_week') 1-3 days/week
@@ -1009,7 +1008,7 @@ block content
                         option(value='Everyday') Everyday
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminE_quantity.form-control(name='lifestyle[vitamin_E_frequency]')
-                        option(value='NoChoosed') Select quantity...
+                        option(value='Not choosed') Select quantity...
                         option(value='Never') Never
                         option(value='1/3_days_at_month') 1-3 days/month
                         option(value='1/3_days_at_week') 1-3 days/week
@@ -1017,7 +1016,7 @@ block content
                         option(value='Everyday') Everyday
                     .divTableCell.NoDivTableBorder
                       select#id_MultiVitamin_quantity.form-control(name='lifestyle[multivitamins_frequency]')
-                        option(value='NoChoosed') Select quantity...
+                        option(value='Not choosed') Select quantity...
                         option(value='Never') Never
                         option(value='1/3_days_at_month') 1-3 days/month
                         option(value='1/3_days_at_week') 1-3 days/week
@@ -1037,21 +1036,21 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       select#id_BetaCarotene_Time.form-control(name='lifestyle[betacarotene_period]')
-                        option(value='NoChoosed') Select Time...
+                        option(value='Not choosed') Select Time...
                         option(value='less_than_1_year') < 1 year
                         option(value='from_1_to_4_years') 1-4 years
                         option(value='from_5_to_9_years') 5-9 years
                         option(value='more_than_10_years') > 10 years
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminB_Time.form-control(name='lifestyle[vitamin_A_period]')
-                        option(value='NoChoosed') Select Time...
+                        option(value='Not choosed') Select Time...
                         option(value='less_than_1_year') < 1 year
                         option(value='from_1_to_4_years') 1-4 years
                         option(value='from_5_to_9_years') 5-9 years
                         option(value='more_than_10_years') > 10 years
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminC_Time.form-control(name='lifestyle[vitamin_C_period]')
-                        option(value='NoChoosed') Select Time...
+                        option(value='Not choosed') Select Time...
                         option(value='less_than_1_year') < 1 year
                         option(value='from_1_to_4_years') 1-4 years
                         option(value='from_5_to_9_years') 5-9 years
@@ -1066,21 +1065,21 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminD_Time.form-control(name='lifestyle[vitamin_D_period]')
-                        option(value='NoChoosed') Select Time...
+                        option(value='Not choosed') Select Time...
                         option(value='less_than_1_year') < 1 year
                         option(value='from_1_to_4_years') 1-4 years
                         option(value='from_5_to_9_years') 5-9 years
                         option(value='more_than_10_years') > 10 years
                     .divTableCell.NoDivTableBorder
                       select#id_VitaminE_Time.form-control(name='lifestyle[vitamin_E_period]')
-                        option(value='NoChoosed') Select Time...
+                        option(value='Not choosed') Select Time...
                         option(value='less_than_1_year') < 1 year
                         option(value='from_1_to_4_years') 1-4 years
                         option(value='from_5_to_9_years') 5-9 years
                         option(value='more_than_10_years') > 10 years
                     .divTableCell.NoDivTableBorder
                       select#id_MultiVitamin_Time.form-control(name='lifestyle[multivitamins_period]')
-                        option(value='NoChoosed') Select Time...
+                        option(value='Not choosed') Select Time...
                         option(value='less_than_1_year') < 1 year
                         option(value='from_1_to_4_years') 1-4 years
                         option(value='from_5_to_9_years') 5-9 years
@@ -1093,10 +1092,10 @@ block content
                 .divTable
                   .divTableRow.spaced
                     .divTableCell.NoDivTableBorder.question-cell
-                      span 19) Were you able to respond to the questions of these last three sections ?
+                      span 19) Were you able to respond to the questions of the last three sections ?
                     .divTableCell.NoDivTableBorder.input-cell(name='section_B_evaluation[completed]')
                       select#selectEval.form-control
-                        option(value='NoChoosed' selected='') Select...
+                        option(value='Not choosed' selected='') Select...
                         option(value='All') All questions
                         option(value='Most') Most questions
                         option(value='Half') Nearly half of the questions
@@ -1106,8 +1105,8 @@ block content
                       span 20) Which questions of these last three sections did you consider difficult to fill in?
                     .divTableCell.NoDivTableBorder.input-cell(name='section_B_evaluation[difficult][answer]')
                       select#selectQuestions.form-control
-                        option(value='NoChoosed' selected='') Select...
-                        option(value='No') None
+                        option(value='Not choosed' selected='') Select...
+                        option(value='None') None
                         option(value='Yes') Insert numbers of questions
                     .divTableCell.NoDivTableBorder.input-cell
                       .hidden-control
@@ -1265,7 +1264,7 @@ block content
                       span Consider nevi <= 2 mm
                     .divTableCell.NoDivTableBorder(style='padding:10px !important;')
                       select#select2mmNevi.form-control(name='clinical_examination[nevi_2mm_count]')
-                        option(value='NoChoosed') Select...
+                        option(value='Not choosed') Select...
                         option(value='0') 0
                         option(value='1-50') 1-50
                         option(value='51-100') 51-100
@@ -1378,7 +1377,7 @@ block content
                       .divTableCell.NoDivTableBorder.input-cell
                         label(style='color: transparent;') fake
                         select#selectBlueNevi.form-control(name='clinical_examination[blue_nevi][medium_sized][presence]')
-                          option(value='NoChoosed') Select...
+                          option(value='Not choosed') Select...
                           option(value='No') No
                           option(value='Yes') Yes
                       .divTableCell.NoDivTableBorder.input-cell
@@ -1706,14 +1705,14 @@ block content
                       input#BBC_After_Diagnosis(type='radio' name='medical_history[BCC][period]' value='after' checked='checked')
                     .divTableCell.NoDivTableBorder(style='width: auto;')
                       input(type='number' min='1' name='medical_history[BCC][count]' value='')
-
-                .form-group
-                  p
-                    // Da committare solo il button
-                    button#Insert-BCC_Sites.btn.btn-info(type='button' data-toggle='modal' data-target='#Sites_Modal')
-                      | Insert BBC Site(s)
-                  .BCC_Sites_Json_Table
               hr
+              .form-group
+                p
+                  // Da committare solo il button
+                  button#Insert-BCC_Sites.btn.btn-info(type='button' data-toggle='modal' data-target='#Sites_Modal')
+                    | Insert BBC Site(s)
+                .BCC_Sites_Json_Table
+
               .form-group
                 #SCC_Invasive_History.divTable
                   .divTableRow
@@ -1734,13 +1733,14 @@ block content
                       input#SSC_Invasive_After_Diagnosis(type='radio' name='medical_history[SSC][period]' value='after' checked='checked')
                     .divTableCell.NoDivTableBorder(style='width: auto;')
                       input(type='number' min='1' name='medical_history[SSC][count]' value='')
-                .form-group
-                  p
-                    // Da committare solo il button
-                    button#Insert-SCC_Invasive_Sites.btn.btn-warning(type='button' data-toggle='modal' data-target='#Sites_Modal')
-                      | Insert SSC invasive Site(s)
-                  .SCC_Invasive_Sites_Json_Table
               hr
+              .form-group
+                p
+                  // Da committare solo il button
+                  button#Insert-SCC_Invasive_Sites.btn.btn-warning(type='button' data-toggle='modal' data-target='#Sites_Modal')
+                    | Insert SSC invasive Site(s)
+                .SCC_Invasive_Sites_Json_Table
+
               .form-group
                 #SSC_InSitu__History.divTable
                   .divTableRow
@@ -1761,13 +1761,13 @@ block content
                       input#SCC_InSitu_After_Diagnosis(type='radio' name='medical_history[SSC_in_situ][period]' value='No' checked='checked')
                     .divTableCell.NoDivTableBorder(style='width: auto;')
                       input(type='number' min='1' name='medical_history[SSC_in_situ][count]' value='')
-
-                .form-group
-                  p
-                    // Da committare solo il button
-                    button#Insert-SCC_InSitu_Sites.btn.btn-secondary(type='button' data-toggle='modal' data-target='#Sites_Modal')
-                      | Insert in situ SCC Site(s)
-                  .SCC_InSitu_Sites_Json_Table
+              hr
+              .form-group
+                p
+                  // Da committare solo il button
+                  button#Insert-SCC_InSitu_Sites.btn.btn-secondary(type='button' data-toggle='modal' data-target='#Sites_Modal')
+                    | Insert in situ SCC Site(s)
+                .SCC_InSitu_Sites_Json_Table
             
             fieldset#fieldsetNonCutaneous(style='margin-top:20px;')
               legend Other non-cutaneous neoplasia
@@ -1797,7 +1797,7 @@ block content
                 p.help-block
                   | ΙΙI.FAMILY HISTORY OF MELANOMA OR OTHER CANCERS (completed by physician/study
                   | nurse)
-                button.btn.add-Relative(type='button', data-toggle='modal', data-target='#FamilyHistoryUpTo3Degree')
+                button.btn.btn-info.add-Relative(type='button', data-toggle='modal', data-target='#FamilyHistoryUpTo3Degree')
                   | Insert relatives affected
               .json-relative-table.form-group
 
@@ -1824,7 +1824,7 @@ block content
               legend Family history of other cancers
               .form-group
                 p.help-block (up to 3rd degree relatives)
-                button.btn.add-Other-Relative(type='button', data-toggle='modal', data-target='#FamilyHistoryOtherUpTo3Degree')
+                button.btn.btn-info.add-Other-Relative(type='button', data-toggle='modal', data-target='#FamilyHistoryOtherUpTo3Degree')
                   | Insert relatives affected
               .json-other-relative-tables.form-group
 
@@ -1836,10 +1836,10 @@ block content
                 .divTable
                   .divTableRow.spaced
                     .divTableCell.NoDivTableBorder.question-cell
-                      span Were you able to respond to the questions of this Section ?
+                      span Were you able to respond to the questions of the last three sections?
                     .divTableCell.NoDivTableBorder.input-cell(name='section_C_evaluation[completed]')
                       select#selectEvalC.form-control
-                        option(value='NoChoosed') Select...
+                        option(value='Not choosed' selected='') Select...
                         option(value='All') All questions
                         option(value='Most') Most questions
                         option(value='Half') Nearly half of the questions
@@ -1849,8 +1849,8 @@ block content
                       span Which questions of this Section did you consider difficult to fill in?
                     .divTableCell.NoDivTableBorder.input-cell(name='section_C_evaluation[difficult][answer]')
                       select.form-control.selectQuestions
-                        option(value='NoChoosed') Select...
-                        option(value='No') No
+                        option(value='Not choosed' selected='') Select...
+                        option(value='None') None
                         option(value='Yes') Insert numbers of questions
                     .divTableCell.NoDivTableBorder.input-cell
                       .hidden-control
@@ -1887,7 +1887,7 @@ block content
                             span Pre-existing pigmented lesion at the same site of melanoma
                           .divTableCell.NoDivTableBorder.input-cell
                             select#firstSelectLesion.form-control(name='melanoma_characteristics[first_melanoma][lesion][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='No') No
                               option(value='Yes') Yes
                           .divTableCell.NoDivTableBorder.hidden-control
@@ -1904,7 +1904,7 @@ block content
                         .divTableRow
                           .divTableCell.NoDivTableBorder
                             select#firstMelanomaDetection.form-control(name='melanoma_characteristics[first_melanoma][detection]')
-                              option(value='NoChoosed') Select ...
+                              option(value='Not choosed') Select ...
                               option(value='Patient') Patient
                               option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
                               option(value='Physician') Physician
@@ -1925,7 +1925,7 @@ block content
                             span How often did you check your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][self_skin_check_last_3_years]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='Never') Never
                               option(value='Once') Once
                               option(value='Once/year') Once/year
@@ -1943,7 +1943,7 @@ block content
                             span How often did a physician examine your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][skin_check_last_3_years]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='Never') Never
                               option(value='Once') Once
                               option(value='Once/year') Once/year
@@ -1959,14 +1959,14 @@ block content
                             span Sentinel Lymph Node (SLN) biopsy
                           .divTableCell.NoDivTableBorder.input-cell
                             select#firstSelectSNL.form-control(name='melanoma_characteristics[first_melanoma][SNL][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='Yes') Yes
                               option(value='No') No
                               option(value='Not done') Not done
                               option(value='Not known') Not known
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
                             select.form-control(name='melanoma_characteristics[first_melanoma][SNL][category]')
-                              option(value='NoChoosed') Positive/Negative
+                              option(value='Not choosed') Positive/Negative
                               option(value='Positive') Positive
                               option(value='Negative') Negative
 
@@ -1979,7 +1979,7 @@ block content
                             span Multiple primary melanoma (MPM) – concurrent or previous
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][multiple_primary][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='No') No
                               option(value='Yes') Yes
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
@@ -2098,7 +2098,7 @@ block content
                             span Subtype:
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][subtype]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='SSM') SSM
                               option(value='NM') NM
                               option(value='LMM') LMM
@@ -2122,7 +2122,7 @@ block content
                             span Ulceration 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][ulceration]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
 
@@ -2131,7 +2131,7 @@ block content
                             span Tumor growth phase 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][tumor_growth_phase]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='radial') Radial
                               option(value='vertical') Vertical
 
@@ -2140,13 +2140,13 @@ block content
                             span Regression
                           .divTableCell.NoDivTableBorder.input-cell
                             select#firstMelanomaRegression.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][regression][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
                             label(style='font-size: 12px;') Specify percentage:
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][regression][percentage]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='less_than_50%') <50%
                               option(value='greater_than_50%') >50%
 
@@ -2155,7 +2155,7 @@ block content
                             span Tumor Infiltrating Lymphocytes (TILs) 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][TILs]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='non-brisk') Non-brisk
                               option(value='brisk') Brisk
@@ -2165,7 +2165,7 @@ block content
                             span Associated nevus
                           .divTableCell.NoDivTableBorder.input-cell
                             select#firstMelanomaNevus.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][nevus][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
@@ -2177,7 +2177,7 @@ block content
                             span Vascular invasion 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][vascular_invasion]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
 
@@ -2186,7 +2186,7 @@ block content
                             span Microsatellitosis 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][microsatellitosis]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='partially_pigmented') Partially pigmented
                               option(value='fully_pigmented') Fully pigmented
@@ -2196,7 +2196,7 @@ block content
                             span Solar elastosis 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][solar_elastosis]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='mild') Mild
                               option(value='moderate') Moderate
@@ -2207,7 +2207,7 @@ block content
                             span Pigmentation 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][pigmentation]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
 
@@ -2216,7 +2216,7 @@ block content
                             span Lateral margin status 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][lateral_margin_status]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='disease_free') Disease-free 
                               option(value='not_diseasefree') Not disease-free
 
@@ -2225,7 +2225,7 @@ block content
                             span Deep margin status 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][deep_margin_status]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='disease_free') Disease-free 
                               option(value='not_diseasefree') Not disease-free
 
@@ -2239,7 +2239,7 @@ block content
                           .divTableCell.NoDivTableBorder.input-cell
                             label(style='font-size: 12px;') T category
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][AJCC][T]' style='margin-bottom: 18px;')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='TX') TX - Primary tumor cannot be evaluated
                               option(value='T0') T0 - No evidence of primary tumor
                               option(value='Tis') Tis - Carcinoma in situ
@@ -2250,7 +2250,7 @@ block content
                           .divTableCell.NoDivTableBorder.input-cell
                             label(style='font-size: 12px;') N category
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][AJCC][N]' style='margin-bottom: 18px;')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='NX') NX - Regional lymph nodes cannot be evaluated
                               option(value='NO') NO - No regional lymph node involvement
                               option(value='N1') N1 - Involvement of regional lymph nodes
@@ -2259,7 +2259,7 @@ block content
                           .divTableCell.NoDivTableBorder.input-cell
                             label(style='font-size: 12px;') M category
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][AJCC][M]' style='margin-bottom: 18px;')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='MO') MO - No distant metastasis
                               option(value='M1') M1 - Distant metastasis
 
@@ -2281,7 +2281,7 @@ block content
                             span Pre-existing pigmented lesion at the same site of melanoma
                           .divTableCell.NoDivTableBorder.input-cell
                             select#secondSelectLesion.form-control(name='melanoma_characteristics[second_melanoma][lesion][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='No') No
                               option(value='Yes') Yes
                           .divTableCell.NoDivTableBorder.hidden-control
@@ -2298,7 +2298,7 @@ block content
                         .divTableRow
                           .divTableCell.NoDivTableBorder
                             select#secondMelanomaDetection.form-control(name='melanoma_characteristics[second_melanoma][detection]')
-                              option(value='NoChoosed') Select ...
+                              option(value='Not choosed') Select ...
                               option(value='Patient') Patient
                               option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
                               option(value='Physician') Physician
@@ -2319,7 +2319,7 @@ block content
                             span How often did you check your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][self_skin_check_last_3_years]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='Never') Never
                               option(value='Once') Once
                               option(value='Once/year') Once/year
@@ -2337,7 +2337,7 @@ block content
                             span How often did a physician examine your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][skin_check_last_3_years]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='Never') Never
                               option(value='Once') Once
                               option(value='Once/year') Once/year
@@ -2353,14 +2353,14 @@ block content
                             span Sentinel Lymph Node (SLN) biopsy
                           .divTableCell.NoDivTableBorder.input-cell
                             select#secondSelectSNL.form-control(name='melanoma_characteristics[second_melanoma][SNL][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='Yes') Yes
                               option(value='No') No
                               option(value='Not done') Not done
                               option(value='Not known') Not known
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
                             select.form-control(name='melanoma_characteristics[second_melanoma][SNL][category]')
-                              option(value='NoChoosed') Positive/Negative
+                              option(value='Not choosed') Positive/Negative
                               option(value='Positive') Positive
                               option(value='Negative') Negative
 
@@ -2373,7 +2373,7 @@ block content
                             span Multiple primary melanoma (MPM) – concurrent or previous
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][multiple_primary][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='No') No
                               option(value='Yes') Yes
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
@@ -2492,7 +2492,7 @@ block content
                             span Subtype:
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][subtype]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='SSM') SSM
                               option(value='NM') NM
                               option(value='LMM') LMM
@@ -2516,7 +2516,7 @@ block content
                             span Ulceration 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][ulceration]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
 
@@ -2525,7 +2525,7 @@ block content
                             span Tumor growth phase 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][tumor_growth_phase]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='radial') Radial
                               option(value='vertical') Vertical
 
@@ -2534,13 +2534,13 @@ block content
                             span Regression
                           .divTableCell.NoDivTableBorder.input-cell
                             select#secondMelanomaRegression.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][regression][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
                             label(style='font-size: 12px;') Specify percentage:
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][regression][percentage]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='less_than_50%') <50%
                               option(value='greater_than_50%') >50%
 
@@ -2549,7 +2549,7 @@ block content
                             span Tumor Infiltrating Lymphocytes (TILs) 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][TILs]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='non-brisk') Non-brisk
                               option(value='brisk') Brisk
@@ -2559,7 +2559,7 @@ block content
                             span Associated nevus
                           .divTableCell.NoDivTableBorder.input-cell
                             select#secondMelanomaNevus.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][nevus][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
@@ -2571,7 +2571,7 @@ block content
                             span Vascular invasion 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][vascular_invasion]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
 
@@ -2580,7 +2580,7 @@ block content
                             span Microsatellitosis 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][microsatellitosis]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='partially_pigmented') Partially pigmented
                               option(value='fully_pigmented') Fully pigmented
@@ -2590,7 +2590,7 @@ block content
                             span Solar elastosis 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][solar_elastosis]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='mild') Mild
                               option(value='moderate') Moderate
@@ -2601,7 +2601,7 @@ block content
                             span Pigmentation 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][pigmentation]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
 
@@ -2610,7 +2610,7 @@ block content
                             span Lateral margin status 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][lateral_margin_status]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='disease_free') Disease-free 
                               option(value='not_diseasefree') Not disease-free
 
@@ -2619,7 +2619,7 @@ block content
                             span Deep margin status 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][deep_margin_status]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='disease_free') Disease-free 
                               option(value='not_diseasefree') Not disease-free
 
@@ -2633,7 +2633,7 @@ block content
                           .divTableCell.NoDivTableBorder.input-cell
                             label(style='font-size: 12px;') T category
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][AJCC][T]' style='margin-bottom: 18px;')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='TX') TX - Primary tumor cannot be evaluated
                               option(value='T0') T0 - No evidence of primary tumor
                               option(value='Tis') Tis - Carcinoma in situ
@@ -2644,7 +2644,7 @@ block content
                           .divTableCell.NoDivTableBorder.input-cell
                             label(style='font-size: 12px;') N category
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][AJCC][N]' style='margin-bottom: 18px;')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='NX') NX - Regional lymph nodes cannot be evaluated
                               option(value='NO') NO - No regional lymph node involvement
                               option(value='N1') N1 - Involvement of regional lymph nodes
@@ -2653,7 +2653,7 @@ block content
                           .divTableCell.NoDivTableBorder.input-cell
                             label(style='font-size: 12px;') M category
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][AJCC][M]' style='margin-bottom: 18px;')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='MO') MO - No distant metastasis
                               option(value='M1') M1 - Distant metastasis
 
@@ -2675,7 +2675,7 @@ block content
                             span Pre-existing pigmented lesion at the same site of melanoma
                           .divTableCell.NoDivTableBorder.input-cell
                             select#thirdSelectLesion.form-control(name='melanoma_characteristics[third_melanoma][lesion][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='No') No
                               option(value='Yes') Yes
                           .divTableCell.NoDivTableBorder.hidden-control
@@ -2692,7 +2692,7 @@ block content
                         .divTableRow
                           .divTableCell.NoDivTableBorder
                             select#thirdMelanomaDetection.form-control(name='melanoma_characteristics[third_melanoma][detection]')
-                              option(value='NoChoosed') Select ...
+                              option(value='Not choosed') Select ...
                               option(value='Patient') Patient
                               option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
                               option(value='Physician') Physician
@@ -2713,7 +2713,7 @@ block content
                             span How often did you check your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][self_skin_check_last_3_years]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='Never') Never
                               option(value='Once') Once
                               option(value='Once/year') Once/year
@@ -2731,7 +2731,7 @@ block content
                             span How often did a physician examine your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][skin_check_last_3_years]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='Never') Never
                               option(value='Once') Once
                               option(value='Once/year') Once/year
@@ -2747,14 +2747,14 @@ block content
                             span Sentinel Lymph Node (SLN) biopsy
                           .divTableCell.NoDivTableBorder.input-cell
                             select#thirdSelectSNL.form-control(name='melanoma_characteristics[third_melanoma][SNL][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='Yes') Yes
                               option(value='No') No
                               option(value='Not done') Not done
                               option(value='Not known') Not known
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
                             select.form-control(name='melanoma_characteristics[third_melanoma][SNL][category]')
-                              option(value='NoChoosed') Positive/Negative
+                              option(value='Not choosed') Positive/Negative
                               option(value='Positive') Positive
                               option(value='Negative') Negative
 
@@ -2767,7 +2767,7 @@ block content
                             span Multiple primary melanoma (MPM) – concurrent or previous
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][multiple_primary][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='No') No
                               option(value='Yes') Yes
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
@@ -2886,7 +2886,7 @@ block content
                             span Subtype:
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][subtype]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='SSM') SSM
                               option(value='NM') NM
                               option(value='LMM') LMM
@@ -2910,7 +2910,7 @@ block content
                             span Ulceration 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][ulceration]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
 
@@ -2919,7 +2919,7 @@ block content
                             span Tumor growth phase 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][tumor_growth_phase]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='radial') Radial
                               option(value='vertical') Vertical
 
@@ -2928,13 +2928,13 @@ block content
                             span Regression
                           .divTableCell.NoDivTableBorder.input-cell
                             select#thirdMelanomaRegression.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][regression][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
                             label(style='font-size: 12px;') Specify percentage:
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][regression][percentage]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='less_than_50%') <50%
                               option(value='greater_than_50%') >50%
 
@@ -2943,7 +2943,7 @@ block content
                             span Tumor Infiltrating Lymphocytes (TILs) 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][TILs]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='non-brisk') Non-brisk
                               option(value='brisk') Brisk
@@ -2953,7 +2953,7 @@ block content
                             span Associated nevus
                           .divTableCell.NoDivTableBorder.input-cell
                             select#thirdMelanomaNevus.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][nevus][presence]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
@@ -2965,7 +2965,7 @@ block content
                             span Vascular invasion 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][vascular_invasion]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
 
@@ -2974,7 +2974,7 @@ block content
                             span Microsatellitosis 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][microsatellitosis]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='partially_pigmented') Partially pigmented
                               option(value='fully_pigmented') Fully pigmented
@@ -2984,7 +2984,7 @@ block content
                             span Solar elastosis 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][solar_elastosis]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='mild') Mild
                               option(value='moderate') Moderate
@@ -2995,7 +2995,7 @@ block content
                             span Pigmentation 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][pigmentation]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='absent') Absent
                               option(value='present') Present
 
@@ -3004,7 +3004,7 @@ block content
                             span Lateral margin status 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][lateral_margin_status]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='disease_free') Disease-free 
                               option(value='not_diseasefree') Not disease-free
 
@@ -3013,7 +3013,7 @@ block content
                             span Deep margin status 
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][deep_margin_status]')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='disease_free') Disease-free 
                               option(value='not_diseasefree') Not disease-free
 
@@ -3027,7 +3027,7 @@ block content
                           .divTableCell.NoDivTableBorder.input-cell
                             label(style='font-size: 12px;') T category
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][AJCC][T]' style='margin-bottom: 18px;')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='TX') TX - Primary tumor cannot be evaluated
                               option(value='T0') T0 - No evidence of primary tumor
                               option(value='Tis') Tis - Carcinoma in situ
@@ -3038,7 +3038,7 @@ block content
                           .divTableCell.NoDivTableBorder.input-cell
                             label(style='font-size: 12px;') N category
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][AJCC][N]' style='margin-bottom: 18px;')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='NX') NX - Regional lymph nodes cannot be evaluated
                               option(value='NO') NO - No regional lymph node involvement
                               option(value='N1') N1 - Involvement of regional lymph nodes
@@ -3047,7 +3047,7 @@ block content
                           .divTableCell.NoDivTableBorder.input-cell
                             label(style='font-size: 12px;') M category
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][AJCC][M]' style='margin-bottom: 18px;')
-                              option(value='NoChoosed') Select...
+                              option(value='Not choosed') Select...
                               option(value='MO') MO - No distant metastasis
                               option(value='M1') M1 - Distant metastasis
 
@@ -3664,26 +3664,26 @@ block content
               .divTableRow
                 .divTableCell.NoDivTableBorder
                   select#relative.form-control
-                    option(value='NoChoosed') Select ...
+                    option(value='Not choosed') Select ...
                     option(value='Yes') Yes
                     option(value='No') No
                     option(value='Not know') Not know
                     option(value='Other') Other
                 .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
                   select#selectMelanomaType.form-control
-                    option(value='NoChoosed') Select type...
+                    option(value='Not choosed') Select type...
                     option(value='Cutaneous') Cutaneous
                     option(value='Uveal') Uveal
                     option(value='Other') Other
                     option(value="Don't know") Don't know
                 .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
                   select#selectRelativeSide.form-control
-                    option(value='NoChoosed') Select side...
+                    option(value='Not choosed') Select side...
                     option(value='Maternal') Maternal
                     option(value='Paternal') Paternal
                 .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
                   select#selectRelativeDegree.form-control
-                    option(value='NoChoosed') Select degree...
+                    option(value='Not choosed') Select degree...
                     option(value='1st_degree') 1st
                     option(value='2nd_degree') 2nd
                     option(value='3rd_degree') 3rd
@@ -3741,15 +3741,15 @@ block content
               .divTableRow
                 .divTableCell.NoDivTableBorder
                   select#selectOtherCancerType.form-control
-                    option(value='NoChoosed') Select type...
+                    option(value='Not choosed') Select type...
                 .divTableCell.NoDivTableBorder
                   select#selectOtherRelativeSide.form-control
-                    option(value='NoChoosed') Select side...
+                    option(value='Not choosed') Select side...
                     option(value='Maternal') Maternal
                     option(value='Paternal') Paternal
                 .divTableCell.NoDivTableBorder
                   select#selectOtherRelativeDegree.form-control
-                    option(value='NoChoosed') Select degree...
+                    option(value='Not choosed') Select degree...
                     option(value='1st_degree') 1st
                     option(value='2nd_degree') 2nd
                     option(value='3rd_degree') 3rd
