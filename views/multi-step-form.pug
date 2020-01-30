@@ -830,17 +830,17 @@ block content
                       .divTableRow
                         .divTableCell.NoDivTableBorder
                           label Lifetime number of sessions:
-                          input#Sunlamp_sessions(type='number' min='1' name='ultraviolet[sunlamp][number_of_sessions]' required='required' data-rule-required='true' data-msg-required='Required field')
+                          input#Sunlamp_sessions(type='number' placeholder='Number' min='1' name='ultraviolet[sunlamp][number_of_sessions]' required='required' data-rule-required='true' data-msg-required='Required field')
                           span.error1
                             i.error-log.fa.fa-exclamation-triangle
                         .divTableCell.NoDivTableBorder
                           label Age at first exposure:
-                          input#Sunlamp_first_age(type='number' min='1' name='ultraviolet[sunlamp][age__of_first_sunlamp]' required='required' data-rule-required='true' data-msg-required='Required field')
+                          input#Sunlamp_first_age(type='number' placeholder='Number' min='1' name='ultraviolet[sunlamp][age__of_first_sunlamp]' required='required' data-rule-required='true' data-msg-required='Required field')
                           span.error1
                             i.error-log.fa.fa-exclamation-triangle
                         .divTableCell.NoDivTableBorder
                           label Age at last exposure:
-                          input#Sunlamp_last_age(type='number' min='1' name='ultraviolet[sunlamp][age_of_last_sunlamp]' required='required' data-rule-required='true' data-msg-required='Required field')
+                          input#Sunlamp_last_age(type='number' placeholder='Number' min='1' name='ultraviolet[sunlamp][age_of_last_sunlamp]' required='required' data-rule-required='true' data-msg-required='Required field')
                           span.error1
                             i.error-log.fa.fa-exclamation-triangle                  
 
@@ -1525,12 +1525,12 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       .form-group
-                        input(type='number' min='1' value='' name='medical_history[pregnancy][count]')
+                        input(type='number' disabled="disabled" min='1' value='' name='medical_history[pregnancy][count]')
                     .divTableCell.NoDivTableBorder
-                      input.datepicker.form-control(type='text' placeholder='dd/mm/yyyy' name='medical_history[pregnancy][birthday]')
+                      input.datepicker.form-control(type='text' disabled="disabled" placeholder='dd/mm/yyyy' name='medical_history[pregnancy][birthday]')
                     .divTableCell.NoDivTableBorder
                       .form-group
-                        input(type='number' min='1' value='' name='medical_history[pregnancy][miscarriages]')
+                        input(type='number' disabled="disabled" min='1' value='' name='medical_history[pregnancy][miscarriages]')
                       
               .form-group
                 hr(style='width: 60%;')
