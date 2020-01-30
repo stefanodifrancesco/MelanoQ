@@ -98,6 +98,7 @@ $(document).ready(function() {
                     List_Residency.push(residency);
                     $(".json_residency").createTable(List_Residency);
                     $('#searchBox').val('');
+                    $('#searchBox').prop("required", false);
                     $("#fieldResidency .new_datepicker").val('');
                     $(".residency_date_class").addClass("hidden-control");
                 }
@@ -987,8 +988,13 @@ $(document).ready(function() {
     $('#thirdMelanomaCharacteristics :input').attr('disabled', true);
     /****** Initially disables all melanoma characteristics inputs ******/
 
+    /****** Initially disables all hidden controls ******/
     $("#fieldsetPregnancy_History .Pregnancy_Stats :input").prop("disabled", true);
 
+    /**** For residency list control ******/
+    $('#searchBox').prop("required", true);
+    $('#searchBox').prop("data-rule-required", true);
+    $('#searchBox').attr("data-msg-required", 'Please record all places where the case/control has resided for more than 6 months');
 
     Initialize();
 });
