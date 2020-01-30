@@ -15,7 +15,7 @@ $(document).ready(function() {
         zoom: 6
     });*/
 
-    var ListaResidency = [];
+    List_Residency = [];
 
     var Lat = 0;
     var Lon = 0;
@@ -257,7 +257,7 @@ $(document).ready(function() {
     });
     */
 
-    var ListaICD10 = [];
+    ListaICD10 = [];
     var ICD10_options_by_code = {
         url: "icd10_codes.json",
         getValue: function(element) {
@@ -297,7 +297,7 @@ $(document).ready(function() {
         $(this).val("");
     });
 
-    var List_Medications = [];
+    List_Medications = [];
 
     $("#Insert-Med").on("click", function(evt) {
         $("#MedicationDateModal .span-modal-title").text("Medications");
@@ -352,7 +352,6 @@ $(document).ready(function() {
     List_BCC_Sites = [];
     List_SCC_Invasive_Sites = [];
     List_SCC_InSitu_Sites = [];
-    List_To_Delete = []
 
     $("#Insert-BCC_Sites,#Insert-SCC_Invasive_Sites,#Insert-SCC_InSitu_Sites").on("click", function(evt) {
         switch ($(this).attr("id")) {
@@ -872,8 +871,8 @@ $(document).ready(function() {
     $("#submit").on('click', function(e) {
         e.preventDefault();
         var serJson = $("#msform").serializeJSON();
-        console.log(ListaResidency);
-        serJson.demographic.residency_list = ListaResidency;
+        console.log(List_Residency);
+        serJson.demographic.residency_list = List_Residency;
 
         history_list.forEach(occupation => {
             delete occupation.Action;
@@ -927,8 +926,6 @@ $(document).ready(function() {
 
     Initialize();
 
-    returned_JSON = "";
-
     input_JSON = {
         "query": {
             "term": {
@@ -941,6 +938,7 @@ $(document).ready(function() {
     $.ajax({
         type: "POST",
         url: 'http://localhost:9200/melano_questionnaires/_search',
+        async: false,
         data: JSON.stringify(input_JSON),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -953,6 +951,7 @@ $(document).ready(function() {
                 console.log("original json:");
                 returned_JSON = data.hits.hits[0]._source;
                 console.log(returned_JSON);
+                set_JSON_Tables(returned_JSON);
             }
         },
         failure: function(errMsg) {
@@ -962,6 +961,63 @@ $(document).ready(function() {
 
 });
 /*Fine Doucment Ready*/
+
+function set_JSON_Tables(json_object) {
+
+    if (json_object.demographic.residency_list != undefined) {
+        List_Residency = sort_JSON_Object(json_object.demographic.residency_list, ["start_date", "end_date", "address", "coordinates"]);
+        $("#fieldResidency .json_residency").createTable(List_Residency);
+    }
+    if (json_object.demographic.SIC_list != undefined) {
+        history_list = sort_JSON_Object(json_object.demographic.SIC_list, ["SIC_Code", "SIC_Group", "start_date", "end_date"]);
+        $("#fieldHistory #json-table-wrapper-history").createTable(history_list);
+    }
+    if (json_object.medical_history.diagnoses != undefined) {
+        ListaICD10 = sort_JSON_Object(json_object.medical_history.diagnoses, ["code", "desc"]);
+        $("#fieldsetHistoryMedicalDiagnosis #json_medical_history").createTable(ListaICD10);
+    }
+    if (json_object.medical_history.medication_list != undefined) {
+        List_Medications = sort_JSON_Object(json_object.medical_history.medication_list, ["start_date", "end_date"]);
+        $("#fieldset_C2_10 #json-medications").createTable(List_Medications);
+    }
+    if (json_object.medical_history.BCC.sites != undefined) {
+        List_BCC_Sites = sort_JSON_Object(json_object.medical_history.BCC.sites, ["Type", "Site", "Diagnosis_date"]);
+        $("#fieldsetLifetime_History .BCC_Sites_Json_Table").createTable(List_BCC_Sites);
+    }
+    if (json_object.medical_history.SSC.sites != undefined) {
+        List_SCC_Invasive_Sites = sort_JSON_Object(json_object.medical_history.SSC.sites, ["Type", "Site", "Diagnosis_date"]);
+        $("#fieldsetLifetime_History .SCC_Invasive_Sites_Json_Table").createTable(List_SCC_Invasive_Sites);
+    }
+    if (json_object.medical_history.SSC_in_situ.sites != undefined) {
+        List_SCC_InSitu_Sites = sort_JSON_Object(json_object.medical_history.SSC_in_situ.sites, ["Type", "Site", "Diagnosis_date"]);
+        $("#fieldsetLifetime_History .SCC_InSitu_Sites_Json_Table").createTable(List_SCC_InSitu_Sites);
+    }
+    if (json_object.medical_history.neoplasias != undefined) {
+        List_Additional_Neoplasias = sort_JSON_Object(json_object.medical_history.neoplasias, ["Name", "Age_of_diagnosis", "Year_of_diagnosis"]);
+        $("#fieldsetNonCutaneous .json-non-cutaneous-additional-neoplasia").createTable(List_Additional_Neoplasias);
+    }
+    if (json_object.family_history.relatives_with_melanoma != undefined) {
+        List_Family_History_3Degree = sort_JSON_Object(json_object.family_history.relatives_with_melanoma, ["presence", "melanoma", "side", "degree", "diagnosis_age"]);
+        $("#fieldsetSection_C3 .json-relative-table").createTable(List_Family_History_3Degree);
+    }
+    if (json_object.family_history.relatives_with_other_cancers != undefined) {
+        List_Family_History_Other_3Degree = sort_JSON_Object(json_object.family_history.relatives_with_other_cancers, ["cancer_type", "side", "degree", "pedigree"]);
+        $("#fieldsetFamilyHistoryOther .json-other-relative-tables").createTable(List_Family_History_Other_3Degree);
+    }
+};
+
+function sort_JSON_Object(json_arr, keys_array) {
+    var array_json_temp = [];
+    $.each(json_arr, function(index, object) {
+        var JSON_Sorted_obj = {};
+        $.each(keys_array, function(key, value) {
+            JSON_Sorted_obj[value] = object[value];
+            //console.log(JSON_Sorted_obj);
+        });
+        array_json_temp.push(JSON_Sorted_obj);
+    });
+    return array_json_temp;
+};
 
 function Initialize() {
     DDL_Other('ethnicity_input', 'inputEthnicity');
@@ -1034,7 +1090,7 @@ function Create_Datepicker(tag_ID, tag_Append) {
     $("#" + tag_Append).find(".div_date").append($("<div class='form-group'>").append(date_input));
 };
 
-var history_list = [];
+history_list = [];
 
 function DDL_from_JSON(tag_ID_DDL, url) {
     var dropdown = $("#" + tag_ID_DDL).html("<option value='NoChoosed'>Select Sic Group ...</option>");

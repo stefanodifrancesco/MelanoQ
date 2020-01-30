@@ -560,7 +560,7 @@ $(document).ready(function() {
         if (Caller == "SCC_InSitu") {
             var Site = find_checked_object(List_SCC_InSitu_Sites, Checked);
             Site.Diagnosis_date = $("#SimpleDateModal .diagnosis-date").val();
-            Site.Number = $("#SimpleDateModal .number-control").val();
+            //Site.Number = $("#SimpleDateModal .number-control").val();
         }
     });
 
@@ -930,7 +930,6 @@ $(document).ready(function() {
     $("#submit").on('click', function(e) {
         e.preventDefault();
         var serJson = $("#msform").serializeJSON();
-
         serJson.demographic.residency_list = List_Residency;
 
         history_list.forEach(occupation => {
