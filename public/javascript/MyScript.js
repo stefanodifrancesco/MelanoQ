@@ -483,9 +483,13 @@ $(document).ready(function() {
 
         if ($(this).prop("checked") == true) {
             $("#SimpleDateModal .diagnosis-date").val("");
-            $("#SimpleDateModal").addClass("hyper-modal").modal("show");
+            //$("#SimpleDateModal").addClass("hyper-modal").modal("show");
+            $("#SimpleDateModal").addClass("hyper-modal").modal({
+                backdrop: 'static',
+                keyboard: false
+            });
             $("#SimpleDateModal .span-modal-title").text("Insert diagnosis date for ");
-            $("#SimpleDateModal .span-modal-title-for").text($(Checked).parent().text());
+            $("#SimpleDateModal .span-modal-title-for").text($(Checked).parent().text().replace(/_/g," "));
 
             if (Caller == "SCC_InSitu") {
                 $("#SimpleDateModal .hidden").removeClass("hidden").addClass("show");
@@ -501,7 +505,7 @@ $(document).ready(function() {
         }
         if ($(this).prop("checked") == false) {
             var label_remove = $(this).parents(".TEST2").find(".table-personal-label").text();
-            var filteredObj = 90;
+            var filteredObj = 0;
             $.each(temp_Array, function(index, item) {
                 if (item.Site === label_remove.trim()) {
                     filteredObj = index;
@@ -567,7 +571,7 @@ $(document).ready(function() {
         }
     });
 
-    $("#SimpleDateModal .close,#SimpleDateModal.btn-danger").on("click", function(evt) {
+    $("#SimpleDateModal .close,#SimpleDateModal .btn-danger").on("click", function(evt) {
         evt.preventDefault();
         var Checked = $("#Sites_Modal .modal-checked").text().trim();
         var TO_Uncheck = $.grep($("#Sites_Modal .tg input"), function(G_key, G_value) {
