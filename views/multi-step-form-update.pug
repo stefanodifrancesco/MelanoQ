@@ -1904,11 +1904,11 @@ block content
                         .divTableRow
                           .divTableCell.NoDivTableBorder
                             select#firstMelanomaDetection.form-control(name='melanoma_characteristics[first_melanoma][detection]')
-                              option(value='Not choosed') Select ...
-                              option(value='Patient') Patient
-                              option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
-                              option(value='Physician') Physician
-                              option(value='Other') Other
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.first_melanoma.detection == 'Not choosed')) Select ...
+                              option(value='Patient' selected=(result.melanoma_characteristics.first_melanoma.detection == 'Patient')) Patient
+                              option(value='Relative/Spous/Friend' selected=(result.melanoma_characteristics.first_melanoma.detection == 'Relative/Spouse/Friend')) Relative/Spouse/Friend
+                              option(value='Physician' selected=(result.melanoma_characteristics.first_melanoma.detection == 'Physician')) Physician
+                              option(value='Other' selected=(result.melanoma_characteristics.first_melanoma.detection == 'Other')) Other
                           .divTableCell.NoDivTableBorder.hidden-control
                             input(type='text' placeholder='Specify' name='melanoma_characteristics[first_melanoma][other_detection]')
                 
@@ -1924,11 +1924,11 @@ block content
                             span How often did you check your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][self_skin_check_last_3_years]')
-                              option(value='Not choosed') Select...
-                              option(value='Never') Never
-                              option(value='Once') Once
-                              option(value='Once/year') Once/year
-                              option(value='More than once/year') More than once/year
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.first_melanoma.self_skin_check_last_3_years == 'Not choosed')) Select...
+                              option(value='Never' selected=(result.melanoma_characteristics.first_melanoma.self_skin_check_last_3_years == 'Never')) Never
+                              option(value='Once' selected=(result.melanoma_characteristics.first_melanoma.self_skin_check_last_3_years == 'Once')) Once
+                              option(value='Once/year' selected=(result.melanoma_characteristics.first_melanoma.self_skin_check_last_3_years == 'Once/year')) Once/year
+                              option(value='More than once/year' selected=(result.melanoma_characteristics.first_melanoma.self_skin_check_last_3_years == 'More than once/year')) More than once/year
 
                 fieldset
                   label
@@ -1942,12 +1942,12 @@ block content
                             span How often did a physician examine your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][skin_check_last_3_years]')
-                              option(value='Not choosed') Select...
-                              option(value='Never') Never
-                              option(value='Once') Once
-                              option(value='Once/year') Once/year
-                              option(value='More than once/year') More than once/year
-                              option(value='Do not recall a physician ever examining my skin') Do not recall a physician ever examining my skin
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.first_melanoma.skin_check_last_3_years == 'Not choosed')) Select...
+                              option(value='Never' selected=(result.melanoma_characteristics.first_melanoma.skin_check_last_3_years == 'Never'))) Never
+                              option(value='Once' selected=(result.melanoma_characteristics.first_melanoma.skin_check_last_3_years == 'Once'))) Once
+                              option(value='Once/year' selected=(result.melanoma_characteristics.first_melanoma.skin_check_last_3_years == 'Once/year')) Once/year
+                              option(value='More than once/year' selected=(result.melanoma_characteristics.first_melanoma.skin_check_last_3_years == 'More than once/year')) More than once/year
+                              option(value='Do not recall a physician ever examining my skin' selected=(result.melanoma_characteristics.first_melanoma.skin_check_last_3_years == 'Do not recall a physician ever examining my skin')) Do not recall a physician ever examining my skin
 
                 fieldset
                   .form-group
@@ -2011,73 +2011,73 @@ block content
                   label 
                     | Site
                   .form-group
-                    select#firstKnownSiteSelect.form-control(name='melanoma_characteristics[first_melanoma][known][site]' required='required' data-rule-required='true' data-msg-required='Required field')
-                      option(value='' selected='') Select...
-                      option(value='anus') anus
-                      option(value='arm_left_anterior') arm_left_anterior
-                      option(value='arm_left_posterior') arm_left_posterior
-                      option(value='arm_right_anterior') arm_right_anterior
-                      option(value='arm_right_posterior') arm_right_posterior
-                      option(value='axilla_left') axilla_left
-                      option(value='axilla_right') axilla_right
-                      option(value='back_left') back_left
-                      option(value='back_middle') back_middle
-                      option(value='back_right') back_right
-                      option(value='buttock_left') buttock_left
-                      option(value='buttock_right') buttock_right
-                      option(value='cheek_left') cheek_left
-                      option(value='cheek_right') cheek_right
-                      option(value='chest_left') chest_left
-                      option(value='chest_middle') chest_middle
-                      option(value='chest_right') chest_right
-                      option(value='chin') chin
-                      option(value='ear_left') ear_left
-                      option(value='ear_right') ear_right
-                      option(value='eye_left') eye_left
-                      option(value='eye_right') eye_right
-                      option(value='eyelid_left') eyelid_left
-                      option(value='eyelid_right') eyelid_right
-                      option(value='finger_left') finger_left
-                      option(value='finger_right') finger_right
-                      option(value='foot_left_dorsal') foot_left_dorsal
-                      option(value='foot_left_plantar') foot_left_plantar
-                      option(value='foot_right_dorsal') foot_right_dorsal
-                      option(value='foot_right_plantar') foot_right_plantar
-                      option(value='forearm_left_anterior') forearm_left_anterior
-                      option(value='forearm_left_posterior') forearm_left_posterior
-                      option(value='forearm_right_anterior') forearm_right_anterior
-                      option(value='forearm_right_posterior') forearm_right_posterior
-                      option(value='forehead') forehead
-                      option(value='hand_left_dorsal') hand_left_dorsal
-                      option(value='hand_left_palmar') hand_left_palmar
-                      option(value='hand_right_dorsal') hand_right_dorsal
-                      option(value='hand_right_palmar') hand_right_palmar
-                      option(value='head') head
-                      option(value='laterocervical_left') laterocervical_left
-                      option(value='laterocervical_right') laterocervical_right
-                      option(value='leg_left_anterior') leg_left_anterior
-                      option(value='leg_left_posterior') leg_left_posterior
-                      option(value='leg_right_anterior') leg_right_anterior
-                      option(value='leg_right_posterior') leg_right_posterior
-                      option(value='lip') lip
-                      option(value='lumbar') lumbar
-                      option(value='nail_finger_left') nail_finger_left
-                      option(value='nail_finger_right') Yes
-                      option(value='nail_toe_left') nail_toe_left
-                      option(value='nail_toe_right') nail_toe_right
-                      option(value='nose') nose
-                      option(value='penis_scrotum') penis_scrotum
-                      option(value='scalp') scalp
-                      option(value='shoulder_left') shoulder_left
-                      option(value='shoulder_right') shoulder_right
-                      option(value='thigh_left_anterior') thigh_left_anterior
-                      option(value='thigh_left_posterior') thigh_left_posterior
-                      option(value='thigh_right_anterior') thigh_right_anterior
-                      option(value='thigh_right_posterior') thigh_right_posterior
-                      option(value='toe_left') toe_left
-                      option(value='toe_right') toe_right
-                      option(value='vagina') vagina
-                      option(value='vulva') vulva
+                    select#thirdKnownSiteSelect.form-control(name='melanoma_characteristics[first_melanoma][known][site]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      option(value='' selected=(result.melanoma_characteristics.first_melanoma.known.site =='')) Select...
+                      option(value='anus' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'anus')) anus
+                      option(value='arm_left_anterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'arm_left_anterior')) arm_left_anterior
+                      option(value='arm_left_posterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'arm_left_posterior')) arm_left_posterior
+                      option(value='arm_right_anterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'arm_right_anterior')) arm_right_anterior
+                      option(value='arm_right_posterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'arm_right_posterior')) arm_right_posterior
+                      option(value='axilla_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'axilla_left')) axilla_left
+                      option(value='axilla_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'axilla_right')) axilla_right
+                      option(value='back_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'back_left')) back_left
+                      option(value='back_middle' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'back_middle')) back_middle
+                      option(value='back_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'back_right')) back_right
+                      option(value='buttock_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'buttock_left')) buttock_left
+                      option(value='buttock_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'buttock_right')) buttock_right
+                      option(value='cheek_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'cheek_left')) cheek_left
+                      option(value='cheek_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'cheek_right')) cheek_right
+                      option(value='chest_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'chest_left')) chest_left
+                      option(value='chest_middle' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'chest_middle')) chest_middle
+                      option(value='chest_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'chest_right')) chest_right
+                      option(value='chin' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'chin')) chin
+                      option(value='ear_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'ear_left')) ear_left
+                      option(value='ear_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'ear_right')) ear_right
+                      option(value='eye_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'eye_left')) eye_left
+                      option(value='eye_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'eye_right')) eye_right
+                      option(value='eyelid_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'eyelid_left')) eyelid_left
+                      option(value='eyelid_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'eyelid_right')) eyelid_right
+                      option(value='finger_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'finger_left')) finger_left
+                      option(value='finger_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'finger_right')) finger_right
+                      option(value='foot_left_dorsal' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'foot_left_dorsal')) foot_left_dorsal
+                      option(value='foot_left_plantar' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'foot_left_plantar')) foot_left_plantar
+                      option(value='foot_right_dorsal' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'foot_right_dorsal')) foot_right_dorsal
+                      option(value='foot_right_plantar' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'foot_right_plantar')) foot_right_plantar
+                      option(value='forearm_left_anterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'forearm_left_anterior')) forearm_left_anterior
+                      option(value='forearm_left_posterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'forearm_left_posterior')) forearm_left_posterior
+                      option(value='forearm_right_anterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'forearm_right_anterior')) forearm_right_anterior
+                      option(value='forearm_right_posterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'forearm_right_posterior')) forearm_right_posterior
+                      option(value='forehead' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'forehead')) forehead
+                      option(value='hand_left_dorsal' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'hand_left_dorsal')) hand_left_dorsal
+                      option(value='hand_left_palmar' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'hand_left_palmar')) hand_left_palmar
+                      option(value='hand_right_dorsal' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'hand_right_dorsal')) hand_right_dorsal
+                      option(value='hand_right_palmar' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'hand_right_palmar')) hand_right_palmar
+                      option(value='head' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'head')) head
+                      option(value='laterocervical_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'laterocervical_left')) laterocervical_left
+                      option(value='laterocervical_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'laterocervical_right')) laterocervical_right
+                      option(value='leg_left_anterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'leg_left_anterior')) leg_left_anterior
+                      option(value='leg_left_posterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'leg_left_posterior')) leg_left_posterior
+                      option(value='leg_right_anterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'leg_right_anterior')) leg_right_anterior
+                      option(value='leg_right_posterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'leg_right_posterior')) leg_right_posterior
+                      option(value='lip' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'lip')) lip
+                      option(value='lumbar' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'lumbar')) lumbar
+                      option(value='nail_finger_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'nail_finger_left')) nail_finger_left
+                      option(value='nail_finger_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'nail_finger_right')) Yes
+                      option(value='nail_toe_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'nail_toe_left')) nail_toe_left
+                      option(value='nail_toe_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'nail_toe_right')) nail_toe_right
+                      option(value='nose' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'nose')) nose
+                      option(value='penis_scrotum' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'penis_scrotum')) penis_scrotum
+                      option(value='scalp' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'scalp')) scalp
+                      option(value='shoulder_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'shoulder_left')) shoulder_left
+                      option(value='shoulder_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'shoulder_right')) shoulder_right
+                      option(value='thigh_left_anterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'thigh_left_anterior')) thigh_left_anterior
+                      option(value='thigh_left_posterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'thigh_left_posterior')) thigh_left_posterior
+                      option(value='thigh_right_anterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'thigh_right_anterior')) thigh_right_anterior
+                      option(value='thigh_right_posterior' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'thigh_right_posterior')) thigh_right_posterior
+                      option(value='toe_left' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'toe_left')) toe_left
+                      option(value='toe_right' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'toe_right')) toe_right
+                      option(value='vagina' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'vagina')) vagina
+                      option(value='vulva' selected=(result.melanoma_characteristics.first_melanoma.known.site == 'vulva')) vulva
                     span.error1
                       i.error-log.fa.fa-exclamation-triangle
 
@@ -2100,16 +2100,16 @@ block content
                             span Subtype:
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][subtype]')
-                              option(value='Not choosed') Select...
-                              option(value='SSM') SSM
-                              option(value='NM') NM
-                              option(value='LMM') LMM
-                              option(value='ALM') ALM
-                              option(value='Mucosal') Desmoplastic
-                              option(value='Desmoplastic') Mucosal
-                              option(value='Uveal') Uveal
-                              option(value='Other') Other
-                              option(value='NOS ') NOS
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.subtype == 'Not choosed')) Select...
+                              option(value='SSM' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.subtype == 'SSM')) SSM
+                              option(value='NM' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.subtype == 'NM')) NM
+                              option(value='LMM' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.subtype == 'LMM')) LMM
+                              option(value='ALM' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.subtype == 'ALM')) ALM
+                              option(value='Mucosal' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.subtype == 'Mucosal')) Desmoplastic
+                              option(value='Desmoplastic' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.subtype == 'Desmoplastic')) Mucosal
+                              option(value='Uveal' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.subtype == 'Uveal')) Uveal
+                              option(value='Other' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.subtype == 'Other')) Other
+                              option(value='NOS' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.subtype == 'NOS ')) NOS
                           .divTableCell.NoDivTableBorder.input-cell
                             span(style='visibility: hidden;') space_space_space_space_space__
 
@@ -2242,29 +2242,29 @@ block content
                           .divTableCell.NoDivTableBorder.input-cell(style="width: 33%;")
                             label(style='font-size: 12px;') T category
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][AJCC][T]' style='margin-bottom: 18px;')
-                              option(value='Not choosed') Select...
-                              option(value='TX') TX - Primary tumor cannot be evaluated
-                              option(value='T0') T0 - No evidence of primary tumor
-                              option(value='Tis') Tis - Carcinoma in situ
-                              option(value='T1') T1 - Size and/or extent of the primary tumor
-                              option(value='T2') T2 - Size and/or extent of the primary tumor
-                              option(value='T3') T3 - Size and/or extent of the primary tumor
-                              option(value='T4') T4 - Size and/or extent of the primary tumor
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.T == 'Not choosed')) Select...
+                              option(value='TX' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.T == 'TX')) TX - Primary tumor cannot be evaluated
+                              option(value='T0' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.T == 'T0')) T0 - No evidence of primary tumor
+                              option(value='Tis' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.T == 'Tis')) Tis - Carcinoma in situ
+                              option(value='T1' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.T == 'T1')) T1 - Size and/or extent of the primary tumor
+                              option(value='T2' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.T == 'T2')) T2 - Size and/or extent of the primary tumor
+                              option(value='T3' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.T == 'T3')) T3 - Size and/or extent of the primary tumor
+                              option(value='T4' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.T == 'T4')) T4 - Size and/or extent of the primary tumor
                           .divTableCell.NoDivTableBorder.input-cell(style="width: 33%;")
                             label(style='font-size: 12px;') N category
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][AJCC][N]' style='margin-bottom: 18px;')
-                              option(value='Not choosed') Select...
-                              option(value='NX') NX - Regional lymph nodes cannot be evaluated
-                              option(value='NO') NO - No regional lymph node involvement
-                              option(value='N1') N1 - Involvement of regional lymph nodes
-                              option(value='N2') N2 - Involvement of regional lymph nodes
-                              option(value='N3') N3 - Involvement of regional lymph nodes
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.N == 'Not choosed')) Select...
+                              option(value='NX' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.N == 'NX')) NX - Regional lymph nodes cannot be evaluated
+                              option(value='NO' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.N == 'NO')) NO - No regional lymph node involvement
+                              option(value='N1' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.N == 'N1')) N1 - Involvement of regional lymph nodes
+                              option(value='N2' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.N == 'N2')) N2 - Involvement of regional lymph nodes
+                              option(value='N3' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.N == 'N3')) N3 - Involvement of regional lymph nodes
                           .divTableCell.NoDivTableBorder.input-cell(style="width: 33%;")
                             label(style='font-size: 12px;') M category
                             select.form-control(name='melanoma_characteristics[first_melanoma][known][AJCC][M]' style='margin-bottom: 18px;')
-                              option(value='Not choosed') Select...
-                              option(value='MO') MO - No distant metastasis
-                              option(value='M1') M1 - Distant metastasis
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.M == 'Not choosed')) Select...
+                              option(value='MO' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.M == 'MO')) MO - No distant metastasis
+                              option(value='M1' selected=(result.melanoma_characteristics.first_melanoma.known.AJCC.M == 'M1')) M1 - Distant metastasis
 
             .TEST2
               label.table-personal-label(style='padding-left: 50px;')
@@ -2301,11 +2301,11 @@ block content
                         .divTableRow
                           .divTableCell.NoDivTableBorder
                             select#secondMelanomaDetection.form-control(name='melanoma_characteristics[second_melanoma][detection]')
-                              option(value='Not choosed') Select ...
-                              option(value='Patient') Patient
-                              option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
-                              option(value='Physician') Physician
-                              option(value='Other') Other
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.detection == 'Not choosed')) Select ...
+                              option(value='Patient' selected=(result.melanoma_characteristics.second_melanoma.detection == 'Patient')) Patient
+                              option(value='Relative/Spous/Friend' selected=(result.melanoma_characteristics.second_melanoma.detection == 'Relative/Spouse/Friend')) Relative/Spouse/Friend
+                              option(value='Physician' selected=(result.melanoma_characteristics.second_melanoma.detection == 'Physician')) Physician
+                              option(value='Other' selected=(result.melanoma_characteristics.second_melanoma.detection == 'Other')) Other
                           .divTableCell.NoDivTableBorder.hidden-control
                             input(type='text' placeholder='Specify' name='melanoma_characteristics[second_melanoma][other_detection]')
                 
@@ -2321,11 +2321,11 @@ block content
                             span How often did you check your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][self_skin_check_last_3_years]')
-                              option(value='Not choosed') Select...
-                              option(value='Never') Never
-                              option(value='Once') Once
-                              option(value='Once/year') Once/year
-                              option(value='More than once/year') More than once/year
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.self_skin_check_last_3_years == 'Not choosed')) Select...
+                              option(value='Never' selected=(result.melanoma_characteristics.second_melanoma.self_skin_check_last_3_years == 'Never')) Never
+                              option(value='Once' selected=(result.melanoma_characteristics.second_melanoma.self_skin_check_last_3_years == 'Once')) Once
+                              option(value='Once/year' selected=(result.melanoma_characteristics.second_melanoma.self_skin_check_last_3_years == 'Once/year')) Once/year
+                              option(value='More than once/year' selected=(result.melanoma_characteristics.second_melanoma.self_skin_check_last_3_years == 'More than once/year')) More than once/year
 
                 fieldset
                   label
@@ -2339,12 +2339,12 @@ block content
                             span How often did a physician examine your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][skin_check_last_3_years]')
-                              option(value='Not choosed') Select...
-                              option(value='Never') Never
-                              option(value='Once') Once
-                              option(value='Once/year') Once/year
-                              option(value='More than once/year') More than once/year
-                              option(value='Do not recall a physician ever examining my skin') Do not recall a physician ever examining my skin
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.skin_check_last_3_years == 'Not choosed')) Select...
+                              option(value='Never' selected=(result.melanoma_characteristics.second_melanoma.skin_check_last_3_years == 'Never'))) Never
+                              option(value='Once' selected=(result.melanoma_characteristics.second_melanoma.skin_check_last_3_years == 'Once'))) Once
+                              option(value='Once/year' selected=(result.melanoma_characteristics.second_melanoma.skin_check_last_3_years == 'Once/year')) Once/year
+                              option(value='More than once/year' selected=(result.melanoma_characteristics.second_melanoma.skin_check_last_3_years == 'More than once/year')) More than once/year
+                              option(value='Do not recall a physician ever examining my skin' selected=(result.melanoma_characteristics.second_melanoma.skin_check_last_3_years == 'Do not recall a physician ever examining my skin')) Do not recall a physician ever examining my skin
 
                 fieldset
                   .form-group
@@ -2408,73 +2408,73 @@ block content
                   label 
                     | Site
                   .form-group
-                    select#secondKnownSiteSelect.form-control(name='melanoma_characteristics[second_melanoma][known][site]' required='required' data-rule-required='true' data-msg-required='Required field')
-                      option(value='' selected='') Select...
-                      option(value='anus') anus
-                      option(value='arm_left_anterior') arm_left_anterior
-                      option(value='arm_left_posterior') arm_left_posterior
-                      option(value='arm_right_anterior') arm_right_anterior
-                      option(value='arm_right_posterior') arm_right_posterior
-                      option(value='axilla_left') axilla_left
-                      option(value='axilla_right') axilla_right
-                      option(value='back_left') back_left
-                      option(value='back_middle') back_middle
-                      option(value='back_right') back_right
-                      option(value='buttock_left') buttock_left
-                      option(value='buttock_right') buttock_right
-                      option(value='cheek_left') cheek_left
-                      option(value='cheek_right') cheek_right
-                      option(value='chest_left') chest_left
-                      option(value='chest_middle') chest_middle
-                      option(value='chest_right') chest_right
-                      option(value='chin') chin
-                      option(value='ear_left') ear_left
-                      option(value='ear_right') ear_right
-                      option(value='eye_left') eye_left
-                      option(value='eye_right') eye_right
-                      option(value='eyelid_left') eyelid_left
-                      option(value='eyelid_right') eyelid_right
-                      option(value='finger_left') finger_left
-                      option(value='finger_right') finger_right
-                      option(value='foot_left_dorsal') foot_left_dorsal
-                      option(value='foot_left_plantar') foot_left_plantar
-                      option(value='foot_right_dorsal') foot_right_dorsal
-                      option(value='foot_right_plantar') foot_right_plantar
-                      option(value='forearm_left_anterior') forearm_left_anterior
-                      option(value='forearm_left_posterior') forearm_left_posterior
-                      option(value='forearm_right_anterior') forearm_right_anterior
-                      option(value='forearm_right_posterior') forearm_right_posterior
-                      option(value='forehead') forehead
-                      option(value='hand_left_dorsal') hand_left_dorsal
-                      option(value='hand_left_palmar') hand_left_palmar
-                      option(value='hand_right_dorsal') hand_right_dorsal
-                      option(value='hand_right_palmar') hand_right_palmar
-                      option(value='head') head
-                      option(value='laterocervical_left') laterocervical_left
-                      option(value='laterocervical_right') laterocervical_right
-                      option(value='leg_left_anterior') leg_left_anterior
-                      option(value='leg_left_posterior') leg_left_posterior
-                      option(value='leg_right_anterior') leg_right_anterior
-                      option(value='leg_right_posterior') leg_right_posterior
-                      option(value='lip') lip
-                      option(value='lumbar') lumbar
-                      option(value='nail_finger_left') nail_finger_left
-                      option(value='nail_finger_right') Yes
-                      option(value='nail_toe_left') nail_toe_left
-                      option(value='nail_toe_right') nail_toe_right
-                      option(value='nose') nose
-                      option(value='penis_scrotum') penis_scrotum
-                      option(value='scalp') scalp
-                      option(value='shoulder_left') shoulder_left
-                      option(value='shoulder_right') shoulder_right
-                      option(value='thigh_left_anterior') thigh_left_anterior
-                      option(value='thigh_left_posterior') thigh_left_posterior
-                      option(value='thigh_right_anterior') thigh_right_anterior
-                      option(value='thigh_right_posterior') thigh_right_posterior
-                      option(value='toe_left') toe_left
-                      option(value='toe_right') toe_right
-                      option(value='vagina') vagina
-                      option(value='vulva') vulva
+                    select#thirdKnownSiteSelect.form-control(name='melanoma_characteristics[second_melanoma][known][site]' required='required' data-rule-required='true' data-msg-required='Required field')
+                      option(value='' selected=(result.melanoma_characteristics.second_melanoma.known.site =='')) Select...
+                      option(value='anus' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'anus')) anus
+                      option(value='arm_left_anterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'arm_left_anterior')) arm_left_anterior
+                      option(value='arm_left_posterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'arm_left_posterior')) arm_left_posterior
+                      option(value='arm_right_anterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'arm_right_anterior')) arm_right_anterior
+                      option(value='arm_right_posterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'arm_right_posterior')) arm_right_posterior
+                      option(value='axilla_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'axilla_left')) axilla_left
+                      option(value='axilla_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'axilla_right')) axilla_right
+                      option(value='back_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'back_left')) back_left
+                      option(value='back_middle' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'back_middle')) back_middle
+                      option(value='back_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'back_right')) back_right
+                      option(value='buttock_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'buttock_left')) buttock_left
+                      option(value='buttock_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'buttock_right')) buttock_right
+                      option(value='cheek_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'cheek_left')) cheek_left
+                      option(value='cheek_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'cheek_right')) cheek_right
+                      option(value='chest_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'chest_left')) chest_left
+                      option(value='chest_middle' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'chest_middle')) chest_middle
+                      option(value='chest_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'chest_right')) chest_right
+                      option(value='chin' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'chin')) chin
+                      option(value='ear_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'ear_left')) ear_left
+                      option(value='ear_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'ear_right')) ear_right
+                      option(value='eye_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'eye_left')) eye_left
+                      option(value='eye_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'eye_right')) eye_right
+                      option(value='eyelid_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'eyelid_left')) eyelid_left
+                      option(value='eyelid_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'eyelid_right')) eyelid_right
+                      option(value='finger_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'finger_left')) finger_left
+                      option(value='finger_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'finger_right')) finger_right
+                      option(value='foot_left_dorsal' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'foot_left_dorsal')) foot_left_dorsal
+                      option(value='foot_left_plantar' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'foot_left_plantar')) foot_left_plantar
+                      option(value='foot_right_dorsal' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'foot_right_dorsal')) foot_right_dorsal
+                      option(value='foot_right_plantar' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'foot_right_plantar')) foot_right_plantar
+                      option(value='forearm_left_anterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'forearm_left_anterior')) forearm_left_anterior
+                      option(value='forearm_left_posterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'forearm_left_posterior')) forearm_left_posterior
+                      option(value='forearm_right_anterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'forearm_right_anterior')) forearm_right_anterior
+                      option(value='forearm_right_posterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'forearm_right_posterior')) forearm_right_posterior
+                      option(value='forehead' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'forehead')) forehead
+                      option(value='hand_left_dorsal' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'hand_left_dorsal')) hand_left_dorsal
+                      option(value='hand_left_palmar' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'hand_left_palmar')) hand_left_palmar
+                      option(value='hand_right_dorsal' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'hand_right_dorsal')) hand_right_dorsal
+                      option(value='hand_right_palmar' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'hand_right_palmar')) hand_right_palmar
+                      option(value='head' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'head')) head
+                      option(value='laterocervical_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'laterocervical_left')) laterocervical_left
+                      option(value='laterocervical_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'laterocervical_right')) laterocervical_right
+                      option(value='leg_left_anterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'leg_left_anterior')) leg_left_anterior
+                      option(value='leg_left_posterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'leg_left_posterior')) leg_left_posterior
+                      option(value='leg_right_anterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'leg_right_anterior')) leg_right_anterior
+                      option(value='leg_right_posterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'leg_right_posterior')) leg_right_posterior
+                      option(value='lip' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'lip')) lip
+                      option(value='lumbar' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'lumbar')) lumbar
+                      option(value='nail_finger_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'nail_finger_left')) nail_finger_left
+                      option(value='nail_finger_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'nail_finger_right')) Yes
+                      option(value='nail_toe_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'nail_toe_left')) nail_toe_left
+                      option(value='nail_toe_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'nail_toe_right')) nail_toe_right
+                      option(value='nose' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'nose')) nose
+                      option(value='penis_scrotum' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'penis_scrotum')) penis_scrotum
+                      option(value='scalp' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'scalp')) scalp
+                      option(value='shoulder_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'shoulder_left')) shoulder_left
+                      option(value='shoulder_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'shoulder_right')) shoulder_right
+                      option(value='thigh_left_anterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'thigh_left_anterior')) thigh_left_anterior
+                      option(value='thigh_left_posterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'thigh_left_posterior')) thigh_left_posterior
+                      option(value='thigh_right_anterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'thigh_right_anterior')) thigh_right_anterior
+                      option(value='thigh_right_posterior' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'thigh_right_posterior')) thigh_right_posterior
+                      option(value='toe_left' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'toe_left')) toe_left
+                      option(value='toe_right' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'toe_right')) toe_right
+                      option(value='vagina' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'vagina')) vagina
+                      option(value='vulva' selected=(result.melanoma_characteristics.second_melanoma.known.site == 'vulva')) vulva
                     span.error1
                       i.error-log.fa.fa-exclamation-triangle
 
@@ -2497,16 +2497,16 @@ block content
                             span Subtype:
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][subtype]')
-                              option(value='Not choosed') Select...
-                              option(value='SSM') SSM
-                              option(value='NM') NM
-                              option(value='LMM') LMM
-                              option(value='ALM') ALM
-                              option(value='Mucosal') Desmoplastic
-                              option(value='Desmoplastic') Mucosal
-                              option(value='Uveal') Uveal
-                              option(value='Other') Other
-                              option(value='NOS ') NOS
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.subtype == 'Not choosed')) Select...
+                              option(value='SSM' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.subtype == 'SSM')) SSM
+                              option(value='NM' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.subtype == 'NM')) NM
+                              option(value='LMM' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.subtype == 'LMM')) LMM
+                              option(value='ALM' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.subtype == 'ALM')) ALM
+                              option(value='Mucosal' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.subtype == 'Mucosal')) Desmoplastic
+                              option(value='Desmoplastic' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.subtype == 'Desmoplastic')) Mucosal
+                              option(value='Uveal' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.subtype == 'Uveal')) Uveal
+                              option(value='Other' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.subtype == 'Other')) Other
+                              option(value='NOS' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.subtype == 'NOS ')) NOS
                           .divTableCell.NoDivTableBorder.input-cell
                             span(style='visibility: hidden;') space_space_space_space_space__
 
@@ -2639,29 +2639,29 @@ block content
                           .divTableCell.NoDivTableBorder.input-cell(style="width: 33%;")
                             label(style='font-size: 12px;') T category
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][AJCC][T]' style='margin-bottom: 18px;')
-                              option(value='Not choosed') Select...
-                              option(value='TX') TX - Primary tumor cannot be evaluated
-                              option(value='T0') T0 - No evidence of primary tumor
-                              option(value='Tis') Tis - Carcinoma in situ
-                              option(value='T1') T1 - Size and/or extent of the primary tumor
-                              option(value='T2') T2 - Size and/or extent of the primary tumor
-                              option(value='T3') T3 - Size and/or extent of the primary tumor
-                              option(value='T4') T4 - Size and/or extent of the primary tumor
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.T == 'Not choosed')) Select...
+                              option(value='TX' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.T == 'TX')) TX - Primary tumor cannot be evaluated
+                              option(value='T0' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.T == 'T0')) T0 - No evidence of primary tumor
+                              option(value='Tis' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.T == 'Tis')) Tis - Carcinoma in situ
+                              option(value='T1' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.T == 'T1')) T1 - Size and/or extent of the primary tumor
+                              option(value='T2' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.T == 'T2')) T2 - Size and/or extent of the primary tumor
+                              option(value='T3' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.T == 'T3')) T3 - Size and/or extent of the primary tumor
+                              option(value='T4' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.T == 'T4')) T4 - Size and/or extent of the primary tumor
                           .divTableCell.NoDivTableBorder.input-cell(style="width: 33%;")
                             label(style='font-size: 12px;') N category
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][AJCC][N]' style='margin-bottom: 18px;')
-                              option(value='Not choosed') Select...
-                              option(value='NX') NX - Regional lymph nodes cannot be evaluated
-                              option(value='NO') NO - No regional lymph node involvement
-                              option(value='N1') N1 - Involvement of regional lymph nodes
-                              option(value='N2') N2 - Involvement of regional lymph nodes
-                              option(value='N3') N3 - Involvement of regional lymph nodes
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.N == 'Not choosed')) Select...
+                              option(value='NX' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.N == 'NX')) NX - Regional lymph nodes cannot be evaluated
+                              option(value='NO' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.N == 'NO')) NO - No regional lymph node involvement
+                              option(value='N1' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.N == 'N1')) N1 - Involvement of regional lymph nodes
+                              option(value='N2' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.N == 'N2')) N2 - Involvement of regional lymph nodes
+                              option(value='N3' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.N == 'N3')) N3 - Involvement of regional lymph nodes
                           .divTableCell.NoDivTableBorder.input-cell(style="width: 33%;")
                             label(style='font-size: 12px;') M category
                             select.form-control(name='melanoma_characteristics[second_melanoma][known][AJCC][M]' style='margin-bottom: 18px;')
-                              option(value='Not choosed') Select...
-                              option(value='MO') MO - No distant metastasis
-                              option(value='M1') M1 - Distant metastasis
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.M == 'Not choosed')) Select...
+                              option(value='MO' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.M == 'MO')) MO - No distant metastasis
+                              option(value='M1' selected=(result.melanoma_characteristics.second_melanoma.known.AJCC.M == 'M1')) M1 - Distant metastasis
 
             .TEST2
               label.table-personal-label(style='padding-left: 50px;')
@@ -2698,11 +2698,11 @@ block content
                         .divTableRow
                           .divTableCell.NoDivTableBorder
                             select#thirdMelanomaDetection.form-control(name='melanoma_characteristics[third_melanoma][detection]')
-                              option(value='Not choosed') Select ...
-                              option(value='Patient') Patient
-                              option(value='Relative/Spouse/Friend') Relative/Spouse/Friend
-                              option(value='Physician') Physician
-                              option(value='Other') Other
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.detection == 'Not choosed')) Select ...
+                              option(value='Patient' selected=(result.melanoma_characteristics.third_melanoma.detection == 'Patient')) Patient
+                              option(value='Relative/Spous/Friend' selected=(result.melanoma_characteristics.third_melanoma.detection == 'Relative/Spouse/Friend')) Relative/Spouse/Friend
+                              option(value='Physician' selected=(result.melanoma_characteristics.third_melanoma.detection == 'Physician')) Physician
+                              option(value='Other' selected=(result.melanoma_characteristics.third_melanoma.detection == 'Other')) Other
                           .divTableCell.NoDivTableBorder.hidden-control
                             input(type='text' placeholder='Specify' name='melanoma_characteristics[third_melanoma][other_detection]')
                 
@@ -2718,11 +2718,11 @@ block content
                             span How often did you check your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][self_skin_check_last_3_years]')
-                              option(value='Not choosed') Select...
-                              option(value='Never') Never
-                              option(value='Once') Once
-                              option(value='Once/year') Once/year
-                              option(value='More than once/year') More than once/year
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.self_skin_check_last_3_years == 'Not choosed')) Select...
+                              option(value='Never' selected=(result.melanoma_characteristics.third_melanoma.self_skin_check_last_3_years == 'Never')) Never
+                              option(value='Once' selected=(result.melanoma_characteristics.third_melanoma.self_skin_check_last_3_years == 'Once')) Once
+                              option(value='Once/year' selected=(result.melanoma_characteristics.third_melanoma.self_skin_check_last_3_years == 'Once/year')) Once/year
+                              option(value='More than once/year' selected=(result.melanoma_characteristics.third_melanoma.self_skin_check_last_3_years == 'More than once/year')) More than once/year
 
                 fieldset
                   label
@@ -2736,12 +2736,12 @@ block content
                             span How often did a physician examine your skin in the past 3 yrs?
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][skin_check_last_3_years]')
-                              option(value='Not choosed') Select...
-                              option(value='Never') Never
-                              option(value='Once') Once
-                              option(value='Once/year') Once/year
-                              option(value='More than once/year') More than once/year
-                              option(value='Do not recall a physician ever examining my skin') Do not recall a physician ever examining my skin
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.skin_check_last_3_years == 'Not choosed')) Select...
+                              option(value='Never' selected=(result.melanoma_characteristics.third_melanoma.skin_check_last_3_years == 'Never'))) Never
+                              option(value='Once' selected=(result.melanoma_characteristics.third_melanoma.skin_check_last_3_years == 'Once'))) Once
+                              option(value='Once/year' selected=(result.melanoma_characteristics.third_melanoma.skin_check_last_3_years == 'Once/year')) Once/year
+                              option(value='More than once/year' selected=(result.melanoma_characteristics.third_melanoma.skin_check_last_3_years == 'More than once/year')) More than once/year
+                              option(value='Do not recall a physician ever examining my skin' selected=(result.melanoma_characteristics.third_melanoma.skin_check_last_3_years == 'Do not recall a physician ever examining my skin')) Do not recall a physician ever examining my skin
 
                 fieldset
                   .form-group
@@ -2806,72 +2806,72 @@ block content
                     | Site
                   .form-group
                     select#thirdKnownSiteSelect.form-control(name='melanoma_characteristics[third_melanoma][known][site]' required='required' data-rule-required='true' data-msg-required='Required field')
-                      option(value='' selected='') Select...
-                      option(value='anus') anus
-                      option(value='arm_left_anterior') arm_left_anterior
-                      option(value='arm_left_posterior') arm_left_posterior
-                      option(value='arm_right_anterior') arm_right_anterior
-                      option(value='arm_right_posterior') arm_right_posterior
-                      option(value='axilla_left') axilla_left
-                      option(value='axilla_right') axilla_right
-                      option(value='back_left') back_left
-                      option(value='back_middle') back_middle
-                      option(value='back_right') back_right
-                      option(value='buttock_left') buttock_left
-                      option(value='buttock_right') buttock_right
-                      option(value='cheek_left') cheek_left
-                      option(value='cheek_right') cheek_right
-                      option(value='chest_left') chest_left
-                      option(value='chest_middle') chest_middle
-                      option(value='chest_right') chest_right
-                      option(value='chin') chin
-                      option(value='ear_left') ear_left
-                      option(value='ear_right') ear_right
-                      option(value='eye_left') eye_left
-                      option(value='eye_right') eye_right
-                      option(value='eyelid_left') eyelid_left
-                      option(value='eyelid_right') eyelid_right
-                      option(value='finger_left') finger_left
-                      option(value='finger_right') finger_right
-                      option(value='foot_left_dorsal') foot_left_dorsal
-                      option(value='foot_left_plantar') foot_left_plantar
-                      option(value='foot_right_dorsal') foot_right_dorsal
-                      option(value='foot_right_plantar') foot_right_plantar
-                      option(value='forearm_left_anterior') forearm_left_anterior
-                      option(value='forearm_left_posterior') forearm_left_posterior
-                      option(value='forearm_right_anterior') forearm_right_anterior
-                      option(value='forearm_right_posterior') forearm_right_posterior
-                      option(value='forehead') forehead
-                      option(value='hand_left_dorsal') hand_left_dorsal
-                      option(value='hand_left_palmar') hand_left_palmar
-                      option(value='hand_right_dorsal') hand_right_dorsal
-                      option(value='hand_right_palmar') hand_right_palmar
-                      option(value='head') head
-                      option(value='laterocervical_left') laterocervical_left
-                      option(value='laterocervical_right') laterocervical_right
-                      option(value='leg_left_anterior') leg_left_anterior
-                      option(value='leg_left_posterior') leg_left_posterior
-                      option(value='leg_right_anterior') leg_right_anterior
-                      option(value='leg_right_posterior') leg_right_posterior
-                      option(value='lip') lip
-                      option(value='lumbar') lumbar
-                      option(value='nail_finger_left') nail_finger_left
-                      option(value='nail_finger_right') Yes
-                      option(value='nail_toe_left') nail_toe_left
-                      option(value='nail_toe_right') nail_toe_right
-                      option(value='nose') nose
-                      option(value='penis_scrotum') penis_scrotum
-                      option(value='scalp') scalp
-                      option(value='shoulder_left') shoulder_left
-                      option(value='shoulder_right') shoulder_right
-                      option(value='thigh_left_anterior') thigh_left_anterior
-                      option(value='thigh_left_posterior') thigh_left_posterior
-                      option(value='thigh_right_anterior') thigh_right_anterior
-                      option(value='thigh_right_posterior') thigh_right_posterior
-                      option(value='toe_left') toe_left
-                      option(value='toe_right') toe_right
-                      option(value='vagina') vagina
-                      option(value='vulva') vulva
+                      option(value='' selected=(result.melanoma_characteristics.third_melanoma.known.site =='')) Select...
+                      option(value='anus' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'anus')) anus
+                      option(value='arm_left_anterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'arm_left_anterior')) arm_left_anterior
+                      option(value='arm_left_posterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'arm_left_posterior')) arm_left_posterior
+                      option(value='arm_right_anterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'arm_right_anterior')) arm_right_anterior
+                      option(value='arm_right_posterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'arm_right_posterior')) arm_right_posterior
+                      option(value='axilla_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'axilla_left')) axilla_left
+                      option(value='axilla_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'axilla_right')) axilla_right
+                      option(value='back_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'back_left')) back_left
+                      option(value='back_middle' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'back_middle')) back_middle
+                      option(value='back_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'back_right')) back_right
+                      option(value='buttock_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'buttock_left')) buttock_left
+                      option(value='buttock_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'buttock_right')) buttock_right
+                      option(value='cheek_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'cheek_left')) cheek_left
+                      option(value='cheek_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'cheek_right')) cheek_right
+                      option(value='chest_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'chest_left')) chest_left
+                      option(value='chest_middle' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'chest_middle')) chest_middle
+                      option(value='chest_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'chest_right')) chest_right
+                      option(value='chin' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'chin')) chin
+                      option(value='ear_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'ear_left')) ear_left
+                      option(value='ear_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'ear_right')) ear_right
+                      option(value='eye_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'eye_left')) eye_left
+                      option(value='eye_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'eye_right')) eye_right
+                      option(value='eyelid_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'eyelid_left')) eyelid_left
+                      option(value='eyelid_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'eyelid_right')) eyelid_right
+                      option(value='finger_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'finger_left')) finger_left
+                      option(value='finger_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'finger_right')) finger_right
+                      option(value='foot_left_dorsal' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'foot_left_dorsal')) foot_left_dorsal
+                      option(value='foot_left_plantar' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'foot_left_plantar')) foot_left_plantar
+                      option(value='foot_right_dorsal' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'foot_right_dorsal')) foot_right_dorsal
+                      option(value='foot_right_plantar' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'foot_right_plantar')) foot_right_plantar
+                      option(value='forearm_left_anterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'forearm_left_anterior')) forearm_left_anterior
+                      option(value='forearm_left_posterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'forearm_left_posterior')) forearm_left_posterior
+                      option(value='forearm_right_anterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'forearm_right_anterior')) forearm_right_anterior
+                      option(value='forearm_right_posterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'forearm_right_posterior')) forearm_right_posterior
+                      option(value='forehead' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'forehead')) forehead
+                      option(value='hand_left_dorsal' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'hand_left_dorsal')) hand_left_dorsal
+                      option(value='hand_left_palmar' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'hand_left_palmar')) hand_left_palmar
+                      option(value='hand_right_dorsal' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'hand_right_dorsal')) hand_right_dorsal
+                      option(value='hand_right_palmar' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'hand_right_palmar')) hand_right_palmar
+                      option(value='head' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'head')) head
+                      option(value='laterocervical_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'laterocervical_left')) laterocervical_left
+                      option(value='laterocervical_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'laterocervical_right')) laterocervical_right
+                      option(value='leg_left_anterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'leg_left_anterior')) leg_left_anterior
+                      option(value='leg_left_posterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'leg_left_posterior')) leg_left_posterior
+                      option(value='leg_right_anterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'leg_right_anterior')) leg_right_anterior
+                      option(value='leg_right_posterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'leg_right_posterior')) leg_right_posterior
+                      option(value='lip' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'lip')) lip
+                      option(value='lumbar' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'lumbar')) lumbar
+                      option(value='nail_finger_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'nail_finger_left')) nail_finger_left
+                      option(value='nail_finger_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'nail_finger_right')) Yes
+                      option(value='nail_toe_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'nail_toe_left')) nail_toe_left
+                      option(value='nail_toe_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'nail_toe_right')) nail_toe_right
+                      option(value='nose' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'nose')) nose
+                      option(value='penis_scrotum' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'penis_scrotum')) penis_scrotum
+                      option(value='scalp' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'scalp')) scalp
+                      option(value='shoulder_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'shoulder_left')) shoulder_left
+                      option(value='shoulder_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'shoulder_right')) shoulder_right
+                      option(value='thigh_left_anterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'thigh_left_anterior')) thigh_left_anterior
+                      option(value='thigh_left_posterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'thigh_left_posterior')) thigh_left_posterior
+                      option(value='thigh_right_anterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'thigh_right_anterior')) thigh_right_anterior
+                      option(value='thigh_right_posterior' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'thigh_right_posterior')) thigh_right_posterior
+                      option(value='toe_left' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'toe_left')) toe_left
+                      option(value='toe_right' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'toe_right')) toe_right
+                      option(value='vagina' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'vagina')) vagina
+                      option(value='vulva' selected=(result.melanoma_characteristics.third_melanoma.known.site == 'vulva')) vulva
                     span.error1
                       i.error-log.fa.fa-exclamation-triangle
 
@@ -2894,16 +2894,16 @@ block content
                             span Subtype:
                           .divTableCell.NoDivTableBorder.input-cell
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][subtype]')
-                              option(value='Not choosed') Select...
-                              option(value='SSM') SSM
-                              option(value='NM') NM
-                              option(value='LMM') LMM
-                              option(value='ALM') ALM
-                              option(value='Mucosal') Desmoplastic
-                              option(value='Desmoplastic') Mucosal
-                              option(value='Uveal') Uveal
-                              option(value='Other') Other
-                              option(value='NOS ') NOS
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.subtype == 'Not choosed')) Select...
+                              option(value='SSM' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.subtype == 'SSM')) SSM
+                              option(value='NM' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.subtype == 'NM')) NM
+                              option(value='LMM' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.subtype == 'LMM')) LMM
+                              option(value='ALM' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.subtype == 'ALM')) ALM
+                              option(value='Mucosal' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.subtype == 'Mucosal')) Desmoplastic
+                              option(value='Desmoplastic' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.subtype == 'Desmoplastic')) Mucosal
+                              option(value='Uveal' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.subtype == 'Uveal')) Uveal
+                              option(value='Other' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.subtype == 'Other')) Other
+                              option(value='NOS' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.subtype == 'NOS ')) NOS
                           .divTableCell.NoDivTableBorder.input-cell
                             span(style='visibility: hidden;') space_space_space_space_space__
 
@@ -3036,29 +3036,29 @@ block content
                           .divTableCell.NoDivTableBorder.input-cell(style="width: 33%;")
                             label(style='font-size: 12px;') T category
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][AJCC][T]' style='margin-bottom: 18px;')
-                              option(value='Not choosed') Select...
-                              option(value='TX') TX - Primary tumor cannot be evaluated
-                              option(value='T0') T0 - No evidence of primary tumor
-                              option(value='Tis') Tis - Carcinoma in situ
-                              option(value='T1') T1 - Size and/or extent of the primary tumor
-                              option(value='T2') T2 - Size and/or extent of the primary tumor
-                              option(value='T3') T3 - Size and/or extent of the primary tumor
-                              option(value='T4') T4 - Size and/or extent of the primary tumor
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.T == 'Not choosed')) Select...
+                              option(value='TX' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.T == 'TX')) TX - Primary tumor cannot be evaluated
+                              option(value='T0' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.T == 'T0')) T0 - No evidence of primary tumor
+                              option(value='Tis' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.T == 'Tis')) Tis - Carcinoma in situ
+                              option(value='T1' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.T == 'T1')) T1 - Size and/or extent of the primary tumor
+                              option(value='T2' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.T == 'T2')) T2 - Size and/or extent of the primary tumor
+                              option(value='T3' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.T == 'T3')) T3 - Size and/or extent of the primary tumor
+                              option(value='T4' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.T == 'T4')) T4 - Size and/or extent of the primary tumor
                           .divTableCell.NoDivTableBorder.input-cell(style="width: 33%;")
                             label(style='font-size: 12px;') N category
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][AJCC][N]' style='margin-bottom: 18px;')
-                              option(value='Not choosed') Select...
-                              option(value='NX') NX - Regional lymph nodes cannot be evaluated
-                              option(value='NO') NO - No regional lymph node involvement
-                              option(value='N1') N1 - Involvement of regional lymph nodes
-                              option(value='N2') N2 - Involvement of regional lymph nodes
-                              option(value='N3') N3 - Involvement of regional lymph nodes
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.N == 'Not choosed')) Select...
+                              option(value='NX' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.N == 'NX')) NX - Regional lymph nodes cannot be evaluated
+                              option(value='NO' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.N == 'NO')) NO - No regional lymph node involvement
+                              option(value='N1' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.N == 'N1')) N1 - Involvement of regional lymph nodes
+                              option(value='N2' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.N == 'N2')) N2 - Involvement of regional lymph nodes
+                              option(value='N3' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.N == 'N3')) N3 - Involvement of regional lymph nodes
                           .divTableCell.NoDivTableBorder.input-cell(style="width: 33%;")
                             label(style='font-size: 12px;') M category
                             select.form-control(name='melanoma_characteristics[third_melanoma][known][AJCC][M]' style='margin-bottom: 18px;')
-                              option(value='Not choosed') Select...
-                              option(value='MO') MO - No distant metastasis
-                              option(value='M1') M1 - Distant metastasis
+                              option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.M == 'Not choosed')) Select...
+                              option(value='MO' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.M == 'MO')) MO - No distant metastasis
+                              option(value='M1' selected=(result.melanoma_characteristics.third_melanoma.known.AJCC.M == 'M1')) M1 - Distant metastasis
 
           div.alphaformfooter
           div.formfooter
