@@ -977,7 +977,8 @@ $(document).ready(function() {
 function set_JSON_Tables(json_object) {
 
     if (json_object.demographic.residency_list != undefined) {
-        List_Residency = sort_JSON_Object(json_object.demographic.residency_list, ["address", "start_date", "end_date", "coordinates"]);
+        List_Residency = sort_JSON_Object(json_object.demographic.residency_list, ["address","start_date", "end_date","coordinates"]);
+        $('#searchBox').prop("required", false);
         $(".json_residency").createTable(List_Residency);
     }
     if (json_object.demographic.SIC_list != undefined) {
@@ -1042,7 +1043,27 @@ function Initialize() {
     /****** Trigger change on all input of type select with an hidden control ******/
 
     $("[name='general[melanoma_type]']").trigger('change');
-
+    $("[name='demographic[ethnicity]']").trigger('change');
+    $("[name='ultraviolet[occupational_sun_exposure][presence]']").trigger('change');
+    $("[name='ultraviolet[recreational_sun_exposure][presence]']").trigger('change');
+    $("[name='ultraviolet[sunburn_before_18][presence]']").trigger('change');
+    $("[name='ultraviolet[sunburn_after_18][presence]']").trigger('change');
+    $("[name='ultraviolet[sunburn_last_5_years][presence]']").trigger('change');
+    $("[name='ultraviolet[sunlamp][presence]']").trigger('change');
+    $("[name='lifestyle[smoking][frequency]']").trigger('change');
+    $("[name='lifestyle[vitamins_last_year][presence]']").trigger('change');
+    $("[name='section_B_evaluation[difficult][answer]']").trigger('change');
+    $("[name='clinical_examination[congenital_nevi][medium_sized][presence]']").trigger('change');
+    $("[name='clinical_examination[congenital_nevi][large_sized][presence]']").trigger('change');
+    $("[name='clinical_examination[congenital_nevi][giant_sized][presence]']").trigger('change');
+    $("[name='clinical_examination[blue_nevi][medium_sized][presence]']").trigger('change');
+    $("[name='clinical_examination[actinic_keratoses][presence]']").trigger('change');
+    $("[name='clinical_examination[BCC][presence]']").trigger('change');
+    $("[name='clinical_examination[invasive_SCC][presence]']").trigger('change');
+    $("[name='clinical_examination[insitu_SCC][presence]']").trigger('change');
+    $("[name='medical_history[pregnancy][presence]']:checked").trigger('click');
+    $("[name='medical_history[pregnancy][melanoma_before_pregnancy][presence]']:checked").trigger('click');
+    $("[name='medical_history[pregnancy][melanoma_after_pregnancy][presence]']:checked").trigger('click');
     /****** Trigger change on all input of type select with an hidden control ******/
 };
 
