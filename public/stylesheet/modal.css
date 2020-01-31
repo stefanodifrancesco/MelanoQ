@@ -162,3 +162,21 @@
         width: 900px
     }
 }
+
+.th-image {
+    width:30%;
+    vertical-align: top;
+}
+
+.th-title {
+    font-size: 1.250em
+}
+
+.th-title .span-modal-title-for {
+    color:green;
+    font-family: monospace;
+}
+
+.diagnosis-date {
+    width:auto;
+}
