@@ -1101,6 +1101,12 @@ function Initialize() {
     $("[name='medical_history[pregnancy][presence]']:checked").trigger('click');
     $("[name='medical_history[pregnancy][melanoma_before_pregnancy][presence]']:checked").trigger('click');
     $("[name='medical_history[pregnancy][melanoma_after_pregnancy][presence]']:checked").trigger('click');
+    $("[name='section_C_evaluation[difficult][answer]']").trigger('change');
+    $("[name='melanoma_characteristics[first_melanoma][lesion][presence]']").trigger('change');
+    $("[name='melanoma_characteristics[first_melanoma][detection]']").trigger('change');
+    $("[name='melanoma_characteristics[first_melanoma][known][presence]']").trigger('change')
+    $("[name='melanoma_characteristics[first_melanoma][multiple_primary][presence]']").trigger('change');
+    $("[name='melanoma_characteristics[first_melanoma][known][histopathologic_features][nevus][presence]']").trigger('change');
     /****** Trigger change on all input of type select with an hidden control ******/
 };
 
