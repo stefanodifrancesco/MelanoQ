@@ -821,6 +821,39 @@ $(document).ready(function() {
         }
     });
 
+    $("#firstMPM").on("change", function(evt) {
+        if ($(this).val() == "Yes") {
+            $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
+        }
+        if ($(this).val() != "Yes") {
+            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
+        }
+    });
+
+    $("#secondMPM").on("change", function(evt) {
+        if ($(this).val() == "Yes") {
+            $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
+        }
+        if ($(this).val() != "Yes") {
+            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
+        }
+    });
+
+    $("#thirdMPM").on("change", function(evt) {
+        if ($(this).val() == "Yes") {
+            $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
+        }
+        if ($(this).val() != "Yes") {
+            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
+        }
+    });
+
     $("#firstMelanomaRegression").on("change", function(evt) {
         if ($(this).val() == "present") {
             $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);

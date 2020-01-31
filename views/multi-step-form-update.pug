@@ -1093,8 +1093,8 @@ block content
                   .divTableRow.spaced
                     .divTableCell.NoDivTableBorder.question-cell
                       span 19) Were you able to respond to the questions of the last three sections ?
-                    .divTableCell.NoDivTableBorder.input-cell(name='section_B_evaluation[completed]')
-                      select#selectEval.form-control
+                    .divTableCell.NoDivTableBorder.input-cell
+                      select#selectEval.form-control(name='section_B_evaluation[completed]')
                         option(value='Not choosed' selected=(result.section_B_evaluation.completed == 'Not choosed')) Select...
                         option(value='All' selected=(result.section_B_evaluation.completed == 'All')) All questions
                         option(value='Most' selected=(result.section_B_evaluation.completed == 'Most')) Most questions
@@ -1103,8 +1103,8 @@ block content
                   .divTableRow.spaced
                     .divTableCell.NoDivTableBorder.question-cell
                       span 20) Which questions of these last three sections did you consider difficult to fill in?
-                    .divTableCell.NoDivTableBorder.input-cell(name='section_B_evaluation[difficult][answer]')
-                      select#selectQuestions.form-control
+                    .divTableCell.NoDivTableBorder.input-cell
+                      select#selectQuestions.form-control(name='section_B_evaluation[difficult][answer]')
                         option(value='Not choosed' selected=(result.section_B_evaluation.difficult.answer == 'Not choosed')) Select...
                         option(value='None' selected=(result.section_B_evaluation.difficult.answer == 'None')) None
                         option(value='Yes' selected=(result.section_B_evaluation.difficult.answer == 'Yes')) Insert numbers of questions
@@ -1376,14 +1376,14 @@ block content
                     .divTableRow
                       .divTableCell.NoDivTableBorder.input-cell
                         label(style='color: transparent;') fake
-                        select#selectBlueNevi.form-control(name='clinical_examination[blue_nevi][medium_sized][presence]')
-                          option(value='Not choosed' selected=(result.clinical_examination.blue_nevi.medium_sized.presence == 'Not choosed')) Select...
-                          option(value='No' selected=(result.clinical_examination.blue_nevi.medium_sized.presence == 'No')) No
-                          option(value='Yes' selected=(result.clinical_examination.blue_nevi.medium_sized.presence == 'Yes')) Yes
+                        select#selectBlueNevi.form-control(name='clinical_examination[blue_nevi][presence]')
+                          option(value='Not choosed' selected=(result.clinical_examination.blue_nevi.presence == 'Not choosed')) Select...
+                          option(value='No' selected=(result.clinical_examination.blue_nevi.presence == 'No')) No
+                          option(value='Yes' selected=(result.clinical_examination.blue_nevi.presence == 'Yes')) Yes
                       .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
                             label(style='font-size: 12px;') Number:
-                            input#inputBlueNevi(type='number' min='1' name='clinical_examination[blue_nevi][medium_sized][count]' value=result.clinical_examination.blue_nevi.medium_sized.count)
+                            input#inputBlueNevi(type='number' min='1' name='clinical_examination[blue_nevi][count]' value=result.clinical_examination.blue_nevi.count)
             
             fieldset#fieldsetActinicKeratoses
               label Actinic keratoses
@@ -1837,8 +1837,8 @@ block content
                   .divTableRow.spaced
                     .divTableCell.NoDivTableBorder.question-cell
                       span Were you able to respond to the questions of the last three sections?
-                    .divTableCell.NoDivTableBorder.input-cell(name='section_C_evaluation[completed]')
-                      select#selectEvalC.form-control
+                    .divTableCell.NoDivTableBorder.input-cell
+                      select#selectEvalC.form-control(name='section_C_evaluation[completed]')
                         option(value='Not choosed' selected=(result.section_C_evaluation.completed == 'Not choosed')) Select...
                         option(value='All' selected=(result.section_C_evaluation.completed == 'All')) All questions
                         option(value='Most' selected=(result.section_C_evaluation.completed == 'Most')) Most questions
@@ -1847,8 +1847,8 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder.question-cell
                       span Which questions of this Section did you consider difficult to fill in?
-                    .divTableCell.NoDivTableBorder.input-cell(name='section_C_evaluation[difficult][answer]')
-                      select.form-control.selectQuestions
+                    .divTableCell.NoDivTableBorder.input-cell
+                      select.form-control.selectQuestions(name='section_C_evaluation[difficult][answer]')
                         option(value='Not choosed' selected=(result.section_C_evaluation.difficult.answer == 'Not choosed')) Select...
                         option(value='None' selected=(result.section_C_evaluation.difficult.answer == 'None')) None
                         option(value='Yes' selected=(result.section_C_evaluation.difficult.answer == 'Yes')) Insert numbers of questions
@@ -1910,8 +1910,7 @@ block content
                               option(value='Physician') Physician
                               option(value='Other') Other
                           .divTableCell.NoDivTableBorder.hidden-control
-                            label(style='font-size: 12px;') Specify:
-                            input(type='text' name='melanoma_characteristics[first_melanoma][other_detection]')
+                            input(type='text' placeholder='Specify' name='melanoma_characteristics[first_melanoma][other_detection]')
                 
                 fieldset
                   label
@@ -1957,18 +1956,20 @@ block content
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
                             span Sentinel Lymph Node (SLN) biopsy
-                          .divTableCell.NoDivTableBorder.input-cell
-                            select#firstSelectSNL.form-control(name='melanoma_characteristics[first_melanoma][SNL][presence]')
+                          .divTableCell.NoDivTableBorder.input-cell(style='width: 26%;')
+                            select#secondSelectSNL.form-control(name='melanoma_characteristics[second_melanoma][SNL][presence]')
                               option(value='Not choosed') Select...
                               option(value='Yes') Yes
                               option(value='No') No
                               option(value='Not done') Not done
                               option(value='Not known') Not known
-                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                            select.form-control(name='melanoma_characteristics[first_melanoma][SNL][category]')
-                              option(value='Not choosed') Positive/Negative
-                              option(value='Positive') Positive
-                              option(value='Negative') Negative
+                          .divTableCell.NoDivTableBorder.input-cell
+                            .hidden-control
+                              .group(style='margin-bottom:0%;vertical-align: bottom;')
+                                select.form-control(name='melanoma_characteristics[second_melanoma][SNL][category]')
+                                  option(value='Not choosed') Positive/Negative
+                                  option(value='Positive') Positive
+                                  option(value='Negative') Negative
 
                 fieldset
                   .form-group
@@ -1977,14 +1978,15 @@ block content
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
                             span Multiple primary melanoma (MPM) – concurrent or previous
-                          .divTableCell.NoDivTableBorder.input-cell
-                            select.form-control(name='melanoma_characteristics[first_melanoma][multiple_primary][presence]')
+                          .divTableCell.NoDivTableBorder.input-cell(style='width: 26%;')
+                            select#secondMPM.form-control(name='melanoma_characteristics[second_melanoma][multiple_primary][presence]')
                               option(value='Not choosed') Select...
                               option(value='No') No
                               option(value='Yes') Yes
-                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                            label(style='font-size: 12px;') Number of primaries:
-                            input(type='number' min='1' name='melanoma_characteristics[first_melanoma][multiple_primary][count]')
+                          .divTableCell.NoDivTableBorder.input-cell
+                            .hidden-control
+                              .group(style='margin-bottom:0%;vertical-align: bottom;')
+                                input(type='number' placeholder='Number' min='1' name='melanoma_characteristics[second_melanoma][multiple_primary][count]' required='' )
 
                 fieldset
                   label 
@@ -2108,6 +2110,8 @@ block content
                               option(value='Uveal') Uveal
                               option(value='Other') Other
                               option(value='NOS ') NOS
+                          .divTableCell.NoDivTableBorder.input-cell
+                            span(style='visibility: hidden;') space_space_space_space_space__
 
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
@@ -2145,7 +2149,7 @@ block content
                               option(value='present') Present
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
                             label(style='font-size: 12px;') Specify percentage:
-                            select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][regression][percentage]')
+                            select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][regression][percentage]' style='margin-bottom: 23px;')
                               option(value='Not choosed') Select...
                               option(value='less_than_50%') <50%
                               option(value='greater_than_50%') >50%
@@ -2169,8 +2173,7 @@ block content
                               option(value='absent') Absent
                               option(value='present') Present
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                            label(style='font-size: 12px;') Specify type:
-                            input(type='text' name='melanoma_characteristics[first_melanoma][known][histopathologic_features][nevus][type]')
+                            input(type='text' placeholder='Specify type' name='melanoma_characteristics[first_melanoma][known][histopathologic_features][nevus][type]')
 
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
@@ -2304,8 +2307,7 @@ block content
                               option(value='Physician') Physician
                               option(value='Other') Other
                           .divTableCell.NoDivTableBorder.hidden-control
-                            label(style='font-size: 12px;') Specify:
-                            input(type='text' name='melanoma_characteristics[second_melanoma][other_detection]')
+                            input(type='text' placeholder='Specify' name='melanoma_characteristics[second_melanoma][other_detection]')
                 
                 fieldset
                   label
@@ -2351,18 +2353,20 @@ block content
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
                             span Sentinel Lymph Node (SLN) biopsy
-                          .divTableCell.NoDivTableBorder.input-cell
+                          .divTableCell.NoDivTableBorder.input-cell(style='width: 26%;')
                             select#secondSelectSNL.form-control(name='melanoma_characteristics[second_melanoma][SNL][presence]')
                               option(value='Not choosed') Select...
                               option(value='Yes') Yes
                               option(value='No') No
                               option(value='Not done') Not done
                               option(value='Not known') Not known
-                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                            select.form-control(name='melanoma_characteristics[second_melanoma][SNL][category]')
-                              option(value='Not choosed') Positive/Negative
-                              option(value='Positive') Positive
-                              option(value='Negative') Negative
+                          .divTableCell.NoDivTableBorder.input-cell
+                            .hidden-control
+                              .group(style='margin-bottom:0%;vertical-align: bottom;')
+                                select.form-control(name='melanoma_characteristics[second_melanoma][SNL][category]')
+                                  option(value='Not choosed') Positive/Negative
+                                  option(value='Positive') Positive
+                                  option(value='Negative') Negative
 
                 fieldset
                   .form-group
@@ -2371,14 +2375,15 @@ block content
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
                             span Multiple primary melanoma (MPM) – concurrent or previous
-                          .divTableCell.NoDivTableBorder.input-cell
-                            select.form-control(name='melanoma_characteristics[second_melanoma][multiple_primary][presence]')
+                          .divTableCell.NoDivTableBorder.input-cell(style='width: 26%;')
+                            select#secondMPM.form-control(name='melanoma_characteristics[second_melanoma][multiple_primary][presence]')
                               option(value='Not choosed') Select...
                               option(value='No') No
                               option(value='Yes') Yes
-                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                            label(style='font-size: 12px;') Number of primaries:
-                            input(type='number' min='1' name='melanoma_characteristics[second_melanoma][multiple_primary][count]' required='' )
+                          .divTableCell.NoDivTableBorder.input-cell
+                            .hidden-control
+                              .group(style='margin-bottom:0%;vertical-align: bottom;')
+                                input(type='number' placeholder='Number' min='1' name='melanoma_characteristics[second_melanoma][multiple_primary][count]' required='' )
 
                 fieldset
                   label 
@@ -2502,6 +2507,8 @@ block content
                               option(value='Uveal') Uveal
                               option(value='Other') Other
                               option(value='NOS ') NOS
+                          .divTableCell.NoDivTableBorder.input-cell
+                            span(style='visibility: hidden;') space_space_space_space_space__
 
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
@@ -2539,7 +2546,7 @@ block content
                               option(value='present') Present
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
                             label(style='font-size: 12px;') Specify percentage:
-                            select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][regression][percentage]')
+                            select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][regression][percentage]' style='margin-bottom: 23px;')
                               option(value='Not choosed') Select...
                               option(value='less_than_50%') <50%
                               option(value='greater_than_50%') >50%
@@ -2563,8 +2570,7 @@ block content
                               option(value='absent') Absent
                               option(value='present') Present
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                            label(style='font-size: 12px;') Specify type:
-                            input(type='text' name='melanoma_characteristics[second_melanoma][known][histopathologic_features][nevus][type]')
+                            input(type='text' placeholder='Specify type' name='melanoma_characteristics[second_melanoma][known][histopathologic_features][nevus][type]')
 
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
@@ -2698,8 +2704,7 @@ block content
                               option(value='Physician') Physician
                               option(value='Other') Other
                           .divTableCell.NoDivTableBorder.hidden-control
-                            label(style='font-size: 12px;') Specify:
-                            input(type='text' name='melanoma_characteristics[third_melanoma][other_detection]')
+                            input(type='text' placeholder='Specify' name='melanoma_characteristics[third_melanoma][other_detection]')
                 
                 fieldset
                   label
@@ -2745,18 +2750,20 @@ block content
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
                             span Sentinel Lymph Node (SLN) biopsy
-                          .divTableCell.NoDivTableBorder.input-cell
-                            select#thirdSelectSNL.form-control(name='melanoma_characteristics[third_melanoma][SNL][presence]')
+                          .divTableCell.NoDivTableBorder.input-cell(style='width: 26%;')
+                            select#secondSelectSNL.form-control(name='melanoma_characteristics[second_melanoma][SNL][presence]')
                               option(value='Not choosed') Select...
                               option(value='Yes') Yes
                               option(value='No') No
                               option(value='Not done') Not done
                               option(value='Not known') Not known
-                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                            select.form-control(name='melanoma_characteristics[third_melanoma][SNL][category]')
-                              option(value='Not choosed') Positive/Negative
-                              option(value='Positive') Positive
-                              option(value='Negative') Negative
+                          .divTableCell.NoDivTableBorder.input-cell
+                            .hidden-control
+                              .group(style='margin-bottom:0%;vertical-align: bottom;')
+                                select.form-control(name='melanoma_characteristics[second_melanoma][SNL][category]')
+                                  option(value='Not choosed') Positive/Negative
+                                  option(value='Positive') Positive
+                                  option(value='Negative') Negative
 
                 fieldset
                   .form-group
@@ -2765,14 +2772,15 @@ block content
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
                             span Multiple primary melanoma (MPM) – concurrent or previous
-                          .divTableCell.NoDivTableBorder.input-cell
-                            select.form-control(name='melanoma_characteristics[third_melanoma][multiple_primary][presence]')
+                          .divTableCell.NoDivTableBorder.input-cell(style='width: 26%;')
+                            select#secondMPM.form-control(name='melanoma_characteristics[second_melanoma][multiple_primary][presence]')
                               option(value='Not choosed') Select...
                               option(value='No') No
                               option(value='Yes') Yes
-                          .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                            label(style='font-size: 12px;') Number of primaries:
-                            input(type='number' min='1' name='melanoma_characteristics[third_melanoma][multiple_primary][count]' required='' )
+                          .divTableCell.NoDivTableBorder.input-cell
+                            .hidden-control
+                              .group(style='margin-bottom:0%;vertical-align: bottom;')
+                                input(type='number' placeholder='Number' min='1' name='melanoma_characteristics[second_melanoma][multiple_primary][count]' required='' )
 
                 fieldset
                   label 
@@ -2896,6 +2904,8 @@ block content
                               option(value='Uveal') Uveal
                               option(value='Other') Other
                               option(value='NOS ') NOS
+                          .divTableCell.NoDivTableBorder.input-cell
+                            span(style='visibility: hidden;') space_space_space_space_space__
 
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
@@ -2933,7 +2943,7 @@ block content
                               option(value='present') Present
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
                             label(style='font-size: 12px;') Specify percentage:
-                            select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][regression][percentage]')
+                            select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][regression][percentage]' style='margin-bottom: 23px;')
                               option(value='Not choosed') Select...
                               option(value='less_than_50%') <50%
                               option(value='greater_than_50%') >50%
@@ -2957,8 +2967,7 @@ block content
                               option(value='absent') Absent
                               option(value='present') Present
                           .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                            label(style='font-size: 12px;') Specify type:
-                            input(type='text' name='melanoma_characteristics[third_melanoma][known][histopathologic_features][nevus][type]')
+                            input(type='text' placeholder='Specify type' name='melanoma_characteristics[third_melanoma][known][histopathologic_features][nevus][type]')
 
                         .divTableRow
                           .divTableCell.NoDivTableBorder.question-cell
