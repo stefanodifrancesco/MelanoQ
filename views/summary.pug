@@ -87,7 +87,34 @@ block content
                     td
                       legend Other ethnicity
                       span #{result.demographic.other_ethnicity}
+
+            if (typeof(result.demographic.residency_list) !== 'undefined')
+              .tables_list
+                legend Residencies list
+                <table class="json-to-table">
+                  <thead>
+                    <tr>
+                      <th class="jsl"></th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>Address</th>
+                      <th>Coordinates</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    each residency in result.demographic.residency_list
+                      <tr>
+                        <td class="jsl">1</td>
+                        <td>#{residency.start_date}</td>
+                        <td>#{residency.end_date}</td>
+                        <td>#{residency.address}</td>
+                        <td>#{residency.coordinates}</td>
+                      </tr>
+                  </tbody>
+                </table>
                     
+            table.summary-table
+              tbody
                 tr
                   td
                     legend Education
@@ -96,54 +123,31 @@ block content
                     legend Current occupational status
                     span #{result.demographic.occupational_status}
 
-            
-            .tables_list
-              legend History of occupations
-              <table class="json-to-table">
-                <thead>
-                  <tr>
-                    <th class="jsl"></th>
-                    <th>SIC Group</th>
-                    <th>SIC Code</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  each SIC in result.demographic.SIC_list
+            if (typeof(result.demographic.SIC_list) !== 'undefined')
+              .tables_list
+                legend History of occupations
+                <table class="json-to-table">
+                  <thead>
                     <tr>
-                      <td class="jsl">1</td>
-                      <td>#{SIC.SIC_Group}</td>
-                      <td>#{SIC.SIC_Code}</td>
-                      <td>#{SIC.start_date}</td>
-                      <td>#{SIC.end_date}</td>
+                      <th class="jsl"></th>
+                      <th>SIC Group</th>
+                      <th>SIC Code</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
                     </tr>
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    each SIC in result.demographic.SIC_list
+                      <tr>
+                        <td class="jsl">1</td>
+                        <td>#{SIC.SIC_Group}</td>
+                        <td>#{SIC.SIC_Code}</td>
+                        <td>#{SIC.start_date}</td>
+                        <td>#{SIC.end_date}</td>
+                      </tr>
+                  </tbody>
+                </table>
               
-            .tables_list
-              legend Residencies list
-              <table class="json-to-table">
-                <thead>
-                  <tr>
-                    <th class="jsl"></th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Address</th>
-                    <th>Coordinates</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  each residency in result.demographic.residency_list
-                    <tr>
-                      <td class="jsl">1</td>
-                      <td>#{residency.start_date}</td>
-                      <td>#{residency.end_date}</td>
-                      <td>#{residency.address}</td>
-                      <td>#{residency.coordinates}</td>
-                    </tr>
-                </tbody>
-              </table>
               
           </details>
 
@@ -152,13 +156,14 @@ block content
           <details>
             <summary>PHENOTYPE</summary>
             <hr/>
+
             table.summary-table
               tbody 
                 tr
                   td
                     legend Skin response to sun exposure
                     span #{result.phenotype.skin_response}
-            table.summary-table
+            table.summary-table(style='border-spacing: 0px 15px;')
               tbody 
                 tr    
                   td
@@ -207,16 +212,16 @@ block content
                     legend(style="text-align: center;") Freckles
                     if result.phenotype.freckles == "None"
                       div(style="height: 135px;")
-                        img(src='img/Freckles/No_freckles.png' width='100' height='130')
+                        img(src='img/Freckles/No_freckles.png' width='100' height='130' style="margin-left: 7px;")
                     if result.phenotype.freckles == "Few"
                       div(style="height: 135px;")
-                        img(src='img/Freckles/Few_freckles.png' width='100' height='130')
+                        img(src='img/Freckles/Few_freckles.png' width='100' height='130' style="margin-left: 7px;")
                     if result.phenotype.freckles == "Some"
                       div(style="height: 135px;")
-                        img(src='img/Freckles/Some_freckles.png' width='100' height='130')
+                        img(src='img/Freckles/Some_freckles.png' width='100' height='130' style="margin-left: 7px;")
                     if result.phenotype.freckles == "Many"
                       div(style="height: 135px;")
-                        img(src='img/Freckles/Many_freckles.png' width='100' height='130')
+                        img(src='img/Freckles/Many_freckles.png' width='100' height='130' style="margin-left: 7px;")
                   td
                     legend(style="text-align: center;") Nevi frequency
                     if result.phenotype.nevi == "None"
@@ -239,6 +244,7 @@ block content
           <details>
             <summary>ULTRAVIOLET EXPOSURE</summary>
             <hr/>
+
             table.summary-table
               tbody
                 tr
@@ -252,15 +258,15 @@ block content
                       span #{result.ultraviolet.occupational_sun_exposure.occupation_name}
                   
                     td
-                      legend hours/day
+                      legend Hours/day
                       span #{result.ultraviolet.occupational_sun_exposure.hours_day}
                   
                     td
-                      legend hours/month
+                      legend Hours/month
                       span #{result.ultraviolet.occupational_sun_exposure.hours_month}
                   
                     td
-                      legend hours/year
+                      legend Hours/year
                       span #{result.ultraviolet.occupational_sun_exposure.hours_year}
                   
                     td
@@ -277,20 +283,21 @@ block content
                       span #{result.ultraviolet.recreational_sun_exposure.occupation_name}
                   
                     td
-                      legend hours/day
+                      legend Hours/day
                       span #{result.ultraviolet.recreational_sun_exposure.hours_day}
                   
                     td
-                      legend hours/month
+                      legend Hours/month
                       span #{result.ultraviolet.recreational_sun_exposure.hours_month}
                   
                     td
-                      legend hours/year
+                      legend Hours/year
                       span #{result.ultraviolet.recreational_sun_exposure.hours_year}
                   
                     td
                       legend How many years ?
                       span #{result.ultraviolet.recreational_sun_exposure.number_of_years}
+
             .tables_list
               legend Intermittent sun exposure 
               .form-group
@@ -352,7 +359,7 @@ block content
                   td(colspan="2")
                     legend Sunburns at age greater than 18 years
                     span #{result.ultraviolet.sunburn_after_18.presence}
-                  if result.ultraviolet.sunburn_after_18.prsence == "Yes"
+                  if result.ultraviolet.sunburn_after_18.presence == "Yes"
                     td(colspan="3")
                       legend Number of sunburns at age greater than 18 years
                       span #{result.ultraviolet.sunburn_after_18.number}
@@ -360,7 +367,7 @@ block content
                 tr
                   td
                     legend At site of melanoma
-                    span #{result.ultraviolet.sunburn_melanoma_site}
+                    span #{result.ultraviolet.sunburn_at_melanoma_site}
                 tr
                   td(colspan="2")
                     legend In the last 5 years
@@ -417,14 +424,13 @@ block content
                   td
                     legend Did you use a hat?
                     span #{result.ultraviolet.hat_frequency}
-                tr
                   td
                     legend Did you use protective clothing?
                     span #{result.ultraviolet.clothing}
-                tr
                   td
                     legend Exposure during peak UVR hours
                     span #{result.ultraviolet.peak_UVR_hours}
+
                 tr
                   td
                     legend Sunlamps/sunbeds
@@ -433,12 +439,10 @@ block content
                   tr
                     td
                       legend Number of sunlamps/sunbeds
-                      span #{result.ultraviolet.sunlamp.number_of_session}
-                  tr
+                      span #{result.ultraviolet.sunlamp.number_of_sessions}
                     td
                       legend Age of first sunlamps/sunbeds
-                      span #{result.ultraviolet.sunlamp.age_of_first_sunlamp}
-                  tr
+                      span #{result.ultraviolet.sunlamp.age__of_first_sunlamp}
                     td
                       legend Age of last sunlamps/sunbeds
                       span #{result.ultraviolet.sunlamp.age_of_last_sunlamp}
@@ -455,6 +459,7 @@ block content
           <details>
             <summary>LIFESTYLE HABITS</summary>
             <hr/>
+
             table.summary-table
               tbody
                   tr
@@ -541,6 +546,7 @@ block content
           <details>
             <summary>CLINICAL EXAMINATION</summary>
             <hr/>
+
             table.summary-table
               tbody
                 tr
@@ -711,7 +717,7 @@ block content
 
 
 
-          table.summary-table
+          table.summary-table(style='margin-left: 2px;')
             tbody
                 tr
                   td
@@ -730,7 +736,8 @@ block content
 
           <details>
             <summary>MEDICAL HISTORY</summary>
-          
+            <hr/>
+
             .tables_list
               legend History of medical (non-cancer) diagnoses
               <table class="json-to-table">
@@ -978,7 +985,8 @@ block content
 
           <details>
             <summary>FAMILY HISTORY</summary>
-            
+            <hr/>
+
             .tables_list
               legend Family history of melanoma
               <table class="json-to-table">
@@ -1049,12 +1057,9 @@ block content
                 </tbody>
               </table>
             
-          
           </details>
 
-
-
-          table.summary-table
+          table.summary-table(style='margin-left: 2px;')
             tbody
                 tr
                   td
@@ -1069,10 +1074,491 @@ block content
                       legend Questions numbers:
                       span #{result.section_C_evaluation.difficult.questions}
 
+          if (typeof(result.melanoma_characteristics) !== 'undefined')
+          
+            if (typeof(result.melanoma_characteristics.first_melanoma) !== 'undefined')
+              <details>
+                <summary>CHARACTERISTICS OF 1st PRIMARY MELANOMA</summary>
+                <hr/>
 
-          <details>
-            <summary>MELANOMA CHARACTERISTICS</summary>
-          </details>
+                table.summary-table
+                  tbody
+                    tr
+                      td
+                        legend Pre-existing pigmented lesion at the same site of melanoma
+                        span #{result.melanoma_characteristics.first_melanoma.lesion.presence}
+                      if result.melanoma_characteristics.first_melanoma.lesion.presence == "Yes"
+                        td
+                          legend Number:
+                          span #{result.melanoma_characteristics.first_melanoma.lesion.count}
+                    tr
+                      td
+                        legend Detection of melanoma
+                        span #{result.melanoma_characteristics.first_melanoma.detection}
+                      if result.melanoma_characteristics.first_melanoma.detection == "Yes"
+                        td
+                          legend Specific
+                          span #{result.melanoma_characteristics.first_melanoma.other_detection}
+
+                    tr
+                      td
+                        legend How often did you check your skin in the past 3 yrs?
+                        span #{result.melanoma_characteristics.first_melanoma.self_skin_check_last_3_years}
+                      td
+                        legend How often did you check your skin in the past 3 yrs?
+                        span #{result.melanoma_characteristics.first_melanoma.skin_check_last_3_years}
+
+                    tr
+                      td
+                        legend Sentinel Lymph Node (SLN) biopsy
+                        span #{result.melanoma_characteristics.first_melanoma.SNL.presence}
+                      if result.melanoma_characteristics.first_melanoma.lesion.presence == "Yes"
+                        td
+                          legend Category
+                          span #{result.melanoma_characteristics.first_melanoma.SNL.category}
+
+                    tr
+                      td
+                        legend Multiple primary melanoma (MPM) – concurrent or previous
+                        span #{result.melanoma_characteristics.first_melanoma.multiple_primary.presence}
+                      if result.melanoma_characteristics.first_melanoma.multiple_primary.presence == "Yes"
+                          td
+                            legend Number of primaries:
+                            span #{result.melanoma_characteristics.first_melanoma.multiple_primary.count}
+
+                    tr
+                      td
+                        legend Dates of diagnosis
+                        span #{result.melanoma_characteristics.first_melanoma.diagnosis_date}
+
+                    tr
+                      td
+                        legend Is the primary tumor known?
+                        span #{result.melanoma_characteristics.first_melanoma.known.presence}
+
+                if result.melanoma_characteristics.first_melanoma.known.presence == "Yes"
+                  label Other main histopathologic features
+                  table.summary-table
+                    tbody
+                      tr
+                        td
+                          legend Is the primary tumor known?
+                          span #{result.melanoma_characteristics.first_melanoma.known.site}
+                        td
+                          legend Breslow thickness(mm)
+                          span #{result.melanoma_characteristics.first_melanoma.known.breslow_thickness}
+
+                      tr
+                        td
+                          legend Subtype:
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.subtype}
+
+                      tr
+                        td
+                          legend Mitotic rate (number of mitoses/mm2):
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.mitotic_rate}
+
+                      tr
+                        td
+                          legend Ulceration
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.ulceration}
+
+                      tr
+                        td
+                          legend Tumor growth phase 
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.tumor_growth_phase}
+
+                      tr
+                        td
+                          legend Regression
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.regression.presence}
+                        if result.melanoma_characteristics.first_melanoma.known.histopathologic_features.regression.presence == "present"
+                          td
+                            legend Specify percentage:
+                            span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.regression.percentage}
+
+                      tr
+                        td
+                          legend Tumor Infiltrating Lymphocytes (TILs) 
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.TILs}
+
+                      tr
+                        td
+                          legend Associated nevus
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.nevus.presence}
+                        if result.melanoma_characteristics.first_melanoma.known.histopathologic_features.nevus.presence == "present"
+                          td
+                            legend Specify type:
+                            span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.nevus.type}
+
+                      tr
+                        td
+                          legend Vascular invasion 
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.vascular_invasion}
+
+                      tr
+                        td
+                          legend Microsatellitosis
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.microsatellitosis}
+
+                      tr
+                        td
+                          legend Solar elastosis 
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.solar_elastosis}
+
+                      tr
+                        td
+                          legend Pigmentation
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.pigmentation}
+
+                      tr
+                        td
+                          legend Lateral margin status
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.lateral_margin_status}
+
+                      tr
+                        td
+                          legend Deep margin status 
+                          span #{result.melanoma_characteristics.first_melanoma.known.histopathologic_features.deep_margin_status}
+
+                  legend AJCC stage at diagnosis using TNM staging system
+                  table.summary-table
+                    tbody
+                      tr
+                        td
+                          legend T category 
+                          span #{result.melanoma_characteristics.first_melanoma.known.AJCC.T}
+                        td
+                          legend N category 
+                          span #{result.melanoma_characteristics.first_melanoma.known.AJCC.N}
+                        td
+                          legend M category 
+                          span #{result.melanoma_characteristics.first_melanoma.known.AJCC.M}
+
+            </details>
+
+            if (typeof(result.melanoma_characteristics.second_melanoma) !== 'undefined')
+              <details>
+                <summary>CHARACTERISTICS OF 2nd PRIMARY MELANOMA</summary>
+                <hr/>
+
+                table.summary-table
+                  tbody
+                    tr
+                      td
+                        legend Pre-existing pigmented lesion at the same site of melanoma
+                        span #{result.melanoma_characteristics.second_melanoma.lesion.presence}
+                      if result.melanoma_characteristics.second_melanoma.lesion.presence == "Yes"
+                        td
+                          legend Number:
+                          span #{result.melanoma_characteristics.second_melanoma.lesion.count}
+                    tr
+                      td
+                        legend Detection of melanoma
+                        span #{result.melanoma_characteristics.second_melanoma.detection}
+                      if result.melanoma_characteristics.second_melanoma.detection == "Yes"
+                        td
+                          legend Specific
+                          span #{result.melanoma_characteristics.second_melanoma.other_detection}
+
+                    tr
+                      td
+                        legend How often did you check your skin in the past 3 yrs?
+                        span #{result.melanoma_characteristics.second_melanoma.self_skin_check_last_3_years}
+                      td
+                        legend How often did you check your skin in the past 3 yrs?
+                        span #{result.melanoma_characteristics.second_melanoma.skin_check_last_3_years}
+
+                    tr
+                      td
+                        legend Sentinel Lymph Node (SLN) biopsy
+                        span #{result.melanoma_characteristics.second_melanoma.SNL.presence}
+                      if result.melanoma_characteristics.second_melanoma.lesion.presence == "Yes"
+                        td
+                          legend Category
+                          span #{result.melanoma_characteristics.second_melanoma.SNL.category}
+
+                    tr
+                      td
+                        legend Multiple primary melanoma (MPM) – concurrent or previous
+                        span #{result.melanoma_characteristics.second_melanoma.multiple_primary.presence}
+                      if result.melanoma_characteristics.second_melanoma.multiple_primary.presence == "Yes"
+                          td
+                            legend Number of primaries:
+                            span #{result.melanoma_characteristics.second_melanoma.multiple_primary.count}
+
+                    tr
+                      td
+                        legend Dates of diagnosis
+                        span #{result.melanoma_characteristics.second_melanoma.diagnosis_date}
+
+                    tr
+                      td
+                        legend Is the primary tumor known?
+                        span #{result.melanoma_characteristics.second_melanoma.known.presence}
+
+                if result.melanoma_characteristics.second_melanoma.known.presence == "Yes"
+                  label Other main histopathologic features
+                  table.summary-table
+                    tbody
+                      tr
+                        td
+                          legend Is the primary tumor known?
+                          span #{result.melanoma_characteristics.second_melanoma.known.site}
+                        td
+                          legend Breslow thickness(mm)
+                          span #{result.melanoma_characteristics.second_melanoma.known.breslow_thickness}
+
+                      tr
+                        td
+                          legend Subtype:
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.subtype}
+
+                      tr
+                        td
+                          legend Mitotic rate (number of mitoses/mm2):
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.mitotic_rate}
+
+                      tr
+                        td
+                          legend Ulceration
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.ulceration}
+
+                      tr
+                        td
+                          legend Tumor growth phase 
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.tumor_growth_phase}
+
+                      tr
+                        td
+                          legend Regression
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.regression.presence}
+                        if result.melanoma_characteristics.second_melanoma.known.histopathologic_features.regression.presence == "present"
+                          td
+                            legend Specify percentage:
+                            span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.regression.percentage}
+
+                      tr
+                        td
+                          legend Tumor Infiltrating Lymphocytes (TILs) 
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.TILs}
+
+                      tr
+                        td
+                          legend Associated nevus
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.nevus.presence}
+                        if result.melanoma_characteristics.second_melanoma.known.histopathologic_features.nevus.presence == "present"
+                          td
+                            legend Specify type:
+                            span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.nevus.type}
+
+                      tr
+                        td
+                          legend Vascular invasion 
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.vascular_invasion}
+
+                      tr
+                        td
+                          legend Microsatellitosis
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.microsatellitosis}
+
+                      tr
+                        td
+                          legend Solar elastosis 
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.solar_elastosis}
+
+                      tr
+                        td
+                          legend Pigmentation
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.pigmentation}
+
+                      tr
+                        td
+                          legend Lateral margin status
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.lateral_margin_status}
+
+                      tr
+                        td
+                          legend Deep margin status 
+                          span #{result.melanoma_characteristics.second_melanoma.known.histopathologic_features.deep_margin_status}
+
+                  legend AJCC stage at diagnosis using TNM staging system
+                  table.summary-table
+                    tbody
+                      tr
+                        td
+                          legend T category 
+                          span #{result.melanoma_characteristics.second_melanoma.known.AJCC.T}
+                        td
+                          legend N category 
+                          span #{result.melanoma_characteristics.second_melanoma.known.AJCC.N}
+                        td
+                          legend M category 
+                          span #{result.melanoma_characteristics.second_melanoma.known.AJCC.M}
+
+            </details>
+
+            if (typeof(result.melanoma_characteristics.third_melanoma) !== 'undefined')
+              <details>
+                <summary>CHARACTERISTICS OF 3rd PRIMARY MELANOMA</summary>
+                <hr/>
+
+                table.summary-table
+                  tbody
+                    tr
+                      td
+                        legend Pre-existing pigmented lesion at the same site of melanoma
+                        span #{result.melanoma_characteristics.third_melanoma.lesion.presence}
+                      if result.melanoma_characteristics.third_melanoma.lesion.presence == "Yes"
+                        td
+                          legend Number:
+                          span #{result.melanoma_characteristics.third_melanoma.lesion.count}
+                    tr
+                      td
+                        legend Detection of melanoma
+                        span #{result.melanoma_characteristics.third_melanoma.detection}
+                      if result.melanoma_characteristics.third_melanoma.detection == "Yes"
+                        td
+                          legend Specific
+                          span #{result.melanoma_characteristics.third_melanoma.other_detection}
+
+                    tr
+                      td
+                        legend How often did you check your skin in the past 3 yrs?
+                        span #{result.melanoma_characteristics.third_melanoma.self_skin_check_last_3_years}
+                      td
+                        legend How often did you check your skin in the past 3 yrs?
+                        span #{result.melanoma_characteristics.third_melanoma.skin_check_last_3_years}
+
+                    tr
+                      td
+                        legend Sentinel Lymph Node (SLN) biopsy
+                        span #{result.melanoma_characteristics.third_melanoma.SNL.presence}
+                      if result.melanoma_characteristics.third_melanoma.lesion.presence == "Yes"
+                        td
+                          legend Category
+                          span #{result.melanoma_characteristics.third_melanoma.SNL.category}
+
+                    tr
+                      td
+                        legend Multiple primary melanoma (MPM) – concurrent or previous
+                        span #{result.melanoma_characteristics.third_melanoma.multiple_primary.presence}
+                      if result.melanoma_characteristics.third_melanoma.multiple_primary.presence == "Yes"
+                          td
+                            legend Number of primaries:
+                            span #{result.melanoma_characteristics.third_melanoma.multiple_primary.count}
+
+                    tr
+                      td
+                        legend Dates of diagnosis
+                        span #{result.melanoma_characteristics.third_melanoma.diagnosis_date}
+
+                    tr
+                      td
+                        legend Is the primary tumor known?
+                        span #{result.melanoma_characteristics.third_melanoma.known.presence}
+
+                if result.melanoma_characteristics.third_melanoma.known.presence == "Yes"
+                  label Other main histopathologic features
+                  table.summary-table
+                    tbody
+                      tr
+                        td
+                          legend Is the primary tumor known?
+                          span #{result.melanoma_characteristics.third_melanoma.known.site}
+                        td
+                          legend Breslow thickness(mm)
+                          span #{result.melanoma_characteristics.third_melanoma.known.breslow_thickness}
+
+                      tr
+                        td
+                          legend Subtype:
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.subtype}
+
+                      tr
+                        td
+                          legend Mitotic rate (number of mitoses/mm2):
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.mitotic_rate}
+
+                      tr
+                        td
+                          legend Ulceration
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.ulceration}
+
+                      tr
+                        td
+                          legend Tumor growth phase 
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.tumor_growth_phase}
+
+                      tr
+                        td
+                          legend Regression
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.regression.presence}
+                        if result.melanoma_characteristics.third_melanoma.known.histopathologic_features.regression.presence == "present"
+                          td
+                            legend Specify percentage:
+                            span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.regression.percentage}
+
+                      tr
+                        td
+                          legend Tumor Infiltrating Lymphocytes (TILs) 
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.TILs}
+
+                      tr
+                        td
+                          legend Associated nevus
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.nevus.presence}
+                        if result.melanoma_characteristics.third_melanoma.known.histopathologic_features.nevus.presence == "present"
+                          td
+                            legend Specify type:
+                            span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.nevus.type}
+
+                      tr
+                        td
+                          legend Vascular invasion 
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.vascular_invasion}
+
+                      tr
+                        td
+                          legend Microsatellitosis
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.microsatellitosis}
+
+                      tr
+                        td
+                          legend Solar elastosis 
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.solar_elastosis}
+
+                      tr
+                        td
+                          legend Pigmentation
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.pigmentation}
+
+                      tr
+                        td
+                          legend Lateral margin status
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.lateral_margin_status}
+
+                      tr
+                        td
+                          legend Deep margin status 
+                          span #{result.melanoma_characteristics.third_melanoma.known.histopathologic_features.deep_margin_status}
+
+                  legend AJCC stage at diagnosis using TNM staging system
+                  table.summary-table
+                    tbody
+                      tr
+                        td
+                          legend T category 
+                          span #{result.melanoma_characteristics.third_melanoma.known.AJCC.T}
+                        td
+                          legend N category 
+                          span #{result.melanoma_characteristics.third_melanoma.known.AJCC.N}
+                        td
+                          legend M category 
+                          span #{result.melanoma_characteristics.third_melanoma.known.AJCC.M}
+
+            </details>
+
 
         div.alphaformfooter
         div.formfooter

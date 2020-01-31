@@ -136,7 +136,8 @@
 .summary-table {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0px 15px;
+    border-spacing: 15px 25px;
+    margin-left: -15px;
 }
 
 .tables_list {
@@ -336,7 +337,6 @@ pre>code {
 }
 
 .json-to-table th {
-    width: 50%;
     border: 1px solid rgb(221, 221, 221);
     background-color: rgb(243, 243, 243);
     color: rgb(14, 14, 14);
@@ -361,7 +361,6 @@ th.jsl {
 }
 
 .json-to-table td {
-    width: 50%;
     border: 1px solid rgb(221, 221, 221);
     background-color: rgb(255, 255, 255);
     color: rgb(14, 14, 14);
