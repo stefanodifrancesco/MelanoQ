@@ -9,11 +9,11 @@ block content
         |  QUESTIONNAIRES<br>
         i.fa.fa-caret-down
 
-      button.new-questionnaire-button(onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\"); window.location.href = '/stepform';")
+      button.new-questionnaire-button(onclick="var t = document.getElementById(\"msform\"); t.classList.add(\"fade-out-top\"); window.location.href = '/stepform';")
         |  CREATE NEW<br>
         i.fa.fa-caret-down
           
-      button.statistics-button(onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\"); window.location.href = '/statistics';")
+      button.statistics-button(onclick="var t = document.getElementById(\"msform\"); t.classList.add(\"fade-out-top\"); window.location.href = '/statistics';")
         |  STATISTICS<br>
         i.fa.fa-caret-down
 
@@ -21,7 +21,7 @@ block content
           |  Logout
 
   .form
-    #msform
+    form#msform.fade-in-top(action="/update" method="POST" autocomplete="off")
       fieldset
         div.scrollingdiv
           h2.fs-title QUESTIONNAIRE SUMMARY
@@ -1562,5 +1562,10 @@ block content
 
         div.alphaformfooter
         div.formfooter
-        input#firstprevious.previous.action-button(type='button' name='previous' value='Go back')
-        input#secondnext.next.action-button(type='button' name='next' value='Update')
+        button.previous.action-button(onclick="window.location.href = '/home';" type='button' name='previous') Go back
+        button.update.action-button(
+                              type='submit' 
+                              name='codeNumber' 
+                              value=result.general.code_number
+                              onclick="var t = document.getElementById(\"msform\"); t.classList.add(\"fade-out-top\");"
+                            ) Update
