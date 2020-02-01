@@ -10,6 +10,15 @@ $(document).ready(function() {
         $(this).next().css('display', 'none');
     });
 
+    $("[name='general[subject]']").on('change',function(evt){
+        if($(this).val() == "Case") {
+            $("#fieldsetTypeOfMelanoma").removeClass("hidden-control").addClass("show-control");
+        }
+        if($(this).val() != "Case") {
+             $("#fieldsetTypeOfMelanoma").removeClass("show-control").addClass("hidden-control");
+        }
+    });
+
     /*var myMap = new google.maps.Map(document.getElementById("myMap"), {
         center: {lat: 37.5, lng: -120},
         zoom: 6
@@ -1079,6 +1088,7 @@ function Initialize() {
 
     /****** Trigger change on all input of type select with an hidden control ******/
 
+    $("[name='general[subject]']").trigger('change');
     $("[name='general[melanoma_type]']").trigger('change');
     $("[name='demographic[ethnicity]']").trigger('change');
     $("[name='ultraviolet[occupational_sun_exposure][presence]']").trigger('change');
