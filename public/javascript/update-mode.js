@@ -1108,6 +1108,18 @@ function Initialize() {
     $("[name='melanoma_characteristics[first_melanoma][multiple_primary][presence]']").trigger('change');
     $("[name='melanoma_characteristics[first_melanoma][known][histopathologic_features][regression][presence]']").trigger('change');
     $("[name='melanoma_characteristics[first_melanoma][known][histopathologic_features][nevus][presence]']").trigger('change');
+    $("[name='melanoma_characteristics[second_melanoma][lesion][presence]']").trigger('change');
+    $("[name='melanoma_characteristics[second_melanoma][detection]']").trigger('change');
+    $("[name='melanoma_characteristics[second_melanoma][known][presence]']").trigger('change')
+    $("[name='melanoma_characteristics[second_melanoma][multiple_primary][presence]']").trigger('change');
+    $("[name='melanoma_characteristics[second_melanoma][known][histopathologic_features][regression][presence]']").trigger('change');
+    $("[name='melanoma_characteristics[second_melanoma][known][histopathologic_features][nevus][presence]']").trigger('change');
+    $("[name='melanoma_characteristics[third_melanoma][lesion][presence]']").trigger('change');
+    $("[name='melanoma_characteristics[third_melanoma][detection]']").trigger('change');
+    $("[name='melanoma_characteristics[third_melanoma][known][presence]']").trigger('change')
+    $("[name='melanoma_characteristics[third_melanoma][multiple_primary][presence]']").trigger('change');
+    $("[name='melanoma_characteristics[third_melanoma][known][histopathologic_features][regression][presence]']").trigger('change');
+    $("[name='melanoma_characteristics[third_melanoma][known][histopathologic_features][nevus][presence]']").trigger('change');
     /****** Trigger change on all input of type select with an hidden control ******/
 };
 
