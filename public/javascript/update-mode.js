@@ -1140,15 +1140,15 @@ function Initialize() {
     $("[name='melanoma_characteristics[third_melanoma][known][histopathologic_features][regression][presence]']").trigger('change');
     $("[name='melanoma_characteristics[third_melanoma][known][histopathologic_features][nevus][presence]']").trigger('change');
 
-    if ($("[name='melanoma_characteristics[first_melanoma][presence]']:checked") != undefined){
+    if ($("[name='melanoma_characteristics[first_melanoma][presence]']:checked").length > 0){
         $('#firstMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
         $('#firstMelanomaCharacteristics :input').attr('disabled', false);
     }
-    if ($("[name='melanoma_characteristics[second_melanoma][presence]']:checked") != undefined){
+    if ($("[name='melanoma_characteristics[second_melanoma][presence]']:checked").length > 0){
         $('#secondMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
         $('#secondMelanomaCharacteristics :input').attr('disabled', false);
     }
-    if ($("[name='melanoma_characteristics[third_melanoma][presence]']:checked") != undefined){
+    if ($("[name='melanoma_characteristics[third_melanoma][presence]']:checked").length > 0){
         $('#thirdMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
         $('#thirdMelanomaCharacteristics :input').attr('disabled', false);
     }
