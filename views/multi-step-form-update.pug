@@ -725,13 +725,11 @@ block content
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        select#id_Sunscreen_childhood.form-control(name='ultraviolet[childhood_sunscreen][type]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        select#id_Sunscreen_childhood.form-control(name='ultraviolet[childhood_sunscreen][type]')
                           option(value='' selected=(result.ultraviolet.childhood_sunscreen.type == '')) Select sunscreen protection...
                           option(value='SPF_less_than_20' selected=(result.ultraviolet.childhood_sunscreen.type == 'SPF_less_than_20')) SPF < or = 20
                           option(value='SPF_greater_than_20' selected=(result.ultraviolet.childhood_sunscreen.type == 'SPF_greater_than_20')) SPF > 20
                           option(value='not_known' selected=(result.ultraviolet.childhood_sunscreen.type == 'not_known')) not known
-                        span.error1
-                          i.error-log.fa.fa-exclamation-triangle
                     .divTableRow
                       .divTableCell Adolescence (11-18 yrs)
                       .divTableCell
@@ -745,13 +743,11 @@ block content
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        select#id_Sunscreen_adolescence.form-control(name='ultraviolet[adolescence_sunscreen][type]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        select#id_Sunscreen_adolescence.form-control(name='ultraviolet[adolescence_sunscreen][type]')
                           option(value='' selected=(result.ultraviolet.adolescence_sunscreen.type == '')) Select sunscreen protection...
                           option(value='SPF_less_than_20' selected=(result.ultraviolet.adolescence_sunscreen.type == 'SPF_less_than_20')) SPF < or = 20
                           option(value='SPF_greater_than_20' selected=(result.ultraviolet.adolescence_sunscreen.type == 'SPF_greater_than_20')) SPF > 20
                           option(value='not_known' selected=(result.ultraviolet.adolescence_sunscreen.type == 'not_known')) not known
-                        span.error1
-                          i.error-log.fa.fa-exclamation-triangle
                     .divTableRow
                       .divTableCell Adulthood (≥18 yrs)
                       .divTableCell
@@ -765,13 +761,11 @@ block content
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        select#id_Sunscreen_adulthood.form-control(name='ultraviolet[adulthood_sunscreen][type]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        select#id_Sunscreen_adulthood.form-control(name='ultraviolet[adulthood_sunscreen][type]')
                           option(value='' selected=(result.ultraviolet.adulthood_sunscreen.type == '')) Select sunscreen protection...
                           option(value='SPF_less_than_20' selected=(result.ultraviolet.adulthood_sunscreen.type == 'SPF_less_than_20')) SPF < or = 20
                           option(value='SPF_greater_than_20' selected=(result.ultraviolet.adulthood_sunscreen.type == 'SPF_greater_than_20')) SPF > 20
                           option(value='not_known' selected=(result.ultraviolet.adulthood_sunscreen.type == 'not_known')) not known
-                        span.error1
-                          i.error-log.fa.fa-exclamation-triangle
                     .divTableRow
                       .divTableCell(style='font-size:10px;')
                         | 10 years before melanoma diagnosis (for
@@ -788,13 +782,11 @@ block content
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        select#id_Sunscreen_10years_before.form-control(name='ultraviolet[last_10_years_sunscreen][type]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        select#id_Sunscreen_10years_before.form-control(name='ultraviolet[last_10_years_sunscreen][type]')
                           option(value='' selected=(result.ultraviolet.last_10_years_sunscreen.type == '')) Select sunscreen protection...
                           option(value='SPF_less_than_20' selected=(result.ultraviolet.last_10_years_sunscreen.type == 'SPF_less_than_20')) SPF < or = 20
                           option(value='SPF_greater_than_20' selected=(result.ultraviolet.last_10_years_sunscreen.type == 'SPF_greater_than_20')) SPF > 20
                           option(value='not_known' selected=(result.ultraviolet.last_10_years_sunscreen.type == 'not_known')) not known
-                        span.error1
-                          i.error-log.fa.fa-exclamation-triangle
 
             fieldset#fieldsetHat
               label
@@ -1704,7 +1696,7 @@ block content
                     .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
                       input#BBC_After_Diagnosis(type='radio' name='medical_history[BCC][period]' value='after' checked=(result.medical_history.BCC.period=="after"))
                     .divTableCell.NoDivTableBorder(style='width: auto;')
-                      input(type='number' min='1' name='medical_history[BCC][count]' value=result.medical_history.BCC.count)
+                      input(type='number' min='0' name='medical_history[BCC][count]' value=result.medical_history.BCC.count)
               hr
               .form-group
                 p
@@ -1732,7 +1724,7 @@ block content
                     .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
                       input#SSC_Invasive_After_Diagnosis(type='radio' name='medical_history[SSC][period]' value='after' checked=(result.medical_history.SSC.period=="after"))
                     .divTableCell.NoDivTableBorder(style='width: auto;')
-                      input(type='number' min='1' name='medical_history[SSC][count]' value=result.medical_history.SSC.count)
+                      input(type='number' min='0' name='medical_history[SSC][count]' value=result.medical_history.SSC.count)
               hr
               .form-group
                 p
@@ -1760,7 +1752,7 @@ block content
                     .divTableCell.NoDivTableBorder(style='width: 10%; vertical-align: middle;')
                       input#SCC_InSitu_After_Diagnosis(type='radio' name='medical_history[SSC_in_situ][period]' value='after' checked=(result.medical_history.SSC_in_situ.period=="after"))
                     .divTableCell.NoDivTableBorder(style='width: auto;')
-                      input(type='number' min='1' name='medical_history[SSC_in_situ][count]' value=result.medical_history.SSC_in_situ.count)
+                      input(type='number' min='0' name='medical_history[SSC_in_situ][count]' value=result.medical_history.SSC_in_situ.count)
               hr
               .form-group
                 p
@@ -4820,7 +4812,7 @@ block content
                   select#NonCutaneous_Select.form-control
                     option(value='No Choosed') Select Type ...
                 .divTableCell.NoDivTableBorder
-                  label
+                  label(style='width: 100%; text-align: center;')
                     | Age of diagnosis
                   input.NonCutaneous-diagnosis-age(type='number' min='1')
                 .divTableCell.NoDivTableBorder
