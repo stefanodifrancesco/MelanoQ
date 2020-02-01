@@ -427,7 +427,7 @@ $(document).ready(function() {
                 keyboard: false
             });
             $("#SimpleDateModal .span-modal-title").text("Insert diagnosis date for ");
-            $("#SimpleDateModal .span-modal-title-for").text($(Checked).parent().text().replace(/_/g," "));
+            $("#SimpleDateModal .span-modal-title-for").text($(Checked).parent().text().replace(/_/g, " "));
 
             if (Caller == "SCC_InSitu") {
                 $("#SimpleDateModal .hidden").removeClass("hidden").addClass("show");
@@ -1106,6 +1106,7 @@ function Initialize() {
     $("[name='melanoma_characteristics[first_melanoma][detection]']").trigger('change');
     $("[name='melanoma_characteristics[first_melanoma][known][presence]']").trigger('change')
     $("[name='melanoma_characteristics[first_melanoma][multiple_primary][presence]']").trigger('change');
+    $("[name='melanoma_characteristics[first_melanoma][known][histopathologic_features][regression][presence]']").trigger('change');
     $("[name='melanoma_characteristics[first_melanoma][known][histopathologic_features][nevus][presence]']").trigger('change');
     /****** Trigger change on all input of type select with an hidden control ******/
 };

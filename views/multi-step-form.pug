@@ -1274,9 +1274,9 @@ block content
                   .divTableRow
                     .divTableCell.NoDivTableBorder
                       span At site of melanoma (i.e. area around the site with a 20 cm radius)? 
-                    .divTableCell.NoDivTableBorder(style='padding:10px !important;' name='clinical_examination[atypical_nevi_at_melanoma]' required='required' data-rule-required='true' data-msg-required='Required field')
+                    .divTableCell.NoDivTableBorder(style='padding:10px !important;')
                       .form-group
-                        select#selectClinicalAtypicalNevi.form-control
+                        select#selectClinicalAtypicalNevi.form-control(name='clinical_examination[atypical_nevi_at_melanoma]' required='required' data-rule-required='true' data-msg-required='Required field')
                           option(value='' selected='') Select...
                           option(value='No') No
                           option(value='Yes') Yes

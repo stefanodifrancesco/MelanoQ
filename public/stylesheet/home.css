@@ -81,43 +81,47 @@
     color: black;
 }
 
-.questionnaires-list tr:nth-child(even) {
+.questionnaires-list tbody tr:nth-child(even) {
     background-color: transparent;
 }
 
-.questionnaires-list tr:nth-child(odd) {
+.questionnaires-list tbody tr:nth-child(odd) {
     background-color: whitesmoke;
 }
 
-.questionnaires-list tr:first-child {
+.questionnaires-list tbody tr:first-child {
     background-color: transparent;
     border-bottom: 0px;
 }
 
-.questionnaires-list tr:last-child {
+.questionnaires-list tbody tr:last-child {
     border-bottom: 0px;
 }
 
-.questionnaires-list tr:hover {
+.questionnaires-list tbody tr:hover {
     background-color: lightgray;
 }
 
-.questionnaires-list tr:first-child:hover {
+.questionnaires-list tbody tr:first-child:hover {
     background-color: transparent;
     border-bottom: 0px;
 }
 
-.questionnaires-list tr:last-child:hover {
+.questionnaires-list tbody tr:last-child:hover {
     background-color: lightgray;
     border-bottom: 0px;
 }
 
-.questionnaires-list tr:last-child td:first-child {
+.questionnaires-list tbody tr:last-child td:first-child {
     border-bottom-left-radius: 10px;
 }
 
-.questionnaires-list tr:last-child td:last-child {
+.questionnaires-list tbody tr:last-child td:last-child {
     border-bottom-right-radius: 10px;
+}
+
+.questionnaires-list thead tr:hover {
+    background-color: transparent;
 }
 
 .questionnaire-link {

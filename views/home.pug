@@ -40,7 +40,7 @@ block content
                       th Creation date
                       th Link to questionnaire
                       th Update questionnaire
-                  tbody
+                  tbody(style='padding-right: 15px;')
                     each quest in profileData.questionnaires
                       tr
                         td #{quest.code_number}
@@ -75,7 +75,7 @@ block content
                       th Creation date
                       th Link to questionnaire
                       th Update questionnaire
-                  tbody
+                  tbody(style='padding-right: 15px;')
                     each quest in result
                       tr
                         td #{quest._source.general.code_number}
