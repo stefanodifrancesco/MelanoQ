@@ -1140,6 +1140,18 @@ function Initialize() {
     $("[name='melanoma_characteristics[third_melanoma][known][histopathologic_features][regression][presence]']").trigger('change');
     $("[name='melanoma_characteristics[third_melanoma][known][histopathologic_features][nevus][presence]']").trigger('change');
 
+    if ($("[name='melanoma_characteristics[first_melanoma][presence]']:checked") != undefined){
+        $('#firstMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
+        $('#firstMelanomaCharacteristics :input').attr('disabled', false);
+    }
+    if ($("[name='melanoma_characteristics[second_melanoma][presence]']:checked") != undefined){
+        $('#secondMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
+        $('#secondMelanomaCharacteristics :input').attr('disabled', false);
+    }
+    if ($("[name='melanoma_characteristics[third_melanoma][presence]']:checked") != undefined){
+        $('#thirdMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
+        $('#thirdMelanomaCharacteristics :input').attr('disabled', false);
+    }
 };
 
 function Reset_Values(tag_fieldset) {
