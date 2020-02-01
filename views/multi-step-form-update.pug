@@ -2119,13 +2119,13 @@ block content
                             .divTableCell.NoDivTableBorder.question-cell
                               span Mitotic rate (number of mitoses/mm2):
                             .divTableCell.NoDivTableBorder.input-cell
-                              input.form-control(type='number' min='1' name='melanoma_characteristics[first_melanoma][known][histopathologic_features][mitotic_rate]' required='required' data-rule-required='true' data-msg-required='Please include your weight' value=result.melanoma_characteristics.first_melanoma.known.histopathologic_features.mitotic_rate)
+                              input.form-control(type='number' min='1' name='melanoma_characteristics[first_melanoma][known][histopathologic_features][mitotic_rate]' value=result.melanoma_characteristics.first_melanoma.known.histopathologic_features.mitotic_rate required='required' data-rule-required='true' data-msg-required='Please include your weight')
                               span.error1
                                   i.error-log.fa.fa-exclamation-triangle
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
-                              span Ulceration 
+                              span Ulceration
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][ulceration]')
                                 option(value='Not choosed' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.ulceration == 'Not choosed')) Select...
@@ -2179,7 +2179,7 @@ block content
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
-                              span Vascular invasion 
+                              span Vascular invasion
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][vascular_invasion]')
                                 option(value='Not choosed' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.vascular_invasion == 'Not choosed')) Select...
@@ -2198,7 +2198,7 @@ block content
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
-                              span Solar elastosis 
+                              span Solar elastosis
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[first_melanoma][known][histopathologic_features][solar_elastosis]')
                                 option(value='Not choosed' selected=(result.melanoma_characteristics.first_melanoma.known.histopathologic_features.solar_elastosis == 'Not choosed')) Select...
@@ -2687,12 +2687,12 @@ block content
                               span Pre-existing pigmented lesion at the same site of melanoma
                             .divTableCell.NoDivTableBorder.input-cell
                               select#secondSelectLesion.form-control(name='melanoma_characteristics[second_melanoma][lesion][presence]')
-                                option(value='Not choosed') Select...
-                                option(value='No') No
-                                option(value='Yes') Yes
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.lesion.presence == 'Not choosed')) Select...
+                                option(value='No' selected=(result.melanoma_characteristics.second_melanoma.lesion.presence == 'No')) No
+                                option(value='Yes' selected=(result.melanoma_characteristics.second_melanoma.lesion.presence == 'Yes')) Yes
                             .divTableCell.NoDivTableBorder.hidden-control
                               label(style='font-size: 12px;') Number:
-                              input(type='number' min='1' name='melanoma_characteristics[second_melanoma][lesion][count]')
+                              input(type='number' min='1' name='melanoma_characteristics[second_melanoma][lesion][count]' value=result.melanoma_characteristics.second_melanoma.lesion.count)
 
                   fieldset
                     label
@@ -2710,7 +2710,7 @@ block content
                                 option(value='Physician' selected=(result.melanoma_characteristics.second_melanoma.detection == 'Physician')) Physician
                                 option(value='Other' selected=(result.melanoma_characteristics.second_melanoma.detection == 'Other')) Other
                             .divTableCell.NoDivTableBorder.hidden-control
-                              input(type='text' placeholder='Specify' name='melanoma_characteristics[second_melanoma][other_detection]')
+                              input(type='text' placeholder='Specify' name='melanoma_characteristics[second_melanoma][other_detection]' value=result.melanoma_characteristics.second_melanoma.other_detection)
                   
                   fieldset
                     label
@@ -2758,18 +2758,18 @@ block content
                               span Sentinel Lymph Node (SLN) biopsy
                             .divTableCell.NoDivTableBorder.input-cell(style='width: 26%;')
                               select#secondSelectSNL.form-control(name='melanoma_characteristics[second_melanoma][SNL][presence]')
-                                option(value='Not choosed') Select...
-                                option(value='Yes') Yes
-                                option(value='No') No
-                                option(value='Not done') Not done
-                                option(value='Not known') Not known
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.SNL.presence == 'Not choosed')) Select...
+                                option(value='Yes' selected=(result.melanoma_characteristics.second_melanoma.SNL.presence == 'Yes')) Yes
+                                option(value='No' selected=(result.melanoma_characteristics.second_melanoma.SNL.presence == 'No')) No
+                                option(value='Not done' selected=(result.melanoma_characteristics.second_melanoma.SNL.presence == 'Not done')) Not done
+                                option(value='Not known' selected=(result.melanoma_characteristics.second_melanoma.SNL.presence == 'Not known')) Not known
                             .divTableCell.NoDivTableBorder.input-cell
                               .hidden-control
                                 .group(style='margin-bottom:0%;vertical-align: bottom;')
                                   select.form-control(name='melanoma_characteristics[second_melanoma][SNL][category]')
-                                    option(value='Not choosed') Positive/Negative
-                                    option(value='Positive') Positive
-                                    option(value='Negative') Negative
+                                    option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.SNL.category == 'Not choosed')) Positive/Negative
+                                    option(value='Positive' selected=(result.melanoma_characteristics.second_melanoma.SNL.category == 'Positive')) Positive
+                                    option(value='Negative' selected=(result.melanoma_characteristics.second_melanoma.SNL.category == 'Negative')) Negative
 
                   fieldset
                     .form-group
@@ -2780,19 +2780,19 @@ block content
                               span Multiple primary melanoma (MPM) – concurrent or previous
                             .divTableCell.NoDivTableBorder.input-cell(style='width: 26%;')
                               select#secondMPM.form-control(name='melanoma_characteristics[second_melanoma][multiple_primary][presence]')
-                                option(value='Not choosed') Select...
-                                option(value='No') No
-                                option(value='Yes') Yes
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.multiple_primary.presence == 'Not choosed')) Select...
+                                option(value='No'  selected=(result.melanoma_characteristics.second_melanoma.multiple_primary.presence == 'No')) No
+                                option(value='Yes'  selected=(result.melanoma_characteristics.second_melanoma.multiple_primary.presence == 'Yes')) Yes
                             .divTableCell.NoDivTableBorder.input-cell
                               .hidden-control
                                 .group(style='margin-bottom:0%;vertical-align: bottom;')
-                                  input(type='number' placeholder='Number' min='1' name='melanoma_characteristics[second_melanoma][multiple_primary][count]' required='' )
+                                  input(type='number' placeholder='Number' min='1' name='melanoma_characteristics[second_melanoma][multiple_primary][count]' required='' value=result.melanoma_characteristics.second_melanoma.multiple_primary.count)
 
                   fieldset
                     label 
                       | Dates of diagnosis
                     .form-group
-                      input.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[second_melanoma][diagnosis_date]')
+                      input.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[second_melanoma][diagnosis_date]' value=result.melanoma_characteristics.second_melanoma.diagnosis_date)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
 
@@ -2801,9 +2801,9 @@ block content
                       | Is the primary tumor known?
                     .form-group
                       select#secondTumorKnown.form-control(name='melanoma_characteristics[second_melanoma][known][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                        option(value='' selected='') Select...
-                        option(value='Yes') Yes
-                        option(value='No') No
+                        option(value=''  selected=(result.melanoma_characteristics.second_melanoma.known.presence == '')) Select...
+                        option(value='Yes' selected=(result.melanoma_characteristics.second_melanoma.known.presence == 'Yes')) Yes
+                        option(value='No' selected=(result.melanoma_characteristics.second_melanoma.known.presence == 'No')) No
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
 
@@ -2885,7 +2885,7 @@ block content
                     label 
                       | Breslow thickness(mm)
                     .form-group
-                      input.form-control(type='number' step="0.01" min='0.01' name='melanoma_characteristics[second_melanoma][known][breslow_thickness]' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                      input.form-control(type='number' step="0.01" min='0.01' name='melanoma_characteristics[second_melanoma][known][breslow_thickness]' value=result.melanoma_characteristics.second_melanoma.known.breslow_thickness required='required' data-rule-required='true' data-msg-required='Please include your weight')
                       span.error1
                           i.error-log.fa.fa-exclamation-triangle
 
@@ -2917,7 +2917,7 @@ block content
                             .divTableCell.NoDivTableBorder.question-cell
                               span Mitotic rate (number of mitoses/mm2):
                             .divTableCell.NoDivTableBorder.input-cell
-                              input.form-control(type='number' min='1' name='melanoma_characteristics[second_melanoma][known][histopathologic_features][mitotic_rate]' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                              input.form-control(type='number' min='1' name='melanoma_characteristics[second_melanoma][known][histopathologic_features][mitotic_rate]' value=result.melanoma_characteristics.second_melanoma.known.histopathologic_features.mitotic_rate required='required' data-rule-required='true' data-msg-required='Please include your weight')
                               span.error1
                                   i.error-log.fa.fa-exclamation-triangle
 
@@ -2926,111 +2926,111 @@ block content
                               span Ulceration 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][ulceration]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='present') Present
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.ulceration == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.ulceration == 'absent')) Absent
+                                option(value='present' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.ulceration == 'present')) Present
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Tumor growth phase 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][tumor_growth_phase]')
-                                option(value='Not choosed') Select...
-                                option(value='radial') Radial
-                                option(value='vertical') Vertical
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.tumor_growth_phase == 'Not choosed')) Select...
+                                option(value='radial' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.tumor_growth_phase == 'radial')) Radial
+                                option(value='vertical' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.tumor_growth_phase == 'vertical')) Vertical
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Regression
                             .divTableCell.NoDivTableBorder.input-cell
                               select#secondMelanomaRegression.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][regression][presence]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='present') Present
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.regression.presence == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.regression.presence == 'absent')) Absent
+                                option(value='present' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.regression.presence == 'present')) Present
                             .divTableCell.NoDivTableBorder.input-cell.hidden-control
                               label(style='font-size: 12px;') Specify percentage:
                               select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][regression][percentage]' style='margin-bottom: 23px;')
-                                option(value='Not choosed') Select...
-                                option(value='less_than_50%') <50%
-                                option(value='greater_than_50%') >50%
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.regression.percentage == 'Not choosed')) Select...
+                                option(value='less_than_50%' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.regression.percentage == 'less_than_50%')) <50%
+                                option(value='greater_than_50%' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.regression.percentage == 'greater_than_50%')) >50%
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Tumor Infiltrating Lymphocytes (TILs) 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][TILs]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='non-brisk') Non-brisk
-                                option(value='brisk') Brisk
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.TILs == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.TILs == 'absent')) Absent
+                                option(value='non-brisk' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.TILs == 'non-brisk')) Non-brisk
+                                option(value='brisk' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.TILs == 'brisk')) Brisk
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Associated nevus
                             .divTableCell.NoDivTableBorder.input-cell
                               select#secondMelanomaNevus.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][nevus][presence]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='present') Present
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.nevus.presence == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.nevus.presence == 'absent')) Absent
+                                option(value='present' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.nevus.presence == 'present')) Present
                             .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                              input(type='text' placeholder='Specify type' name='melanoma_characteristics[second_melanoma][known][histopathologic_features][nevus][type]')
+                              input(type='text' placeholder='Specify type' name='melanoma_characteristics[second_melanoma][known][histopathologic_features][nevus][type]' value=result.melanoma_characteristics.second_melanoma.known.histopathologic_features.nevus.type)
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Vascular invasion 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][vascular_invasion]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='present') Present
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.vascular_invasion == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.vascular_invasion == 'absent')) Absent
+                                option(value='present' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.vascular_invasion == 'present')) Present
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Microsatellitosis 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][microsatellitosis]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='partially_pigmented') Partially pigmented
-                                option(value='fully_pigmented') Fully pigmented
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.microsatellitosis == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.microsatellitosis == 'absent')) Absent
+                                option(value='partially_pigmented' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.microsatellitosis == 'partially_pigmented')) Partially pigmented
+                                option(value='fully_pigmented' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.microsatellitosis == 'fully_pigmented')) Fully pigmented
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Solar elastosis 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][solar_elastosis]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='mild') Mild
-                                option(value='moderate') Moderate
-                                option(value='severe') Severe
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.solar_elastosis == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.solar_elastosis == 'absent')) Absent
+                                option(value='mild' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.solar_elastosis == 'mild')) Mild
+                                option(value='moderate' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.solar_elastosis == 'moderate')) Moderate
+                                option(value='severe' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.solar_elastosis == 'severe')) Severe
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Pigmentation 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][pigmentation]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='present') Present
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.pigmentation == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.pigmentation == 'absent')) Absent
+                                option(value='present' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.pigmentation == 'present')) Present
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Lateral margin status 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][lateral_margin_status]')
-                                option(value='Not choosed') Select...
-                                option(value='disease_free') Disease-free 
-                                option(value='not_diseasefree') Not disease-free
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.lateral_margin_status == 'Not choosed')) Select...
+                                option(value='disease_free' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.lateral_margin_status == 'disease_free')) Disease-free 
+                                option(value='not_diseasefree' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.lateral_margin_status == 'not_diseasefree')) Not disease-free
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Deep margin status 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[second_melanoma][known][histopathologic_features][deep_margin_status]')
-                                option(value='Not choosed') Select...
-                                option(value='disease_free') Disease-free 
-                                option(value='not_diseasefree') Not disease-free
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.deep_margin_status == 'Not choosed')) Select...
+                                option(value='disease_free' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.deep_margin_status == 'disease_free')) Disease-free 
+                                option(value='not_diseasefree' selected=(result.melanoma_characteristics.second_melanoma.known.histopathologic_features.deep_margin_status == 'not_diseasefree')) Not disease-free
 
                   fieldset#secondAJCCfieldset.hidden
                     label(style='margin-bottom: 1.5rem;')
@@ -3483,12 +3483,12 @@ block content
                               span Pre-existing pigmented lesion at the same site of melanoma
                             .divTableCell.NoDivTableBorder.input-cell
                               select#thirdSelectLesion.form-control(name='melanoma_characteristics[third_melanoma][lesion][presence]')
-                                option(value='Not choosed') Select...
-                                option(value='No') No
-                                option(value='Yes') Yes
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.lesion.presence == 'Not choosed')) Select...
+                                option(value='No' selected=(result.melanoma_characteristics.third_melanoma.lesion.presence == 'No')) No
+                                option(value='Yes' selected=(result.melanoma_characteristics.third_melanoma.lesion.presence == 'Yes')) Yes
                             .divTableCell.NoDivTableBorder.hidden-control
                               label(style='font-size: 12px;') Number:
-                              input(type='number' min='1' name='melanoma_characteristics[third_melanoma][lesion][count]')
+                              input(type='number' min='1' name='melanoma_characteristics[third_melanoma][lesion][count]' value=result.melanoma_characteristics.third_melanoma.lesion.count)
 
                   fieldset
                     label
@@ -3506,7 +3506,7 @@ block content
                                 option(value='Physician' selected=(result.melanoma_characteristics.third_melanoma.detection == 'Physician')) Physician
                                 option(value='Other' selected=(result.melanoma_characteristics.third_melanoma.detection == 'Other')) Other
                             .divTableCell.NoDivTableBorder.hidden-control
-                              input(type='text' placeholder='Specify' name='melanoma_characteristics[third_melanoma][other_detection]')
+                              input(type='text' placeholder='Specify' name='melanoma_characteristics[third_melanoma][other_detection]' value=result.melanoma_characteristics.third_melanoma.other_detection)
 
                   fieldset
                     label
@@ -3553,19 +3553,19 @@ block content
                             .divTableCell.NoDivTableBorder.question-cell
                               span Sentinel Lymph Node (SLN) biopsy
                             .divTableCell.NoDivTableBorder.input-cell(style='width: 26%;')
-                              select#secondSelectSNL.form-control(name='melanoma_characteristics[second_melanoma][SNL][presence]')
-                                option(value='Not choosed') Select...
-                                option(value='Yes') Yes
-                                option(value='No') No
-                                option(value='Not done') Not done
-                                option(value='Not known') Not known
+                              select#secondSelectSNL.form-control(name='melanoma_characteristics[third_melanoma][SNL][presence]')
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.SNL.presence == 'Not choosed')) Select...
+                                option(value='Yes' selected=(result.melanoma_characteristics.third_melanoma.SNL.presence == 'Yes')) Yes
+                                option(value='No' selected=(result.melanoma_characteristics.third_melanoma.SNL.presence == 'No')) No
+                                option(value='Not done' selected=(result.melanoma_characteristics.third_melanoma.SNL.presence == 'Not done')) Not done
+                                option(value='Not known' selected=(result.melanoma_characteristics.third_melanoma.SNL.presence == 'Not known')) Not known
                             .divTableCell.NoDivTableBorder.input-cell
                               .hidden-control
                                 .group(style='margin-bottom:0%;vertical-align: bottom;')
-                                  select.form-control(name='melanoma_characteristics[second_melanoma][SNL][category]')
-                                    option(value='Not choosed') Positive/Negative
-                                    option(value='Positive') Positive
-                                    option(value='Negative') Negative
+                                  select.form-control(name='melanoma_characteristics[third_melanoma][SNL][category]')
+                                    option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.SNL.category == 'Not choosed')) Positive/Negative
+                                    option(value='Positive' selected=(result.melanoma_characteristics.third_melanoma.SNL.category == 'Positive')) Positive
+                                    option(value='Negative' selected=(result.melanoma_characteristics.third_melanoma.SNL.category == 'Negative')) Negative
 
                   fieldset
                     .form-group
@@ -3575,20 +3575,20 @@ block content
                             .divTableCell.NoDivTableBorder.question-cell
                               span Multiple primary melanoma (MPM) – concurrent or previous
                             .divTableCell.NoDivTableBorder.input-cell(style='width: 26%;')
-                              select#secondMPM.form-control(name='melanoma_characteristics[second_melanoma][multiple_primary][presence]')
-                                option(value='Not choosed') Select...
-                                option(value='No') No
-                                option(value='Yes') Yes
+                              select#secondMPM.form-control(name='melanoma_characteristics[third_melanoma][multiple_primary][presence]')
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.multiple_primary.presence == 'Not choosed')) Select...
+                                option(value='No'  selected=(result.melanoma_characteristics.third_melanoma.multiple_primary.presence == 'No')) No
+                                option(value='Yes'  selected=(result.melanoma_characteristics.third_melanoma.multiple_primary.presence == 'Yes')) Yes
                             .divTableCell.NoDivTableBorder.input-cell
                               .hidden-control
                                 .group(style='margin-bottom:0%;vertical-align: bottom;')
-                                  input(type='number' placeholder='Number' min='1' name='melanoma_characteristics[second_melanoma][multiple_primary][count]' required='' )
+                                  input(type='number' placeholder='Number' min='1' name='melanoma_characteristics[third_melanoma][multiple_primary][count]' required='' value=result.melanoma_characteristics.third_melanoma.multiple_primary.count)
 
                   fieldset
                     label 
                       | Dates of diagnosis
                     .form-group
-                      input.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[third_melanoma][diagnosis_date]')
+                      input.datepicker.form-control(type='text' placeholder='Select date' required='' name='melanoma_characteristics[third_melanoma][diagnosis_date]' value=result.melanoma_characteristics.third_melanoma.diagnosis_date)
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
 
@@ -3597,9 +3597,9 @@ block content
                       | Is the primary tumor known?
                     .form-group
                       select#thirdTumorKnown.form-control(name='melanoma_characteristics[third_melanoma][known][presence]' required='required' data-rule-required='true' data-msg-required='Required field')
-                        option(value='' selected='') Select...
-                        option(value='Yes') Yes
-                        option(value='No') No
+                        option(value=''  selected=(result.melanoma_characteristics.third_melanoma.known.presence == '')) Select...
+                        option(value='Yes' selected=(result.melanoma_characteristics.third_melanoma.known.presence == 'Yes')) Yes
+                        option(value='No' selected=(result.melanoma_characteristics.third_melanoma.known.presence == 'No')) No
                       span.error1
                         i.error-log.fa.fa-exclamation-triangle
 
@@ -3681,7 +3681,7 @@ block content
                     label 
                       | Breslow thickness(mm)
                     .form-group
-                      input.form-control(type='number' step="0.01" min='0.01' name='melanoma_characteristics[third_melanoma][known][breslow_thickness]' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                      input.form-control(type='number' step="0.01" min='0.01' name='melanoma_characteristics[third_melanoma][known][breslow_thickness]' value=result.melanoma_characteristics.third_melanoma.known.breslow_thickness required='required' data-rule-required='true' data-msg-required='Please include your weight')
                       span.error1
                           i.error-log.fa.fa-exclamation-triangle
 
@@ -3713,7 +3713,7 @@ block content
                             .divTableCell.NoDivTableBorder.question-cell
                               span Mitotic rate (number of mitoses/mm2):
                             .divTableCell.NoDivTableBorder.input-cell
-                              input.form-control(type='number' min='1' name='melanoma_characteristics[third_melanoma][known][histopathologic_features][mitotic_rate]' required='required' data-rule-required='true' data-msg-required='Please include your weight')
+                              input.form-control(type='number' min='1' name='melanoma_characteristics[third_melanoma][known][histopathologic_features][mitotic_rate]' value=result.melanoma_characteristics.third_melanoma.known.histopathologic_features.mitotic_rate required='required' data-rule-required='true' data-msg-required='Please include your weight')
                               span.error1
                                   i.error-log.fa.fa-exclamation-triangle
 
@@ -3722,111 +3722,111 @@ block content
                               span Ulceration 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][ulceration]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='present') Present
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.ulceration == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.ulceration == 'absent')) Absent
+                                option(value='present' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.ulceration == 'present')) Present
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Tumor growth phase 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][tumor_growth_phase]')
-                                option(value='Not choosed') Select...
-                                option(value='radial') Radial
-                                option(value='vertical') Vertical
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.tumor_growth_phase == 'Not choosed')) Select...
+                                option(value='radial' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.tumor_growth_phase == 'radial')) Radial
+                                option(value='vertical' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.tumor_growth_phase == 'vertical')) Vertical
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Regression
                             .divTableCell.NoDivTableBorder.input-cell
                               select#thirdMelanomaRegression.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][regression][presence]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='present') Present
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.regression.presence == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.regression.presence == 'absent')) Absent
+                                option(value='present' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.regression.presence == 'present')) Present
                             .divTableCell.NoDivTableBorder.input-cell.hidden-control
                               label(style='font-size: 12px;') Specify percentage:
                               select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][regression][percentage]' style='margin-bottom: 23px;')
-                                option(value='Not choosed') Select...
-                                option(value='less_than_50%') <50%
-                                option(value='greater_than_50%') >50%
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.regression.percentage == 'Not choosed')) Select...
+                                option(value='less_than_50%' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.regression.percentage == 'less_than_50%')) <50%
+                                option(value='greater_than_50%' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.regression.percentage == 'greater_than_50%')) >50%
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
-                              span Tumor Infiltrating Lymphocytes (TILs) 
+                              span Tumor Infiltrating Lymphocytes (TILs)
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][TILs]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='non-brisk') Non-brisk
-                                option(value='brisk') Brisk
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.TILs == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.TILs == 'absent')) Absent
+                                option(value='non-brisk' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.TILs == 'non-brisk')) Non-brisk
+                                option(value='brisk' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.TILs == 'brisk')) Brisk
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Associated nevus
                             .divTableCell.NoDivTableBorder.input-cell
                               select#thirdMelanomaNevus.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][nevus][presence]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='present') Present
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.nevus.presence == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.nevus.presence == 'absent')) Absent
+                                option(value='present' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.nevus.presence == 'present')) Present
                             .divTableCell.NoDivTableBorder.input-cell.hidden-control
-                              input(type='text' placeholder='Specify type' name='melanoma_characteristics[third_melanoma][known][histopathologic_features][nevus][type]')
+                              input(type='text' placeholder='Specify type' name='melanoma_characteristics[third_melanoma][known][histopathologic_features][nevus][type]' value=result.melanoma_characteristics.third_melanoma.known.histopathologic_features.nevus.type)
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Vascular invasion 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][vascular_invasion]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='present') Present
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.vascular_invasion == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.vascular_invasion == 'absent')) Absent
+                                option(value='present' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.vascular_invasion == 'present')) Present
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Microsatellitosis 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][microsatellitosis]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='partially_pigmented') Partially pigmented
-                                option(value='fully_pigmented') Fully pigmented
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.microsatellitosis == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.microsatellitosis == 'absent')) Absent
+                                option(value='partially_pigmented' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.microsatellitosis == 'partially_pigmented')) Partially pigmented
+                                option(value='fully_pigmented' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.microsatellitosis == 'fully_pigmented')) Fully pigmented
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Solar elastosis 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][solar_elastosis]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='mild') Mild
-                                option(value='moderate') Moderate
-                                option(value='severe') Severe
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.solar_elastosis == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.solar_elastosis == 'absent')) Absent
+                                option(value='mild' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.solar_elastosis == 'mild')) Mild
+                                option(value='moderate' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.solar_elastosis == 'moderate')) Moderate
+                                option(value='severe' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.solar_elastosis == 'severe')) Severe
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Pigmentation 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][pigmentation]')
-                                option(value='Not choosed') Select...
-                                option(value='absent') Absent
-                                option(value='present') Present
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.pigmentation == 'Not choosed')) Select...
+                                option(value='absent' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.pigmentation == 'absent')) Absent
+                                option(value='present' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.pigmentation == 'present')) Present
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Lateral margin status 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][lateral_margin_status]')
-                                option(value='Not choosed') Select...
-                                option(value='disease_free') Disease-free 
-                                option(value='not_diseasefree') Not disease-free
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.lateral_margin_status == 'Not choosed')) Select...
+                                option(value='disease_free' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.lateral_margin_status == 'disease_free')) Disease-free 
+                                option(value='not_diseasefree' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.lateral_margin_status == 'not_diseasefree')) Not disease-free
 
                           .divTableRow
                             .divTableCell.NoDivTableBorder.question-cell
                               span Deep margin status 
                             .divTableCell.NoDivTableBorder.input-cell
                               select.form-control(name='melanoma_characteristics[third_melanoma][known][histopathologic_features][deep_margin_status]')
-                                option(value='Not choosed') Select...
-                                option(value='disease_free') Disease-free 
-                                option(value='not_diseasefree') Not disease-free
+                                option(value='Not choosed' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.deep_margin_status == 'Not choosed')) Select...
+                                option(value='disease_free' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.deep_margin_status == 'disease_free')) Disease-free 
+                                option(value='not_diseasefree' selected=(result.melanoma_characteristics.third_melanoma.known.histopathologic_features.deep_margin_status == 'not_diseasefree')) Not disease-free
 
                   fieldset#thirdAJCCfieldset.hidden
                     label(style='margin-bottom: 1.5rem;')
@@ -3979,7 +3979,7 @@ block content
                             .divTableCell.NoDivTableBorder.input-cell
                               .hidden-control
                                 .group(style='margin-bottom:0%;vertical-align: bottom;')
-                                  input(type='number' placeholder='Number' min='1' name='melanoma_characteristics[second_melanoma][multiple_primary][count]' required='' )
+                                  input(type='number' placeholder='Number' min='1' name='melanoma_characteristics[third_melanoma][multiple_primary][count]' required='' )
 
 
                   fieldset
