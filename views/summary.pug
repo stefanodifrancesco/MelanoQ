@@ -49,15 +49,17 @@ block content
                     td
                       legend Dates of updated questionnaire and/or phenotyping
                       span #{result.general.last_update}
-                  tr
-                    td
-                      legend Type of melanoma
-                      span #{result.general.melanoma_type}
-                  if result.general.melanoma_type == "Other"
+                      
+                  if (typeof(result.general.melanoma_type) !== 'undefined')
                     tr
                       td
-                        legend Other (complex family history)
-                        span #{result.general.other_melanoma_type}
+                        legend Type of melanoma
+                        span #{result.general.melanoma_type}
+                    if result.general.melanoma_type == "Other"
+                      tr
+                        td
+                          legend Other (complex family history)
+                          span #{result.general.other_melanoma_type}
           
           </details>
           

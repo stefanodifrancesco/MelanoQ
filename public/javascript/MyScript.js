@@ -10,12 +10,14 @@ $(document).ready(function() {
         $(this).next().css('display', 'none');
     });
 
-    $("[name='general[subject]']").on('change',function(evt){
-        if($(this).val() == "Case") {
+    $("[name='general[subject]']").on('change', function(evt) {
+        if ($(this).val() == "Case") {
             $("#fieldsetTypeOfMelanoma").removeClass("hidden-control").addClass("show-control");
+            $("#fieldsetTypeOfMelanoma").prop("disabled", false);
         }
-        if($(this).val() != "Case") {
-             $("#fieldsetTypeOfMelanoma").removeClass("show-control").addClass("hidden-control");
+        if ($(this).val() != "Case") {
+            $("#fieldsetTypeOfMelanoma").removeClass("show-control").addClass("hidden-control");
+            $("#fieldsetTypeOfMelanoma").prop("disabled", true);
         }
     });
 
@@ -498,7 +500,7 @@ $(document).ready(function() {
                 keyboard: false
             });
             $("#SimpleDateModal .span-modal-title").text("Insert diagnosis date for ");
-            $("#SimpleDateModal .span-modal-title-for").text($(Checked).parent().text().replace(/_/g," "));
+            $("#SimpleDateModal .span-modal-title-for").text($(Checked).parent().text().replace(/_/g, " "));
 
             if (Caller == "SCC_InSitu") {
                 $("#SimpleDateModal .hidden").removeClass("hidden").addClass("show");
