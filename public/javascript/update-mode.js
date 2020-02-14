@@ -921,6 +921,11 @@ $(document).ready(function() {
 
     $("#submit").on('click', function(e) {
         e.preventDefault();
+
+        delete_undefined(List_BCC_Sites);
+        delete_undefined(List_SCC_Invasive_Sites);
+        delete_undefined(List_SCC_InSitu_Sites);
+
         var serJson = $("#msform").serializeJSON();
         console.log(List_Residency);
         serJson.demographic.residency_list = List_Residency;
@@ -1322,5 +1327,15 @@ function create_Table_Delete(lista_JSON, div_id, field_id) {
         if (lista_JSON.length > 0) {
             create_Table_Delete(lista_JSON, div_id, field_id);
         }
+    });
+};
+
+function delete_undefined(data) {
+    $.each(List_BCC_Sites,function(key,value){
+        $.each(value,function(obj_key,obj_value){
+            if(obj_value.length == 0){
+                delete(value[obj_key]);
+            }
+        });
     });
 };
