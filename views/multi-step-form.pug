@@ -23,8 +23,8 @@ block content
       |  STATISTICS<br>
       i.fa.fa-caret-down
 
-    button.btn.logout-button(onclick="window.location.href = '/logout';")
-        |  Logout
+  button.btn.logout-button(onclick="window.location.href = '/logout';")
+    |  Logout
 
   div.progressline
     // progressbar
@@ -1952,7 +1952,6 @@ block content
                               .group(style='margin-bottom:0%;vertical-align: bottom;')
                                 input(type='number' placeholder='Number' min='1' name='melanoma_characteristics[first_melanoma][multiple_primary][count]' required='' )
 
-
                 fieldset
                   label 
                     | Dates of diagnosis
@@ -2230,6 +2229,13 @@ block content
                               option(value='Not choosed') Select...
                               option(value='MO') MO - No distant metastasis
                               option(value='M1') M1 - Distant metastasis
+
+                fieldset#firstMutations.hidden(style='margin-top: 20px;')
+                  label Mutational data for melanoma tissues
+                  .form-group
+                    button.btn.btn-info.add-Relative(type='button', data-toggle='modal', data-target='#first_mutational_data')
+                      | Insert result for each gene
+                  .first-json-genes-table.form-group
 
             .TEST2
               label.table-personal-label(style='padding-left: 50px;')
@@ -2628,6 +2634,13 @@ block content
                               option(value='MO') MO - No distant metastasis
                               option(value='M1') M1 - Distant metastasis
 
+                fieldset#secondMutations.hidden(style='margin-top: 20px;')
+                  label Mutational data for melanoma tissues
+                  .form-group
+                    button.btn.btn-info.add-Relative(type='button', data-toggle='modal', data-target='#second_mutational_data')
+                      | Insert result for each gene
+                  .second-json-genes-table.form-group
+
             .TEST2
               label.table-personal-label(style='padding-left: 50px;')
                 | Select if there is a third primary melanoma
@@ -3025,6 +3038,13 @@ block content
                               option(value='Not choosed') Select...
                               option(value='MO') MO - No distant metastasis
                               option(value='M1') M1 - Distant metastasis
+
+                fieldset#thirdMutations.hidden(style='margin-top: 20px;')
+                  label Mutational data for melanoma tissues
+                  .form-group
+                    button.btn.btn-info.add-Relative(type='button', data-toggle='modal', data-target='#third_mutational_data')
+                      | Insert result for each gene
+                  .third-json-genes-table.form-group
 
           div.alphaformfooter
           div.formfooter
@@ -3736,4 +3756,174 @@ block content
         .modal-footer
           button.btn.btn-secondary.save(type='button', data-dismiss='modal') Save
           button.btn.btn-danger.cancel(type='button', data-dismiss='modal') Cancel
-                         
+
+  #first_mutational_data.modal.fade
+    .modal-dialog(style='max-width: 38%;')
+      .modal-content(style='width: auto;')
+        span.hidden.modal-caller
+        // Modal Header
+        .modal-header.modal-table
+          table.modal-title
+            thead
+              tr
+                th.th-image
+                  img(style='border: 1px solid black; border-radius:50px; margin-left: 10%;' src='icons/medical-records-svgrepo-com.png')
+                th.th-title
+                  span.modal-title Mutational data for melanoma tissues
+          button.close(type='button' data-dismiss='modal') ×
+        // Modal body
+        .modal-body
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span Select gene
+                .divTableCell.NoDivTableBorder
+                  span Source of data
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                  span Record site
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  select#gene.form-control
+                    option(value='Not choosed') Select ...
+                    option(value='BRAF') BRAF
+                    option(value='NRAS') NRAS
+                    option(value='KIT') KIT
+                    option(value='Other') Other
+                .divTableCell.NoDivTableBorder
+                  select#selectSource.form-control
+                    option(value='Not choosed') Select type...
+                    option(value='Primary') Primary
+                    option(value='Metastatic') Metastatic
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                  select#selectSite.form-control
+                    option(value='Not choosed') Record site...
+                    option(value='Skin') Skin
+                    option(value='Lymph node') Lymph node
+                    option(value='Brain') Brain
+                    option(value='Lung') Lung
+                    option(value='Other') Other
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  input#first_otherGene.specify.hidden(type='text' style='width:auto;' placeholder='Specify gene')
+                .divTableCell.NoDivTableBorder
+                .divTableCell.NoDivTableBorder
+                  input#first_otherSite.specify.hidden(type='text' style='width:auto;' placeholder='Specify site')
+        // Modal footer
+        .modal-footer
+          button.btn.btn-secondary.save(type='button' data-dismiss='modal') Save
+          button.btn.btn-danger.cancel(type='button' data-dismiss='modal') Cancel
+
+  #second_mutational_data.modal.fade
+    .modal-dialog(style='max-width: 38%;')
+      .modal-content(style='width: auto;')
+        span.hidden.modal-caller
+        // Modal Header
+        .modal-header.modal-table
+          table.modal-title
+            thead
+              tr
+                th.th-image
+                  img(style='border: 1px solid black; border-radius:50px; margin-left: 10%;' src='icons/medical-records-svgrepo-com.png')
+                th.th-title
+                  span.modal-title Mutational data for melanoma tissues
+          button.close(type='button' data-dismiss='modal') ×
+        // Modal body
+        .modal-body
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span Select gene
+                .divTableCell.NoDivTableBorder
+                  span Source of data
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                  span Record site
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  select#gene.form-control
+                    option(value='Not choosed') Select ...
+                    option(value='BRAF') BRAF
+                    option(value='NRAS') NRAS
+                    option(value='KIT') KIT
+                    option(value='Other') Other
+                .divTableCell.NoDivTableBorder
+                  select#selectSource.form-control
+                    option(value='Not choosed') Select type...
+                    option(value='Primary') Primary
+                    option(value='Metastatic') Metastatic
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                  select#selectSite.form-control
+                    option(value='Not choosed') Record site...
+                    option(value='Skin') Skin
+                    option(value='Lymph node') Lymph node
+                    option(value='Brain') Brain
+                    option(value='Lung') Lung
+                    option(value='Other') Other
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  input#second_otherGene.specify.hidden(type='text' style='width:auto;' placeholder='Specify gene')
+                .divTableCell.NoDivTableBorder
+                .divTableCell.NoDivTableBorder
+                  input#second_otherSite.specify.hidden(type='text' style='width:auto;' placeholder='Specify site')
+        // Modal footer
+        .modal-footer
+          button.btn.btn-secondary.save(type='button' data-dismiss='modal') Save
+          button.btn.btn-danger.cancel(type='button' data-dismiss='modal') Cancel
+
+  #third_mutational_data.modal.fade
+    .modal-dialog(style='max-width: 38%;')
+      .modal-content(style='width: auto;')
+        span.hidden.modal-caller
+        // Modal Header
+        .modal-header.modal-table
+          table.modal-title
+            thead
+              tr
+                th.th-image
+                  img(style='border: 1px solid black; border-radius:50px; margin-left: 10%;' src='icons/medical-records-svgrepo-com.png')
+                th.th-title
+                  span.modal-title Mutational data for melanoma tissues
+          button.close(type='button' data-dismiss='modal') ×
+        // Modal body
+        .modal-body
+          .form-group
+            .divTable
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  span Select gene
+                .divTableCell.NoDivTableBorder
+                  span Source of data
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                  span Record site
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  select#gene.form-control
+                    option(value='Not choosed') Select ...
+                    option(value='BRAF') BRAF
+                    option(value='NRAS') NRAS
+                    option(value='KIT') KIT
+                    option(value='Other') Other
+                .divTableCell.NoDivTableBorder
+                  select#selectSource.form-control
+                    option(value='Not choosed') Select type...
+                    option(value='Primary') Primary
+                    option(value='Metastatic') Metastatic
+                .divTableCell.NoDivTableBorder.hidden.hidden-modal-control
+                  select#selectSite.form-control
+                    option(value='Not choosed') Record site...
+                    option(value='Skin') Skin
+                    option(value='Lymph node') Lymph node
+                    option(value='Brain') Brain
+                    option(value='Lung') Lung
+                    option(value='Other') Other
+              .divTableRow
+                .divTableCell.NoDivTableBorder
+                  input#third_otherGene.specify.hidden(type='text' style='width:auto;' placeholder='Specify gene')
+                .divTableCell.NoDivTableBorder
+                .divTableCell.NoDivTableBorder
+                  input#third_otherSite.specify.hidden(type='text' style='width:auto;' placeholder='Specify site')
+        // Modal footer
+        .modal-footer
+          button.btn.btn-secondary.save(type='button' data-dismiss='modal') Save
+          button.btn.btn-danger.cancel(type='button' data-dismiss='modal') Cancel

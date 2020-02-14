@@ -17,8 +17,8 @@ block content
         |  STATISTICS<br>
         i.fa.fa-caret-down
 
-      button.btn.logout-button(onclick="window.location.href = '/logout';")
-          |  Logout
+    button.btn.logout-button(onclick="window.location.href = '/logout';")
+      |  Logout
       
     .container            
       .row
@@ -75,7 +75,7 @@ block content
                       th Creation date
                       th Link to questionnaire
                       th Update questionnaire
-                  tbody(style='padding-right: 15px;')
+                  tbody(style='padding-right: 4px;')
                     each quest in result
                       tr
                         td #{quest._source.general.code_number}

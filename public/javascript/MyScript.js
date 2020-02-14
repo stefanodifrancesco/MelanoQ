@@ -210,7 +210,7 @@ $(document).ready(function() {
     $("#fieldsetSevereSunburns #id_Sunburns_less18,#id_Sunburns_Yes_greater18,#id_Sunburns_last5").on("change", function(evt) {
         if ($(this).val() == "Yes") {
             $(this).parents(".divTableRow").find("div.hidden-control").prop("required", true);
-            console.log($(this).parents(".divTableRow").find("div.hidden-control"));
+            //console.log($(this).parents(".divTableRow").find("div.hidden-control"));
             $(this).parents(".divTableRow").find("div.hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() == "No" || $(this).val() == "NotKnow") {
@@ -941,11 +941,13 @@ $(document).ready(function() {
             $('#firstBreslowFieldset').removeClass("hidden");
             $('#firstHistopatologicFieldset').removeClass("hidden");
             $('#firstAJCCfieldset').removeClass("hidden");
+            $('#firstMutations').removeClass("hidden");
         } else {
             $('#firstKnownSite').addClass("hidden");
             $('#firstBreslowFieldset').addClass("hidden");
             $('#firstHistopatologicFieldset').addClass("hidden");
             $('#firstAJCCfieldset').addClass("hidden");
+            $('#firstMutations').addClass("hidden");
         }
     });
 
@@ -955,11 +957,13 @@ $(document).ready(function() {
             $('#secondBreslowFieldset').removeClass("hidden");
             $('#secondHistopatologicFieldset').removeClass("hidden");
             $('#secondAJCCfieldset').removeClass("hidden");
+            $('#secondMutations').removeClass("hidden");
         } else {
             $('#secondKnownSite').addClass("hidden");
             $('#secondBreslowFieldset').addClass("hidden");
             $('#secondHistopatologicFieldset').addClass("hidden");
             $('#secondAJCCfieldset').addClass("hidden");
+            $('#secondMutations').addClass("hidden");
         }
     });
 
@@ -969,14 +973,217 @@ $(document).ready(function() {
             $('#thirdBreslowFieldset').removeClass("hidden");
             $('#thirdHistopatologicFieldset').removeClass("hidden");
             $('#thirdAJCCfieldset').removeClass("hidden");
+            $('#thirdMutations').removeClass("hidden");
         } else {
             $('#thirdKnownSite').addClass("hidden");
             $('#thirdBreslowFieldset').addClass("hidden");
             $('#thirdHistopatologicFieldset').addClass("hidden");
             $('#thirdAJCCfieldset').addClass("hidden");
+            $('#thirdMutations').addClass("hidden");
         }
     });
     /****** Melanoma charcteristics selects changes ******/
+
+    /****** First Melanoma characteristics Mutational Genes Modal *******/
+
+    List_First_Mutational_Genes = [];
+
+    $("#first_mutational_data #gene").on("change", function(evt) {
+        $("#first_mutational_data .divTableRow input").attr("style", "width:100%;");
+        if ($(this).val() == "Other") {
+            $("#first_mutational_data #first_otherGene").removeClass("hidden").addClass("show");
+            $("#first_mutational_data .divTableRow").css("text-align", "left");
+        }
+        if ($(this).val() != "Other") {
+            $("#first_mutational_data #first_otherGene").removeClass("show").addClass("hidden");
+            $("#first_mutational_data #first_otherGene").val("");
+            $("#first_mutational_data .divTableRow").css("text-align", "center");
+        }
+    });
+
+    $("#first_mutational_data #selectSource").on("change", function(evt) {
+        $("#first_mutational_data .divTableRow input").attr("style", "width:100%;");
+        if ($(this).val() == "Metastatic") {
+            $("#first_mutational_data").find(".hidden-modal-control").removeClass("hidden").addClass("show");
+        }
+        if ($(this).val() == "Primary") {
+            $("#first_mutational_data").find(".hidden-modal-control").removeClass("show").addClass("hidden");
+            $("#first_mutational_data #selectSite").val("Not choosed");
+            $("#first_mutational_data #first_otherSite").removeClass("show").addClass("hidden");
+            $("#first_mutational_data #first_otherSite").val("");
+            $("#first_mutational_data .divTableRow").css("text-align", "center");
+        }
+    });
+
+    $("#first_mutational_data #selectSite").on("change", function(evt) {
+        $("#first_mutational_data .divTableRow input").attr("style", "width:100%;");
+        if ($(this).val() == "Other") {
+            $("#first_mutational_data #first_otherSite").removeClass("hidden").addClass("show");
+            $("#first_mutational_data .divTableRow").css("text-align", "left");
+        }
+        if ($(this).val() != "Other") {
+            $("#first_mutational_data #first_otherSite").removeClass("show").addClass("hidden");
+            $("#first_mutational_data #first_otherSite").val("");
+            $("#first_mutational_data .divTableRow").css("text-align", "center");
+        }
+    });
+
+    $("#first_mutational_data .save").on("click", function(evt) {
+        var mutational_data = {};
+        mutational_data.gene = $("#first_mutational_data #gene").val();
+        if ($("#first_mutational_data #gene").val() == "Other") {
+            mutational_data.gene = $("#first_mutational_data #first_otherGene").val();
+        }
+        mutational_data.source = $("#first_mutational_data #selectSource").val();
+        mutational_data.site = $("#first_mutational_data #selectSite").val();
+        if ($("#first_mutational_data #selectSite").val() == "Other") {
+            mutational_data.site = $("#first_mutational_data #first_otherSite").val();
+        }
+
+        List_First_Mutational_Genes.push(mutational_data);
+        $(".first-json-genes-table").createTable(List_First_Mutational_Genes);
+        Reset_Values("#first_mutational_data");
+    });
+
+    $("#first_mutational_data .cancel,.close").on("click", function(evt) {
+        Reset_Values("#first_mutational_data");
+    });
+
+    /****** First Melanoma characteristics Mutational Genes Modal *******/
+
+    /****** Second Melanoma characteristics Mutational Genes Modal *******/
+
+    List_Second_Mutational_Genes = [];
+
+    $("#second_mutational_data #gene").on("change", function(evt) {
+        $("#second_mutational_data .divTableRow input").attr("style", "width:100%;");
+        if ($(this).val() == "Other") {
+            $("#second_mutational_data #second_otherGene").removeClass("hidden").addClass("show");
+            $("#second_mutational_data .divTableRow").css("text-align", "left");
+        }
+        if ($(this).val() != "Other") {
+            $("#second_mutational_data #second_otherGene").removeClass("show").addClass("hidden");
+            $("#second_mutational_data #second_otherGene").val("");
+            $("#second_mutational_data .divTableRow").css("text-align", "center");
+        }
+    });
+
+    $("#second_mutational_data #selectSource").on("change", function(evt) {
+        $("#second_mutational_data .divTableRow input").attr("style", "width:100%;");
+        if ($(this).val() == "Metastatic") {
+            $("#second_mutational_data").find(".hidden-modal-control").removeClass("hidden").addClass("show");
+        }
+        if ($(this).val() == "Primary") {
+            $("#second_mutational_data").find(".hidden-modal-control").removeClass("show").addClass("hidden");
+            $("#second_mutational_data #selectSite").val("Not choosed");
+            $("#second_mutational_data #second_otherSite").removeClass("show").addClass("hidden");
+            $("#second_mutational_data #second_otherSite").val("");
+            $("#second_mutational_data .divTableRow").css("text-align", "center");
+        }
+    });
+
+    $("#second_mutational_data #selectSite").on("change", function(evt) {
+        $("#second_mutational_data .divTableRow input").attr("style", "width:100%;");
+        if ($(this).val() == "Other") {
+            $("#second_mutational_data #second_otherSite").removeClass("hidden").addClass("show");
+            $("#second_mutational_data .divTableRow").css("text-align", "left");
+        }
+        if ($(this).val() != "Other") {
+            $("#second_mutational_data #second_otherSite").removeClass("show").addClass("hidden");
+            $("#second_mutational_data #second_otherSite").val("");
+            $("#second_mutational_data .divTableRow").css("text-align", "center");
+        }
+    });
+
+    $("#second_mutational_data .save").on("click", function(evt) {
+        var mutational_data = {};
+        mutational_data.gene = $("#second_mutational_data #gene").val();
+        if ($("#second_mutational_data #gene").val() == "Other") {
+            mutational_data.gene = $("#second_mutational_data #second_otherGene").val();
+        }
+        mutational_data.source = $("#second_mutational_data #selectSource").val();
+        mutational_data.site = $("#second_mutational_data #selectSite").val();
+        if ($("#second_mutational_data #selectSite").val() == "Other") {
+            mutational_data.site = $("#second_mutational_data #second_otherSite").val();
+        }
+
+        List_Second_Mutational_Genes.push(mutational_data);
+        $(".second-json-genes-table").createTable(List_Second_Mutational_Genes);
+        Reset_Values("#second_mutational_data");
+    });
+
+    $("#second_mutational_data .cancel,.close").on("click", function(evt) {
+        Reset_Values("#second_mutational_data");
+    });
+
+    /****** Second Melanoma characteristics Mutational Genes Modal *******/
+
+    /****** Third Melanoma characteristics Mutational Genes Modal *******/
+
+    List_Third_Mutational_Genes = [];
+
+    $("#third_mutational_data #gene").on("change", function(evt) {
+        $("#third_mutational_data .divTableRow input").attr("style", "width:100%;");
+        if ($(this).val() == "Other") {
+            $("#third_mutational_data #third_otherGene").removeClass("hidden").addClass("show");
+            $("#third_mutational_data .divTableRow").css("text-align", "left");
+        }
+        if ($(this).val() != "Other") {
+            $("#third_mutational_data #third_otherGene").removeClass("show").addClass("hidden");
+            $("#third_mutational_data #third_otherGene").val("");
+            $("#third_mutational_data .divTableRow").css("text-align", "center");
+        }
+    });
+
+    $("#third_mutational_data #selectSource").on("change", function(evt) {
+        $("#third_mutational_data .divTableRow input").attr("style", "width:100%;");
+        if ($(this).val() == "Metastatic") {
+            $("#third_mutational_data").find(".hidden-modal-control").removeClass("hidden").addClass("show");
+        }
+        if ($(this).val() == "Primary") {
+            $("#third_mutational_data").find(".hidden-modal-control").removeClass("show").addClass("hidden");
+            $("#third_mutational_data #selectSite").val("Not choosed");
+            $("#third_mutational_data #third_otherSite").removeClass("show").addClass("hidden");
+            $("#third_mutational_data #third_otherSite").val("");
+            $("#third_mutational_data .divTableRow").css("text-align", "center");
+        }
+    });
+
+    $("#third_mutational_data #selectSite").on("change", function(evt) {
+        $("#third_mutational_data .divTableRow input").attr("style", "width:100%;");
+        if ($(this).val() == "Other") {
+            $("#third_mutational_data #third_otherSite").removeClass("hidden").addClass("show");
+            $("#third_mutational_data .divTableRow").css("text-align", "left");
+        }
+        if ($(this).val() != "Other") {
+            $("#third_mutational_data #third_otherSite").removeClass("show").addClass("hidden");
+            $("#third_mutational_data #third_otherSite").val("");
+            $("#third_mutational_data .divTableRow").css("text-align", "center");
+        }
+    });
+
+    $("#third_mutational_data .save").on("click", function(evt) {
+        var mutational_data = {};
+        mutational_data.gene = $("#third_mutational_data #gene").val();
+        if ($("#third_mutational_data #gene").val() == "Other") {
+            mutational_data.gene = $("#third_mutational_data #third_otherGene").val();
+        }
+        mutational_data.source = $("#third_mutational_data #selectSource").val();
+        mutational_data.site = $("#third_mutational_data #selectSite").val();
+        if ($("#third_mutational_data #selectSite").val() == "Other") {
+            mutational_data.site = $("#third_mutational_data #third_otherSite").val();
+        }
+
+        List_Third_Mutational_Genes.push(mutational_data);
+        $(".third-json-genes-table").createTable(List_Third_Mutational_Genes);
+        Reset_Values("#third_mutational_data");
+    });
+
+    $("#third_mutational_data .cancel,.close").on("click", function(evt) {
+        Reset_Values("#third_mutational_data");
+    });
+
+    /****** Third Melanoma characteristics Mutational Genes Modal *******/
 
     $("#submit").on('click', function(e) {
         e.preventDefault();
@@ -986,6 +1193,7 @@ $(document).ready(function() {
         delete_undefined(List_SCC_InSitu_Sites);
 
         var serJson = $("#msform").serializeJSON();
+
         serJson.demographic.residency_list = List_Residency;
 
         history_list.forEach(occupation => {
@@ -1011,6 +1219,18 @@ $(document).ready(function() {
         serJson.family_history.relatives_with_melanoma = List_Family_History_3Degree;
 
         serJson.family_history.relatives_with_other_cancers = List_Family_History_Other_3Degree;
+
+        if (List_First_Mutational_Genes.length > 0) {
+            serJson.melanoma_characteristics.first_melanoma.known.mutational_data = List_First_Mutational_Genes;
+        }
+
+        if (List_Second_Mutational_Genes.length > 0) {
+            serJson.melanoma_characteristics.second_melanoma.known.mutational_data = List_Second_Mutational_Genes;
+        }
+
+        if (List_Third_Mutational_Genes.length > 0) {
+            serJson.melanoma_characteristics.third_melanoma.known.mutational_data = List_Third_Mutational_Genes;
+        }
 
         console.log(serJson);
 
