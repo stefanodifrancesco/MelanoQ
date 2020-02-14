@@ -5,20 +5,20 @@ block append style
 
 block content
   div.profile-header
-      button.questionnaires-list-button(onclick="window.location.href = '/home';")
+    button.questionnaires-list-button(onclick="window.location.href = '/home';")
         |  QUESTIONNAIRES<br>
         i.fa.fa-caret-down
 
-      button.new-questionnaire-button(onclick="var t = document.getElementById(\"msform\"); t.classList.add(\"fade-out-top\"); window.location.href = '/stepform';")
+    button.new-questionnaire-button(onclick="var t = document.getElementById(\"msform\"); t.classList.add(\"fade-out-top\"); window.location.href = '/stepform';")
         |  CREATE NEW<br>
         i.fa.fa-caret-down
           
-      button.statistics-button(onclick="var t = document.getElementById(\"msform\"); t.classList.add(\"fade-out-top\"); window.location.href = '/statistics';")
+    button.statistics-button(onclick="var t = document.getElementById(\"msform\"); t.classList.add(\"fade-out-top\"); window.location.href = '/statistics';")
         |  STATISTICS<br>
         i.fa.fa-caret-down
 
-      button.btn.logout-button(onclick="window.location.href = '/logout';")
-          |  Logout
+  button.btn.logout-button(onclick="window.location.href = '/logout';")
+    |  Logout
 
   .form
     form#msform.fade-in-top(action="/update" method="POST" autocomplete="off")
@@ -168,36 +168,36 @@ block content
             table.summary-table(style='border-spacing: 0px 15px;')
               tbody 
                 tr    
-                  td
+                  td(style='width: 20%; padding-left: 15px;')
                     legend(style="text-align: center;") Skin tan
                     if result.phenotype.skin_tan == "No tan"
                       div(style="height: 135px;")
-                        img(src='img/Skin-Tan/No_Tan_1.png' width='100' height='110' style="margin-top: 14px; margin-left: 15px;")
+                        img(src='img/Skin-Tan/No_Tan_1.png' width='100' height='110' style="margin-top: 14px; margin-left: 10px;")
                     if result.phenotype.skin_tan == "Tans lightly"
                       div(style="height: 135px;")
-                        img(src='img/Skin-Tan/Light_Tan_1.png' width='100' height='110' style="margin-top: 14px; margin-left: 15px;")
+                        img(src='img/Skin-Tan/Light_Tan_1.png' width='100' height='110' style="margin-top: 14px; margin-left: 10px;")
                     if result.phenotype.skin_tan == "Tans moderately"
                       div(style="height: 135px;")
-                        img(src='img/Skin-Tan/Moderate_Tan_1.png' width='100' height='110' style="margin-top: 14px; margin-left: 15px;")
+                        img(src='img/Skin-Tan/Moderate_Tan_1.png' width='100' height='110' style="margin-top: 14px; margin-left: 10px;")
                     if result.phenotype.skin_tan == "Tans deeply"
                       div(style="height: 135px;")
-                        img(src='img/Skin-Tan/Deep_Tan_1.png' width='100' height='110' style="margin-top: 14px; margin-left: 15px;")
-                  td
+                        img(src='img/Skin-Tan/Deep_Tan_1.png' width='100' height='110' style="margin-top: 14px; margin-left: 10px;")
+                  td(style='width: 30%;')
                     legend(style="text-align: center;") Eye color
                     if result.phenotype.eye_color == "Light"
                       div(style="height: 135px;")
-                        img(src='img/Color-Eye/Light_eyes-removebg.png' width='150' height='75' style="margin-top: 20px; margin-left: 30px;")
+                        img(src='img/Color-Eye/Light_eyes-removebg.png' width='150' height='75' style="margin-top: 20px; margin-right: 12px;")
                     if result.phenotype.eye_color == "Medium"
                       div(style="height: 135px;")
                         img(src='img/Color-Eye/Medium_eyes-removebg.png' width='150' height='75' style="margin-top: 20px; margin-left: 30px;")
                     if result.phenotype.eye_color == "Dark"
                       div(style="height: 135px;")
-                        img(src='img/Color-Eye/Dark_eyes-removebg.png' width='120' height='75' style="margin-top: 20px; margin-left: 15px;")
-                  td
+                        img(src='img/Color-Eye/Dark_eyes-removebg.png' width='120' height='75' style="margin-top: 20px; margin-left: 30px;")
+                  td(style='width: 30%;')
                     legend(style="text-align: center;") Hair color
                     if result.phenotype.hair_color == "Red"
                       div(style="height: 135px;")
-                        img(src='img/Color-hair/Red_hair-removebg.png' width='150' height='50' style="margin-top: 38px;")
+                        img(src='img/Color-hair/Red_hair-removebg.png' width='150' height='50' style="margin-top: 38px; margin-left: 15px;")
                     if result.phenotype.hair_color == "Blonde"
                       div(style="height: 135px;")
                         img(src='img/Color-hair/Blonde_hair-removebg.png' width='150' height='50' style="margin-top: 38px;")
@@ -209,22 +209,22 @@ block content
                         img(src='img/Color-hair/Dark_brown_hair-removebg.png' width='150' height='50' style="margin-top: 38px;")
                     if result.phenotype.hair_color == "Black"
                       div(style="height: 135px; width: 80px;")
-                        img(src='img/Color-hair/Dark_hair-removebg.png' width='50' height='50' style="margin-left: 14px; margin-top: 38px;")
-                  td
+                        img(src='img/Color-hair/Dark_hair-removebg.png' width='50' height='50' style="margin-left: 25px; margin-top: 38px;")
+                  td(style='width: 16%;')
                     legend(style="text-align: center;") Freckles
                     if result.phenotype.freckles == "None"
                       div(style="height: 135px;")
-                        img(src='img/Freckles/No_freckles.png' width='100' height='130' style="margin-left: 7px;")
+                        img(src='img/Freckles/No_freckles.png' width='100' height='130' style="margin-left: 4px;")
                     if result.phenotype.freckles == "Few"
                       div(style="height: 135px;")
-                        img(src='img/Freckles/Few_freckles.png' width='100' height='130' style="margin-left: 7px;")
+                        img(src='img/Freckles/Few_freckles.png' width='100' height='130' style="margin-left: 4px;")
                     if result.phenotype.freckles == "Some"
                       div(style="height: 135px;")
-                        img(src='img/Freckles/Some_freckles.png' width='100' height='130' style="margin-left: 7px;")
+                        img(src='img/Freckles/Some_freckles.png' width='100' height='130' style="margin-left: 4px;")
                     if result.phenotype.freckles == "Many"
                       div(style="height: 135px;")
                         img(src='img/Freckles/Many_freckles.png' width='100' height='130' style="margin-left: 7px;")
-                  td
+                  td(style='width: 16%;')
                     legend(style="text-align: center;") Nevi frequency
                     if result.phenotype.nevi == "None"
                       div(style="height: 135px; width: 118px;")
@@ -1242,6 +1242,29 @@ block content
                           legend M category 
                           span #{result.melanoma_characteristics.first_melanoma.known.AJCC.M}
 
+                if (typeof(result.melanoma_characteristics.first_melanoma.known.mutational_data) !== 'undefined')
+                  .tables_list
+                    legend Mutational data for melanoma tissues
+                    <table class="json-to-table">
+                      <thead>
+                        <tr>
+                          <th class="jsl"></th>
+                          <th>Gene</th>
+                          <th>Source of data</th>
+                          <th>Site</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        each row in result.melanoma_characteristics.first_melanoma.known.mutational_data
+                          <tr>
+                            <td class="jsl">1</td>
+                            <td>#{row.gene}</td>
+                            <td>#{row.source}</td>
+                            <td>#{row.site}</td>
+                          </tr>
+                      </tbody>
+                    </table>
+
             </details>
 
             if (typeof(result.melanoma_characteristics.second_melanoma) !== 'undefined')
@@ -1403,6 +1426,29 @@ block content
                           legend M category 
                           span #{result.melanoma_characteristics.second_melanoma.known.AJCC.M}
 
+                if (typeof(result.melanoma_characteristics.second_melanoma.known.mutational_data) !== 'undefined')
+                  .tables_list
+                    legend Mutational data for melanoma tissues
+                    <table class="json-to-table">
+                      <thead>
+                        <tr>
+                          <th class="jsl"></th>
+                          <th>Gene</th>
+                          <th>Source of data</th>
+                          <th>Site</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        each row in result.melanoma_characteristics.second_melanoma.known.mutational_data
+                          <tr>
+                            <td class="jsl">1</td>
+                            <td>#{row.gene}</td>
+                            <td>#{row.source}</td>
+                            <td>#{row.site}</td>
+                          </tr>
+                      </tbody>
+                    </table>
+
             </details>
 
             if (typeof(result.melanoma_characteristics.third_melanoma) !== 'undefined')
@@ -1563,6 +1609,29 @@ block content
                         td
                           legend M category 
                           span #{result.melanoma_characteristics.third_melanoma.known.AJCC.M}
+
+                if (typeof(result.melanoma_characteristics.third_melanoma.known.mutational_data) !== 'undefined')
+                  .tables_list
+                    legend Mutational data for melanoma tissues
+                    <table class="json-to-table">
+                      <thead>
+                        <tr>
+                          <th class="jsl"></th>
+                          <th>Gene</th>
+                          <th>Source of data</th>
+                          <th>Site</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        each row in result.melanoma_characteristics.third_melanoma.known.mutational_data
+                          <tr>
+                            <td class="jsl">1</td>
+                            <td>#{row.gene}</td>
+                            <td>#{row.source}</td>
+                            <td>#{row.site}</td>
+                          </tr>
+                      </tbody>
+                    </table>
 
             </details>
 
