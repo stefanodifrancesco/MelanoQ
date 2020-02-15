@@ -20,9 +20,9 @@ block content
     button.btn.logout-button(onclick="window.location.href = '/logout';")
       |  Logout
       
-    .container            
-      .row
-        .col-sm-9.questionnaires-tab.fade-in-top
+    div(style="padding-top: 70px;")           
+      .row(style="width: 70%; margin: 40px auto; position: absolute; height: 80%; left: 0; right: 0;")
+        .col-sm-9.questionnaires-tab.fade-in-top(style="height: 100%;")
                 
           ul.nav.nav-tabs(role='tablist')
             li.nav-item
@@ -30,17 +30,17 @@ block content
             li.nav-item
               a.nav-link(href="#completetab" data-toggle='tab') History of questionnaires
 
-          div.tab-content
-            div#personaltab.tab-pane.fade.show.active
+          div.tab-content(style="height: 90%;")
+            div#personaltab.tab-pane.fade.show.active(style="height: 100%;")
               if profileData.questionnaires
-                table.questionnaires-list
+                table.questionnaires-list(style="display: block; overflow-y: scroll; height: 100%;")
                   thead
                     tr
                       th Database code number
                       th Creation date
                       th Link to questionnaire
                       th Update questionnaire
-                  tbody(style='padding-right: 15px;')
+                  tbody(style='padding-right: 15px; height: 90%;')
                     each quest in profileData.questionnaires
                       tr
                         td #{quest.code_number}
@@ -66,16 +66,16 @@ block content
                   .col-sm-9.questionnaires-table
                     h3 No questionnaire filled
 
-            div#completetab.tab-pane.fade
+            div#completetab.tab-pane.fade(style="height: 100%;")
               if result
-                table.questionnaires-list
+                table.questionnaires-list(style="display: block; overflow-y: scroll; height: 100%;")
                   thead
                     tr
                       th Database code number
                       th Creation date
                       th Link to questionnaire
                       th Update questionnaire
-                  tbody(style='padding-right: 4px;')
+                  tbody(style='padding-right: 4px; height: 90%;')
                     each quest in result
                       tr
                         td #{quest._source.general.code_number}
