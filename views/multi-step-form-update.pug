@@ -15,7 +15,7 @@ block content
       |  QUESTIONNAIRES<br>
       i.fa.fa-caret-down
 
-    button.new-questionnaire-button(onclick="window.location.href = '/stepform';")
+    button.new-questionnaire-button(style="padding-left: 50px; padding-right: 50px;" onclick="window.location.href = '/stepform';")
       |  UPDATE<br>
       i.fa.fa-caret-down
           
@@ -5622,8 +5622,8 @@ block content
           button.btn.btn-danger(type='button' data-dismiss='modal') Close
   
   #Sites_Modal.modal.fade
-    .modal-dialog(style='max-width: 48%; height: 100%; margin-top: 220px;')
-      .modal-content(style='width: auto; height: 100%; overflow-y: scroll; overflow-x: hidden;')
+    .modal-dialog(style='max-width: 100%; height: 90%; margin-top: 220px;')
+      .modal-content(style='width: 66%; height: 100%; overflow-y: scroll; overflow-x: hidden; margin: auto; left: 0; right: 0;')
         span.hidden.modal-caller
         span.hidden.modal-checked
         // Modal Header
@@ -5637,7 +5637,7 @@ block content
                   span.modal-title
           button.close(type='button' data-dismiss='modal') ×
         // Modal body
-        .modal-body(style='padding: 0px;')
+        .modal-body(style='padding: 0px; margin-bottom: 80px;')
           .tg-wrap.form-check
             table.tg
               tbody
@@ -6059,11 +6059,11 @@ block content
                   td.tg-0lax
                     .TEST2
         // Modal footer
-        .alphaformfooter(style='position: fixed; bottom: 0; margin-bottom: 80px;')
-        .modal-footer(style='position: fixed; right: 0; bottom: 0; background: white; width: 100%; margin-bottom: 2px;')
-          button#save_sites.btn.btn-secondary(type='button' data-dismiss='modal')
+        .alphaformfooter(style='position: fixed; bottom: 60px; width: 66%; margin: auto; left: 0; right: 0;')
+        div(style='position: fixed; bottom: 0; background: white; width: 66%; height: 60px; margin: auto; left: 0; right: 0;')
+          button#cancel_sites.btn.btn-danger(type='button' data-dismiss='modal' style="float: right; margin: 15px; width: 80px;") Cancel
+          button#save_sites.btn.btn-secondary(type='button' data-dismiss='modal' style="float: right; margin: 15px; width: 80px;")
             | Save
-          button#cancel_sites.btn.btn-danger(type='button' data-dismiss='modal') Cancel
 
   #Additional_Neoplasia.modal.fade
     .modal-dialog(style='max-width: 38%;')
