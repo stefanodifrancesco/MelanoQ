@@ -1289,6 +1289,24 @@ function set_JSON_Tables(json_object) {
         List_Family_History_Other_3Degree = sort_JSON_Object(json_object.family_history.relatives_with_other_cancers, ["cancer_type", "side", "degree", "pedigree"]);
         $("#fieldsetFamilyHistoryOther .json-other-relative-tables").createTable(List_Family_History_Other_3Degree);
     }
+    if(json_object.melanoma_characteristics.first_melanoma != undefined) {
+        if (json_object.melanoma_characteristics.first_melanoma.known.mutational_data != undefined) {
+            List_First_Mutational_Genes = sort_JSON_Object(json_object.melanoma_characteristics.first_melanoma.known.mutational_data,["gene","source","site"]);
+            $("#firstMutations .first-json-genes-table").createTable(List_First_Mutational_Genes);
+        }
+    }
+    if(json_object.melanoma_characteristics.second_melanoma != undefined) {
+        if (json_object.melanoma_characteristics.second_melanoma.known.mutational_data != undefined) {
+            List_Second_Mutational_Genes = sort_JSON_Object(json_object.melanoma_characteristics.second_melanoma.known.mutational_data,["gene","source","site"]);
+            $("#secondMutations .second-json-genes-table").createTable(List_Second_Mutational_Genes);
+        }
+    }
+    if (json_object.melanoma_characteristics.third_melanoma != undefined) {
+        if (json_object.melanoma_characteristics.third_melanoma.known.mutational_data != undefined) {
+            List_Third_Mutational_Genes = sort_JSON_Object(json_object.melanoma_characteristics.third_melanoma.known.mutational_data,["gene","source","site"]);
+            $("#thirdMutations .third-json-genes-table").createTable(List_Third_Mutational_Genes);
+        }
+    }
 };
 
 function sort_JSON_Object(json_arr, keys_array) {
@@ -1552,7 +1570,7 @@ function create_Table_Delete(lista_JSON, div_id, field_id) {
 function delete_undefined(data) {
     $.each(List_BCC_Sites,function(key,value){
         $.each(value,function(obj_key,obj_value){
-            if(obj_value.length == 0){
+            if(obj_value == undefined || obj_value.length == 0){
                 delete(value[obj_key]);
             }
         });
