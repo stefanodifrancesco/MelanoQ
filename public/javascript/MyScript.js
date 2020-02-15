@@ -188,7 +188,7 @@ $(document).ready(function() {
             $(this).parents("#fieldsetUltravioletExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
             $(this).parents("#fieldsetUltravioletExposure").find("input[type=text]").prop("required", true);
         }
-        if ($(this).val() == "No") {
+        if ($(this).val() != "Yes") {
             $(this).parents("#fieldsetUltravioletExposure").find(".show-control").addClass("hidden-control").removeClass("show-control");
             $(this).parents("#fieldsetUltravioletExposure").find("input[type=text]").prop("required", false).val("");
             $(this).parents("#fieldsetUltravioletExposure").find("input[type=number]").val("");
@@ -200,7 +200,7 @@ $(document).ready(function() {
             $(this).parents("#fieldsetRecreationalExposure").find(".hidden-control").removeClass("hidden-control").addClass("show-control");
             $(this).parents("#fieldsetRecreationalExposure").find("input[type=text]").prop("required", true);
         }
-        if ($(this).val() == "No") {
+        if ($(this).val() != "Yes") {
             $(this).parents("#fieldsetRecreationalExposure").find(".show-control").addClass("hidden-control").removeClass("show-control");
             $(this).parents("#fieldsetRecreationalExposure").find("input:text").prop("required", false).val("");
             $(this).parents("#fieldsetRecreationalExposure").find("input[type=number]").val("");
@@ -213,7 +213,7 @@ $(document).ready(function() {
             //console.log($(this).parents(".divTableRow").find("div.hidden-control"));
             $(this).parents(".divTableRow").find("div.hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "No" || $(this).val() == "NotKnow") {
+        if ($(this).val() != "Yes") {
             $(this).parents(".divTableRow").find(".show-control input").val("");
             $(this).parents(".divTableRow").find(".show-control .special_on_div_table").prop("required", false);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
@@ -225,7 +225,7 @@ $(document).ready(function() {
             $(this).parents("#fieldsetSunlamps").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSunlamps").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "No" || $(this).val() == "Not choosed") {
+        if ($(this).val() != "No" || $(this).val() == "Not choosed") {
             $(this).parents("#fieldsetSunlamps").find(".show-control input[type=number]").prop("required", false).val("");
             $(this).parents("#fieldsetSunlamps").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
@@ -237,7 +237,7 @@ $(document).ready(function() {
             $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", true);
             $(this).parents("#fieldsetSmoking").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "Never" || $(this).val() == "Not choosed") {
+        if ($(this).val() == "Never" || $(this).val() == undefined) {
             $(this).parents("#fieldsetSmoking").find(".show-control input[type=number]").prop("required", false).val("");
             $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", false).val("");
             $(this).parents("#fieldsetSmoking").find(".show-control").addClass("hidden-control").removeClass("show-control");
@@ -261,7 +261,7 @@ $(document).ready(function() {
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() == "No" || $(this).val() == "Not choosed") {
-            $(this).parents("#fieldsetSectionBEval").find(".show-control input[type=number]").prop("required", false).val("");
+            $(this).parents("#fieldsetSectionBEval").find(".show-control input[type=text]").prop("required", false).val("");
             $(this).parents("#fieldsetSectionBEval").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -271,7 +271,7 @@ $(document).ready(function() {
             $(this).parents(".divTableRow").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "No" || $(this).val() == "Not choosed") {
+        if ($(this).val() != "Yes") {
             $(this).parents(".divTableRow").find(".show-control input[type=text]").prop("required", false).val("");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
@@ -295,8 +295,8 @@ $(document).ready(function() {
             $(this).parents("#fieldsetActinicKeratoses").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents("#fieldsetActinicKeratoses").find(".show-control #selectActinicKeratosesSite").prop("required", false).val("Not choosed");
-            $(this).parents("#fieldsetActinicKeratoses").find(".show-control #selectActinicKeratosesDistribution").prop("required", false).val("Not choosed");
+            $(this).parents("#fieldsetActinicKeratoses").find(".show-control #selectActinicKeratosesSite").prop("required", false).val("");
+            $(this).parents("#fieldsetActinicKeratoses").find(".show-control #selectActinicKeratosesDistribution").prop("required", false).val("");
             $(this).parents("#fieldsetActinicKeratoses").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -306,7 +306,7 @@ $(document).ready(function() {
             $(this).parents(".divTable").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTable").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "No" || $(this).val() == "Not choosed") {
+        if ($(this).val() == "No" || $(this).val() == undefined) {
             $(this).parents(".divTable").find(".show-control input").prop("required", false).val("");
             $(this).parents(".divTable").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
@@ -402,7 +402,7 @@ $(document).ready(function() {
         }
         if ($(this).attr("id") == "Pregnant_No") {
             $("#fieldsetPregnancy_History .Pregnancy_Stats").addClass("hide-transition").removeClass("show-transition");
-            $("#fieldsetPregnancy_History .Pregnancy_Stats :input").prop("disabled", true);
+            $("#fieldsetPregnancy_History .Pregnancy_Stats :input").prop("disabled", true).val("");
         }
     });
 
@@ -412,6 +412,7 @@ $(document).ready(function() {
         }
         if ($(this).attr("id") == "Before_No") {
             $("#Pregnancy_Before").find(".show-transition").addClass("hide-transition").removeClass("show-transition");
+            $("#Pregnancy_Before").find(".show-transition :input").val("");
         }
     });
 
@@ -421,6 +422,7 @@ $(document).ready(function() {
         }
         if ($(this).attr("id") == "After_No") {
             $("#Pregnancy_After").find(".show-transition").addClass("hide-transition").removeClass("show-transition");
+            $("#Pregnancy_After").find(".show-transition :input").val("");
         }
     });
     /*Fine Commit*/
@@ -599,7 +601,8 @@ $(document).ready(function() {
     $("#Additional_Neoplasia .year-datepicker").datepicker({
         format: "yyyy",
         viewMode: "years",
-        minViewMode: "years"
+        minViewMode: "years",
+        autoclose:true
     });
 
     List_Additional_Neoplasias = [];
@@ -1192,6 +1195,7 @@ $(document).ready(function() {
         delete_undefined(List_BCC_Sites);
         delete_undefined(List_SCC_Invasive_Sites);
         delete_undefined(List_SCC_InSitu_Sites);
+        delete_undefined(List_Family_History_3Degree);
 
         var serJson = $("#msform").serializeJSON();
 
@@ -1483,7 +1487,7 @@ function myHandle(data, currentCodeCountry, currentDatabaseCode, currentDatabase
 };
 
 function delete_undefined(data) {
-    $.each(List_BCC_Sites,function(key,value){
+    $.each(data,function(key,value){
         $.each(value,function(obj_key,obj_value){
             if(obj_value == undefined || obj_value.length == 0){
                 delete(value[obj_key]);
