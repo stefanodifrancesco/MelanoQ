@@ -619,7 +619,8 @@ $(document).ready(function() {
             $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val(1);
             $("#Additional_Neoplasia .year-datepicker").val("");
         } else {
-            alert("<span class='' style='color:red;'>Please insert all fields</span>");
+            evt.stopImmediatePropagation();
+            $("#modal-alert").modal();
         }
     });
 
@@ -1484,7 +1485,7 @@ function myHandle(data, currentCodeCountry, currentDatabaseCode, currentDatabase
 function delete_undefined(data) {
     $.each(List_BCC_Sites,function(key,value){
         $.each(value,function(obj_key,obj_value){
-            if(obj_value.length == 0){
+            if(obj_value == undefined || obj_value.length == 0){
                 delete(value[obj_key]);
             }
         });

@@ -557,7 +557,8 @@ $(document).ready(function() {
             $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val(1);
             $("#Additional_Neoplasia .year-datepicker").val("");
         } else {
-            alert("<span class='' style='color:red;'>Please insert all fields</span>");
+            evt.stopImmediatePropagation();
+            $("#modal-alert").modal();
         }
     });
 

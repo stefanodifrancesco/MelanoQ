@@ -6412,3 +6412,18 @@ block content
         .modal-footer
           button.btn.btn-secondary.save(type='button' data-dismiss='modal') Save
           button.btn.btn-danger.cancel(type='button' data-dismiss='modal') Cancel
+
+  #modal-alert.modal.fade
+    .modal-dialog
+      .modal-content.alert-danger(style='width: auto;background-color: #b94a48;position:absolute;top:50%;left30%;')
+        // Modal Header
+        .modal-header.modal-table.alert-danger
+          h3(style='color:#b94a48;') All fields must be filled
+        // Modal body
+        .modal-body.alert-danger(role='alert')
+          div
+            strong Error !
+            |  Please all fields are mandatory.
+        // Modal footer
+        .modal-footer.alert-danger
+          button.btn.btn-danger.cancel(type='button' data-dismiss='modal') Close
