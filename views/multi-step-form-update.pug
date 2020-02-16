@@ -1390,7 +1390,7 @@ block content
                       .divTableCell.NoDivTableBorder.input-cell
                         .hidden-control
                             label(style='font-size: 12px;') Number:
-                            input#inputBlueNevi(type='number' min='1' name='clinical_examination[blue_nevi][count]' value=result.clinical_examination.blue_nevi.count)
+                            input#inputBlueNevi(type='number' min='1' placeholder='blue nevi number' name='clinical_examination[blue_nevi][count]' value=result.clinical_examination.blue_nevi.count)
             
             fieldset#fieldsetActinicKeratoses
               label Actinic keratoses
@@ -2096,7 +2096,7 @@ block content
                       label 
                         | Breslow thickness(mm)
                       .form-group
-                        input.form-control(type='number' step="0.001" min='0.001' name='melanoma_characteristics[first_melanoma][known][breslow_thickness]' required='required' data-rule-required='true' data-msg-required='Please include your weight' value=result.melanoma_characteristics.first_melanoma.known.breslow_thickness)
+                        input.form-control(type='number' step="0.001" min='0.001' placeholder='0.001' name='melanoma_characteristics[first_melanoma][known][breslow_thickness]' required='required' data-rule-required='true' data-msg-required='Please include your weight' value=result.melanoma_characteristics.first_melanoma.known.breslow_thickness)
                         span.error1
                             i.error-log.fa.fa-exclamation-triangle
 

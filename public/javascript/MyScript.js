@@ -237,7 +237,7 @@ $(document).ready(function() {
             $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", true);
             $(this).parents("#fieldsetSmoking").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "Never" || $(this).val() == undefined) {
+        if ($(this).val() == "Never" || $(this).val() == "") {
             $(this).parents("#fieldsetSmoking").find(".show-control input[type=number]").prop("required", false).val("");
             $(this).parents("#fieldsetSmoking").find("#id_Smoke_quantity").prop("required", false).val("");
             $(this).parents("#fieldsetSmoking").find(".show-control").addClass("hidden-control").removeClass("show-control");
@@ -257,7 +257,7 @@ $(document).ready(function() {
 
     $("#fieldsetSectionBEval #selectQuestions").on("change", function(evt) {
         if ($(this).val() == "Yes") {
-            $(this).parents("#fieldsetSectionBEval").find(".hidden-control input[type=number]").prop("required", true);
+            $(this).parents("#fieldsetSectionBEval").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents("#fieldsetSectionBEval").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() == "No" || $(this).val() == "Not choosed") {
@@ -306,7 +306,7 @@ $(document).ready(function() {
             $(this).parents(".divTable").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTable").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "No" || $(this).val() == undefined) {
+        if ($(this).val() == "No" || $(this).val() == "") {
             $(this).parents(".divTable").find(".show-control input").prop("required", false).val("");
             $(this).parents(".divTable").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
@@ -612,7 +612,7 @@ $(document).ready(function() {
         var NonCutaneousAge = $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val();
         var YearNonCutaneous = $("#Additional_Neoplasia .year-datepicker").val();
         var AdditionalNeoplasia = {};
-        if (SelectAddNeoplasia != "Not choosed" && NonCutaneousAge != "" && YearNonCutaneous != "") {
+        if (SelectAddNeoplasia != "No Choosed" && NonCutaneousAge != "" && YearNonCutaneous != "") {
             AdditionalNeoplasia.Name = SelectAddNeoplasia;
             AdditionalNeoplasia.Age_of_diagnosis = NonCutaneousAge;
             AdditionalNeoplasia.Year_of_diagnosis = YearNonCutaneous;
@@ -628,7 +628,7 @@ $(document).ready(function() {
     });
 
     $("#Additional_Neoplasia .cancel .close").on("click", function(evt) {
-        $("#Additional_Neoplasia #NonCutaneous_Select").val("Not choosed");
+        $("#Additional_Neoplasia #NonCutaneous_Select").val("No Choosed");
         $("#Additional_Neoplasia .NonCutaneous-diagnosis-age").val(1);
         $("#Additional_Neoplasia .year-datepicker").val("");
     });
@@ -698,11 +698,11 @@ $(document).ready(function() {
 
     $("#fieldsetSectionCEval .selectQuestions").on("change", function(evt) {
         if ($(this).val() == "Yes") {
-            $(this).parents("#fieldsetSectionCEval").find(".hidden-control input[type=number]").prop("required", true);
+            $(this).parents("#fieldsetSectionCEval").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents("#fieldsetSectionCEval").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() == "No") {
-            $(this).parents("#fieldsetSectionCEval").find(".show-control input[type=number]").prop("required", false).val("");
+        if ($(this).val() == "Not choosed" || $(this).val() == "None") {
+            $(this).parents("#fieldsetSectionCEval").find(".show-control input[type=text]").prop("required", false).val("");
             $(this).parents("#fieldsetSectionCEval").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     }); /*Da ricontrollare su select after yes*/
@@ -715,26 +715,49 @@ $(document).ready(function() {
         } else {
             $('#firstMelanomaCharacteristics').css('pointer-events', 'none').css('opacity', '0.2');
             $('#firstMelanomaCharacteristics :input').attr('disabled', true);
+
+            if ($('#secondMelanomaCheckbox').is(':checked')) {
+                $('#secondMelanomaCheckbox').click();
+                $('#secondMelanomaCharacteristics').css('pointer-events', 'none').css('opacity', '0.2');
+                $('#secondMelanomaCharacteristics :input').attr('disabled', true);
+            }
+            if ($('#thirdMelanomaCheckbox').is(':checked')) {
+                $('#thirdMelanomaCheckbox').click();
+                $('#thirdMelanomaCharacteristics').css('pointer-events', 'none').css('opacity', '0.2');
+                $('#thirdMelanomaCharacteristics :input').attr('disabled', true);
+            }
         }
     });
 
     $('#secondMelanomaCheckbox').click(function() {
-        if ($('#secondMelanomaCheckbox').is(':checked')) {
-            $('#secondMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
-            $('#secondMelanomaCharacteristics :input').attr('disabled', false);
-        } else {
-            $('#secondMelanomaCharacteristics').css('pointer-events', 'none').css('opacity', '0.2');
-            $('#secondMelanomaCharacteristics :input').attr('disabled', true);
+        if($("#firstMelanomaCheckbox").is(':checked')) {
+            if ($('#secondMelanomaCheckbox').is(':checked')) {
+                $('#secondMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
+                $('#secondMelanomaCharacteristics :input').attr('disabled', false);
+            } else {
+                $('#secondMelanomaCharacteristics').css('pointer-events', 'none').css('opacity', '0.2');
+                $('#secondMelanomaCharacteristics :input').attr('disabled', true);
+                $('#thirdMelanomaCharacteristics').css('pointer-events', 'none').css('opacity', '0.2');
+                $('#thirdMelanomaCharacteristics :input').attr('disabled', true);
+
+                if ($('#thirdMelanomaCheckbox').is(':checked')) {
+                    $('#thirdMelanomaCheckbox').click();
+                    $('#thirdMelanomaCharacteristics').css('pointer-events', 'none').css('opacity', '0.2');
+                    $('#thirdMelanomaCharacteristics :input').attr('disabled', true);
+                }
+            }
         }
     });
 
     $('#thirdMelanomaCheckbox').click(function() {
-        if ($('#thirdMelanomaCheckbox').is(':checked')) {
-            $('#thirdMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
-            $('#thirdMelanomaCharacteristics :input').attr('disabled', false);
-        } else {
-            $('#thirdMelanomaCharacteristics').css('pointer-events', 'none').css('opacity', '0.2');
-            $('#thirdMelanomaCharacteristics :input').attr('disabled', true);
+        if($("#secondMelanomaCheckbox").is(':checked')) {
+            if ($('#thirdMelanomaCheckbox').is(':checked')) {
+                $('#thirdMelanomaCharacteristics').css('pointer-events', 'all').css('opacity', '1');
+                $('#thirdMelanomaCharacteristics :input').attr('disabled', false);
+            } else {
+                $('#thirdMelanomaCharacteristics').css('pointer-events', 'none').css('opacity', '0.2');
+                $('#thirdMelanomaCharacteristics :input').attr('disabled', true);
+            }
         }
     });
     /****** Checkboxes for enabling melanoma characteristics inputs ******/
@@ -747,7 +770,7 @@ $(document).ready(function() {
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false).val(1);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -758,7 +781,7 @@ $(document).ready(function() {
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false).val(1);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -769,40 +792,40 @@ $(document).ready(function() {
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false).val(1);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
     $("#firstMelanomaDetection").on("change", function(evt) {
         if ($(this).val() == "Other") {
-            $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Other") {
-            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control input[type=text]").prop("required", false).val("");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
     $("#secondMelanomaDetection").on("change", function(evt) {
         if ($(this).val() == "Other") {
-            $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Other") {
-            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
-            $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
+            $(this).parents(".divTableRow").find(".show-control input[type=text]").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control").val("");
         }
     });
 
     $("#thirdMelanomaDetection").on("change", function(evt) {
         if ($(this).val() == "Other") {
-            $(this).parents(".divTableRow").find(".hidden-control input[type=number]").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control input[type=text]").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Other") {
-            $(this).parents(".divTableRow").find(".show-control input[type=number]").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control input[type=text]").prop("required", false).val("");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -813,7 +836,7 @@ $(document).ready(function() {
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control select").prop("required", false).val("Not choosed");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -824,7 +847,7 @@ $(document).ready(function() {
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control select").prop("required", false).val("Not choosed");;
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -835,40 +858,40 @@ $(document).ready(function() {
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control select").prop("required", false).val("Not choosed");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
     $("#firstMPM").on("change", function(evt) {
         if ($(this).val() == "Yes") {
-            $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control input").prop("required", false).val(1);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
     $("#secondMPM").on("change", function(evt) {
         if ($(this).val() == "Yes") {
-            $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control input").prop("required", false).val(1);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
     $("#thirdMPM").on("change", function(evt) {
         if ($(this).val() == "Yes") {
-            $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "Yes") {
-            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control input").prop("required", false).val(1);
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -879,7 +902,7 @@ $(document).ready(function() {
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "present") {
-            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control select").prop("required", false).val("Not choosed");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -890,7 +913,7 @@ $(document).ready(function() {
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "present") {
-            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control select").prop("required", false).val("Not choosed");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -901,40 +924,40 @@ $(document).ready(function() {
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "present") {
-            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control select").prop("required", false).val("Not choosed");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
     $("#firstMelanomaNevus").on("change", function(evt) {
         if ($(this).val() == "present") {
-            $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "present") {
-            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control input").prop("required", false).val("");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
     $("#secondMelanomaNevus").on("change", function(evt) {
         if ($(this).val() == "present") {
-            $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "present") {
-            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control input").prop("required", false).val("");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
 
     $("#thirdMelanomaNevus").on("change", function(evt) {
         if ($(this).val() == "present") {
-            $(this).parents(".divTableRow").find(".hidden-control select").prop("required", true);
+            $(this).parents(".divTableRow").find(".hidden-control input").prop("required", true);
             $(this).parents(".divTableRow").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
         if ($(this).val() != "present") {
-            $(this).parents(".divTableRow").find(".show-control select").prop("required", false);
+            $(this).parents(".divTableRow").find(".show-control input").prop("required", false).val("");
             $(this).parents(".divTableRow").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
@@ -952,6 +975,7 @@ $(document).ready(function() {
             $('#firstHistopatologicFieldset').addClass("hidden");
             $('#firstAJCCfieldset').addClass("hidden");
             $('#firstMutations').addClass("hidden");
+            Reset_MelanomaCharatheristics("#first");
         }
     });
 
@@ -968,6 +992,7 @@ $(document).ready(function() {
             $('#secondHistopatologicFieldset').addClass("hidden");
             $('#secondAJCCfieldset').addClass("hidden");
             $('#secondMutations').addClass("hidden");
+            Reset_MelanomaCharatheristics("#second");
         }
     });
 
@@ -984,6 +1009,7 @@ $(document).ready(function() {
             $('#thirdHistopatologicFieldset').addClass("hidden");
             $('#thirdAJCCfieldset').addClass("hidden");
             $('#thirdMutations').addClass("hidden");
+            Reset_MelanomaCharatheristics("#third");
         }
     });
     /****** Melanoma charcteristics selects changes ******/
@@ -1494,4 +1520,25 @@ function delete_undefined(data) {
             }
         });
     });
+};
+
+function Reset_MelanomaCharatheristics(tag_cardinality) {
+    $(tag_cardinality + 'KnownSite select').val("");
+    $(tag_cardinality + 'BreslowFieldset input[type = number]').val(0.001);
+    $(tag_cardinality + 'HistopatologicFieldset input[type = number]').val(1);
+    $(tag_cardinality + 'HistopatologicFieldset input[type = text').val("");
+    $(tag_cardinality + 'HistopatologicFieldset select').val("Not choosed");
+    $(tag_cardinality + 'AJCCfieldset select').val("Not choosed");
+    if(tag_cardinality == "#first") {
+        $(".first-json-genes-table").empty();
+        List_First_Mutational_Genes = [];
+    }
+    if(tag_cardinality == "#second") {
+        (".second-json-genes-table").empty();
+        List_Second_Mutational_Genes = [];
+    }
+    if(tag_cardinality == "#third") {
+        (".third-json-genes-table").empty();
+        List_Third_Mutational_Genes = [];
+    }
 };
