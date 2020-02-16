@@ -85,7 +85,7 @@ block content
                             button.btn.questionnaire-summary(
                               type='submit' 
                               name='codeNumber' 
-                              value='' + quest._source.code_number
+                              value='' + quest._source.general.code_number
                               onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\");"
                             ) Open summary
                         td
@@ -93,7 +93,7 @@ block content
                             button.btn.questionnaire-summary(
                               type='submit' 
                               name='codeNumber' 
-                              value='' + quest.code_number
+                              value='' + quest._source.general.code_number
                               onclick="var t = document.getElementsByClassName(\"questionnaires-tab\"); var q = t[0]; q.classList.add(\"fade-out-top\");"
                             ) Update
               else 

@@ -40,7 +40,7 @@ block content
 
   div.form
     // multistep form
-    form#msform.fade-in-top(action="/stepform" method="POST" autocomplete="off")
+    form#msform.fade-in-top(action="/stepform" method="POST" autocomplete="off" style="width: 800px;")
     
         fieldset
           div.scrollingdiv(id='scrollerdiv')
@@ -697,7 +697,7 @@ block content
                     .divTableRow
                       .divTableCell Childhood (up to age 10 yrs)
                       .divTableCell
-                        select#id_SunExposure_childhood.form-control(name='ultraviolet[childhood_sunscreen][frequency]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        select#id_SunExposure_childhood.form-control(name='ultraviolet[childhood_sunscreen][frequency]' required='required' data-rule-required='true' data-msg-required='Required field' style="font-size: 0.9rem;")
                           option(value='' selected='') Select sun exposure...
                           option(value='never') Never
                           option(value='less_than_50%') time exposure < 50%
@@ -707,7 +707,7 @@ block content
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        select#id_Sunscreen_childhood.form-control(name='ultraviolet[childhood_sunscreen][type]')
+                        select#id_Sunscreen_childhood.form-control(name='ultraviolet[childhood_sunscreen][type]' style="font-size: 0.8rem;")
                           option(value='' selected='') Select sunscreen protection...
                           option(value='SPF_less_than_20') SPF < or = 20
                           option(value='SPF_greater_than_20') SPF > 20
@@ -715,7 +715,7 @@ block content
                     .divTableRow
                       .divTableCell Adolescence (11-18 yrs)
                       .divTableCell
-                        select#id_SunExposure_adolescence.form-control(name='ultraviolet[adolescence_sunscreen][frequency]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        select#id_SunExposure_adolescence.form-control(name='ultraviolet[adolescence_sunscreen][frequency]' required='required' data-rule-required='true' data-msg-required='Required field' style="font-size: 0.9rem;")
                           option(value='' selected='') Select sun exposure...
                           option(value='never') Never
                           option(value='less_than_50%') time exposure < 50%
@@ -725,7 +725,7 @@ block content
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        select#id_Sunscreen_adolescence.form-control(name='ultraviolet[adolescence_sunscreen][type]')
+                        select#id_Sunscreen_adolescence.form-control(name='ultraviolet[adolescence_sunscreen][type]' style="font-size: 0.8rem;")
                           option(value='' selected='') Select sunscreen protection...
                           option(value='SPF_less_than_20') SPF < or = 20
                           option(value='SPF_greater_than_20') SPF > 20
@@ -733,7 +733,7 @@ block content
                     .divTableRow
                       .divTableCell Adulthood (≥18 yrs)
                       .divTableCell
-                        select#id_SunExposure_adulthood.form-control(name='ultraviolet[adulthood_sunscreen][frequency]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        select#id_SunExposure_adulthood.form-control(name='ultraviolet[adulthood_sunscreen][frequency]' required='required' data-rule-required='true' data-msg-required='Required field' style="font-size: 0.9rem;")
                           option(value='' selected='') Select sun exposure...
                           option(value='Never') Never
                           option(value='less_than_50%') time exposure < 50%
@@ -743,7 +743,7 @@ block content
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        select#id_Sunscreen_adulthood.form-control(name='ultraviolet[adulthood_sunscreen][type]')
+                        select#id_Sunscreen_adulthood.form-control(name='ultraviolet[adulthood_sunscreen][type]' style="font-size: 0.8rem;")
                           option(value='' selected='') Select sunscreen protection...
                           option(value='SPF_less_than_20') SPF < or = 20
                           option(value='SPF_greater_than_20') SPF > 20
@@ -754,7 +754,7 @@ block content
                         | cases) or last 10 years
                         | (for controls)
                       .divTableCell
-                        select#id_SunExposure_10years_before.form-control(name='ultraviolet[last_10_years_sunscreen][frequency]' required='required' data-rule-required='true' data-msg-required='Required field')
+                        select#id_SunExposure_10years_before.form-control(name='ultraviolet[last_10_years_sunscreen][frequency]' required='required' data-rule-required='true' data-msg-required='Required field' style="font-size: 0.9rem;")
                           option(value='' selected='') Select sun exposure...
                           option(value='never') Never
                           option(value='less_than_50%') time exposure < 50%
@@ -764,7 +764,7 @@ block content
                         span.error1
                           i.error-log.fa.fa-exclamation-triangle
                       .divTableCell
-                        select#id_Sunscreen_10years_before.form-control(name='ultraviolet[last_10_years_sunscreen][type]')
+                        select#id_Sunscreen_10years_before.form-control(name='ultraviolet[last_10_years_sunscreen][type]' style="font-size: 0.8rem;")
                           option(value='' selected='') Select sunscreen protection...
                           option(value='SPF_less_than_20') SPF < or = 20
                           option(value='SPF_greater_than_20') SPF > 20
