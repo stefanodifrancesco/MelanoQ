@@ -225,8 +225,8 @@ $(document).ready(function() {
             $(this).parents("#fieldsetSunlamps").find(".hidden-control input[type=number]").prop("required", true);
             $(this).parents("#fieldsetSunlamps").find(".hidden-control").addClass("show-control").removeClass("hidden-control");
         }
-        if ($(this).val() != "No" || $(this).val() == "Not choosed") {
-            $(this).parents("#fieldsetSunlamps").find(".show-control input[type=number]").prop("required", false).val("");
+        if ($(this).val() != "Yes") {
+            $(this).parents("#fieldsetSunlamps").find(".show-control input[type=number]").prop("required", false).val(1);
             $(this).parents("#fieldsetSunlamps").find(".show-control").addClass("hidden-control").removeClass("show-control");
         }
     });
