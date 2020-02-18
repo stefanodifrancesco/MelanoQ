@@ -23,14 +23,19 @@ http.cors.allow-origin : "*"
 
 Clone the repository to a folder of your local host.
 
+Run Elasticsearch.
+
 Run Postman and import the MelanoQ.postman_collection.json file containing the REST calls to create the database.
-Execute all the imported REST calls in the order.
+Execute all the imported REST calls in the order they are.
+
+Run Kibana. Open localhost:5601.
+Go to Management -> Saved objects -> Import, then choose the file Kibana_export.ndjson from the repository.
 
 ## Running the application
 
-Run Elasticsearch
+Run Elasticsearch, if not already running.
 
-Run Kibana, go to Management -> Saved objects -> Import, then choose the file Kibana_export.ndjson from the repository.
+Run Kibana, if not already running.
 
 Open a terminal window in the repository folder.
 
