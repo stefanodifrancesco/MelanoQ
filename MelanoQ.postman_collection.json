@@ -1,66 +1,10 @@
 {
 	"info": {
-		"_postman_id": "41175aec-10c6-4838-aad8-92fef354467a",
+		"_postman_id": "2ea863c0-2364-476c-b1c9-11ba5c1ca3e5",
 		"name": "MelanoQ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "http://localhost:9200/melanoq_nurses/",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:9200/melanoq_nurses/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						"melanoq_nurses",
-						""
-					]
-				},
-				"description": "Delete all nursers"
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:9200/melano_questionnaires/",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:9200/melano_questionnaires/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9200",
-					"path": [
-						"melano_questionnaires",
-						""
-					]
-				},
-				"description": "Delete all questionnaires"
-			},
-			"response": []
-		},
 		{
 			"name": "http://localhost:9200/melanoq_nurses/_doc?type=_doc",
 			"request": {
