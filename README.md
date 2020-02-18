@@ -47,4 +47,14 @@ Run the following command to run the application:
 
 ``` node start ```
 
+Login using:
+
+User: claire
+Password: 12345678
+
+or
+
+User: max
+Password: 12345678
+
 
