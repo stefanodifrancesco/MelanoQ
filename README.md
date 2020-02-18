@@ -1,5 +1,7 @@
 # MelanoQ
 
+You can follow these instructions or watch the video tutorial https://youtu.be/_Ty7pbkTNu8 or both.
+
 ## Requirements
 
 Install Java >= 11
@@ -57,4 +59,4 @@ or
 User: max
 Password: 12345678
 
-
+A demo video of the application is here https://youtu.be/8A04m54p2NM
