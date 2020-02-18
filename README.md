@@ -59,4 +59,6 @@ or
 User: max
 Password: 12345678
 
+The login credentials and any other update to the database schema can be made using Postman or any other REST client.
+
 A demo video of the application is here https://youtu.be/8A04m54p2NM
